@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Solutions & Technologies" description="Découvrez les protocoles, technologies et solutions pour la gestion technique du bâtiment : BACnet, KNX, Modbus, LON, IoT et smart building.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-dark-900 via-primary-900 to-dark-800 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary-500/20 text-primary-200 border border-primary-500/30 mb-6">
+          Technologies
+        </span>
+        <h1 class="text-4xl md:text-5xl font-heading font-extrabold leading-tight">
+          Solutions & <span class="text-accent-400">Technologies</span>
+        </h1>
+        <p class="mt-6 text-lg text-dark-300 max-w-2xl">
+          Les protocoles de communication, capteurs, automates et logiciels qui composent un système GTB/GTC moderne.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Protocoles -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Les protocoles de communication</h2>
+        <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto">
+          Les protocoles sont le langage commun entre les équipements. Voici les principaux standards utilisés en GTB.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- BACnet -->
+        <div class="p-8 bg-white rounded-2xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+              <span class="text-blue-600 font-bold text-sm">BAC</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-dark-900">BACnet</h3>
+          </div>
+          <p class="text-dark-600 text-sm leading-relaxed">
+            <strong>Building Automation and Control Networks</strong> — Le protocole standard international (ISO 16484-5) pour la GTB. Indépendant des constructeurs, il permet l'interopérabilité entre équipements de marques différentes.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-medium">Standard ISO</span>
+            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-medium">Interopérable</span>
+            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-medium">IP / MSTP</span>
+          </div>
+        </div>
+
+        <!-- KNX -->
+        <div class="p-8 bg-white rounded-2xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+              <span class="text-green-600 font-bold text-sm">KNX</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-dark-900">KNX</h3>
+          </div>
+          <p class="text-dark-600 text-sm leading-relaxed">
+            Protocole européen standardisé (EN 50090, ISO/IEC 14543) pour l'automatisation du bâtiment. Très utilisé pour l'éclairage, les stores et le CVC résidentiel et tertiaire.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium">Standard européen</span>
+            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium">Bus filaire</span>
+            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium">500+ fabricants</span>
+          </div>
+        </div>
+
+        <!-- Modbus -->
+        <div class="p-8 bg-white rounded-2xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+              <span class="text-orange-600 font-bold text-sm">MOD</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-dark-900">Modbus</h3>
+          </div>
+          <p class="text-dark-600 text-sm leading-relaxed">
+            Protocole industriel simple et robuste, très répandu. Existe en version série (RTU/ASCII) et réseau (TCP/IP). Idéal pour les compteurs d'énergie et les équipements industriels.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-orange-50 text-orange-700 text-xs rounded-full font-medium">Industriel</span>
+            <span class="px-2 py-1 bg-orange-50 text-orange-700 text-xs rounded-full font-medium">Simple</span>
+            <span class="px-2 py-1 bg-orange-50 text-orange-700 text-xs rounded-full font-medium">RS485 / TCP</span>
+          </div>
+        </div>
+
+        <!-- LON -->
+        <div class="p-8 bg-white rounded-2xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+              <span class="text-purple-600 font-bold text-sm">LON</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-dark-900">LonWorks</h3>
+          </div>
+          <p class="text-dark-600 text-sm leading-relaxed">
+            Réseau de contrôle distribué conçu par Echelon. Chaque nœud possède sa propre intelligence. Utilisé dans de grandes installations tertiaires et industrielles.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full font-medium">Distribué</span>
+            <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full font-medium">Intelligence locale</span>
+            <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full font-medium">EN 14908</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capteurs & Actionneurs -->
+  <section class="py-20 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Capteurs & Actionneurs</h2>
+        <p class="mt-4 text-lg text-dark-500">Les organes sensoriels et effecteurs du bâtiment intelligent</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-xl border border-dark-200 text-center">
+          <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900 text-sm">Sondes de température</h3>
+          <p class="mt-2 text-xs text-dark-500">Intérieure, extérieure, conduit, immersion</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-dark-200 text-center">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900 text-sm">Détecteurs de présence</h3>
+          <p class="mt-2 text-xs text-dark-500">PIR, ultrasons, double technologie</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-dark-200 text-center">
+          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900 text-sm">Compteurs d'énergie</h3>
+          <p class="mt-2 text-xs text-dark-500">Électricité, gaz, eau, calories</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-dark-200 text-center">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900 text-sm">Vannes & Actionneurs</h3>
+          <p class="mt-2 text-xs text-dark-500">Vannes 2/3 voies, registres, variateurs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tendances -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Tendances & Innovations</h2>
+        <p class="mt-4 text-lg text-dark-500">Le smart building de demain se construit aujourd'hui</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-8 bg-gradient-to-br from-primary-50 to-white rounded-2xl border border-primary-200">
+          <h3 class="text-xl font-heading font-bold text-dark-900">IoT & Capteurs connectés</h3>
+          <p class="mt-3 text-dark-600 text-sm">Les capteurs sans fil (LoRaWAN, Zigbee, EnOcean) révolutionnent l'installation et permettent un maillage dense à moindre coût.</p>
+        </div>
+
+        <div class="p-8 bg-gradient-to-br from-accent-50 to-white rounded-2xl border border-accent-200">
+          <h3 class="text-xl font-heading font-bold text-dark-900">Intelligence Artificielle</h3>
+          <p class="mt-3 text-dark-600 text-sm">L'IA optimise la régulation en temps réel, prédit les pannes et adapte le fonctionnement du bâtiment aux usages réels.</p>
+        </div>
+
+        <div class="p-8 bg-gradient-to-br from-purple-50 to-white rounded-2xl border border-purple-200">
+          <h3 class="text-xl font-heading font-bold text-dark-900">Jumeaux numériques</h3>
+          <p class="mt-3 text-dark-600 text-sm">La réplique virtuelle du bâtiment permet de simuler des scénarios, optimiser les systèmes et former les équipes techniques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold">Quelle solution pour votre bâtiment ?</h2>
+      <p class="mt-4 text-lg text-primary-100">Notre audit gratuit analyse vos besoins et vous recommande les technologies adaptées.</p>
+      <a href="/audit" class="mt-8 inline-flex items-center px-8 py-4 bg-white text-primary-700 font-bold rounded-lg hover:bg-primary-50 transition-colors text-lg">
+        Lancer l'audit gratuit
+      </a>
+    </div>
+  </section>
+
+</Layout>

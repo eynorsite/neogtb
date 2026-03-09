@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Accueil - Gestion Technique du Bâtiment" description="NeoGTB : votre guide complet sur la GTB et la GTC. Contenus éducatifs, guides pratiques, actualités et audit gratuit pour optimiser la gestion technique de vos bâtiments.">
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-primary-900 via-primary-800 to-dark-900 text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-accent-500 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-20 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/20 text-accent-300 border border-accent-500/30 mb-6">
+          Guide complet GTB / GTC
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-tight">
+          Maîtrisez la <span class="text-accent-400">Gestion Technique</span> de vos Bâtiments
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-dark-300 max-w-2xl">
+          Découvrez tout sur la GTB et la GTC : guides éducatifs, articles techniques, réglementation et audit gratuit pour optimiser la performance énergétique de vos bâtiments.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="/gtb" class="inline-flex items-center justify-center px-6 py-3 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 transition-colors">
+            Découvrir la GTB
+          </a>
+          <a href="/audit" class="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-colors">
+            Audit gratuit
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qu'est-ce que la GTB/GTC -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Comprendre la GTB et la GTC</h2>
+        <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto">
+          Deux systèmes complémentaires pour une gestion intelligente et performante de vos bâtiments.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- GTB Card -->
+        <a href="/gtb" class="group block p-8 bg-white rounded-2xl border border-dark-200 hover:border-primary-300 hover:shadow-xl transition-all duration-300">
+          <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-heading font-bold text-dark-900 group-hover:text-primary-600 transition-colors">
+            Gestion Technique du Bâtiment
+          </h3>
+          <p class="mt-3 text-dark-500">
+            La GTB supervise et pilote l'ensemble des équipements techniques d'un bâtiment : CVC, éclairage, sécurité, contrôle d'accès. Découvrez comment elle optimise confort et énergie.
+          </p>
+          <span class="inline-flex items-center mt-4 text-sm font-semibold text-primary-600 group-hover:gap-2 transition-all">
+            En savoir plus
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </a>
+
+        <!-- GTC Card -->
+        <a href="/gtc" class="group block p-8 bg-white rounded-2xl border border-dark-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300">
+          <div class="w-14 h-14 bg-accent-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-heading font-bold text-dark-900 group-hover:text-accent-600 transition-colors">
+            Gestion Technique Centralisée
+          </h3>
+          <p class="mt-3 text-dark-500">
+            La GTC centralise la supervision de tous les systèmes techniques via une interface unique. Surveillance en temps réel, alarmes, historiques et reporting automatisé.
+          </p>
+          <span class="inline-flex items-center mt-4 text-sm font-semibold text-accent-600 group-hover:gap-2 transition-all">
+            En savoir plus
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chiffres clés -->
+  <section class="py-20 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Pourquoi la GTB est essentielle</h2>
+        <p class="mt-4 text-lg text-dark-500">Les chiffres parlent d'eux-mêmes</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-heading font-extrabold text-primary-600">40%</div>
+          <p class="mt-2 text-sm text-dark-500">d'économies d'énergie possibles</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-heading font-extrabold text-accent-500">30%</div>
+          <p class="mt-2 text-sm text-dark-500">de réduction des coûts de maintenance</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-heading font-extrabold text-primary-600">RE2020</div>
+          <p class="mt-2 text-sm text-dark-500">conformité réglementaire assurée</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-heading font-extrabold text-accent-500">24/7</div>
+          <p class="mt-2 text-sm text-dark-500">supervision continue du bâtiment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thématiques -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Nos thématiques</h2>
+        <p class="mt-4 text-lg text-dark-500">Explorez nos contenus éducatifs sur la gestion technique du bâtiment</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 bg-white rounded-xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900">Efficacité énergétique</h3>
+          <p class="mt-2 text-sm text-dark-500">Optimisation de la consommation et performance énergétique des bâtiments.</p>
+        </div>
+
+        <div class="p-6 bg-white rounded-xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900">Réglementation</h3>
+          <p class="mt-2 text-sm text-dark-500">RE2020, décret tertiaire, norme EN 15232 : restez conforme aux exigences.</p>
+        </div>
+
+        <div class="p-6 bg-white rounded-xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.858 15.355-5.858 21.213 0" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900">Protocoles & IoT</h3>
+          <p class="mt-2 text-sm text-dark-500">BACnet, KNX, Modbus, LON : les protocoles de communication du smart building.</p>
+        </div>
+
+        <div class="p-6 bg-white rounded-xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900">Audit & Diagnostic</h3>
+          <p class="mt-2 text-sm text-dark-500">Évaluez la maturité GTB de votre bâtiment avec notre outil d'audit gratuit.</p>
+        </div>
+
+        <div class="p-6 bg-white rounded-xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900">CVC & Confort</h3>
+          <p class="mt-2 text-sm text-dark-500">Chauffage, ventilation, climatisation : pilotez le confort thermique intelligemment.</p>
+        </div>
+
+        <div class="p-6 bg-white rounded-xl border border-dark-200 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-dark-900">Smart Building</h3>
+          <p class="mt-2 text-sm text-dark-500">L'avenir du bâtiment intelligent : IA, jumeaux numériques et automatisation avancée.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Audit -->
+  <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold">Évaluez votre bâtiment gratuitement</h2>
+      <p class="mt-4 text-lg text-primary-100 max-w-2xl mx-auto">
+        Notre outil d'audit en ligne analyse la maturité GTB de votre bâtiment et vous fournit des recommandations personnalisées.
+      </p>
+      <a href="/audit" class="mt-8 inline-flex items-center px-8 py-4 bg-white text-primary-700 font-bold rounded-lg hover:bg-primary-50 transition-colors text-lg">
+        Lancer l'audit gratuit
+      </a>
+    </div>
+  </section>
+
+</Layout>

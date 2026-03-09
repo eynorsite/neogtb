@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="Contactez l'équipe NeoGTB pour toute question sur la GTB, la GTC ou pour demander un audit personnalisé de votre bâtiment.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary-900 via-primary-800 to-dark-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-heading font-extrabold">Contactez-nous</h1>
+      <p class="mt-4 text-lg text-dark-300 max-w-xl mx-auto">
+        Une question sur la GTB/GTC ? Besoin d'un conseil ? Notre équipe est à votre écoute.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+
+        <!-- Formulaire -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl font-heading font-bold text-dark-900 mb-6">Envoyez-nous un message</h2>
+          <form action="#" method="POST" class="space-y-6" x-data="{ sending: false, sent: false }" @submit.prevent="sending = true; setTimeout(() => { sending = false; sent = true }, 1500)">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-dark-700 mb-2">Nom complet</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-dark-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors" placeholder="Votre nom" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-dark-700 mb-2">Email</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-dark-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors" placeholder="votre@email.com" />
+              </div>
+            </div>
+
+            <div>
+              <label for="company" class="block text-sm font-medium text-dark-700 mb-2">Entreprise (optionnel)</label>
+              <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-dark-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors" placeholder="Nom de votre entreprise" />
+            </div>
+
+            <div>
+              <label for="subject" class="block text-sm font-medium text-dark-700 mb-2">Sujet</label>
+              <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg border border-dark-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors bg-white">
+                <option value="">Sélectionnez un sujet</option>
+                <option value="info-gtb">Information sur la GTB</option>
+                <option value="info-gtc">Information sur la GTC</option>
+                <option value="audit">Demande d'audit</option>
+                <option value="conseil">Conseil personnalisé</option>
+                <option value="partenariat">Partenariat / Collaboration</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-dark-700 mb-2">Message</label>
+              <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-dark-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none" placeholder="Décrivez votre besoin..."></textarea>
+            </div>
+
+            <div x-show="!sent">
+              <button type="submit" :disabled="sending" class="inline-flex items-center px-8 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                <span x-show="!sending">Envoyer le message</span>
+                <span x-show="sending">Envoi en cours...</span>
+              </button>
+            </div>
+
+            <div x-show="sent" class="p-4 bg-accent-50 border border-accent-200 rounded-lg">
+              <p class="text-accent-800 font-medium">Merci ! Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Informations -->
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-lg font-heading font-bold text-dark-900 mb-4">Informations</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <p class="font-medium text-dark-800">Email</p>
+                  <p class="text-sm text-dark-500">contact@neogtb.fr</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <p class="font-medium text-dark-800">Localisation</p>
+                  <p class="text-sm text-dark-500">France</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-primary-50 rounded-xl border border-primary-200">
+            <h3 class="font-heading font-bold text-dark-900">Audit gratuit</h3>
+            <p class="mt-2 text-sm text-dark-600">
+              Vous souhaitez évaluer la maturité GTB de votre bâtiment ? Utilisez notre outil d'audit en ligne gratuit.
+            </p>
+            <a href="/audit" class="mt-4 inline-flex items-center text-sm font-semibold text-primary-600 hover:text-primary-700">
+              Lancer l'audit
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="p-6 bg-dark-50 rounded-xl border border-dark-200">
+            <h3 class="font-heading font-bold text-dark-900">Temps de réponse</h3>
+            <p class="mt-2 text-sm text-dark-600">
+              Nous nous engageons à répondre à toutes les demandes sous <strong>48 heures ouvrées</strong>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>

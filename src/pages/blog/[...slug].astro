@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+
+  <article class="py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <header class="mb-12">
+        <a href="/blog" class="inline-flex items-center text-sm text-primary-600 hover:text-primary-700 mb-6">
+          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Retour au blog
+        </a>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm font-semibold rounded-full">{post.data.category}</span>
+          <span class="text-sm text-dark-400">{new Date(post.data.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+          <span class="text-sm text-dark-400">par {post.data.author}</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-heading font-extrabold text-dark-900 leading-tight">
+          {post.data.title}
+        </h1>
+        <p class="mt-4 text-lg text-dark-500">{post.data.description}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {post.data.tags.map((tag: string) => (
+            <span class="px-2 py-1 bg-dark-100 text-dark-600 text-xs rounded-full">{tag}</span>
+          ))}
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none
+        prose-headings:font-heading prose-headings:font-bold prose-headings:text-dark-900
+        prose-p:text-dark-600 prose-p:leading-relaxed
+        prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline
+        prose-strong:text-dark-800
+        prose-table:text-sm
+        prose-th:bg-dark-800 prose-th:text-white prose-th:px-4 prose-th:py-2
+        prose-td:px-4 prose-td:py-2 prose-td:border-b prose-td:border-dark-100
+        prose-code:bg-dark-100 prose-code:px-1 prose-code:rounded
+        prose-blockquote:border-primary-500
+        prose-li:text-dark-600
+      ">
+        <Content />
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 p-8 bg-primary-50 rounded-2xl border border-primary-200 text-center">
+        <h3 class="text-xl font-heading font-bold text-dark-900">Envie d'aller plus loin ?</h3>
+        <p class="mt-2 text-dark-600">Évaluez gratuitement la maturité GTB de votre bâtiment.</p>
+        <a href="/audit" class="mt-4 inline-flex items-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
+          Lancer l'audit gratuit
+        </a>
+      </div>
+
+    </div>
+  </article>
+
+</Layout>

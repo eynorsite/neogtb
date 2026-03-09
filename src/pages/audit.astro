@@ -1,0 +1,368 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Audit GTB Gratuit" description="Évaluez gratuitement la maturité GTB de votre bâtiment. Répondez à quelques questions et recevez un diagnostic personnalisé avec des recommandations.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary-900 via-primary-800 to-dark-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/20 text-accent-300 border border-accent-500/30 mb-6">
+        Gratuit et sans engagement
+      </span>
+      <h1 class="text-4xl md:text-5xl font-heading font-extrabold">Audit GTB de votre bâtiment</h1>
+      <p class="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
+        Répondez à 10 questions pour évaluer la maturité de la gestion technique de votre bâtiment et recevoir des recommandations personnalisées.
+      </p>
+    </div>
+  </section>
+
+  <!-- Audit Wizard -->
+  <section class="py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div x-data="auditWizard()">
+
+        <!-- Progress Bar -->
+        <div class="mb-8">
+          <div class="flex justify-between text-sm text-dark-500 mb-2">
+            <span>Question <span x-text="currentStep"></span> / <span x-text="totalSteps"></span></span>
+            <span x-text="Math.round((currentStep - 1) / totalSteps * 100) + '%'"></span>
+          </div>
+          <div class="w-full bg-dark-200 rounded-full h-2">
+            <div class="bg-primary-600 h-2 rounded-full transition-all duration-500" :style="'width: ' + ((currentStep - 1) / totalSteps * 100) + '%'"></div>
+          </div>
+        </div>
+
+        <!-- Questions -->
+        <div x-show="!showResults" class="bg-white rounded-2xl border border-dark-200 p-8">
+
+          <!-- Question 1 -->
+          <div x-show="currentStep === 1">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Quel type de bâtiment gérez-vous ?</h3>
+            <div class="space-y-3">
+              <template x-for="option in questions[0].options" :key="option.value">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[0] === option.value ? 'border-primary-500 bg-primary-50' : ''">
+                  <input type="radio" name="q1" :value="option.value" x-model="answers[0]" class="text-primary-600" />
+                  <span class="text-dark-700" x-text="option.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div x-show="currentStep === 2">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Quelle est la surface de votre bâtiment ?</h3>
+            <div class="space-y-3">
+              <template x-for="option in questions[1].options" :key="option.value">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[1] === option.value ? 'border-primary-500 bg-primary-50' : ''">
+                  <input type="radio" name="q2" :value="option.value" x-model="answers[1]" class="text-primary-600" />
+                  <span class="text-dark-700" x-text="option.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div x-show="currentStep === 3">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Disposez-vous d'un système de régulation CVC ?</h3>
+            <div class="space-y-3">
+              <template x-for="option in questions[2].options" :key="option.value">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[2] === option.value ? 'border-primary-500 bg-primary-50' : ''">
+                  <input type="radio" name="q3" :value="option.value" x-model="answers[2]" class="text-primary-600" />
+                  <span class="text-dark-700" x-text="option.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div x-show="currentStep === 4">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Comment est géré l'éclairage ?</h3>
+            <div class="space-y-3">
+              <template x-for="option in questions[3].options" :key="option.value">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[3] === option.value ? 'border-primary-500 bg-primary-50' : ''">
+                  <input type="radio" name="q4" :value="option.value" x-model="answers[3]" class="text-primary-600" />
+                  <span class="text-dark-700" x-text="option.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div x-show="currentStep === 5">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Avez-vous un suivi des consommations énergétiques ?</h3>
+            <div class="space-y-3">
+              <template x-for="option in questions[4].options" :key="option.value">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[4] === option.value ? 'border-primary-500 bg-primary-50' : ''">
+                  <input type="radio" name="q5" :value="option.value" x-model="answers[4]" class="text-primary-600" />
+                  <span class="text-dark-700" x-text="option.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <!-- Question 6 -->
+          <div x-show="currentStep === 6">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Disposez-vous d'une supervision centralisée ?</h3>
+            <div class="space-y-3">
+              <template x-for="option in questions[5].options" :key="option.value">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[5] === option.value ? 'border-primary-500 bg-primary-50' : ''">
+                  <input type="radio" name="q6" :value="option.value" x-model="answers[5]" class="text-primary-600" />
+                  <span class="text-dark-700" x-text="option.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <!-- Question 7 -->
+          <div x-show="currentStep === 7">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Comment gérez-vous la maintenance ?</h3>
+            <div class="space-y-3">
+              <template x-for="option in questions[6].options" :key="option.value">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[6] === option.value ? 'border-primary-500 bg-primary-50' : ''">
+                  <input type="radio" name="q7" :value="option.value" x-model="answers[6]" class="text-primary-600" />
+                  <span class="text-dark-700" x-text="option.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <!-- Question 8 -->
+          <div x-show="currentStep === 8">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Quel est votre niveau de conformité réglementaire ?</h3>
+            <div class="space-y-3">
+              <template x-for="option in questions[7].options" :key="option.value">
+                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[7] === option.value ? 'border-primary-500 bg-primary-50' : ''">
+                  <input type="radio" name="q8" :value="option.value" x-model="answers[7]" class="text-primary-600" />
+                  <span class="text-dark-700" x-text="option.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="flex justify-between mt-8">
+            <button x-show="currentStep > 1" @click="currentStep--" class="px-6 py-2 text-dark-600 font-medium rounded-lg border border-dark-200 hover:bg-dark-50 transition-colors">
+              Précédent
+            </button>
+            <div x-show="currentStep === 1"></div>
+            <button x-show="currentStep < totalSteps" @click="if(answers[currentStep-1]) currentStep++" :class="answers[currentStep-1] ? 'bg-primary-600 hover:bg-primary-700 text-white' : 'bg-dark-200 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-lg transition-colors">
+              Suivant
+            </button>
+            <button x-show="currentStep === totalSteps" @click="calculateResults()" :class="answers[currentStep-1] ? 'bg-accent-500 hover:bg-accent-600 text-white' : 'bg-dark-200 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-lg transition-colors">
+              Voir les résultats
+            </button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div x-show="showResults" class="space-y-8">
+          <div class="bg-white rounded-2xl border border-dark-200 p-8 text-center">
+            <h2 class="text-2xl font-heading font-bold text-dark-900">Résultat de votre audit</h2>
+
+            <!-- Score -->
+            <div class="mt-8">
+              <div class="inline-flex items-center justify-center w-32 h-32 rounded-full border-4" :class="scoreColor">
+                <div>
+                  <div class="text-3xl font-heading font-extrabold" :class="scoreTextColor" x-text="score + '/100'"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold" :class="levelBadge" x-text="level"></span>
+            </div>
+
+            <p class="mt-4 text-dark-600 max-w-lg mx-auto" x-text="levelDescription"></p>
+          </div>
+
+          <!-- Recommandations -->
+          <div class="bg-white rounded-2xl border border-dark-200 p-8">
+            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Nos recommandations</h3>
+            <div class="space-y-4">
+              <template x-for="rec in recommendations" :key="rec">
+                <div class="flex items-start gap-3 p-4 bg-dark-50 rounded-lg">
+                  <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <p class="text-dark-700 text-sm" x-text="rec"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="text-center space-y-4">
+            <button @click="resetAudit()" class="px-6 py-3 bg-dark-100 text-dark-700 font-medium rounded-lg hover:bg-dark-200 transition-colors">
+              Refaire l'audit
+            </button>
+            <a href="/contact" class="inline-flex items-center px-8 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors ml-4">
+              Demander un conseil personnalisé
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('auditWizard', () => ({
+        currentStep: 1,
+        totalSteps: 8,
+        showResults: false,
+        score: 0,
+        level: '',
+        levelDescription: '',
+        scoreColor: '',
+        scoreTextColor: '',
+        levelBadge: '',
+        recommendations: [],
+        answers: {},
+        questions: [
+          {
+            options: [
+              { value: 'bureau', label: 'Bureaux / Tertiaire' },
+              { value: 'commerce', label: 'Commerce / Centre commercial' },
+              { value: 'industrie', label: 'Industriel / Logistique' },
+              { value: 'sante', label: 'Santé / Hôpital' },
+              { value: 'education', label: 'Enseignement / Formation' },
+              { value: 'hotel', label: 'Hôtellerie / Résidentiel' }
+            ]
+          },
+          {
+            options: [
+              { value: 'small', label: 'Moins de 1 000 m²' },
+              { value: 'medium', label: '1 000 à 5 000 m²' },
+              { value: 'large', label: '5 000 à 20 000 m²' },
+              { value: 'xlarge', label: 'Plus de 20 000 m²' }
+            ]
+          },
+          {
+            options: [
+              { value: '0', label: 'Aucune régulation (tout en manuel)' },
+              { value: '1', label: 'Régulation basique (thermostats simples)' },
+              { value: '2', label: 'Régulation par zone avec programmation horaire' },
+              { value: '3', label: 'Régulation avancée avec optimisation automatique' }
+            ]
+          },
+          {
+            options: [
+              { value: '0', label: 'Interrupteurs manuels uniquement' },
+              { value: '1', label: 'Minuteries ou programmation horaire' },
+              { value: '2', label: 'Détection de présence et variation d\'intensité' },
+              { value: '3', label: 'Gestion intelligente complète (daylight, scénarios)' }
+            ]
+          },
+          {
+            options: [
+              { value: '0', label: 'Aucun suivi' },
+              { value: '1', label: 'Relevé manuel des compteurs' },
+              { value: '2', label: 'Sous-comptage automatique par usage' },
+              { value: '3', label: 'Monitoring temps réel avec alertes' }
+            ]
+          },
+          {
+            options: [
+              { value: '0', label: 'Aucune supervision' },
+              { value: '1', label: 'Supervision partielle (un seul lot technique)' },
+              { value: '2', label: 'GTC centralisée sur plusieurs lots' },
+              { value: '3', label: 'GTB complète avec pilotage et optimisation' }
+            ]
+          },
+          {
+            options: [
+              { value: '0', label: 'Maintenance curative uniquement (on répare quand ça casse)' },
+              { value: '1', label: 'Maintenance préventive planifiée' },
+              { value: '2', label: 'Maintenance conditionnelle (basée sur les données)' },
+              { value: '3', label: 'Maintenance prédictive (anticipation des pannes)' }
+            ]
+          },
+          {
+            options: [
+              { value: '0', label: 'Je ne connais pas les obligations réglementaires' },
+              { value: '1', label: 'Connaissance partielle, conformité incertaine' },
+              { value: '2', label: 'Conforme au décret tertiaire, RE2020 en cours' },
+              { value: '3', label: 'Pleinement conforme avec reporting automatisé' }
+            ]
+          }
+        ],
+
+        calculateResults() {
+          let total = 0;
+          for (let i = 2; i < 8; i++) {
+            total += parseInt(this.answers[i] || 0);
+          }
+          this.score = Math.round((total / 18) * 100);
+
+          if (this.score < 25) {
+            this.level = 'Classe D — Non performant';
+            this.levelDescription = 'Votre bâtiment ne dispose pas de système de gestion technique. Il existe un fort potentiel d\'optimisation énergétique et de confort.';
+            this.scoreColor = 'border-dark-300';
+            this.scoreTextColor = 'text-dark-600';
+            this.levelBadge = 'bg-dark-200 text-dark-700';
+            this.recommendations = [
+              'Réaliser un audit énergétique complet de votre bâtiment',
+              'Installer des capteurs de température et de présence dans les zones principales',
+              'Mettre en place un suivi des consommations énergétiques (sous-comptage)',
+              'Étudier la faisabilité d\'une GTB de classe C minimum',
+              'Vérifier vos obligations réglementaires (décret tertiaire, décret BACS)'
+            ];
+          } else if (this.score < 50) {
+            this.level = 'Classe C — Standard';
+            this.levelDescription = 'Votre bâtiment dispose d\'une automatisation de base. Des améliorations significatives sont possibles pour réduire les consommations et améliorer le confort.';
+            this.scoreColor = 'border-orange-300';
+            this.scoreTextColor = 'text-orange-600';
+            this.levelBadge = 'bg-orange-100 text-orange-700';
+            this.recommendations = [
+              'Centraliser la supervision de vos lots techniques sur une GTC unique',
+              'Améliorer la régulation CVC avec des capteurs de qualité d\'air (CO2)',
+              'Mettre en place un suivi énergétique automatisé avec alertes de dérive',
+              'Passer à une maintenance conditionnelle basée sur les données',
+              'Former vos équipes techniques à l\'exploitation de la GTB'
+            ];
+          } else if (this.score < 75) {
+            this.level = 'Classe B — Avancé';
+            this.levelDescription = 'Votre bâtiment dispose d\'une GTB performante. Quelques optimisations peuvent encore améliorer l\'efficacité globale.';
+            this.scoreColor = 'border-primary-300';
+            this.scoreTextColor = 'text-primary-600';
+            this.levelBadge = 'bg-primary-100 text-primary-700';
+            this.recommendations = [
+              'Explorer les solutions d\'intelligence artificielle pour l\'optimisation prédictive',
+              'Mettre en place un jumeau numérique de votre bâtiment',
+              'Optimiser les scénarios de fonctionnement selon l\'occupation réelle',
+              'Envisager l\'intégration de capteurs IoT pour un maillage plus fin',
+              'Automatiser le reporting réglementaire (décret tertiaire)'
+            ];
+          } else {
+            this.level = 'Classe A — Haute performance';
+            this.levelDescription = 'Félicitations ! Votre bâtiment est à la pointe de la gestion technique. Continuez à innover et partagez votre expérience.';
+            this.scoreColor = 'border-accent-300';
+            this.scoreTextColor = 'text-accent-600';
+            this.levelBadge = 'bg-accent-100 text-accent-700';
+            this.recommendations = [
+              'Partager votre retour d\'expérience pour inspirer le secteur',
+              'Explorer les dernières innovations (IA générative, blockchain énergie)',
+              'Optimiser continuellement via l\'analyse des données historiques',
+              'Étendre votre approche GTB à l\'ensemble de votre parc immobilier',
+              'Viser les certifications environnementales (HQE, BREEAM, LEED)'
+            ];
+          }
+
+          this.showResults = true;
+        },
+
+        resetAudit() {
+          this.currentStep = 1;
+          this.showResults = false;
+          this.score = 0;
+          this.answers = {};
+        }
+      }));
+    });
+  </script>
+
+</Layout>
