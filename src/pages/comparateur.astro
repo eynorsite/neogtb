@@ -1,0 +1,884 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Comparateur de marques GTB/GTC" description="Comparez les principales marques et solutions de Gestion Technique du Bâtiment : Schneider Electric, Siemens, TheWatchdog, Honeywell, Sauter, Wago, Distech Controls et plus.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-dark-900 via-primary-900 to-dark-800 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/20 text-accent-300 border border-accent-500/30 mb-6">
+        Outil interactif
+      </span>
+      <h1 class="text-4xl md:text-5xl font-heading font-extrabold">Comparateur de marques <span class="text-accent-400">GTB/GTC</span></h1>
+      <p class="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
+        Comparez les solutions des principaux acteurs du marché selon vos critères : prix, fonctionnalités, protocoles, taille de bâtiment et plus.
+      </p>
+    </div>
+  </section>
+
+  <!-- Comparateur -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" x-data="comparateur()">
+
+      <!-- Filtres -->
+      <div class="bg-white rounded-2xl border border-dark-200 p-6 mb-8 sticky top-20 z-40">
+        <div class="flex flex-wrap items-center gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Catégorie</label>
+            <select x-model="filterCategory" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+              <option value="all">Toutes</option>
+              <option value="leader">Leaders mondiaux</option>
+              <option value="europeen">Européens</option>
+              <option value="supervision">Supervision / Logiciel</option>
+              <option value="iot">IoT / Sans fil</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Protocole</label>
+            <select x-model="filterProtocol" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+              <option value="all">Tous</option>
+              <option value="BACnet">BACnet</option>
+              <option value="KNX">KNX</option>
+              <option value="Modbus">Modbus</option>
+              <option value="LON">LON</option>
+              <option value="LoRaWAN">LoRaWAN</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Type de bâtiment</label>
+            <select x-model="filterBuilding" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+              <option value="all">Tous</option>
+              <option value="petit">Petit (< 2 000 m²)</option>
+              <option value="moyen">Moyen (2 000 - 10 000 m²)</option>
+              <option value="grand">Grand (> 10 000 m²)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Budget</label>
+            <select x-model="filterBudget" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+              <option value="all">Tous</option>
+              <option value="bas">Accessible</option>
+              <option value="moyen">Moyen</option>
+              <option value="eleve">Élevé</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Trier par</label>
+            <select x-model="sortBy" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+              <option value="nom">Nom</option>
+              <option value="note">Note globale</option>
+              <option value="prix">Prix (croissant)</option>
+              <option value="facilite">Facilité d'installation</option>
+            </select>
+          </div>
+
+          <div class="ml-auto">
+            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">&nbsp;</label>
+            <button @click="resetFilters()" class="px-4 py-2 text-sm text-dark-500 border border-dark-200 rounded-lg hover:bg-dark-50 transition-colors">
+              Réinitialiser
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-3 text-sm text-dark-400">
+          <span x-text="filteredBrands().length"></span> marque(s) affichée(s)
+        </div>
+      </div>
+
+      <!-- Cards des marques -->
+      <div class="grid lg:grid-cols-2 gap-6">
+        <template x-for="brand in filteredBrands()" :key="brand.nom">
+          <div class="bg-white rounded-2xl border border-dark-200 overflow-hidden hover:shadow-lg transition-shadow">
+            <!-- Header -->
+            <div class="p-6 border-b border-dark-100">
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-sm" :style="'background-color:' + brand.couleur">
+                      <span x-text="brand.sigle"></span>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-heading font-bold text-dark-900" x-text="brand.nom"></h3>
+                      <p class="text-sm text-dark-400" x-text="brand.pays + ' — ' + brand.categorie_label"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-heading font-extrabold" :class="brand.note >= 8 ? 'text-accent-600' : brand.note >= 6 ? 'text-primary-600' : 'text-orange-500'" x-text="brand.note + '/10'"></div>
+                  <p class="text-xs text-dark-400">Note globale</p>
+                </div>
+              </div>
+              <p class="mt-3 text-sm text-dark-600" x-text="brand.description"></p>
+            </div>
+
+            <!-- Produit phare -->
+            <div class="px-6 py-3 bg-dark-50 border-b border-dark-100">
+              <span class="text-xs font-semibold text-dark-400 uppercase tracking-wider">Produit phare :</span>
+              <span class="text-sm font-medium text-dark-800 ml-1" x-text="brand.produit_phare"></span>
+            </div>
+
+            <!-- Scores détaillés -->
+            <div class="p-6 space-y-3">
+              <template x-for="critere in ['facilite_installation', 'rapport_qualite_prix', 'fonctionnalites', 'support_france', 'innovation', 'interoperabilite']" :key="critere">
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span class="text-dark-600" x-text="critereLabels[critere]"></span>
+                    <span class="font-semibold text-dark-800" x-text="brand.scores[critere] + '/10'"></span>
+                  </div>
+                  <div class="w-full bg-dark-100 rounded-full h-2">
+                    <div class="h-2 rounded-full transition-all duration-500" :class="brand.scores[critere] >= 8 ? 'bg-accent-500' : brand.scores[critere] >= 6 ? 'bg-primary-500' : brand.scores[critere] >= 4 ? 'bg-orange-400' : 'bg-red-400'" :style="'width:' + (brand.scores[critere] * 10) + '%'"></div>
+                  </div>
+                </div>
+              </template>
+            </div>
+
+            <!-- Protocoles & Tags -->
+            <div class="px-6 pb-4">
+              <div class="flex flex-wrap gap-1.5">
+                <template x-for="proto in brand.protocoles" :key="proto">
+                  <span class="px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full" x-text="proto"></span>
+                </template>
+              </div>
+            </div>
+
+            <!-- Forces & Faiblesses -->
+            <div class="px-6 pb-4 grid grid-cols-2 gap-4">
+              <div>
+                <h4 class="text-xs font-semibold text-accent-600 uppercase tracking-wider mb-2">Forces</h4>
+                <ul class="space-y-1">
+                  <template x-for="force in brand.forces" :key="force">
+                    <li class="flex items-start gap-1.5 text-xs text-dark-600">
+                      <svg class="w-3.5 h-3.5 text-accent-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                      <span x-text="force"></span>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-xs font-semibold text-red-500 uppercase tracking-wider mb-2">Limites</h4>
+                <ul class="space-y-1">
+                  <template x-for="faiblesse in brand.faiblesses" :key="faiblesse">
+                    <li class="flex items-start gap-1.5 text-xs text-dark-600">
+                      <svg class="w-3.5 h-3.5 text-red-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                      <span x-text="faiblesse"></span>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Idéal pour -->
+            <div class="px-6 pb-6">
+              <h4 class="text-xs font-semibold text-dark-400 uppercase tracking-wider mb-2">Idéal pour</h4>
+              <div class="flex flex-wrap gap-1.5">
+                <template x-for="usage in brand.ideal_pour" :key="usage">
+                  <span class="px-2 py-1 bg-dark-100 text-dark-600 text-xs rounded-full" x-text="usage"></span>
+                </template>
+              </div>
+            </div>
+
+            <!-- Prix indicatif -->
+            <div class="px-6 pb-6 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-dark-400">Budget indicatif :</span>
+                <span class="ml-1 text-sm font-bold" :class="brand.budget === 'bas' ? 'text-accent-600' : brand.budget === 'moyen' ? 'text-primary-600' : 'text-orange-600'" x-text="brand.budget_label"></span>
+              </div>
+              <a :href="brand.site" target="_blank" rel="noopener" class="text-sm font-medium text-primary-600 hover:text-primary-700">
+                Site officiel →
+              </a>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Message si aucun résultat -->
+      <div x-show="filteredBrands().length === 0" class="text-center py-16">
+        <p class="text-dark-400 text-lg">Aucune marque ne correspond à vos filtres.</p>
+        <button @click="resetFilters()" class="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">Réinitialiser les filtres</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tableau comparatif rapide -->
+  <section class="py-16 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold text-dark-900 mb-8 text-center">Tableau comparatif rapide</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-xl overflow-hidden shadow-sm text-sm">
+          <thead>
+            <tr class="bg-dark-800 text-white">
+              <th class="px-4 py-3 text-left font-semibold">Marque</th>
+              <th class="px-4 py-3 text-center font-semibold">Protocoles</th>
+              <th class="px-4 py-3 text-center font-semibold">Cloud</th>
+              <th class="px-4 py-3 text-center font-semibold">IA</th>
+              <th class="px-4 py-3 text-center font-semibold">Sans fil</th>
+              <th class="px-4 py-3 text-center font-semibold">Multi-sites</th>
+              <th class="px-4 py-3 text-center font-semibold">Classe GTB</th>
+              <th class="px-4 py-3 text-center font-semibold">Budget</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-dark-100">
+            <tr>
+              <td class="px-4 py-3 font-medium">Schneider Electric</td>
+              <td class="px-4 py-3 text-center">BACnet, Modbus, KNX, LON</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center">A / B / C</td>
+              <td class="px-4 py-3 text-center text-orange-600 font-medium">€€€</td>
+            </tr>
+            <tr class="bg-dark-50">
+              <td class="px-4 py-3 font-medium">Siemens</td>
+              <td class="px-4 py-3 text-center">BACnet, Modbus, KNX, LON</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center">A / B / C</td>
+              <td class="px-4 py-3 text-center text-orange-600 font-medium">€€€</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">TheWatchdog</td>
+              <td class="px-4 py-3 text-center">BACnet, Modbus, LoRaWAN, 4G</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center">A / B / C</td>
+              <td class="px-4 py-3 text-center text-accent-600 font-medium">€€</td>
+            </tr>
+            <tr class="bg-dark-50">
+              <td class="px-4 py-3 font-medium">Honeywell</td>
+              <td class="px-4 py-3 text-center">BACnet, Modbus, LON</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center">A / B / C</td>
+              <td class="px-4 py-3 text-center text-orange-600 font-medium">€€€</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">Sauter</td>
+              <td class="px-4 py-3 text-center">BACnet, Modbus</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center">A / B</td>
+              <td class="px-4 py-3 text-center text-primary-600 font-medium">€€</td>
+            </tr>
+            <tr class="bg-dark-50">
+              <td class="px-4 py-3 font-medium">Wago</td>
+              <td class="px-4 py-3 text-center">BACnet, Modbus, KNX</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center">B / C</td>
+              <td class="px-4 py-3 text-center text-accent-600 font-medium">€</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">Distech Controls</td>
+              <td class="px-4 py-3 text-center">BACnet, Modbus</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center">A / B</td>
+              <td class="px-4 py-3 text-center text-primary-600 font-medium">€€</td>
+            </tr>
+            <tr class="bg-dark-50">
+              <td class="px-4 py-3 font-medium">Wattsense</td>
+              <td class="px-4 py-3 text-center">BACnet, Modbus, LoRaWAN</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-dark-300">—</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center">B / C</td>
+              <td class="px-4 py-3 text-center text-accent-600 font-medium">€</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guide de choix -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold text-dark-900 mb-8 text-center">Comment choisir ?</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 bg-white rounded-xl border border-dark-200">
+          <div class="text-3xl mb-3">🏢</div>
+          <h3 class="font-bold text-dark-900">Petit bâtiment</h3>
+          <p class="mt-2 text-sm text-dark-500">< 2 000 m² — Budget limité</p>
+          <div class="mt-3 space-y-1">
+            <p class="text-sm font-medium text-primary-600">→ TheWatchdog</p>
+            <p class="text-sm font-medium text-primary-600">→ Wago</p>
+            <p class="text-sm font-medium text-primary-600">→ Wattsense</p>
+          </div>
+        </div>
+
+        <div class="p-6 bg-white rounded-xl border border-dark-200">
+          <div class="text-3xl mb-3">🏬</div>
+          <h3 class="font-bold text-dark-900">Bâtiment moyen</h3>
+          <p class="mt-2 text-sm text-dark-500">2 000 - 10 000 m²</p>
+          <div class="mt-3 space-y-1">
+            <p class="text-sm font-medium text-primary-600">→ TheWatchdog</p>
+            <p class="text-sm font-medium text-primary-600">→ Distech Controls</p>
+            <p class="text-sm font-medium text-primary-600">→ Sauter</p>
+          </div>
+        </div>
+
+        <div class="p-6 bg-white rounded-xl border border-dark-200">
+          <div class="text-3xl mb-3">🏙️</div>
+          <h3 class="font-bold text-dark-900">Grand bâtiment</h3>
+          <p class="mt-2 text-sm text-dark-500">> 10 000 m²</p>
+          <div class="mt-3 space-y-1">
+            <p class="text-sm font-medium text-primary-600">→ Schneider Electric</p>
+            <p class="text-sm font-medium text-primary-600">→ Siemens</p>
+            <p class="text-sm font-medium text-primary-600">→ Honeywell</p>
+          </div>
+        </div>
+
+        <div class="p-6 bg-white rounded-xl border border-dark-200">
+          <div class="text-3xl mb-3">🔄</div>
+          <h3 class="font-bold text-dark-900">Retrofit / Existant</h3>
+          <p class="mt-2 text-sm text-dark-500">Mise à niveau sans travaux</p>
+          <div class="mt-3 space-y-1">
+            <p class="text-sm font-medium text-primary-600">→ TheWatchdog</p>
+            <p class="text-sm font-medium text-primary-600">→ Wattsense</p>
+            <p class="text-sm font-medium text-primary-600">→ Distech Controls</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold">Besoin d'aide pour choisir ?</h2>
+      <p class="mt-4 text-lg text-primary-100">Notre audit gratuit analyse votre bâtiment et vous recommande les solutions les plus adaptées.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/audit" class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-700 font-bold rounded-lg hover:bg-primary-50 transition-colors">
+          Lancer l'audit gratuit
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-bold rounded-lg border border-white/20 hover:bg-white/20 transition-colors">
+          Demander un conseil
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('comparateur', () => ({
+      filterCategory: 'all',
+      filterProtocol: 'all',
+      filterBuilding: 'all',
+      filterBudget: 'all',
+      sortBy: 'note',
+
+      critereLabels: {
+        facilite_installation: "Facilité d'installation",
+        rapport_qualite_prix: "Rapport qualité/prix",
+        fonctionnalites: "Fonctionnalités",
+        support_france: "Support en France",
+        innovation: "Innovation",
+        interoperabilite: "Interopérabilité"
+      },
+
+      brands: [
+        {
+          nom: "Schneider Electric",
+          sigle: "SE",
+          pays: "France",
+          couleur: "#3DCD58",
+          categorie: "leader",
+          categorie_label: "Leader mondial",
+          note: 9,
+          description: "Leader mondial de la gestion de l'énergie et de l'automatisation. EcoStruxure Building est la plateforme de référence pour les grands bâtiments tertiaires, avec une intégration complète énergie + bâtiment + IT.",
+          produit_phare: "EcoStruxure Building Operation / Foresight Operation (2026)",
+          protocoles: ["BACnet", "Modbus", "KNX", "LON", "IP"],
+          budget: "eleve",
+          budget_label: "€€€ — Premium",
+          site: "https://www.se.com/fr/fr/work/campaign/life-is-on/life-is-on.jsp",
+          batiments: ["moyen", "grand"],
+          scores: {
+            facilite_installation: 5,
+            rapport_qualite_prix: 6,
+            fonctionnalites: 10,
+            support_france: 10,
+            innovation: 9,
+            interoperabilite: 9
+          },
+          forces: [
+            "Écosystème complet (matériel + logiciel + cloud)",
+            "IA intégrée (Foresight Operation 2026)",
+            "Leader en France, réseau d'intégrateurs dense",
+            "Compatibilité multi-protocoles maximale",
+            "EcoStruxure Activate pour petits bâtiments"
+          ],
+          faiblesses: [
+            "Coût élevé pour les petits projets",
+            "Complexité de mise en œuvre",
+            "Dépendance à l'écosystème Schneider",
+            "Formation intégrateurs longue"
+          ],
+          ideal_pour: ["Grands tertiaires", "Multi-sites", "Industrie", "Data centers"]
+        },
+        {
+          nom: "Siemens",
+          sigle: "SI",
+          pays: "Allemagne",
+          couleur: "#009999",
+          categorie: "leader",
+          categorie_label: "Leader mondial",
+          note: 9,
+          description: "Référence mondiale avec Desigo CC, une plateforme de gestion intégrée couvrant CVC, éclairage, sécurité incendie et sûreté. Très présent dans les bâtiments critiques (hôpitaux, aéroports).",
+          produit_phare: "Desigo CC (supervision) + PXC (automates)",
+          protocoles: ["BACnet", "Modbus", "KNX", "LON", "IP"],
+          budget: "eleve",
+          budget_label: "€€€ — Premium",
+          site: "https://www.siemens.com/fr/fr/produits/automatisation-batiments.html",
+          batiments: ["moyen", "grand"],
+          scores: {
+            facilite_installation: 5,
+            rapport_qualite_prix: 6,
+            fonctionnalites: 10,
+            support_france: 8,
+            innovation: 9,
+            interoperabilite: 9
+          },
+          forces: [
+            "Robustesse industrielle éprouvée",
+            "Intégration sécurité incendie + sûreté",
+            "Desigo CC très puissant en supervision",
+            "Réseau mondial d'intégrateurs certifiés",
+            "Idéal pour les bâtiments critiques"
+          ],
+          faiblesses: [
+            "Coût d'entrée élevé",
+            "Interface moins moderne que certains concurrents",
+            "Installation longue et complexe",
+            "Moins adapté aux petits bâtiments"
+          ],
+          ideal_pour: ["Hôpitaux", "Aéroports", "Grands tertiaires", "Industrie lourde"]
+        },
+        {
+          nom: "TheWatchdog",
+          sigle: "TWD",
+          pays: "France",
+          couleur: "#FF6B35",
+          categorie: "supervision",
+          categorie_label: "Supervision / IoT / IA",
+          note: 8,
+          description: "Solution française innovante de pilotage GTB/GTC par IoT (LoRa & 4G). Se déploie en quelques heures sans travaux, avec IA prédictive et pilotage cloud multi-sites. Compatible avec toutes les GTB existantes.",
+          produit_phare: "Watchdog BOS (Building Operating System)",
+          protocoles: ["BACnet", "Modbus", "LoRaWAN", "4G", "IP"],
+          budget: "moyen",
+          budget_label: "€€ — Accessible",
+          site: "https://www.thewatchdog.io/",
+          batiments: ["petit", "moyen", "grand"],
+          scores: {
+            facilite_installation: 10,
+            rapport_qualite_prix: 9,
+            fonctionnalites: 8,
+            support_france: 9,
+            innovation: 10,
+            interoperabilite: 9
+          },
+          forces: [
+            "Installation en quelques heures, sans câblage",
+            "IA prédictive et maintenance anticipative",
+            "Compatible avec GTB existantes (Siemens, Schneider...)",
+            "Jusqu'à 36% d'économies d'énergie",
+            "Pilotage cloud multi-sites PC/mobile",
+            "Conformité décret BACS et tertiaire"
+          ],
+          faiblesses: [
+            "Marque plus récente (moins de recul)",
+            "Pas de matériel de régulation propre",
+            "Dépendance au cloud pour certaines fonctions",
+            "Écosystème matériel moins large"
+          ],
+          ideal_pour: ["Retrofit / existant", "Multi-sites tertiaires", "Petits & moyens bâtiments", "Conformité rapide décret BACS"]
+        },
+        {
+          nom: "Honeywell",
+          sigle: "HW",
+          pays: "USA",
+          couleur: "#E4002B",
+          categorie: "leader",
+          categorie_label: "Leader mondial",
+          note: 8,
+          description: "Acteur historique avec un parc installé massif. Le framework Niagara (via Tridium) est la référence pour l'intégration multi-constructeurs. Fort en CVC et sécurité incendie.",
+          produit_phare: "Niagara Framework (Tridium) + WEBs",
+          protocoles: ["BACnet", "Modbus", "LON", "IP"],
+          budget: "eleve",
+          budget_label: "€€€ — Premium",
+          site: "https://www.honeywell.com/",
+          batiments: ["moyen", "grand"],
+          scores: {
+            facilite_installation: 5,
+            rapport_qualite_prix: 6,
+            fonctionnalites: 9,
+            support_france: 7,
+            innovation: 8,
+            interoperabilite: 10
+          },
+          forces: [
+            "Niagara Framework = standard d'intégration",
+            "Interopérabilité maximale multi-constructeurs",
+            "Énorme parc installé mondial",
+            "Fort en sécurité incendie et sûreté",
+            "Solutions cloud Honeywell Forge"
+          ],
+          faiblesses: [
+            "Coût de licence Niagara élevé",
+            "Moins présent en France que Schneider/Siemens",
+            "Complexité technique",
+            "Support local parfois limité"
+          ],
+          ideal_pour: ["Intégration multi-constructeurs", "Grands bâtiments", "Sécurité incendie", "Patrimoine hétérogène"]
+        },
+        {
+          nom: "Johnson Controls",
+          sigle: "JCI",
+          pays: "USA",
+          couleur: "#0072CE",
+          categorie: "leader",
+          categorie_label: "Leader mondial",
+          note: 8,
+          description: "Spécialiste historique du CVC et de la sécurité du bâtiment. Metasys est leur plateforme phare de gestion technique, largement déployée dans le tertiaire nord-américain et européen.",
+          produit_phare: "Metasys (supervision) + OpenBlue (IA/cloud)",
+          protocoles: ["BACnet", "Modbus", "LON", "IP"],
+          budget: "eleve",
+          budget_label: "€€€ — Premium",
+          site: "https://www.johnsoncontrols.com/",
+          batiments: ["moyen", "grand"],
+          scores: {
+            facilite_installation: 5,
+            rapport_qualite_prix: 6,
+            fonctionnalites: 9,
+            support_france: 6,
+            innovation: 8,
+            interoperabilite: 8
+          },
+          forces: [
+            "Expertise CVC historique",
+            "OpenBlue : plateforme IA cloud moderne",
+            "Fort en sécurité et contrôle d'accès",
+            "Grand parc installé international"
+          ],
+          faiblesses: [
+            "Moins présent en France",
+            "Interface Metasys vieillissante",
+            "Coût élevé",
+            "Transition OpenBlue encore en cours"
+          ],
+          ideal_pour: ["CVC complexe", "Grands tertiaires", "Sécurité intégrée", "Campus"]
+        },
+        {
+          nom: "Sauter",
+          sigle: "SA",
+          pays: "Suisse",
+          couleur: "#005CA9",
+          categorie: "europeen",
+          categorie_label: "Européen spécialisé",
+          note: 7,
+          description: "Fabricant suisse réputé pour la qualité de sa régulation CVC. Excellent rapport qualité/prix pour les bâtiments tertiaires moyens. Forte présence en France et en Allemagne.",
+          produit_phare: "modulo 6 (automates) + SAUTER Vision Center",
+          protocoles: ["BACnet", "Modbus", "IP"],
+          budget: "moyen",
+          budget_label: "€€ — Intermédiaire",
+          site: "https://www.sauter-controls.com/fr/",
+          batiments: ["moyen", "grand"],
+          scores: {
+            facilite_installation: 6,
+            rapport_qualite_prix: 8,
+            fonctionnalites: 7,
+            support_france: 8,
+            innovation: 6,
+            interoperabilite: 7
+          },
+          forces: [
+            "Régulation CVC haut de gamme",
+            "Fiabilité suisse reconnue",
+            "Bon rapport qualité/prix",
+            "Bonne présence en France"
+          ],
+          faiblesses: [
+            "Moins de fonctionnalités que Schneider/Siemens",
+            "Pas de solution IoT sans fil native",
+            "Interface supervision moins moderne",
+            "Moins adapté aux petits bâtiments"
+          ],
+          ideal_pour: ["Bâtiments tertiaires moyens", "Régulation CVC exigeante", "Projets en Suisse/France/Allemagne"]
+        },
+        {
+          nom: "ABB",
+          sigle: "ABB",
+          pays: "Suisse",
+          couleur: "#FF000F",
+          categorie: "europeen",
+          categorie_label: "Européen spécialisé",
+          note: 7,
+          description: "Géant de l'électrotechnique et de l'automatisation. Fort en KNX pour le résidentiel et petit tertiaire, et en automates industriels pour les grandes installations.",
+          produit_phare: "ABB-free@home (résidentiel) + ABB Ability (cloud)",
+          protocoles: ["KNX", "BACnet", "Modbus", "IP"],
+          budget: "moyen",
+          budget_label: "€€ — Intermédiaire",
+          site: "https://new.abb.com/fr",
+          batiments: ["petit", "moyen", "grand"],
+          scores: {
+            facilite_installation: 6,
+            rapport_qualite_prix: 7,
+            fonctionnalites: 7,
+            support_france: 7,
+            innovation: 7,
+            interoperabilite: 8
+          },
+          forces: [
+            "Leader KNX mondial",
+            "ABB-free@home : solution résidentielle simple",
+            "Très forte en automatisation industrielle",
+            "ABB Ability : plateforme cloud"
+          ],
+          faiblesses: [
+            "GTB pas le cœur de métier",
+            "Supervision moins mature que Schneider/Siemens",
+            "Intégration bâtiment/industrie pas toujours fluide"
+          ],
+          ideal_pour: ["KNX résidentiel/petit tertiaire", "Automatisation industrielle", "Éclairage intelligent"]
+        },
+        {
+          nom: "Wago",
+          sigle: "WA",
+          pays: "Allemagne",
+          couleur: "#FF6600",
+          categorie: "europeen",
+          categorie_label: "Européen spécialisé",
+          note: 7,
+          description: "Fabricant allemand de contrôleurs compacts et bornes de raccordement. Excellent rapport qualité/prix pour les projets GTB de taille moyenne. Très apprécié des intégrateurs.",
+          produit_phare: "PFC200 (contrôleur) + WAGO Cloud",
+          protocoles: ["BACnet", "Modbus", "KNX", "IP"],
+          budget: "bas",
+          budget_label: "€ — Économique",
+          site: "https://www.wago.com/fr/",
+          batiments: ["petit", "moyen"],
+          scores: {
+            facilite_installation: 7,
+            rapport_qualite_prix: 9,
+            fonctionnalites: 6,
+            support_france: 7,
+            innovation: 7,
+            interoperabilite: 8
+          },
+          forces: [
+            "Excellent rapport qualité/prix",
+            "Contrôleurs compacts et polyvalents",
+            "Programmation libre (CODESYS)",
+            "Très apprécié des intégrateurs",
+            "Made in Germany, fiable"
+          ],
+          faiblesses: [
+            "Pas de supervision propre (nécessite logiciel tiers)",
+            "Pas de solution cloud mature",
+            "Pas d'IA intégrée",
+            "Nécessite compétences en programmation"
+          ],
+          ideal_pour: ["Intégrateurs GTB", "Petits/moyens bâtiments", "Projets sur mesure", "Budget serré"]
+        },
+        {
+          nom: "Distech Controls",
+          sigle: "DC",
+          pays: "Canada / France",
+          couleur: "#00A4E4",
+          categorie: "europeen",
+          categorie_label: "Européen / Nord-américain",
+          note: 7,
+          description: "Filiale d'Acuity Brands, spécialisée dans les contrôleurs BACnet/IP innovants. La gamme ECLYPSE est reconnue pour sa modernité (web-based, RESTful API, Wi-Fi intégré).",
+          produit_phare: "ECLYPSE 300/400/600 + Eclypse Facilities",
+          protocoles: ["BACnet", "Modbus", "IP", "Wi-Fi"],
+          budget: "moyen",
+          budget_label: "€€ — Intermédiaire",
+          site: "https://www.distech-controls.com/",
+          batiments: ["petit", "moyen", "grand"],
+          scores: {
+            facilite_installation: 8,
+            rapport_qualite_prix: 8,
+            fonctionnalites: 8,
+            support_france: 7,
+            innovation: 9,
+            interoperabilite: 8
+          },
+          forces: [
+            "ECLYPSE : contrôleurs modernes (web, API REST)",
+            "Wi-Fi intégré en option",
+            "Interface Envysion web-based intuitive",
+            "BACnet BTL Listed (certifié)",
+            "R&D en France (Lyon)"
+          ],
+          faiblesses: [
+            "Moins connu que Schneider/Siemens",
+            "Écosystème matériel plus limité",
+            "Pas d'IA avancée intégrée",
+            "Support moins dense que les leaders"
+          ],
+          ideal_pour: ["Projets BACnet modernes", "Bâtiments connectés", "Intégrateurs IT-friendly", "Retrofit"]
+        },
+        {
+          nom: "Wattsense",
+          sigle: "WS",
+          pays: "France",
+          couleur: "#6366F1",
+          categorie: "iot",
+          categorie_label: "IoT / Connectivité",
+          note: 7,
+          description: "Startup française spécialisée dans la connectivité IoT pour les bâtiments existants. Leur box se branche sur les équipements techniques existants et remonte les données vers le cloud.",
+          produit_phare: "Wattsense Box (passerelle IoT universelle)",
+          protocoles: ["BACnet", "Modbus", "LoRaWAN", "IP"],
+          budget: "bas",
+          budget_label: "€ — Économique",
+          site: "https://www.wattsense.com/fr/",
+          batiments: ["petit", "moyen"],
+          scores: {
+            facilite_installation: 9,
+            rapport_qualite_prix: 9,
+            fonctionnalites: 5,
+            support_france: 8,
+            innovation: 8,
+            interoperabilite: 8
+          },
+          forces: [
+            "Installation plug & play très rapide",
+            "Prix très compétitif",
+            "Compatible avec équipements existants",
+            "API ouverte pour intégration",
+            "Entreprise française, support réactif"
+          ],
+          faiblesses: [
+            "Pas de régulation intégrée (connectivité uniquement)",
+            "Fonctionnalités de supervision limitées",
+            "Nécessite un logiciel tiers pour la supervision",
+            "Jeune entreprise"
+          ],
+          ideal_pour: ["Connecter des bâtiments existants", "Sous-comptage IoT", "Petits budgets", "Premiers pas GTB"]
+        },
+        {
+          nom: "Beckhoff",
+          sigle: "BK",
+          pays: "Allemagne",
+          couleur: "#E30613",
+          categorie: "europeen",
+          categorie_label: "Européen spécialisé",
+          note: 7,
+          description: "Pionnier de l'automatisation PC-based. Ses contrôleurs puissants et ouverts séduisent les intégrateurs pour des projets GTB sur mesure haute performance.",
+          produit_phare: "CX (contrôleurs embarqués) + TwinCAT 3",
+          protocoles: ["BACnet", "Modbus", "KNX", "EtherCAT", "IP"],
+          budget: "moyen",
+          budget_label: "€€ — Intermédiaire",
+          site: "https://www.beckhoff.com/fr-fr/",
+          batiments: ["moyen", "grand"],
+          scores: {
+            facilite_installation: 4,
+            rapport_qualite_prix: 7,
+            fonctionnalites: 8,
+            support_france: 6,
+            innovation: 9,
+            interoperabilite: 9
+          },
+          forces: [
+            "Performances élevées (PC-based)",
+            "TwinCAT 3 : plateforme très puissante",
+            "Multi-protocoles natif",
+            "Idéal pour projets sur mesure complexes"
+          ],
+          faiblesses: [
+            "Courbe d'apprentissage élevée",
+            "Pas de supervision GTB dédiée",
+            "Nécessite intégrateur spécialisé",
+            "Plutôt orienté industrie"
+          ],
+          ideal_pour: ["Projets haute performance", "Industrie + bâtiment", "Intégrateurs avancés"]
+        },
+        {
+          nom: "Loytec",
+          sigle: "LY",
+          pays: "Autriche",
+          couleur: "#00843D",
+          categorie: "europeen",
+          categorie_label: "Européen spécialisé",
+          note: 7,
+          description: "Spécialiste autrichien des passerelles et contrôleurs multi-protocoles. Solution de choix pour intégrer des systèmes hétérogènes (BACnet, LON, KNX, Modbus) dans une GTB unifiée.",
+          produit_phare: "L-INX Automation Servers + L-VIS Touch Panels",
+          protocoles: ["BACnet", "LON", "KNX", "Modbus", "DALI", "IP"],
+          budget: "moyen",
+          budget_label: "€€ — Intermédiaire",
+          site: "https://www.loytec.com/",
+          batiments: ["moyen", "grand"],
+          scores: {
+            facilite_installation: 5,
+            rapport_qualite_prix: 7,
+            fonctionnalites: 7,
+            support_france: 5,
+            innovation: 7,
+            interoperabilite: 10
+          },
+          forces: [
+            "Interopérabilité maximale (tous protocoles)",
+            "Passerelles multi-protocoles de référence",
+            "Écrans tactiles intégrés (L-VIS)",
+            "Très fiable et robuste"
+          ],
+          faiblesses: [
+            "Marque peu connue en France",
+            "Support local limité",
+            "Interface supervision basique",
+            "Pas de solution cloud avancée"
+          ],
+          ideal_pour: ["Intégration multi-protocoles", "Bâtiments existants hétérogènes", "Passerelles LON/BACnet/KNX"]
+        }
+      ],
+
+      filteredBrands() {
+        let result = this.brands.filter(b => {
+          if (this.filterCategory !== 'all' && b.categorie !== this.filterCategory) return false;
+          if (this.filterProtocol !== 'all' && !b.protocoles.includes(this.filterProtocol)) return false;
+          if (this.filterBuilding !== 'all' && !b.batiments.includes(this.filterBuilding)) return false;
+          if (this.filterBudget !== 'all' && b.budget !== this.filterBudget) return false;
+          return true;
+        });
+
+        if (this.sortBy === 'nom') result.sort((a, b) => a.nom.localeCompare(b.nom));
+        else if (this.sortBy === 'note') result.sort((a, b) => b.note - a.note);
+        else if (this.sortBy === 'prix') {
+          const budgetOrder = { bas: 1, moyen: 2, eleve: 3 };
+          result.sort((a, b) => budgetOrder[a.budget] - budgetOrder[b.budget]);
+        }
+        else if (this.sortBy === 'facilite') result.sort((a, b) => b.scores.facilite_installation - a.scores.facilite_installation);
+
+        return result;
+      },
+
+      resetFilters() {
+        this.filterCategory = 'all';
+        this.filterProtocol = 'all';
+        this.filterBuilding = 'all';
+        this.filterBudget = 'all';
+        this.sortBy = 'note';
+      }
+    }));
+  });
+  </script>
+
+</Layout>
