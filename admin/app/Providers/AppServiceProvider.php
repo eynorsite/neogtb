@@ -11,6 +11,7 @@ use App\Models\PostCategory;
 use App\Models\SitePage;
 use App\Models\SiteSetting;
 use App\Observers\AdminAuditObserver;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Force Carbon locale to French
+        Carbon::setLocale('fr');
+
         // Audit observer on all admin-managed models
         $models = [
             Admin::class,

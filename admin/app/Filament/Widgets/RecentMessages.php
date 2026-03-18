@@ -41,6 +41,9 @@ class RecentMessages extends BaseWidget
                     ->label('Reçu')
                     ->since(),
             ])
-            ->paginated(false);
+            ->paginated(false)
+            ->emptyStateHeading('Aucun message')
+            ->emptyStateDescription('Aucun message de contact pour le moment.')
+            ->emptyStateIcon('heroicon-o-envelope');
     }
 }

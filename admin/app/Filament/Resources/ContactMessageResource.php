@@ -24,6 +24,7 @@ class ContactMessageResource extends Resource
     protected static ?string $navigationLabel = 'Messages';
 
     protected static ?string $modelLabel = 'Message';
+    protected static ?string $pluralModelLabel = 'Messages';
 
     protected static ?int $navigationSort = 30;
 

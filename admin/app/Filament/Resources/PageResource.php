@@ -27,6 +27,7 @@ class PageResource extends Resource
     protected static ?string $navigationLabel = 'Pages';
 
     protected static ?string $modelLabel = 'Page';
+    protected static ?string $pluralModelLabel = 'Pages';
 
     protected static ?int $navigationSort = 10;
 

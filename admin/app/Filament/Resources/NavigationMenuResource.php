@@ -25,6 +25,7 @@ class NavigationMenuResource extends Resource
     protected static ?string $navigationLabel = 'Navigation';
 
     protected static ?string $modelLabel = 'Menu';
+    protected static ?string $pluralModelLabel = 'Menus';
 
     protected static ?int $navigationSort = 40;
 

@@ -24,6 +24,7 @@ class PostCategoryResource extends Resource
     protected static ?string $navigationLabel = 'Catégories';
 
     protected static ?string $modelLabel = 'Catégorie';
+    protected static ?string $pluralModelLabel = 'Catégories';
 
     protected static ?int $navigationSort = 25;
 

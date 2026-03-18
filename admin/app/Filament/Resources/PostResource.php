@@ -29,6 +29,7 @@ class PostResource extends Resource
     protected static ?string $navigationLabel = 'Articles';
 
     protected static ?string $modelLabel = 'Article';
+    protected static ?string $pluralModelLabel = 'Articles';
 
     protected static ?int $navigationSort = 20;
 
