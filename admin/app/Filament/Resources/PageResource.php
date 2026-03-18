@@ -180,6 +180,11 @@ class PageResource extends Resource
             ->defaultSort('order')
             ->reorderable('order')
             ->actions([
+                \Filament\Actions\Action::make('bricks')
+                    ->label('Bricks')
+                    ->icon('heroicon-o-cube')
+                    ->color('primary')
+                    ->url(fn ($record) => url('/admin/pages/' . $record->id . '/bricks')),
                 \Filament\Actions\EditAction::make(),
             ])
             ->bulkActions([

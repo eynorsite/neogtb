@@ -31,4 +31,16 @@ class SitePage extends Model
     {
         return $this->hasMany(PageSection::class, 'page_id')->orderBy('order');
     }
+
+    public function bricks(): HasMany
+    {
+        return $this->hasMany(PageBrick::class, 'page_id')->orderBy('order');
+    }
+
+    public function visibleBricks(): HasMany
+    {
+        return $this->hasMany(PageBrick::class, 'page_id')
+            ->where('is_visible', true)
+            ->orderBy('order');
+    }
 }
