@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\ContactMessage;
+use App\Models\PageBrick;
 use App\Models\Post;
 use App\Models\SitePage;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
@@ -30,9 +31,9 @@ class StatsOverview extends BaseWidget
                 ->icon('heroicon-o-document-text')
                 ->color('primary'),
 
-            Stat::make('Dernière modification', ($lastUpdate = SitePage::max('updated_at')) ? \Carbon\Carbon::parse($lastUpdate)->diffForHumans() : 'Aucune')
-                ->description('Du contenu du site')
-                ->icon('heroicon-o-clock')
+            Stat::make('Bricks', PageBrick::count())
+                ->description(PageBrick::where('is_visible', true)->count() . ' visibles')
+                ->icon('heroicon-o-cube')
                 ->color('warning'),
         ];
     }
