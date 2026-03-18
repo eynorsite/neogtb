@@ -12,6 +12,14 @@ class EditPage extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [Actions\DeleteAction::make()];
+        return [
+            Actions\Action::make('preview')
+                ->label('Voir sur le site')
+                ->icon('heroicon-o-eye')
+                ->color('gray')
+                ->url(fn () => '/' . $this->record->slug)
+                ->openUrlInNewTab(),
+            Actions\DeleteAction::make(),
+        ];
     }
 }

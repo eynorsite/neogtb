@@ -55,31 +55,31 @@
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div class="flex items-center gap-2">
                     @if(!config('app.debug'))
-                        <x-heroicon-o-check-circle class="h-5 w-5 text-green-500" />
+                        <span class="text-green-500 text-lg">✅</span>
                         <span>APP_DEBUG = false</span>
                     @else
-                        <x-heroicon-o-x-circle class="h-5 w-5 text-red-500" />
+                        <span class="text-red-500 text-lg">❌</span>
                         <span class="text-red-600">APP_DEBUG = true (à désactiver en production !)</span>
                     @endif
                 </div>
 
                 <div class="flex items-center gap-2">
                     @if(config('app.env') === 'production')
-                        <x-heroicon-o-check-circle class="h-5 w-5 text-green-500" />
+                        <span class="text-green-500 text-lg">✅</span>
                         <span>Environnement : production</span>
                     @else
-                        <x-heroicon-o-exclamation-triangle class="h-5 w-5 text-yellow-500" />
+                        <span class="text-yellow-500 text-lg">⚠️</span>
                         <span>Environnement : {{ config('app.env') }}</span>
                     @endif
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <x-heroicon-o-check-circle class="h-5 w-5 text-green-500" />
+                    <span class="text-green-500 text-lg">✅</span>
                     <span>PHP {{ phpversion() }}</span>
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <x-heroicon-o-check-circle class="h-5 w-5 text-green-500" />
+                    <span class="text-green-500 text-lg">✅</span>
                     <span>Laravel {{ app()->version() }}</span>
                 </div>
             </div>

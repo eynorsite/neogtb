@@ -55,14 +55,14 @@ class SiteSettingsPage extends Page
         $role = $admin?->role ?? 'lecteur';
 
         $tabs = [
-            'contact' => ['label' => 'Contact', 'icon' => 'heroicon-o-phone'],
-            'reseaux_sociaux' => ['label' => 'Réseaux sociaux', 'icon' => 'heroicon-o-share'],
-            'entreprise' => ['label' => 'Entreprise', 'icon' => 'heroicon-o-building-office'],
-            'seo' => ['label' => 'SEO', 'icon' => 'heroicon-o-magnifying-glass'],
-            'analytics' => ['label' => 'Analytics', 'icon' => 'heroicon-o-chart-bar'],
-            'apparence' => ['label' => 'Apparence', 'icon' => 'heroicon-o-paint-brush'],
-            'securite' => ['label' => 'Sécurité', 'icon' => 'heroicon-o-shield-check'],
-            'maintenance' => ['label' => 'Maintenance', 'icon' => 'heroicon-o-wrench-screwdriver'],
+            'contact' => ['label' => 'Contact', 'emoji' => '📞'],
+            'reseaux_sociaux' => ['label' => 'Réseaux sociaux', 'emoji' => '🔗'],
+            'entreprise' => ['label' => 'Entreprise', 'emoji' => '🏢'],
+            'seo' => ['label' => 'SEO', 'emoji' => '🔍'],
+            'analytics' => ['label' => 'Analytics', 'emoji' => '📊'],
+            'apparence' => ['label' => 'Apparence', 'emoji' => '🎨'],
+            'securite' => ['label' => 'Sécurité', 'emoji' => '🛡️'],
+            'maintenance' => ['label' => 'Maintenance', 'emoji' => '🔧'],
         ];
 
         // Role-based access

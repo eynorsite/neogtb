@@ -10,7 +10,7 @@
                             ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400'
                             : 'text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-800' }}"
                 >
-                    <x-dynamic-component :component="$tab['icon']" class="h-5 w-5" />
+                    <span class="text-base">{{ $tab['emoji'] }}</span>
                     {{ $tab['label'] }}
                 </button>
             @endforeach
