@@ -1,0 +1,449 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Générateur de dossier CEE" description="Estimez vos Certificats d'Économies d'Énergie (CEE) en 3 minutes. Outil gratuit et indépendant — aucun lien commercial avec les obligés ou délégataires.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary-900 via-primary-800 to-dark-900 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/20 text-accent-300 border border-accent-500/30 mb-4">
+        Outil indépendant & gratuit
+      </span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold">
+        Générateur de dossier <span class="text-accent-400">CEE</span>
+      </h1>
+      <p class="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
+        Estimez vos Certificats d'Économies d'Énergie en 3 minutes. Résultat objectif, sans engagement.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stepper + Formulaire -->
+  <section class="py-12 md:py-20 bg-dark-50 min-h-[600px]"
+    x-data="ceeGenerator()"
+    x-cloak>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Barre de progression -->
+      <div class="mb-10">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-sm font-medium text-dark-500" x-text="`Étape ${step} / 3`"></span>
+          <span class="text-sm font-medium text-dark-500" x-text="`${Math.round((step / 3) * 100)}%`"></span>
+        </div>
+        <div class="w-full bg-dark-200 rounded-full h-2">
+          <div class="bg-primary-600 h-2 rounded-full transition-all duration-500" :style="`width: ${(step / 3) * 100}%`"></div>
+        </div>
+      </div>
+
+      <!-- Stepper visuel -->
+      <div class="flex items-center justify-center gap-2 sm:gap-4 mb-10">
+        <template x-for="(label, i) in ['Votre bâtiment', 'Vos équipements', 'Résultats']" :key="i">
+          <div class="flex items-center gap-2 sm:gap-4">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors"
+                :class="step > i + 1 ? 'bg-accent-500 text-white' : step === i + 1 ? 'bg-primary-600 text-white' : 'bg-dark-200 text-dark-400'">
+                <span x-show="step <= i + 1" x-text="i + 1"></span>
+                <svg x-show="step > i + 1" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-xs sm:text-sm font-medium hidden sm:inline"
+                :class="step === i + 1 ? 'text-primary-600' : 'text-dark-400'"
+                x-text="label"></span>
+            </div>
+            <div x-show="i < 2" class="w-8 sm:w-16 h-px bg-dark-300"></div>
+          </div>
+        </template>
+      </div>
+
+      <!-- ÉTAPE 1 : Votre bâtiment -->
+      <div x-show="step === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0">
+        <div class="bg-white rounded-2xl border border-dark-200 shadow-sm p-6 md:p-8">
+          <h2 class="text-xl font-heading font-bold text-dark-900 mb-6">Type de bâtiment</h2>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+            <template x-for="type in buildingTypes" :key="type.id">
+              <button
+                @click="form.buildingType = type.id"
+                class="flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all text-center"
+                :class="form.buildingType === type.id ? 'border-primary-500 bg-primary-50 text-primary-700' : 'border-dark-200 hover:border-dark-300 text-dark-600'">
+                <span class="text-2xl" x-text="type.icon"></span>
+                <span class="text-sm font-medium" x-text="type.label"></span>
+              </button>
+            </template>
+          </div>
+
+          <div class="space-y-6">
+            <div>
+              <label class="block text-sm font-semibold text-dark-700 mb-2">Surface totale (m²)</label>
+              <div class="relative">
+                <input type="number" x-model.number="form.surface" min="100" max="100000" placeholder="Ex: 3000"
+                  class="w-full px-4 py-3 rounded-lg border border-dark-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                  :class="errors.surface ? 'border-red-400 ring-1 ring-red-400' : ''">
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-dark-400 text-sm">m²</span>
+              </div>
+              <p x-show="errors.surface" x-text="errors.surface" class="mt-1 text-sm text-red-500"></p>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-dark-700 mb-2">Zone climatique</label>
+              <div class="grid grid-cols-3 gap-3">
+                <template x-for="zone in ['H1', 'H2', 'H3']" :key="zone">
+                  <button
+                    @click="form.climateZone = zone"
+                    class="py-3 px-4 rounded-lg border-2 text-center font-semibold text-sm transition-all"
+                    :class="form.climateZone === zone ? 'border-primary-500 bg-primary-50 text-primary-700' : 'border-dark-200 hover:border-dark-300 text-dark-600'">
+                    <span x-text="zone"></span>
+                    <span class="block text-xs font-normal mt-1 text-dark-400"
+                      x-text="zone === 'H1' ? 'Nord & Est' : zone === 'H2' ? 'Ouest & Centre' : 'Méditerranée'"></span>
+                  </button>
+                </template>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-dark-700 mb-2">Année de construction</label>
+              <select x-model="form.buildingAge"
+                class="w-full px-4 py-3 rounded-lg border border-dark-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                <option value="">Sélectionnez</option>
+                <option value="before1975">Avant 1975</option>
+                <option value="1975-2000">1975 - 2000</option>
+                <option value="2000-2012">2000 - 2012</option>
+                <option value="after2012">Après 2012 (RT2012/RE2020)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex justify-end mt-8">
+            <button @click="validateStep1()" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
+              Suivant
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 2 : Vos équipements -->
+      <div x-show="step === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0">
+        <div class="bg-white rounded-2xl border border-dark-200 shadow-sm p-6 md:p-8">
+          <h2 class="text-xl font-heading font-bold text-dark-900 mb-2">Sélectionnez vos équipements</h2>
+          <p class="text-sm text-dark-500 mb-6">Cochez les systèmes concernés par votre projet de rénovation ou d'optimisation.</p>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+            <template x-for="equip in equipments" :key="equip.id">
+              <button
+                @click="toggleEquipment(equip.id)"
+                class="flex items-center gap-3 p-4 rounded-xl border-2 transition-all text-left"
+                :class="form.selectedEquipments.includes(equip.id) ? 'border-primary-500 bg-primary-50' : 'border-dark-200 hover:border-dark-300'">
+                <div class="w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors"
+                  :class="form.selectedEquipments.includes(equip.id) ? 'bg-primary-600 border-primary-600' : 'border-dark-300'">
+                  <svg x-show="form.selectedEquipments.includes(equip.id)" class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <span class="text-lg" x-text="equip.icon"></span>
+                  <span class="text-sm font-medium block" :class="form.selectedEquipments.includes(equip.id) ? 'text-primary-700' : 'text-dark-600'" x-text="equip.label"></span>
+                </div>
+              </button>
+            </template>
+          </div>
+
+          <p x-show="errors.equipments" x-text="errors.equipments" class="mb-4 text-sm text-red-500"></p>
+
+          <!-- Champs dynamiques par équipement sélectionné -->
+          <div class="space-y-6">
+            <template x-for="eqId in form.selectedEquipments" :key="eqId">
+              <div class="p-4 bg-dark-50 rounded-xl border border-dark-200">
+                <h3 class="font-semibold text-dark-800 mb-3 flex items-center gap-2">
+                  <span x-text="getEquipment(eqId).icon"></span>
+                  <span x-text="getEquipment(eqId).label"></span>
+                </h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-medium text-dark-500 mb-1">État actuel</label>
+                    <select x-model="form.equipmentDetails[eqId].currentState"
+                      class="w-full px-3 py-2 rounded-lg border border-dark-300 text-sm focus:ring-2 focus:ring-primary-500">
+                      <option value="old">Ancien (> 15 ans)</option>
+                      <option value="standard">Standard (5-15 ans)</option>
+                      <option value="recent">Récent (< 5 ans)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-dark-500 mb-1">Action prévue</label>
+                    <select x-model="form.equipmentDetails[eqId].action"
+                      class="w-full px-3 py-2 rounded-lg border border-dark-300 text-sm focus:ring-2 focus:ring-primary-500">
+                      <option value="replace">Remplacement complet</option>
+                      <option value="optimize">Optimisation / régulation</option>
+                      <option value="gtb">Ajout pilotage GTB</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <div class="flex justify-between mt-8">
+            <button @click="step = 1" class="inline-flex items-center gap-2 px-6 py-3 text-dark-600 font-semibold rounded-lg hover:bg-dark-100 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              Précédent
+            </button>
+            <button @click="validateStep2()" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 transition-colors">
+              Calculer mes CEE
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 3 : Résultats -->
+      <div x-show="step === 3" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0">
+
+        <!-- Cartes résultats principales -->
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl p-6 text-white text-center">
+            <p class="text-sm font-medium text-primary-200 uppercase tracking-wide">Volume CEE estimé</p>
+            <p class="text-4xl md:text-5xl font-heading font-extrabold mt-2" x-text="formatNumber(results.totalGwh) + ' GWh'"></p>
+            <p class="text-sm text-primary-300 mt-1">cumac</p>
+          </div>
+          <div class="bg-gradient-to-br from-accent-500 to-accent-700 rounded-2xl p-6 text-white text-center">
+            <p class="text-sm font-medium text-accent-200 uppercase tracking-wide">Valeur financière estimée</p>
+            <p class="text-4xl md:text-5xl font-heading font-extrabold mt-2" x-text="formatCurrency(results.totalValue)"></p>
+            <p class="text-sm text-accent-200 mt-1" x-text="`Fourchette : ${formatCurrency(results.lowValue)} — ${formatCurrency(results.highValue)}`"></p>
+          </div>
+        </div>
+
+        <!-- Détail par opération -->
+        <div class="bg-white rounded-2xl border border-dark-200 shadow-sm p-6 md:p-8 mb-6">
+          <h3 class="text-lg font-heading font-bold text-dark-900 mb-4">Détail par opération</h3>
+          <div class="space-y-3">
+            <template x-for="detail in results.details" :key="detail.id">
+              <div class="flex items-center justify-between p-4 bg-dark-50 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl" x-text="detail.icon"></span>
+                  <div>
+                    <p class="font-semibold text-dark-800 text-sm" x-text="detail.label"></p>
+                    <p class="text-xs text-dark-400" x-text="detail.fiche"></p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-dark-900 text-sm" x-text="formatNumber(detail.gwh) + ' GWh'"></p>
+                  <p class="text-xs text-accent-600 font-medium" x-text="formatCurrency(detail.value)"></p>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- Avertissement -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+          <div class="flex gap-3">
+            <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+            <div>
+              <p class="font-semibold text-amber-800 text-sm">Estimation indicative</p>
+              <p class="text-sm text-amber-700 mt-1">Cette estimation est fournie à titre indicatif par un outil indépendant. Un audit certifié par un bureau de contrôle est requis pour constituer un dossier CEE officiel. NeoGTB ne perçoit aucune commission sur les CEE.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paramètres utilisés -->
+        <div class="bg-white rounded-2xl border border-dark-200 shadow-sm p-6 mb-6">
+          <h3 class="text-lg font-heading font-bold text-dark-900 mb-4">Paramètres de votre estimation</h3>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex justify-between py-2 border-b border-dark-100">
+              <span class="text-dark-500">Type de bâtiment</span>
+              <span class="font-medium text-dark-800" x-text="getBuildingTypeLabel()"></span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-dark-100">
+              <span class="text-dark-500">Surface</span>
+              <span class="font-medium text-dark-800" x-text="formatNumber(form.surface) + ' m²'"></span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-dark-100">
+              <span class="text-dark-500">Zone climatique</span>
+              <span class="font-medium text-dark-800" x-text="form.climateZone"></span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-dark-100">
+              <span class="text-dark-500">Année de construction</span>
+              <span class="font-medium text-dark-800" x-text="getBuildingAgeLabel()"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="grid sm:grid-cols-2 gap-3">
+          <button @click="step = 1; resetResults()" class="flex items-center justify-center gap-2 px-6 py-3 bg-dark-100 text-dark-700 font-semibold rounded-lg hover:bg-dark-200 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Nouvelle simulation
+          </button>
+          <a href="/contact" class="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Demander un avis d'expert
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Badge indépendance -->
+  <section class="py-12 bg-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-3 px-6 py-3 bg-primary-50 border border-primary-200 rounded-full">
+        <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span class="text-sm font-medium text-primary-700">Outil indépendant — NeoGTB ne perçoit aucune commission sur les CEE générés</span>
+      </div>
+    </div>
+  </section>
+
+<style>
+  [x-cloak] { display: none !important; }
+</style>
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('ceeGenerator', () => ({
+      step: 1,
+      errors: {},
+
+      buildingTypes: [
+        { id: 'office', label: 'Bureaux', icon: '🏢' },
+        { id: 'industry', label: 'Industrie', icon: '🏭' },
+        { id: 'health', label: 'Santé', icon: '🏥' },
+        { id: 'education', label: 'Enseignement', icon: '🏫' },
+        { id: 'hotel', label: 'Hôtellerie', icon: '🏨' },
+        { id: 'commercial', label: 'Commerce', icon: '🛒' },
+      ],
+
+      equipments: [
+        { id: 'heating', label: 'Chauffage', icon: '🌡️', fiche: 'BAT-TH-116', baseCee: 0.042 },
+        { id: 'cooling', label: 'Climatisation', icon: '❄️', fiche: 'BAT-TH-145', baseCee: 0.028 },
+        { id: 'lighting', label: 'Éclairage', icon: '💡', fiche: 'BAT-EQ-127', baseCee: 0.018 },
+        { id: 'ventilation', label: 'Ventilation', icon: '🌀', fiche: 'BAT-TH-142', baseCee: 0.022 },
+        { id: 'hotwater', label: 'Eau chaude', icon: '🚿', fiche: 'BAT-TH-148', baseCee: 0.015 },
+        { id: 'motors', label: 'Motorisation', icon: '⚙️', fiche: 'BAT-EQ-133', baseCee: 0.012 },
+      ],
+
+      form: {
+        buildingType: '',
+        surface: null,
+        climateZone: '',
+        buildingAge: '',
+        selectedEquipments: [],
+        equipmentDetails: {},
+      },
+
+      results: {
+        totalGwh: 0,
+        totalValue: 0,
+        lowValue: 0,
+        highValue: 0,
+        details: [],
+      },
+
+      // Coefficients
+      zoneCoeff: { 'H1': 1.3, 'H2': 1.0, 'H3': 0.7 },
+      ageCoeff: { 'before1975': 1.5, '1975-2000': 1.2, '2000-2012': 1.0, 'after2012': 0.6 },
+      typeCoeff: { 'office': 1.0, 'industry': 1.3, 'health': 1.4, 'education': 1.1, 'hotel': 1.2, 'commercial': 0.9 },
+      actionCoeff: { 'replace': 1.0, 'optimize': 0.6, 'gtb': 0.45 },
+      stateCoeff: { 'old': 1.3, 'standard': 1.0, 'recent': 0.5 },
+
+      toggleEquipment(id) {
+        const idx = this.form.selectedEquipments.indexOf(id);
+        if (idx > -1) {
+          this.form.selectedEquipments.splice(idx, 1);
+          delete this.form.equipmentDetails[id];
+        } else {
+          this.form.selectedEquipments.push(id);
+          this.form.equipmentDetails[id] = { currentState: 'old', action: 'replace' };
+        }
+      },
+
+      getEquipment(id) {
+        return this.equipments.find(e => e.id === id) || {};
+      },
+
+      getBuildingTypeLabel() {
+        const t = this.buildingTypes.find(b => b.id === this.form.buildingType);
+        return t ? t.label : '';
+      },
+
+      getBuildingAgeLabel() {
+        const labels = { 'before1975': 'Avant 1975', '1975-2000': '1975-2000', '2000-2012': '2000-2012', 'after2012': 'Après 2012' };
+        return labels[this.form.buildingAge] || '';
+      },
+
+      formatNumber(n) {
+        if (n === null || n === undefined) return '0';
+        return new Intl.NumberFormat('fr-FR').format(Math.round(n * 100) / 100);
+      },
+
+      formatCurrency(n) {
+        return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+      },
+
+      validateStep1() {
+        this.errors = {};
+        if (!this.form.buildingType) this.errors.buildingType = 'Sélectionnez un type de bâtiment';
+        if (!this.form.surface || this.form.surface < 100) this.errors.surface = 'Surface minimale : 100 m²';
+        if (!this.form.climateZone) this.errors.climateZone = 'Sélectionnez une zone climatique';
+        if (!this.form.buildingAge) this.errors.buildingAge = 'Sélectionnez une période';
+        if (Object.keys(this.errors).length === 0) this.step = 2;
+      },
+
+      validateStep2() {
+        this.errors = {};
+        if (this.form.selectedEquipments.length === 0) {
+          this.errors.equipments = 'Sélectionnez au moins un équipement';
+          return;
+        }
+        this.calculateResults();
+        this.step = 3;
+      },
+
+      calculateResults() {
+        const surface = this.form.surface;
+        const zCoeff = this.zoneCoeff[this.form.climateZone] || 1;
+        const aCoeff = this.ageCoeff[this.form.buildingAge] || 1;
+        const tCoeff = this.typeCoeff[this.form.buildingType] || 1;
+        const pricePerGwh = 8.5; // €/MWh cumac approximatif 2026
+
+        let details = [];
+        let totalGwh = 0;
+
+        for (const eqId of this.form.selectedEquipments) {
+          const equip = this.getEquipment(eqId);
+          const eqDetails = this.form.equipmentDetails[eqId] || {};
+          const actCoeff = this.actionCoeff[eqDetails.action] || 1;
+          const stCoeff = this.stateCoeff[eqDetails.currentState] || 1;
+
+          // Formule : baseCee * surface * zoneCoeff * ageCoeff * typeCoeff * actionCoeff * stateCoeff / 1000 (en GWh)
+          const gwh = equip.baseCee * surface * zCoeff * aCoeff * tCoeff * actCoeff * stCoeff / 1000;
+          const value = gwh * pricePerGwh * 1000; // valeur en euros
+
+          totalGwh += gwh;
+          details.push({
+            id: eqId,
+            label: equip.label,
+            icon: equip.icon,
+            fiche: `Fiche ${equip.fiche}`,
+            gwh: gwh,
+            value: value,
+          });
+        }
+
+        this.results = {
+          totalGwh: totalGwh,
+          totalValue: totalGwh * pricePerGwh * 1000,
+          lowValue: totalGwh * pricePerGwh * 1000 * 0.75,
+          highValue: totalGwh * pricePerGwh * 1000 * 1.25,
+          details: details,
+        };
+      },
+
+      resetResults() {
+        this.results = { totalGwh: 0, totalValue: 0, lowValue: 0, highValue: 0, details: [] };
+        this.errors = {};
+      },
+    }));
+  });
+</script>
+
+</Layout>
+

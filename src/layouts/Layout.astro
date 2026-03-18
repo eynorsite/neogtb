@@ -36,8 +36,9 @@ const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du B
         <a href="/solutions" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors">Solutions</a>
         <a href="/comparateur" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors">Comparateur</a>
         <a href="/blog" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors">Blog</a>
+        <a href="/generateur-cee" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors">CEE</a>
         <a href="/audit" class="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors">
-          Audit gratuit
+          Diagnostic gratuit
         </a>
         <a href="/contact" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors">Contact</a>
       </div>
@@ -62,7 +63,8 @@ const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du B
             <a href="/solutions" class="text-sm font-medium text-dark-600 hover:text-primary-600 py-2">Solutions</a>
             <a href="/comparateur" class="text-sm font-medium text-dark-600 hover:text-primary-600 py-2">Comparateur</a>
             <a href="/blog" class="text-sm font-medium text-dark-600 hover:text-primary-600 py-2">Blog</a>
-            <a href="/audit" class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg">Audit gratuit</a>
+            <a href="/generateur-cee" class="text-sm font-medium text-dark-600 hover:text-primary-600 py-2">Générateur CEE</a>
+            <a href="/audit" class="inline-flex items-center justify-center px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg">Diagnostic gratuit</a>
             <a href="/contact" class="text-sm font-medium text-dark-600 hover:text-primary-600 py-2">Contact</a>
           </div>
         </div>
@@ -81,7 +83,7 @@ const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du B
         <div class="col-span-1 md:col-span-2">
           <span class="text-2xl font-heading font-extrabold">Neo<span class="text-accent-400">GTB</span></span>
           <p class="mt-3 text-dark-400 text-sm max-w-md">
-            Votre référence pour comprendre la Gestion Technique du Bâtiment (GTB) et la Gestion Technique Centralisée (GTC). Contenus éducatifs, guides pratiques et audit gratuit.
+            Le tiers de confiance indépendant de la GTB en France. Indépendant de toute marque, nous vous aidons à comprendre, comparer et décider en toute objectivité.
           </p>
         </div>
 
@@ -93,26 +95,226 @@ const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du B
             <li><a href="/gtc" class="text-sm text-dark-300 hover:text-white transition-colors">Qu'est-ce que la GTC ?</a></li>
             <li><a href="/solutions" class="text-sm text-dark-300 hover:text-white transition-colors">Solutions</a></li>
             <li><a href="/comparateur" class="text-sm text-dark-300 hover:text-white transition-colors">Comparateur marques</a></li>
+            <li><a href="/generateur-cee" class="text-sm text-dark-300 hover:text-white transition-colors">Générateur CEE</a></li>
             <li><a href="/blog" class="text-sm text-dark-300 hover:text-white transition-colors">Blog</a></li>
           </ul>
         </div>
 
-        <!-- Contact -->
+        <!-- Contact & Légal -->
         <div>
-          <h4 class="font-semibold text-sm uppercase tracking-wider text-dark-400 mb-4">Contact</h4>
+          <h4 class="font-semibold text-sm uppercase tracking-wider text-dark-400 mb-4">Contact & Légal</h4>
           <ul class="space-y-2">
-            <li><a href="/audit" class="text-sm text-dark-300 hover:text-white transition-colors">Audit gratuit</a></li>
+            <li><a href="/audit" class="text-sm text-dark-300 hover:text-white transition-colors">Diagnostic gratuit</a></li>
             <li><a href="/contact" class="text-sm text-dark-300 hover:text-white transition-colors">Nous contacter</a></li>
+            <li><a href="/mentions-legales" class="text-sm text-dark-300 hover:text-white transition-colors">Mentions légales</a></li>
+            <li><a href="/politique-de-confidentialite" class="text-sm text-dark-300 hover:text-white transition-colors">Politique de confidentialité</a></li>
+            <li><a href="/mes-droits-rgpd" class="text-sm text-dark-300 hover:text-white transition-colors">Vos droits RGPD</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="border-t border-dark-700 mt-8 pt-8 text-center">
+      <div class="border-t border-dark-700 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p class="text-sm text-dark-500">&copy; {new Date().getFullYear()} NeoGTB. Tous droits réservés.</p>
+        <div class="flex items-center gap-4 text-xs text-dark-500">
+          <a href="/mentions-legales" class="hover:text-dark-300 transition-colors">Mentions légales</a>
+          <span>|</span>
+          <a href="/politique-de-confidentialite" class="hover:text-dark-300 transition-colors">Confidentialité</a>
+          <span>|</span>
+          <button onclick="window.dispatchEvent(new CustomEvent('open-cookie-settings'))" class="hover:text-dark-300 transition-colors cursor-pointer">Gérer les cookies</button>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- Bandeau cookies RGPD -->
+  <div x-data="cookieConsent()" x-cloak>
+    <!-- Bandeau principal -->
+    <div x-show="showBanner" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+      class="fixed bottom-0 left-0 right-0 z-[60] p-4 md:p-6">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl border border-dark-200 p-6">
+        <div class="flex items-start gap-4">
+          <span class="text-2xl flex-shrink-0 mt-1">🍪</span>
+          <div class="flex-1">
+            <h3 class="font-heading font-bold text-dark-900">Nous respectons votre vie privée</h3>
+            <p class="mt-1 text-sm text-dark-500">
+              NeoGTB utilise des cookies pour améliorer votre expérience et analyser le trafic. Aucune donnée n'est vendue à des tiers.
+            </p>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+              <span class="text-xs font-medium text-dark-400 bg-dark-100 px-2 py-1 rounded">Essentiels ✅</span>
+              <label class="flex items-center gap-1.5 cursor-pointer">
+                <input type="checkbox" x-model="consents.analytics" class="w-4 h-4 rounded border-dark-300 text-primary-600 focus:ring-primary-500">
+                <span class="text-xs font-medium text-dark-600">Analytics</span>
+              </label>
+              <label class="flex items-center gap-1.5 cursor-pointer">
+                <input type="checkbox" x-model="consents.marketing" class="w-4 h-4 rounded border-dark-300 text-primary-600 focus:ring-primary-500">
+                <span class="text-xs font-medium text-dark-600">Marketing</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:justify-end">
+          <a href="/politique-de-confidentialite" class="text-xs text-primary-600 hover:text-primary-700 font-medium py-2 sm:mr-auto">En savoir plus</a>
+          <button @click="rejectAll()" class="px-4 py-2 text-sm font-medium text-dark-600 bg-dark-100 rounded-lg hover:bg-dark-200 transition-colors">Tout refuser</button>
+          <button @click="showCustomize = true; showBanner = false" class="px-4 py-2 text-sm font-medium text-dark-600 bg-dark-100 rounded-lg hover:bg-dark-200 transition-colors">Personnaliser</button>
+          <button @click="acceptAll()" class="px-4 py-2 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">Accepter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal personnalisation -->
+    <div x-show="showCustomize" x-transition.opacity class="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-dark-900/50 backdrop-blur-sm">
+      <div @click.outside="showCustomize = false" class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="font-heading font-bold text-dark-900 flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            Gestion des cookies
+          </h3>
+          <button @click="showCustomize = false" class="p-1 text-dark-400 hover:text-dark-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Essentiels -->
+          <div class="p-4 bg-dark-50 rounded-xl">
+            <div class="flex items-center justify-between">
+              <span class="font-semibold text-dark-800 text-sm">Cookies essentiels</span>
+              <span class="text-xs font-medium text-accent-600 bg-accent-100 px-2 py-0.5 rounded">Toujours actifs</span>
+            </div>
+            <p class="text-xs text-dark-500 mt-1">Requis pour le fonctionnement du site. Ne peuvent être désactivés.</p>
+          </div>
+
+          <!-- Analytics -->
+          <div class="p-4 border border-dark-200 rounded-xl">
+            <div class="flex items-center justify-between">
+              <span class="font-semibold text-dark-800 text-sm">Cookies analytiques</span>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" x-model="consents.analytics" class="sr-only peer">
+                <div class="w-9 h-5 bg-dark-300 peer-focus:ring-2 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+              </label>
+            </div>
+            <p class="text-xs text-dark-500 mt-1">Google Analytics 4 — Mesure d'audience anonymisée pour améliorer le site.</p>
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-xs text-primary-600 hover:text-primary-700 mt-1 inline-block">Politique GA4 ↗</a>
+          </div>
+
+          <!-- Marketing -->
+          <div class="p-4 border border-dark-200 rounded-xl">
+            <div class="flex items-center justify-between">
+              <span class="font-semibold text-dark-800 text-sm">Cookies marketing</span>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" x-model="consents.marketing" class="sr-only peer">
+                <div class="w-9 h-5 bg-dark-300 peer-focus:ring-2 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+              </label>
+            </div>
+            <p class="text-xs text-dark-500 mt-1">Actuellement non utilisés. Option disponible pour l'avenir.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex gap-2">
+          <button @click="rejectAll(); showCustomize = false" class="flex-1 px-4 py-2.5 text-sm font-medium text-dark-600 bg-dark-100 rounded-lg hover:bg-dark-200 transition-colors">Tout refuser</button>
+          <button @click="saveConsent(); showCustomize = false" class="flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">Enregistrer mes choix</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bouton flottant "Gérer mes cookies" -->
+    <button x-show="!showBanner && !showCustomize && hasConsented"
+      @click="showCustomize = true"
+      x-transition
+      class="fixed bottom-4 left-4 z-[55] flex items-center gap-1.5 px-3 py-2 bg-white rounded-full shadow-lg border border-dark-200 text-xs font-medium text-dark-600 hover:text-dark-900 hover:shadow-xl transition-all">
+      🍪 <span class="hidden sm:inline">Gérer mes cookies</span>
+    </button>
+  </div>
+
+  <style>
+    [x-cloak] { display: none !important; }
+  </style>
+
+  <script src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('cookieConsent', () => ({
+        showBanner: false,
+        showCustomize: false,
+        hasConsented: false,
+        consents: {
+          analytics: false,
+          marketing: false,
+        },
+
+        init() {
+          const saved = this.getCookie('neogtb_consent');
+          if (saved) {
+            try {
+              this.consents = JSON.parse(saved);
+              this.hasConsented = true;
+              this.applyConsents();
+            } catch (e) {
+              this.showBannerDelayed();
+            }
+          } else {
+            this.showBannerDelayed();
+          }
+
+          window.addEventListener('open-cookie-settings', () => {
+            this.showCustomize = true;
+          });
+        },
+
+        showBannerDelayed() {
+          setTimeout(() => { this.showBanner = true; }, 500);
+        },
+
+        acceptAll() {
+          this.consents = { analytics: true, marketing: true };
+          this.saveConsent();
+        },
+
+        rejectAll() {
+          this.consents = { analytics: false, marketing: false };
+          this.saveConsent();
+          this.showBanner = false;
+        },
+
+        saveConsent() {
+          this.setCookie('neogtb_consent', JSON.stringify(this.consents), 395);
+          this.showBanner = false;
+          this.hasConsented = true;
+          this.applyConsents();
+        },
+
+        applyConsents() {
+          if (this.consents.analytics) {
+            // Load GA4 only if consented
+            // window.dataLayer = window.dataLayer || [];
+            // Uncomment and add GA4 script tag when ready
+          }
+          // Google Consent Mode v2
+          if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+              'analytics_storage': this.consents.analytics ? 'granted' : 'denied',
+              'ad_storage': this.consents.marketing ? 'granted' : 'denied',
+              'ad_user_data': this.consents.marketing ? 'granted' : 'denied',
+              'ad_personalization': this.consents.marketing ? 'granted' : 'denied',
+            });
+          }
+        },
+
+        setCookie(name, value, days) {
+          const d = new Date();
+          d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+          document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+        },
+
+        getCookie(name) {
+          const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+          return v ? decodeURIComponent(v.pop()) : null;
+        },
+      }));
+    });
+  </script>
 </body>
 </html>
