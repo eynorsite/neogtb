@@ -1,58 +1,310 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Animations */
+/* ============================================
+   NEOGTB DESIGN SYSTEM — Animations & Effects
+   ============================================ */
+
+/* --- Scroll Animations --- */
 @keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-in-scale {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.5s ease-out forwards;
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+.animate-fade-in-left { animation: fade-in-left 0.6s ease-out forwards; }
+.animate-fade-in-right { animation: fade-in-right 0.6s ease-out forwards; }
+.animate-fade-in-scale { animation: fade-in-scale 0.5s ease-out forwards; }
+.animate-slide-up { animation: slide-up 0.7s ease-out forwards; }
+
+/* --- Floating / Decorative Animations --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(92, 176, 48, 0.3); }
+  50% { box-shadow: 0 0 20px 6px rgba(92, 176, 48, 0.15); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes dash {
+  to { stroke-dashoffset: 0; }
 }
 
-/* NeoGTB - Design System */
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+
+/* --- Card Hover Effects --- */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover-glow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover-glow:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(92, 176, 48, 0.18);
+  border-color: var(--color-accent-300);
+}
+
+/* --- Gradient Border Hover --- */
+.gradient-border-hover {
+  position: relative;
+  overflow: hidden;
+}
+.gradient-border-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #5CB030, #0088BB);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gradient-border-hover:hover::before {
+  opacity: 1;
+}
+
+/* --- Card avec bordure verte latérale (signature) --- */
+.card-green-border {
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(to bottom, #5CB030, #2D8C3C) 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-green-border:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(92, 176, 48, 0.15);
+}
+
+/* --- Section sombre avec pattern circuit --- */
+.bg-circuit-dark {
+  background-color: var(--color-primary-900);
+  background-image:
+    linear-gradient(rgba(92, 176, 48, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 176, 48, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* --- Diagonal section separator --- */
+.diagonal-top {
+  position: relative;
+}
+.diagonal-top::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 60px, 100% 100%, 0 100%);
+  z-index: 1;
+}
+
+/* --- Button Effects --- */
+/* --- Button Effects --- */
+.btn-glow {
+  transition: all 0.3s ease;
+}
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(92, 176, 48, 0.4);
+}
+.btn-glow:active {
+  transform: translateY(0);
+}
+
+/* CTA principal — dégradé vert signature */
+.btn-cta {
+  background: linear-gradient(135deg, #5CB030, #2D8C3C);
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px -3px rgba(92, 176, 48, 0.35);
+}
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(92, 176, 48, 0.5);
+  filter: brightness(1.08);
+}
+.btn-cta:active {
+  transform: translateY(0);
+}
+
+/* CTA secondaire — outline blanc ou navy */
+.btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+/* --- Background Patterns --- */
+.bg-grid-pattern {
+  background-image: radial-gradient(circle, var(--color-dark-200) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.bg-circuit-pattern {
+  background-image:
+    linear-gradient(var(--color-primary-100) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-primary-100) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* --- Text Gradient --- */
+.text-gradient {
+  background: linear-gradient(135deg, #6EC840, #2D8C3C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #22b8e6, #0088BB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Animated Underline --- */
+.animated-underline {
+  position: relative;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #5CB030, #0088BB);
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* --- Scrollbar Hide (for carousels) --- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Glass Effect --- */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- Section Divider --- */
+.section-divider {
+  position: relative;
+}
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #5CB030, #0088BB);
+  border-radius: 2px;
+}
+
+/* NeoGTB - Design System — Palette issue du logo */
 @theme {
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  --color-primary-950: #172554;
+  /* Bleu marine (logo: "Néo" + bâtiments) */
+  --color-primary-50: #f0f5fa;
+  --color-primary-100: #dae6f1;
+  --color-primary-200: #b5cde3;
+  --color-primary-300: #7fabc9;
+  --color-primary-400: #5488ad;
+  --color-primary-500: #3a6a91;
+  --color-primary-600: #1B3A5C;
+  --color-primary-700: #163050;
+  --color-primary-800: #112640;
+  --color-primary-900: #0F2640;
+  --color-primary-950: #091829;
 
-  --color-accent-50: #f0fdf4;
-  --color-accent-100: #dcfce7;
-  --color-accent-200: #bbf7d0;
-  --color-accent-300: #86efac;
-  --color-accent-400: #4ade80;
-  --color-accent-500: #22c55e;
-  --color-accent-600: #16a34a;
-  --color-accent-700: #15803d;
-  --color-accent-800: #166534;
-  --color-accent-900: #14532d;
+  /* Vert émeraude (logo: "GTB" + courbe + feuilles) */
+  --color-accent-50: #f2fbea;
+  --color-accent-100: #e0f5cc;
+  --color-accent-200: #c2eb9e;
+  --color-accent-300: #96d968;
+  --color-accent-400: #6EC840;
+  --color-accent-500: #5CB030;
+  --color-accent-600: #3D8C20;
+  --color-accent-700: #2D8C3C;
+  --color-accent-800: #1A6B2A;
+  --color-accent-900: #145222;
 
-  --color-dark-50: #f8fafc;
-  --color-dark-100: #f1f5f9;
-  --color-dark-200: #e2e8f0;
-  --color-dark-300: #cbd5e1;
-  --color-dark-400: #94a3b8;
-  --color-dark-500: #64748b;
-  --color-dark-600: #475569;
+  /* Cyan tech (logo: bâtiment accent) */
+  --color-cyan-400: #22b8e6;
+  --color-cyan-500: #0088BB;
+  --color-cyan-600: #006d96;
+
+  /* Neutres — tons bleu-gris cohérents avec le navy */
+  --color-dark-50: #F5F7FA;
+  --color-dark-100: #E8ECF1;
+  --color-dark-200: #D1D9E2;
+  --color-dark-300: #B0BCCA;
+  --color-dark-400: #8494A7;
+  --color-dark-500: #5E7085;
+  --color-dark-600: #465569;
   --color-dark-700: #334155;
-  --color-dark-800: #1e293b;
-  --color-dark-900: #0f172a;
-  --color-dark-950: #020617;
+  --color-dark-800: #1E2D3F;
+  --color-dark-900: #1A2A3A;
+  --color-dark-950: #0C1824;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
