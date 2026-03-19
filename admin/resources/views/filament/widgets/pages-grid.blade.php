@@ -8,7 +8,8 @@
                     'contact' => '📞', 'about' => 'ℹ️',
                 ];
             @endphp
-            <div class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 transition-all hover:shadow-lg hover:border-primary-200">
+            <a href="{{ route('filament.admin.resources.pages.edit', $page->id) }}"
+               class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 transition-all hover:shadow-lg hover:border-primary-200 block">
                 {{-- Status dot --}}
                 <div class="absolute right-3 top-3">
                     @if($page->is_published)
@@ -24,33 +25,23 @@
                         {{ $icons[$page->slug] ?? '📄' }}
                     </span>
                     <div>
-                        <h3 class="font-bold text-gray-800">{{ $page->name }}</h3>
+                        <h3 class="font-bold text-gray-800 group-hover:text-primary-600 transition">{{ $page->name }}</h3>
                         <p class="text-xs text-gray-400">/{{ $page->slug }}</p>
                     </div>
                 </div>
 
-                {{-- Bricks count --}}
-                <div class="mb-4 flex items-center gap-2">
-                    <span class="rounded-full bg-primary-50 px-2 py-0.5 text-xs font-medium text-primary-700">
-                        🧱 {{ $page->bricks_count }} brick(s)
-                    </span>
+                {{-- Status --}}
+                <div class="flex items-center gap-2">
+                    @if($page->is_published)
+                        <span class="rounded-full bg-green-50 px-2 py-0.5 text-xs font-medium text-green-700">Publiée</span>
+                    @else
+                        <span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500">Brouillon</span>
+                    @endif
                     <span class="text-xs text-gray-400">
                         Ordre {{ $page->order }}
                     </span>
                 </div>
-
-                {{-- Actions --}}
-                <div class="flex gap-2">
-                    <a href="{{ url('/admin/pages/' . $page->id . '/bricks') }}"
-                       class="flex-1 rounded-lg bg-primary-600 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-primary-700">
-                        🧱 Bricks
-                    </a>
-                    <a href="{{ route('filament.admin.resources.pages.edit', $page->id) }}"
-                       class="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 text-center text-xs font-semibold text-gray-600 transition hover:bg-gray-50">
-                        ✏️ Modifier
-                    </a>
-                </div>
-            </div>
+            </a>
         @endforeach
     </div>
 </x-filament-widgets::widget>
