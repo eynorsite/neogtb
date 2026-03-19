@@ -83,6 +83,16 @@ class SiteSetting extends Model
         });
     }
 
+    public static function getAllCached(): array
+    {
+        return Cache::remember('site_settings_all', 300, function () {
+            return static::where('is_public', true)
+                ->get()
+                ->mapWithKeys(fn ($s) => [$s->key => $s->value])
+                ->toArray();
+        });
+    }
+
     public static function clearCache(): void
     {
         $keys = static::pluck('key');
