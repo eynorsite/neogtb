@@ -1,3 +1,6 @@
 <x-filament-panels::page>
-    {{ $this->table }}
+    {{-- Filtres en haut --}}
+    <div class="mb-6">
+        {{ $this->table }}
+    </div>
 </x-filament-panels::page>

@@ -213,6 +213,15 @@ class BrickEditorPage extends Page implements HasForms
         ];
     }
 
+    public function reorderBricks(array $orderedIds): void
+    {
+        foreach ($orderedIds as $position => $brickId) {
+            PageBrick::where('id', $brickId)->update(['order' => $position]);
+        }
+
+        $this->loadBricks();
+    }
+
     public function getAvailableBricksProperty(): array
     {
         return BrickRegistry::byCategory();

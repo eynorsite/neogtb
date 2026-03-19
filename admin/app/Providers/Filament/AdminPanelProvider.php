@@ -33,6 +33,9 @@ class AdminPanelProvider extends PanelProvider
             ->favicon(asset('favicon.ico'))
             ->font('Inter')
             ->sidebarWidth('16rem')
+            ->darkMode(false)
+            ->maxContentWidth('full')
+            ->renderHook('panels::styles.after', fn () => view('filament.hooks.admin-styles'))
             ->colors([
                 'primary' => [
                     50 => '#e6f0f7',

@@ -12,6 +12,13 @@ class ListPages extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [Actions\CreateAction::make()];
+        return [Actions\CreateAction::make()->label('Créer')];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            \App\Filament\Resources\PageResource\Widgets\PagesGrid::class,
+        ];
     }
 }

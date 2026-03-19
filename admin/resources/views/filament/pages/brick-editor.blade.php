@@ -2,7 +2,12 @@
     {{-- Force full width --}}
     <style>
         .fi-page > .fi-page-content { max-width: 100% !important; }
+        .sortable-ghost { opacity: 0.4; }
+        .sortable-drag { box-shadow: 0 8px 24px rgba(0,0,0,0.15); transform: rotate(1deg); }
+        .drag-handle { cursor: grab; }
+        .drag-handle:active { cursor: grabbing; }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
 
     {{-- Header --}}
     <div class="mb-4 flex items-center justify-between rounded-lg bg-white px-4 py-3 shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
@@ -70,7 +75,7 @@
                         <p class="text-xs mt-1">Cliquez sur une brick dans la bibliothèque pour l'ajouter</p>
                     </div>
                 @else
-                    <div class="space-y-2">
+                    <div id="brick-sortable" class="space-y-2">
                         @foreach($bricks as $index => $brick)
                             @php
                                 $def = $this->getBrickDefinition($brick['brick_type']);
@@ -79,6 +84,7 @@
                                 $previewHtml = $brickDef ? $brickDef->preview($brick['content'] ?? []) : '';
                             @endphp
                             <div
+                                data-id="{{ $brick['id'] }}"
                                 wire:click="selectBrick({{ $index }})"
                                 class="group relative cursor-pointer rounded-lg border-2 bg-white p-3 transition-all
                                     {{ $isSelected
@@ -89,6 +95,9 @@
                             >
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2.5">
+                                        <span class="drag-handle flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-600 transition" title="Glisser pour réordonner">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
+                                        </span>
                                         <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-base dark:bg-gray-700">
                                             {{ $def['icon'] ?? '🧱' }}
                                         </span>
@@ -231,4 +240,31 @@
             </div>
         </div>
     </div>
+    {{-- SortableJS init --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initSortable();
+        });
+
+        document.addEventListener('livewire:navigated', function() {
+            initSortable();
+        });
+
+        function initSortable() {
+            const el = document.getElementById('brick-sortable');
+            if (!el || el._sortable) return;
+
+            el._sortable = new Sortable(el, {
+                handle: '.drag-handle',
+                animation: 200,
+                ghostClass: 'sortable-ghost',
+                dragClass: 'sortable-drag',
+                onEnd: function(evt) {
+                    const items = el.querySelectorAll('[data-id]');
+                    const orderedIds = Array.from(items).map(item => parseInt(item.dataset.id));
+                    @this.call('reorderBricks', orderedIds);
+                }
+            });
+        }
+    </script>
 </x-filament-panels::page>
