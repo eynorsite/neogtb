@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+// RGPD routes
+Route::post('/rgpd/consent', [\App\Http\Controllers\RgpdConsentController::class, 'storeConsent']);
+Route::get('/rgpd/consent', [\App\Http\Controllers\RgpdConsentController::class, 'getConsent']);
+Route::delete('/rgpd/consent', [\App\Http\Controllers\RgpdConsentController::class, 'deleteConsent']);
+Route::post('/rgpd/request', [\App\Http\Controllers\RgpdConsentController::class, 'submitGdprRequest']);
+
 // Frontend public routes
 Route::get('/', [\App\Http\Controllers\PageController::class, 'show'])->defaults('slug', 'accueil');
 Route::get('/blog', [\App\Http\Controllers\PageController::class, 'blog']);
