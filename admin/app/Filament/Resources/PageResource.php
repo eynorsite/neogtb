@@ -5,8 +5,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\SitePage;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -37,7 +35,7 @@ class PageResource extends Resource
             ->components([
                 Tabs::make('Tabs')
                     ->tabs([
-                        Tabs\Tab::make('Contenu')
+                        Tabs\Tab::make('Page')
                             ->schema([
                                 TextInput::make('name')
                                     ->label('Nom de la page')
@@ -49,31 +47,6 @@ class PageResource extends Resource
                                     ->unique(ignoreRecord: true)
                                     ->maxLength(255),
 
-                                TextInput::make('hero_title')
-                                    ->label('Titre Hero')
-                                    ->maxLength(255),
-
-                                TextInput::make('hero_subtitle')
-                                    ->label('Sous-titre Hero')
-                                    ->maxLength(255),
-
-                                Textarea::make('hero_description')
-                                    ->label('Description Hero')
-                                    ->rows(3),
-
-                                TextInput::make('hero_cta_text')
-                                    ->label('Texte du bouton CTA')
-                                    ->maxLength(255),
-
-                                TextInput::make('hero_cta_url')
-                                    ->label('URL du bouton CTA')
-                                    ->maxLength(255),
-
-                                FileUpload::make('hero_image')
-                                    ->label('Image Hero')
-                                    ->image()
-                                    ->directory('pages'),
-
                                 Toggle::make('is_published')
                                     ->label('Publiée')
                                     ->default(true),
@@ -82,43 +55,6 @@ class PageResource extends Resource
                                     ->label('Ordre')
                                     ->numeric()
                                     ->default(0),
-                            ]),
-
-                        Tabs\Tab::make('Sections')
-                            ->schema([
-                                Repeater::make('sections')
-                                    ->relationship()
-                                    ->schema([
-                                        TextInput::make('section_key')
-                                            ->label('Clé de section')
-                                            ->required(),
-
-                                        TextInput::make('title')
-                                            ->label('Titre'),
-
-                                        TextInput::make('subtitle')
-                                            ->label('Sous-titre'),
-
-                                        RichEditor::make('content')
-                                            ->label('Contenu'),
-
-                                        FileUpload::make('image')
-                                            ->image()
-                                            ->directory('sections'),
-
-                                        TextInput::make('order')
-                                            ->label('Ordre')
-                                            ->numeric()
-                                            ->default(0),
-
-                                        Toggle::make('is_visible')
-                                            ->label('Visible')
-                                            ->default(true),
-                                    ])
-                                    ->columns(2)
-                                    ->collapsible()
-                                    ->orderColumn('order')
-                                    ->itemLabel(fn (array $state) => $state['title'] ?? $state['section_key'] ?? 'Section'),
                             ]),
 
                         Tabs\Tab::make('SEO')
@@ -180,7 +116,13 @@ class PageResource extends Resource
             ->defaultSort('order')
             ->reorderable('order')
             ->actions([
-                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('edit_content')
+                    ->label('Contenu')
+                    ->icon('heroicon-o-pencil-square')
+                    ->color('success')
+                    ->url(fn ($record) => url('/admin/pages/' . $record->id . '/bricks-editor')),
+                \Filament\Actions\EditAction::make()
+                    ->label('Paramètres'),
             ])
             ->bulkActions([
                 \Filament\Actions\DeleteBulkAction::make(),

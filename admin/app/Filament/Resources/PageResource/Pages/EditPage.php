@@ -13,6 +13,11 @@ class EditPage extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('edit_content')
+                ->label('Modifier le contenu')
+                ->icon('heroicon-o-pencil-square')
+                ->color('success')
+                ->url(fn () => url('/admin/pages/' . $this->record->id . '/bricks-editor')),
             Actions\Action::make('preview')
                 ->label('Voir sur le site')
                 ->icon('heroicon-o-eye')
