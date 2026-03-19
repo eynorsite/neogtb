@@ -8,6 +8,7 @@ use App\Filament\Bricks\Content\BrickCTA;
 use App\Filament\Bricks\Content\BrickCartes;
 use App\Filament\Bricks\Content\BrickChiffres;
 use App\Filament\Bricks\Content\BrickComparatif;
+use App\Filament\Bricks\Content\BrickFormulaire;
 use App\Filament\Bricks\Content\BrickFAQ;
 use App\Filament\Bricks\Content\BrickTemoignages;
 use App\Filament\Bricks\Structure\BrickBandeau;
@@ -30,6 +31,7 @@ class BrickRegistry
             'faq' => BrickFAQ::class,
             'temoignages' => BrickTemoignages::class,
             'comparatif' => BrickComparatif::class,
+            'formulaire' => BrickFormulaire::class,
             // Structure
             'separateur' => BrickSeparateur::class,
             'bandeau' => BrickBandeau::class,
