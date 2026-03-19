@@ -14,9 +14,15 @@ class PageController extends Controller
             ->where('is_published', true)
             ->firstOrFail();
 
-        $bricks = $page->visibleBricks()->get();
         $settings = SiteSetting::getAllCached();
 
+        // Use dedicated template if it exists, otherwise render bricks
+        $dedicatedView = 'front.' . str_replace('-', '_', $slug);
+        if (view()->exists($dedicatedView)) {
+            return view($dedicatedView, compact('page', 'settings'));
+        }
+
+        $bricks = $page->visibleBricks()->get();
         return view('front.page', compact('page', 'bricks', 'settings'));
     }
 
