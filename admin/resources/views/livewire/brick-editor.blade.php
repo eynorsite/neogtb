@@ -125,11 +125,13 @@
                                         <button type="button" wire:click="$set('editForm.content.{{ $key }}', '')" style="position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 12px;">✕</button>
                                     </div>
                                 @endif
-                                <div style="border: 2px dashed #E2E8F0; border-radius: 8px; padding: 12px; text-align: center;">
+                                <div style="border: 2px dashed #E2E8F0; border-radius: 8px; padding: 12px; text-align: center; background: #FAFBFC;">
                                     <input type="file" wire:model="imageUpload" accept="image/*"
                                         style="font-size: 12px; width: 100%;"
-                                        onchange="setTimeout(() => @this.call('uploadImage', '{{ $key }}'), 1000)">
-                                    <div wire:loading wire:target="imageUpload" style="margin-top: 6px; font-size: 11px; color: #64748B;">Envoi en cours...</div>
+                                        wire:click="setImageField('{{ $key }}')">
+                                    <div wire:loading wire:target="imageUpload" style="margin-top: 8px; font-size: 12px; color: #2D8B4E; font-weight: 600;">
+                                        ⏳ Upload en cours...
+                                    </div>
                                 </div>
 
                             @elseif(str_contains($key, 'contenu') || str_contains($key, 'description') && strlen((string)$value) > 100)

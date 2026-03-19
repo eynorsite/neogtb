@@ -17,6 +17,7 @@ class BrickEditor extends Component
     public ?int $selectedBrickId = null;
     public array $editForm = [];
     public $imageUpload;
+    public string $imageUploadField = '';
 
     public function mount(int $pageId): void
     {
@@ -96,27 +97,28 @@ class BrickEditor extends Component
         $this->dispatch('notify', message: 'Brick enregistrée');
     }
 
-    public function uploadImage(string $fieldKey): void
+    public function setImageField(string $field): void
     {
-        if (!$this->imageUpload || !$this->selectedBrickId) return;
+        $this->imageUploadField = $field;
+    }
+
+    public function updatedImageUpload(): void
+    {
+        if (!$this->imageUpload || !$this->selectedBrickId || !$this->imageUploadField) return;
 
         $path = $this->imageUpload->store('bricks', 'public');
 
-        // Update the content field
-        $content = $this->editForm['content'] ?? [];
-        $content[$fieldKey] = $path;
-        $this->editForm['content'] = $content;
-
-        // Save immediately
         $brick = PageBrick::find($this->selectedBrickId);
         if ($brick) {
             $brickContent = $brick->content ?? [];
-            $brickContent[$fieldKey] = $path;
+            $brickContent[$this->imageUploadField] = $path;
             $brick->update(['content' => $brickContent]);
             $this->loadBricks();
+            $this->selectBrick($this->selectedBrickId);
         }
 
         $this->imageUpload = null;
+        $this->imageUploadField = '';
         $this->dispatch('notify', message: 'Image uploadée');
     }
 
