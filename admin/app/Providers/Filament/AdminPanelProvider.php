@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->authGuard('admin')
-            ->brandName('NeoGTB Admin')
+            ->brandName('NéoGTB Admin')
             ->favicon(asset('favicon.ico'))
             ->font('Inter')
             ->sidebarWidth('16rem')
@@ -38,17 +38,17 @@ class AdminPanelProvider extends PanelProvider
             ->renderHook('panels::styles.after', fn () => view('filament.hooks.admin-styles'))
             ->colors([
                 'primary' => [
-                    50 => '#e6f0f7',
-                    100 => '#cce1ef',
-                    200 => '#99c3df',
-                    300 => '#66a5cf',
-                    400 => '#3387bf',
-                    500 => '#0F6BAF',
-                    600 => '#0d5f9c',
-                    700 => '#0a4b7d',
-                    800 => '#08385e',
-                    900 => '#05253f',
-                    950 => '#031220',
+                    50 => '#e8eef5',
+                    100 => '#c5d5e6',
+                    200 => '#9bb5d1',
+                    300 => '#7095bc',
+                    400 => '#4a78a8',
+                    500 => '#1B3A5C',
+                    600 => '#183353',
+                    700 => '#142b47',
+                    800 => '#10233b',
+                    900 => '#0c1b2f',
+                    950 => '#08111f',
                 ],
                 'success' => [
                     50 => '#ecfdf5',

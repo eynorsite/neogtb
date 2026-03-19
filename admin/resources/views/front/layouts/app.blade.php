@@ -15,8 +15,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: {50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a',950:'#172554'},
-                        accent: {50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d'},
+                        primary: {50:'#e8eef5',100:'#c5d5e6',200:'#9bb5d1',300:'#7095bc',400:'#4a78a8',500:'#1B3A5C',600:'#183353',700:'#142b47',800:'#10233b',900:'#0c1b2f',950:'#08111f'},
+                        accent: {50:'#eaf5ee',100:'#d0e8d6',200:'#a3d4b2',300:'#6fbc88',400:'#4caf64',500:'#2D8B4E',600:'#267a43',700:'#1f6637',800:'#19532d',900:'#134023',950:'#0c2916'},
                         dark: {50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a',950:'#020617'},
                     },
                     fontFamily: {
@@ -31,20 +31,20 @@
         /* NeoGTB Design System */
         @keyframes fade-in-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.3); } 50% { box-shadow: 0 0 20px 6px rgba(37, 99, 235, 0.15); } }
+        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(27, 58, 92, 0.3); } 50% { box-shadow: 0 0 20px 6px rgba(27, 58, 92, 0.15); } }
         .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
         .animate-float { animation: float 4s ease-in-out infinite; }
         .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
         .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1); }
         .card-hover-glow { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .card-hover-glow:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.15); border-color: #93c5fd; }
+        .card-hover-glow:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(27, 58, 92, 0.15); border-color: #9bb5d1; }
         .btn-glow { transition: all 0.3s ease; }
-        .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.4); }
+        .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(45, 139, 78, 0.4); }
         .btn-glow:active { transform: translateY(0); }
-        .text-gradient { background: linear-gradient(135deg, #3b82f6, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .text-gradient { background: linear-gradient(135deg, #1B3A5C, #2D8B4E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .section-divider { position: relative; }
-        .section-divider::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #3b82f6, #22c55e); border-radius: 2px; }
+        .section-divider::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #1B3A5C, #2D8B4E); border-radius: 2px; }
         .bg-grid-pattern { background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px); background-size: 24px 24px; }
         .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); }
         [x-cloak] { display: none !important; }
@@ -57,7 +57,7 @@
     <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-dark-100 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2">
-                <span class="text-2xl font-heading font-extrabold text-primary-600">Neo<span class="text-accent-500">GTB</span></span>
+                <span class="text-2xl font-heading font-extrabold text-primary-600">Néo<span class="text-accent-500">GTB</span></span>
             </a>
 
             <div class="hidden md:flex items-center gap-8">
@@ -101,7 +101,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="col-span-1 md:col-span-2">
-                    <span class="text-2xl font-heading font-extrabold">Neo<span class="text-accent-400">GTB</span></span>
+                    <span class="text-2xl font-heading font-extrabold">Néo<span class="text-accent-400">GTB</span></span>
                     <p class="mt-3 text-dark-400 text-sm max-w-md">Le tiers de confiance indépendant de la GTB en France. Indépendant de toute marque, nous vous aidons à comprendre, comparer et décider en toute objectivité.</p>
                 </div>
                 <div>

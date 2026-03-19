@@ -4,11 +4,11 @@
        ============================================ */
 
     :root {
-        --neogtb-primary: #0F6BAF;
+        --neogtb-primary: #1B3A5C;
         --neogtb-primary-light: #e6f0f7;
         --neogtb-sidebar-bg: #1A1D2E;
         --neogtb-sidebar-text: #A8ADBF;
-        --neogtb-sidebar-active: #0F6BAF;
+        --neogtb-sidebar-active: #2D8B4E;
         --neogtb-sidebar-hover: #252840;
         --neogtb-card-shadow: 0 1px 3px rgba(0,0,0,0.08);
         --neogtb-card-radius: 12px;
@@ -61,8 +61,8 @@
     .fi-sidebar .fi-sidebar-item.fi-active a,
     .fi-sidebar .fi-sidebar-item.fi-active button,
     .fi-sidebar .fi-sidebar-item a[aria-current="page"] {
-        background-color: rgba(15, 107, 175, 0.2) !important;
-        color: #60B5FF !important;
+        background-color: rgba(45, 139, 78, 0.15) !important;
+        color: #4CAF50 !important;
         font-weight: 600 !important;
         border-left: 3px solid var(--neogtb-sidebar-active) !important;
     }
@@ -76,7 +76,7 @@
     .fi-sidebar .fi-sidebar-item.fi-active svg,
     .fi-sidebar .fi-sidebar-item a[aria-current="page"] svg {
         opacity: 1;
-        color: #60B5FF !important;
+        color: #4CAF50 !important;
     }
 
     /* Collapse button */
