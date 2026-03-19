@@ -6,13 +6,17 @@ use App\Filament\Bricks\BrickRegistry;
 use App\Models\PageBrick;
 use App\Models\SitePage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class BrickEditor extends Component
 {
+    use WithFileUploads;
+
     public SitePage $page;
     public array $bricks = [];
     public ?int $selectedBrickId = null;
     public array $editForm = [];
+    public $imageUpload;
 
     public function mount(int $pageId): void
     {
@@ -90,6 +94,30 @@ class BrickEditor extends Component
 
         $this->loadBricks();
         $this->dispatch('notify', message: 'Brick enregistrée');
+    }
+
+    public function uploadImage(string $fieldKey): void
+    {
+        if (!$this->imageUpload || !$this->selectedBrickId) return;
+
+        $path = $this->imageUpload->store('bricks', 'public');
+
+        // Update the content field
+        $content = $this->editForm['content'] ?? [];
+        $content[$fieldKey] = $path;
+        $this->editForm['content'] = $content;
+
+        // Save immediately
+        $brick = PageBrick::find($this->selectedBrickId);
+        if ($brick) {
+            $brickContent = $brick->content ?? [];
+            $brickContent[$fieldKey] = $path;
+            $brick->update(['content' => $brickContent]);
+            $this->loadBricks();
+        }
+
+        $this->imageUpload = null;
+        $this->dispatch('notify', message: 'Image uploadée');
     }
 
     public function toggleVisibility(int $id): void

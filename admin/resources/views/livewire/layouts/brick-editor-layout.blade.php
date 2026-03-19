@@ -32,6 +32,18 @@
         }
         .topbar-brand { font-weight: 800; font-size: 15px; }
         .topbar-page { font-weight: 600; font-size: 14px; opacity: 0.9; }
+        .topbar-preview-btn {
+            color: #1A1D2E;
+            background: #4CAF50;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 6px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .topbar-preview-btn:hover { background: #43A047; }
         .topbar a {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
