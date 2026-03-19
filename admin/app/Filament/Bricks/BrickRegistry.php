@@ -7,10 +7,12 @@ use App\Filament\Bricks\Content\BrickTexte;
 use App\Filament\Bricks\Content\BrickCTA;
 use App\Filament\Bricks\Content\BrickCartes;
 use App\Filament\Bricks\Content\BrickChiffres;
+use App\Filament\Bricks\Content\BrickComparatif;
 use App\Filament\Bricks\Content\BrickFAQ;
 use App\Filament\Bricks\Content\BrickTemoignages;
-use App\Filament\Bricks\Structure\BrickSeparateur;
 use App\Filament\Bricks\Structure\BrickBandeau;
+use App\Filament\Bricks\Structure\BrickLogos;
+use App\Filament\Bricks\Structure\BrickSeparateur;
 
 class BrickRegistry
 {
@@ -27,9 +29,11 @@ class BrickRegistry
             'chiffres' => BrickChiffres::class,
             'faq' => BrickFAQ::class,
             'temoignages' => BrickTemoignages::class,
+            'comparatif' => BrickComparatif::class,
             // Structure
             'separateur' => BrickSeparateur::class,
             'bandeau' => BrickBandeau::class,
+            'logos' => BrickLogos::class,
         ];
     }
 

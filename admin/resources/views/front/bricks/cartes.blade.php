@@ -1,25 +1,29 @@
 @php $cols = $settings['colonnes'] ?? 3; @endphp
 
-<section class="py-16 lg:py-24 section-alt">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="py-20 bg-dark-50 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         @if(!empty($content['titre_section']))
-            <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 sm:text-4xl">{{ $content['titre_section'] }}</h2>
+            <div class="text-center mb-12 section-divider pt-6">
+                <h2 class="text-3xl font-heading font-extrabold text-dark-900 sm:text-4xl">{{ $content['titre_section'] }}</h2>
+            </div>
         @endif
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-{{ $cols }}">
             @foreach($content['cartes'] ?? [] as $carte)
-                <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:shadow-md">
+                <a href="{{ $carte['lien'] ?? '#' }}" class="group rounded-2xl border border-dark-200 bg-white p-6 shadow-sm card-hover-glow block">
                     @if(!empty($carte['icone']))
-                        <span class="text-3xl">{{ $carte['icone'] }}</span>
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl mb-4">{{ $carte['icone'] }}</div>
                     @endif
-                    <h3 class="mt-4 text-lg font-bold text-gray-900">{{ $carte['titre'] ?? '' }}</h3>
-                    <p class="mt-2 text-sm leading-relaxed text-gray-600">{{ $carte['description'] ?? '' }}</p>
+                    <h3 class="text-lg font-heading font-bold text-dark-900 group-hover:text-primary-600 transition-colors">{{ $carte['titre'] ?? '' }}</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-dark-500">{{ $carte['description'] ?? '' }}</p>
                     @if(!empty($carte['lien']))
-                        <a href="{{ $carte['lien'] }}" class="mt-4 inline-flex items-center text-sm font-semibold text-primary-600 hover:text-primary-700">
-                            En savoir plus →
-                        </a>
+                        <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 group-hover:gap-2 transition-all">
+                            En savoir plus
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
                     @endif
-                </div>
+                </a>
             @endforeach
         </div>
     </div>

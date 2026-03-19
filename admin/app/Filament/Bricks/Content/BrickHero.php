@@ -44,6 +44,9 @@ class BrickHero extends BaseBrick
             'description' => '',
             'cta_texte' => '',
             'cta_lien' => '',
+            'cta2_texte' => '',
+            'cta2_lien' => '',
+            'badge' => '',
             'image' => null,
         ];
     }

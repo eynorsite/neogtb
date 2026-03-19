@@ -37,6 +37,8 @@ class BrickChiffres extends BaseBrick
     public function defaultContent(): array
     {
         return [
+            'titre' => '',
+            'sous_titre' => '',
             'stats' => [],
         ];
     }

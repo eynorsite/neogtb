@@ -40,6 +40,8 @@ class BrickCTA extends BaseBrick
             'sous_titre' => '',
             'bouton_texte' => '',
             'bouton_lien' => '',
+            'bouton2_texte' => '',
+            'bouton2_lien' => '',
         ];
     }
 
