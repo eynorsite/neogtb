@@ -22,32 +22,31 @@ const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du B
   <title>{title} | NeoGTB</title>
 </head>
 <body class="min-h-screen bg-white text-dark-900 font-sans antialiased">
-  <header class="fixed top-0 w-full bg-white/95 backdrop-blur-lg border-b border-dark-100/50 z-50 transition-shadow duration-300" id="main-header">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+  <header class="fixed top-0 w-full z-50 transition-all duration-300" style="background: rgba(9,24,41,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(92,176,48,0.1);" id="main-header">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2">
-        <span class="text-2xl font-heading font-extrabold text-primary-600">Néo<span class="text-gradient">GTB</span></span>
+        <span class="text-2xl font-heading font-extrabold text-white">Néo<span class="text-gradient">GTB</span></span>
       </a>
 
       <!-- Desktop Nav -->
       <div class="hidden lg:flex items-center gap-7">
-        <a href="/" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">Accueil<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
-        <a href="/gtb" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">GTB<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
-        <a href="/gtc" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">GTC<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
-        <a href="/solutions" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">Solutions<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
-        <a href="/comparateur" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">Comparateur<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
-        <a href="/positionnement" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">Notre approche<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
-        <a href="/blog" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">Blog<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
-        <a href="/generateur-cee" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">CEE<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
-        <a href="/audit" class="btn-cta inline-flex items-center gap-2 px-5 py-2.5 text-sm">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        <a href="/" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">Accueil</a>
+        <a href="/gtb" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">GTB</a>
+        <a href="/gtc" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">GTC</a>
+        <a href="/solutions" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">Solutions</a>
+        <a href="/comparateur" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">Comparateur</a>
+        <a href="/positionnement" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">Notre approche</a>
+        <a href="/blog" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">Blog</a>
+        <a href="/generateur-cee" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">CEE</a>
+        <a href="/audit" class="btn-cta inline-flex items-center gap-2 px-6 py-2.5 text-sm tracking-wide">
           Diagnostic gratuit
         </a>
-        <a href="/contact" class="text-sm font-medium text-dark-600 hover:text-primary-600 transition-colors relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all group-hover:w-full"></span></a>
+        <a href="/contact" class="text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-200">Contact</a>
       </div>
 
       <!-- Mobile Menu Button -->
       <div class="lg:hidden" x-data="{ open: false }">
-        <button @click="open = !open" class="p-2 text-dark-600 hover:text-primary-600 transition-colors">
+        <button @click="open = !open" class="p-2 text-white/80 hover:text-accent-400 transition-colors">
           <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -57,30 +56,29 @@ const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du B
         </button>
 
         <!-- Mobile Menu -->
-        <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="absolute top-18 left-0 w-full bg-white/98 backdrop-blur-lg border-b border-dark-100 shadow-xl">
+        <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="absolute top-20 left-0 w-full shadow-2xl" style="background: rgba(9,24,41,0.98); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(92,176,48,0.15);">
           <div class="flex flex-col p-5 gap-1">
-            <a href="/" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Accueil</a>
-            <a href="/gtb" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">GTB</a>
-            <a href="/gtc" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">GTC</a>
-            <a href="/solutions" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Solutions</a>
-            <a href="/comparateur" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Comparateur</a>
-            <a href="/positionnement" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Notre approche</a>
-            <a href="/blog" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Blog</a>
-            <a href="/generateur-cee" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Générateur CEE</a>
-            <div class="pt-2 mt-2 border-t border-dark-100">
-              <a href="/audit" class="btn-cta inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm w-full">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            <a href="/" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all">Accueil</a>
+            <a href="/gtb" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all">GTB</a>
+            <a href="/gtc" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all">GTC</a>
+            <a href="/solutions" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all">Solutions</a>
+            <a href="/comparateur" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all">Comparateur</a>
+            <a href="/positionnement" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all">Notre approche</a>
+            <a href="/blog" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all">Blog</a>
+            <a href="/generateur-cee" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all">Générateur CEE</a>
+            <div class="pt-3 mt-2 border-t border-white/10">
+              <a href="/audit" class="btn-cta inline-flex items-center justify-center gap-2 px-5 py-3 text-sm w-full tracking-wide">
                 Diagnostic gratuit
               </a>
             </div>
-            <a href="/contact" class="text-sm font-medium text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all mt-1">Contact</a>
+            <a href="/contact" class="text-sm font-medium text-white/70 hover:text-accent-400 hover:bg-white/5 rounded-lg px-3 py-2.5 transition-all mt-1">Contact</a>
           </div>
         </div>
       </div>
     </nav>
   </header>
 
-  <main class="pt-18">
+  <main class="pt-20">
     <slot />
   </main>
 

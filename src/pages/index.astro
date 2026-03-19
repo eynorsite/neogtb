@@ -5,68 +5,58 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Tiers de confiance indépendant GTB" description="NeoGTB : le tiers de confiance indépendant de la GTB en France. Nous ne vendons rien, nous vous aidons à comprendre, comparer et décider en toute objectivité. Diagnostic gratuit, comparateur objectif, veille réglementaire.">
 
   <!-- ==================== HERO ==================== -->
-  <section class="relative overflow-hidden min-h-[92vh] flex items-center" style="background: linear-gradient(135deg, #091829 0%, #0F2640 40%, #1B3A5C 100%);">
+  <section class="relative overflow-hidden min-h-screen flex items-center" style="background: linear-gradient(160deg, #040D18 0%, #091829 30%, #0F2640 60%, #1B3A5C 100%);">
     <!-- Animated background elements -->
     <div class="absolute inset-0">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-accent-500/10 rounded-full blur-3xl animate-float"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/8 rounded-full blur-3xl animate-float-slow"></div>
-      <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-accent-500/5 rounded-full blur-3xl"></div>
-      <!-- Circuit grid pattern overlay -->
-      <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 48px 48px;"></div>
+      <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent-500/8 rounded-full blur-[120px] animate-float"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-500/6 rounded-full blur-[100px] animate-float-slow"></div>
+      <!-- Circuit grid pattern -->
+      <div class="absolute inset-0 opacity-[0.035]" style="background-image: linear-gradient(rgba(92,176,48,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(92,176,48,0.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
+      <!-- Gradient overlay bottom -->
+      <div class="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 w-full text-white">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Left: Text content -->
-        <div>
-          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-accent-500/15 text-accent-300 border border-accent-500/25 mb-6 backdrop-blur-sm">
-            <span class="w-2 h-2 bg-accent-400 rounded-full animate-pulse"></span>
-            Tiers de confiance indépendant
-          </span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-[1.1]">
-            Le <span class="text-gradient">tiers de confiance</span> indépendant de la <span class="text-gradient">GTB</span> en France
-          </h1>
-          <p class="mt-6 text-lg md:text-xl text-dark-300 max-w-xl leading-relaxed">
-            Nous ne vendons rien. Nous ne représentons aucune marque. Nous vous aidons à <strong class="text-white font-semibold">comprendre, comparer et décider</strong> en toute objectivité.
-          </p>
-          <div class="mt-8 flex flex-col sm:flex-row gap-4">
-            <a href="/audit" class="btn-cta inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-              Diagnostiquer mon bâtiment
-            </a>
-            <a href="/comparateur" class="btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              Comparer les technologies
-            </a>
-          </div>
-          <!-- Trust badges -->
-          <div class="mt-10 flex items-center gap-6 sm:gap-8 text-sm">
-            <div class="flex items-center gap-2 text-dark-300">
-              <div class="w-9 h-9 rounded-lg bg-accent-500/15 flex items-center justify-center border border-accent-500/20">
-                <svg class="w-4 h-4 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-              </div>
-              <span>Indépendant</span>
-            </div>
-            <div class="flex items-center gap-2 text-dark-300">
-              <div class="w-9 h-9 rounded-lg bg-cyan-500/15 flex items-center justify-center border border-cyan-500/20">
-                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
-              </div>
-              <span>Objectif</span>
-            </div>
-            <div class="flex items-center gap-2 text-dark-300">
-              <div class="w-9 h-9 rounded-lg bg-accent-500/15 flex items-center justify-center border border-accent-500/20">
-                <svg class="w-4 h-4 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <span>Gratuit</span>
-            </div>
-          </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 w-full text-white">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-accent-500/10 text-accent-400 border border-accent-500/20 mb-8 backdrop-blur-sm">
+          <span class="w-2 h-2 bg-accent-400 rounded-full animate-pulse"></span>
+          Tiers de confiance indépendant
+        </span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold leading-[1.05] tracking-tight">
+          Le <span class="text-gradient">tiers de confiance</span><br class="hidden sm:block" /> de la <span class="text-gradient">GTB</span> en France
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
+          Nous ne vendons rien. Nous ne représentons aucune marque. Nous vous aidons à <strong class="text-white font-semibold">comprendre, comparer et décider</strong> en toute objectivité.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/audit" class="btn-cta inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base tracking-wide">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            Diagnostiquer mon bâtiment
+          </a>
+          <a href="/comparateur" class="btn-outline inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base tracking-wide">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            Comparer les technologies
+          </a>
         </div>
-
-        <!-- Right: Hero Image -->
-        <div class="hidden lg:block relative">
-          <div class="relative w-full max-w-lg mx-auto">
-            <div class="absolute inset-0 bg-gradient-to-t from-accent-500/15 to-transparent rounded-3xl blur-2xl"></div>
-            <img src="/images/hero-building.png" alt="Bâtiment intelligent avec GTB — supervision, capteurs IoT et tableau de bord énergétique" class="w-full relative z-10 drop-shadow-2xl rounded-2xl animate-float-slow" />
+        <!-- Trust badges -->
+        <div class="mt-14 flex items-center justify-center gap-8 sm:gap-12 text-sm">
+          <div class="flex items-center gap-2.5 text-white/50">
+            <div class="w-10 h-10 rounded-xl bg-accent-500/10 flex items-center justify-center border border-accent-500/15">
+              <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <span class="font-medium">Indépendant</span>
+          </div>
+          <div class="flex items-center gap-2.5 text-white/50">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/15">
+              <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+            </div>
+            <span class="font-medium">Objectif</span>
+          </div>
+          <div class="flex items-center gap-2.5 text-white/50">
+            <div class="w-10 h-10 rounded-xl bg-accent-500/10 flex items-center justify-center border border-accent-500/15">
+              <svg class="w-5 h-5 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <span class="font-medium">Gratuit</span>
           </div>
         </div>
       </div>
@@ -74,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- Diagonal separator hero → white -->
     <div class="absolute bottom-0 left-0 right-0">
-      <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" class="w-full h-16 md:h-20"><path d="M0 80V40L720 0L1440 40V80H0Z" fill="white"/></svg>
+      <svg viewBox="0 0 1440 100" fill="none" preserveAspectRatio="none" class="w-full h-16 md:h-24"><path d="M0 100V50L720 0L1440 50V100H0Z" fill="white"/></svg>
     </div>
   </section>
 
@@ -87,13 +77,12 @@ import Layout from '../layouts/Layout.astro';
         <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto">Trois outils exclusifs pour vous accompagner dans vos choix GTB, en toute indépendance.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-8">
         <!-- Card 1: Diagnostic -->
-        <a href="/audit" class="group relative p-8 bg-white rounded-2xl border border-dark-200 card-hover-glow overflow-hidden opacity-0 shadow-sm" :class="shown && 'animate-fade-in-up'" :style="shown && 'animation-delay: 0ms'">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-500 to-accent-400 rounded-t-2xl"></div>
-          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent-50 to-transparent rounded-bl-full opacity-60 group-hover:opacity-100 transition-opacity"></div>
+        <a href="/audit" class="group relative p-8 bg-white rounded-2xl border border-dark-100 overflow-hidden opacity-0 shadow-lg shadow-dark-200/50 hover:shadow-xl hover:shadow-accent-500/10 hover:-translate-y-2 transition-all duration-300" :class="shown && 'animate-fade-in-up'" :style="shown && 'animation-delay: 0ms'" style="border-left: 4px solid #5CB030;">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-accent-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="relative">
-            <div class="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-primary-500/20 group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300" style="background: linear-gradient(135deg, #5CB030, #2D8C3C); box-shadow: 0 8px 20px -4px rgba(92,176,48,0.3);">
               <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
             </div>
             <h3 class="text-xl font-heading font-bold text-dark-900 group-hover:text-primary-600 transition-colors">Diagnostic GTB</h3>
@@ -106,11 +95,10 @@ import Layout from '../layouts/Layout.astro';
         </a>
 
         <!-- Card 2: Comparateur -->
-        <a href="/comparateur" class="group relative p-8 bg-white rounded-2xl border border-dark-200 card-hover-glow overflow-hidden opacity-0 shadow-sm" :class="shown && 'animate-fade-in-up'" :style="shown && 'animation-delay: 150ms'">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-primary-500 rounded-t-2xl"></div>
-          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-cyan-50 to-transparent rounded-bl-full opacity-60 group-hover:opacity-100 transition-opacity"></div>
+        <a href="/comparateur" class="group relative p-8 bg-white rounded-2xl border border-dark-100 overflow-hidden opacity-0 shadow-lg shadow-dark-200/50 hover:shadow-xl hover:shadow-cyan-500/10 hover:-translate-y-2 transition-all duration-300" :class="shown && 'animate-fade-in-up'" :style="shown && 'animation-delay: 150ms'" style="border-left: 4px solid #0088BB;">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-cyan-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="relative">
-            <div class="w-14 h-14 bg-gradient-to-br from-accent-500 to-accent-700 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-accent-500/20 group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300" style="background: linear-gradient(135deg, #0088BB, #006d96); box-shadow: 0 8px 20px -4px rgba(0,136,187,0.3);">
               <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
             </div>
             <h3 class="text-xl font-heading font-bold text-dark-900 group-hover:text-accent-600 transition-colors">Comparateur objectif</h3>
@@ -123,11 +111,10 @@ import Layout from '../layouts/Layout.astro';
         </a>
 
         <!-- Card 3: Générateur CEE -->
-        <a href="/generateur-cee" class="group relative p-8 bg-white rounded-2xl border border-dark-200 card-hover-glow overflow-hidden opacity-0 shadow-sm" :class="shown && 'animate-fade-in-up'" :style="shown && 'animation-delay: 300ms'">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-t-2xl"></div>
-          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-yellow-50 to-transparent rounded-bl-full opacity-60 group-hover:opacity-100 transition-opacity"></div>
+        <a href="/generateur-cee" class="group relative p-8 bg-white rounded-2xl border border-dark-100 overflow-hidden opacity-0 shadow-lg shadow-dark-200/50 hover:shadow-xl hover:shadow-orange-500/10 hover:-translate-y-2 transition-all duration-300" :class="shown && 'animate-fade-in-up'" :style="shown && 'animation-delay: 300ms'" style="border-left: 4px solid #f59e0b;">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-yellow-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="relative">
-            <div class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-yellow-500/20 group-hover:scale-110 transition-transform">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300" style="background: linear-gradient(135deg, #f59e0b, #ea580c); box-shadow: 0 8px 20px -4px rgba(245,158,11,0.3);">
               <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
             <h3 class="text-xl font-heading font-bold text-dark-900 group-hover:text-orange-600 transition-colors">Générateur CEE</h3>
