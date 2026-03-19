@@ -1,7 +1,7 @@
 <x-filament-panels::page>
-    <div class="flex gap-6">
+    <div style="display: flex !important; gap: 24px;">
         {{-- Sidebar navigation --}}
-        <nav class="w-56 shrink-0 space-y-1">
+        <nav style="width: 220px; min-width: 220px; flex-shrink: 0;" class="space-y-1">
             @foreach($this->tabs as $key => $tab)
                 <button
                     wire:click="switchTab('{{ $key }}')"
@@ -17,7 +17,7 @@
         </nav>
 
         {{-- Main content --}}
-        <div class="min-w-0 flex-1">
+        <div style="flex: 1; min-width: 0;">
             <form wire:submit="save">
                 {{-- CONTACT --}}
                 @if($activeTab === 'contact')

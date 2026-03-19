@@ -136,15 +136,39 @@
     }
 
     /* ---------- FORM INPUTS ---------- */
-    .fi-input {
+    .fi-input,
+    .fi-input-wrp,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+        border: 1px solid #CBD5E1 !important;
         border-radius: 8px !important;
-        border-color: #E2E8F0 !important;
+        background-color: #ffffff !important;
         transition: all 0.15s ease !important;
     }
 
-    .fi-input:focus {
+    .fi-input:focus,
+    .fi-input-wrp:focus-within,
+    input:focus,
+    textarea:focus,
+    select:focus {
         border-color: var(--neogtb-primary) !important;
-        box-shadow: 0 0 0 2px rgba(15, 107, 175, 0.15) !important;
+        box-shadow: 0 0 0 3px rgba(15, 107, 175, 0.12) !important;
+        outline: none !important;
+    }
+
+    /* Ensure inputs inside Filament wrappers are visible */
+    .fi-fo-field-wrp input,
+    .fi-fo-field-wrp textarea,
+    .fi-fo-field-wrp select {
+        border: 1px solid #CBD5E1 !important;
+        padding: 0.5rem 0.75rem !important;
+        border-radius: 8px !important;
     }
 
     /* ---------- BADGES ---------- */
