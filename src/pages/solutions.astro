@@ -2,200 +2,337 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Solutions & Technologies" description="Découvrez les protocoles, technologies et solutions pour la gestion technique du bâtiment : BACnet, KNX, Modbus, LON, IoT et smart building.">
+<Layout title="Solutions & Technologies GTB" description="Protocoles BACnet, KNX, Modbus, LON, équipements pilotés, architecture type et cadre réglementaire de la gestion technique du bâtiment.">
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-dark-900 via-primary-900 to-dark-800 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary-500/20 text-primary-200 border border-primary-500/30 mb-6">
-          Technologies
-        </span>
-        <h1 class="text-4xl md:text-5xl font-heading font-extrabold leading-tight">
-          Solutions & <span class="text-accent-400">Technologies</span>
+  <!-- ==================== HERO ==================== -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
+      <div class="max-w-2xl">
+        <p class="eyebrow">Technologies</p>
+        <h1 class="text-[32px] md:text-[42px] font-medium text-dark-900 leading-[1.15]" style="letter-spacing: -0.5px;">
+          Solutions & technologies GTB
         </h1>
-        <p class="mt-6 text-lg text-dark-300 max-w-2xl">
-          Les protocoles de communication, capteurs, automates et logiciels qui composent un système GTB/GTC moderne.
+        <p class="mt-5 text-[15px] text-dark-500 max-w-xl" style="line-height: 1.7;">
+          Les protocoles de communication, capteurs, contrôleurs et superviseurs qui composent un système de gestion technique du bâtiment. Chaque couche répond à des normes précises et s'intègre dans une architecture ouverte et interopérable.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Protocoles -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Les protocoles de communication</h2>
-        <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto">
-          Les protocoles sont le langage commun entre les équipements. Voici les principaux standards utilisés en GTB.
+  <div class="sep"></div>
+
+  <!-- ==================== PROTOCOLES DE COMMUNICATION ==================== -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
+      <div class="mb-10">
+        <p class="eyebrow">Fondations</p>
+        <h2 class="text-[26px] md:text-[32px] font-medium text-dark-900 leading-[1.2]" style="letter-spacing: -0.3px;">
+          Protocoles de communication
+        </h2>
+        <p class="mt-3 text-[14px] text-dark-500 max-w-xl" style="line-height: 1.7;">
+          Le protocole est le langage commun entre équipements. Le choix du protocole conditionne l'interopérabilité, la maintenabilité et la pérennité de l'installation.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-5">
+
         <!-- BACnet -->
-        <div class="p-8 bg-white rounded-2xl border border-dark-200 hover:shadow-lg transition-shadow">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-              <span class="text-blue-600 font-bold text-sm">BAC</span>
-            </div>
-            <h3 class="text-xl font-heading font-bold text-dark-900">BACnet</h3>
+        <div class="card-hover rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="tag tag-technique">ISO 16484-5</span>
           </div>
-          <p class="text-dark-600 text-sm leading-relaxed">
-            <strong>Building Automation and Control Networks</strong> — Le protocole standard international (ISO 16484-5) pour la GTB. Indépendant des constructeurs, il permet l'interopérabilité entre équipements de marques différentes.
+          <h3 class="text-[18px] font-medium text-dark-900" style="letter-spacing: -0.3px;">BACnet</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Standard international de la GTB, maintenu par l'ASHRAE. Deux déclinaisons principales : <strong class="font-medium text-dark-700">BACnet IP</strong> pour les réseaux Ethernet et <strong class="font-medium text-dark-700">BACnet MS/TP</strong> pour les bus RS-485 en terrain. Le protocole définit un modèle objet unifié (points, programmes, calendriers) qui permet l'interopérabilité entre équipements de marques différentes sans passerelle propriétaire.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-medium">Standard ISO</span>
-            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-medium">Interopérable</span>
-            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-medium">IP / MSTP</span>
+            <span class="tag tag-technique">Interopérabilité multi-marques</span>
+            <span class="tag tag-technique">IP / MS/TP</span>
+            <span class="tag tag-technique">ASHRAE 135</span>
           </div>
         </div>
 
         <!-- KNX -->
-        <div class="p-8 bg-white rounded-2xl border border-dark-200 hover:shadow-lg transition-shadow">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-              <span class="text-green-600 font-bold text-sm">KNX</span>
-            </div>
-            <h3 class="text-xl font-heading font-bold text-dark-900">KNX</h3>
+        <div class="card-hover rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="tag tag-reglementation">EN 50090 · ISO/IEC 14543</span>
           </div>
-          <p class="text-dark-600 text-sm leading-relaxed">
-            Protocole européen standardisé (EN 50090, ISO/IEC 14543) pour l'automatisation du bâtiment. Très utilisé pour l'éclairage, les stores et le CVC résidentiel et tertiaire.
+          <h3 class="text-[18px] font-medium text-dark-900" style="letter-spacing: -0.3px;">KNX</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Standard européen pour l'automatisation du bâtiment. Le médium principal est le <strong class="font-medium text-dark-700">bus filaire TP</strong> (twisted pair), un câble dédié qui alimente et transporte les données. Plus de 500 fabricants certifiés par l'Association KNX. Particulièrement adapté à l'éclairage, la gestion des stores et le CVC en résidentiel et petit tertiaire, grâce à une programmation par l'outil ETS.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium">Standard européen</span>
-            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium">Bus filaire</span>
-            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium">500+ fabricants</span>
+            <span class="tag tag-reglementation">500+ fabricants</span>
+            <span class="tag tag-reglementation">Bus TP</span>
+            <span class="tag tag-reglementation">Éclairage · Stores · CVC</span>
           </div>
         </div>
 
         <!-- Modbus -->
-        <div class="p-8 bg-white rounded-2xl border border-dark-200 hover:shadow-lg transition-shadow">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-              <span class="text-orange-600 font-bold text-sm">MOD</span>
-            </div>
-            <h3 class="text-xl font-heading font-bold text-dark-900">Modbus</h3>
+        <div class="card-hover rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="tag tag-protocoles">RTU / TCP</span>
           </div>
-          <p class="text-dark-600 text-sm leading-relaxed">
-            Protocole industriel simple et robuste, très répandu. Existe en version série (RTU/ASCII) et réseau (TCP/IP). Idéal pour les compteurs d'énergie et les équipements industriels.
+          <h3 class="text-[18px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Modbus</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Protocole industriel créé par Modicon en 1979, devenu un standard de fait. Simple et robuste, il existe en deux déclinaisons : <strong class="font-medium text-dark-700">Modbus RTU</strong> sur liaison série RS-485 et <strong class="font-medium text-dark-700">Modbus TCP</strong> sur Ethernet. Architecture maître-esclave. Dominant pour le comptage énergie (compteurs électriques, calories, eau) et les sous-stations techniques. Son registre d'adresses plat le rend facile à intégrer dans tout superviseur GTB.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-orange-50 text-orange-700 text-xs rounded-full font-medium">Industriel</span>
-            <span class="px-2 py-1 bg-orange-50 text-orange-700 text-xs rounded-full font-medium">Simple</span>
-            <span class="px-2 py-1 bg-orange-50 text-orange-700 text-xs rounded-full font-medium">RS485 / TCP</span>
+            <span class="tag tag-protocoles">Industriel · 1979</span>
+            <span class="tag tag-protocoles">RS-485 / Ethernet</span>
+            <span class="tag tag-protocoles">Comptage énergie</span>
           </div>
         </div>
 
         <!-- LON -->
-        <div class="p-8 bg-white rounded-2xl border border-dark-200 hover:shadow-lg transition-shadow">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-              <span class="text-purple-600 font-bold text-sm">LON</span>
-            </div>
-            <h3 class="text-xl font-heading font-bold text-dark-900">LonWorks</h3>
+        <div class="card-hover rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="tag tag-gtb">EN 14908</span>
           </div>
-          <p class="text-dark-600 text-sm leading-relaxed">
-            Réseau de contrôle distribué conçu par Echelon. Chaque nœud possède sa propre intelligence. Utilisé dans de grandes installations tertiaires et industrielles.
+          <h3 class="text-[18px] font-medium text-dark-900" style="letter-spacing: -0.3px;">LON</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Local Operating Network, conçu par Echelon. Architecture <strong class="font-medium text-dark-700">peer-to-peer</strong> : chaque noeud embarque sa propre intelligence et communique directement avec les autres sans serveur central. Historiquement très utilisé en GTB tertiaire dans les années 2000, notamment pour les grandes installations multi-lots. En déclin face à BACnet IP, mais encore largement présent dans le parc existant. La migration LON vers BACnet est un enjeu courant de rénovation.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full font-medium">Distribué</span>
-            <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full font-medium">Intelligence locale</span>
-            <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full font-medium">EN 14908</span>
+            <span class="tag tag-gtb">Peer-to-peer</span>
+            <span class="tag tag-gtb">Parc existant</span>
+            <span class="tag tag-gtb">Migration BACnet</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Capteurs & Actionneurs -->
-  <section class="py-20 bg-dark-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Capteurs & Actionneurs</h2>
-        <p class="mt-4 text-lg text-dark-500">Les organes sensoriels et effecteurs du bâtiment intelligent</p>
+  <div class="sep"></div>
+
+  <!-- ==================== ÉQUIPEMENTS PILOTÉS ==================== -->
+  <section class="py-12 md:py-16 bg-dark-50">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
+      <div class="mb-10">
+        <p class="eyebrow">Périmètre</p>
+        <h2 class="text-[26px] md:text-[32px] font-medium text-dark-900 leading-[1.2]" style="letter-spacing: -0.3px;">
+          Équipements pilotés
+        </h2>
+        <p class="mt-3 text-[14px] text-dark-500 max-w-xl" style="line-height: 1.7;">
+          La GTB supervise et régule l'ensemble des lots techniques d'un bâtiment. Voici les six domaines principaux couverts par un système de gestion technique.
+        </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white p-6 rounded-xl border border-dark-200 text-center">
-          <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-dark-900 text-sm">Sondes de température</h3>
-          <p class="mt-2 text-xs text-dark-500">Intérieure, extérieure, conduit, immersion</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- CVC -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-dark-400 uppercase tracking-wider mb-2">Lot 01</p>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">CVC — Chauffage, ventilation, climatisation</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Régulation des centrales de traitement d'air, chaudières, groupes froids, ventilo-convecteurs, pompes et vannes. Le lot CVC représente en moyenne 50 à 60 % de la consommation énergétique d'un bâtiment tertiaire.
+          </p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl border border-dark-200 text-center">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-dark-900 text-sm">Détecteurs de présence</h3>
-          <p class="mt-2 text-xs text-dark-500">PIR, ultrasons, double technologie</p>
+        <!-- Éclairage -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-dark-400 uppercase tracking-wider mb-2">Lot 02</p>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Éclairage</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Gestion des circuits d'éclairage par zones, horloges, détection de présence et mesure de luminosité (luxmètres). Pilotage DALI ou 0-10V. Gradation automatique selon l'apport de lumière naturelle.
+          </p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl border border-dark-200 text-center">
-          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-dark-900 text-sm">Compteurs d'énergie</h3>
-          <p class="mt-2 text-xs text-dark-500">Électricité, gaz, eau, calories</p>
+        <!-- Stores / BSO -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-dark-400 uppercase tracking-wider mb-2">Lot 03</p>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Stores et BSO</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Brise-soleil orientables, stores intérieurs et extérieurs. Pilotage selon l'ensoleillement, la température intérieure et les scénarios d'occupation. Coordination avec le lot éclairage pour optimiser le confort visuel.
+          </p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl border border-dark-200 text-center">
-          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-dark-900 text-sm">Vannes & Actionneurs</h3>
-          <p class="mt-2 text-xs text-dark-500">Vannes 2/3 voies, registres, variateurs</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tendances -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Tendances & Innovations</h2>
-        <p class="mt-4 text-lg text-dark-500">Le smart building de demain se construit aujourd'hui</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-8 bg-gradient-to-br from-primary-50 to-white rounded-2xl border border-primary-200">
-          <h3 class="text-xl font-heading font-bold text-dark-900">IoT & Capteurs connectés</h3>
-          <p class="mt-3 text-dark-600 text-sm">Les capteurs sans fil (LoRaWAN, Zigbee, EnOcean) révolutionnent l'installation et permettent un maillage dense à moindre coût.</p>
+        <!-- Contrôle d'accès -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-dark-400 uppercase tracking-wider mb-2">Lot 04</p>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Contrôle d'accès</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Gestion des lecteurs de badges, interphones, portiques et issues de secours. Intégration avec la GTB pour adapter la régulation CVC et éclairage en fonction de l'occupation réelle des zones.
+          </p>
         </div>
 
-        <div class="p-8 bg-gradient-to-br from-accent-50 to-white rounded-2xl border border-accent-200">
-          <h3 class="text-xl font-heading font-bold text-dark-900">Intelligence Artificielle</h3>
-          <p class="mt-3 text-dark-600 text-sm">L'IA optimise la régulation en temps réel, prédit les pannes et adapte le fonctionnement du bâtiment aux usages réels.</p>
+        <!-- Comptage énergie -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-dark-400 uppercase tracking-wider mb-2">Lot 05</p>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Comptage énergie</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Sous-comptage électrique, thermique (calories/frigories), gaz et eau. Remontée des index en temps réel vers le superviseur. Base du suivi énergétique exigé par le décret tertiaire (OPERAT).
+          </p>
         </div>
 
-        <div class="p-8 bg-gradient-to-br from-purple-50 to-white rounded-2xl border border-purple-200">
-          <h3 class="text-xl font-heading font-bold text-dark-900">Jumeaux numériques</h3>
-          <p class="mt-3 text-dark-600 text-sm">La réplique virtuelle du bâtiment permet de simuler des scénarios, optimiser les systèmes et former les équipes techniques.</p>
+        <!-- Sécurité incendie -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-dark-400 uppercase tracking-wider mb-2">Lot 06</p>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Sécurité incendie</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Report des alarmes SSI (Système de Sécurité Incendie) vers le superviseur GTB. Commandes de désenfumage, coupures CVC sur détection, asservissements réglementaires. Le SSI conserve sa propre autonomie conformément aux normes NF S 61-932.
+          </p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-heading font-bold">Quelle solution pour votre bâtiment ?</h2>
-      <p class="mt-4 text-lg text-primary-100">Notre audit gratuit analyse vos besoins et vous recommande les technologies adaptées.</p>
-      <a href="/audit" class="mt-8 inline-flex items-center px-8 py-4 bg-white text-primary-700 font-bold rounded-lg hover:bg-primary-50 transition-colors text-lg">
-        Lancer l'audit gratuit
-      </a>
+  <div class="sep"></div>
+
+  <!-- ==================== ARCHITECTURE TYPE ==================== -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
+      <div class="mb-10">
+        <p class="eyebrow">Structure</p>
+        <h2 class="text-[26px] md:text-[32px] font-medium text-dark-900 leading-[1.2]" style="letter-spacing: -0.3px;">
+          Architecture type d'un système GTB
+        </h2>
+        <p class="mt-3 text-[14px] text-dark-500 max-w-xl" style="line-height: 1.7;">
+          Un système GTB s'organise en couches successives, du terrain jusqu'à l'interface utilisateur. Chaque couche a un rôle précis et communique avec les couches adjacentes via des protocoles normalisés.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-4">
+
+        <!-- Couche 1 -->
+        <div class="card-hover rounded-xl p-5 text-center" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-accent-700 uppercase tracking-wider mb-3">Couche 1</p>
+          <h3 class="text-[15px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Capteurs & actionneurs</h3>
+          <p class="mt-2 text-[13px] text-dark-500" style="line-height: 1.6;">
+            Sondes de température, détecteurs, vannes, registres, variateurs. Points physiques du terrain.
+          </p>
+        </div>
+
+        <!-- Couche 2 -->
+        <div class="card-hover rounded-xl p-5 text-center" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-accent-700 uppercase tracking-wider mb-3">Couche 2</p>
+          <h3 class="text-[15px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Automates & contrôleurs</h3>
+          <p class="mt-2 text-[13px] text-dark-500" style="line-height: 1.6;">
+            Contrôleurs DDC (Direct Digital Control). Exécutent la régulation en autonomie locale. Programmes horaires, boucles PID, séquences.
+          </p>
+        </div>
+
+        <!-- Couche 3 -->
+        <div class="card-hover rounded-xl p-5 text-center" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-accent-700 uppercase tracking-wider mb-3">Couche 3</p>
+          <h3 class="text-[15px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Réseau</h3>
+          <p class="mt-2 text-[13px] text-dark-500" style="line-height: 1.6;">
+            IP (Ethernet, fibre) pour le backbone. Bus terrain (RS-485, TP) pour les boucles locales. Passerelles inter-protocoles si nécessaire.
+          </p>
+        </div>
+
+        <!-- Couche 4 -->
+        <div class="card-hover rounded-xl p-5 text-center" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-accent-700 uppercase tracking-wider mb-3">Couche 4</p>
+          <h3 class="text-[15px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Superviseur GTB</h3>
+          <p class="mt-2 text-[13px] text-dark-500" style="line-height: 1.6;">
+            Serveur central qui agrège les données, historise, génère les alarmes et fournit les synoptiques. Interface web ou client lourd.
+          </p>
+        </div>
+
+        <!-- Couche 5 -->
+        <div class="card-hover rounded-xl p-5 text-center" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <p class="text-[11px] font-medium text-accent-700 uppercase tracking-wider mb-3">Couche 5</p>
+          <h3 class="text-[15px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Interface utilisateur</h3>
+          <p class="mt-2 text-[13px] text-dark-500" style="line-height: 1.6;">
+            Tableaux de bord, rapports, alertes. Accessible depuis un navigateur ou une application mobile. Exploitation quotidienne et pilotage énergétique.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Callout -->
+      <div class="callout mt-8">
+        <p class="callout-label">Principe clé</p>
+        <p>Chaque couche doit pouvoir fonctionner de manière autonome en cas de défaillance de la couche supérieure. Les automates continuent de réguler même si le superviseur est hors service.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ==================== CADRE RÉGLEMENTAIRE ==================== -->
+  <section class="py-12 md:py-16 bg-dark-50">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
+      <div class="mb-10">
+        <p class="eyebrow">Réglementation</p>
+        <h2 class="text-[26px] md:text-[32px] font-medium text-dark-900 leading-[1.2]" style="letter-spacing: -0.3px;">
+          Cadre réglementaire
+        </h2>
+        <p class="mt-3 text-[14px] text-dark-500 max-w-xl" style="line-height: 1.7;">
+          Plusieurs textes réglementaires français et européens encadrent ou encouragent le déploiement de systèmes GTB dans les bâtiments tertiaires.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+
+        <!-- Décret BACS -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-reglementation">Obligatoire</span>
+          </div>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Décret BACS</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Transposition de la directive européenne EPBD (2018/844). Impose l'installation d'un système d'automatisation et de contrôle (BACS) dans les bâtiments tertiaires non résidentiels dont la puissance CVC dépasse 290 kW (échéance 2025) puis 70 kW (échéance 2027). Le système doit atteindre au minimum la classe B de la norme EN 15232.
+          </p>
+        </div>
+
+        <!-- Décret tertiaire -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-reglementation">Obligatoire</span>
+          </div>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Décret tertiaire (Éco Énergie Tertiaire)</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Objectifs de réduction des consommations d'énergie finale des bâtiments tertiaires de plus de 1 000 m² : -40 % en 2030, -50 % en 2040, -60 % en 2050 par rapport à une année de référence (choisie entre 2010 et 2019). La GTB est le levier principal pour atteindre ces objectifs via le suivi, la régulation et l'optimisation en continu. Déclaration annuelle sur la plateforme OPERAT de l'ADEME.
+          </p>
+        </div>
+
+        <!-- RE2020 -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-reglementation">Construction neuve</span>
+          </div>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">RE2020</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Réglementation environnementale applicable aux constructions neuves depuis le 1er janvier 2022. Elle renforce les exigences sur le Bbio (besoin bioclimatique), le Cep (consommation d'énergie primaire) et introduit l'indicateur carbone (Ic). Une GTB performante contribue à respecter les seuils Cep en optimisant les consommations réelles en exploitation.
+          </p>
+        </div>
+
+        <!-- EN 15232 -->
+        <div class="card-hover rounded-xl bg-white p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="tag tag-technique">Norme européenne</span>
+          </div>
+          <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">EN 15232 (ISO 52120)</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Norme de référence qui définit quatre classes d'efficacité énergétique pour les systèmes d'automatisation du bâtiment : classe D (non performant), C (standard), B (avancé) et A (haute performance). Chaque classe correspond à un ensemble de fonctions de régulation, supervision et gestion technique. Le décret BACS impose la classe B minimum.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-10 text-center">
+      <h2 class="text-[24px] md:text-[28px] font-medium text-dark-900" style="letter-spacing: -0.3px;">
+        Comparer les solutions du marché
+      </h2>
+      <p class="mt-3 text-[14px] text-dark-500 max-w-md mx-auto" style="line-height: 1.7;">
+        Notre comparateur indépendant analyse les superviseurs GTB, protocoles et intégrateurs selon des critères objectifs.
+      </p>
+      <div class="mt-6">
+        <a href="/comparateur" class="btn-primary">
+          Accéder au comparateur
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 

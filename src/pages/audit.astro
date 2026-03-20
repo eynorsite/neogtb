@@ -2,49 +2,47 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Audit GTB Gratuit" description="Évaluez gratuitement la maturité GTB de votre bâtiment. Répondez à quelques questions et recevez un diagnostic personnalisé avec des recommandations.">
+<Layout title="Audit GTB Gratuit" description="Evaluez gratuitement la maturite GTB de votre batiment selon la norme EN 15232. Repondez a quelques questions et recevez un diagnostic personnalise avec des recommandations conformes aux exigences reglementaires.">
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-primary-900 via-primary-800 to-dark-900 text-white py-16">
+  <section class="pt-20 pb-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/20 text-accent-300 border border-accent-500/30 mb-6">
-        Gratuit et sans engagement
-      </span>
-      <h1 class="text-4xl md:text-5xl font-heading font-extrabold">Audit GTB de votre bâtiment</h1>
-      <p class="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
-        Répondez à 10 questions pour évaluer la maturité de la gestion technique de votre bâtiment et recevoir des recommandations personnalisées.
+      <span class="eyebrow">Diagnostic gratuit</span>
+      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px;">Diagnostic GTB de votre batiment</h1>
+      <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto" style="font-weight: 400;">
+        Evaluez en 8 questions la maturite de votre gestion technique selon le referentiel EN 15232 et les classes de performance A a D. Recevez un diagnostic et des recommandations personnalisees.
       </p>
     </div>
   </section>
 
   <!-- Audit Wizard -->
-  <section class="py-20">
+  <section class="pb-20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <div x-data="auditWizard()">
 
         <!-- Progress Bar -->
         <div class="mb-8">
-          <div class="flex justify-between text-sm text-dark-500 mb-2">
+          <div class="flex justify-between text-sm text-dark-500 mb-2" style="font-weight: 400;">
             <span>Question <span x-text="currentStep"></span> / <span x-text="totalSteps"></span></span>
             <span x-text="Math.round((currentStep - 1) / totalSteps * 100) + '%'"></span>
           </div>
-          <div class="w-full bg-dark-200 rounded-full h-2">
-            <div class="bg-primary-600 h-2 rounded-full transition-all duration-500" :style="'width: ' + ((currentStep - 1) / totalSteps * 100) + '%'"></div>
+          <div class="w-full rounded-full h-1" style="background: rgba(0,0,0,0.06);">
+            <div class="bg-accent-500 h-1 rounded-full" style="transition: width 0.15s ease;" :style="'width: ' + ((currentStep - 1) / totalSteps * 100) + '%'"></div>
           </div>
         </div>
 
         <!-- Questions -->
-        <div x-show="!showResults" class="bg-white rounded-2xl border border-dark-200 p-8">
+        <div x-show="!showResults" class="bg-white rounded-xl p-8" style="border: 0.5px solid rgba(0,0,0,0.08);">
 
           <!-- Question 1 -->
           <div x-show="currentStep === 1">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Quel type de bâtiment gérez-vous ?</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quel type de batiment gerez-vous ? La classification EN 15232 varie selon l'usage.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[0].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[0] === option.value ? 'border-primary-500 bg-primary-50' : ''">
-                  <input type="radio" name="q1" :value="option.value" x-model="answers[0]" class="text-primary-600" />
-                  <span class="text-dark-700" x-text="option.label"></span>
+                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[0] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
+                  <input type="radio" name="q1" :value="option.value" x-model="answers[0]" class="text-accent-500" />
+                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
                 </label>
               </template>
             </div>
@@ -52,12 +50,12 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 2 -->
           <div x-show="currentStep === 2">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Quelle est la surface de votre bâtiment ?</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quelle est la surface de votre batiment ? Le decret BACS impose une GTB pour les batiments tertiaires de plus de 290 kW.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[1].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[1] === option.value ? 'border-primary-500 bg-primary-50' : ''">
-                  <input type="radio" name="q2" :value="option.value" x-model="answers[1]" class="text-primary-600" />
-                  <span class="text-dark-700" x-text="option.label"></span>
+                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[1] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
+                  <input type="radio" name="q2" :value="option.value" x-model="answers[1]" class="text-accent-500" />
+                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
                 </label>
               </template>
             </div>
@@ -65,12 +63,12 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 3 -->
           <div x-show="currentStep === 3">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Disposez-vous d'un système de régulation CVC ?</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Disposez-vous d'un systeme de regulation CVC ? La regulation est un critere central de la norme EN 15232 pour le classement energetique.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[2].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[2] === option.value ? 'border-primary-500 bg-primary-50' : ''">
-                  <input type="radio" name="q3" :value="option.value" x-model="answers[2]" class="text-primary-600" />
-                  <span class="text-dark-700" x-text="option.label"></span>
+                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[2] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
+                  <input type="radio" name="q3" :value="option.value" x-model="answers[2]" class="text-accent-500" />
+                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
                 </label>
               </template>
             </div>
@@ -78,12 +76,12 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 4 -->
           <div x-show="currentStep === 4">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Comment est géré l'éclairage ?</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Comment est gere l'eclairage ? La norme EN 12464-1 definit les niveaux d'eclairement requis selon les usages.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[3].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[3] === option.value ? 'border-primary-500 bg-primary-50' : ''">
-                  <input type="radio" name="q4" :value="option.value" x-model="answers[3]" class="text-primary-600" />
-                  <span class="text-dark-700" x-text="option.label"></span>
+                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[3] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
+                  <input type="radio" name="q4" :value="option.value" x-model="answers[3]" class="text-accent-500" />
+                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
                 </label>
               </template>
             </div>
@@ -91,12 +89,12 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 5 -->
           <div x-show="currentStep === 5">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Avez-vous un suivi des consommations énergétiques ?</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Avez-vous un suivi des consommations energetiques ? Le decret tertiaire exige une reduction progressive des consommations avec reporting sur OPERAT.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[4].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[4] === option.value ? 'border-primary-500 bg-primary-50' : ''">
-                  <input type="radio" name="q5" :value="option.value" x-model="answers[4]" class="text-primary-600" />
-                  <span class="text-dark-700" x-text="option.label"></span>
+                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[4] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
+                  <input type="radio" name="q5" :value="option.value" x-model="answers[4]" class="text-accent-500" />
+                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
                 </label>
               </template>
             </div>
@@ -104,12 +102,12 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 6 -->
           <div x-show="currentStep === 6">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Disposez-vous d'une supervision centralisée ?</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Disposez-vous d'une supervision centralisee ? L'integration multi-lots est un marqueur cle des classes A et B de la norme EN 15232.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[5].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[5] === option.value ? 'border-primary-500 bg-primary-50' : ''">
-                  <input type="radio" name="q6" :value="option.value" x-model="answers[5]" class="text-primary-600" />
-                  <span class="text-dark-700" x-text="option.label"></span>
+                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[5] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
+                  <input type="radio" name="q6" :value="option.value" x-model="answers[5]" class="text-accent-500" />
+                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
                 </label>
               </template>
             </div>
@@ -117,12 +115,12 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 7 -->
           <div x-show="currentStep === 7">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Comment gérez-vous la maintenance ?</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Comment gerez-vous la maintenance ? La norme NF EN 13306 distingue quatre niveaux de maturite en maintenance.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[6].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[6] === option.value ? 'border-primary-500 bg-primary-50' : ''">
-                  <input type="radio" name="q7" :value="option.value" x-model="answers[6]" class="text-primary-600" />
-                  <span class="text-dark-700" x-text="option.label"></span>
+                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[6] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
+                  <input type="radio" name="q7" :value="option.value" x-model="answers[6]" class="text-accent-500" />
+                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
                 </label>
               </template>
             </div>
@@ -130,12 +128,12 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 8 -->
           <div x-show="currentStep === 8">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Quel est votre niveau de conformité réglementaire ?</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quel est votre niveau de conformite reglementaire ? Le decret BACS (2020) et le decret tertiaire imposent des obligations croissantes.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[7].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-lg border border-dark-200 cursor-pointer hover:border-primary-300 transition-colors" :class="answers[7] === option.value ? 'border-primary-500 bg-primary-50' : ''">
-                  <input type="radio" name="q8" :value="option.value" x-model="answers[7]" class="text-primary-600" />
-                  <span class="text-dark-700" x-text="option.label"></span>
+                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[7] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
+                  <input type="radio" name="q8" :value="option.value" x-model="answers[7]" class="text-accent-500" />
+                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
                 </label>
               </template>
             </div>
@@ -143,50 +141,50 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Navigation -->
           <div class="flex justify-between mt-8">
-            <button x-show="currentStep > 1" @click="currentStep--" class="px-6 py-2 text-dark-600 font-medium rounded-lg border border-dark-200 hover:bg-dark-50 transition-colors">
-              Précédent
+            <button x-show="currentStep > 1" @click="currentStep--" class="px-6 py-2 text-dark-600 font-medium rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: background 0.15s ease;">
+              Precedent
             </button>
             <div x-show="currentStep === 1"></div>
-            <button x-show="currentStep < totalSteps" @click="if(answers[currentStep-1]) currentStep++" :class="answers[currentStep-1] ? 'bg-primary-600 hover:bg-primary-700 text-white' : 'bg-dark-200 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-lg transition-colors">
+            <button x-show="currentStep < totalSteps" @click="if(answers[currentStep-1]) currentStep++" :class="answers[currentStep-1] ? 'bg-accent-500 text-white' : 'bg-dark-100 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-xl" style="transition: opacity 0.15s ease;">
               Suivant
             </button>
-            <button x-show="currentStep === totalSteps" @click="calculateResults()" :class="answers[currentStep-1] ? 'bg-accent-500 hover:bg-accent-600 text-white' : 'bg-dark-200 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-lg transition-colors">
-              Voir les résultats
+            <button x-show="currentStep === totalSteps" @click="calculateResults()" :class="answers[currentStep-1] ? 'bg-accent-500 text-white' : 'bg-dark-100 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-xl" style="transition: opacity 0.15s ease;">
+              Voir les resultats
             </button>
           </div>
         </div>
 
         <!-- Results -->
         <div x-show="showResults" class="space-y-8">
-          <div class="bg-white rounded-2xl border border-dark-200 p-8 text-center">
-            <h2 class="text-2xl font-heading font-bold text-dark-900">Résultat de votre audit</h2>
+          <div class="bg-white rounded-xl p-8 text-center" style="border: 0.5px solid rgba(0,0,0,0.08);">
+            <h2 class="text-2xl font-heading font-medium text-dark-900">Resultat de votre diagnostic EN 15232</h2>
 
             <!-- Score -->
             <div class="mt-8">
-              <div class="inline-flex items-center justify-center w-32 h-32 rounded-full border-4" :class="scoreColor">
+              <div class="inline-flex items-center justify-center w-32 h-32 rounded-full" style="border: 2px solid rgba(0,0,0,0.08);" :class="scoreColor">
                 <div>
-                  <div class="text-3xl font-heading font-extrabold" :class="scoreTextColor" x-text="score + '/100'"></div>
+                  <div class="text-3xl font-heading font-medium" :class="scoreTextColor" x-text="score + '/100'"></div>
                 </div>
               </div>
             </div>
 
             <div class="mt-6">
-              <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold" :class="levelBadge" x-text="level"></span>
+              <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium" :class="levelBadge" x-text="level"></span>
             </div>
 
-            <p class="mt-4 text-dark-600 max-w-lg mx-auto" x-text="levelDescription"></p>
+            <p class="mt-4 text-dark-500 max-w-lg mx-auto" style="font-weight: 400;" x-text="levelDescription"></p>
           </div>
 
           <!-- Recommandations -->
-          <div class="bg-white rounded-2xl border border-dark-200 p-8">
-            <h3 class="text-xl font-heading font-bold text-dark-900 mb-6">Nos recommandations</h3>
-            <div class="space-y-4">
+          <div class="bg-white rounded-xl p-8" style="border: 0.5px solid rgba(0,0,0,0.08);">
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Recommandations personnalisees</h3>
+            <div class="space-y-3">
               <template x-for="rec in recommendations" :key="rec">
-                <div class="flex items-start gap-3 p-4 bg-dark-50 rounded-lg">
-                  <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <div class="flex items-start gap-3 p-4 rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
+                  <svg class="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                   </svg>
-                  <p class="text-dark-700 text-sm" x-text="rec"></p>
+                  <p class="text-dark-600 text-sm" style="font-weight: 400;" x-text="rec"></p>
                 </div>
               </template>
             </div>
@@ -194,11 +192,11 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- CTA -->
           <div class="text-center space-y-4">
-            <button @click="resetAudit()" class="px-6 py-3 bg-dark-100 text-dark-700 font-medium rounded-lg hover:bg-dark-200 transition-colors">
-              Refaire l'audit
+            <button @click="resetAudit()" class="px-6 py-3 text-dark-600 font-medium rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: background 0.15s ease;">
+              Refaire le diagnostic
             </button>
-            <a href="/contact" class="inline-flex items-center px-8 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors ml-4">
-              Demander un conseil personnalisé
+            <a href="/contact" class="btn-primary ml-4">
+              Demander un conseil personnalise
             </a>
           </div>
         </div>
@@ -228,65 +226,65 @@ import Layout from '../layouts/Layout.astro';
               { value: 'bureau', label: 'Bureaux / Tertiaire' },
               { value: 'commerce', label: 'Commerce / Centre commercial' },
               { value: 'industrie', label: 'Industriel / Logistique' },
-              { value: 'sante', label: 'Santé / Hôpital' },
+              { value: 'sante', label: 'Sante / Hopital' },
               { value: 'education', label: 'Enseignement / Formation' },
-              { value: 'hotel', label: 'Hôtellerie / Résidentiel' }
+              { value: 'hotel', label: 'Hotellerie / Residentiel' }
             ]
           },
           {
             options: [
-              { value: 'small', label: 'Moins de 1 000 m²' },
-              { value: 'medium', label: '1 000 à 5 000 m²' },
-              { value: 'large', label: '5 000 à 20 000 m²' },
-              { value: 'xlarge', label: 'Plus de 20 000 m²' }
+              { value: 'small', label: 'Moins de 1 000 m2' },
+              { value: 'medium', label: '1 000 a 5 000 m2' },
+              { value: 'large', label: '5 000 a 20 000 m2' },
+              { value: 'xlarge', label: 'Plus de 20 000 m2' }
             ]
           },
           {
             options: [
-              { value: '0', label: 'Aucune régulation (tout en manuel)' },
-              { value: '1', label: 'Régulation basique (thermostats simples)' },
-              { value: '2', label: 'Régulation par zone avec programmation horaire' },
-              { value: '3', label: 'Régulation avancée avec optimisation automatique' }
+              { value: '0', label: 'Aucune regulation (tout en manuel)' },
+              { value: '1', label: 'Regulation basique (thermostats simples)' },
+              { value: '2', label: 'Regulation par zone avec programmation horaire' },
+              { value: '3', label: 'Regulation avancee avec optimisation automatique' }
             ]
           },
           {
             options: [
               { value: '0', label: 'Interrupteurs manuels uniquement' },
               { value: '1', label: 'Minuteries ou programmation horaire' },
-              { value: '2', label: 'Détection de présence et variation d\'intensité' },
-              { value: '3', label: 'Gestion intelligente complète (daylight, scénarios)' }
+              { value: '2', label: 'Detection de presence et variation d\'intensite' },
+              { value: '3', label: 'Gestion intelligente complete (daylight, scenarios)' }
             ]
           },
           {
             options: [
               { value: '0', label: 'Aucun suivi' },
-              { value: '1', label: 'Relevé manuel des compteurs' },
+              { value: '1', label: 'Releve manuel des compteurs' },
               { value: '2', label: 'Sous-comptage automatique par usage' },
-              { value: '3', label: 'Monitoring temps réel avec alertes' }
+              { value: '3', label: 'Monitoring temps reel avec alertes' }
             ]
           },
           {
             options: [
               { value: '0', label: 'Aucune supervision' },
               { value: '1', label: 'Supervision partielle (un seul lot technique)' },
-              { value: '2', label: 'GTC centralisée sur plusieurs lots' },
-              { value: '3', label: 'GTB complète avec pilotage et optimisation' }
+              { value: '2', label: 'GTC centralisee sur plusieurs lots' },
+              { value: '3', label: 'GTB complete avec pilotage et optimisation' }
             ]
           },
           {
             options: [
-              { value: '0', label: 'Maintenance curative uniquement (on répare quand ça casse)' },
-              { value: '1', label: 'Maintenance préventive planifiée' },
-              { value: '2', label: 'Maintenance conditionnelle (basée sur les données)' },
-              { value: '3', label: 'Maintenance prédictive (anticipation des pannes)' }
+              { value: '0', label: 'Maintenance curative uniquement (on repare quand ca casse)' },
+              { value: '1', label: 'Maintenance preventive planifiee' },
+              { value: '2', label: 'Maintenance conditionnelle (basee sur les donnees)' },
+              { value: '3', label: 'Maintenance predictive (anticipation des pannes)' }
             ]
           },
           {
             options: [
-              { value: '0', label: 'Je ne connais pas les obligations réglementaires' },
-              { value: '1', label: 'Connaissance partielle, conformité incertaine' },
-              { value: '2', label: 'Conforme au décret tertiaire, RE2020 en cours' },
-              { value: '3', label: 'Pleinement conforme avec reporting automatisé' }
+              { value: '0', label: 'Je ne connais pas les obligations reglementaires' },
+              { value: '1', label: 'Connaissance partielle, conformite incertaine' },
+              { value: '2', label: 'Conforme au decret tertiaire, RE2020 en cours' },
+              { value: '3', label: 'Pleinement conforme avec reporting automatise' }
             ]
           }
         ],
@@ -299,56 +297,60 @@ import Layout from '../layouts/Layout.astro';
           this.score = Math.round((total / 18) * 100);
 
           if (this.score < 25) {
-            this.level = 'Classe D — Non performant';
-            this.levelDescription = 'Votre bâtiment ne dispose pas de système de gestion technique. Il existe un fort potentiel d\'optimisation énergétique et de confort.';
+            this.level = 'Classe D — Non performant (EN 15232)';
+            this.levelDescription = 'Votre batiment ne dispose pas de systeme de gestion technique conforme. Selon la norme EN 15232, il se situe en classe D. Le potentiel d\'optimisation energetique est estime entre 30 et 50 % par rapport a une GTB de classe A.';
             this.scoreColor = 'border-dark-300';
             this.scoreTextColor = 'text-dark-600';
-            this.levelBadge = 'bg-dark-200 text-dark-700';
+            this.levelBadge = 'bg-dark-100 text-dark-700';
             this.recommendations = [
-              'Réaliser un audit énergétique complet de votre bâtiment',
-              'Installer des capteurs de température et de présence dans les zones principales',
-              'Mettre en place un suivi des consommations énergétiques (sous-comptage)',
-              'Étudier la faisabilité d\'une GTB de classe C minimum',
-              'Vérifier vos obligations réglementaires (décret tertiaire, décret BACS)'
+              'Realiser un audit energetique conforme a la norme NF EN 16247-2 (batiments)',
+              'Installer des capteurs de temperature et de presence dans les zones principales pour amorcer une regulation automatisee',
+              'Mettre en place un suivi des consommations energetiques par sous-comptage, prerequis du decret tertiaire (plateforme OPERAT)',
+              'Etudier la faisabilite d\'une GTB de classe C minimum selon EN 15232, obligation du decret BACS pour les batiments > 290 kW',
+              'Verifier vos obligations reglementaires : decret tertiaire (echeance -40 % en 2030), decret BACS (echeance 2025/2027)',
+              'Identifier les CEE (Certificats d\'Economies d\'Energie) mobilisables pour financer la mise en conformite'
             ];
           } else if (this.score < 50) {
-            this.level = 'Classe C — Standard';
-            this.levelDescription = 'Votre bâtiment dispose d\'une automatisation de base. Des améliorations significatives sont possibles pour réduire les consommations et améliorer le confort.';
+            this.level = 'Classe C — Standard (EN 15232)';
+            this.levelDescription = 'Votre batiment dispose d\'une automatisation de base, correspondant a la classe C de la norme EN 15232. Des ameliorations vers la classe B permettraient une reduction supplementaire de 10 a 20 % des consommations.';
             this.scoreColor = 'border-orange-300';
             this.scoreTextColor = 'text-orange-600';
-            this.levelBadge = 'bg-orange-100 text-orange-700';
+            this.levelBadge = 'bg-orange-50 text-orange-700';
             this.recommendations = [
-              'Centraliser la supervision de vos lots techniques sur une GTC unique',
-              'Améliorer la régulation CVC avec des capteurs de qualité d\'air (CO2)',
-              'Mettre en place un suivi énergétique automatisé avec alertes de dérive',
-              'Passer à une maintenance conditionnelle basée sur les données',
-              'Former vos équipes techniques à l\'exploitation de la GTB'
+              'Centraliser la supervision de vos lots techniques sur une GTC unique avec protocole BACnet/IP ou KNX pour l\'interoperabilite',
+              'Ameliorer la regulation CVC avec des capteurs de qualite d\'air (CO2) conformement a la norme NF EN 16798-1',
+              'Mettre en place un suivi energetique automatise avec alertes de derive, conforme aux exigences du decret tertiaire',
+              'Passer a une maintenance conditionnelle basee sur les donnees (norme NF EN 13306) pour reduire les couts de 15 a 25 %',
+              'Former vos equipes techniques a l\'exploitation de la GTB selon le referentiel de competences AFPAC',
+              'Etudier la migration vers une classe B EN 15232 en priorite sur les lots CVC et eclairage'
             ];
           } else if (this.score < 75) {
-            this.level = 'Classe B — Avancé';
-            this.levelDescription = 'Votre bâtiment dispose d\'une GTB performante. Quelques optimisations peuvent encore améliorer l\'efficacité globale.';
+            this.level = 'Classe B — Avance (EN 15232)';
+            this.levelDescription = 'Votre batiment dispose d\'une GTB performante de classe B selon EN 15232. Quelques optimisations ciblees peuvent vous rapprocher de la classe A et d\'economies supplementaires de 5 a 15 %.';
             this.scoreColor = 'border-primary-300';
             this.scoreTextColor = 'text-primary-600';
-            this.levelBadge = 'bg-primary-100 text-primary-700';
+            this.levelBadge = 'bg-primary-50 text-primary-700';
             this.recommendations = [
-              'Explorer les solutions d\'intelligence artificielle pour l\'optimisation prédictive',
-              'Mettre en place un jumeau numérique de votre bâtiment',
-              'Optimiser les scénarios de fonctionnement selon l\'occupation réelle',
-              'Envisager l\'intégration de capteurs IoT pour un maillage plus fin',
-              'Automatiser le reporting réglementaire (décret tertiaire)'
+              'Explorer les solutions d\'intelligence artificielle pour l\'optimisation predictive des courbes de charge (norme ISO 50001)',
+              'Mettre en place un jumeau numerique de votre batiment pour simuler et optimiser les scenarios energetiques',
+              'Optimiser les scenarios de fonctionnement selon l\'occupation reelle mesuree par capteurs IoT (protocole LoRaWAN ou Zigbee)',
+              'Envisager l\'integration de capteurs IoT supplementaires pour un maillage plus fin et une granularite conforme a l\'ISO 52120-1',
+              'Automatiser le reporting reglementaire (decret tertiaire, plateforme OPERAT) et le suivi des objectifs 2030/2040',
+              'Evaluer la conformite au label R2S-4GRIDS pour valoriser votre demarche Smart Building'
             ];
           } else {
-            this.level = 'Classe A — Haute performance';
-            this.levelDescription = 'Félicitations ! Votre bâtiment est à la pointe de la gestion technique. Continuez à innover et partagez votre expérience.';
+            this.level = 'Classe A — Haute performance (EN 15232)';
+            this.levelDescription = 'Votre batiment atteint la classe A de la norme EN 15232, le niveau le plus eleve d\'automatisation et de gestion energetique. Vous etes conforme aux exigences les plus strictes du decret BACS.';
             this.scoreColor = 'border-accent-300';
             this.scoreTextColor = 'text-accent-600';
-            this.levelBadge = 'bg-accent-100 text-accent-700';
+            this.levelBadge = 'bg-accent-50 text-accent-700';
             this.recommendations = [
-              'Partager votre retour d\'expérience pour inspirer le secteur',
-              'Explorer les dernières innovations (IA générative, blockchain énergie)',
-              'Optimiser continuellement via l\'analyse des données historiques',
-              'Étendre votre approche GTB à l\'ensemble de votre parc immobilier',
-              'Viser les certifications environnementales (HQE, BREEAM, LEED)'
+              'Partager votre retour d\'experience pour inspirer le secteur et contribuer aux travaux normatifs (AFNOR, CEN TC 247)',
+              'Explorer les dernieres innovations : IA generative pour l\'optimisation, protocole Matter pour l\'interoperabilite, blockchain energie pour la tracabilite',
+              'Optimiser continuellement via l\'analyse des donnees historiques et le machine learning conforme a la norme ISO 50006',
+              'Etendre votre approche GTB classe A a l\'ensemble de votre parc immobilier pour un impact global mesurable',
+              'Viser les certifications environnementales (HQE Batiment Durable, BREEAM In-Use, LEED O+M) en capitalisant sur votre infrastructure GTB',
+              'Mettre en place un systeme de management de l\'energie certifie ISO 50001 pour perenniser la demarche'
             ];
           }
 

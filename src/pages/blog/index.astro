@@ -6,74 +6,115 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
-const featured = posts.filter(p => p.data.featured);
-const allPosts = posts;
+const categories = [...new Set(posts.map(p => p.data.category))];
+
+function estimateReadingTime(description: string): number {
+  const wordsPerMinute = 200;
+  const words = description ? description.split(/\s+/).length * 8 : 800;
+  return Math.max(2, Math.ceil(words / wordsPerMinute));
+}
+
+function formatDate(date: string): string {
+  return new Date(date).toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+}
+
+function categorySlug(category: string): string {
+  return category
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-');
+}
 ---
 
-<Layout title="Blog - Articles techniques GTB/GTC" description="Articles techniques, guides pratiques et actualités sur la Gestion Technique du Bâtiment (GTB) et la Gestion Technique Centralisée (GTC).">
+<Layout title="Blog - Analyses & veille technique" description="Analyses, veille technique et guides pratiques sur la Gestion Technique du Batiment (GTB) et la GTC.">
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-primary-900 via-primary-800 to-dark-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl md:text-5xl font-heading font-extrabold">Blog <span class="text-accent-400">NeoGTB</span></h1>
-      <p class="mt-4 text-lg text-dark-300 max-w-xl mx-auto">
-        Articles techniques, guides pratiques et actualités sur la gestion technique du bâtiment.
+  <section class="pt-32 pb-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="eyebrow">Perspectives</span>
+      <h1 class="mt-4 text-3xl sm:text-4xl font-medium tracking-tight" style="letter-spacing: -0.4px;">
+        Analyses & veille technique
+      </h1>
+      <p class="mt-4 text-base text-neutral-500 max-w-xl mx-auto font-normal leading-relaxed">
+        Decryptages, retours terrain et points de vue sur la GTB, la GTC et le batiment intelligent.
       </p>
     </div>
   </section>
 
-  <!-- Articles -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Filter + Grid -->
+  <section class="pb-24 bg-white" x-data="{ active: 'all' }">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      {featured.length > 0 && (
-        <div class="mb-16">
-          <h2 class="text-2xl font-heading font-bold text-dark-900 mb-8">Articles à la une</h2>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featured.map((post) => (
-              <a href={`/blog/${post.id}`} class="group block bg-white rounded-2xl border border-dark-200 overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div class="p-6">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs font-semibold rounded-full">{post.data.category}</span>
-                    <span class="text-xs text-dark-400">{new Date(post.data.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                  </div>
-                  <h3 class="text-lg font-heading font-bold text-dark-900 group-hover:text-primary-600 transition-colors line-clamp-2">
-                    {post.data.title}
-                  </h3>
-                  <p class="mt-2 text-sm text-dark-500 line-clamp-3">{post.data.description}</p>
-                  <div class="mt-4 flex flex-wrap gap-1">
-                    {post.data.tags.slice(0, 3).map((tag: string) => (
-                      <span class="px-2 py-0.5 bg-dark-100 text-dark-500 text-xs rounded-full">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
+      <!-- Filter pills -->
+      <div class="flex flex-wrap gap-2 mb-12 justify-center">
+        <button
+          class="tag cursor-pointer"
+          :class="active === 'all' ? 'bg-neutral-900 text-white' : 'bg-neutral-100 text-neutral-600'"
+          @click="active = 'all'"
+          style="padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; transition: background-color 0.15s ease, color 0.15s ease;"
+        >
+          Tous
+        </button>
+        {categories.map((cat) => (
+          <button
+            class="cursor-pointer"
+            x-bind:class={`active === '${categorySlug(cat)}' ? 'bg-neutral-900 text-white' : 'bg-neutral-100 text-neutral-600'`}
+            x-on:click={`active = '${categorySlug(cat)}'`}
+            style="padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; transition: background-color 0.15s ease, color 0.15s ease;"
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
 
-      <h2 class="text-2xl font-heading font-bold text-dark-900 mb-8">Tous les articles</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {allPosts.map((post) => (
-          <a href={`/blog/${post.id}`} class="group block bg-white rounded-2xl border border-dark-200 overflow-hidden hover:shadow-xl transition-all duration-300">
-            <div class="p-6">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="px-2 py-1 bg-dark-100 text-dark-600 text-xs font-semibold rounded-full">{post.data.category}</span>
-                <span class="text-xs text-dark-400">{new Date(post.data.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-              </div>
-              <h3 class="text-lg font-heading font-bold text-dark-900 group-hover:text-primary-600 transition-colors line-clamp-2">
-                {post.data.title}
-              </h3>
-              <p class="mt-2 text-sm text-dark-500 line-clamp-3">{post.data.description}</p>
-              <div class="mt-4 flex flex-wrap gap-1">
-                {post.data.tags.slice(0, 3).map((tag: string) => (
-                  <span class="px-2 py-0.5 bg-dark-100 text-dark-500 text-xs rounded-full">{tag}</span>
-                ))}
-              </div>
+      <!-- Cards grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="card-hover block p-6 bg-white"
+            style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; text-decoration: none;"
+            x-show={`active === 'all' || active === '${categorySlug(post.data.category)}'`}
+            x-transition:enter="transition ease-out duration-150"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span class={`tag tag-${categorySlug(post.data.category)}`}>
+                {post.data.category}
+              </span>
+              <span class="text-xs text-neutral-400 font-normal">
+                {estimateReadingTime(post.data.description)} min
+              </span>
             </div>
+
+            <h2 class="text-base font-medium text-neutral-900 leading-snug mb-2" style="letter-spacing: -0.2px;">
+              {post.data.title}
+            </h2>
+
+            <p class="text-sm text-neutral-500 font-normal leading-relaxed line-clamp-2 mb-4">
+              {post.data.description}
+            </p>
+
+            <time class="text-xs text-neutral-400 font-normal" datetime={post.data.date}>
+              {formatDate(post.data.date)}
+            </time>
           </a>
         ))}
+      </div>
+
+      <!-- Empty state -->
+      <div
+        class="text-center py-16"
+        x-show={`!document.querySelectorAll('[x-show*=active]').length`}
+        style="display: none;"
+      >
+        <p class="text-neutral-400 text-sm font-normal">Aucun article dans cette categorie.</p>
       </div>
 
     </div>

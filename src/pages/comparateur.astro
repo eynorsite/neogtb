@@ -2,17 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Comparateur de marques GTB/GTC" description="Comparez les principales marques et solutions de Gestion Technique du Bâtiment : Schneider Electric, Siemens, TheWatchdog, Honeywell, Sauter, Wago, Distech Controls et plus.">
+<Layout title="Comparateur de marques GTB/GTC" description="Comparez les principales marques et solutions de Gestion Technique du Bâtiment : Schneider Electric, Siemens, TheWatchdog, Honeywell, Sauter, Wago, Wattsense et plus.">
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-dark-900 via-primary-900 to-dark-800 text-white py-16">
+  <section class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/20 text-accent-300 border border-accent-500/30 mb-6">
-        Outil interactif
+      <span class="eyebrow inline-flex items-center px-3 py-1 rounded-full text-xs font-medium text-dark-500 mb-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
+        Outil independant
       </span>
-      <h1 class="text-4xl md:text-5xl font-heading font-extrabold">Comparateur de marques <span class="text-accent-400">GTB/GTC</span></h1>
-      <p class="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
-        Comparez les solutions des principaux acteurs du marché selon vos critères : prix, fonctionnalités, protocoles, taille de bâtiment et plus.
+      <h1 class="text-4xl md:text-5xl font-heading font-medium text-dark-900">Comparateur objectif <span class="text-accent-600">GTB</span></h1>
+      <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto" style="font-weight: 400;">
+        Analysez et comparez les solutions des principaux acteurs du marche de la Gestion Technique du Batiment. Notes, protocoles, budgets et retours terrain pour un choix eclaire.
       </p>
     </div>
   </section>
@@ -22,22 +22,22 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" x-data="comparateur()">
 
       <!-- Filtres -->
-      <div class="bg-white rounded-2xl border border-dark-200 p-6 mb-8 sticky top-20 z-40">
+      <div class="bg-white rounded-2xl p-6 mb-8 sticky top-20 z-40" style="border: 0.5px solid rgba(0,0,0,0.08);">
         <div class="flex flex-wrap items-center gap-4">
           <div>
-            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Catégorie</label>
-            <select x-model="filterCategory" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Categorie</label>
+            <select x-model="filterCategory" class="px-3 py-2 rounded-lg text-sm bg-white outline-none transition-colors" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px; transition: 0.15s ease;">
               <option value="all">Toutes</option>
               <option value="leader">Leaders mondiaux</option>
-              <option value="europeen">Européens</option>
+              <option value="europeen">Europeens</option>
               <option value="supervision">Supervision / Logiciel</option>
               <option value="iot">IoT / Sans fil</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Protocole</label>
-            <select x-model="filterProtocol" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Protocole</label>
+            <select x-model="filterProtocol" class="px-3 py-2 rounded-lg text-sm bg-white outline-none transition-colors" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px; transition: 0.15s ease;">
               <option value="all">Tous</option>
               <option value="BACnet">BACnet</option>
               <option value="KNX">KNX</option>
@@ -48,90 +48,90 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Type de bâtiment</label>
-            <select x-model="filterBuilding" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Type de batiment</label>
+            <select x-model="filterBuilding" class="px-3 py-2 rounded-lg text-sm bg-white outline-none transition-colors" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px; transition: 0.15s ease;">
               <option value="all">Tous</option>
-              <option value="petit">Petit (< 2 000 m²)</option>
+              <option value="petit">Petit (&lt; 2 000 m²)</option>
               <option value="moyen">Moyen (2 000 - 10 000 m²)</option>
-              <option value="grand">Grand (> 10 000 m²)</option>
+              <option value="grand">Grand (&gt; 10 000 m²)</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Budget</label>
-            <select x-model="filterBudget" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Budget</label>
+            <select x-model="filterBudget" class="px-3 py-2 rounded-lg text-sm bg-white outline-none transition-colors" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px; transition: 0.15s ease;">
               <option value="all">Tous</option>
               <option value="bas">Accessible</option>
               <option value="moyen">Moyen</option>
-              <option value="eleve">Élevé</option>
+              <option value="eleve">Eleve</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">Trier par</label>
-            <select x-model="sortBy" class="px-3 py-2 rounded-lg border border-dark-200 text-sm bg-white focus:ring-2 focus:ring-primary-500 outline-none">
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Trier par</label>
+            <select x-model="sortBy" class="px-3 py-2 rounded-lg text-sm bg-white outline-none transition-colors" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px; transition: 0.15s ease;">
               <option value="nom">Nom</option>
               <option value="note">Note globale</option>
               <option value="prix">Prix (croissant)</option>
-              <option value="facilite">Facilité d'installation</option>
+              <option value="facilite">Facilite d'installation</option>
             </select>
           </div>
 
           <div class="ml-auto">
-            <label class="block text-xs font-semibold text-dark-500 uppercase tracking-wider mb-1">&nbsp;</label>
-            <button @click="resetFilters()" class="px-4 py-2 text-sm text-dark-500 border border-dark-200 rounded-lg hover:bg-dark-50 transition-colors">
-              Réinitialiser
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">&nbsp;</label>
+            <button @click="resetFilters()" class="px-4 py-2 text-sm text-dark-500 rounded-lg hover:text-dark-700" style="border: 0.5px solid rgba(0,0,0,0.08); transition: 0.15s ease;">
+              Reinitialiser
             </button>
           </div>
         </div>
 
-        <div class="mt-3 text-sm text-dark-400">
-          <span x-text="filteredBrands().length"></span> marque(s) affichée(s)
+        <div class="mt-3 text-sm text-dark-400" style="font-weight: 400;">
+          <span x-text="filteredBrands().length"></span> marque(s) affichee(s)
         </div>
       </div>
 
       <!-- Cards des marques -->
       <div class="grid lg:grid-cols-2 gap-6">
         <template x-for="brand in filteredBrands()" :key="brand.nom">
-          <div class="bg-white rounded-2xl border border-dark-200 overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="card-hover bg-white rounded-xl overflow-hidden" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;">
             <!-- Header -->
-            <div class="p-6 border-b border-dark-100">
+            <div class="p-6" style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">
               <div class="flex items-start justify-between">
                 <div>
                   <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-sm" :style="'background-color:' + brand.couleur">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-medium text-sm" :style="'background-color:' + brand.couleur">
                       <span x-text="brand.sigle"></span>
                     </div>
                     <div>
-                      <h3 class="text-xl font-heading font-bold text-dark-900" x-text="brand.nom"></h3>
-                      <p class="text-sm text-dark-400" x-text="brand.pays + ' — ' + brand.categorie_label"></p>
+                      <h3 class="text-xl font-heading font-medium text-dark-900" x-text="brand.nom"></h3>
+                      <p class="text-sm text-dark-400" style="font-weight: 400;" x-text="brand.pays + ' — ' + brand.categorie_label"></p>
                     </div>
                   </div>
                 </div>
                 <div class="text-right">
-                  <div class="text-2xl font-heading font-extrabold" :class="brand.note >= 8 ? 'text-accent-600' : brand.note >= 6 ? 'text-primary-600' : 'text-orange-500'" x-text="brand.note + '/10'"></div>
-                  <p class="text-xs text-dark-400">Note globale</p>
+                  <div class="text-2xl font-heading font-medium" :class="brand.note >= 8 ? 'text-accent-600' : brand.note >= 6 ? 'text-primary-600' : 'text-orange-500'" x-text="brand.note + '/10'"></div>
+                  <p class="text-xs text-dark-400" style="font-weight: 400;">Note globale</p>
                 </div>
               </div>
-              <p class="mt-3 text-sm text-dark-600" x-text="brand.description"></p>
+              <p class="mt-3 text-sm text-dark-600" style="font-weight: 400;" x-text="brand.description"></p>
             </div>
 
             <!-- Produit phare -->
-            <div class="px-6 py-3 bg-dark-50 border-b border-dark-100">
-              <span class="text-xs font-semibold text-dark-400 uppercase tracking-wider">Produit phare :</span>
+            <div class="px-6 py-3 bg-dark-50" style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">
+              <span class="text-xs font-medium text-dark-400 uppercase tracking-wider">Produit phare :</span>
               <span class="text-sm font-medium text-dark-800 ml-1" x-text="brand.produit_phare"></span>
             </div>
 
-            <!-- Scores détaillés -->
+            <!-- Scores detailles -->
             <div class="p-6 space-y-3">
               <template x-for="critere in ['facilite_installation', 'rapport_qualite_prix', 'fonctionnalites', 'support_france', 'innovation', 'interoperabilite']" :key="critere">
                 <div>
                   <div class="flex justify-between text-sm mb-1">
-                    <span class="text-dark-600" x-text="critereLabels[critere]"></span>
-                    <span class="font-semibold text-dark-800" x-text="brand.scores[critere] + '/10'"></span>
+                    <span class="text-dark-600" style="font-weight: 400;" x-text="critereLabels[critere]"></span>
+                    <span class="font-medium text-dark-800" x-text="brand.scores[critere] + '/10'"></span>
                   </div>
-                  <div class="w-full bg-dark-100 rounded-full h-2">
-                    <div class="h-2 rounded-full transition-all duration-500" :class="brand.scores[critere] >= 8 ? 'bg-accent-500' : brand.scores[critere] >= 6 ? 'bg-primary-500' : brand.scores[critere] >= 4 ? 'bg-orange-400' : 'bg-red-400'" :style="'width:' + (brand.scores[critere] * 10) + '%'"></div>
+                  <div class="w-full bg-dark-100 rounded-full h-1.5">
+                    <div class="h-1.5 rounded-full" :class="brand.scores[critere] >= 8 ? 'bg-accent-500' : brand.scores[critere] >= 6 ? 'bg-primary-500' : brand.scores[critere] >= 4 ? 'bg-orange-400' : 'bg-red-400'" :style="'width:' + (brand.scores[critere] * 10) + '%; transition: width 0.15s ease;'"></div>
                   </div>
                 </div>
               </template>
@@ -141,7 +141,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="px-6 pb-4">
               <div class="flex flex-wrap gap-1.5">
                 <template x-for="proto in brand.protocoles" :key="proto">
-                  <span class="px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full" x-text="proto"></span>
+                  <span class="tag px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full" x-text="proto"></span>
                 </template>
               </div>
             </div>
@@ -149,10 +149,10 @@ import Layout from '../layouts/Layout.astro';
             <!-- Forces & Faiblesses -->
             <div class="px-6 pb-4 grid grid-cols-2 gap-4">
               <div>
-                <h4 class="text-xs font-semibold text-accent-600 uppercase tracking-wider mb-2">Forces</h4>
+                <h4 class="text-xs font-medium text-accent-600 uppercase tracking-wider mb-2">Forces</h4>
                 <ul class="space-y-1">
                   <template x-for="force in brand.forces" :key="force">
-                    <li class="flex items-start gap-1.5 text-xs text-dark-600">
+                    <li class="flex items-start gap-1.5 text-xs text-dark-600" style="font-weight: 400;">
                       <svg class="w-3.5 h-3.5 text-accent-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                       <span x-text="force"></span>
                     </li>
@@ -160,10 +160,10 @@ import Layout from '../layouts/Layout.astro';
                 </ul>
               </div>
               <div>
-                <h4 class="text-xs font-semibold text-red-500 uppercase tracking-wider mb-2">Limites</h4>
+                <h4 class="text-xs font-medium text-red-500 uppercase tracking-wider mb-2">Limites</h4>
                 <ul class="space-y-1">
                   <template x-for="faiblesse in brand.faiblesses" :key="faiblesse">
-                    <li class="flex items-start gap-1.5 text-xs text-dark-600">
+                    <li class="flex items-start gap-1.5 text-xs text-dark-600" style="font-weight: 400;">
                       <svg class="w-3.5 h-3.5 text-red-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                       <span x-text="faiblesse"></span>
                     </li>
@@ -172,12 +172,12 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
 
-            <!-- Idéal pour -->
-            <div class="px-6 pb-6">
-              <h4 class="text-xs font-semibold text-dark-400 uppercase tracking-wider mb-2">Idéal pour</h4>
+            <!-- Ideal pour -->
+            <div class="px-6 pb-4">
+              <h4 class="text-xs font-medium text-dark-400 uppercase tracking-wider mb-2">Ideal pour</h4>
               <div class="flex flex-wrap gap-1.5">
                 <template x-for="usage in brand.ideal_pour" :key="usage">
-                  <span class="px-2 py-1 bg-dark-100 text-dark-600 text-xs rounded-full" x-text="usage"></span>
+                  <span class="tag px-2 py-1 bg-dark-100 text-dark-600 text-xs rounded-full" style="font-weight: 400;" x-text="usage"></span>
                 </template>
               </div>
             </div>
@@ -185,10 +185,10 @@ import Layout from '../layouts/Layout.astro';
             <!-- Prix indicatif -->
             <div class="px-6 pb-6 flex items-center justify-between">
               <div>
-                <span class="text-xs text-dark-400">Budget indicatif :</span>
-                <span class="ml-1 text-sm font-bold" :class="brand.budget === 'bas' ? 'text-accent-600' : brand.budget === 'moyen' ? 'text-primary-600' : 'text-orange-600'" x-text="brand.budget_label"></span>
+                <span class="text-xs text-dark-400" style="font-weight: 400;">Budget indicatif :</span>
+                <span class="ml-1 text-sm font-medium" :class="brand.budget === 'bas' ? 'text-accent-600' : brand.budget === 'moyen' ? 'text-primary-600' : 'text-orange-600'" x-text="brand.budget_label"></span>
               </div>
-              <a :href="brand.site" target="_blank" rel="noopener" class="text-sm font-medium text-primary-600 hover:text-primary-700">
+              <a :href="brand.site" target="_blank" rel="noopener" class="text-sm font-medium text-primary-600 hover:text-primary-700" style="transition: 0.15s ease;">
                 Site officiel →
               </a>
             </div>
@@ -196,10 +196,10 @@ import Layout from '../layouts/Layout.astro';
         </template>
       </div>
 
-      <!-- Message si aucun résultat -->
+      <!-- Message si aucun resultat -->
       <div x-show="filteredBrands().length === 0" class="text-center py-16">
-        <p class="text-dark-400 text-lg">Aucune marque ne correspond à vos filtres.</p>
-        <button @click="resetFilters()" class="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">Réinitialiser les filtres</button>
+        <p class="text-dark-400 text-lg" style="font-weight: 400;">Aucune marque ne correspond a vos filtres.</p>
+        <button @click="resetFilters()" class="btn-primary mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700" style="transition: 0.15s ease;">Reinitialiser les filtres</button>
       </div>
 
     </div>
@@ -208,101 +208,91 @@ import Layout from '../layouts/Layout.astro';
   <!-- Tableau comparatif rapide -->
   <section class="py-16 bg-dark-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-heading font-bold text-dark-900 mb-8 text-center">Tableau comparatif rapide</h2>
+      <h2 class="text-2xl font-heading font-medium text-dark-900 mb-8 text-center">Tableau comparatif rapide</h2>
       <div class="overflow-x-auto">
-        <table class="w-full bg-white rounded-xl overflow-hidden shadow-sm text-sm">
+        <table class="w-full bg-white rounded-xl overflow-hidden text-sm" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <thead>
             <tr class="bg-dark-800 text-white">
-              <th class="px-4 py-3 text-left font-semibold">Marque</th>
-              <th class="px-4 py-3 text-center font-semibold">Protocoles</th>
-              <th class="px-4 py-3 text-center font-semibold">Cloud</th>
-              <th class="px-4 py-3 text-center font-semibold">IA</th>
-              <th class="px-4 py-3 text-center font-semibold">Sans fil</th>
-              <th class="px-4 py-3 text-center font-semibold">Multi-sites</th>
-              <th class="px-4 py-3 text-center font-semibold">Classe GTB</th>
-              <th class="px-4 py-3 text-center font-semibold">Budget</th>
+              <th class="px-4 py-3 text-left font-medium">Marque</th>
+              <th class="px-4 py-3 text-center font-medium">Protocoles</th>
+              <th class="px-4 py-3 text-center font-medium">Cloud</th>
+              <th class="px-4 py-3 text-center font-medium">IA</th>
+              <th class="px-4 py-3 text-center font-medium">Sans fil</th>
+              <th class="px-4 py-3 text-center font-medium">Multi-sites</th>
+              <th class="px-4 py-3 text-center font-medium">Classe GTB</th>
+              <th class="px-4 py-3 text-center font-medium">Budget</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-dark-100">
             <tr>
               <td class="px-4 py-3 font-medium">Schneider Electric</td>
-              <td class="px-4 py-3 text-center">BACnet, Modbus, KNX, LON</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center">A / B / C</td>
-              <td class="px-4 py-3 text-center text-orange-600 font-medium">€€€</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, KNX, LON</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B / C</td>
+              <td class="px-4 py-3 text-center text-orange-600 font-medium">&#8364;&#8364;&#8364;</td>
             </tr>
             <tr class="bg-dark-50">
               <td class="px-4 py-3 font-medium">Siemens</td>
-              <td class="px-4 py-3 text-center">BACnet, Modbus, KNX, LON</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, KNX, LON</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center">A / B / C</td>
-              <td class="px-4 py-3 text-center text-orange-600 font-medium">€€€</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B / C</td>
+              <td class="px-4 py-3 text-center text-orange-600 font-medium">&#8364;&#8364;&#8364;</td>
             </tr>
             <tr>
               <td class="px-4 py-3 font-medium">TheWatchdog</td>
-              <td class="px-4 py-3 text-center">BACnet, Modbus, LoRaWAN, 4G</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center">A / B / C</td>
-              <td class="px-4 py-3 text-center text-accent-600 font-medium">€€</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, LoRaWAN, 4G</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B / C</td>
+              <td class="px-4 py-3 text-center text-accent-600 font-medium">&#8364;&#8364;</td>
             </tr>
             <tr class="bg-dark-50">
               <td class="px-4 py-3 font-medium">Honeywell</td>
-              <td class="px-4 py-3 text-center">BACnet, Modbus, LON</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, LON</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center">A / B / C</td>
-              <td class="px-4 py-3 text-center text-orange-600 font-medium">€€€</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B / C</td>
+              <td class="px-4 py-3 text-center text-orange-600 font-medium">&#8364;&#8364;&#8364;</td>
             </tr>
             <tr>
               <td class="px-4 py-3 font-medium">Sauter</td>
-              <td class="px-4 py-3 text-center">BACnet, Modbus</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center">A / B</td>
-              <td class="px-4 py-3 text-center text-primary-600 font-medium">€€</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B</td>
+              <td class="px-4 py-3 text-center text-primary-600 font-medium">&#8364;&#8364;</td>
             </tr>
             <tr class="bg-dark-50">
               <td class="px-4 py-3 font-medium">Wago</td>
-              <td class="px-4 py-3 text-center">BACnet, Modbus, KNX</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, KNX</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center">B / C</td>
-              <td class="px-4 py-3 text-center text-accent-600 font-medium">€</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 font-medium">Distech Controls</td>
-              <td class="px-4 py-3 text-center">BACnet, Modbus</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center">A / B</td>
-              <td class="px-4 py-3 text-center text-primary-600 font-medium">€€</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">B / C</td>
+              <td class="px-4 py-3 text-center text-accent-600 font-medium">&#8364;</td>
             </tr>
             <tr class="bg-dark-50">
               <td class="px-4 py-3 font-medium">Wattsense</td>
-              <td class="px-4 py-3 text-center">BACnet, Modbus, LoRaWAN</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, LoRaWAN</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center text-accent-600">✓</td>
-              <td class="px-4 py-3 text-center">B / C</td>
-              <td class="px-4 py-3 text-center text-accent-600 font-medium">€</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">B / C</td>
+              <td class="px-4 py-3 text-center text-accent-600 font-medium">&#8364;</td>
             </tr>
           </tbody>
         </table>
@@ -313,12 +303,12 @@ import Layout from '../layouts/Layout.astro';
   <!-- Guide de choix -->
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-heading font-bold text-dark-900 mb-8 text-center">Comment choisir ?</h2>
+      <h2 class="text-2xl font-heading font-medium text-dark-900 mb-8 text-center">Comment choisir ?</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 bg-white rounded-xl border border-dark-200">
-          <div class="text-3xl mb-3">🏢</div>
-          <h3 class="font-bold text-dark-900">Petit bâtiment</h3>
-          <p class="mt-2 text-sm text-dark-500">< 2 000 m² — Budget limité</p>
+        <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;">
+          <div class="text-3xl mb-3">&#127970;</div>
+          <h3 class="font-medium text-dark-900">Petit batiment</h3>
+          <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">&lt; 2 000 m² — Budget limite</p>
           <div class="mt-3 space-y-1">
             <p class="text-sm font-medium text-primary-600">→ TheWatchdog</p>
             <p class="text-sm font-medium text-primary-600">→ Wago</p>
@@ -326,21 +316,20 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
-        <div class="p-6 bg-white rounded-xl border border-dark-200">
-          <div class="text-3xl mb-3">🏬</div>
-          <h3 class="font-bold text-dark-900">Bâtiment moyen</h3>
-          <p class="mt-2 text-sm text-dark-500">2 000 - 10 000 m²</p>
+        <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;">
+          <div class="text-3xl mb-3">&#127980;</div>
+          <h3 class="font-medium text-dark-900">Batiment moyen</h3>
+          <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">2 000 - 10 000 m²</p>
           <div class="mt-3 space-y-1">
             <p class="text-sm font-medium text-primary-600">→ TheWatchdog</p>
-            <p class="text-sm font-medium text-primary-600">→ Distech Controls</p>
             <p class="text-sm font-medium text-primary-600">→ Sauter</p>
           </div>
         </div>
 
-        <div class="p-6 bg-white rounded-xl border border-dark-200">
-          <div class="text-3xl mb-3">🏙️</div>
-          <h3 class="font-bold text-dark-900">Grand bâtiment</h3>
-          <p class="mt-2 text-sm text-dark-500">> 10 000 m²</p>
+        <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;">
+          <div class="text-3xl mb-3">&#127961;&#65039;</div>
+          <h3 class="font-medium text-dark-900">Grand batiment</h3>
+          <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">&gt; 10 000 m²</p>
           <div class="mt-3 space-y-1">
             <p class="text-sm font-medium text-primary-600">→ Schneider Electric</p>
             <p class="text-sm font-medium text-primary-600">→ Siemens</p>
@@ -348,14 +337,13 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
-        <div class="p-6 bg-white rounded-xl border border-dark-200">
-          <div class="text-3xl mb-3">🔄</div>
-          <h3 class="font-bold text-dark-900">Retrofit / Existant</h3>
-          <p class="mt-2 text-sm text-dark-500">Mise à niveau sans travaux</p>
+        <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;">
+          <div class="text-3xl mb-3">&#128260;</div>
+          <h3 class="font-medium text-dark-900">Retrofit / Existant</h3>
+          <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">Mise a niveau sans travaux</p>
           <div class="mt-3 space-y-1">
             <p class="text-sm font-medium text-primary-600">→ TheWatchdog</p>
             <p class="text-sm font-medium text-primary-600">→ Wattsense</p>
-            <p class="text-sm font-medium text-primary-600">→ Distech Controls</p>
           </div>
         </div>
       </div>
@@ -363,15 +351,15 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="py-16 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+  <section class="py-16 bg-dark-900 text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-heading font-bold">Besoin d'aide pour choisir ?</h2>
-      <p class="mt-4 text-lg text-primary-100">Notre audit gratuit analyse votre bâtiment et vous recommande les solutions les plus adaptées.</p>
+      <h2 class="text-3xl font-heading font-medium">Besoin d'aide pour choisir ?</h2>
+      <p class="mt-4 text-lg text-dark-300" style="font-weight: 400;">Notre audit gratuit analyse votre batiment et vous recommande les solutions les plus adaptees.</p>
       <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/audit" class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-700 font-bold rounded-lg hover:bg-primary-50 transition-colors">
+        <a href="/audit" class="btn-primary inline-flex items-center justify-center px-8 py-4 bg-accent-600 text-white font-medium rounded-lg hover:bg-accent-700" style="transition: 0.15s ease;">
           Lancer l'audit gratuit
         </a>
-        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-bold rounded-lg border border-white/20 hover:bg-white/20 transition-colors">
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 text-white font-medium rounded-lg" style="border: 0.5px solid rgba(255,255,255,0.2); transition: 0.15s ease;">
           Demander un conseil
         </a>
       </div>
@@ -405,7 +393,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "leader",
           categorie_label: "Leader mondial",
           note: 9,
-          description: "Leader mondial de la gestion de l'énergie et de l'automatisation. EcoStruxure Building est la plateforme de référence pour les grands bâtiments tertiaires, avec une intégration complète énergie + bâtiment + IT.",
+          description: "Leader mondial de la gestion de l'énergie et de l'automatisation. EcoStruxure Building est la plateforme de référence pour les grands bâtiments tertiaires, avec une intégration complète énergie + bâtiment + IT. Présence terrain inégalée en France grâce à un réseau dense d'intégrateurs certifiés.",
           produit_phare: "EcoStruxure Building Operation / Foresight Operation (2026)",
           protocoles: ["BACnet", "Modbus", "KNX", "LON", "IP"],
           budget: "eleve",
@@ -443,7 +431,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "leader",
           categorie_label: "Leader mondial",
           note: 9,
-          description: "Référence mondiale avec Desigo CC, une plateforme de gestion intégrée couvrant CVC, éclairage, sécurité incendie et sûreté. Très présent dans les bâtiments critiques (hôpitaux, aéroports).",
+          description: "Référence mondiale avec Desigo CC, une plateforme de gestion intégrée couvrant CVC, éclairage, sécurité incendie et sûreté. Très présent dans les bâtiments critiques (hôpitaux, aéroports). Robustesse industrielle éprouvée sur des milliers d'installations.",
           produit_phare: "Desigo CC (supervision) + PXC (automates)",
           protocoles: ["BACnet", "Modbus", "KNX", "LON", "IP"],
           budget: "eleve",
@@ -481,7 +469,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "supervision",
           categorie_label: "Supervision / IoT / IA",
           note: 8,
-          description: "Solution française innovante de pilotage GTB/GTC par IoT (LoRa & 4G). Se déploie en quelques heures sans travaux, avec IA prédictive et pilotage cloud multi-sites. Compatible avec toutes les GTB existantes.",
+          description: "Solution française innovante de pilotage GTB/GTC par IoT (LoRa & 4G). Se déploie en quelques heures sans travaux, avec IA prédictive et pilotage cloud multi-sites. Compatible avec toutes les GTB existantes. Approche disruptive qui démocratise la GTB pour les petits et moyens bâtiments.",
           produit_phare: "Watchdog BOS (Building Operating System)",
           protocoles: ["BACnet", "Modbus", "LoRaWAN", "4G", "IP"],
           budget: "moyen",
@@ -520,7 +508,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "leader",
           categorie_label: "Leader mondial",
           note: 8,
-          description: "Acteur historique avec un parc installé massif. Le framework Niagara (via Tridium) est la référence pour l'intégration multi-constructeurs. Fort en CVC et sécurité incendie.",
+          description: "Acteur historique avec un parc installé massif. Le framework Niagara (via Tridium) est la référence pour l'intégration multi-constructeurs. Fort en CVC et sécurité incendie. Honeywell Forge apporte désormais une couche cloud et analytique avancée.",
           produit_phare: "Niagara Framework (Tridium) + WEBs",
           protocoles: ["BACnet", "Modbus", "LON", "IP"],
           budget: "eleve",
@@ -551,43 +539,6 @@ import Layout from '../layouts/Layout.astro';
           ideal_pour: ["Intégration multi-constructeurs", "Grands bâtiments", "Sécurité incendie", "Patrimoine hétérogène"]
         },
         {
-          nom: "Johnson Controls",
-          sigle: "JCI",
-          pays: "USA",
-          couleur: "#0072CE",
-          categorie: "leader",
-          categorie_label: "Leader mondial",
-          note: 8,
-          description: "Spécialiste historique du CVC et de la sécurité du bâtiment. Metasys est leur plateforme phare de gestion technique, largement déployée dans le tertiaire nord-américain et européen.",
-          produit_phare: "Metasys (supervision) + OpenBlue (IA/cloud)",
-          protocoles: ["BACnet", "Modbus", "LON", "IP"],
-          budget: "eleve",
-          budget_label: "€€€ — Premium",
-          site: "https://www.johnsoncontrols.com/",
-          batiments: ["moyen", "grand"],
-          scores: {
-            facilite_installation: 5,
-            rapport_qualite_prix: 6,
-            fonctionnalites: 9,
-            support_france: 6,
-            innovation: 8,
-            interoperabilite: 8
-          },
-          forces: [
-            "Expertise CVC historique",
-            "OpenBlue : plateforme IA cloud moderne",
-            "Fort en sécurité et contrôle d'accès",
-            "Grand parc installé international"
-          ],
-          faiblesses: [
-            "Moins présent en France",
-            "Interface Metasys vieillissante",
-            "Coût élevé",
-            "Transition OpenBlue encore en cours"
-          ],
-          ideal_pour: ["CVC complexe", "Grands tertiaires", "Sécurité intégrée", "Campus"]
-        },
-        {
           nom: "Sauter",
           sigle: "SA",
           pays: "Suisse",
@@ -595,7 +546,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "europeen",
           categorie_label: "Européen spécialisé",
           note: 7,
-          description: "Fabricant suisse réputé pour la qualité de sa régulation CVC. Excellent rapport qualité/prix pour les bâtiments tertiaires moyens. Forte présence en France et en Allemagne.",
+          description: "Fabricant suisse réputé pour la qualité de sa régulation CVC. Excellent rapport qualité/prix pour les bâtiments tertiaires moyens. Forte présence en France et en Allemagne. Fiabilité et précision helvétiques appliquées au confort thermique.",
           produit_phare: "modulo 6 (automates) + SAUTER Vision Center",
           protocoles: ["BACnet", "Modbus", "IP"],
           budget: "moyen",
@@ -632,7 +583,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "europeen",
           categorie_label: "Européen spécialisé",
           note: 7,
-          description: "Géant de l'électrotechnique et de l'automatisation. Fort en KNX pour le résidentiel et petit tertiaire, et en automates industriels pour les grandes installations.",
+          description: "Géant de l'électrotechnique et de l'automatisation. Fort en KNX pour le résidentiel et petit tertiaire, et en automates industriels pour les grandes installations. ABB Ability offre une couche cloud transversale pour le monitoring énergétique.",
           produit_phare: "ABB-free@home (résidentiel) + ABB Ability (cloud)",
           protocoles: ["KNX", "BACnet", "Modbus", "IP"],
           budget: "moyen",
@@ -668,7 +619,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "europeen",
           categorie_label: "Européen spécialisé",
           note: 7,
-          description: "Fabricant allemand de contrôleurs compacts et bornes de raccordement. Excellent rapport qualité/prix pour les projets GTB de taille moyenne. Très apprécié des intégrateurs.",
+          description: "Fabricant allemand de contrôleurs compacts et bornes de raccordement. Excellent rapport qualité/prix pour les projets GTB de taille moyenne. Très apprécié des intégrateurs pour sa flexibilité de programmation et sa robustesse industrielle.",
           produit_phare: "PFC200 (contrôleur) + WAGO Cloud",
           protocoles: ["BACnet", "Modbus", "KNX", "IP"],
           budget: "bas",
@@ -699,44 +650,6 @@ import Layout from '../layouts/Layout.astro';
           ideal_pour: ["Intégrateurs GTB", "Petits/moyens bâtiments", "Projets sur mesure", "Budget serré"]
         },
         {
-          nom: "Distech Controls",
-          sigle: "DC",
-          pays: "Canada / France",
-          couleur: "#00A4E4",
-          categorie: "europeen",
-          categorie_label: "Européen / Nord-américain",
-          note: 7,
-          description: "Filiale d'Acuity Brands, spécialisée dans les contrôleurs BACnet/IP innovants. La gamme ECLYPSE est reconnue pour sa modernité (web-based, RESTful API, Wi-Fi intégré).",
-          produit_phare: "ECLYPSE 300/400/600 + Eclypse Facilities",
-          protocoles: ["BACnet", "Modbus", "IP", "Wi-Fi"],
-          budget: "moyen",
-          budget_label: "€€ — Intermédiaire",
-          site: "https://www.distech-controls.com/",
-          batiments: ["petit", "moyen", "grand"],
-          scores: {
-            facilite_installation: 8,
-            rapport_qualite_prix: 8,
-            fonctionnalites: 8,
-            support_france: 7,
-            innovation: 9,
-            interoperabilite: 8
-          },
-          forces: [
-            "ECLYPSE : contrôleurs modernes (web, API REST)",
-            "Wi-Fi intégré en option",
-            "Interface Envysion web-based intuitive",
-            "BACnet BTL Listed (certifié)",
-            "R&D en France (Lyon)"
-          ],
-          faiblesses: [
-            "Moins connu que Schneider/Siemens",
-            "Écosystème matériel plus limité",
-            "Pas d'IA avancée intégrée",
-            "Support moins dense que les leaders"
-          ],
-          ideal_pour: ["Projets BACnet modernes", "Bâtiments connectés", "Intégrateurs IT-friendly", "Retrofit"]
-        },
-        {
           nom: "Wattsense",
           sigle: "WS",
           pays: "France",
@@ -744,7 +657,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "iot",
           categorie_label: "IoT / Connectivité",
           note: 7,
-          description: "Startup française spécialisée dans la connectivité IoT pour les bâtiments existants. Leur box se branche sur les équipements techniques existants et remonte les données vers le cloud.",
+          description: "Startup française spécialisée dans la connectivité IoT pour les bâtiments existants. Leur box se branche sur les équipements techniques existants et remonte les données vers le cloud. Solution idéale pour un premier pas vers la GTB connectée sans investissement lourd.",
           produit_phare: "Wattsense Box (passerelle IoT universelle)",
           protocoles: ["BACnet", "Modbus", "LoRaWAN", "IP"],
           budget: "bas",
@@ -782,7 +695,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "europeen",
           categorie_label: "Européen spécialisé",
           note: 7,
-          description: "Pionnier de l'automatisation PC-based. Ses contrôleurs puissants et ouverts séduisent les intégrateurs pour des projets GTB sur mesure haute performance.",
+          description: "Pionnier de l'automatisation PC-based. Ses contrôleurs puissants et ouverts séduisent les intégrateurs pour des projets GTB sur mesure haute performance. TwinCAT 3 offre une puissance de calcul inégalée pour les installations complexes.",
           produit_phare: "CX (contrôleurs embarqués) + TwinCAT 3",
           protocoles: ["BACnet", "Modbus", "KNX", "EtherCAT", "IP"],
           budget: "moyen",
@@ -819,7 +732,7 @@ import Layout from '../layouts/Layout.astro';
           categorie: "europeen",
           categorie_label: "Européen spécialisé",
           note: 7,
-          description: "Spécialiste autrichien des passerelles et contrôleurs multi-protocoles. Solution de choix pour intégrer des systèmes hétérogènes (BACnet, LON, KNX, Modbus) dans une GTB unifiée.",
+          description: "Spécialiste autrichien des passerelles et contrôleurs multi-protocoles. Solution de choix pour intégrer des systèmes hétérogènes (BACnet, LON, KNX, Modbus) dans une GTB unifiée. Reconnu pour la fiabilité de ses passerelles en environnements complexes.",
           produit_phare: "L-INX Automation Servers + L-VIS Touch Panels",
           protocoles: ["BACnet", "LON", "KNX", "Modbus", "DALI", "IP"],
           budget: "moyen",

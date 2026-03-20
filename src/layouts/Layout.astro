@@ -6,7 +6,8 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du Bâtiment (GTB) et la Gestion Technique Centralisée (GTC)" } = Astro.props;
+const { title, description = "NeoGTB — Le tiers de confiance indépendant de la GTB en France" } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -15,257 +16,193 @@ const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du B
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
+  <meta name="theme-color" content="#0F2640" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <title>{title} | NeoGTB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <title>{title} — NeoGTB</title>
 </head>
-<body class="min-h-screen bg-white text-dark-900 font-sans antialiased">
-  <header class="fixed top-0 w-full z-50 bg-white shadow-md" id="main-header">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+<body class="min-h-screen bg-white text-dark-900 antialiased" style="font-family: 'Inter', system-ui, sans-serif;">
+
+  <!-- NAV — 64px desktop, 56px mobile, hide on scroll down -->
+  <header
+    class="fixed top-0 w-full z-50 bg-white transition-transform duration-150 ease-out"
+    style="border-bottom: 0.5px solid rgba(0,0,0,0.08);"
+    id="main-header"
+    x-data="{ mobileOpen: false }"
+  >
+    <nav class="max-w-[1200px] mx-auto px-5 md:px-10 flex items-center justify-between h-14 md:h-16">
+      <!-- Logo -->
       <a href="/" class="flex items-center">
-        <img src="/images/logo-neogtb.png" alt="NéoGTB — Gestion Technique du Bâtiment" class="h-20 w-auto" />
+        <img src="/images/logo-neogtb.png" alt="NeoGTB" class="h-10 md:h-12 w-auto" />
       </a>
 
       <!-- Desktop Nav -->
-      <div class="hidden lg:flex items-center gap-6">
-        <a href="/" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">Accueil</a>
-        <a href="/gtb" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">GTB</a>
-        <a href="/gtc" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">GTC</a>
-        <a href="/solutions" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">Solutions</a>
-        <a href="/comparateur" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">Comparateur</a>
-        <a href="/positionnement" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">Notre approche</a>
-        <a href="/blog" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">Blog</a>
-        <a href="/generateur-cee" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">CEE</a>
-        <a href="/audit" class="btn-cta inline-flex items-center gap-2 px-6 py-2.5 text-sm tracking-wide">
-          Diagnostic gratuit
-        </a>
-        <a href="/contact" class="text-sm font-semibold text-dark-700 hover:text-accent-600 transition-colors duration-200">Contact</a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <div class="lg:hidden" x-data="{ open: false }">
-        <button @click="open = !open" class="p-2 text-dark-700 hover:text-accent-600 transition-colors">
-          <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        <!-- Mobile Menu -->
-        <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="absolute top-24 left-0 w-full bg-white shadow-xl border-t border-dark-100">
-          <div class="flex flex-col p-5 gap-1">
-            <a href="/" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Accueil</a>
-            <a href="/gtb" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">GTB</a>
-            <a href="/gtc" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">GTC</a>
-            <a href="/solutions" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Solutions</a>
-            <a href="/comparateur" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Comparateur</a>
-            <a href="/positionnement" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Notre approche</a>
-            <a href="/blog" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Blog</a>
-            <a href="/generateur-cee" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all">Générateur CEE</a>
-            <div class="pt-3 mt-2 border-t border-dark-100">
-              <a href="/audit" class="btn-cta inline-flex items-center justify-center gap-2 px-5 py-3 text-sm w-full tracking-wide">
-                Diagnostic gratuit
-              </a>
-            </div>
-            <a href="/contact" class="text-sm font-semibold text-dark-700 hover:text-accent-600 hover:bg-accent-50 rounded-lg px-3 py-2.5 transition-all mt-1">Contact</a>
+      <div class="hidden lg:flex items-center gap-5">
+        <!-- Dropdown Comprendre -->
+        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+          <button class="text-[13px] font-medium text-dark-500 hover:text-dark-900 transition-colors duration-150 flex items-center gap-1">
+            Comprendre
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+            class="absolute top-full left-0 mt-1 w-52 bg-white rounded-lg py-2 z-50" style="border: 0.5px solid rgba(0,0,0,0.08);">
+            <a href="/gtb" class={`block px-4 py-2 text-[13px] transition-colors duration-150 ${currentPath === '/gtb' ? 'text-accent-600 font-medium' : 'text-dark-500 hover:text-dark-900'}`}>Qu'est-ce que la GTB ?</a>
+            <a href="/gtc" class={`block px-4 py-2 text-[13px] transition-colors duration-150 ${currentPath === '/gtc' ? 'text-accent-600 font-medium' : 'text-dark-500 hover:text-dark-900'}`}>Qu'est-ce que la GTC ?</a>
+            <a href="/solutions" class={`block px-4 py-2 text-[13px] transition-colors duration-150 ${currentPath === '/solutions' ? 'text-accent-600 font-medium' : 'text-dark-500 hover:text-dark-900'}`}>Solutions & Technologies</a>
           </div>
         </div>
+
+        <!-- Dropdown Outils -->
+        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+          <button class="text-[13px] font-medium text-dark-500 hover:text-dark-900 transition-colors duration-150 flex items-center gap-1">
+            Outils
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+            class="absolute top-full left-0 mt-1 w-52 bg-white rounded-lg py-2 z-50" style="border: 0.5px solid rgba(0,0,0,0.08);">
+            <a href="/audit" class={`block px-4 py-2 text-[13px] transition-colors duration-150 ${currentPath === '/audit' ? 'text-accent-600 font-medium' : 'text-dark-500 hover:text-dark-900'}`}>Diagnostic GTB</a>
+            <a href="/comparateur" class={`block px-4 py-2 text-[13px] transition-colors duration-150 ${currentPath === '/comparateur' ? 'text-accent-600 font-medium' : 'text-dark-500 hover:text-dark-900'}`}>Comparateur objectif</a>
+            <a href="/generateur-cee" class={`block px-4 py-2 text-[13px] transition-colors duration-150 ${currentPath === '/generateur-cee' ? 'text-accent-600 font-medium' : 'text-dark-500 hover:text-dark-900'}`}>Générateur CEE</a>
+          </div>
+        </div>
+
+        <a href="/blog" class={`text-[13px] font-medium transition-colors duration-150 ${currentPath.startsWith('/blog') ? 'text-accent-600' : 'text-dark-500 hover:text-dark-900'}`}>Perspectives</a>
+        <a href="/about" class={`text-[13px] font-medium transition-colors duration-150 ${currentPath === '/about' ? 'text-accent-600' : 'text-dark-500 hover:text-dark-900'}`}>À propos</a>
+      </div>
+
+      <!-- CTA + Mobile toggle -->
+      <div class="flex items-center gap-3">
+        <a href="/contact" class="hidden lg:inline-flex text-[12px] font-medium px-4 py-2 rounded-lg text-dark-600 transition-colors duration-150" style="border: 0.5px solid rgba(0,0,0,0.08);">Nous contacter</a>
+
+        <!-- Hamburger -->
+        <button @click="mobileOpen = !mobileOpen" class="lg:hidden p-1" aria-label="Menu">
+          <svg x-show="!mobileOpen" class="w-5 h-5 text-dark-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h12M4 18h16" /></svg>
+          <svg x-show="mobileOpen" class="w-5 h-5 text-dark-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
       </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-100"
+      class="lg:hidden bg-white px-5 pb-5" style="border-top: 0.5px solid rgba(0,0,0,0.08);">
+      <div class="flex flex-col gap-0.5 py-2">
+        <span class="text-[10px] font-medium uppercase tracking-wider text-dark-400 px-3 pt-3 pb-1">Comprendre</span>
+        <a href="/gtb" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">Qu'est-ce que la GTB ?</a>
+        <a href="/gtc" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">Qu'est-ce que la GTC ?</a>
+        <a href="/solutions" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">Solutions & Technologies</a>
+
+        <span class="text-[10px] font-medium uppercase tracking-wider text-dark-400 px-3 pt-4 pb-1">Outils</span>
+        <a href="/audit" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">Diagnostic GTB</a>
+        <a href="/comparateur" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">Comparateur objectif</a>
+        <a href="/generateur-cee" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">Générateur CEE</a>
+
+        <div class="my-2" style="height: 0.5px; background: rgba(0,0,0,0.08);"></div>
+        <a href="/blog" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">Perspectives</a>
+        <a href="/about" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">À propos</a>
+        <a href="/contact" class="text-[13px] text-dark-600 hover:text-dark-900 px-3 py-2 rounded-md transition-colors">Nous contacter</a>
+      </div>
+    </div>
   </header>
 
-  <main class="pt-24">
+  <main class="pt-14 md:pt-16">
     <slot />
   </main>
 
-  <footer class="bg-primary-950 text-white mt-0 relative overflow-hidden">
-    <!-- Subtle circuit pattern -->
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 48px 48px;"></div>
-    <!-- Top gradient border -->
-    <div class="h-1 w-full bg-gradient-to-r from-accent-500 via-cyan-500 to-accent-500"></div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+  <!-- FOOTER -->
+  <footer class="bg-dark-950 text-white" style="border-top: 0.5px solid rgba(255,255,255,0.08);">
+    <div class="max-w-[1200px] mx-auto px-5 md:px-10 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Brand -->
-        <div class="col-span-1 md:col-span-2">
-          <img src="/images/logo-neogtb.png" alt="NéoGTB" class="h-20 w-auto brightness-0 invert" />
-          <p class="mt-4 text-dark-400 text-sm max-w-md leading-relaxed">
-            Le tiers de confiance indépendant de la GTB en France. Indépendant de toute marque, nous vous aidons à comprendre, comparer et décider en toute objectivité.
+        <div class="md:col-span-2">
+          <img src="/images/logo-neogtb.png" alt="NeoGTB" class="h-10 w-auto brightness-0 invert" />
+          <p class="mt-4 text-[13px] text-dark-400 max-w-md" style="line-height: 1.7;">
+            Le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France. Aucun lien commercial avec les fabricants — nous vous aidons à comprendre, comparer et décider.
           </p>
-          <div class="mt-6 flex items-center gap-3">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-accent-500/10 text-accent-400 border border-accent-500/20">
-              <span class="w-1.5 h-1.5 bg-accent-400 rounded-full"></span>
-              Indépendant
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-              <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span>
-              Objectif
-            </span>
-          </div>
         </div>
 
         <!-- Navigation -->
         <div>
-          <h4 class="font-semibold text-sm uppercase tracking-widest text-accent-400/80 mb-5">Navigation</h4>
-          <ul class="space-y-2.5">
-            <li><a href="/gtb" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Qu'est-ce que la GTB ?</a></li>
-            <li><a href="/gtc" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Qu'est-ce que la GTC ?</a></li>
-            <li><a href="/solutions" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Solutions</a></li>
-            <li><a href="/comparateur" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Comparateur marques</a></li>
-            <li><a href="/positionnement" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Notre approche</a></li>
-            <li><a href="/generateur-cee" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Générateur CEE</a></li>
-            <li><a href="/blog" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Blog</a></li>
+          <p class="text-[10px] font-medium uppercase tracking-wider text-dark-500 mb-4">Navigation</p>
+          <ul class="space-y-2">
+            <li><a href="/gtb" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">GTB</a></li>
+            <li><a href="/gtc" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">GTC</a></li>
+            <li><a href="/solutions" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">Solutions</a></li>
+            <li><a href="/comparateur" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">Comparateur</a></li>
+            <li><a href="/blog" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">Perspectives</a></li>
           </ul>
         </div>
 
-        <!-- Contact & Légal -->
+        <!-- Légal -->
         <div>
-          <h4 class="font-semibold text-sm uppercase tracking-widest text-accent-400/80 mb-5">Contact & Légal</h4>
-          <ul class="space-y-2.5">
-            <li><a href="/audit" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Diagnostic gratuit</a></li>
-            <li><a href="/contact" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Nous contacter</a></li>
-            <li><a href="/mentions-legales" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Mentions légales</a></li>
-            <li><a href="/politique-de-confidentialite" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Politique de confidentialité</a></li>
-            <li><a href="/mes-droits-rgpd" class="text-sm text-dark-400 hover:text-white hover:translate-x-1 inline-block transition-all">Vos droits RGPD</a></li>
+          <p class="text-[10px] font-medium uppercase tracking-wider text-dark-500 mb-4">Légal</p>
+          <ul class="space-y-2">
+            <li><a href="/audit" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">Diagnostic gratuit</a></li>
+            <li><a href="/contact" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">Contact</a></li>
+            <li><a href="/mentions-legales" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">Mentions légales</a></li>
+            <li><a href="/politique-de-confidentialite" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">Confidentialité</a></li>
+            <li><a href="/mes-droits-rgpd" class="text-[13px] text-dark-400 hover:text-white transition-colors duration-150">Vos droits RGPD</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="border-t border-white/10 mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-sm text-dark-500">&copy; {new Date().getFullYear()} NeoGTB. Tous droits réservés.</p>
-        <div class="flex items-center gap-4 text-xs text-dark-500">
-          <a href="/mentions-legales" class="hover:text-white transition-colors">Mentions légales</a>
-          <span class="text-dark-700">|</span>
-          <a href="/politique-de-confidentialite" class="hover:text-white transition-colors">Confidentialité</a>
-          <span class="text-dark-700">|</span>
-          <button onclick="window.dispatchEvent(new CustomEvent('open-cookie-settings'))" class="hover:text-white transition-colors cursor-pointer">Gérer les cookies</button>
-        </div>
+      <div class="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3" style="border-top: 0.5px solid rgba(255,255,255,0.06);">
+        <p class="text-[12px] text-dark-500">&copy; {new Date().getFullYear()} NeoGTB. Tous droits réservés.</p>
+        <button onclick="window.dispatchEvent(new CustomEvent('open-cookie-settings'))" class="text-[12px] text-dark-500 hover:text-white transition-colors duration-150 cursor-pointer">Gérer les cookies</button>
       </div>
     </div>
   </footer>
 
-  <!-- Bandeau cookies RGPD -->
+  <!-- Cookie Consent -->
   <div x-data="cookieConsent()" x-cloak>
-    <!-- Bandeau principal -->
-    <div x-show="showBanner" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-      class="fixed bottom-0 left-0 right-0 z-[60] p-4 md:p-6">
-      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl border border-dark-200 p-6">
-        <div class="flex items-start gap-4">
-          <span class="text-2xl flex-shrink-0 mt-1">🍪</span>
-          <div class="flex-1">
-            <h3 class="font-heading font-bold text-dark-900">Nous respectons votre vie privée</h3>
-            <p class="mt-1 text-sm text-dark-500">
-              NeoGTB utilise des cookies pour améliorer votre expérience et analyser le trafic. Aucune donnée n'est vendue à des tiers.
-            </p>
-            <div class="mt-4 flex flex-wrap items-center gap-3">
-              <span class="text-xs font-medium text-dark-400 bg-dark-100 px-2 py-1 rounded">Essentiels ✅</span>
-              <label class="flex items-center gap-1.5 cursor-pointer">
-                <input type="checkbox" x-model="consents.analytics" class="w-4 h-4 rounded border-dark-300 text-primary-600 focus:ring-primary-500">
-                <span class="text-xs font-medium text-dark-600">Analytics</span>
-              </label>
-              <label class="flex items-center gap-1.5 cursor-pointer">
-                <input type="checkbox" x-model="consents.marketing" class="w-4 h-4 rounded border-dark-300 text-primary-600 focus:ring-primary-500">
-                <span class="text-xs font-medium text-dark-600">Marketing</span>
-              </label>
-            </div>
-          </div>
+    <div x-show="showBanner" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      class="fixed bottom-0 left-0 right-0 z-[60] p-4">
+      <div class="max-w-xl mx-auto bg-white rounded-lg p-5" style="border: 0.5px solid rgba(0,0,0,0.08);">
+        <p class="text-[13px] font-medium text-dark-900 mb-1">Respect de votre vie privée</p>
+        <p class="text-[12px] text-dark-500 mb-3" style="line-height: 1.6;">NeoGTB utilise des cookies essentiels et analytiques. Aucune donnée n'est vendue à des tiers.</p>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[11px] font-medium text-dark-400 bg-dark-50 px-2 py-0.5 rounded">Essentiels</span>
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" x-model="consents.analytics" class="w-3.5 h-3.5 rounded text-accent-500 focus:ring-accent-500 focus:ring-1">
+            <span class="text-[11px] text-dark-600">Analytics</span>
+          </label>
         </div>
-        <div class="mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:justify-end">
-          <a href="/politique-de-confidentialite" class="text-xs text-primary-600 hover:text-primary-700 font-medium py-2 sm:mr-auto">En savoir plus</a>
-          <button @click="rejectAll()" class="px-4 py-2 text-sm font-medium text-dark-600 bg-dark-100 rounded-lg hover:bg-dark-200 transition-colors">Tout refuser</button>
-          <button @click="showCustomize = true; showBanner = false" class="px-4 py-2 text-sm font-medium text-dark-600 bg-dark-100 rounded-lg hover:bg-dark-200 transition-colors">Personnaliser</button>
-          <button @click="acceptAll()" class="px-4 py-2 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">Accepter</button>
+        <div class="flex items-center gap-2 justify-end">
+          <button @click="rejectAll()" class="text-[12px] font-medium text-dark-500 px-3 py-1.5 rounded-md bg-dark-50 transition-colors duration-150 hover:bg-dark-100">Refuser</button>
+          <button @click="acceptAll()" class="text-[12px] font-medium text-white px-3 py-1.5 rounded-md bg-accent-500 transition-opacity duration-150 hover:opacity-90">Accepter</button>
         </div>
       </div>
     </div>
-
-    <!-- Modal personnalisation -->
-    <div x-show="showCustomize" x-transition.opacity class="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-dark-900/50 backdrop-blur-sm">
-      <div @click.outside="showCustomize = false" class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6">
-        <div class="flex items-center justify-between mb-6">
-          <h3 class="font-heading font-bold text-dark-900 flex items-center gap-2">
-            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-            Gestion des cookies
-          </h3>
-          <button @click="showCustomize = false" class="p-1 text-dark-400 hover:text-dark-600">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
-
-        <div class="space-y-4">
-          <!-- Essentiels -->
-          <div class="p-4 bg-dark-50 rounded-xl">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-dark-800 text-sm">Cookies essentiels</span>
-              <span class="text-xs font-medium text-accent-600 bg-accent-100 px-2 py-0.5 rounded">Toujours actifs</span>
-            </div>
-            <p class="text-xs text-dark-500 mt-1">Requis pour le fonctionnement du site. Ne peuvent être désactivés.</p>
-          </div>
-
-          <!-- Analytics -->
-          <div class="p-4 border border-dark-200 rounded-xl">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-dark-800 text-sm">Cookies analytiques</span>
-              <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" x-model="consents.analytics" class="sr-only peer">
-                <div class="w-9 h-5 bg-dark-300 peer-focus:ring-2 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
-              </label>
-            </div>
-            <p class="text-xs text-dark-500 mt-1">Google Analytics 4 — Mesure d'audience anonymisée pour améliorer le site.</p>
-            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-xs text-primary-600 hover:text-primary-700 mt-1 inline-block">Politique GA4 ↗</a>
-          </div>
-
-          <!-- Marketing -->
-          <div class="p-4 border border-dark-200 rounded-xl">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-dark-800 text-sm">Cookies marketing</span>
-              <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" x-model="consents.marketing" class="sr-only peer">
-                <div class="w-9 h-5 bg-dark-300 peer-focus:ring-2 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-primary-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
-              </label>
-            </div>
-            <p class="text-xs text-dark-500 mt-1">Actuellement non utilisés. Option disponible pour l'avenir.</p>
-          </div>
-        </div>
-
-        <div class="mt-6 flex gap-2">
-          <button @click="rejectAll(); showCustomize = false" class="flex-1 px-4 py-2.5 text-sm font-medium text-dark-600 bg-dark-100 rounded-lg hover:bg-dark-200 transition-colors">Tout refuser</button>
-          <button @click="saveConsent(); showCustomize = false" class="flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">Enregistrer mes choix</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bouton flottant "Gérer mes cookies" -->
-    <button x-show="!showBanner && !showCustomize && hasConsented"
-      @click="showCustomize = true"
-      x-transition
-      class="fixed bottom-4 left-4 z-[55] flex items-center gap-1.5 px-3 py-2 bg-white rounded-full shadow-lg border border-dark-200 text-xs font-medium text-dark-600 hover:text-dark-900 hover:shadow-xl transition-all">
-      🍪 <span class="hidden sm:inline">Gérer mes cookies</span>
-    </button>
   </div>
 
-  <style>
-    [x-cloak] { display: none !important; }
-  </style>
-
-  <script src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js" defer></script>
-  <script src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
-  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/@alpinejs/intersect@3.14.9/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/@alpinejs/collapse@3.14.9/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js" defer></script>
 
   <script>
+    // Nav hide on scroll down, show on scroll up
+    (function() {
+      let lastY = 0;
+      const header = document.getElementById('main-header');
+      if (!header) return;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 80 && y > lastY) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+        lastY = y;
+      }, { passive: true });
+    })();
+
+    // Cookie consent
     document.addEventListener('alpine:init', () => {
       Alpine.data('cookieConsent', () => ({
         showBanner: false,
-        showCustomize: false,
         hasConsented: false,
-        consents: {
-          analytics: false,
-          marketing: false,
-        },
+        consents: { analytics: false },
 
         init() {
           const saved = this.getCookie('neogtb_consent');
@@ -273,61 +210,34 @@ const { title, description = "NeoGTB - Tout savoir sur la Gestion Technique du B
             try {
               this.consents = JSON.parse(saved);
               this.hasConsented = true;
-              this.applyConsents();
-            } catch (e) {
-              this.showBannerDelayed();
-            }
+            } catch (e) { this.showBannerDelayed(); }
           } else {
             this.showBannerDelayed();
           }
-
-          window.addEventListener('open-cookie-settings', () => {
-            this.showCustomize = true;
-          });
+          window.addEventListener('open-cookie-settings', () => { this.showBanner = true; });
         },
 
-        showBannerDelayed() {
-          setTimeout(() => { this.showBanner = true; }, 500);
-        },
+        showBannerDelayed() { setTimeout(() => { this.showBanner = true; }, 800); },
 
         acceptAll() {
-          this.consents = { analytics: true, marketing: true };
-          this.saveConsent();
+          this.consents = { analytics: true };
+          this.save();
         },
 
         rejectAll() {
-          this.consents = { analytics: false, marketing: false };
-          this.saveConsent();
-          this.showBanner = false;
+          this.consents = { analytics: false };
+          this.save();
         },
 
-        saveConsent() {
+        save() {
           this.setCookie('neogtb_consent', JSON.stringify(this.consents), 395);
           this.showBanner = false;
           this.hasConsented = true;
-          this.applyConsents();
-        },
-
-        applyConsents() {
-          if (this.consents.analytics) {
-            // Load GA4 only if consented
-            // window.dataLayer = window.dataLayer || [];
-            // Uncomment and add GA4 script tag when ready
-          }
-          // Google Consent Mode v2
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', {
-              'analytics_storage': this.consents.analytics ? 'granted' : 'denied',
-              'ad_storage': this.consents.marketing ? 'granted' : 'denied',
-              'ad_user_data': this.consents.marketing ? 'granted' : 'denied',
-              'ad_personalization': this.consents.marketing ? 'granted' : 'denied',
-            });
-          }
         },
 
         setCookie(name, value, days) {
           const d = new Date();
-          d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+          d.setTime(d.getTime() + (days * 86400000));
           document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
         },
 

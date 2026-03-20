@@ -2,211 +2,260 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Qu'est-ce que la GTC ?" description="Guide complet sur la Gestion Technique Centralisée (GTC) : définition, différences avec la GTB, fonctionnement et avantages pour la supervision de vos bâtiments.">
+<Layout title="Qu'est-ce que la GTC ?" description="Guide complet sur la Gestion Technique Centralisée (GTC) : définition, différences avec la GTB, architecture type, protocoles (BACnet, Modbus, LON, KNX) et cas d'usage multi-sites.">
+
+  <style>
+    .editorial { max-width: 680px; margin-left: auto; margin-right: auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+    .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; color: #6b7280; }
+    h1 { font-size: 30px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.25; color: #111; margin-top: 0.75rem; }
+    h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.3px; line-height: 1.3; color: #111; margin-bottom: 1rem; }
+    h3 { font-size: 17px; font-weight: 500; color: #111; margin-bottom: 0.5rem; }
+    .body-text { font-size: 15px; color: #4b5563; line-height: 1.75; }
+    .subtitle { font-size: 16px; color: #6b7280; line-height: 1.7; margin-top: 1rem; }
+    .callout { background: #f9fafb; padding: 1.25rem 1.5rem; font-size: 15px; color: #374151; line-height: 1.75; margin: 2rem 0; }
+    .sep { width: 100%; height: 0; margin: 3rem 0; }
+    .tag { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: #6b7280; padding: 0.25rem 0.75rem; background: #f3f4f6; }
+    .btn-primary { display: inline-block; font-size: 14px; font-weight: 500; color: #fff; background: #111; padding: 0.75rem 1.5rem; text-decoration: none; transition: opacity 0.15s ease; }
+    .btn-primary:hover { opacity: 0.85; }
+    .comparison-table { width: 100%; font-size: 14px; border-collapse: collapse; }
+    .comparison-table th { font-weight: 500; text-align: left; padding: 0.75rem 1rem; color: #111; background: #f9fafb; }
+    .comparison-table td { padding: 0.75rem 1rem; color: #4b5563; vertical-align: top; }
+    .comparison-table tr + tr td { }
+    .arch-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
+    .arch-num { flex-shrink: 0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #374151; background: #f3f4f6; }
+    .arch-content { font-size: 15px; color: #4b5563; line-height: 1.7; }
+    .arch-content strong { font-weight: 500; color: #111; }
+    .use-case { margin-bottom: 1.5rem; }
+    .use-case-title { font-size: 15px; font-weight: 500; color: #111; margin-bottom: 0.25rem; }
+    .use-case-text { font-size: 15px; color: #4b5563; line-height: 1.75; }
+  </style>
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-accent-500/20 text-accent-300 border border-accent-500/30 mb-6">
-          Guide éducatif
-        </span>
-        <h1 class="text-4xl md:text-5xl font-heading font-extrabold leading-tight">
-          Qu'est-ce que la <span class="text-accent-400">GTC</span> ?
-        </h1>
-        <p class="mt-6 text-lg text-dark-300 max-w-2xl">
-          La Gestion Technique Centralisée est le système de supervision qui centralise la surveillance et le contrôle de tous les équipements techniques sur une interface unique.
-        </p>
+  <section style="padding: 5rem 0 3rem;">
+    <div class="editorial">
+      <span class="eyebrow">Guide educatif</span>
+      <h1>Qu'est-ce que la GTC ?</h1>
+      <p class="subtitle">
+        La Gestion Technique Centralisee est le systeme de supervision qui regroupe la surveillance et le pilotage de tous les equipements techniques d'un ou plusieurs batiments sur une interface unique. Tour d'horizon complet de son role, de son architecture et de ses differences avec la GTB.
+      </p>
+    </div>
+  </section>
+
+  <hr class="sep" style="border: none; border-top: 0.5px solid rgba(0,0,0,0.08);" />
+
+  <!-- Definition -->
+  <section style="padding: 0 0 2rem;">
+    <div class="editorial">
+      <h2>Definition</h2>
+      <p class="body-text">
+        La <strong style="font-weight:500;">Gestion Technique Centralisee (GTC)</strong> designe un systeme informatique dedie a la supervision des lots techniques d'un patrimoine immobilier. Elle collecte en temps reel les donnees remontees par les capteurs et automates (temperatures, etats de fonctionnement, comptages energetiques) et les restitue sur des synoptiques graphiques accessibles depuis un poste central ou un navigateur web.
+      </p>
+      <p class="body-text" style="margin-top: 1rem;">
+        Contrairement a un simple tableau de bord, la GTC offre une couche de supervision active : declenchement d'alarmes en cas de derive, historisation des mesures pour analyse de tendance, et possibilite d'envoyer des commandes simples aux equipements distants. Dans le monde anglo-saxon, elle est souvent assimilee a un systeme de type SCADA (Supervisory Control And Data Acquisition) applique au batiment.
+      </p>
+
+      <div class="callout" style="border: 0.5px solid rgba(0,0,0,0.08);">
+        A retenir — La GTC centralise la supervision de plusieurs sites ou de plusieurs lots techniques sur une plateforme unique. Elle remonte l'information, detecte les anomalies et permet un pilotage a distance, mais ne porte pas la regulation fine des equipements (c'est le role de la GTB ou des automates de terrain).
       </div>
     </div>
   </section>
 
-  <!-- Définition -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-heading font-bold text-dark-900">Définition de la GTC</h2>
-          <p class="mt-4 text-dark-600 leading-relaxed">
-            La <strong>Gestion Technique Centralisée (GTC)</strong> est un système informatique qui permet de <strong>centraliser la supervision</strong> de l'ensemble des lots techniques d'un bâtiment ou d'un parc immobilier sur une seule et même interface.
-          </p>
-          <p class="mt-4 text-dark-600 leading-relaxed">
-            Contrairement à la GTB qui se concentre sur un bâtiment unique, la GTC peut superviser <strong>plusieurs bâtiments simultanément</strong>, offrant une vision globale à l'exploitant ou au gestionnaire technique.
-          </p>
-          <p class="mt-4 text-dark-600 leading-relaxed">
-            Elle collecte en temps réel les données des différents systèmes (CVC, éclairage, sécurité, énergie), les affiche sur des synoptiques graphiques et permet de <strong>piloter à distance</strong> les équipements.
-          </p>
-        </div>
-        <div class="bg-accent-50 rounded-2xl p-8 border border-accent-200">
-          <h3 class="font-heading font-bold text-dark-900 mb-6">Fonctions clés de la GTC</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <div>
-                <p class="font-semibold text-dark-800">Supervision en temps réel</p>
-                <p class="text-sm text-dark-500">Visualisation de tous les états et mesures sur des synoptiques interactifs</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <div>
-                <p class="font-semibold text-dark-800">Gestion des alarmes</p>
-                <p class="text-sm text-dark-500">Détection automatique des anomalies, alertes et historique des événements</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <div>
-                <p class="font-semibold text-dark-800">Pilotage à distance</p>
-                <p class="text-sm text-dark-500">Commande des équipements depuis un poste central ou un appareil mobile</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <div>
-                <p class="font-semibold text-dark-800">Historisation & Reporting</p>
-                <p class="text-sm text-dark-500">Archivage des données, courbes de tendance, rapports automatisés</p>
-              </div>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <div>
-                <p class="font-semibold text-dark-800">Multi-sites</p>
-                <p class="text-sm text-dark-500">Supervision de plusieurs bâtiments depuis une plateforme centralisée</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+  <hr class="sep" style="border: none; border-top: 0.5px solid rgba(0,0,0,0.08);" />
 
   <!-- GTB vs GTC -->
-  <section class="py-20 bg-dark-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">GTB vs GTC : quelles différences ?</h2>
-        <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto">
-          Deux systèmes complémentaires souvent confondus. Voici leurs différences essentielles.
-        </p>
-      </div>
+  <section style="padding: 0 0 2rem;">
+    <div class="editorial">
+      <h2>GTB vs GTC : differences factuelles</h2>
+      <p class="body-text" style="margin-bottom: 1.5rem;">
+        Les deux acronymes sont frequemment utilises de maniere interchangeable, y compris par des professionnels du batiment. Pourtant, ils recouvrent des perimetres distincts. Voici une comparaison factuelle pour clarifier les choses.
+      </p>
 
-      <div class="max-w-4xl mx-auto overflow-x-auto">
-        <table class="w-full bg-white rounded-xl overflow-hidden shadow-sm">
+      <div style="overflow-x: auto;">
+        <table class="comparison-table" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <thead>
-            <tr class="bg-dark-800 text-white">
-              <th class="px-6 py-4 text-left text-sm font-semibold">Critère</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold">GTB</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold">GTC</th>
+            <tr>
+              <th style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Critere</th>
+              <th style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">GTB</th>
+              <th style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">GTC</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-dark-100">
+          <tbody>
             <tr>
-              <td class="px-6 py-4 font-medium text-dark-800">Périmètre</td>
-              <td class="px-6 py-4 text-sm text-dark-600">1 bâtiment (tous les lots techniques)</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Plusieurs bâtiments ou 1 lot technique</td>
-            </tr>
-            <tr class="bg-dark-50">
-              <td class="px-6 py-4 font-medium text-dark-800">Fonction principale</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Piloter et optimiser</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Superviser et centraliser</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08); font-weight: 500; color: #111;">Perimetre</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Un batiment, tous lots confondus (CVC, eclairage, securite, energie)</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Plusieurs batiments ou un lot technique specifique sur un parc</td>
             </tr>
             <tr>
-              <td class="px-6 py-4 font-medium text-dark-800">Régulation</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Oui (intégrée)</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Non (lecture seule ou commandes simples)</td>
-            </tr>
-            <tr class="bg-dark-50">
-              <td class="px-6 py-4 font-medium text-dark-800">Complexité</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Plus complexe (automates + logique)</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Plus simple (interface de supervision)</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08); font-weight: 500; color: #111;">Fonction principale</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Piloter, reguler et optimiser les equipements</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Superviser, centraliser l'information, alerter</td>
             </tr>
             <tr>
-              <td class="px-6 py-4 font-medium text-dark-800">Utilisateur type</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Technicien de maintenance</td>
-              <td class="px-6 py-4 text-sm text-dark-600">Gestionnaire technique / exploitant</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08); font-weight: 500; color: #111;">Regulation</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Integree (boucles PID, programmes horaires, lois d'eau)</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Absente ou limitee a des commandes simples (marche/arret)</td>
             </tr>
-            <tr class="bg-dark-50">
-              <td class="px-6 py-4 font-medium text-dark-800">Acronyme anglais</td>
-              <td class="px-6 py-4 text-sm text-dark-600">BMS (Building Management System)</td>
-              <td class="px-6 py-4 text-sm text-dark-600">SCADA / BCS</td>
+            <tr>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08); font-weight: 500; color: #111;">Utilisateur type</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Technicien de maintenance, energy manager</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">Gestionnaire de patrimoine, exploitant multi-sites</td>
+            </tr>
+            <tr>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08); font-weight: 500; color: #111;">Equivalent anglais</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">BMS (Building Management System)</td>
+              <td style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">SCADA / BCS (Building Control System)</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 500; color: #111;">Protocoles courants</td>
+              <td>BACnet, LON, KNX</td>
+              <td>BACnet/IP, Modbus TCP, OPC-UA</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="mt-8 max-w-4xl mx-auto p-4 bg-accent-50 border-l-4 border-accent-500 rounded-r-lg">
-        <p class="text-sm text-accent-800 font-medium">
-          En pratique, les termes GTB et GTC sont souvent utilisés de manière interchangeable. L'important est de comprendre que la GTC supervise tandis que la GTB supervise ET pilote.
+      <div class="callout" style="border: 0.5px solid rgba(0,0,0,0.08); margin-top: 1.5rem;">
+        En resume — La GTB pilote et optimise un batiment de l'interieur. La GTC supervise un parc depuis un point central. Dans les projets complexes, les deux cohabitent : la GTB assure la regulation locale, la GTC fournit la vision consolidee au gestionnaire.
+      </div>
+    </div>
+  </section>
+
+  <hr class="sep" style="border: none; border-top: 0.5px solid rgba(0,0,0,0.08);" />
+
+  <!-- Fonctions principales -->
+  <section style="padding: 0 0 2rem;">
+    <div class="editorial">
+      <h2>Fonctions principales d'une GTC</h2>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h3>Supervision en temps reel</h3>
+        <p class="body-text">
+          La GTC affiche en continu l'etat des equipements sur des synoptiques graphiques : temperatures de zone, etats de fonctionnement des CTA et groupes froids, niveaux de consommation electrique, positions de vannes. L'operateur dispose d'une vision synthetique de l'ensemble du parc, site par site, batiment par batiment.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h3>Gestion des alarmes</h3>
+        <p class="body-text">
+          Lorsqu'une grandeur mesuree depasse un seuil predefini (temperature trop haute, defaut electrique, panne de ventilateur), la GTC genere une alarme. Celle-ci est classee par niveau de priorite, horodatee et transmise par notification (email, SMS, application). Un journal d'alarmes complet permet d'analyser la recurrence des incidents et d'identifier les equipements problematiques.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h3>Historisation et reporting</h3>
+        <p class="body-text">
+          Toutes les donnees collectees sont archivees en base : courbes de temperature, comptages energetiques, heures de fonctionnement. Ces historiques alimentent des rapports periodiques (quotidiens, hebdomadaires, mensuels) qui facilitent le suivi des consommations, le respect des obligations du decret tertiaire et la planification de la maintenance preventive.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h3>Pilotage a distance</h3>
+        <p class="body-text">
+          Depuis le poste de supervision ou une interface web, l'exploitant peut envoyer des commandes aux equipements : modification d'une consigne de temperature, passage en mode reduit, arret force d'un systeme en defaut. Cette capacite de telecommande reduit les deplacements sur site et accelere les temps de reaction face aux anomalies.
+        </p>
+      </div>
+
+      <div>
+        <h3>Reporting reglementaire</h3>
+        <p class="body-text">
+          Le decret BACS (Building Automation and Control Systems) impose, pour les batiments tertiaires de plus de 290 kW, l'installation d'un systeme d'automatisation et de controle d'ici 2025. Le decret tertiaire exige par ailleurs des reductions de consommation energetique progressives (-40 % en 2030, -50 % en 2040, -60 % en 2050 par rapport a une annee de reference). La GTC joue un role central pour collecter les donnees necessaires a ces declarations et demontrer la conformite des batiments.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Composants GTC -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-900">Les composants d'une GTC</h2>
+  <hr class="sep" style="border: none; border-top: 0.5px solid rgba(0,0,0,0.08);" />
+
+  <!-- Architecture type -->
+  <section style="padding: 0 0 2rem;">
+    <div class="editorial">
+      <h2>Architecture type d'une GTC</h2>
+      <p class="body-text" style="margin-bottom: 1.5rem;">
+        Une GTC repose sur une architecture a quatre niveaux, du terrain jusqu'a l'interface de supervision. Chaque couche communique avec la suivante via des protocoles standardises.
+      </p>
+
+      <div class="arch-step">
+        <span class="arch-num" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 4px;">1</span>
+        <div class="arch-content">
+          <strong>Niveau terrain — Capteurs et actionneurs.</strong> Sondes de temperature, compteurs d'energie, detecteurs de presence, vannes motorisees, variateurs de vitesse. Ils mesurent les grandeurs physiques et executent les commandes recues.
+        </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center p-8 bg-white rounded-2xl border border-dark-200">
-          <div class="w-16 h-16 bg-accent-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h3 class="font-heading font-bold text-dark-900 text-lg">Poste de supervision</h3>
-          <p class="mt-3 text-sm text-dark-500">Interface graphique avec synoptiques, courbes, alarmes. Accessible depuis un navigateur web ou une application dédiée.</p>
+      <div class="arch-step">
+        <span class="arch-num" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 4px;">2</span>
+        <div class="arch-content">
+          <strong>Niveau automates — Controleurs de terrain.</strong> Automates programmables (ou controleurs DDC) qui collectent les informations des capteurs, executent la logique de regulation locale et transmettent les donnees au niveau superieur. Communication via bus de terrain : Modbus RTU, LON, KNX.
         </div>
+      </div>
 
-        <div class="text-center p-8 bg-white rounded-2xl border border-dark-200">
-          <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
-            </svg>
-          </div>
-          <h3 class="font-heading font-bold text-dark-900 text-lg">Réseau de communication</h3>
-          <p class="mt-3 text-sm text-dark-500">Infrastructure réseau (IP, BACnet, Modbus) reliant les automates au serveur de supervision. Filaire ou sans fil.</p>
+      <div class="arch-step">
+        <span class="arch-num" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 4px;">3</span>
+        <div class="arch-content">
+          <strong>Niveau reseau — Infrastructure IP.</strong> Le reseau fédère les automates de tous les sites vers le serveur central. Les protocoles utilises a ce niveau sont generalement BACnet/IP, Modbus TCP ou OPC-UA, transportes sur l'infrastructure reseau existante (Ethernet, VPN inter-sites, fibre optique).
         </div>
+      </div>
 
-        <div class="text-center p-8 bg-white rounded-2xl border border-dark-200">
-          <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-            </svg>
-          </div>
-          <h3 class="font-heading font-bold text-dark-900 text-lg">Serveur & Base de données</h3>
-          <p class="mt-3 text-sm text-dark-500">Stockage des historiques, gestion des utilisateurs, moteur de règles et génération automatique des rapports.</p>
+      <div class="arch-step">
+        <span class="arch-num" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 4px;">4</span>
+        <div class="arch-content">
+          <strong>Niveau supervision — Serveur et interface.</strong> Le serveur GTC heberge la base de données historique, le moteur d'alarmes, les synoptiques graphiques et les outils de reporting. L'operateur y accede via un client lourd ou, de plus en plus souvent, via un navigateur web. Ce niveau peut etre deploye sur site (on-premise) ou dans le cloud.
         </div>
+      </div>
+
+      <div class="callout" style="border: 0.5px solid rgba(0,0,0,0.08);">
+        L'interoperabilite entre ces couches est assuree par des protocoles ouverts (BACnet, Modbus, OPC-UA). Le choix de protocoles standardises est determinant pour eviter l'enfermement proprietaire et garantir l'evolutivite du systeme dans le temps.
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20 bg-gradient-to-r from-dark-800 to-primary-900 text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-heading font-bold">Besoin d'évaluer votre système de supervision ?</h2>
-      <p class="mt-4 text-lg text-dark-300">Notre audit gratuit analyse votre installation GTB/GTC et identifie les optimisations possibles.</p>
-      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/audit" class="inline-flex items-center justify-center px-8 py-4 bg-accent-500 text-white font-bold rounded-lg hover:bg-accent-600 transition-colors">
-          Lancer l'audit gratuit
-        </a>
-        <a href="/gtb" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-bold rounded-lg border border-white/20 hover:bg-white/20 transition-colors">
-          Découvrir la GTB
-        </a>
+  <hr class="sep" style="border: none; border-top: 0.5px solid rgba(0,0,0,0.08);" />
+
+  <!-- Cas d'usage -->
+  <section style="padding: 0 0 2rem;">
+    <div class="editorial">
+      <h2>Cas d'usage</h2>
+      <p class="body-text" style="margin-bottom: 1.5rem;">
+        La GTC prend tout son sens des lors qu'il s'agit de superviser un patrimoine reparti sur plusieurs sites ou de federer des lots techniques heterogenes.
+      </p>
+
+      <div class="use-case">
+        <span class="tag" style="border: 0.5px solid rgba(0,0,0,0.08); margin-bottom: 0.5rem;">Multi-sites</span>
+        <p class="use-case-title" style="margin-top: 0.5rem;">Parcs immobiliers tertiaires</p>
+        <p class="use-case-text">
+          Un gestionnaire de patrimoine disposant de plusieurs immeubles de bureaux utilise la GTC pour consolider les donnees energetiques de l'ensemble des sites, comparer les performances batiment par batiment et detecter les derives en temps reel. La supervision centralisee permet de reduire les deplacements sur site et de prioriser les interventions de maintenance.
+        </p>
       </div>
+
+      <div class="use-case">
+        <span class="tag" style="border: 0.5px solid rgba(0,0,0,0.08); margin-bottom: 0.5rem;">Campus</span>
+        <p class="use-case-title" style="margin-top: 0.5rem;">Etablissements d'enseignement et sites hospitaliers</p>
+        <p class="use-case-text">
+          Les campus universitaires ou hospitaliers comprennent de nombreux batiments d'ages et de typologies differents. La GTC offre une vision unifiee de l'ensemble du site, facilite la gestion des programmes horaires (occupation des amphitheatres, blocs operatoires) et aide a respecter les obligations du decret tertiaire sur l'ensemble du perimetre.
+        </p>
+      </div>
+
+      <div class="use-case">
+        <span class="tag" style="border: 0.5px solid rgba(0,0,0,0.08); margin-bottom: 0.5rem;">Collectivites</span>
+        <p class="use-case-title" style="margin-top: 0.5rem;">Communes et intercommunalites</p>
+        <p class="use-case-text">
+          Les collectivites territoriales gerent un parc diversifie : ecoles, gymnases, mediatheques, batiments administratifs. La GTC permet au service technique de piloter l'ensemble depuis un poste central, de generer les rapports de consommation exiges par la reglementation et d'optimiser les contrats d'exploitation en disposant de donnees fiables et historisees.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sep" style="border: none; border-top: 0.5px solid rgba(0,0,0,0.08);" />
+
+  <!-- CTA -->
+  <section style="padding: 2rem 0 5rem;">
+    <div class="editorial" style="text-align: center;">
+      <h2 style="margin-bottom: 0.75rem;">Evaluez votre systeme de supervision</h2>
+      <p class="body-text" style="margin-bottom: 1.5rem;">
+        Un diagnostic gratuit pour identifier les points d'amelioration de votre installation GTC et verifier sa conformite avec les exigences reglementaires en vigueur.
+      </p>
+      <a href="/diagnostic" class="btn-primary">
+        Demander un diagnostic
+      </a>
     </div>
   </section>
 
