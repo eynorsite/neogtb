@@ -228,7 +228,7 @@ class EnrichPagesBricksSeeder extends Seeder
 
             ['type' => 'texte', 'name' => 'Fondateur', 'content' => [
                 'titre' => 'Qui est derrière NéoGTB ?',
-                'contenu' => '<p><strong>Ulrich CALMO</strong> — Fondateur & gérant, EURL EYNOR</p><p>Passionné par la GTB et la performance énergétique des bâtiments, j\'ai créé NéoGTB pour offrir enfin un espace indépendant où décideurs, techniciens et curieux peuvent accéder à une information fiable, sans pression commerciale.</p><p>📍 Eysines, Bordeaux — 🏢 EURL EYNOR</p>',
+                'contenu' => '<p><strong>Ulrich CALMO</strong> — Fondateur & gérant, EYNOR</p><p>Passionné par la GTB et la performance énergétique des bâtiments, j\'ai créé NéoGTB pour offrir enfin un espace indépendant où décideurs, techniciens et curieux peuvent accéder à une information fiable, sans pression commerciale.</p><p>📍 Eysines, Bordeaux — 🏢 EYNOR</p>',
             ], 'settings' => ['position_image' => 'none', 'couleur_fond' => '#f8fafc']],
 
             ['type' => 'cta', 'name' => 'CTA About', 'content' => [
@@ -259,7 +259,7 @@ class EnrichPagesBricksSeeder extends Seeder
                 'cartes' => [
                     ['icone' => '📧', 'titre' => 'Email', 'description' => 'contact@neogtb.fr', 'lien' => 'mailto:contact@neogtb.fr'],
                     ['icone' => '📍', 'titre' => 'Localisation', 'description' => 'Eysines, Bordeaux — France', 'lien' => ''],
-                    ['icone' => '🏢', 'titre' => 'Entreprise', 'description' => 'EURL EYNOR', 'lien' => ''],
+                    ['icone' => '🏢', 'titre' => 'Entreprise', 'description' => 'EYNOR', 'lien' => ''],
                     ['icone' => '⏱️', 'titre' => 'Temps de réponse', 'description' => 'Sous 48h ouvrées, sans démarche commerciale', 'lien' => ''],
                 ],
             ], 'settings' => ['colonnes' => 4]],

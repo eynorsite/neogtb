@@ -4,78 +4,79 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Tiers de confiance indépendant de la GTB" description="NeoGTB est le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France. Diagnostic gratuit, comparateur objectif, veille réglementaire — sans lien commercial avec aucun fabricant.">
 
-  <!-- ==================== HERO DARK ==================== -->
-  <section style="background: #0F2640; padding: 48px 0 56px;">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
-        <!-- Texte gauche -->
-        <div class="lg:col-span-3">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-5" style="background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.1);">
-            <span class="w-[6px] h-[6px] rounded-full" style="background: var(--color-accent-500);"></span>
-            <span style="font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.5);">Indépendant · Objectif · Gratuit</span>
-          </div>
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden" style="background: var(--color-dark-900); padding: 100px 0 120px;">
+    <!-- Single subtle glow -->
+    <div style="position: absolute; top: -20%; left: 30%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 65%); pointer-events: none; animation: glow-pulse 6s ease-in-out infinite;"></div>
 
-          <h1 style="font-size: 36px; font-weight: 500; color: #fff; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 16px;">
-            Le tiers de confiance de la <em style="font-style: normal; color: var(--color-accent-400);">GTB</em> en France
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Text -->
+        <div>
+          <img src="/images/picto-neogtb.png" alt="" style="width: 48px; height: 48px; object-fit: contain; margin-bottom: 20px; opacity: 0.9;" />
+          <p style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 24px;">Indépendant · Objectif · Solutions</p>
+
+          <p style="font-size: 28px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: -0.02em; margin-bottom: 16px;">Néo<span style="color: var(--color-accent-400); font-weight: 600;">GTB</span></p>
+
+          <h1 style="font-size: clamp(40px, 5vw, 56px); font-weight: 500; color: #fff; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 24px;">
+            Le tiers de confiance<br>de la GTB en France
           </h1>
 
-          <p style="font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.65; max-width: 480px; margin-bottom: 28px;">
-            NeoGTB ne vend rien et ne représente aucun fabricant. Nous aidons les gestionnaires de bâtiments tertiaires à comprendre leurs installations, comparer les technologies du marché et prendre des décisions éclairées — en toute indépendance.
+          <p style="font-size: 17px; color: var(--color-dark-400); line-height: 1.7; max-width: 480px; margin-bottom: 40px;">
+            NeoGTB ne vend rien et ne représente aucun fabricant. Nous aidons les gestionnaires de bâtiments tertiaires à comprendre, comparer et décider.
           </p>
 
-          <div class="flex items-center gap-4">
-            <a href="/about" style="font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: 8px; background: var(--color-accent-500); color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.15s ease;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
-              Découvrir notre méthode
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="/audit" class="btn-primary">
+              Diagnostiquer mon bâtiment
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/blog" style="font-size: 13px; color: rgba(255,255,255,0.45); display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
-              <span style="width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 12px;">→</span>
-              Lire nos analyses
+            <a href="/about" style="font-size: 14px; font-weight: 500; color: var(--color-dark-400); text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--color-dark-400)'">
+              Notre méthode →
             </a>
           </div>
         </div>
 
-        <!-- Widget droit — dashboard miniature -->
-        <div class="lg:col-span-2 hidden lg:block">
-          <div style="background: rgba(255,255,255,0.03); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden;">
-            <!-- Top bar -->
-            <div class="flex items-center gap-2 px-4 py-2.5" style="border-bottom: 0.5px solid rgba(255,255,255,0.06);">
-              <div class="flex gap-1.5">
-                <div class="w-2 h-2 rounded-full" style="background: rgba(255,255,255,0.12);"></div>
-                <div class="w-2 h-2 rounded-full" style="background: rgba(255,255,255,0.12);"></div>
-                <div class="w-2 h-2 rounded-full" style="background: rgba(255,255,255,0.12);"></div>
+        <!-- Dashboard widget -->
+        <div class="hidden lg:block">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden;">
+            <div class="flex items-center gap-2 px-5 py-3" style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <div class="flex gap-2">
+                <div class="w-2.5 h-2.5 rounded-full" style="background: rgba(255,255,255,0.08);"></div>
+                <div class="w-2.5 h-2.5 rounded-full" style="background: rgba(255,255,255,0.08);"></div>
+                <div class="w-2.5 h-2.5 rounded-full" style="background: rgba(255,255,255,0.08);"></div>
               </div>
               <div class="flex-1 flex justify-center">
-                <span style="font-size: 10px; color: rgba(255,255,255,0.25); font-family: monospace;">neogtb.fr/diagnostic</span>
+                <span style="font-size: 11px; color: rgba(255,255,255,0.2); font-family: monospace;">neogtb.fr/diagnostic</span>
               </div>
             </div>
-            <!-- Content -->
-            <div class="p-4 space-y-3">
-              <div style="padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.04);">
-                <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); margin-bottom: 4px;">Score GTB</p>
-                <p style="font-size: 22px; font-weight: 500; color: #fff; letter-spacing: -0.3px;">87<span style="font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.3);">/100</span></p>
-                <div style="margin-top: 8px; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.06); overflow: hidden;">
-                  <div style="height: 100%; width: 87%; border-radius: 2px; background: var(--color-accent-500);"></div>
+            <div class="p-5 space-y-4">
+              <div style="padding: 16px; border-radius: 10px; background: rgba(255,255,255,0.03);">
+                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); margin-bottom: 6px;">Score GTB</p>
+                <p style="font-size: 32px; font-weight: 500; color: #fff; letter-spacing: -0.02em;">87<span style="font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.2);"> /100</span></p>
+                <div style="margin-top: 10px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.04); overflow: hidden;">
+                  <div style="height: 100%; width: 87%; border-radius: 4px; background: var(--color-accent-500);"></div>
                 </div>
               </div>
               <div class="grid grid-cols-2 gap-3">
-                <div style="padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.04);">
-                  <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); margin-bottom: 4px;">Économies</p>
-                  <p style="font-size: 18px; font-weight: 500; color: #fff; letter-spacing: -0.3px;">32 %</p>
+                <div style="padding: 14px; border-radius: 10px; background: rgba(255,255,255,0.03);">
+                  <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); margin-bottom: 4px;">Économies</p>
+                  <p style="font-size: 24px; font-weight: 500; color: #fff; letter-spacing: -0.02em;">32 %</p>
                 </div>
-                <div style="padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.04);">
-                  <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); margin-bottom: 4px;">Conformité</p>
-                  <p style="font-size: 18px; font-weight: 500; color: var(--color-accent-400); letter-spacing: -0.3px;">RE2020</p>
+                <div style="padding: 14px; border-radius: 10px; background: rgba(255,255,255,0.03);">
+                  <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); margin-bottom: 4px;">Conformité</p>
+                  <p style="font-size: 24px; font-weight: 500; color: var(--color-accent-400); letter-spacing: -0.02em;">RE2020</p>
                 </div>
               </div>
-              <div style="padding: 12px; border-radius: 8px; border: 0.5px solid rgba(255,255,255,0.06);">
-                <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); margin-bottom: 8px;">Consommation mensuelle</p>
+              <div style="padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04);">
+                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); margin-bottom: 10px;">Consommation mensuelle</p>
                 <svg viewBox="0 0 300 60" class="w-full" fill="none">
-                  <line x1="0" y1="15" x2="300" y2="15" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-                  <line x1="0" y1="30" x2="300" y2="30" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-                  <line x1="0" y1="45" x2="300" y2="45" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-                  <path d="M0 45 Q40 42 80 35 T160 25 T240 30 T300 20" stroke="var(--color-accent-500)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                  <circle cx="240" cy="30" r="2.5" fill="#0F2640" stroke="var(--color-accent-500)" stroke-width="1.5"/>
+                  <line x1="0" y1="15" x2="300" y2="15" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                  <line x1="0" y1="30" x2="300" y2="30" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                  <line x1="0" y1="45" x2="300" y2="45" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                  <path d="M0 45 Q40 42 80 35 T160 25 T240 30 T300 20" stroke="var(--color-accent-500)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                  <circle cx="240" cy="30" r="3" fill="var(--color-dark-900)" stroke="var(--color-accent-400)" stroke-width="2"/>
                 </svg>
               </div>
             </div>
@@ -86,150 +87,154 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- ==================== CREDIBILITY BAR ==================== -->
-  <section style="padding: 16px 0; background: var(--color-dark-50); border-bottom: 0.5px solid rgba(0,0,0,0.08);">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
-      <div class="hidden md:flex items-center justify-center gap-12">
-        <img src="/images/logos/partenaires/logo-siemens.svg" alt="Siemens" class="h-6 grayscale opacity-35" />
-        <img src="/images/logos/partenaires/logo-schneider.svg" alt="Schneider Electric" class="h-6 grayscale opacity-35" />
-        <img src="/images/logos/partenaires/logo-honeywell.svg" alt="Honeywell" class="h-6 grayscale opacity-35" />
-        <img src="/images/logos/partenaires/logo-sauter.svg" alt="Sauter" class="h-6 grayscale opacity-35" />
-        <img src="/images/logos/partenaires/logo-knx.svg" alt="KNX" class="h-6 grayscale opacity-35" />
-        <img src="/images/logos/partenaires/logo-watchdog.png" alt="TheWatchdog" class="h-6 grayscale opacity-35" />
+  <section style="padding: 24px 0; border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="hidden md:flex items-center justify-center gap-16">
+        <img src="/images/logos/partenaires/logo-siemens.svg" alt="Siemens" class="h-7 grayscale opacity-25 hover:opacity-50 transition-opacity" />
+        <img src="/images/logos/partenaires/logo-schneider.svg" alt="Schneider Electric" class="h-7 grayscale opacity-25 hover:opacity-50 transition-opacity" />
+        <img src="/images/logos/partenaires/logo-honeywell.svg" alt="Honeywell" class="h-7 grayscale opacity-25 hover:opacity-50 transition-opacity" />
+        <img src="/images/logos/partenaires/logo-sauter.svg" alt="Sauter" class="h-7 grayscale opacity-25 hover:opacity-50 transition-opacity" />
+        <img src="/images/logos/partenaires/logo-knx.svg" alt="KNX" class="h-7 grayscale opacity-25 hover:opacity-50 transition-opacity" />
+        <img src="/images/logos/partenaires/logo-watchdog.png" alt="TheWatchdog" class="h-7 grayscale opacity-25 hover:opacity-50 transition-opacity" />
       </div>
-      <div class="md:hidden flex gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
-        <img src="/images/logos/partenaires/logo-siemens.svg" alt="Siemens" class="h-5 grayscale opacity-35 snap-center flex-shrink-0" />
-        <img src="/images/logos/partenaires/logo-schneider.svg" alt="Schneider Electric" class="h-5 grayscale opacity-35 snap-center flex-shrink-0" />
-        <img src="/images/logos/partenaires/logo-honeywell.svg" alt="Honeywell" class="h-5 grayscale opacity-35 snap-center flex-shrink-0" />
-        <img src="/images/logos/partenaires/logo-sauter.svg" alt="Sauter" class="h-5 grayscale opacity-35 snap-center flex-shrink-0" />
-        <img src="/images/logos/partenaires/logo-knx.svg" alt="KNX" class="h-5 grayscale opacity-35 snap-center flex-shrink-0" />
-        <img src="/images/logos/partenaires/logo-watchdog.png" alt="TheWatchdog" class="h-5 grayscale opacity-35 snap-center flex-shrink-0" />
+      <div class="md:hidden flex gap-10 overflow-x-auto scrollbar-hide snap-x">
+        <img src="/images/logos/partenaires/logo-siemens.svg" alt="Siemens" class="h-5 grayscale opacity-25 snap-center flex-shrink-0" />
+        <img src="/images/logos/partenaires/logo-schneider.svg" alt="Schneider Electric" class="h-5 grayscale opacity-25 snap-center flex-shrink-0" />
+        <img src="/images/logos/partenaires/logo-honeywell.svg" alt="Honeywell" class="h-5 grayscale opacity-25 snap-center flex-shrink-0" />
+        <img src="/images/logos/partenaires/logo-sauter.svg" alt="Sauter" class="h-5 grayscale opacity-25 snap-center flex-shrink-0" />
+        <img src="/images/logos/partenaires/logo-knx.svg" alt="KNX" class="h-5 grayscale opacity-25 snap-center flex-shrink-0" />
+        <img src="/images/logos/partenaires/logo-watchdog.png" alt="TheWatchdog" class="h-5 grayscale opacity-25 snap-center flex-shrink-0" />
       </div>
     </div>
   </section>
 
   <!-- ==================== POSITIONING ==================== -->
-  <section style="padding: 64px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08);">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
-      <p class="eyebrow">Ce que nous faisons</p>
-      <h2 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px; margin-bottom: 6px;">Trois outils pour éclairer vos décisions GTB</h2>
-      <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px; max-width: 520px;">Chaque outil est gratuit, sans engagement et conçu pour vous donner une vision claire — sans orientation commerciale vers une marque ou un protocole.</p>
+  <section style="padding: 96px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-16 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Ce que nous faisons</p>
+        <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px;">Trois outils pour éclairer vos décisions GTB</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Gratuit, sans engagement, sans orientation commerciale vers une marque ou un protocole.</p>
+      </div>
 
-      <div class="grid md:grid-cols-3 gap-3">
-        <a href="/audit" class="block card-hover" style="padding: 18px; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); text-decoration: none;">
-          <p style="font-size: 32px; font-weight: 500; color: var(--color-accent-200); line-height: 1; margin-bottom: 10px;">01</p>
-          <h3 style="font-size: 13px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Évaluez la maturité de votre bâtiment</h3>
-          <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">Diagnostic en 8 questions basé sur la norme EN 15232. Score immédiat avec recommandations classées par niveau (A à D) et estimation du potentiel d'économies énergétiques.</p>
-          <span style="display: inline-flex; align-items: center; gap: 4px; margin-top: 14px; font-size: 12px; font-weight: 500; color: var(--color-accent-600);">Lancer le diagnostic →</span>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/audit" class="card block p-8 reveal" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
+          <p style="font-size: 48px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 20px; letter-spacing: -0.03em;">01</p>
+          <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px; letter-spacing: -0.01em;">Évaluez la maturité de votre bâtiment</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Diagnostic en 8 questions basé sur la norme EN 15232. Score immédiat, recommandations par niveau A à D.</p>
+          <p style="margin-top: 20px; font-size: 14px; font-weight: 500; color: var(--color-accent-600);">Lancer le diagnostic →</p>
         </a>
 
-        <a href="/comparateur" class="block card-hover" style="padding: 18px; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); text-decoration: none;">
-          <p style="font-size: 32px; font-weight: 500; color: var(--color-accent-200); line-height: 1; margin-bottom: 10px;">02</p>
-          <h3 style="font-size: 13px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Comparez les technologies sans biais</h3>
-          <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">10 fabricants GTB analysés sur des critères objectifs : protocoles supportés (BACnet, KNX, Modbus), ouverture, coût, scalabilité. Filtrable par taille de bâtiment et budget.</p>
-          <span style="display: inline-flex; align-items: center; gap: 4px; margin-top: 14px; font-size: 12px; font-weight: 500; color: var(--color-accent-600);">Comparer les marques →</span>
+        <a href="/comparateur" class="card block p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
+          <p style="font-size: 48px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 20px; letter-spacing: -0.03em;">02</p>
+          <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px; letter-spacing: -0.01em;">Comparez les technologies sans biais</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">10 fabricants GTB analysés sur des critères objectifs : protocoles, ouverture, coût, scalabilité.</p>
+          <p style="margin-top: 20px; font-size: 14px; font-weight: 500; color: var(--color-accent-600);">Comparer les marques →</p>
         </a>
 
-        <a href="/generateur-cee" class="block card-hover" style="padding: 18px; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.08); text-decoration: none;">
-          <p style="font-size: 32px; font-weight: 500; color: var(--color-accent-200); line-height: 1; margin-bottom: 10px;">03</p>
-          <h3 style="font-size: 13px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Estimez vos aides CEE en 3 minutes</h3>
-          <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">Calcul basé sur les fiches standardisées BAT-TH-116 et BAT-TH-112. Estimation indépendante du montant de vos Certificats d'Économies d'Énergie, sans intermédiaire ni commission.</p>
-          <span style="display: inline-flex; align-items: center; gap: 4px; margin-top: 14px; font-size: 12px; font-weight: 500; color: var(--color-accent-600);">Estimer mes CEE →</span>
+        <a href="/generateur-cee" class="card block p-8 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
+          <p style="font-size: 48px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 20px; letter-spacing: -0.03em;">03</p>
+          <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px; letter-spacing: -0.01em;">Estimez vos aides CEE en 3 minutes</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Calcul basé sur les fiches BAT-TH-116 et BAT-TH-112. Estimation indépendante, sans intermédiaire.</p>
+          <p style="margin-top: 20px; font-size: 14px; font-weight: 500; color: var(--color-accent-600);">Estimer mes CEE →</p>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ==================== METHODOLOGY ==================== -->
-  <section style="padding: 64px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08);">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
-      <p class="eyebrow">Notre approche</p>
-      <h2 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px; margin-bottom: 6px;">La méthode NeoGTB — 4 phases</h2>
-      <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px; max-width: 520px;">Une approche structurée et reproductible, calibrée sur les exigences du décret BACS et de la norme EN 15232.</p>
+  <section style="padding: 96px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-16 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Notre approche</p>
+        <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px;">La méthode NeoGTB — 4 phases</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Une approche structurée et reproductible, calibrée sur les exigences du décret BACS et de la norme EN 15232.</p>
+      </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 18px;">
-          <p style="font-size: 32px; font-weight: 500; color: var(--color-accent-200); margin-bottom: 10px; line-height: 1;">01</p>
-          <h3 style="font-size: 13px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">État des lieux</h3>
-          <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">Cartographie des équipements, identification des protocoles en place, évaluation du niveau EN 15232 (A à D).</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="card p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 40px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">01</p>
+          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">État des lieux</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Cartographie des équipements, protocoles en place, évaluation du niveau EN 15232.</p>
         </div>
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 18px;">
-          <p style="font-size: 32px; font-weight: 500; color: var(--color-accent-200); margin-bottom: 10px; line-height: 1;">02</p>
-          <h3 style="font-size: 13px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Analyse comparative</h3>
-          <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">Mise en regard des solutions du marché adaptées au contexte : taille du parc, protocoles, budget, contraintes.</p>
+        <div class="card p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 40px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">02</p>
+          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Analyse comparative</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Solutions du marché adaptées au contexte : taille, protocoles, budget, contraintes.</p>
         </div>
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-left: 2px solid var(--color-accent-500); border-radius: 0 12px 12px 0; padding: 18px;">
-          <p style="font-size: 32px; font-weight: 500; color: var(--color-accent-500); margin-bottom: 10px; line-height: 1;">03</p>
-          <h3 style="font-size: 13px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Recommandations</h3>
-          <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">Préconisations chiffrées avec estimation du ROI, gains énergétiques et calendrier de conformité (BACS 2025).</p>
+        <div class="reveal reveal-d2 p-6" x-data x-intersect.once="$el.classList.add('visible')" style="background: white; border-radius: 12px; border: 1px solid var(--color-accent-200); box-shadow: 0 0 0 3px var(--color-accent-50);">
+          <p style="font-size: 40px; font-weight: 500; color: var(--color-accent-400); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">03</p>
+          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Recommandations</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Préconisations chiffrées : ROI, gains énergétiques, calendrier de conformité BACS.</p>
         </div>
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 18px;">
-          <p style="font-size: 32px; font-weight: 500; color: var(--color-accent-200); margin-bottom: 10px; line-height: 1;">04</p>
-          <h3 style="font-size: 13px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Accompagnement</h3>
-          <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">Suivi de mise en oeuvre, vérification performances réelles vs attendues, transfert de compétences exploitation.</p>
+        <div class="card p-6 reveal reveal-d3" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 40px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">04</p>
+          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Accompagnement</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Suivi de mise en oeuvre, vérification performances réelles, transfert de compétences.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==================== CASE STUDIES ==================== -->
-  <section style="padding: 64px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08);">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
-      <p class="eyebrow">Cas d'usage</p>
-      <h2 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px; margin-bottom: 28px;">Des situations concrètes, des résultats mesurables</h2>
+  <section style="padding: 96px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-16 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Cas d'usage</p>
+        <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.15;">Des situations concrètes, des résultats mesurables</h2>
+      </div>
 
-      <div class="grid md:grid-cols-2 gap-4">
-        <!-- Cas 1 -->
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 18px;">
-          <div class="flex items-center gap-2 mb-3">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-8 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div class="flex items-center gap-3 mb-6">
             <span class="tag tag-reglementation">Décret BACS</span>
-            <span style="font-size: 12px; color: var(--color-dark-400);">Tertiaire · 12 000 m²</span>
+            <span style="font-size: 13px; color: var(--color-dark-400);">Tertiaire · 12 000 m²</span>
           </div>
-          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.2px; margin-bottom: 10px;">Mise en conformité BACS d'un ensemble de bureaux multi-sites</h3>
-          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.65; margin-bottom: 14px;">Un gestionnaire de 3 sites tertiaires devait se conformer au décret BACS avant janvier 2025. Aucune GTB en place, systèmes CVC hétérogènes (2 marques, 2 protocoles différents).</p>
-          <div style="border-left: 2px solid var(--color-accent-500); padding-left: 16px; margin-bottom: 14px;">
-            <p style="font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-dark-400); margin-bottom: 6px;">Approche</p>
-            <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">Audit EN 15232 sur les 3 sites, benchmark de 4 solutions multi-protocoles (BACnet IP + Modbus RTU), estimation CEE (BAT-TH-116), cahier des charges neutre.</p>
+          <h3 style="font-size: 20px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.3;">Mise en conformité BACS d'un ensemble de bureaux multi-sites</h3>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 20px;">Un gestionnaire de 3 sites tertiaires devait se conformer au décret BACS. Aucune GTB en place, systèmes CVC hétérogènes.</p>
+          <div style="border-left: 2px solid var(--color-accent-500); padding-left: 16px; margin-bottom: 24px;">
+            <p style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 6px;">Approche</p>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Audit EN 15232 sur 3 sites, benchmark 4 solutions multi-protocoles, estimation CEE, cahier des charges neutre.</p>
           </div>
-          <div class="grid grid-cols-3 gap-2">
-            <div style="padding: 10px; border-radius: 8px; background: var(--color-dark-50);">
-              <p style="font-size: 18px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.3px;">C → B</p>
-              <p style="font-size: 10px; color: var(--color-dark-400); margin-top: 2px;">niveau EN 15232</p>
+          <div class="grid grid-cols-3 gap-4">
+            <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
+              <p style="font-size: 22px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.02em;">C → B</p>
+              <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 4px;">niveau EN 15232</p>
             </div>
-            <div style="padding: 10px; border-radius: 8px; background: var(--color-dark-50);">
-              <p style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px;">-23 %</p>
-              <p style="font-size: 10px; color: var(--color-dark-400); margin-top: 2px;">conso CVC estimée</p>
+            <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
+              <p style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">-23 %</p>
+              <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 4px;">conso CVC</p>
             </div>
-            <div style="padding: 10px; border-radius: 8px; background: var(--color-dark-50);">
-              <p style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px;">45 j</p>
-              <p style="font-size: 10px; color: var(--color-dark-400); margin-top: 2px;">cahier des charges</p>
+            <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
+              <p style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">45 j</p>
+              <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 4px;">cahier des charges</p>
             </div>
           </div>
         </div>
 
-        <!-- Cas 2 -->
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 18px;">
-          <div class="flex items-center gap-2 mb-3">
+        <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div class="flex items-center gap-3 mb-6">
             <span class="tag tag-technique">Rénovation CVC</span>
-            <span style="font-size: 12px; color: var(--color-dark-400);">Enseignement · 8 500 m²</span>
+            <span style="font-size: 13px; color: var(--color-dark-400);">Enseignement · 8 500 m²</span>
           </div>
-          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.2px; margin-bottom: 10px;">Optimisation énergétique d'un campus universitaire vieillissant</h3>
-          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.65; margin-bottom: 14px;">Un campus équipé d'une GTC obsolète (LON, superviseur en fin de vie). Consommation supérieure de 40 % à la moyenne du secteur éducatif selon les données ADEME.</p>
-          <div style="border-left: 2px solid var(--color-accent-500); padding-left: 16px; margin-bottom: 14px;">
-            <p style="font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-dark-400); margin-bottom: 6px;">Approche</p>
-            <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.6;">Diagnostic complet, analyse migration LON → BACnet IP, comparaison de 3 superviseurs multi-protocoles, simulation des gains par lot (CVC, éclairage, stores).</p>
+          <h3 style="font-size: 20px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.3;">Optimisation énergétique d'un campus universitaire vieillissant</h3>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 20px;">Un campus équipé d'une GTC obsolète (LON). Consommation supérieure de 40 % à la moyenne du secteur éducatif.</p>
+          <div style="border-left: 2px solid var(--color-accent-500); padding-left: 16px; margin-bottom: 24px;">
+            <p style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 6px;">Approche</p>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Diagnostic complet, analyse migration LON → BACnet IP, comparaison de 3 superviseurs, simulation des gains par lot.</p>
           </div>
-          <div class="grid grid-cols-3 gap-2">
-            <div style="padding: 10px; border-radius: 8px; background: var(--color-dark-50);">
-              <p style="font-size: 18px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.3px;">D → B</p>
-              <p style="font-size: 10px; color: var(--color-dark-400); margin-top: 2px;">niveau visé</p>
+          <div class="grid grid-cols-3 gap-4">
+            <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
+              <p style="font-size: 22px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.02em;">D → B</p>
+              <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 4px;">niveau visé</p>
             </div>
-            <div style="padding: 10px; border-radius: 8px; background: var(--color-dark-50);">
-              <p style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px;">-35 %</p>
-              <p style="font-size: 10px; color: var(--color-dark-400); margin-top: 2px;">objectif réduction</p>
+            <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
+              <p style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">-35 %</p>
+              <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 4px;">objectif réduction</p>
             </div>
-            <div style="padding: 10px; border-radius: 8px; background: var(--color-dark-50);">
-              <p style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px;">3 ans</p>
-              <p style="font-size: 10px; color: var(--color-dark-400); margin-top: 2px;">ROI estimé</p>
+            <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
+              <p style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">3 ans</p>
+              <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 4px;">ROI estimé</p>
             </div>
           </div>
         </div>
@@ -238,108 +243,107 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- ==================== INSIGHTS ==================== -->
-  <section style="padding: 64px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08);">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
-      <div class="flex items-end justify-between mb-7">
+  <section style="padding: 96px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="flex items-end justify-between mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
         <div>
           <p class="eyebrow">Perspectives</p>
-          <h2 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px;">Analyses & veille technique</h2>
+          <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.15;">Analyses & veille technique</h2>
         </div>
-        <a href="/blog" class="hidden md:inline-flex" style="font-size: 13px; font-weight: 500; color: var(--color-dark-500); text-decoration: none; transition: color 0.15s ease;">Tous les articles →</a>
+        <a href="/blog" class="hidden md:inline-flex btn-ghost">Tous les articles →</a>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-3">
-        <!-- Featured -->
-        <a href="/blog/decret-bacs-2025" class="block card-hover" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; text-decoration: none;">
-          <div style="height: 100px; background: #E1F5EE;"></div>
-          <div style="padding: 14px;">
-            <span class="tag tag-reglementation" style="margin-bottom: 8px;">Réglementation</span>
-            <h3 style="font-size: 14px; font-weight: 500; color: var(--color-dark-900); line-height: 1.4; margin-top: 8px;">Décret BACS 2025 : ce que change l'obligation d'automatisation pour le tertiaire</h3>
-            <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 6px;">8 min de lecture</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/blog/decret-tertiaire-gtb-obligations" class="card block overflow-hidden reveal" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
+          <div style="height: 140px; background: linear-gradient(135deg, #ECFDF5, var(--color-accent-50));"></div>
+          <div class="p-6">
+            <span class="tag tag-reglementation" style="margin-bottom: 12px;">Réglementation</span>
+            <h3 style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); line-height: 1.4; margin-top: 12px;">Décret tertiaire et GTB : obligations et mise en conformité</h3>
+            <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 12px;">8 min de lecture</p>
           </div>
         </a>
 
-        <!-- Secondary 1 -->
-        <a href="/blog/bacnet-knx-modbus-comparatif" class="block card-hover" style="padding: 14px; border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; text-decoration: none;">
+        <a href="/blog/protocoles-communication-bacnet-knx-modbus" class="card block p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
           <span class="tag tag-protocoles">Protocoles</span>
-          <h3 style="font-size: 14px; font-weight: 500; color: var(--color-dark-900); line-height: 1.4; margin-top: 10px;">BACnet, KNX, Modbus : quel protocole pour quel usage en GTB ?</h3>
-          <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 8px;">6 min de lecture</p>
+          <h3 style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); line-height: 1.4; margin-top: 16px;">BACnet, KNX, Modbus : quel protocole pour quel usage en GTB ?</h3>
+          <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 12px;">6 min de lecture</p>
         </a>
 
-        <!-- Secondary 2 -->
-        <a href="/blog/en-15232-niveaux-gtb" class="block card-hover" style="padding: 14px; border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; text-decoration: none;">
-          <span class="tag tag-technique">Technique</span>
-          <h3 style="font-size: 14px; font-weight: 500; color: var(--color-dark-900); line-height: 1.4; margin-top: 10px;">Norme EN 15232 : comprendre les 4 niveaux de performance GTB</h3>
-          <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 8px;">5 min de lecture</p>
+        <a href="/blog/guide-complet-gtb-2026" class="card block p-6 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
+          <span class="tag tag-gtb">Guide</span>
+          <h3 style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); line-height: 1.4; margin-top: 16px;">Qu'est-ce que la GTB ? Le guide complet 2026</h3>
+          <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 12px;">5 min de lecture</p>
         </a>
       </div>
 
-      <a href="/blog" class="md:hidden" style="display: inline-flex; margin-top: 20px; font-size: 13px; font-weight: 500; color: var(--color-dark-500); text-decoration: none;">Tous les articles →</a>
+      <a href="/blog" class="md:hidden btn-ghost mt-8">Tous les articles →</a>
     </div>
   </section>
 
   <!-- ==================== TESTIMONIALS ==================== -->
-  <section style="padding: 64px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08);">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
-      <p class="eyebrow">Retours terrain</p>
-      <h2 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px; margin-bottom: 28px;">Ce qu'en disent les professionnels</h2>
+  <section style="padding: 96px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-16 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Retours terrain</p>
+        <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.15;">Ce qu'en disent les professionnels</h2>
+      </div>
 
-      <div class="grid md:grid-cols-3 gap-3">
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 18px;">
-          <div class="flex items-center gap-3 mb-3">
-            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-accent-50); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: var(--color-accent-700);">ML</div>
-            <div>
-              <p style="font-size: 13px; font-weight: 500; color: var(--color-dark-900);">M. Lefèvre</p>
-              <p style="font-size: 11px; color: var(--color-dark-400);">Resp. technique, groupe tertiaire · 45 sites</p>
-            </div>
-          </div>
-          <div class="sep" style="margin: 8px 0;"></div>
-          <blockquote style="font-size: 13px; color: var(--color-dark-500); font-style: italic; line-height: 1.6; font-family: Georgia, serif; margin: 0;">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-8 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <blockquote style="font-size: 15px; color: var(--color-dark-600); font-style: italic; line-height: 1.7; font-family: Georgia, serif; margin: 0 0 24px 0;">
             "Le comparateur nous a permis de challenger notre intégrateur sur des critères qu'on n'aurait pas identifiés seuls. On a économisé 3 mois de cadrage."
           </blockquote>
-        </div>
-
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 18px;">
-          <div class="flex items-center gap-3 mb-3">
-            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-primary-50); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: var(--color-primary-600);">SC</div>
+          <div class="sep" style="margin-bottom: 16px;"></div>
+          <div class="flex items-center gap-3">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-accent-50); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--color-accent-700);">ML</div>
             <div>
-              <p style="font-size: 13px; font-weight: 500; color: var(--color-dark-900);">S. Chabert</p>
-              <p style="font-size: 11px; color: var(--color-dark-400);">Dir. patrimoine, collectivité · 22 bâtiments</p>
+              <p style="font-size: 14px; font-weight: 500; color: var(--color-dark-900);">M. Lefèvre</p>
+              <p style="font-size: 12px; color: var(--color-dark-400);">Resp. technique, groupe tertiaire · 45 sites</p>
             </div>
           </div>
-          <div class="sep" style="margin: 8px 0;"></div>
-          <blockquote style="font-size: 13px; color: var(--color-dark-500); font-style: italic; line-height: 1.6; font-family: Georgia, serif; margin: 0;">
+        </div>
+
+        <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <blockquote style="font-size: 15px; color: var(--color-dark-600); font-style: italic; line-height: 1.7; font-family: Georgia, serif; margin: 0 0 24px 0;">
             "Enfin un acteur qui ne cherche pas à nous vendre sa solution. Le diagnostic a posé un cadre clair pour notre mise en conformité BACS."
           </blockquote>
-        </div>
-
-        <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 18px;">
-          <div class="flex items-center gap-3 mb-3">
-            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--color-dark-50); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: var(--color-dark-600);">PD</div>
+          <div class="sep" style="margin-bottom: 16px;"></div>
+          <div class="flex items-center gap-3">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-dark-100); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--color-dark-600);">SC</div>
             <div>
-              <p style="font-size: 13px; font-weight: 500; color: var(--color-dark-900);">P. Dumont</p>
-              <p style="font-size: 11px; color: var(--color-dark-400);">Energy manager, foncière privée · 180 000 m²</p>
+              <p style="font-size: 14px; font-weight: 500; color: var(--color-dark-900);">S. Chabert</p>
+              <p style="font-size: 12px; color: var(--color-dark-400);">Dir. patrimoine, collectivité · 22 bâtiments</p>
             </div>
           </div>
-          <div class="sep" style="margin: 8px 0;"></div>
-          <blockquote style="font-size: 13px; color: var(--color-dark-500); font-style: italic; line-height: 1.6; font-family: Georgia, serif; margin: 0;">
-            "L'analyse comparative a mis en lumière des écarts de coût de 40 % entre deux solutions équivalentes sur le papier. Indispensable avant un appel d'offres."
+        </div>
+
+        <div class="card p-8 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
+          <blockquote style="font-size: 15px; color: var(--color-dark-600); font-style: italic; line-height: 1.7; font-family: Georgia, serif; margin: 0 0 24px 0;">
+            "L'analyse comparative a mis en lumière des écarts de coût de 40 % entre deux solutions équivalentes sur le papier."
           </blockquote>
+          <div class="sep" style="margin-bottom: 16px;"></div>
+          <div class="flex items-center gap-3">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #EEF2FF; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #4338CA;">PD</div>
+            <div>
+              <p style="font-size: 14px; font-weight: 500; color: var(--color-dark-900);">P. Dumont</p>
+              <p style="font-size: 12px; color: var(--color-dark-400);">Energy manager, foncière privée · 180 000 m²</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==================== CTA FINAL ==================== -->
-  <section style="padding: 64px 0; background: var(--color-dark-50);">
-    <div style="max-width: 480px; margin: 0 auto; padding: 0 20px; text-align: center;">
-      <h2 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.3px;">Un regard indépendant sur votre GTB</h2>
-      <p style="font-size: 14px; color: var(--color-dark-500); margin-top: 8px; line-height: 1.7;">Diagnostic gratuit, sans engagement, sans orientation commerciale.</p>
-      <div style="margin-top: 20px;">
-        <a href="/audit" class="btn-primary">
-          Lancer le diagnostic →
-        </a>
-      </div>
+  <section class="relative overflow-hidden" style="padding: 96px 0; background: var(--color-dark-900);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 60%); pointer-events: none;"></div>
+    <div style="max-width: 520px; margin: 0 auto; padding: 0 24px; text-align: center; position: relative; z-index: 1;">
+      <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: #fff; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px;">Un regard indépendant sur votre GTB</h2>
+      <p style="font-size: 16px; color: var(--color-dark-400); line-height: 1.7; margin-bottom: 32px;">Diagnostic gratuit, sans engagement, sans orientation commerciale.</p>
+      <a href="/audit" class="btn-primary">
+        Lancer le diagnostic
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
 

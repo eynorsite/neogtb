@@ -1,0 +1,588 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Réglementation GTB — Décret BACS, Tertiaire, RE2020" description="Toute la réglementation GTB en France : décret BACS 2025/2030, décret tertiaire, RE2020, directive EPBD, norme EN 15232, CEE. Calendrier, obligations et sanctions.">
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden" style="background: var(--color-dark-900); padding: 80px 0 96px;">
+    <div style="position: absolute; top: -20%; left: 40%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 65%); pointer-events: none;"></div>
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
+      <div class="max-w-2xl">
+        <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px; opacity: 0.9;" />
+        <p class="eyebrow" style="color: var(--color-accent-400);">Cadre juridique</p>
+        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; color: #fff; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px;">
+          Réglementation GTB en France
+        </h1>
+        <p style="font-size: 18px; color: var(--color-dark-400); line-height: 1.7; max-width: 560px;">
+          Décret BACS, décret tertiaire, RE2020, directive européenne EPBD, norme EN 15232 : toutes les obligations, les échéances et les aides pour la gestion technique du bâtiment. Mis à jour mars 2026.
+        </p>
+        <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="tag tag-reglementation">Décret BACS</span>
+          <span class="tag tag-reglementation">Décret tertiaire</span>
+          <span class="tag tag-technique">RE2020</span>
+          <span class="tag tag-technique">EN 15232</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ALERTE ACTUALITÉ ==================== -->
+  <section style="padding: 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div style="background: var(--color-accent-50); border: 1px solid var(--color-accent-200); border-radius: 12px; padding: 20px 24px; margin-top: -32px; position: relative; z-index: 10;">
+        <div class="flex items-start gap-3">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent-500); margin-top: 6px; flex-shrink: 0;"></div>
+          <div>
+            <p style="font-size: 14px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">Mise à jour — Décret n° 2025-1343 du 26 décembre 2025</p>
+            <p style="font-size: 14px; color: var(--color-dark-600); line-height: 1.6;">L'obligation GTB/BACS pour les bâtiments tertiaires existants de <strong>70 à 290 kW</strong> est <strong>reportée au 1er janvier 2030</strong> (initialement 2027). L'échéance >290 kW reste en vigueur depuis le 1er janvier 2025.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CALENDRIER ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Vue d'ensemble</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Calendrier des obligations</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Toutes les échéances réglementaires liées à la GTB, actualisées après le décret de décembre 2025.</p>
+      </div>
+
+      <div class="reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <div style="border: 1px solid var(--color-dark-200); border-radius: 12px; overflow: hidden;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="background: var(--color-dark-50);">
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">Type</th>
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">Puissance CVC</th>
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">Échéance</th>
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">Statut mars 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">Existant</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">> 290 kW</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">1er janvier 2025</td>
+                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: #065F46; background: #ECFDF5; padding: 3px 10px; border-radius: 6px;">En vigueur</span></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">Existant</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">70 à 290 kW</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">1er janvier 2030</td>
+                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: #9A3412; background: #FFF7ED; padding: 3px 10px; border-radius: 6px;">Reporté (était 2027)</span></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">Neuf (permis > 21/07/2021)</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">> 290 kW</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">À la construction</td>
+                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: #065F46; background: #ECFDF5; padding: 3px 10px; border-radius: 6px;">Obligatoire</span></td>
+              </tr>
+              <tr>
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">Neuf (permis > 08/04/2024)</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">> 70 kW</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">À la construction</td>
+                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: #065F46; background: #ECFDF5; padding: 3px 10px; border-radius: 6px;">Obligatoire</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DÉCRET BACS ==================== -->
+  <section style="padding: 80px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="grid lg:grid-cols-5 gap-12">
+        <div class="lg:col-span-3 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-600); padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Obligation principale</div>
+          <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px;">Décret BACS</h2>
+          <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 20px;">Décret n° 2020-887 du 20 juillet 2020 · Modifié par le décret n° 2025-1343 du 26 décembre 2025</p>
+
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+            Le décret BACS transpose l'article 14 de la <strong style="color: var(--color-dark-900); font-weight: 500;">directive européenne EPBD 2018/844</strong> sur la performance énergétique des bâtiments. Il impose l'installation de systèmes d'automatisation et de contrôle (<em>Building Automation and Control Systems</em>) dans les bâtiments tertiaires non résidentiels.
+          </p>
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+            Le système installé doit atteindre <strong style="color: var(--color-dark-900); font-weight: 500;">a minima la classe B</strong> de la norme EN 15232 (NF EN ISO 52120-1). Il doit être capable de :
+          </p>
+          <ul style="font-size: 15px; color: var(--color-dark-500); line-height: 1.8; padding-left: 20px; margin-bottom: 20px;">
+            <li style="margin-bottom: 8px;">Suivre, enregistrer et analyser la consommation énergétique par usage</li>
+            <li style="margin-bottom: 8px;">Ajuster les régulations en fonction de l'occupation et des besoins</li>
+            <li style="margin-bottom: 8px;">Détecter les défauts et les dérives de performance</li>
+            <li style="margin-bottom: 8px;">Communiquer avec les systèmes techniques interconnectés</li>
+            <li>Permettre le pilotage manuel et automatique des installations CVC</li>
+          </ul>
+
+          <div class="callout">
+            <p class="callout-label">Inspection obligatoire</p>
+            <p>Les systèmes BACS doivent faire l'objet d'une <strong>inspection régulière</strong> vérifiant le bon fonctionnement du système d'automatisation et sa conformité à la classe de performance déclarée.</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div class="card p-6" style="margin-bottom: 16px;">
+            <p style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 8px;">Bâtiments concernés</p>
+            <p style="font-size: 15px; color: var(--color-dark-600); line-height: 1.7;">Tous les bâtiments tertiaires non résidentiels : bureaux, commerces, enseignement, santé, hôtellerie, logistique, sport.</p>
+          </div>
+          <div class="card p-6" style="margin-bottom: 16px;">
+            <p style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 8px;">Seuil de puissance</p>
+            <p style="font-size: 15px; color: var(--color-dark-600); line-height: 1.7;">Puissance nominale utile cumulée des systèmes CVC (chauffage + climatisation). Somme de tous les générateurs du bâtiment.</p>
+          </div>
+          <div class="card p-6" style="margin-bottom: 16px;">
+            <p style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 8px;">Niveau requis</p>
+            <p style="font-size: 28px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.02em;">Classe B</p>
+            <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 4px;">minimum · norme EN 15232</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 8px;">Exemption</p>
+            <p style="font-size: 15px; color: var(--color-dark-600); line-height: 1.7;">Possibilité de dérogation si un audit énergétique démontre un temps de retour sur investissement supérieur à 6 ans.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DÉCRET TERTIAIRE ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div class="reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Objectifs de réduction</div>
+          <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px;">Décret tertiaire — Éco Énergie Tertiaire</h2>
+          <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 20px;">Décret n° 2019-771 du 23 juillet 2019 · Issu de la loi ELAN</p>
+
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+            Le décret tertiaire impose aux bâtiments tertiaires de <strong style="color: var(--color-dark-900); font-weight: 500;">plus de 1 000 m²</strong> une réduction progressive de leur consommation d'énergie finale par rapport à une année de référence (postérieure à 2010).
+          </p>
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+            Les données doivent être déclarées annuellement sur la plateforme <strong style="color: var(--color-dark-900); font-weight: 500;">OPERAT</strong> gérée par l'ADEME. La GTB constitue le levier principal pour atteindre ces objectifs de réduction.
+          </p>
+
+          <div class="callout" style="margin-top: 24px;">
+            <p class="callout-label">Sanctions</p>
+            <p>En cas de non-respect : mise en demeure, publication du nom du contrevenant sur un site public ("name and shame"), et amende jusqu'à <strong>7 500 € par bâtiment</strong> pour les personnes morales.</p>
+          </div>
+        </div>
+
+        <div class="reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div class="grid grid-cols-1 gap-5">
+            <div class="card p-7 text-center">
+              <p style="font-size: 48px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.03em; line-height: 1;">-40 %</p>
+              <p style="font-size: 14px; color: var(--color-dark-500); margin-top: 8px;">Objectif 2030</p>
+              <p style="font-size: 12px; color: var(--color-dark-400); margin-top: 4px;">Déclaration OPERAT avant le 30 sept. 2026</p>
+            </div>
+            <div class="card p-7 text-center">
+              <p style="font-size: 48px; font-weight: 500; color: var(--color-dark-700); letter-spacing: -0.03em; line-height: 1;">-50 %</p>
+              <p style="font-size: 14px; color: var(--color-dark-500); margin-top: 8px;">Objectif 2040</p>
+            </div>
+            <div class="card p-7 text-center">
+              <p style="font-size: 48px; font-weight: 500; color: var(--color-dark-700); letter-spacing: -0.03em; line-height: 1;">-60 %</p>
+              <p style="font-size: 14px; color: var(--color-dark-500); margin-top: 8px;">Objectif 2050</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RE2020 + EPBD ==================== -->
+  <section style="padding: 80px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Bâtiments neufs et Europe</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2;">Autres réglementations clés</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- RE2020 -->
+        <div class="card p-8 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-700); padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Neuf · Depuis 2022</div>
+          <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">RE2020</h3>
+          <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Réglementation Environnementale 2020</p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
+            Applicable aux bâtiments neufs depuis le 1er janvier 2022. Renforce les exigences de performance par rapport à la RT2012 et introduit le calcul de l'empreinte carbone sur le cycle de vie.
+          </p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 20px;">
+            Deux indicateurs rendent la GTB quasi indispensable en tertiaire :
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50); border: 1px solid var(--color-dark-200);">
+              <p style="font-size: 20px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">Cep</p>
+              <p style="font-size: 12px; color: var(--color-dark-400); margin-top: 4px;">Consommation d'énergie primaire</p>
+            </div>
+            <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50); border: 1px solid var(--color-dark-200);">
+              <p style="font-size: 20px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">DH</p>
+              <p style="font-size: 12px; color: var(--color-dark-400); margin-top: 4px;">Degrés-heures d'inconfort</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- EPBD -->
+        <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: #4338CA; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Europe · Refonte 2024</div>
+          <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Directive EPBD</h3>
+          <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Energy Performance of Buildings Directive · 2018/844 → refonte 2024</p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
+            La directive EPBD est le texte européen fondateur qui impose la GTB. L'article 14 est l'origine du décret BACS français. La <strong style="color: var(--color-dark-900);">refonte 2024</strong> renforce les exigences :
+          </p>
+          <ul style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7; padding-left: 20px;">
+            <li style="margin-bottom: 8px;">Objectif bâtiments à émission zéro d'ici 2050</li>
+            <li style="margin-bottom: 8px;">Passeport de rénovation pour chaque bâtiment</li>
+            <li style="margin-bottom: 8px;">Abaissement progressif des seuils BACS</li>
+            <li>Obligation de suivi énergétique continu</li>
+          </ul>
+        </div>
+
+        <!-- Loi ELAN -->
+        <div class="card p-8 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Loi · 2018</div>
+          <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Loi ELAN</h3>
+          <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Loi n° 2018-1021 du 23 novembre 2018</p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7;">
+            Loi portant évolution du logement, de l'aménagement et du numérique. L'article 175 est à l'origine du <strong style="color: var(--color-dark-900);">décret tertiaire</strong> : obligation de réduction de consommation pour les bâtiments tertiaires de plus de 1 000 m².
+          </p>
+        </div>
+
+        <!-- Loi Climat -->
+        <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: #065F46; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Loi · 2021</div>
+          <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Loi Climat et Résilience</h3>
+          <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Loi n° 2021-1104 du 22 août 2021</p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7;">
+            Renforce les obligations énergétiques : interdiction de location des passoires thermiques (DPE F et G), obligation d'audit énergétique avant vente, accélération de la rénovation du parc tertiaire. La GTB est un levier de conformité.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NORME EN 15232 ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Référentiel technique</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Norme EN 15232 / ISO 52120</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">La norme de référence pour évaluer le niveau de performance des systèmes GTB. Le décret BACS impose la classe B minimum.</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-5 mb-12">
+        <div class="card p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-400); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Classe D</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Non performant</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6; margin-bottom: 12px;">Aucun système d'automatisation. Pilotage manuel.</p>
+          <p style="font-size: 12px; color: var(--color-dark-400);">Référence basse</p>
+        </div>
+        <div class="card p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-500); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Classe C</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Standard</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6; margin-bottom: 12px;">Régulation de base, programmation horaire, sans supervision.</p>
+          <p style="font-size: 12px; color: var(--color-dark-400);">Minimum neuf</p>
+        </div>
+        <div class="reveal reveal-d2 p-6" x-data x-intersect.once="$el.classList.add('visible')" style="background: white; border-radius: 12px; border: 1px solid var(--color-accent-200); box-shadow: 0 0 0 3px var(--color-accent-50);">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Classe B</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Avancé</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6; margin-bottom: 12px;">GTB centralisée, suivi énergétique, détection de dérives.</p>
+          <p style="font-size: 12px; font-weight: 500; color: var(--color-accent-600);">Exigence décret BACS</p>
+        </div>
+        <div class="card p-6 reveal reveal-d3" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-800); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Classe A</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Haute performance</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6; margin-bottom: 12px;">Régulation pièce par pièce, optimisation multi-lots, IA.</p>
+          <p style="font-size: 12px; color: var(--color-dark-400);">Performance maximale</p>
+        </div>
+      </div>
+
+      <!-- Gains par classe -->
+      <div class="reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 16px;">Gains énergétiques estimés par la norme</h3>
+        <div style="border: 1px solid var(--color-dark-200); border-radius: 12px; overflow: hidden;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="background: var(--color-dark-50);">
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">Passage</th>
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">CVC (bureaux)</th>
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">Éclairage</th>
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">Global</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">D → C</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">5 à 15 %</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">5 à 10 %</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">~10 %</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-accent-600);">D → B</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">15 à 30 %</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">10 à 25 %</td>
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-accent-600);">~25 %</td>
+              </tr>
+              <tr>
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">D → A</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">25 à 45 %</td>
+                <td style="padding: 14px 16px; color: var(--color-dark-600);">20 à 40 %</td>
+                <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">~35 %</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CEE ==================== -->
+  <section style="padding: 80px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Aides financières</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Certificats d'Économies d'Énergie (CEE)</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Les CEE financent une partie significative de l'installation GTB. Deux fiches standardisées couvrent les travaux de GTB.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-8 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: #9A3412; background: #FFF7ED; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Fiche standardisée</div>
+          <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">BAT-TH-116</h3>
+          <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Système de gestion technique du bâtiment pour le chauffage et le refroidissement</p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
+            Couvre l'installation d'un système GTB de classe A ou B (EN 15232) pour le pilotage du CVC. Le montant de la prime dépend de la surface, de la zone climatique et de la classe atteinte.
+          </p>
+          <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50); border: 1px solid var(--color-dark-200);">
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;"><strong style="color: var(--color-dark-900);">Conditions :</strong> Bâtiment tertiaire existant, installation par un professionnel, passage en classe A ou B vérifié.</p>
+          </div>
+        </div>
+
+        <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: #9A3412; background: #FFF7ED; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Fiche standardisée</div>
+          <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">BAT-TH-112</h3>
+          <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Système de variation électronique de vitesse sur moteur asynchrone</p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
+            Couvre l'installation de variateurs de vitesse sur les moteurs CVC (pompes, ventilateurs, compresseurs). Complémentaire à la GTB qui envoie les consignes de vitesse.
+          </p>
+          <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50); border: 1px solid var(--color-dark-200);">
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;"><strong style="color: var(--color-dark-900);">Conditions :</strong> Puissance moteur ≥ 0,55 kW, variateur certifié, installation sur moteur existant ou neuf.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout reveal" x-data x-intersect.once="$el.classList.add('visible')" style="margin-top: 24px;">
+        <p class="callout-label">Estimation gratuite</p>
+        <p>Utilisez notre <a href="/generateur-cee" style="color: var(--color-accent-600); font-weight: 500; text-decoration: none;">générateur CEE</a> pour estimer le montant de vos certificats d'économies d'énergie en 3 minutes, sans intermédiaire.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AUTRES ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Compléments</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2;">Autres obligations liées</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">DPE tertiaire</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Le Diagnostic de Performance Énergétique est obligatoire pour la vente ou la location de tout bâtiment tertiaire. Une GTB performante améliore directement la classe DPE.</p>
+        </div>
+        <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Audit énergétique obligatoire</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Obligatoire pour les grandes entreprises (> 250 salariés ou CA > 50 M€) tous les 4 ans. L'audit recommande systématiquement l'installation ou l'optimisation de la GTB.</p>
+        </div>
+        <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">RT2012 (legacy)</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Remplacée par la RE2020 pour le neuf, mais toujours applicable aux bâtiments construits entre 2013 et 2021. Fixait déjà des exigences de consommation (50 kWhEP/m²/an).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SRI + TAXONOMIE ==================== -->
+  <section style="padding: 80px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">En préparation</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2;">Réglementations émergentes</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-8 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: #4338CA; background: #EEF2FF; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Europe · Phase pilote</div>
+          <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Smart Readiness Indicator (SRI)</h3>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
+            Indicateur d'intelligence du bâtiment introduit par l'EPBD. Évalue la capacité d'un bâtiment à utiliser les technologies intelligentes sur <strong style="color: var(--color-dark-900);">9 domaines</strong> : chauffage, refroidissement, ECS, ventilation, éclairage, enveloppe dynamique, électricité, recharge VE, monitoring.
+          </p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
+            Tests en cours dans 16 pays de l'UE. Rapport de la Commission prévu <strong style="color: var(--color-dark-900);">30 juin 2026</strong>. Possible obligation pour les bâtiments non résidentiels à forte consommation à partir de 2027.
+          </p>
+          <div class="callout">
+            <p class="callout-label">Impact GTB</p>
+            <p>Plus un bâtiment est équipé de GTB avancée, plus son score SRI sera élevé. La GTB classe A maximise le SRI.</p>
+          </div>
+        </div>
+
+        <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: #065F46; background: #ECFDF5; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Finance durable</div>
+          <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Taxonomie verte européenne</h3>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
+            Le règlement UE 2020/852 définit les critères pour qu'un investissement immobilier soit considéré comme "durable". Les bâtiments doivent démontrer une <strong style="color: var(--color-dark-900);">contribution substantielle</strong> à l'atténuation du changement climatique.
+          </p>
+          <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
+            La GTB/BACS est un élément technique qui contribue à l'alignement taxonomique : réduction des consommations, monitoring continu, reporting ESG.
+          </p>
+          <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50); border: 1px solid var(--color-dark-200);">
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;"><strong style="color: var(--color-dark-900);">Pour les investisseurs :</strong> Un bâtiment équipé d'une GTB performante renforce l'attractivité des actifs immobiliers dans les fonds verts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CHRONOLOGIE COMPLÈTE ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Timeline</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Chronologie complète des échéances</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Toutes les dates clés pour le bâtiment tertiaire, du décret tertiaire de 2019 à l'objectif zéro émission de 2050.</p>
+      </div>
+
+      <div class="reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <div style="border: 1px solid var(--color-dark-200); border-radius: 12px; overflow: hidden;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="background: var(--color-dark-50);">
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200); width: 140px;">Date</th>
+                <th style="text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); padding: 12px 16px; border-bottom: 1px solid var(--color-dark-200);">Obligation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">Oct. 2019</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">Entrée en vigueur du décret tertiaire</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">Janv. 2022</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">RE2020 en vigueur (logements neufs)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">Juil. 2022</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">RE2020 étendue aux bureaux et enseignement neufs</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">Avril 2024</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">Décret BACS : GTB obligatoire bâtiments neufs > 70 kW</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100); background: var(--color-accent-50);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-accent-700); font-size: 13px;">Janv. 2025</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-900); font-weight: 500;">Décret BACS : GTB obligatoire bâtiments existants > 290 kW</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">Mai 2026</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">Transposition EPBD 2024 dans les droits nationaux</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">Juin 2026</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">Rapport Commission européenne sur le SRI</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">Sept. 2026</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">Saisie consommations 2025 sur OPERAT</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">Oct. 2026</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">Audit énergétique obligatoire tertiaire (> 2,75 GWh/an)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100); background: var(--color-accent-50);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-accent-700); font-size: 13px;">Janv. 2030</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-900); font-weight: 500;">Décret BACS : GTB obligatoire existants 70-290 kW · Décret tertiaire : -40 %</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-dark-100);">
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">2040</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">Décret tertiaire : objectif -50 %</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; font-weight: 500; color: var(--color-dark-400); font-size: 13px;">2050</td>
+                <td style="padding: 12px 16px; color: var(--color-dark-600);">Décret tertiaire : objectif -60 % · EPBD : parc immobilier zéro émission</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SYNTHÈSE GTB ==================== -->
+  <section style="padding: 80px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Synthèse</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Comment la GTB répond à toutes ces obligations</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">La GTB est le point de convergence de l'ensemble du cadre réglementaire du bâtiment tertiaire.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="card p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">Décret BACS</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">La GTB <strong style="color: var(--color-accent-600);">est</strong> l'obligation. Classe A ou B requise.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">Décret tertiaire</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Levier principal pour atteindre les -40/-50/-60 %.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">RE2020</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Optimise le Cep et maîtrise le DH sur le cycle de vie.</p>
+        </div>
+        <div class="card p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">EPBD</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Exigence européenne transposée en droit national.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">CEE</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Financement via la fiche BAT-TH-116. Durée de vie 15 ans.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">ISO 52120 / EN 15232</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Performances quantifiées : jusqu'à 30 % d'économies.</p>
+        </div>
+        <div class="card p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">DPE / Audit</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Améliore la classe DPE et fournit les données pour l'audit.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">SRI</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Au cœur de l'indicateur d'intelligence du bâtiment.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">Taxonomie verte</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Contribue à l'alignement des investissements immobiliers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden" style="padding: 80px 0; background: var(--color-dark-900);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%); pointer-events: none;"></div>
+    <div style="max-width: 520px; margin: 0 auto; padding: 0 24px; text-align: center; position: relative; z-index: 1;">
+      <h2 style="font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Vérifiez votre conformité</h2>
+      <p style="font-size: 16px; color: var(--color-dark-400); line-height: 1.7; margin-bottom: 28px;">Identifiez votre classe EN 15232, évaluez vos obligations BACS et estimez vos aides CEE.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/audit" class="btn-primary">
+          Lancer le diagnostic
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/generateur-cee" class="btn-secondary" style="color: white; border-color: rgba(255,255,255,0.15);">
+          Estimer mes CEE
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

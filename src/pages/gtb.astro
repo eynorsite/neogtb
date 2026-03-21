@@ -4,448 +4,382 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Qu'est-ce que la GTB ? — Guide complet" description="Guide éducatif sur la Gestion Technique du Bâtiment (GTB) : définition, niveaux EN 15232, protocoles BACnet/KNX/Modbus, cadre réglementaire (décret BACS, décret tertiaire, RE2020).">
 
-  <style>
-    .article-col {
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-    .eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #9A9AAA;
-      margin-bottom: 12px;
-    }
-    .tag {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 400;
-      padding: 4px 12px;
-      border-radius: 20px;
-      background: #EEEDFE;
-      color: #3C3489;
-    }
-    .callout {
-      padding: 20px 24px;
-      border-left: 3px solid #534AB7;
-      background: #F7F7F9;
-      border-radius: 0 8px 8px 0;
-      font-size: 15px;
-      line-height: 1.75;
-      color: #0F0F0F;
-    }
-    .callout p {
-      margin: 0;
-    }
-    .sep {
-      border: none;
-      border-top: 0.5px solid rgba(0,0,0,0.08);
-      margin: 48px 0;
-    }
-    .btn-primary {
-      display: inline-block;
-      padding: 12px 28px;
-      background: #534AB7;
-      color: #fff;
-      font-size: 15px;
-      font-weight: 500;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.15s ease;
-    }
-    .btn-primary:hover {
-      background: #3C3489;
-    }
-    .btn-ghost {
-      display: inline-block;
-      padding: 12px 28px;
-      background: transparent;
-      color: #0F0F0F;
-      font-size: 15px;
-      font-weight: 400;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.15s ease;
-      border: 0.5px solid rgba(0,0,0,0.08);
-    }
-    .btn-ghost:hover {
-      background: #F7F7F9;
-    }
-
-    /* Article typography */
-    .article-col h1 {
-      font-size: 30px;
-      font-weight: 500;
-      letter-spacing: -0.5px;
-      line-height: 1.25;
-      color: #0F0F0F;
-      margin: 0;
-    }
-    .article-col h2 {
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: -0.3px;
-      line-height: 1.3;
-      color: #0F0F0F;
-      margin: 0 0 16px 0;
-    }
-    .article-col h3 {
-      font-size: 17px;
-      font-weight: 500;
-      letter-spacing: -0.2px;
-      line-height: 1.4;
-      color: #0F0F0F;
-      margin: 0 0 8px 0;
-    }
-    .article-col p {
-      font-size: 15px;
-      color: #5A5A6A;
-      line-height: 1.75;
-      margin: 0 0 16px 0;
-    }
-    .article-col strong {
-      font-weight: 500;
-      color: #0F0F0F;
-    }
-    .article-col em {
-      font-style: italic;
-    }
-
-    /* Subtitle */
-    .subtitle {
-      font-size: 17px;
-      color: #5A5A6A;
-      line-height: 1.7;
-      margin-top: 16px;
-    }
-
-    /* Niveaux table */
-    .niveau-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-      margin-top: 16px;
-    }
-    .niveau-table th {
-      text-align: left;
-      font-weight: 500;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #9A9AAA;
-      padding: 10px 12px;
-      border-bottom: 0.5px solid rgba(0,0,0,0.08);
-    }
-    .niveau-table td {
-      padding: 14px 12px;
-      color: #5A5A6A;
-      line-height: 1.6;
-      vertical-align: top;
-      border-bottom: 0.5px solid rgba(0,0,0,0.08);
-    }
-    .niveau-table td:first-child {
-      font-weight: 500;
-      color: #0F0F0F;
-      white-space: nowrap;
-    }
-    .niveau-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* Lot cards */
-    .lot-card {
-      padding: 20px;
-      border-radius: 12px;
-      border: 0.5px solid rgba(0,0,0,0.08);
-      background: #fff;
-      margin-bottom: 12px;
-    }
-    .lot-card h3 {
-      margin-bottom: 6px;
-    }
-    .lot-card p {
-      margin-bottom: 0;
-      font-size: 14px;
-    }
-
-    /* Protocol list */
-    .protocol-item {
-      padding: 16px 0;
-      border-bottom: 0.5px solid rgba(0,0,0,0.08);
-    }
-    .protocol-item:last-child {
-      border-bottom: none;
-    }
-    .protocol-name {
-      font-weight: 500;
-      color: #0F0F0F;
-      font-size: 15px;
-    }
-    .protocol-desc {
-      font-size: 14px;
-      color: #5A5A6A;
-      line-height: 1.7;
-      margin-top: 4px;
-    }
-
-    /* Reglementation */
-    .reg-card {
-      padding: 20px;
-      border-radius: 12px;
-      background: #F7F7F9;
-      margin-bottom: 12px;
-    }
-    .reg-card h3 {
-      margin-bottom: 6px;
-    }
-    .reg-card p {
-      margin-bottom: 0;
-      font-size: 14px;
-    }
-
-    /* CTA section */
-    .cta-section {
-      text-align: center;
-      padding: 48px 0;
-    }
-    .cta-section p {
-      color: #5A5A6A;
-      font-size: 15px;
-    }
-
-    /* Section spacing */
-    .section-block {
-      padding-top: 48px;
-      padding-bottom: 0;
-    }
-  </style>
-
-  <!-- Hero -->
-  <section style="padding: 64px 0 0 0;">
-    <div class="article-col">
-      <span class="eyebrow">Guide éducatif</span>
-      <h1>Qu'est-ce que la GTB ?</h1>
-      <p class="subtitle">
-        La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment — du chauffage à l'éclairage, en passant par la ventilation, les stores et le contrôle d'accès.
-      </p>
-      <div style="margin-top: 16px;">
-        <span class="tag">Bâtiment intelligent</span>
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden" style="background: var(--color-dark-900); padding: 80px 0 96px;">
+    <div style="position: absolute; top: -20%; right: 20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 65%); pointer-events: none;"></div>
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
+      <div class="max-w-2xl">
+        <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px; opacity: 0.9;" />
+        <p class="eyebrow" style="color: var(--color-accent-400);">Guide éducatif</p>
+        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; color: #fff; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px;">
+          Qu'est-ce que la GTB ?
+        </h1>
+        <p style="font-size: 18px; color: var(--color-dark-400); line-height: 1.7; max-width: 560px;">
+          La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment — du chauffage à l'éclairage, en passant par la ventilation et le contrôle d'accès.
+        </p>
+        <div style="margin-top: 24px; display: flex; gap: 8px;">
+          <span class="tag tag-gtb">Bâtiment intelligent</span>
+          <span class="tag tag-reglementation">EN 15232</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="article-col"><hr class="sep"></div>
-
-  <!-- Définition -->
-  <section class="section-block">
-    <div class="article-col">
-      <h2>Définition et rôle de la GTB</h2>
-      <p>
-        La <strong>Gestion Technique du Bâtiment</strong>, couramment abrégée GTB et connue en anglais sous le terme <em>Building Management System (BMS)</em>, est un système informatique qui centralise la supervision et le pilotage de tous les lots techniques d'un bâtiment. Elle collecte en temps réel les données issues de capteurs (température, hygrométrie, luminosité, présence, qualité de l'air, comptage énergétique) et transmet des commandes aux actionneurs (vannes, registres, variateurs, contacteurs) pour maintenir les conditions de confort et de sécurité tout en réduisant la consommation d'énergie.
-      </p>
-      <p>
-        Contrairement à une simple régulation locale, la GTB offre une vision globale du bâtiment. Elle permet de croiser les informations entre lots — par exemple, couper le chauffage d'une zone lorsque le contrôle d'accès indique qu'elle est inoccupée, ou abaisser les stores BSO lorsque l'ensoleillement dépasse un seuil, réduisant ainsi la charge de climatisation. C'est cette capacité d'interopérabilité entre systèmes qui distingue une GTB d'un simple automate de régulation.
-      </p>
-
-      <div class="callout">
-        <p>
-          <strong>Point clé :</strong> Depuis le décret BACS (2020), la mise en place d'un système d'automatisation et de contrôle est obligatoire pour les bâtiments tertiaires non résidentiels dont la puissance nominale de CVC dépasse 290 kW (échéance 2025), puis 70 kW (échéance 2027). La GTB est l'outil qui répond à cette exigence.
+  <!-- ==================== DÉFINITION ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[760px] mx-auto px-6 md:px-10">
+      <div class="reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 20px;">Définition et rôle de la GTB</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+          La <strong style="color: var(--color-dark-900); font-weight: 500;">Gestion Technique du Bâtiment</strong>, couramment abrégée GTB et connue en anglais sous le terme <em>Building Management System (BMS)</em>, est un système informatique qui centralise la supervision et le pilotage de tous les lots techniques d'un bâtiment.
         </p>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+          Elle collecte en temps réel les données issues de capteurs (température, hygrométrie, luminosité, présence, qualité de l'air, comptage énergétique) et transmet des commandes aux actionneurs pour maintenir les conditions de confort tout en réduisant la consommation d'énergie.
+        </p>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 24px;">
+          Contrairement à une simple régulation locale, la GTB offre une <strong style="color: var(--color-dark-900); font-weight: 500;">vision globale du bâtiment</strong>. C'est cette capacité d'interopérabilité entre systèmes qui distingue une GTB d'un simple automate de régulation.
+        </p>
+
+        <div class="callout">
+          <p class="callout-label">Point clé</p>
+          <p>Depuis le décret BACS (2020), la mise en place d'un système d'automatisation est <strong>obligatoire</strong> pour les bâtiments tertiaires dont la puissance CVC dépasse 290 kW (2025), puis 70 kW (2027).</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="article-col"><hr class="sep"></div>
-
-  <!-- Niveaux EN 15232 -->
-  <section class="section-block">
-    <div class="article-col">
-      <h2>Les 4 niveaux EN 15232</h2>
-      <p>
-        La norme européenne <strong>EN 15232</strong> (reprise en France sous la référence NF EN ISO 52120-1) définit quatre classes de performance pour les systèmes de gestion technique du bâtiment. Ces classes servent de référentiel pour évaluer le niveau d'automatisation et de régulation d'un bâtiment, et estimer l'impact énergétique associé.
-      </p>
-
-      <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; margin-top: 24px;">
-        <table class="niveau-table">
-          <thead>
-            <tr>
-              <th>Classe</th>
-              <th>Intitulé</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Classe D</td>
-              <td style="font-weight: 500; color: #0F0F0F;">Non performant</td>
-              <td>Aucun système d'automatisation. Les équipements techniques sont pilotés manuellement, sans régulation ni programmation. Ce niveau correspond aux bâtiments anciens n'ayant fait l'objet d'aucune mise à jour. La norme considère ce niveau comme une référence basse à dépasser.</td>
-            </tr>
-            <tr>
-              <td>Classe C</td>
-              <td style="font-weight: 500; color: #0F0F0F;">Standard</td>
-              <td>Régulation de base et programmation horaire. Les équipements disposent de régulateurs individuels (thermostats, horloges) mais sans supervision centralisée ni communication entre lots. C'est le niveau minimal attendu pour les bâtiments neufs.</td>
-            </tr>
-            <tr>
-              <td>Classe B</td>
-              <td style="font-weight: 500; color: #0F0F0F;">Avancé</td>
-              <td>Système de GTB centralisé avec supervision, suivi énergétique et détection de dérives. Les équipements communiquent via un réseau (BACnet, KNX, Modbus). Ce niveau correspond à l'exigence du décret BACS pour les bâtiments tertiaires concernés.</td>
-            </tr>
-            <tr>
-              <td>Classe A</td>
-              <td style="font-weight: 500; color: #0F0F0F;">Haute performance</td>
-              <td>GTB intégrée avec régulation pièce par pièce, gestion de la demande, optimisation multi-lots et analyse avancée des données. Détection automatique des défauts, ajustement prédictif des consignes, interaction entre lots techniques (CVC, éclairage, stores, énergie).</td>
-            </tr>
-          </tbody>
-        </table>
+  <!-- ==================== NIVEAUX EN 15232 ==================== -->
+  <section style="padding: 80px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Classification</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Les 4 niveaux EN 15232</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">La norme européenne EN 15232 définit quatre classes de performance pour les systèmes de gestion technique du bâtiment.</p>
       </div>
 
-      <p style="margin-top: 20px;">
-        Le passage d'une classe D à une classe B ou A entraîne des réductions de consommation significatives selon la norme EN 15232, variables en fonction du type de bâtiment (bureaux, enseignement, santé, commerce) et du lot technique concerné. L'objectif pour les maîtres d'ouvrage est d'atteindre a minima la classe B, conformément aux exigences réglementaires en vigueur.
-      </p>
-    </div>
-  </section>
-
-  <div class="article-col"><hr class="sep"></div>
-
-  <!-- Lots techniques pilotés -->
-  <section class="section-block">
-    <div class="article-col">
-      <h2>Lots techniques pilotés</h2>
-      <p>
-        Une GTB supervise et pilote l'ensemble des lots techniques du bâtiment. Chaque lot dispose de ses propres capteurs, actionneurs et logiques de régulation, mais c'est la GTB qui assure la coordination globale et l'interopérabilité entre eux.
-      </p>
-
-      <div class="lot-card">
-        <h3>CVC — Chauffage, Ventilation, Climatisation</h3>
-        <p>
-          Régulation des chaudières, pompes à chaleur, groupes froids, centrales de traitement d'air (CTA), ventilo-convecteurs et planchers chauffants. Gestion des consignes de température par zone, programmation horaire, réduit de nuit, mode hors-gel, suivi des courbes de chauffe et des rendements. Le lot CVC représente généralement la part la plus importante de la consommation énergétique d'un bâtiment tertiaire.
-        </p>
-      </div>
-
-      <div class="lot-card">
-        <h3>Éclairage</h3>
-        <p>
-          Pilotage de l'éclairage par zone selon des scénarios de présence, de luminosité naturelle (sonde de lux) et de programmation horaire. Gradation (dimming) via protocole DALI ou KNX. Gestion des circuits de sécurité et d'éclairage extérieur. La combinaison détection de présence + gradation permet des réductions de consommation sur le poste éclairage.
-        </p>
-      </div>
-
-      <div class="lot-card">
-        <h3>Stores et BSO (Brise-Soleil Orientable)</h3>
-        <p>
-          Gestion automatisée de la protection solaire en fonction de l'ensoleillement (capteur d'irradiance), de la position du soleil, de la vitesse du vent (anémomètre) et des besoins thermiques du bâtiment. L'interaction avec le lot CVC est essentielle : un pilotage intelligent des stores réduit les apports solaires en été et les exploite en hiver, diminuant la charge de climatisation et de chauffage.
-        </p>
-      </div>
-
-      <div class="lot-card">
-        <h3>Contrôle d'accès et sécurité</h3>
-        <p>
-          Supervision des lecteurs de badges, des issues de secours, de la détection d'intrusion et des systèmes de sécurité incendie (SSI). L'intégration à la GTB permet de coupler présence et confort : lorsqu'une zone est identifiée comme inoccupée via le contrôle d'accès, la GTB peut automatiquement réduire le chauffage, éteindre l'éclairage et ajuster la ventilation.
-        </p>
-      </div>
-
-      <div class="lot-card">
-        <h3>Comptage et suivi énergétique</h3>
-        <p>
-          Centralisation des données issues des compteurs électriques, de gaz, d'eau (chaude et froide) et des sous-compteurs par zone ou par usage. Suivi des indicateurs de performance énergétique (IPE), détection de dérives et de surconsommations, reporting conforme aux exigences du décret tertiaire (plateforme OPERAT).
-        </p>
+      <div class="grid md:grid-cols-4 gap-5">
+        <div class="card p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-400); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Classe D</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Non performant</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Aucun système d'automatisation. Pilotage manuel, sans régulation ni programmation. Référence basse à dépasser.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-500); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Classe C</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Standard</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Régulation de base et programmation horaire. Régulateurs individuels sans supervision centralisée. Niveau minimal pour les bâtiments neufs.</p>
+        </div>
+        <div class="reveal reveal-d2 p-6" x-data x-intersect.once="$el.classList.add('visible')" style="background: white; border-radius: 12px; border: 1px solid var(--color-accent-200); box-shadow: 0 0 0 3px var(--color-accent-50);">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Classe B</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Avancé</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">GTB centralisée, suivi énergétique, détection de dérives. Communication BACnet/KNX/Modbus. <strong style="color: var(--color-accent-600);">Exigence du décret BACS.</strong></p>
+        </div>
+        <div class="card p-6 reveal reveal-d3" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-800); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Classe A</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Haute performance</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Régulation pièce par pièce, optimisation multi-lots, analyse avancée, détection automatique des défauts, ajustement prédictif.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="article-col"><hr class="sep"></div>
+  <!-- ==================== LOTS TECHNIQUES ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Périmètre</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Lots techniques pilotés</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Une GTB supervise et coordonne l'ensemble des systèmes du bâtiment.</p>
+      </div>
 
-  <!-- Protocoles de communication -->
-  <section class="section-block">
-    <div class="article-col">
-      <h2>Protocoles de communication</h2>
-      <p>
-        Les équipements d'une GTB communiquent via des protocoles standardisés. Le choix du protocole dépend du type d'installation, des équipements existants et du niveau d'interopérabilité recherché. Dans les installations récentes, plusieurs protocoles coexistent souvent au sein du même bâtiment, la GTB assurant la passerelle entre eux.
-      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">CVC</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Chauffage, Ventilation, Climatisation</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Régulation des chaudières, PAC, groupes froids, CTA, ventilo-convecteurs. Gestion des consignes par zone, programmation horaire, réduit de nuit, suivi des rendements.</p>
+        </div>
+        <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Éclairage</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Pilotage et gradation</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Pilotage par zone selon présence et luminosité naturelle. Gradation (dimming) via DALI ou KNX. Gestion des circuits de sécurité et d'éclairage extérieur.</p>
+        </div>
+        <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Protection solaire</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Stores et BSO</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Gestion automatisée selon ensoleillement, position du soleil, vent. Interaction CVC essentielle : réduction des apports solaires en été, exploitation en hiver.</p>
+        </div>
+        <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Sécurité</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Contrôle d'accès et sûreté</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Supervision des lecteurs de badges, détection d'intrusion, SSI. Couplage présence/confort : zone inoccupée = chauffage réduit, éclairage éteint.</p>
+        </div>
+        <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Énergie</div>
+          <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Comptage et suivi énergétique</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Centralisation des compteurs (élec, gaz, eau, calories). Suivi des IPE, détection de dérives, reporting OPERAT pour le décret tertiaire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 4px 20px;">
-        <div class="protocol-item">
-          <div class="protocol-name">BACnet IP / BACnet MS/TP</div>
-          <div class="protocol-desc">
-            Protocole ouvert défini par la norme ASHRAE 135 (ISO 16484-5), conçu spécifiquement pour la gestion technique du bâtiment. BACnet IP fonctionne sur réseau Ethernet/IP et convient aux échanges entre serveurs GTB et automates. BACnet MS/TP utilise une liaison série RS-485 pour le niveau terrain. C'est le protocole de référence pour les installations GTB multi-constructeurs, garantissant l'interopérabilité entre équipements de marques différentes.
+  <!-- ==================== PROTOCOLES ==================== -->
+  <section style="padding: 80px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Interopérabilité</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Protocoles de communication</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Le choix du protocole conditionne l'interopérabilité, la maintenabilité et la pérennité de l'installation. Dans les installations récentes, plusieurs protocoles coexistent.</p>
+      </div>
+
+      <!-- Terrain -->
+      <div class="mb-10 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <h3 style="font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 16px;">Protocoles terrain (capteurs / actionneurs)</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">BACnet MS/TP</p>
+              <span class="tag tag-technique">ISO 16484-5</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">BACnet sur bus RS-485 série. Protocole terrain de référence pour connecter automates, boîtes VAV et capteurs. Token-passing peer-to-peer.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">Modbus RTU</p>
+              <span class="tag tag-protocoles">RS-485</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Protocole industriel (1979, Modicon). Architecture maître-esclave sur liaison série. Dominant pour le comptage énergie, groupes électrogènes, onduleurs.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">KNX TP</p>
+              <span class="tag tag-reglementation">ISO/IEC 14543-3</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Bus filaire paire torsadée. Architecture décentralisée, 500+ fabricants. Standard européen pour éclairage, stores, CVC résidentiel et petit tertiaire.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">DALI / DALI-2</p>
+              <span class="tag tag-technique">IEC 62386</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Digital Addressable Lighting Interface. Bus 2 fils, 64 appareils par ligne. Standard ouvert pour ballasts, dimmers, capteurs d'éclairage.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">M-Bus</p>
+              <span class="tag tag-reglementation">EN 13757</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Meter-Bus. Standard européen pour la relève à distance des compteurs eau, gaz, électricité, calories. Bus 2 fils basse consommation.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">LonWorks / LonTalk</p>
+              <span class="tag tag-technique">ISO/IEC 14908</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Bus décentralisé peer-to-peer (Echelon). Historiquement très répandu en Europe. Maintien du parc existant, moins déployé en neuf.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">SMI</p>
+              <span class="tag tag-technique">EN 13369</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Standard Motor Interface. Interface digitale entre contrôleur et moteur pour stores, volets et fenêtres motorisées.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">MP-Bus</p>
+              <span class="tag tag-protocoles">Belimo</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Bus propriétaire Belimo. Multi-point pour actionneurs, vannes et capteurs sur un seul bus avec alimentation et communication intégrées.</p>
           </div>
         </div>
+      </div>
 
-        <div class="protocol-item">
-          <div class="protocol-name">KNX TP (Twisted Pair)</div>
-          <div class="protocol-desc">
-            Standard international (ISO/IEC 14543-3) issu du monde de l'installation électrique, très répandu pour le pilotage de l'éclairage, des stores et du CVC dans le tertiaire et le résidentiel haut de gamme. KNX utilise un bus filaire dédié (paire torsadée) et offre une architecture décentralisée : chaque appareil embarque sa propre intelligence. La programmation se fait via le logiciel ETS.
+      <!-- Réseau / IP -->
+      <div class="mb-10 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <h3 style="font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 16px;">Protocoles réseau et IP</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">BACnet/IP</p>
+              <span class="tag tag-technique">ISO 16484-5</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">BACnet sur UDP/IP. Protocole backbone de référence pour la supervision GTB moderne. Communication inter-bâtiments, campus et WAN.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">BACnet/SC</p>
+              <span class="tag tag-technique">ASHRAE 135</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Secure Connect. Ajoute TLS + WebSocket à BACnet pour la communication sécurisée à travers les firewalls IT et vers le cloud.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">Modbus TCP</p>
+              <span class="tag tag-protocoles">Ethernet</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Modbus encapsulé en TCP/IP. Simplicité du Modbus avec la vitesse et la portée de l'Ethernet. Compteurs, automates, PLCs.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">KNXnet/IP</p>
+              <span class="tag tag-reglementation">EN 13321-2</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Tunneling et routage KNX sur IP. Permet la gestion, la programmation et la supervision KNX via Ethernet/WiFi.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">OPC UA</p>
+              <span class="tag tag-technique">IEC 62541</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Standard d'interopérabilité cross-système. Communication sécurisée, modèles de données complexes. Pont entre OT et IT.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">MQTT</p>
+              <span class="tag tag-technique">ISO/IEC 20922</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Messaging publish/subscribe léger pour IoT. Idéal pour la télémétrie capteurs vers cloud, dashboards et plateformes analytiques.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">PROFIBUS / PROFINET</p>
+              <span class="tag tag-technique">IEC 61158</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Bus terrain industriel (Siemens). PROFINET = variante Ethernet temps réel. Présent dans les grandes installations CVC industrielles.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-2">
+              <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900);">oBIX</p>
+              <span class="tag tag-technique">OASIS</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Open Building Information Exchange. API REST/XML/JSON pour l'échange de données entre GTB et applications métier.</p>
           </div>
         </div>
+      </div>
 
-        <div class="protocol-item">
-          <div class="protocol-name">Modbus RTU / Modbus TCP</div>
-          <div class="protocol-desc">
-            Protocole industriel ouvert créé par Modicon (aujourd'hui Schneider Electric). Modbus RTU fonctionne sur liaison série RS-485, Modbus TCP sur réseau Ethernet. Très utilisé pour l'interfaçage avec les équipements de comptage, les groupes électrogènes, les onduleurs, les centrales de mesure et les équipements CVC. Simple à mettre en œuvre, il reste limité en termes de structuration des données par rapport à BACnet.
+      <!-- Sans fil -->
+      <div class="mb-10 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <h3 style="font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 16px;">Protocoles sans fil</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">EnOcean</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">ISO/IEC 14543-3-10</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Sans batterie — alimenté par l'énergie ambiante (lumière, mouvement). Idéal pour la rénovation sans câblage.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">ZigBee 3.0</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">IEEE 802.15.4</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Réseau mesh basse consommation, auto-réparant. Très utilisé pour l'éclairage commercial (ZigBee Light Link).</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">Z-Wave</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">ITU-T G.9959</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Mesh sub-GHz (868/908 MHz). Excellente pénétration des murs, certification d'interopérabilité stricte.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">Thread</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">IEEE 802.15.4</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Mesh IPv6 basse consommation. Couche réseau de Matter. Self-healing, nativement adressable en IP.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">Matter</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">CSA</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Protocole applicatif unifié sur Thread et WiFi. Standard d'interopérabilité (Apple, Google, Amazon, Samsung).</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">LoRaWAN</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">LoRa Alliance</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Longue portée (km), très basse consommation. Capteurs distribués, campus, bâtiments distants. Utilisé par The Watchdog.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">Bluetooth / BLE Mesh</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">IEEE 802.15.1</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">BLE pour capteurs de proximité et beacons. Bluetooth Mesh pour réseaux d'éclairage et services bâtiment à grande échelle.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">NB-IoT / LTE-M</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">3GPP</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">IoT cellulaire pour monitoring distant. Quand il n'y a pas de réseau local ou pour des parcs géographiquement distribués.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">Wireless M-Bus</p>
+            <p style="font-size: 12px; color: var(--color-accent-600); margin-bottom: 6px;">EN 13757-4</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Extension sans fil du M-Bus. Bande 868 MHz. Relève de compteurs en walk-by, drive-by ou réseau fixe.</p>
           </div>
         </div>
+      </div>
 
-        <div class="protocol-item">
-          <div class="protocol-name">LON (LonWorks)</div>
-          <div class="protocol-desc">
-            Protocole normalisé (ISO/IEC 14908) développé par Echelon Corporation, historiquement présent dans de nombreuses installations tertiaires européennes. LON utilise un bus de communication décentralisé (FTT-10, TP/FT-10) et supporte des topologies flexibles. Bien que moins déployé dans les installations neuves au profit de BACnet et KNX, il reste présent dans le parc existant et fait l'objet de maintenance et d'extensions.
+      <!-- Données / sémantique -->
+      <div class="reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <h3 style="font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 16px;">Données et intégration</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">Project Haystack</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Framework de tagging sémantique pour standardiser les métadonnées des capteurs et équipements. Base de l'analytique bâtiment.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">Brick Schema</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Ontologie RDF pour décrire bâtiments, équipements et relations. Permet des applications analytiques portables entre BMS différents.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">ASHRAE 223P</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Standard émergent unifiant Haystack, Brick et RealEstateCore en un modèle sémantique unique pour les bâtiments.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">IFC / BIM</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Industry Foundation Classes (ISO 16739). Modèle de données pour le BIM, transfert conception → exploitation pour la GTB.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">RealEstateCore</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Ontologie pour jumeaux numériques immobiliers. Adopté par Azure Digital Twins et les grandes plateformes PropTech.</p>
+          </div>
+          <div class="card p-6">
+            <p style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">SNMP</p>
+            <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Simple Network Management Protocol. Monitoring des équipements réseau, onduleurs et infrastructure IT dans le bâtiment.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="article-col"><hr class="sep"></div>
-
-  <!-- Cadre réglementaire -->
-  <section class="section-block">
-    <div class="article-col">
-      <h2>Cadre réglementaire</h2>
-      <p>
-        En France, plusieurs textes réglementaires encadrent directement ou indirectement la mise en place de systèmes GTB dans les bâtiments tertiaires. Ces obligations s'inscrivent dans la stratégie nationale de réduction des consommations énergétiques du parc bâti.
-      </p>
-
-      <div class="reg-card">
-        <h3>Décret BACS (2020)</h3>
-        <p>
-          Le décret n° 2020-887 du 20 juillet 2020 transpose l'article 14 de la directive européenne sur la performance énergétique des bâtiments (DPEB 2018/844). Il impose l'installation de systèmes d'automatisation et de contrôle (BACS — <em>Building Automation and Control Systems</em>) dans les bâtiments tertiaires non résidentiels. Échéance au 1er janvier 2025 pour les bâtiments dont la puissance nominale utile des systèmes CVC dépasse 290 kW, et au 1er janvier 2027 pour ceux dépassant 70 kW. Le système installé doit atteindre a minima la classe B de la norme EN 15232.
-        </p>
+  <!-- ==================== RÉGLEMENTATION ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Conformité</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Cadre réglementaire</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Plusieurs textes encadrent la mise en place de systèmes GTB dans les bâtiments tertiaires en France.</p>
       </div>
 
-      <div class="reg-card">
-        <h3>Décret tertiaire (Éco Énergie Tertiaire)</h3>
-        <p>
-          Le décret n° 2019-771 du 23 juillet 2019 (issu de la loi ELAN) impose aux bâtiments tertiaires de plus de 1 000 m² une réduction progressive de leur consommation d'énergie finale : –40 % en 2030, –50 % en 2040, –60 % en 2050 par rapport à une année de référence (postérieure à 2010). Les données de consommation doivent être déclarées annuellement sur la plateforme OPERAT gérée par l'ADEME. La GTB constitue un levier majeur pour atteindre ces objectifs, en assurant le suivi, le pilotage et l'optimisation des consommations.
-        </p>
-      </div>
-
-      <div class="reg-card">
-        <h3>RE2020 (Réglementation Environnementale 2020)</h3>
-        <p>
-          Applicable aux bâtiments neufs depuis le 1er janvier 2022, la RE2020 renforce les exigences de performance énergétique par rapport à la RT2012 et introduit le calcul de l'empreinte carbone sur le cycle de vie du bâtiment. Si la RE2020 n'impose pas directement la GTB, elle fixe des seuils de consommation (indicateur Cep) et de confort d'été (indicateur DH) qui, dans les bâtiments tertiaires, rendent quasi indispensable la mise en place d'un système de gestion technique pour respecter les exigences en exploitation.
-        </p>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Obligatoire</div>
+          <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Décret BACS</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Impose un système d'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2027 (>70 kW).</p>
+        </div>
+        <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Objectifs</div>
+          <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Décret tertiaire</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Réduction progressive de la consommation : –40 % (2030), –50 % (2040), –60 % (2050). Déclaration annuelle sur OPERAT.</p>
+        </div>
+        <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Neuf</div>
+          <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">RE2020</h3>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Applicable aux bâtiments neufs. Seuils de consommation (Cep) et confort d'été (DH) rendant la GTB quasi indispensable.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="article-col"><hr class="sep"></div>
-
-  <!-- CTA -->
-  <section class="section-block" style="padding-bottom: 64px;">
-    <div class="article-col">
-      <div class="cta-section">
-        <h2 style="margin-bottom: 12px;">Évaluez le niveau GTB de votre bâtiment</h2>
-        <p>
-          Identifiez votre classe EN 15232 actuelle, vérifiez votre conformité au décret BACS et repérez les axes d'amélioration grâce à notre diagnostic.
-        </p>
-        <div style="margin-top: 24px;">
-          <a href="/audit" class="btn-primary">Lancer le diagnostic</a>
-        </div>
-      </div>
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden" style="padding: 80px 0; background: var(--color-dark-900);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%); pointer-events: none;"></div>
+    <div style="max-width: 520px; margin: 0 auto; padding: 0 24px; text-align: center; position: relative; z-index: 1;">
+      <h2 style="font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Évaluez le niveau GTB de votre bâtiment</h2>
+      <p style="font-size: 16px; color: var(--color-dark-400); line-height: 1.7; margin-bottom: 28px;">Identifiez votre classe EN 15232, vérifiez votre conformité BACS et repérez les axes d'amélioration.</p>
+      <a href="/audit" class="btn-primary">
+        Lancer le diagnostic
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
 

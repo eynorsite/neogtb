@@ -2,438 +2,163 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="A propos — NeoGTB" description="NeoGTB, le tiers de confiance indépendant de la GTB en France. Marque de EURL EYNOR, basée à Eysines près de Bordeaux.">
+<Layout title="À propos — NeoGTB" description="NeoGTB, le tiers de confiance indépendant de la GTB en France. Marque de EYNOR, basée à Eysines près de Bordeaux.">
 
-  <style>
-    /* About page — design system connaissance */
-    .about-hero {
-      padding: 64px 0 48px;
-      background: #fff;
-    }
-    .about-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-    .eyebrow {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #9A9AAA;
-      margin-bottom: 12px;
-    }
-    .about-hero h1 {
-      font-size: 28px;
-      font-weight: 500;
-      color: #0F0F0F;
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-      margin-bottom: 14px;
-      max-width: 640px;
-    }
-    .about-hero .subtitle {
-      font-size: 15px;
-      color: #5A5A6A;
-      line-height: 1.7;
-      max-width: 560px;
-    }
-    .sep {
-      height: 0.5px;
-      background: rgba(0, 0, 0, 0.08);
-      margin: 0;
-    }
-
-    /* Two columns identity + mission */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 48px;
-      align-items: start;
-      padding: 48px 0;
-    }
-    .founder-photo {
-      background: #F7F7F9;
-      border-radius: 12px;
-      border: 0.5px solid rgba(0, 0, 0, 0.08);
-      aspect-ratio: 3 / 4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .founder-avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: #EEEDFE;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 500;
-      color: #3C3489;
-    }
-    .founder-meta .founder-name {
-      font-size: 15px;
-      font-weight: 500;
-      color: #0F0F0F;
-      margin-bottom: 2px;
-    }
-    .founder-meta .founder-title {
-      font-size: 12px;
-      color: #5A5A6A;
-    }
-    .founder-sep {
-      height: 0.5px;
-      background: rgba(0, 0, 0, 0.08);
-      margin: 12px 0;
-    }
-    .founder-creds {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding: 0;
-      margin: 0;
-    }
-    .founder-creds li {
-      font-size: 12px;
-      color: #5A5A6A;
-      padding-left: 12px;
-      position: relative;
-    }
-    .founder-creds li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 6px;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #534AB7;
-    }
-
-    .about-text h2 {
-      font-size: 22px;
-      font-weight: 500;
-      color: #0F0F0F;
-      line-height: 1.25;
-      letter-spacing: -0.3px;
-      margin-bottom: 16px;
-    }
-    .about-text p {
-      font-size: 14px;
-      color: #5A5A6A;
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-
-    /* Charte callout */
-    .callout {
-      background: #F7F7F9;
-      border: 0.5px solid rgba(0, 0, 0, 0.08);
-      border-radius: 12px;
-      padding: 24px;
-      margin-top: 32px;
-    }
-    .callout-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: #0F0F0F;
-      margin-bottom: 14px;
-    }
-    .callout ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .callout li {
-      font-size: 13px;
-      color: #5A5A6A;
-      line-height: 1.6;
-      padding-left: 16px;
-      position: relative;
-    }
-    .callout li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 7px;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #534AB7;
-    }
-
-    /* Stats grid 2x2 */
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 28px;
-    }
-    .about-stat {
-      background: #F7F7F9;
-      border-radius: 8px;
-      padding: 14px;
-      border: 0.5px solid rgba(0, 0, 0, 0.08);
-    }
-    .stat-n {
-      display: block;
-      font-size: 22px;
-      font-weight: 500;
-      color: #0F0F0F;
-      letter-spacing: -0.3px;
-    }
-    .stat-l {
-      display: block;
-      font-size: 11px;
-      color: #5A5A6A;
-      margin-top: 3px;
-    }
-
-    /* Methodology */
-    .methodology {
-      padding: 64px 0;
-      border-top: 0.5px solid rgba(0, 0, 0, 0.08);
-    }
-    .methodology h2 {
-      font-size: 22px;
-      font-weight: 500;
-      color: #0F0F0F;
-      letter-spacing: -0.3px;
-      margin-bottom: 6px;
-    }
-    .method-sub {
-      font-size: 14px;
-      color: #5A5A6A;
-      margin-bottom: 28px;
-    }
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    .method-step {
-      border: 0.5px solid rgba(0, 0, 0, 0.08);
-      border-radius: 12px;
-      padding: 18px;
-      transition: border-color 0.15s ease;
-    }
-    .method-step:hover {
-      border-color: rgba(0, 0, 0, 0.15);
-    }
-    .method-step--active {
-      border-left: 2px solid #534AB7;
-      border-radius: 0 12px 12px 0;
-    }
-    .step-num {
-      font-size: 32px;
-      font-weight: 500;
-      color: #EEEDFE;
-      margin-bottom: 10px;
-      line-height: 1;
-    }
-    .step-num--active {
-      color: #534AB7;
-    }
-    .method-step h3 {
-      font-size: 13px;
-      font-weight: 500;
-      color: #0F0F0F;
-      margin-bottom: 8px;
-    }
-    .method-step p {
-      font-size: 12px;
-      color: #5A5A6A;
-      line-height: 1.6;
-    }
-
-    /* CTA */
-    .cta-section {
-      padding: 64px 0;
-      border-top: 0.5px solid rgba(0, 0, 0, 0.08);
-      text-align: center;
-    }
-    .cta-section h2 {
-      font-size: 22px;
-      font-weight: 500;
-      color: #0F0F0F;
-      letter-spacing: -0.3px;
-      margin-bottom: 8px;
-    }
-    .cta-section p {
-      font-size: 14px;
-      color: #5A5A6A;
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-    .btn-primary {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 10px 24px;
-      border-radius: 8px;
-      background: #534AB7;
-      color: #EEEDFE;
-      text-decoration: none;
-      transition: background 0.15s ease;
-    }
-    .btn-primary:hover {
-      background: #3C3489;
-    }
-
-    @media (max-width: 768px) {
-      .about-inner {
-        padding: 0 20px;
-      }
-      .about-hero {
-        padding: 40px 0 32px;
-      }
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        padding: 40px 0;
-      }
-      .founder-photo {
-        aspect-ratio: auto;
-        padding: 40px;
-      }
-      .method-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .methodology,
-      .cta-section {
-        padding: 40px 0;
-      }
-    }
-  </style>
-
-  <!-- Hero -->
-  <section class="about-hero">
-    <div class="about-inner">
-      <p class="eyebrow">A propos</p>
-      <h1>Le tiers de confiance independant de la GTB en France</h1>
-      <p class="subtitle">NeoGTB fournit aux gestionnaires de batiments, bureaux d'etudes et decideurs une information GTB fiable, objective et sans pression commerciale. Nous ne vendons rien — nous aidons a decider.</p>
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden" style="background: var(--color-dark-900); padding: 80px 0 96px;">
+    <div style="position: absolute; top: -20%; right: 30%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 65%); pointer-events: none;"></div>
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
+      <div class="max-w-2xl">
+        <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px; opacity: 0.9;" />
+        <p class="eyebrow" style="color: var(--color-accent-400);">À propos</p>
+        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; color: #fff; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px;">
+          Le tiers de confiance indépendant de la GTB en France
+        </h1>
+        <p style="font-size: 18px; color: var(--color-dark-400); line-height: 1.7; max-width: 560px;">
+          NeoGTB fournit aux gestionnaires de bâtiments, bureaux d'études et décideurs une information GTB fiable, objective et sans pression commerciale. Nous ne vendons rien — nous aidons à décider.
+        </p>
+      </div>
     </div>
   </section>
 
-  <div class="about-inner"><div class="sep"></div></div>
+  <!-- ==================== IDENTITÉ + MISSION ==================== -->
+  <section style="padding: 80px 0;">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
-  <!-- Two columns: identity + mission -->
-  <section>
-    <div class="about-inner">
-      <div class="about-grid">
         <!-- Left: brand identity -->
-        <div class="about-visual">
-          <div class="founder-photo">
-            <div class="founder-avatar">N</div>
+        <div class="lg:col-span-2 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <div class="card p-8">
+            <img src="/images/picto-neogtb.png" alt="NeoGTB" style="width: 72px; height: 72px; border-radius: 50%; object-fit: contain; margin-bottom: 20px;" />
+            <p style="font-size: 20px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 4px;">NeoGTB</p>
+            <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 20px;">Marque de EYNOR</p>
+            <div class="sep" style="margin-bottom: 20px;"></div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+              <li class="flex items-center gap-3">
+                <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent-500); flex-shrink: 0;"></div>
+                <span style="font-size: 14px; color: var(--color-dark-500);">EYNOR</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent-500); flex-shrink: 0;"></div>
+                <span style="font-size: 14px; color: var(--color-dark-500);">Eysines, Bordeaux</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent-500); flex-shrink: 0;"></div>
+                <span style="font-size: 14px; color: var(--color-dark-500);">Conseil indépendant en GTB</span>
+              </li>
+            </ul>
           </div>
-          <div class="founder-meta">
-            <div class="founder-name">NeoGTB</div>
-            <div class="founder-title">Marque de EURL EYNOR</div>
-            <div class="founder-sep"></div>
-            <ul class="founder-creds">
-              <li>EURL EYNOR</li>
-              <li>Eysines, Bordeaux</li>
-              <li>Conseil independant en GTB</li>
-              <li>Aucune attache fabricant</li>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-2 gap-4 mt-6">
+            <div class="card p-5 text-center">
+              <p style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">10+</p>
+              <p style="font-size: 12px; color: var(--color-dark-400); margin-top: 4px;">technologies analysées</p>
+            </div>
+            <div class="card p-5 text-center">
+              <p style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">41</p>
+              <p style="font-size: 12px; color: var(--color-dark-400); margin-top: 4px;">protocoles référencés</p>
+            </div>
+            <div class="card p-5 text-center">
+              <p style="font-size: 28px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.02em;">0 €</p>
+              <p style="font-size: 12px; color: var(--color-dark-400); margin-top: 4px;">commission fabricant</p>
+            </div>
+            <div class="card p-5 text-center">
+              <p style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em;">100 %</p>
+              <p style="font-size: 12px; color: var(--color-dark-400); margin-top: 4px;">indépendant</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: mission + conviction -->
+        <div class="lg:col-span-3 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 24px;">Notre conviction : chaque gestionnaire de bâtiment devrait pouvoir prendre des décisions GTB éclairées, sans pression commerciale</h2>
+
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+            La GTB est un levier majeur pour réduire la consommation énergétique des bâtiments tertiaires et industriels. Pourtant, le marché français reste dominé par des acteurs qui orientent systématiquement vers leurs propres produits. Il n'existait aucun tiers de confiance capable d'accompagner les décideurs sans conflit d'intérêts.
+          </p>
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+            NeoGTB est né de ce constat. Notre mission : <strong style="color: var(--color-dark-900); font-weight: 500;">éduquer le marché français sur la GTB</strong>, fournir des outils d'analyse indépendants, et permettre à chaque professionnel de comprendre, comparer et décider en connaissance de cause.
+          </p>
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 32px;">
+            NeoGTB est une marque de <strong style="color: var(--color-dark-900); font-weight: 500;">EYNOR</strong>, société basée à Eysines près de Bordeaux. Cette structure garantit notre indépendance : aucune participation capitalistique de fabricants, aucune commission sur les ventes, aucune pression commerciale sur nos recommandations.
+          </p>
+
+          <!-- Charte d'indépendance -->
+          <div class="callout">
+            <p class="callout-label">Charte d'indépendance NeoGTB</p>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--color-accent-500);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span style="font-size: 14px; color: var(--color-dark-600); line-height: 1.6;">Aucun lien commercial avec les fabricants GTB</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--color-accent-500);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span style="font-size: 14px; color: var(--color-dark-600); line-height: 1.6;">Aucune commission sur les ventes ou prescriptions</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--color-accent-500);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span style="font-size: 14px; color: var(--color-dark-600); line-height: 1.6;">Méthodologie d'évaluation transparente et vérifiable</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--color-accent-500);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span style="font-size: 14px; color: var(--color-dark-600); line-height: 1.6;">Données utilisateurs jamais transmises à des tiers</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--color-accent-500);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span style="font-size: 14px; color: var(--color-dark-600); line-height: 1.6;">Correction ouverte en cas d'erreur factuelle</span>
+              </li>
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Right: mission + conviction + stats -->
-        <div class="about-text">
-          <h2>Notre conviction : chaque gestionnaire de batiment devrait pouvoir prendre des decisions GTB eclairees, sans pression commerciale</h2>
-          <p>La GTB est un levier majeur pour reduire la consommation energetique des batiments tertiaires et industriels. Pourtant, le marche francais reste domine par des acteurs qui orientent systematiquement vers leurs propres produits. Il n'existait aucun tiers de confiance capable d'accompagner les decideurs sans conflit d'interets.</p>
-          <p>NeoGTB est ne de ce constat. Notre mission : eduquer le marche francais sur la GTB, fournir des outils d'analyse independants, et permettre a chaque professionnel de comprendre, comparer et decider en connaissance de cause. Nous analysons les technologies, les protocoles et les solutions disponibles avec une seule grille de lecture : l'interet du batiment et de ses occupants.</p>
-          <p>NeoGTB est une marque de EURL EYNOR, societe basee a Eysines pres de Bordeaux. Cette structure garantit notre independance : aucune participation capitalistique de fabricants, aucune commission sur les ventes, aucune pression commerciale sur nos recommandations.</p>
+  <!-- ==================== MÉTHODE ==================== -->
+  <section style="padding: 80px 0; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+        <p class="eyebrow">Notre approche</p>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">La méthode NeoGTB — 4 phases</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">Une approche structurée pour accompagner chaque projet GTB, du diagnostic à la mise en œuvre.</p>
+      </div>
 
-          <!-- Stats grid 2x2 -->
-          <div class="about-stats">
-            <div class="about-stat">
-              <span class="stat-n">10+</span>
-              <span class="stat-l">technologies analysees</span>
-            </div>
-            <div class="about-stat">
-              <span class="stat-n">4 protocoles</span>
-              <span class="stat-l">maitrises (BACnet, KNX, Modbus, LON)</span>
-            </div>
-            <div class="about-stat">
-              <span class="stat-n">0 &euro;</span>
-              <span class="stat-l">commission fabricant</span>
-            </div>
-            <div class="about-stat">
-              <span class="stat-n">100 %</span>
-              <span class="stat-l">independant</span>
-            </div>
-          </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="card p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 40px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">01</p>
+          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">État des lieux</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Audit de l'existant : équipements en place, protocoles utilisés, niveau d'intégration, points de friction.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 40px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">02</p>
+          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Analyse comparative</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Évaluation neutre des solutions disponibles. Comparaison par critères objectifs : interopérabilité, coût, évolutivité.</p>
+        </div>
+        <div class="reveal reveal-d2 p-6" x-data x-intersect.once="$el.classList.add('visible')" style="background: white; border-radius: 12px; border: 1px solid var(--color-accent-200); box-shadow: 0 0 0 3px var(--color-accent-50);">
+          <p style="font-size: 40px; font-weight: 500; color: var(--color-accent-400); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">03</p>
+          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Recommandations</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Synthèse argumentée et adaptée. Chaque recommandation est justifiée, traçable et libre de conflit d'intérêts.</p>
+        </div>
+        <div class="card p-6 reveal reveal-d3" x-data x-intersect.once="$el.classList.add('visible')">
+          <p style="font-size: 40px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">04</p>
+          <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Accompagnement</h3>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Suivi de mise en œuvre, vérification de conformité, transfert de compétences aux équipes internes.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="about-inner"><div class="sep"></div></div>
-
-  <!-- Charte d'independance -->
-  <section>
-    <div class="about-inner" style="padding-top: 48px; padding-bottom: 48px;">
-      <div class="callout">
-        <div class="callout-title">Charte d'independance NeoGTB</div>
-        <ul>
-          <li>Aucun lien commercial avec les fabricants GTB</li>
-          <li>Aucune commission sur les ventes ou prescriptions</li>
-          <li>Methodologie d'evaluation transparente et verifiable</li>
-          <li>Donnees utilisateurs jamais transmises a des tiers</li>
-          <li>Correction ouverte en cas d'erreur factuelle</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <div class="about-inner"><div class="sep"></div></div>
-
-  <!-- La methode NeoGTB -->
-  <section class="methodology">
-    <div class="about-inner">
-      <p class="eyebrow">Notre approche</p>
-      <h2>La methode NeoGTB — 4 phases</h2>
-      <p class="method-sub">Une approche structuree pour accompagner chaque projet GTB, du diagnostic a la mise en oeuvre.</p>
-      <div class="method-grid">
-        <div class="method-step">
-          <div class="step-num">01</div>
-          <h3>Etat des lieux</h3>
-          <p>Audit de l'existant : equipements en place, protocoles utilises, niveau d'integration, points de friction. Cartographie complete du systeme technique du batiment.</p>
-        </div>
-        <div class="method-step">
-          <div class="step-num">02</div>
-          <h3>Analyse comparative</h3>
-          <p>Evaluation neutre des solutions disponibles sur le marche. Comparaison par criteres objectifs : interoperabilite, cout total, evolutivite, conformite reglementaire.</p>
-        </div>
-        <div class="method-step method-step--active">
-          <div class="step-num step-num--active">03</div>
-          <h3>Recommandations</h3>
-          <p>Synthese argumentee adaptee au contexte specifique du batiment. Chaque recommandation est justifiee, tracable et libre de tout conflit d'interet commercial.</p>
-        </div>
-        <div class="method-step">
-          <div class="step-num">04</div>
-          <h3>Accompagnement</h3>
-          <p>Suivi de la mise en oeuvre, verification de la conformite des livrables, transfert de competences aux equipes internes pour une autonomie durable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="about-inner">
-      <h2>Un projet GTB a clarifier ?</h2>
-      <p>Echangeons sur votre situation. Sans engagement, sans pression commerciale.</p>
-      <a href="/contact" class="btn-primary">Prendre contact</a>
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden" style="padding: 80px 0; background: var(--color-dark-900);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%); pointer-events: none;"></div>
+    <div style="max-width: 520px; margin: 0 auto; padding: 0 24px; text-align: center; position: relative; z-index: 1;">
+      <h2 style="font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Un projet GTB à clarifier ?</h2>
+      <p style="font-size: 16px; color: var(--color-dark-400); line-height: 1.7; margin-bottom: 28px;">Échangeons sur votre situation. Sans engagement, sans pression commerciale.</p>
+      <a href="/contact" class="btn-primary">
+        Prendre contact
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
 

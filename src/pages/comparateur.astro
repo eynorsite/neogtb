@@ -7,6 +7,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Hero -->
   <section class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px;" />
       <span class="eyebrow inline-flex items-center px-3 py-1 rounded-full text-xs font-medium text-dark-500 mb-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
         Outil independant
       </span>
@@ -14,6 +15,68 @@ import Layout from '../layouts/Layout.astro';
       <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto" style="font-weight: 400;">
         Analysez et comparez les solutions des principaux acteurs du marche de la Gestion Technique du Batiment. Notes, protocoles, budgets et retours terrain pour un choix eclaire.
       </p>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class="py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-xl p-5" style="background: #FFF7ED; border: 1px solid #FED7AA;">
+        <p style="font-size: 14px; font-weight: 500; color: #9A3412; margin-bottom: 6px;">Avertissement — Comparateur indépendant</p>
+        <p style="font-size: 13px; color: #78350F; line-height: 1.7;">
+          Ce comparateur est un outil éducatif à visée informative. Les données techniques (protocoles, certifications) proviennent de la documentation officielle des constructeurs. Les notes sont des <strong>estimations éditoriales</strong> établies par la rédaction NeoGTB sur la base de critères publiés ci-dessous — elles ne constituent ni un classement certifié, ni un conseil d'achat. Les budgets indicatifs sont des ordres de grandeur qui varient selon la taille du projet, l'intégrateur et les conditions commerciales. NeoGTB ne perçoit aucune rémunération des marques listées. Dernière mise à jour : mars 2026.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Méthodologie -->
+  <section class="py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);" x-data="{ open: false }">
+        <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+          <div>
+            <p style="font-size: 16px; font-weight: 500; color: #111;">Méthodologie de notation</p>
+            <p style="font-size: 13px; color: #6b7280; margin-top: 2px;">6 critères, pondération égale, sources documentaires constructeurs</p>
+          </div>
+          <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div x-show="open" x-collapse>
+          <div class="mt-6 pt-6" style="border-top: 0.5px solid rgba(0,0,0,0.08);">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
+              <div>
+                <p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Facilité d'installation</p>
+                <p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Temps de déploiement, nécessité de câblage, complexité de mise en service, compétences requises. Un système sans fil plug & play obtient un score plus élevé qu'un système nécessitant programmation CODESYS et câblage bus.</p>
+              </div>
+              <div>
+                <p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Rapport qualité/prix</p>
+                <p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Coût total de possession (matériel + licences + intégration + maintenance) rapporté aux fonctionnalités offertes. Basé sur les grilles tarifaires intégrateurs et les retours terrain publics.</p>
+              </div>
+              <div>
+                <p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Fonctionnalités</p>
+                <p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Étendue des fonctions natives : régulation, supervision, alarmes, historisation, reporting, analytique, IA. Évalué sur la base des fiches techniques et documentations produit officielles.</p>
+              </div>
+              <div>
+                <p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Support en France</p>
+                <p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Présence commerciale et technique sur le territoire, densité du réseau d'intégrateurs certifiés, documentation en français, réactivité du SAV.</p>
+              </div>
+              <div>
+                <p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Innovation</p>
+                <p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Adoption des technologies récentes : cloud natif, IA/ML, IoT, cybersécurité (BACnet SC, IEC 62443), jumeaux numériques, API ouvertes.</p>
+              </div>
+              <div>
+                <p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Interopérabilité</p>
+                <p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Nombre et diversité des protocoles supportés nativement, certifications BTL/KNX, capacité à intégrer des équipements tiers sans passerelle propriétaire.</p>
+              </div>
+            </div>
+            <div class="rounded-lg p-4" style="background: #F9FAFB; border: 0.5px solid rgba(0,0,0,0.08);">
+              <p style="font-size: 12px; color: #6b7280; line-height: 1.7;">
+                <strong style="color: #374151;">Sources :</strong> Documentation technique officielle des constructeurs (fiches produit, PICS BACnet, certifications BTL), données marché Schneider Electric (16.4% part de marché mondial BMS — rapport annuel 2025), étude ADEME « Évaluation de systèmes de GTB dans le tertiaire », norme NF EN ISO 52120-1:2022 (classification BACS), rapport Building Management System Market 2026 (GMInsights / MarketsandMarkets). Les notes /10 sont des estimations éditoriales de la rédaction NeoGTB — elles ne proviennent pas d'un organisme tiers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -39,11 +102,14 @@ import Layout from '../layouts/Layout.astro';
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Protocole</label>
             <select x-model="filterProtocol" class="px-3 py-2 rounded-lg text-sm bg-white outline-none transition-colors" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px; transition: 0.15s ease;">
               <option value="all">Tous</option>
-              <option value="BACnet">BACnet</option>
+              <option value="BACnet">BACnet (toutes variantes)</option>
               <option value="KNX">KNX</option>
-              <option value="Modbus">Modbus</option>
+              <option value="Modbus">Modbus (toutes variantes)</option>
               <option value="LON">LON</option>
               <option value="LoRaWAN">LoRaWAN</option>
+              <option value="DALI">DALI</option>
+              <option value="M-Bus">M-Bus</option>
+              <option value="MQTT">MQTT</option>
             </select>
           </div>
 
@@ -214,84 +280,76 @@ import Layout from '../layouts/Layout.astro';
           <thead>
             <tr class="bg-dark-800 text-white">
               <th class="px-4 py-3 text-left font-medium">Marque</th>
-              <th class="px-4 py-3 text-center font-medium">Protocoles</th>
+              <th class="px-4 py-3 text-center font-medium">Protocoles vérifiés</th>
+              <th class="px-4 py-3 text-center font-medium">Certifications</th>
               <th class="px-4 py-3 text-center font-medium">Cloud</th>
-              <th class="px-4 py-3 text-center font-medium">IA</th>
               <th class="px-4 py-3 text-center font-medium">Sans fil</th>
               <th class="px-4 py-3 text-center font-medium">Multi-sites</th>
-              <th class="px-4 py-3 text-center font-medium">Classe GTB</th>
               <th class="px-4 py-3 text-center font-medium">Budget</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-dark-100">
             <tr>
               <td class="px-4 py-3 font-medium">Schneider Electric</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, KNX, LON</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet/IP, Modbus, KNX, LON</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BTL B-BC, B-OWS</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B / C</td>
               <td class="px-4 py-3 text-center text-orange-600 font-medium">&#8364;&#8364;&#8364;</td>
             </tr>
             <tr class="bg-dark-50">
               <td class="px-4 py-3 font-medium">Siemens</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, KNX, LON</td>
-              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet/IP, BACnet SC, Modbus, KNX, OPC</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">IEC 62443</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B / C</td>
               <td class="px-4 py-3 text-center text-orange-600 font-medium">&#8364;&#8364;&#8364;</td>
             </tr>
             <tr>
               <td class="px-4 py-3 font-medium">TheWatchdog</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, LoRaWAN, 4G</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, KNX, LoRaWAN, DALI, 4G</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">—</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B / C</td>
               <td class="px-4 py-3 text-center text-accent-600 font-medium">&#8364;&#8364;</td>
             </tr>
             <tr class="bg-dark-50">
               <td class="px-4 py-3 font-medium">Honeywell</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, LON</td>
-              <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, LON, fox(s)</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">—</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B / C</td>
               <td class="px-4 py-3 text-center text-orange-600 font-medium">&#8364;&#8364;&#8364;</td>
             </tr>
             <tr>
               <td class="px-4 py-3 font-medium">Sauter</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet/IP, BACnet MS/TP, Modbus, KNX, DALI, M-Bus</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BTL B-BC, B-LD · IEC 62443</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center text-dark-300">—</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">A / B</td>
               <td class="px-4 py-3 text-center text-primary-600 font-medium">&#8364;&#8364;</td>
             </tr>
             <tr class="bg-dark-50">
               <td class="px-4 py-3 font-medium">Wago</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, KNX</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet/IP, Modbus TCP/RTU, KNX, DALI</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">—</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
               <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center text-dark-300">—</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">B / C</td>
               <td class="px-4 py-3 text-center text-accent-600 font-medium">&#8364;</td>
             </tr>
-            <tr class="bg-dark-50">
+            <tr>
               <td class="px-4 py-3 font-medium">Wattsense</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, LoRaWAN</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">BACnet, Modbus, LoRaWAN, KNX, M-Bus, MQTT</td>
+              <td class="px-4 py-3 text-center" style="font-weight: 400;">—</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center text-dark-300">—</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
               <td class="px-4 py-3 text-center text-accent-600">&#10003;</td>
-              <td class="px-4 py-3 text-center" style="font-weight: 400;">B / C</td>
               <td class="px-4 py-3 text-center text-accent-600 font-medium">&#8364;</td>
             </tr>
           </tbody>
@@ -393,9 +451,9 @@ import Layout from '../layouts/Layout.astro';
           categorie: "leader",
           categorie_label: "Leader mondial",
           note: 9,
-          description: "Leader mondial de la gestion de l'énergie et de l'automatisation. EcoStruxure Building est la plateforme de référence pour les grands bâtiments tertiaires, avec une intégration complète énergie + bâtiment + IT. Présence terrain inégalée en France grâce à un réseau dense d'intégrateurs certifiés.",
-          produit_phare: "EcoStruxure Building Operation / Foresight Operation (2026)",
-          protocoles: ["BACnet", "Modbus", "KNX", "LON", "IP"],
+          description: "Leader mondial de la gestion de l'énergie (16,4 % de part de marché BMS mondial). EcoStruxure Building Operation est la plateforme de référence pour les grands bâtiments tertiaires, avec intégration native BACnet/IP (BTL B-BC, B-OWS), Modbus, LonWorks et KNX via passerelle SpaceLogic KNX BMS IP (BTL B-ASC, B-GW). Présence terrain inégalée en France.",
+          produit_phare: "EcoStruxure Building Operation (EBO) / SpaceLogic",
+          protocoles: ["BACnet/IP", "Modbus", "KNX", "LON", "IP"],
           budget: "eleve",
           budget_label: "€€€ — Premium",
           site: "https://www.se.com/fr/fr/work/campaign/life-is-on/life-is-on.jsp",
@@ -431,9 +489,9 @@ import Layout from '../layouts/Layout.astro';
           categorie: "leader",
           categorie_label: "Leader mondial",
           note: 9,
-          description: "Référence mondiale avec Desigo CC, une plateforme de gestion intégrée couvrant CVC, éclairage, sécurité incendie et sûreté. Très présent dans les bâtiments critiques (hôpitaux, aéroports). Robustesse industrielle éprouvée sur des milliers d'installations.",
-          produit_phare: "Desigo CC (supervision) + PXC (automates)",
-          protocoles: ["BACnet", "Modbus", "KNX", "LON", "IP"],
+          description: "Référence mondiale avec Desigo CC V9, plateforme intégrée couvrant CVC, éclairage, sécurité incendie et sûreté. Supporte BACnet (+ BACnet Secure Connect), OPC, Modbus, SNMP et KNX. Produits certifiés IEC 62443 (cybersécurité). Très présent dans les bâtiments critiques (hôpitaux, aéroports).",
+          produit_phare: "Desigo CC V9 (supervision) + PXC (automates)",
+          protocoles: ["BACnet/IP", "BACnet SC", "Modbus", "KNX", "OPC", "SNMP"],
           budget: "eleve",
           budget_label: "€€€ — Premium",
           site: "https://www.siemens.com/fr/fr/produits/automatisation-batiments.html",
@@ -469,9 +527,9 @@ import Layout from '../layouts/Layout.astro';
           categorie: "supervision",
           categorie_label: "Supervision / IoT / IA",
           note: 8,
-          description: "Solution française innovante de pilotage GTB/GTC par IoT (LoRa & 4G). Se déploie en quelques heures sans travaux, avec IA prédictive et pilotage cloud multi-sites. Compatible avec toutes les GTB existantes. Approche disruptive qui démocratise la GTB pour les petits et moyens bâtiments.",
+          description: "Solution française de pilotage GTB/GTC par IoT sans fil (LoRaWAN & 4G). Déploiement sans câblage, compatible GTB existantes (Siemens, Schneider…). Architecture Edge Computer autonome (données archivées localement 10+ ans, indépendant du cloud). Agrège Modbus, BACnet, KNX, LoRa, DALI dans un même environnement.",
           produit_phare: "Watchdog BOS (Building Operating System)",
-          protocoles: ["BACnet", "Modbus", "LoRaWAN", "4G", "IP"],
+          protocoles: ["BACnet", "Modbus", "KNX", "LoRaWAN", "DALI", "4G"],
           budget: "moyen",
           budget_label: "€€ — Accessible",
           site: "https://www.thewatchdog.io/",
@@ -508,9 +566,9 @@ import Layout from '../layouts/Layout.astro';
           categorie: "leader",
           categorie_label: "Leader mondial",
           note: 8,
-          description: "Acteur historique avec un parc installé massif. Le framework Niagara (via Tridium) est la référence pour l'intégration multi-constructeurs. Fort en CVC et sécurité incendie. Honeywell Forge apporte désormais une couche cloud et analytique avancée.",
-          produit_phare: "Niagara Framework (Tridium) + WEBs",
-          protocoles: ["BACnet", "Modbus", "LON", "IP"],
+          description: "Acteur historique, parc installé massif. Le framework Niagara (Tridium, acquis en 2005) est le standard d'intégration multi-constructeurs via JACE 8000. Supporte BACnet, Modbus, LonWorks, fox(s) protocol sur liaisons série (RS-485/232), IP et LON. Honeywell Forge apporte cloud et analytique.",
+          produit_phare: "Niagara Framework (Tridium) / JACE 8000 + WEBs-N4",
+          protocoles: ["BACnet", "Modbus", "LON", "fox(s)", "IP"],
           budget: "eleve",
           budget_label: "€€€ — Premium",
           site: "https://www.honeywell.com/",
@@ -546,9 +604,9 @@ import Layout from '../layouts/Layout.astro';
           categorie: "europeen",
           categorie_label: "Européen spécialisé",
           note: 7,
-          description: "Fabricant suisse réputé pour la qualité de sa régulation CVC. Excellent rapport qualité/prix pour les bâtiments tertiaires moyens. Forte présence en France et en Allemagne. Fiabilité et précision helvétiques appliquées au confort thermique.",
-          produit_phare: "modulo 6 (automates) + SAUTER Vision Center",
-          protocoles: ["BACnet", "Modbus", "IP"],
+          description: "Fabricant suisse, régulation CVC haut de gamme. Gamme modulo 6 entièrement certifiée BTL (profils B-BC et B-LD). Supporte BACnet/IP, BACnet MS/TP, Modbus, KNX, DALI et M-Bus nativement. Concept cybersécurité basé sur IEC 62443, BACnet SC en préparation. Forte présence France et Allemagne.",
+          produit_phare: "modulo 6 (BTL-certifié) + SAUTER Vision Center",
+          protocoles: ["BACnet/IP", "BACnet MS/TP", "Modbus", "KNX", "DALI", "M-Bus"],
           budget: "moyen",
           budget_label: "€€ — Intermédiaire",
           site: "https://www.sauter-controls.com/fr/",
@@ -583,9 +641,9 @@ import Layout from '../layouts/Layout.astro';
           categorie: "europeen",
           categorie_label: "Européen spécialisé",
           note: 7,
-          description: "Géant de l'électrotechnique et de l'automatisation. Fort en KNX pour le résidentiel et petit tertiaire, et en automates industriels pour les grandes installations. ABB Ability offre une couche cloud transversale pour le monitoring énergétique.",
-          produit_phare: "ABB-free@home (résidentiel) + ABB Ability (cloud)",
-          protocoles: ["KNX", "BACnet", "Modbus", "IP"],
+          description: "Géant de l'électrotechnique. Leader KNX mondial avec ABB i-bus KNX. Intégration BACnet/IP via passerelle bidirectionnelle KNX-BACnet. Automates industriels AC500 programmables via ABB Ability Automation Builder. ABB-free@home pour le résidentiel et petit tertiaire.",
+          produit_phare: "ABB i-bus KNX + AC500 + ABB-free@home",
+          protocoles: ["KNX", "BACnet/IP", "Modbus", "IP"],
           budget: "moyen",
           budget_label: "€€ — Intermédiaire",
           site: "https://new.abb.com/fr",
@@ -619,9 +677,9 @@ import Layout from '../layouts/Layout.astro';
           categorie: "europeen",
           categorie_label: "Européen spécialisé",
           note: 7,
-          description: "Fabricant allemand de contrôleurs compacts et bornes de raccordement. Excellent rapport qualité/prix pour les projets GTB de taille moyenne. Très apprécié des intégrateurs pour sa flexibilité de programmation et sa robustesse industrielle.",
-          produit_phare: "PFC200 (contrôleur) + WAGO Cloud",
-          protocoles: ["BACnet", "Modbus", "KNX", "IP"],
+          description: "Fabricant allemand de contrôleurs compacts. PFC200 Gen.2 : processeur Cortex A8 1 GHz, 512 Mo RAM, 4 Go Flash, 2× Ethernet. Supporte BACnet/IP, Modbus TCP/RTU, KNX, DALI, CANopen, EtherNet/IP, PROFIBUS DP nativement. Programmation CODESYS via e!COCKPIT. Web-visu intégrée.",
+          produit_phare: "PFC200 Gen.2 (750-8212) + e!COCKPIT",
+          protocoles: ["BACnet/IP", "Modbus TCP", "Modbus RTU", "KNX", "DALI"],
           budget: "bas",
           budget_label: "€ — Économique",
           site: "https://www.wago.com/fr/",
@@ -657,9 +715,9 @@ import Layout from '../layouts/Layout.astro';
           categorie: "iot",
           categorie_label: "IoT / Connectivité",
           note: 7,
-          description: "Startup française spécialisée dans la connectivité IoT pour les bâtiments existants. Leur box se branche sur les équipements techniques existants et remonte les données vers le cloud. Solution idéale pour un premier pas vers la GTB connectée sans investissement lourd.",
-          produit_phare: "Wattsense Box (passerelle IoT universelle)",
-          protocoles: ["BACnet", "Modbus", "LoRaWAN", "IP"],
+          description: "Entreprise française spécialisée dans la connectivité IoT bâtiment. Deux produits : Bridge (passerelle locale pour intégrateurs) et Tower (passerelle cloud managée). Interfaces : 3G/4G, LoRaWAN 863-928 MHz, Ethernet, 2× RS485, USB, KNX, M-Bus, X-Bus (LPB). Bibliothèque de 1 500+ appareils compatibles.",
+          produit_phare: "Wattsense Bridge + Tower (passerelles IoT)",
+          protocoles: ["BACnet", "Modbus", "LoRaWAN", "KNX", "M-Bus", "MQTT"],
           budget: "bas",
           budget_label: "€ — Économique",
           site: "https://www.wattsense.com/fr/",
@@ -766,7 +824,7 @@ import Layout from '../layouts/Layout.astro';
       filteredBrands() {
         let result = this.brands.filter(b => {
           if (this.filterCategory !== 'all' && b.categorie !== this.filterCategory) return false;
-          if (this.filterProtocol !== 'all' && !b.protocoles.includes(this.filterProtocol)) return false;
+          if (this.filterProtocol !== 'all' && !b.protocoles.some(p => p.toLowerCase().includes(this.filterProtocol.toLowerCase()))) return false;
           if (this.filterBuilding !== 'all' && !b.batiments.includes(this.filterBuilding)) return false;
           if (this.filterBudget !== 'all' && b.budget !== this.filterBudget) return false;
           return true;
