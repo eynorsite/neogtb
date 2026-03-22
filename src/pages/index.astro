@@ -1,86 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import homepageData from '../data/homepage.json';
+const { hero } = homepageData;
 ---
 
 <Layout title="Tiers de confiance indépendant de la GTB" description="NeoGTB est le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France. Diagnostic gratuit, comparateur objectif, veille réglementaire — sans lien commercial avec aucun fabricant.">
 
   <!-- ==================== HERO ==================== -->
-  <section class="relative overflow-hidden" style="background: var(--color-dark-900); padding: 100px 0 120px;">
-    <!-- Single subtle glow -->
-    <div style="position: absolute; top: -20%; left: 30%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 65%); pointer-events: none; animation: glow-pulse 6s ease-in-out infinite;"></div>
+  <section class="hero-img" style="position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden;">
+    <img
+      src={hero.image}
+      alt={hero.image_alt}
+      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    />
+    <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%);"></div>
 
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="width: 100%;">
+      <div style="max-width: 560px; margin-left: auto;">
+        <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.15); margin-bottom: 24px;">
+          {hero.badge}
+        </p>
 
-        <!-- Text -->
-        <div>
-          <img src="/images/picto-neogtb.png" alt="" style="width: 48px; height: 48px; object-fit: contain; margin-bottom: 20px; opacity: 0.9;" />
-          <p style="font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-400); margin-bottom: 24px;">Indépendant · Objectif · Solutions</p>
+        <p style="font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: -0.02em; margin-bottom: 12px;">
+          Néo<span style="font-weight: 500; color: #fff;">GTB</span>
+        </p>
 
-          <p style="font-size: 28px; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: -0.02em; margin-bottom: 16px;">Néo<span style="color: var(--color-accent-400); font-weight: 600;">GTB</span></p>
+        <h1 style="font-size: clamp(32px, 4.5vw, 48px); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px;">
+          {hero.title}
+        </h1>
 
-          <h1 style="font-size: clamp(40px, 5vw, 56px); font-weight: 500; color: #fff; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 24px;">
-            Le tiers de confiance<br>de la GTB en France
-          </h1>
+        <p style="font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 440px; margin-bottom: 32px;">
+          {hero.description}
+        </p>
 
-          <p style="font-size: 17px; color: var(--color-dark-400); line-height: 1.7; max-width: 480px; margin-bottom: 40px;">
-            NeoGTB ne vend rien et ne représente aucun fabricant. Nous aidons les gestionnaires de bâtiments tertiaires à comprendre, comparer et décider.
-          </p>
-
-          <div class="flex flex-wrap items-center gap-4">
-            <a href="/audit" class="btn-primary">
-              Diagnostiquer mon bâtiment
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
-            <a href="/about" style="font-size: 14px; font-weight: 500; color: var(--color-dark-400); text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--color-dark-400)'">
-              Notre méthode →
-            </a>
-          </div>
-        </div>
-
-        <!-- Dashboard widget -->
-        <div class="hidden lg:block">
-          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden;">
-            <div class="flex items-center gap-2 px-5 py-3" style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-              <div class="flex gap-2">
-                <div class="w-2.5 h-2.5 rounded-full" style="background: rgba(255,255,255,0.08);"></div>
-                <div class="w-2.5 h-2.5 rounded-full" style="background: rgba(255,255,255,0.08);"></div>
-                <div class="w-2.5 h-2.5 rounded-full" style="background: rgba(255,255,255,0.08);"></div>
-              </div>
-              <div class="flex-1 flex justify-center">
-                <span style="font-size: 11px; color: rgba(255,255,255,0.2); font-family: monospace;">neogtb.fr/diagnostic</span>
-              </div>
-            </div>
-            <div class="p-5 space-y-4">
-              <div style="padding: 16px; border-radius: 10px; background: rgba(255,255,255,0.03);">
-                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); margin-bottom: 6px;">Score GTB</p>
-                <p style="font-size: 32px; font-weight: 500; color: #fff; letter-spacing: -0.02em;">87<span style="font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.2);"> /100</span></p>
-                <div style="margin-top: 10px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.04); overflow: hidden;">
-                  <div style="height: 100%; width: 87%; border-radius: 4px; background: var(--color-accent-500);"></div>
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div style="padding: 14px; border-radius: 10px; background: rgba(255,255,255,0.03);">
-                  <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); margin-bottom: 4px;">Économies</p>
-                  <p style="font-size: 24px; font-weight: 500; color: #fff; letter-spacing: -0.02em;">32 %</p>
-                </div>
-                <div style="padding: 14px; border-radius: 10px; background: rgba(255,255,255,0.03);">
-                  <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); margin-bottom: 4px;">Conformité</p>
-                  <p style="font-size: 24px; font-weight: 500; color: var(--color-accent-400); letter-spacing: -0.02em;">RE2020</p>
-                </div>
-              </div>
-              <div style="padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04);">
-                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); margin-bottom: 10px;">Consommation mensuelle</p>
-                <svg viewBox="0 0 300 60" class="w-full" fill="none">
-                  <line x1="0" y1="15" x2="300" y2="15" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
-                  <line x1="0" y1="30" x2="300" y2="30" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
-                  <line x1="0" y1="45" x2="300" y2="45" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
-                  <path d="M0 45 Q40 42 80 35 T160 25 T240 30 T300 20" stroke="var(--color-accent-500)" stroke-width="2" stroke-linecap="round" fill="none"/>
-                  <circle cx="240" cy="30" r="3" fill="var(--color-dark-900)" stroke="var(--color-accent-400)" stroke-width="2"/>
-                </svg>
-              </div>
-            </div>
-          </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href={hero.cta_url} class="btn-primary">
+            {hero.cta_text}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href={hero.cta2_url} style="font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s;">
+            {hero.cta2_text} →
+          </a>
         </div>
       </div>
     </div>
