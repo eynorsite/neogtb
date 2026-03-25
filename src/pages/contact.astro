@@ -4,16 +4,20 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Contact" description="Contactez NeoGTB pour un avis indépendant sur votre projet GTB. Réponse sous 48h — aucune démarche commerciale.">
 
-  <section class="py-20 md:py-28">
-    <div class="max-w-[1200px] mx-auto px-5 md:px-10">
+  <section class="hero-lum" style="padding: 80px 0;">
+    <div class="hero-lum-mesh"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-lum-grid"></div>
+    <div class="max-w-[1200px] mx-auto px-5 md:px-10 relative z-10">
       <div class="grid lg:grid-cols-2 gap-16 lg:gap-20">
 
         <!-- Left: Info -->
         <div class="flex flex-col justify-center">
-          <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px;" />
-          <span class="eyebrow">Contact</span>
+          <span class="eyebrow" style="color: var(--color-accent-600);">Contact</span>
           <h1 class="mt-4 text-[36px] md:text-[44px] font-medium text-dark-900" style="letter-spacing: -0.4px; line-height: 1.15;">
-            Engageons une conversation
+            Engageons une <span class="accent">conversation</span>
           </h1>
           <p class="mt-5 text-[15px] text-dark-500" style="line-height: 1.7; max-width: 440px;">
             Un échange factuel pour comprendre votre contexte. Sans engagement, sans pitch commercial.
@@ -60,16 +64,16 @@ import Layout from '../layouts/Layout.astro';
         <div>
           <div class="rounded-xl p-6 md:p-8 bg-white" style="border: 0.5px solid rgba(0,0,0,0.08);">
             <form
-              action="#"
+              action="https://formsubmit.co/ajax/contact@neogtb.fr"
               method="POST"
               x-data="{ sending: false, sent: false, error: false }"
               @submit.prevent="
                 sending = true;
                 error = false;
-                setTimeout(() => {
-                  sending = false;
-                  sent = true;
-                }, 1500);
+                const data = Object.fromEntries(new FormData($el));
+                fetch($el.action, { method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } })
+                  .then(r => { sending = false; if (r.ok) { sent = true; } else { error = true; } })
+                  .catch(() => { sending = false; error = true; });
               "
             >
               <div class="space-y-5">
@@ -177,6 +181,11 @@ import Layout from '../layouts/Layout.astro';
                     </span>
                   </button>
                 </div>
+
+                <!-- RGPD notice -->
+                <p class="text-[11px] text-dark-400" style="line-height: 1.6;">
+                  En soumettant ce formulaire, vos données sont traitées par NeoGTB pour répondre à votre demande (intérêt légitime, art. 6.1.f RGPD). Conservées 3 ans. <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">Exercer vos droits</a> · <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">Politique de confidentialité</a>
+                </p>
 
                 <!-- Success -->
                 <div x-show="sent" x-transition class="p-4 rounded-lg bg-accent-50" style="border: 0.5px solid rgba(0,0,0,0.08);">

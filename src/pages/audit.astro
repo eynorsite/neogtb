@@ -2,16 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Audit GTB Gratuit" description="Evaluez gratuitement la maturite GTB de votre batiment selon la norme EN 15232. Repondez a quelques questions et recevez un diagnostic personnalise avec des recommandations conformes aux exigences reglementaires.">
+<Layout title="Audit GTB Gratuit" description="Évaluez gratuitement la maturité GTB de votre bâtiment selon la norme EN 15232. Répondez à quelques questions et recevez un diagnostic personnalisé avec des recommandations conformes aux exigences réglementaires.">
 
   <!-- Hero -->
-  <section class="pt-20 pb-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px;" />
+  <section class="hero-lum">
+    <div class="hero-lum-mesh"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-lum-grid"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
       <span class="eyebrow">Diagnostic gratuit</span>
-      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px;">Diagnostic GTB de votre batiment</h1>
-      <p class="mt-4 text-lg text-dark-500 max-w-2xl mx-auto" style="font-weight: 400;">
-        Evaluez en 8 questions la maturite de votre gestion technique selon le referentiel EN 15232 et les classes de performance A a D. Recevez un diagnostic et des recommandations personnalisees.
+      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px;">Diagnostic <span class="accent">GTB</span> de votre bâtiment</h1>
+      <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: var(--color-dark-500);">
+        Évaluez en 8 questions la maturité de votre gestion technique selon le référentiel EN 15232 et les classes de performance A à D. Recevez un diagnostic et des recommandations personnalisées.
       </p>
     </div>
   </section>
@@ -38,7 +42,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 1 -->
           <div x-show="currentStep === 1">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quel type de batiment gerez-vous ? La classification EN 15232 varie selon l'usage.</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quel type de bâtiment gérez-vous ? La classification EN 15232 varie selon l'usage.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[0].options" :key="option.value">
                 <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[0] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
@@ -51,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 2 -->
           <div x-show="currentStep === 2">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quelle est la surface de votre batiment ? Le decret BACS impose une GTB pour les batiments tertiaires de plus de 290 kW.</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quelle est la surface de votre bâtiment ? Le décret BACS impose une GTB pour les bâtiments tertiaires de plus de 290 kW.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[1].options" :key="option.value">
                 <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[1] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
@@ -64,7 +68,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 3 -->
           <div x-show="currentStep === 3">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Disposez-vous d'un systeme de regulation CVC ? La regulation est un critere central de la norme EN 15232 pour le classement energetique.</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Disposez-vous d'un système de régulation CVC ? La régulation est un critère central de la norme EN 15232 pour le classement énergétique.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[2].options" :key="option.value">
                 <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[2] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
@@ -77,7 +81,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 4 -->
           <div x-show="currentStep === 4">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Comment est gere l'eclairage ? La norme EN 12464-1 definit les niveaux d'eclairement requis selon les usages.</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Comment est géré l'éclairage ? La norme EN 12464-1 définit les niveaux d'éclairement requis selon les usages.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[3].options" :key="option.value">
                 <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[3] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
@@ -90,7 +94,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 5 -->
           <div x-show="currentStep === 5">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Avez-vous un suivi des consommations energetiques ? Le decret tertiaire exige une reduction progressive des consommations avec reporting sur OPERAT.</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Avez-vous un suivi des consommations énergétiques ? Le décret tertiaire exige une réduction progressive des consommations avec reporting sur OPERAT.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[4].options" :key="option.value">
                 <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[4] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
@@ -103,7 +107,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 6 -->
           <div x-show="currentStep === 6">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Disposez-vous d'une supervision centralisee ? L'integration multi-lots est un marqueur cle des classes A et B de la norme EN 15232.</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Disposez-vous d'une supervision centralisée ? L'intégration multi-lots est un marqueur clé des classes A et B de la norme EN 15232.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[5].options" :key="option.value">
                 <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[5] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
@@ -116,7 +120,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 7 -->
           <div x-show="currentStep === 7">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Comment gerez-vous la maintenance ? La norme NF EN 13306 distingue quatre niveaux de maturite en maintenance.</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Comment gérez-vous la maintenance ? La norme NF EN 13306 distingue quatre niveaux de maturité en maintenance.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[6].options" :key="option.value">
                 <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[6] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
@@ -129,7 +133,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Question 8 -->
           <div x-show="currentStep === 8">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quel est votre niveau de conformite reglementaire ? Le decret BACS (2020) et le decret tertiaire imposent des obligations croissantes.</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quel est votre niveau de conformité réglementaire ? Le décret BACS (2020) et le décret tertiaire imposent des obligations croissantes.</h3>
             <div class="space-y-3">
               <template x-for="option in questions[7].options" :key="option.value">
                 <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[7] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
@@ -143,14 +147,14 @@ import Layout from '../layouts/Layout.astro';
           <!-- Navigation -->
           <div class="flex justify-between mt-8">
             <button x-show="currentStep > 1" @click="currentStep--" class="px-6 py-2 text-dark-600 font-medium rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: background 0.15s ease;">
-              Precedent
+              Précédent
             </button>
             <div x-show="currentStep === 1"></div>
             <button x-show="currentStep < totalSteps" @click="if(answers[currentStep-1]) currentStep++" :class="answers[currentStep-1] ? 'bg-accent-500 text-white' : 'bg-dark-100 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-xl" style="transition: opacity 0.15s ease;">
               Suivant
             </button>
             <button x-show="currentStep === totalSteps" @click="calculateResults()" :class="answers[currentStep-1] ? 'bg-accent-500 text-white' : 'bg-dark-100 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-xl" style="transition: opacity 0.15s ease;">
-              Voir les resultats
+              Voir les résultats
             </button>
           </div>
         </div>
@@ -158,7 +162,7 @@ import Layout from '../layouts/Layout.astro';
         <!-- Results -->
         <div x-show="showResults" class="space-y-8">
           <div class="bg-white rounded-xl p-8 text-center" style="border: 0.5px solid rgba(0,0,0,0.08);">
-            <h2 class="text-2xl font-heading font-medium text-dark-900">Resultat de votre diagnostic EN 15232</h2>
+            <h2 class="text-2xl font-heading font-medium text-dark-900">Résultat de votre diagnostic EN 15232</h2>
 
             <!-- Score -->
             <div class="mt-8">
@@ -178,7 +182,7 @@ import Layout from '../layouts/Layout.astro';
 
           <!-- Recommandations -->
           <div class="bg-white rounded-xl p-8" style="border: 0.5px solid rgba(0,0,0,0.08);">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Recommandations personnalisees</h3>
+            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Recommandations personnalisées</h3>
             <div class="space-y-3">
               <template x-for="rec in recommendations" :key="rec">
                 <div class="flex items-start gap-3 p-4 rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
@@ -197,7 +201,7 @@ import Layout from '../layouts/Layout.astro';
               Refaire le diagnostic
             </button>
             <a href="/contact" class="btn-primary ml-4">
-              Demander un conseil personnalise
+              Demander un conseil personnalisé
             </a>
           </div>
         </div>
@@ -227,39 +231,39 @@ import Layout from '../layouts/Layout.astro';
               { value: 'bureau', label: 'Bureaux / Tertiaire' },
               { value: 'commerce', label: 'Commerce / Centre commercial' },
               { value: 'industrie', label: 'Industriel / Logistique' },
-              { value: 'sante', label: 'Sante / Hopital' },
+              { value: 'sante', label: 'Santé / Hôpital' },
               { value: 'education', label: 'Enseignement / Formation' },
-              { value: 'hotel', label: 'Hotellerie / Residentiel' }
+              { value: 'hotel', label: 'Hôtellerie / Résidentiel' }
             ]
           },
           {
             options: [
-              { value: 'small', label: 'Moins de 1 000 m2' },
-              { value: 'medium', label: '1 000 a 5 000 m2' },
-              { value: 'large', label: '5 000 a 20 000 m2' },
-              { value: 'xlarge', label: 'Plus de 20 000 m2' }
+              { value: 'small', label: 'Moins de 1 000 m²' },
+              { value: 'medium', label: '1 000 à 5 000 m²' },
+              { value: 'large', label: '5 000 à 20 000 m²' },
+              { value: 'xlarge', label: 'Plus de 20 000 m²' }
             ]
           },
           {
             options: [
-              { value: '0', label: 'Aucune regulation (tout en manuel)' },
-              { value: '1', label: 'Regulation basique (thermostats simples)' },
-              { value: '2', label: 'Regulation par zone avec programmation horaire' },
-              { value: '3', label: 'Regulation avancee avec optimisation automatique' }
+              { value: '0', label: 'Aucune régulation (tout en manuel)' },
+              { value: '1', label: 'Régulation basique (thermostats simples)' },
+              { value: '2', label: 'Régulation par zone avec programmation horaire' },
+              { value: '3', label: 'Régulation avancée avec optimisation automatique' }
             ]
           },
           {
             options: [
               { value: '0', label: 'Interrupteurs manuels uniquement' },
               { value: '1', label: 'Minuteries ou programmation horaire' },
-              { value: '2', label: 'Detection de presence et variation d\'intensite' },
-              { value: '3', label: 'Gestion intelligente complete (daylight, scenarios)' }
+              { value: '2', label: 'Détection de présence et variation d\'intensité' },
+              { value: '3', label: 'Gestion intelligente complète (daylight, scénarios)' }
             ]
           },
           {
             options: [
               { value: '0', label: 'Aucun suivi' },
-              { value: '1', label: 'Releve manuel des compteurs' },
+              { value: '1', label: 'Relevé manuel des compteurs' },
               { value: '2', label: 'Sous-comptage automatique par usage' },
               { value: '3', label: 'Monitoring temps reel avec alertes' }
             ]
@@ -268,24 +272,24 @@ import Layout from '../layouts/Layout.astro';
             options: [
               { value: '0', label: 'Aucune supervision' },
               { value: '1', label: 'Supervision partielle (un seul lot technique)' },
-              { value: '2', label: 'GTC centralisee sur plusieurs lots' },
-              { value: '3', label: 'GTB complete avec pilotage et optimisation' }
+              { value: '2', label: 'GTC centralisée sur plusieurs lots' },
+              { value: '3', label: 'GTB complète avec pilotage et optimisation' }
             ]
           },
           {
             options: [
-              { value: '0', label: 'Maintenance curative uniquement (on repare quand ca casse)' },
-              { value: '1', label: 'Maintenance preventive planifiee' },
-              { value: '2', label: 'Maintenance conditionnelle (basee sur les donnees)' },
-              { value: '3', label: 'Maintenance predictive (anticipation des pannes)' }
+              { value: '0', label: 'Maintenance curative uniquement (on répare quand ça casse)' },
+              { value: '1', label: 'Maintenance préventive planifiée' },
+              { value: '2', label: 'Maintenance conditionnelle (basée sur les données)' },
+              { value: '3', label: 'Maintenance prédictive (anticipation des pannes)' }
             ]
           },
           {
             options: [
-              { value: '0', label: 'Je ne connais pas les obligations reglementaires' },
-              { value: '1', label: 'Connaissance partielle, conformite incertaine' },
-              { value: '2', label: 'Conforme au decret tertiaire, RE2020 en cours' },
-              { value: '3', label: 'Pleinement conforme avec reporting automatise' }
+              { value: '0', label: 'Je ne connais pas les obligations réglementaires' },
+              { value: '1', label: 'Connaissance partielle, conformité incertaine' },
+              { value: '2', label: 'Conforme au décret tertiaire, RE2020 en cours' },
+              { value: '3', label: 'Pleinement conforme avec reporting automatisé' }
             ]
           }
         ],
@@ -299,59 +303,59 @@ import Layout from '../layouts/Layout.astro';
 
           if (this.score < 25) {
             this.level = 'Classe D — Non performant (EN 15232)';
-            this.levelDescription = 'Votre batiment ne dispose pas de systeme de gestion technique conforme. Selon la norme EN 15232, il se situe en classe D. Le potentiel d\'optimisation energetique est estime entre 30 et 50 % par rapport a une GTB de classe A.';
+            this.levelDescription = 'Votre bâtiment ne dispose pas de système de gestion technique conforme. Selon la norme EN 15232, il se situe en classe D. Le potentiel d\'optimisation énergétique est estimé entre 30 et 50 % par rapport à une GTB de classe A.';
             this.scoreColor = 'border-dark-300';
             this.scoreTextColor = 'text-dark-600';
             this.levelBadge = 'bg-dark-100 text-dark-700';
             this.recommendations = [
-              'Realiser un audit energetique conforme a la norme NF EN 16247-2 (batiments)',
-              'Installer des capteurs de temperature et de presence dans les zones principales pour amorcer une regulation automatisee',
-              'Mettre en place un suivi des consommations energetiques par sous-comptage, prerequis du decret tertiaire (plateforme OPERAT)',
-              'Etudier la faisabilite d\'une GTB de classe C minimum selon EN 15232, obligation du decret BACS pour les batiments > 290 kW',
-              'Verifier vos obligations reglementaires : decret tertiaire (echeance -40 % en 2030), decret BACS (echeance 2025/2027)',
-              'Identifier les CEE (Certificats d\'Economies d\'Energie) mobilisables pour financer la mise en conformite'
+              'Réaliser un audit énergétique conforme à la norme NF EN 16247-2 (bâtiments)',
+              'Installer des capteurs de température et de présence dans les zones principales pour amorcer une régulation automatisée',
+              'Mettre en place un suivi des consommations énergétiques par sous-comptage, prérequis du décret tertiaire (plateforme OPERAT)',
+              'Étudier la faisabilité d\'une GTB de classe C minimum selon EN 15232, obligation du décret BACS pour les bâtiments > 290 kW',
+              'Vérifier vos obligations réglementaires : décret tertiaire (échéance -40 % en 2030), décret BACS (échéance 2025/2027)',
+              'Identifier les CEE (Certificats d\'Économies d\'Énergie) mobilisables pour financer la mise en conformité'
             ];
           } else if (this.score < 50) {
             this.level = 'Classe C — Standard (EN 15232)';
-            this.levelDescription = 'Votre batiment dispose d\'une automatisation de base, correspondant a la classe C de la norme EN 15232. Des ameliorations vers la classe B permettraient une reduction supplementaire de 10 a 20 % des consommations.';
+            this.levelDescription = 'Votre bâtiment dispose d\'une automatisation de base, correspondant à la classe C de la norme EN 15232. Des améliorations vers la classe B permettraient une réduction supplémentaire de 10 à 20 % des consommations.';
             this.scoreColor = 'border-orange-300';
             this.scoreTextColor = 'text-orange-600';
             this.levelBadge = 'bg-orange-50 text-orange-700';
             this.recommendations = [
-              'Centraliser la supervision de vos lots techniques sur une GTC unique avec protocole BACnet/IP ou KNX pour l\'interoperabilite',
-              'Ameliorer la regulation CVC avec des capteurs de qualite d\'air (CO2) conformement a la norme NF EN 16798-1',
-              'Mettre en place un suivi energetique automatise avec alertes de derive, conforme aux exigences du decret tertiaire',
-              'Passer a une maintenance conditionnelle basee sur les donnees (norme NF EN 13306) pour reduire les couts de 15 a 25 %',
-              'Former vos equipes techniques a l\'exploitation de la GTB selon le referentiel de competences AFPAC',
-              'Etudier la migration vers une classe B EN 15232 en priorite sur les lots CVC et eclairage'
+              'Centraliser la supervision de vos lots techniques sur une GTC unique avec protocole BACnet/IP ou KNX pour l\'interopérabilité',
+              'Améliorer la régulation CVC avec des capteurs de qualité d\'air (CO2) conformément à la norme NF EN 16798-1',
+              'Mettre en place un suivi énergétique automatisé avec alertes de dérive, conforme aux exigences du décret tertiaire',
+              'Passer à une maintenance conditionnelle basée sur les données (norme NF EN 13306) pour réduire les coûts de 15 à 25 %',
+              'Former vos équipes techniques à l\'exploitation de la GTB selon le référentiel de compétences AFPAC',
+              'Étudier la migration vers une classe B EN 15232 en priorité sur les lots CVC et éclairage'
             ];
           } else if (this.score < 75) {
-            this.level = 'Classe B — Avance (EN 15232)';
-            this.levelDescription = 'Votre batiment dispose d\'une GTB performante de classe B selon EN 15232. Quelques optimisations ciblees peuvent vous rapprocher de la classe A et d\'economies supplementaires de 5 a 15 %.';
+            this.level = 'Classe B — Avancé (EN 15232)';
+            this.levelDescription = 'Votre bâtiment dispose d\'une GTB performante de classe B selon EN 15232. Quelques optimisations ciblées peuvent vous rapprocher de la classe A et d\'économies supplémentaires de 5 à 15 %.';
             this.scoreColor = 'border-primary-300';
             this.scoreTextColor = 'text-primary-600';
             this.levelBadge = 'bg-primary-50 text-primary-700';
             this.recommendations = [
-              'Explorer les solutions d\'intelligence artificielle pour l\'optimisation predictive des courbes de charge (norme ISO 50001)',
-              'Mettre en place un jumeau numerique de votre batiment pour simuler et optimiser les scenarios energetiques',
-              'Optimiser les scenarios de fonctionnement selon l\'occupation reelle mesuree par capteurs IoT (protocole LoRaWAN ou Zigbee)',
-              'Envisager l\'integration de capteurs IoT supplementaires pour un maillage plus fin et une granularite conforme a l\'ISO 52120-1',
-              'Automatiser le reporting reglementaire (decret tertiaire, plateforme OPERAT) et le suivi des objectifs 2030/2040',
-              'Evaluer la conformite au label R2S-4GRIDS pour valoriser votre demarche Smart Building'
+              'Explorer les solutions d\'intelligence artificielle pour l\'optimisation prédictive des courbes de charge (norme ISO 50001)',
+              'Mettre en place un jumeau numérique de votre bâtiment pour simuler et optimiser les scénarios énergétiques',
+              'Optimiser les scénarios de fonctionnement selon l\'occupation réelle mesurée par capteurs IoT (protocole LoRaWAN ou Zigbee)',
+              'Envisager l\'intégration de capteurs IoT supplémentaires pour un maillage plus fin et une granularité conforme à l\'ISO 52120-1',
+              'Automatiser le reporting réglementaire (décret tertiaire, plateforme OPERAT) et le suivi des objectifs 2030/2040',
+              'Évaluer la conformité au label R2S-4GRIDS pour valoriser votre démarche Smart Building'
             ];
           } else {
             this.level = 'Classe A — Haute performance (EN 15232)';
-            this.levelDescription = 'Votre batiment atteint la classe A de la norme EN 15232, le niveau le plus eleve d\'automatisation et de gestion energetique. Vous etes conforme aux exigences les plus strictes du decret BACS.';
+            this.levelDescription = 'Votre bâtiment atteint la classe A de la norme EN 15232, le niveau le plus élevé d\'automatisation et de gestion énergétique. Vous êtes conforme aux exigences les plus strictes du décret BACS.';
             this.scoreColor = 'border-accent-300';
             this.scoreTextColor = 'text-accent-600';
             this.levelBadge = 'bg-accent-50 text-accent-700';
             this.recommendations = [
-              'Partager votre retour d\'experience pour inspirer le secteur et contribuer aux travaux normatifs (AFNOR, CEN TC 247)',
-              'Explorer les dernieres innovations : IA generative pour l\'optimisation, protocole Matter pour l\'interoperabilite, blockchain energie pour la tracabilite',
-              'Optimiser continuellement via l\'analyse des donnees historiques et le machine learning conforme a la norme ISO 50006',
-              'Etendre votre approche GTB classe A a l\'ensemble de votre parc immobilier pour un impact global mesurable',
-              'Viser les certifications environnementales (HQE Batiment Durable, BREEAM In-Use, LEED O+M) en capitalisant sur votre infrastructure GTB',
-              'Mettre en place un systeme de management de l\'energie certifie ISO 50001 pour perenniser la demarche'
+              'Partager votre retour d\'expérience pour inspirer le secteur et contribuer aux travaux normatifs (AFNOR, CEN TC 247)',
+              'Explorer les dernières innovations : IA générative pour l\'optimisation, protocole Matter pour l\'interopérabilité, blockchain énergie pour la traçabilité',
+              'Optimiser continuellement via l\'analyse des données historiques et le machine learning conforme à la norme ISO 50006',
+              'Étendre votre approche GTB classe A à l\'ensemble de votre parc immobilier pour un impact global mesurable',
+              'Viser les certifications environnementales (HQE Bâtiment Durable, BREEAM In-Use, LEED O+M) en capitalisant sur votre infrastructure GTB',
+              'Mettre en place un système de management de l\'énergie certifié ISO 50001 pour pérenniser la démarche'
             ];
           }
 

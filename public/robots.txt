@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /rgpd/
+
+Sitemap: https://neogtb.fr/sitemap-index.xml

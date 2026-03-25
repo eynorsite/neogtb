@@ -31,18 +31,22 @@ function categorySlug(category: string): string {
 }
 ---
 
-<Layout title="Blog - Analyses & veille technique" description="Analyses, veille technique et guides pratiques sur la Gestion Technique du Batiment (GTB) et la GTC.">
+<Layout title="Blog - Analyses & veille technique" description="Analyses, veille technique et guides pratiques sur la Gestion Technique du Bâtiment (GTB) et la GTC.">
 
   <!-- Hero -->
-  <section class="pt-32 pb-16 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px;" />
+  <section class="hero-lum" style="padding-top: 120px;">
+    <div class="hero-lum-mesh"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-lum-grid"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
       <span class="eyebrow">Perspectives</span>
       <h1 class="mt-4 text-3xl sm:text-4xl font-medium tracking-tight" style="letter-spacing: -0.4px;">
-        Analyses & veille technique
+        Analyses & veille <span class="accent">technique</span>
       </h1>
-      <p class="mt-4 text-base text-neutral-500 max-w-xl mx-auto font-normal leading-relaxed">
-        Decryptages, retours terrain et points de vue sur la GTB, la GTC et le batiment intelligent.
+      <p class="mt-4 text-base max-w-xl mx-auto font-normal leading-relaxed" style="color: var(--color-dark-500);">
+        Décryptages, retours terrain et points de vue sur la GTB, la GTC et le bâtiment intelligent.
       </p>
     </div>
   </section>
@@ -115,7 +119,7 @@ function categorySlug(category: string): string {
         x-show={`!document.querySelectorAll('[x-show*=active]').length`}
         style="display: none;"
       >
-        <p class="text-neutral-400 text-sm font-normal">Aucun article dans cette categorie.</p>
+        <p class="text-neutral-400 text-sm font-normal">Aucun article dans cette catégorie.</p>
       </div>
 
     </div>

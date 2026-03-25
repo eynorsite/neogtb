@@ -130,7 +130,7 @@ const { hero } = homepageData;
         <div class="card p-6 reveal reveal-d3" x-data x-intersect.once="$el.classList.add('visible')">
           <p style="font-size: 40px; font-weight: 500; color: var(--color-dark-200); line-height: 1; margin-bottom: 16px; letter-spacing: -0.03em;">04</p>
           <h3 style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Accompagnement</h3>
-          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Suivi de mise en oeuvre, vérification performances réelles, transfert de compétences.</p>
+          <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Suivi de mise en œuvre, vérification performances réelles, transfert de compétences.</p>
         </div>
       </div>
     </div>
@@ -214,13 +214,10 @@ const { hero } = homepageData;
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <a href="/blog/decret-tertiaire-gtb-obligations" class="card block overflow-hidden reveal" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
-          <div style="height: 140px; background: linear-gradient(135deg, #ECFDF5, var(--color-accent-50));"></div>
-          <div class="p-6">
-            <span class="tag tag-reglementation" style="margin-bottom: 12px;">Réglementation</span>
-            <h3 style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); line-height: 1.4; margin-top: 12px;">Décret tertiaire et GTB : obligations et mise en conformité</h3>
-            <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 12px;">8 min de lecture</p>
-          </div>
+        <a href="/blog/decret-tertiaire-gtb-obligations" class="card block p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
+          <span class="tag tag-reglementation">Réglementation</span>
+          <h3 style="font-size: 16px; font-weight: 500; color: var(--color-dark-900); line-height: 1.4; margin-top: 16px;">Décret tertiaire et GTB : obligations et mise en conformité</h3>
+          <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 12px;">8 min de lecture</p>
         </a>
 
         <a href="/blog/protocoles-communication-bacnet-knx-modbus" class="card block p-6 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')" style="text-decoration: none;">
@@ -295,15 +292,24 @@ const { hero } = homepageData;
   </section>
 
   <!-- ==================== CTA FINAL ==================== -->
-  <section class="relative overflow-hidden" style="padding: 96px 0; background: var(--color-dark-900);">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 60%); pointer-events: none;"></div>
-    <div style="max-width: 520px; margin: 0 auto; padding: 0 24px; text-align: center; position: relative; z-index: 1;">
-      <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: #fff; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px;">Un regard indépendant sur votre GTB</h2>
-      <p style="font-size: 16px; color: var(--color-dark-400); line-height: 1.7; margin-bottom: 32px;">Diagnostic gratuit, sans engagement, sans orientation commerciale.</p>
-      <a href="/audit" class="btn-primary">
-        Lancer le diagnostic
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      </a>
+  <section class="relative overflow-hidden" style="padding: 96px 0; background: #F0F2F5; min-height: 420px; border-top: 1px solid var(--color-dark-200);">
+    <!-- Illustration arrière-plan -->
+    <img
+      src="/images/hero-gtb-illustration.png"
+      alt=""
+      style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;"
+    />
+    <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
+
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 230px;">
+      <div style="max-width: 520px;">
+        <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px;">Un regard indépendant sur votre GTB</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 32px;">Diagnostic gratuit, sans engagement, sans orientation commerciale.</p>
+        <a href="/audit" class="btn-primary">
+          Lancer le diagnostic
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 

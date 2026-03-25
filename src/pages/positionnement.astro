@@ -7,11 +7,15 @@ import Layout from '../layouts/Layout.astro';
   <article class="pos-page">
 
     <!-- ==================== HERO ==================== -->
-    <section class="pos-hero">
-      <div class="pos-container">
-        <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px;" />
+    <section class="hero-lum pos-hero">
+      <div class="hero-lum-mesh"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <div class="hero-lum-grid"></div>
+      <div class="pos-container relative z-10">
         <span class="eyebrow">Notre approche</span>
-        <h1>Pourquoi un tiers de confiance GTB</h1>
+        <h1>Pourquoi un tiers de confiance <span class="accent">GTB</span></h1>
         <p class="pos-subtitle">
           Le marché français de la Gestion Technique du Bâtiment repose sur un modèle où conseil et vente sont structurellement liés. NeoGTB propose une alternative : l'analyse indépendante, sans lien commercial avec aucun fabricant ni intégrateur.
         </p>
@@ -177,13 +181,18 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- ==================== CTA ==================== -->
-    <section class="pos-section pos-cta-section">
-      <div class="pos-container" style="text-align: center;">
-        <h2>Faites analyser votre projet GTB</h2>
-        <p>
-          Un audit indépendant pour évaluer votre installation existante ou challenger les propositions que vous avez reçues.
-        </p>
-        <a href="/audit" class="btn-primary">Demander un audit</a>
+    <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
+      <img src="/images/hero-gtb-illustration.png" alt="" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
+      <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
+      <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
+        <div style="max-width: 520px;">
+          <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Faites analyser votre projet GTB</h2>
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px;">Un audit indépendant pour évaluer votre installation existante ou challenger les propositions que vous avez reçues.</p>
+          <a href="/audit" class="btn-primary">
+            Demander un audit
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 

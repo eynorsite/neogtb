@@ -5,16 +5,19 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Réglementation GTB — Décret BACS, Tertiaire, RE2020" description="Toute la réglementation GTB en France : décret BACS 2025/2030, décret tertiaire, RE2020, directive EPBD, norme EN 15232, CEE. Calendrier, obligations et sanctions.">
 
   <!-- ==================== HERO ==================== -->
-  <section class="relative overflow-hidden" style="background: var(--color-dark-900); padding: 80px 0 96px;">
-    <div style="position: absolute; top: -20%; left: 40%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 65%); pointer-events: none;"></div>
+  <section class="hero-lum">
+    <div class="hero-lum-mesh"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-lum-grid"></div>
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
       <div class="max-w-2xl">
-        <img src="/images/picto-neogtb.png" alt="" style="width: 44px; height: 44px; object-fit: contain; margin-bottom: 16px; opacity: 0.9;" />
-        <p class="eyebrow" style="color: var(--color-accent-400);">Cadre juridique</p>
-        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; color: #fff; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px;">
-          Réglementation GTB en France
+        <p class="eyebrow">Cadre juridique</p>
+        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px;">
+          Réglementation <span class="accent">GTB</span> en France
         </h1>
-        <p style="font-size: 18px; color: var(--color-dark-400); line-height: 1.7; max-width: 560px;">
+        <p style="font-size: 18px; color: var(--color-dark-500); line-height: 1.7; max-width: 560px;">
           Décret BACS, décret tertiaire, RE2020, directive européenne EPBD, norme EN 15232 : toutes les obligations, les échéances et les aides pour la gestion technique du bâtiment. Mis à jour mars 2026.
         </p>
         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px;">
@@ -568,19 +571,22 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- ==================== CTA ==================== -->
-  <section class="relative overflow-hidden" style="padding: 80px 0; background: var(--color-dark-900);">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%); pointer-events: none;"></div>
-    <div style="max-width: 520px; margin: 0 auto; padding: 0 24px; text-align: center; position: relative; z-index: 1;">
-      <h2 style="font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Vérifiez votre conformité</h2>
-      <p style="font-size: 16px; color: var(--color-dark-400); line-height: 1.7; margin-bottom: 28px;">Identifiez votre classe EN 15232, évaluez vos obligations BACS et estimez vos aides CEE.</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="/audit" class="btn-primary">
-          Lancer le diagnostic
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </a>
-        <a href="/generateur-cee" class="btn-secondary" style="color: white; border-color: rgba(255,255,255,0.15);">
-          Estimer mes CEE
-        </a>
+  <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
+    <img src="/images/hero-gtb-illustration.png" alt="" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
+    <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
+      <div style="max-width: 520px;">
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Vérifiez votre conformité</h2>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px;">Identifiez votre classe EN 15232, évaluez vos obligations BACS et estimez vos aides CEE.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/audit" class="btn-primary">
+            Lancer le diagnostic
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/generateur-cee" class="btn-secondary">
+            Estimer mes CEE
+          </a>
+        </div>
       </div>
     </div>
   </section>
