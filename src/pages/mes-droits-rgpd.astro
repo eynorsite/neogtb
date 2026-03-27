@@ -171,7 +171,7 @@ import Layout from '../layouts/Layout.astro';
         if (!this.form.type || !this.form.email || !this.form.name) return;
         try {
           const payload = { _subject: 'Demande RGPD — ' + this.form.type, type: this.form.type, email: this.form.email, name: this.form.name, message: this.form.message };
-          const res = await fetch('https://formsubmit.co/ajax/rgpd@neogtb.fr', {
+          const res = await fetch('https://formsubmit.co/ajax/hello@neogtb.fr', {
             method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
           });
           if (res.ok) { this.submitted = true; }

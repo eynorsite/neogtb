@@ -787,7 +787,7 @@ import Layout from '../layouts/Layout.astro';
         fd.append('details', JSON.stringify(this.results.details));
         try {
           const payload = { _subject: 'Résultat CEE NeoGTB', email: this.emailAddress, total_gwh: this.results.totalGwh, total_value: this.results.totalValue, details: JSON.stringify(this.results.details) };
-          await fetch('https://formsubmit.co/ajax/contact@neogtb.fr', { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
+          await fetch('https://formsubmit.co/ajax/hello@neogtb.fr', { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
         } catch (e) {}
         this.emailSent = true;
         setTimeout(() => { this.showEmailModal = false; this.emailSent = false; }, 2000);
