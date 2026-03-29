@@ -40,80 +40,96 @@ class PostResource extends Resource
                 Tabs::make('Tabs')
                     ->tabs([
                         Tabs\Tab::make('Rédaction')
+                            ->icon('heroicon-o-pencil')
                             ->schema([
                                 TextInput::make('title')
-                                    ->label('Titre')
+                                    ->label('Titre de l\'article')
+                                    ->helperText('Le titre principal visible par vos lecteurs.')
                                     ->required()
                                     ->maxLength(255)
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
 
                                 TextInput::make('slug')
+                                    ->label('Adresse web')
+                                    ->helperText('Se remplit automatiquement à partir du titre.')
                                     ->required()
                                     ->unique(ignoreRecord: true)
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->prefix('neogtb.fr/blog/'),
 
                                 Textarea::make('excerpt')
-                                    ->label('Extrait')
+                                    ->label('Résumé')
                                     ->rows(3)
-                                    ->helperText('Résumé court affiché dans les listes'),
+                                    ->helperText('2-3 phrases qui donnent envie de lire l\'article. Apparaît dans la liste du blog.'),
 
                                 RichEditor::make('content')
-                                    ->label('Contenu')
+                                    ->label('Contenu de l\'article')
                                     ->columnSpanFull(),
                             ]),
 
-                        Tabs\Tab::make('Médias')
+                        Tabs\Tab::make('Images')
+                            ->icon('heroicon-o-photo')
                             ->schema([
                                 FileUpload::make('featured_image')
-                                    ->label('Image mise en avant')
+                                    ->label('Image principale')
+                                    ->helperText('L\'image affichée en haut de l\'article et dans la liste du blog.')
                                     ->image()
                                     ->directory('posts')
                                     ->maxSize(5120),
 
                                 FileUpload::make('og_image')
-                                    ->label('Image OG (réseaux sociaux)')
+                                    ->label('Image de partage (réseaux sociaux)')
+                                    ->helperText('Si vide, l\'image principale sera utilisée. Format idéal : 1200x630px.')
                                     ->image()
                                     ->directory('og'),
                             ]),
 
-                        Tabs\Tab::make('Catégorie & Tags')
+                        Tabs\Tab::make('Classement')
+                            ->icon('heroicon-o-tag')
                             ->schema([
                                 Select::make('category_id')
                                     ->label('Catégorie')
+                                    ->helperText('Dans quelle rubrique classer cet article.')
                                     ->relationship('category', 'name')
                                     ->preload()
                                     ->createOptionForm([
-                                        TextInput::make('name')->required(),
-                                        TextInput::make('slug')->required(),
+                                        TextInput::make('name')->label('Nom')->required(),
+                                        TextInput::make('slug')->label('Adresse web')->required(),
                                     ]),
 
                                 Select::make('tags')
-                                    ->label('Tags')
+                                    ->label('Étiquettes')
+                                    ->helperText('Mots-clés pour retrouver l\'article plus facilement.')
                                     ->relationship('tags', 'name')
                                     ->multiple()
                                     ->preload()
                                     ->createOptionForm([
-                                        TextInput::make('name')->required(),
-                                        TextInput::make('slug')->required(),
+                                        TextInput::make('name')->label('Nom')->required(),
+                                        TextInput::make('slug')->label('Adresse web')->required(),
                                     ]),
                             ]),
 
-                        Tabs\Tab::make('SEO')
+                        Tabs\Tab::make('Référencement Google')
+                            ->icon('heroicon-o-magnifying-glass')
                             ->schema([
                                 TextInput::make('meta_title')
-                                    ->label('Meta Title')
+                                    ->label('Titre pour Google')
+                                    ->helperText('Le titre affiché dans les résultats de recherche. Max 70 caractères.')
                                     ->maxLength(70),
 
                                 Textarea::make('meta_description')
-                                    ->label('Meta Description')
+                                    ->label('Description pour Google')
+                                    ->helperText('Le texte sous le titre dans Google. Max 160 caractères.')
                                     ->rows(2),
                             ]),
 
                         Tabs\Tab::make('Publication')
+                            ->icon('heroicon-o-arrow-up-on-square')
                             ->schema([
                                 Select::make('status')
-                                    ->label('Statut')
+                                    ->label('État')
+                                    ->helperText('Brouillon = visible uniquement ici. Publié = visible sur le site.')
                                     ->options([
                                         'draft' => 'Brouillon',
                                         'published' => 'Publié',
@@ -123,7 +139,8 @@ class PostResource extends Resource
                                     ->default('draft'),
 
                                 DateTimePicker::make('published_at')
-                                    ->label('Date de publication'),
+                                    ->label('Date de publication')
+                                    ->helperText('Se remplit automatiquement quand vous publiez.'),
 
                                 Select::make('author_id')
                                     ->label('Auteur')
@@ -131,7 +148,8 @@ class PostResource extends Resource
                                     ->default(fn () => auth()->guard('admin')->id()),
 
                                 Toggle::make('is_featured')
-                                    ->label('Article en vedette'),
+                                    ->label('Mettre en avant')
+                                    ->helperText('L\'article apparaîtra en premier sur la page blog.'),
                             ]),
                     ])->columnSpanFull(),
             ]);
@@ -156,8 +174,14 @@ class PostResource extends Resource
                     ->badge(),
 
                 Tables\Columns\TextColumn::make('status')
-                    ->label('Statut')
+                    ->label('État')
                     ->badge()
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'draft' => 'Brouillon',
+                        'published' => 'En ligne',
+                        'archived' => 'Archivé',
+                        default => $state,
+                    })
                     ->colors([
                         'gray' => 'draft',
                         'success' => 'published',
@@ -166,6 +190,11 @@ class PostResource extends Resource
 
                 Tables\Columns\TextColumn::make('author.name')
                     ->label('Auteur'),
+
+                Tables\Columns\TextColumn::make('reading_time')
+                    ->label('Lecture')
+                    ->suffix(' min')
+                    ->sortable(),
 
                 Tables\Columns\TextColumn::make('views_count')
                     ->label('Vues')
@@ -190,7 +219,14 @@ class PostResource extends Resource
                     ->relationship('category', 'name'),
             ])
             ->actions([
-                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\EditAction::make()
+                    ->label('Modifier'),
+                \Filament\Actions\Action::make('viewOnSite')
+                    ->label('Voir sur le site')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->color('gray')
+                    ->url(fn ($record) => "https://neogtb.fr/blog/{$record->slug}", shouldOpenInNewTab: true)
+                    ->visible(fn ($record) => $record->status === 'published'),
                 \Filament\Actions\ReplicateAction::make()
                     ->label('Dupliquer')
                     ->excludeAttributes(['slug', 'views_count', 'published_at'])
@@ -201,6 +237,15 @@ class PostResource extends Resource
                     }),
             ])
             ->bulkActions([
+                \Filament\Actions\BulkAction::make('publish')
+                    ->label('Publier')
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->action(fn ($records) => $records->each->update(['status' => 'published', 'published_at' => now()])),
+                \Filament\Actions\BulkAction::make('archive')
+                    ->label('Archiver')
+                    ->icon('heroicon-o-archive-box')
+                    ->action(fn ($records) => $records->each->update(['status' => 'archived'])),
                 \Filament\Actions\DeleteBulkAction::make(),
             ]);
     }

@@ -16,7 +16,7 @@ class MediaLibraryPage extends Page implements HasTable
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-photo';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Contenu';
+    protected static string|\UnitEnum|null $navigationGroup = 'Mon site';
 
     protected static ?string $navigationLabel = 'Médiathèque';
 

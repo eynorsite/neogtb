@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page introuvable" description="La page que vous recherchez n'existe pas ou a été déplacée.">
+
+  <section style="min-height: calc(100vh - 200px); display: flex; align-items: center; justify-content: center; padding: 80px 24px 60px;">
+    <div style="text-align: center; max-width: 520px;">
+
+      <!-- Picto -->
+      <div style="width: 80px; height: 80px; margin: 0 auto 32px; background: linear-gradient(135deg, #0ea5e9, #6366f1); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+        <svg width="36" height="36" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>
+      </div>
+
+      <!-- Code -->
+      <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6366f1; margin-bottom: 12px;">
+        Erreur 404
+      </p>
+
+      <!-- Titre -->
+      <h1 style="font-size: clamp(28px, 4vw, 40px); font-weight: 500; letter-spacing: -0.03em; color: #0f172a; line-height: 1.1; margin-bottom: 16px;">
+        Page introuvable
+      </h1>
+
+      <!-- Message -->
+      <p style="font-size: 15px; color: #64748b; line-height: 1.7; margin-bottom: 40px;">
+        La page que vous cherchez n'existe pas, a été déplacée ou est temporairement indisponible.
+      </p>
+
+      <!-- Actions -->
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+        <a href="/" class="btn-primary">
+          Retour à l'accueil
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/blog" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 14px; font-weight: 500; color: #334155; background: #f1f5f9; border-radius: 10px; text-decoration: none; transition: background 0.2s;"
+          onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
+          Lire le blog
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

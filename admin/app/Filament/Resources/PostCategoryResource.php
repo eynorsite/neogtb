@@ -33,31 +33,40 @@ class PostCategoryResource extends Resource
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->label('Nom')
+                    ->label('Nom de la catégorie')
+                    ->helperText('Ex : Réglementation, Guides pratiques, Retours d\'expérience...')
                     ->required()
                     ->maxLength(255),
 
                 TextInput::make('slug')
+                    ->label('Adresse web')
+                    ->helperText('Se remplit automatiquement. Apparaîtra dans l\'URL de la catégorie.')
                     ->required()
-                    ->unique(ignoreRecord: true),
+                    ->unique(ignoreRecord: true)
+                    ->prefix('neogtb.fr/blog/'),
 
                 Textarea::make('description')
+                    ->label('Description')
+                    ->helperText('Courte description de cette catégorie (optionnel).')
                     ->rows(2),
 
                 ColorPicker::make('color')
-                    ->label('Couleur'),
+                    ->label('Couleur du badge')
+                    ->helperText('La couleur du petit badge affiché à côté du nom.'),
 
                 TextInput::make('icon')
-                    ->label('Icône')
-                    ->helperText('Nom Heroicon (ex: heroicon-o-bolt)'),
+                    ->label('Icône (optionnel)')
+                    ->helperText('Nom technique de l\'icône (ex : heroicon-o-bolt). Laissez vide si vous ne savez pas.'),
 
                 TextInput::make('order')
-                    ->label('Ordre')
+                    ->label('Position dans la liste')
+                    ->helperText('Numéro pour trier (0 = en premier).')
                     ->numeric()
                     ->default(0),
 
                 Toggle::make('is_active')
-                    ->label('Active')
+                    ->label('Catégorie visible')
+                    ->helperText('Désactivez pour masquer cette catégorie sur le site.')
                     ->default(true),
             ]);
     }
@@ -88,6 +97,12 @@ class PostCategoryResource extends Resource
             ->reorderable('order')
             ->actions([
                 \Filament\Actions\EditAction::make(),
+                \Filament\Actions\DeleteAction::make()
+                    ->before(function ($record) {
+                        if ($record->posts()->count() > 0) {
+                            throw new \Exception("Impossible de supprimer : {$record->posts()->count()} article(s) utilisent cette catégorie.");
+                        }
+                    }),
             ])
             ->bulkActions([
                 \Filament\Actions\DeleteBulkAction::make(),

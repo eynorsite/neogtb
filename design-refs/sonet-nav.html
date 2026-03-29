@@ -1,0 +1,606 @@
+<!--
+  SOURCE  : https://sonet-consulting-coaching-template.webflow.io/
+  SECTION : nav, header
+  LABEL   : Nav sticky consulting
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de sonet-consulting-coaching-template.webflow.io.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : sans-serif · Geist · DM Mono
+  Couleurs    : color(srgb 0.925882 0.909255 0.902824) · color(srgb 0.129412 0.0462745 0.0141176) · color(srgb 0.894118 0.769412 0.721176) · color(srgb 0.647059 0.231373 0.0705882 / 0.1)
+  Border-r    : 6px · 3px · 50%
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 160px",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "div[1]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "20.8px",
+    "max-width": "144px"
+  },
+  "div[2]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "12.8px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "15.36px",
+    "max-width": "192px"
+  },
+  "div[3]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "4px",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "gap": "24px",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "a[4]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "8px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "6px",
+    "gap": "12px",
+    "display": "flex",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[6]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "17.6px",
+    "font-weight": "700",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "letter-spacing": "1.6px",
+    "line-height": "21.12px"
+  },
+  "div[7]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "border-radius": "6px",
+    "gap": "3.2px",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "a[8]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.1)",
+    "padding": "8px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "6px",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "17.6px"
+  },
+  "div[9]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.894118 0.769412 0.721176)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[10]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.894118 0.769412 0.721176)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[11]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "20.8px"
+  },
+  "a[12]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.1)",
+    "padding": "8px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "6px",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "17.6px",
+    "max-width": "100%"
+  },
+  "div[13]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.894118 0.769412 0.721176)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[14]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.894118 0.769412 0.721176)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[15]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.894118 0.769412 0.721176)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[16]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[17]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "16px",
+    "margin": "16px 0px 0px",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "div[18]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "a[19]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "padding": "12px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "border-radius": "6px",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[20]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[21]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "padding": "0px 4px",
+    "margin": "0px 0px 0px 390.578px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "border-radius": "6px",
+    "display": "flex",
+    "line-height": "13.2px"
+  },
+  "a[22]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "padding": "12px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "border-radius": "6px",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[23]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[24]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "padding": "0px 4px",
+    "margin": "0px 0px 0px 390.578px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "border-radius": "6px",
+    "display": "flex",
+    "line-height": "13.2px"
+  },
+  "a[25]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "padding": "12px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "border-radius": "6px",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[26]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[27]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "padding": "0px 4px",
+    "margin": "0px 0px 0px 352.188px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "border-radius": "6px",
+    "display": "flex",
+    "line-height": "13.2px"
+  },
+  "div[28]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.6)",
+    "border-radius": "6px",
+    "display": "block",
+    "line-height": "20.8px"
+  },
+  "div[29]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "20.8px"
+  },
+  "a[30]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.1)",
+    "padding": "8px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "6px",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "17.6px",
+    "max-width": "100%"
+  },
+  "div[31]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.894118 0.769412 0.721176)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[32]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.894118 0.769412 0.721176)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[33]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.894118 0.769412 0.721176)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.894118 0.769412 0.721176)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[34]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[35]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "16px",
+    "margin": "16px 0px 0px",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "div[36]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "a[37]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.2)",
+    "padding": "12px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "border-radius": "6px",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[38]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[39]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "padding": "0px 4px",
+    "margin": "0px 0px 0px 332.984px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "border-radius": "6px",
+    "display": "flex",
+    "line-height": "13.2px"
+  },
+  "a[40]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.2)",
+    "padding": "12px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "border-radius": "6px",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[41]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[42]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "padding": "0px 4px",
+    "margin": "0px 0px 0px 332.984px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "border-radius": "6px",
+    "display": "flex",
+    "line-height": "13.2px"
+  },
+  "a[43]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.2)",
+    "padding": "12px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "border-radius": "6px",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  },
+  "div[44]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[45]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "padding": "0px 4px",
+    "margin": "0px 0px 0px 361.781px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.5)",
+    "border-radius": "6px",
+    "display": "flex",
+    "line-height": "13.2px"
+  },
+  "div[46]": {
+    "font-family": "\"DM Mono\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "16px 217.891px 0px",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "block",
+    "line-height": "17.6px"
+  },
+  "div[47]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "div[48]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "div[49]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none color(srgb 0.925882 0.909255 0.902824)",
+    "display": "flex",
+    "line-height": "20.8px"
+  },
+  "a[50]": {
+    "font-family": "Geist, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "color(srgb 0.925882 0.909255 0.902824)",
+    "background-color": "color(srgb 0.647059 0.231373 0.0705882 / 0.2)",
+    "padding": "12px",
+    "border": "1px solid color(srgb 0.647059 0.231373 0.0705882 / 0.4)",
+    "border-radius": "6px",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20.8px",
+    "max-width": "100%"
+  }
+}
+-->
+<nav class="nav"><div class="nav-layout"><div class="nav-slogan"><div class="brand-slogan-text">Consulting &amp; coaching template</div></div><div class="nav-main"><a href="/" aria-current="page" class="logo-link w-inline-block w--current"><img src="https://cdn.prod.website-files.com/693c4f82e217e70eab1aef9d/69419bc236c6dcb185cc6f36_logoipsum-390.svg" loading="lazy" alt="Logo symbol" class="brand-logo-image"><div class="brand-name-text">Sonet</div></a><div class="nav-links-wrap"><a href="/about" class="nav-link" aria-label="About"><div class="gsap_split_line gsap_split_line1-mask" aria-hidden="true" style="position: relative; display: block; text-align: start; overflow: clip;"><div class="gsap_split_line gsap_split_line1" aria-hidden="true" style="position: relative; display: block; text-align: start; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">About</div></div></a><div class="mega-menu"><a href="/services" class="nav-link dropdown w-inline-block" aria-label="Work"><div class="gsap_split_line gsap_split_line1-mask" aria-hidden="true" style="position: relative; display: block; text-align: start; overflow: clip;"><div class="gsap_split_line gsap_split_line1" aria-hidden="true" style="position: relative; display: block; text-align: start; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><div data-dropdown="true" class="nav-link-text">Work</div></div></div></a><div class="mega-menu-trigger" style="height: 0%;"><div class="mega-menu-layout"><div class="mega-menu-wrap fullwidth-menu" style="translate: none; rotate: none; scale: none; transform: translate(0px, -1rem); opacity: 0;"><a data-wf--mega-menu-link--variant="featured" href="/services" class="mega-menu-link w-variant-db8f2fd8-4b4e-fd38-e7d7-f0a185e61515 w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Services</div><div class="mega-menu-number">→</div></a><a data-wf--mega-menu-link--variant="featured" href="/programs" class="mega-menu-link w-variant-db8f2fd8-4b4e-fd38-e7d7-f0a185e61515 w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Programs</div><div class="mega-menu-number">→</div></a><a data-wf--mega-menu-link--variant="featured" href="/case-studies" class="mega-menu-link w-variant-db8f2fd8-4b4e-fd38-e7d7-f0a185e61515 w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Case Studies</div><div class="mega-menu-number">→</div></a></div><div class="mega-menu-blur-backgound" style="translate: none; rotate: none; scale: none; transform: scale(0.9, 0.9); opacity: 0;"></div></div></div></div><div class="mega-menu"><a href="/service/organizational-strategy" class="nav-link dropdown w-inline-block" aria-label="CMS"><div class="gsap_split_line gsap_split_line1-mask" aria-hidden="true" style="position: relative; display: block; text-align: start; overflow: clip;"><div class="gsap_split_line gsap_split_line1" aria-hidden="true" style="position: relative; display: block; text-align: start; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><div data-dropdown="true" class="nav-link-text">CMS</div></div></div></a><div class="mega-menu-trigger" style="height: 0%;"><div class="mega-menu-layout"><div class="mega-menu-wrap fullwidth-menu" style="translate: none; rotate: none; scale: none; transform: translate(0px, -1rem); opacity: 0;"><a data-wf--mega-menu-link--variant="base" href="/service/organizational-strategy" class="mega-menu-link w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Service Detail</div><div class="mega-menu-number">→</div></a><a data-wf--mega-menu-link--variant="base" href="/program/team-coaching" class="mega-menu-link w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Program Detail</div><div class="mega-menu-number">→</div></a><a data-wf--mega-menu-link--variant="base" href="/case/leadership-transition" class="mega-menu-link w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Case Detail</div><div class="mega-menu-number">→</div></a><div class="label-text in-nav">Collection</div><div class="mega-menu-wrap w-dyn-list" style="translate: none; rotate: none; scale: none; transform: translate(0px, -1rem); opacity: 0;"><div role="list" class="mega-menu-list w-dyn-items"><div role="listitem" class="mega-menu-item w-dyn-item"><a data-wf--mega-menu-link--variant="base" href="/service/executive-consulting" class="mega-menu-link w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Executive consulting</div><div class="mega-menu-number">Consulting</div></a></div><div role="listitem" class="mega-menu-item w-dyn-item"><a data-wf--mega-menu-link--variant="base" href="/service/business-strategy" class="mega-menu-link w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Business strategy</div><div class="mega-menu-number">Strategy</div></a></div><div role="listitem" class="mega-menu-item w-dyn-item"><a data-wf--mega-menu-link--variant="base" href="/service/leadership-coaching" class="mega-menu-link w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Leadership coaching</div><div class="mega-menu-number">Coaching</div></a></div><div role="listitem" class="mega-menu-item w-dyn-item"><a data-wf--mega-menu-link--variant="base" href="/service/organizational-strategy" class="mega-menu-link w-inline-block" style="translate: none; rotate: none; scale: none; transform: translate(0px, -0.5rem); opacity: 0;"><div class="mega-menu-link-text">Organizational strategy</div><div class="mega-menu-number">Organization</div></a></div></div></div></div><div class="mega-menu-blur-backgound" style="translate: none; rotate: none; scale: none; transform: scale(0.9, 0.9); opacity: 0;"></div></div></div></div><a href="/blog" class="nav-link" aria-label="Blog"><div class="gsap_split_line gsap_split_line1-mask" aria-hidden="true" style="position: relative; display: block; text-align: start; overflow: clip;"><div class="gsap_split_line gsap_split_line1" aria-hidden="true" style="position: relative; display: block; text-align: start; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Blog</div></div></a><a href="/contact" class="nav-link" aria-label="Contact"><div class="gsap_split_line gsap_split_line1-mask" aria-hidden="true" style="position: relative; display: block; text-align: start; overflow: clip;"><div class="gsap_split_line gsap_split_line1" aria-hidden="true" style="position: relative; display: block; text-align: start; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Contact</div></div></a></div><div class="nav-button"><a data-wf-target="[[[&quot;ba918a0b-ee12-746f-ef94-449af966e4a0&quot;,&quot;ba918a0b-ee12-746f-ef94-449af966e4a0&quot;],[&quot;1b35a1ae-84f6-7697-a581-a9667f4b0e5b&quot;,&quot;54a30271-3438-3910-ed41-eda9e15fdba5&quot;]]]" data-wf-component-id="ba918a0b-ee12-746f-ef94-449af966e4a0" href="https://webflow.com/templates/designers/metrik" target="_blank" class="button-explore w-inline-block" style="width: 3.3rem;"><div class="button-text" style="translate: none; rotate: none; scale: none; transform: translate(1rem, 0px); opacity: 0;">Buy the template</div><img loading="lazy" src="https://cdn.prod.website-files.com/693c4f82e217e70eab1aef9d/698f92858a739add64c7fbde_buy-icon.svg" alt="Button icon" class="button-explore-icon" style="translate: none; rotate: none; scale: none; transform: translate(0rem, 0px); opacity: 1;"></a></div><div class="nav-blur-backgound"></div></div><div class="nav-action"><div class="burger-menu"><div class="burger-menu-line"></div><div class="burger-menu-line"></div></div><div class="menu"><div class="menu-layout"><div class="menu-wrap" style="height: 0px; opacity: 0;"><div class="menu-flex"><div data-wf--label--variant="dark" class="label w-variant-51d51728-fe69-730d-e99c-5fd5218dc070"><div class="label-dot w-variant-51d51728-fe69-730d-e99c-5fd5218dc070" style="translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px);"></div><div class="label-text" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate3d(0rem, 0px, 0px);">Discover</div></div><div class="menu-links"><a href="/" aria-current="page" class="menu-link w--current" style="translate: none; rotate: none; scale: none; transform: translate(2rem, 0px); opacity: 0;">Home</a><a href="/about" class="menu-link" style="translate: none; rotate: none; scale: none; transform: translate(2rem, 0px); opacity: 0;">About</a><a href="/services" class="menu-link" style="translate: none; rotate: none; scale: none; transform: translate(2rem, 0px); opacity: 0;">Services</a><a href="/programs" class="menu-link" style="translate: none; rotate: none; scale: none; transform: translate(2rem, 0px); opacity: 0;">Programs</a><a href="/case-studies" class="menu-link" style="translate: none; rotate: none; scale: none; transform: translate(2rem, 0px); opacity: 0;">Case Studies</a><a href="/blog" class="menu-link" style="translate: none; rotate: none; scale: none; transform: translate(2rem, 0px); opacity: 0;">Blog</a><a href="/contact" class="menu-link" style="translate: none; rotate: none; scale: none; transform: translate(2rem, 0px); opacity: 0;">Contact</a></div></div><div class="menu-flex"><div class="menu-small-links"><a href="https://webflow.com/templates/designers/metrik" target="_blank" class="menu-small-link">Get a template</a><a href="https://www.metrik.studio/" target="_blank" class="menu-small-link">Template Author</a></div></div><div class="menu-backgound"><img src="https://cdn.prod.website-files.com/693c4f82e217e70eab1aef9d/69669f9a2aab3e03d65e831b_mesh-gradient-4.avif" loading="lazy" alt="Mesh background image" class="cover-image"></div></div></div><div class="menu-blur-backgound" style="opacity: 0;"></div></div></div></div></nav>

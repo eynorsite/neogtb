@@ -1,0 +1,480 @@
+<!--
+  SOURCE  : https://www.psg.fr
+  SECTION : main > section:first-of-type, .hero
+  LABEL   : PSG — club foot Paris, design football premium
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.psg.fr.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : ui-sans-serif · virage · virage-narrow
+  Couleurs    : rgba(26, 36, 52, 0.8) · rgb(21, 30, 45) · rgb(79, 111, 135) · rgb(20, 20, 40)
+  Border-r    : 5px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[1]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "line-height": "24px"
+  },
+  "div[3]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[5]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[6]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 86px 86px",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "grid",
+    "grid-template-columns": "105.656px 105.656px 105.656px 105.656px 105.656px 105.656px 105.656px 105.656px 105.656px 105.656px 105.656px 105.656px",
+    "line-height": "24px",
+    "max-width": "1440px"
+  },
+  "div[7]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[8]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[9]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "h1[10]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "56px",
+    "font-weight": "800",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 24px",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "normal 8px",
+    "display": "flex",
+    "letter-spacing": "0.5px",
+    "line-height": "67.2px",
+    "max-width": "1408px"
+  },
+  "div[11]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "56px",
+    "font-weight": "800",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "letter-spacing": "0.5px",
+    "line-height": "67.2px"
+  },
+  "div[12]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "56px",
+    "font-weight": "800",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "letter-spacing": "0.5px",
+    "line-height": "67.2px"
+  },
+  "div[13]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "56px",
+    "font-weight": "800",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "letter-spacing": "0.5px",
+    "line-height": "67.2px"
+  },
+  "div[14]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "56px",
+    "font-weight": "800",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "letter-spacing": "0.5px",
+    "line-height": "67.2px"
+  },
+  "div[15]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "56px",
+    "font-weight": "800",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "letter-spacing": "0.5px",
+    "line-height": "67.2px"
+  },
+  "div[16]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "56px",
+    "font-weight": "800",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "letter-spacing": "0.5px",
+    "line-height": "67.2px"
+  },
+  "div[17]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "15px",
+    "font-weight": "700",
+    "color": "rgb(204, 217, 226)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "4px",
+    "display": "flex",
+    "letter-spacing": "0.5px",
+    "line-height": "15px"
+  },
+  "span[18]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "15px",
+    "font-weight": "700",
+    "color": "rgb(204, 217, 226)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "letter-spacing": "0.5px",
+    "line-height": "15px"
+  },
+  "div[21]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(14, 27, 54)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[22]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "24px 86px",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px",
+    "max-width": "1440px"
+  },
+  "h2[23]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "28px",
+    "font-weight": "800",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 40px",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "letter-spacing": "0.5px",
+    "line-height": "33.6px"
+  },
+  "div[24]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[25]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[26]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "button[27]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(20, 20, 40)",
+    "background-color": "rgb(242, 245, 248)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "span[28]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(20, 20, 40)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "button[31]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(20, 20, 40)",
+    "background-color": "rgb(242, 245, 248)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "span[32]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(20, 20, 40)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[35]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[36]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "32px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[37]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[38]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[39]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[40]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(242, 245, 248)",
+    "padding": "24px",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[42]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[43]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "11px",
+    "font-weight": "600",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "8px",
+    "display": "flex",
+    "letter-spacing": "0.5px",
+    "line-height": "11px"
+  },
+  "div[44]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "11px",
+    "font-weight": "600",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "8px",
+    "display": "flex",
+    "letter-spacing": "0.5px",
+    "line-height": "11px"
+  },
+  "div[45]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "11px",
+    "font-weight": "600",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "8px",
+    "display": "flex",
+    "letter-spacing": "0.5px",
+    "line-height": "11px"
+  },
+  "span[46]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "11px",
+    "font-weight": "600",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(153, 179, 198)",
+    "padding": "3px 4px 2px",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "letter-spacing": "0.5px",
+    "line-height": "11px"
+  },
+  "span[47]": {
+    "font-family": "virageNarrow, \"virageNarrow Fallback\", Helvetica, Arial, sans-serif",
+    "font-size": "11px",
+    "font-weight": "600",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "2px 0px 0px",
+    "border": "0px solid rgb(204, 217, 226)",
+    "display": "block",
+    "letter-spacing": "0.5px",
+    "line-height": "11px"
+  },
+  "div[48]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[49]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "12px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[50]": {
+    "font-family": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(204, 217, 226)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "24px"
+  }
+}
+-->
+<section class="bg-dark-background-primary flex flex-col justify-end overflow-hidden"><div class="2xl:aspect-hero-desktop relative flex min-h-[31.5rem] overflow-hidden sm:min-h-[45.9375rem]"><div class="hero-image animate-hero-image aspect-hero-mobile absolute inset-0 block h-full w-full lg:hidden"><img alt="" decoding="async" data-nimg="fill" class="transition-opacity duration-300 ease-in h-full w-full object-cover object-top" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="90vw" srcset="https://media.psg.fr/image/upload/c_fill,ar_1:1,w_641,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_fill,ar_1:1,w_751,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_fill,ar_1:1,w_829,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_fill,ar_1:1,w_1081,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_fill,ar_1:1,w_1201,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_fill,ar_1:1,w_1921,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_fill,ar_1:1,w_2049,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_fill,ar_1:1,w_3841,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_fill,ar_1:1,w_3841,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00"></div><div class="hero-image animate-hero-image aspect-hero-desktop absolute inset-0 hidden h-full w-full lg:block"><img alt="" decoding="async" data-nimg="fill" class="transition-opacity duration-300 ease-in h-full w-full object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="90vw" srcset="https://media.psg.fr/image/upload/c_fill,ar_16:9,w_641,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_fill,ar_16:9,w_751,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_fill,ar_16:9,w_829,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_fill,ar_16:9,w_1081,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_fill,ar_16:9,w_1201,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_fill,ar_16:9,w_1921,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_fill,ar_16:9,w_2049,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_fill,ar_16:9,w_3841,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_fill,ar_16:9,w_3841,g_auto/f_avif/q_90/v1/Preview_Nice_bfjn6c?_a=BAVMn6B00"></div><div class="homepageHero-gradient relative flex-1"><div class="pb-2xl lg:pb-psg-padding col-span-8 container grid h-full grid-cols-12 items-end"><div class="text-content-primary-inverse group col-span-12 md:col-span-8 lg:col-span-7"><div class="group relative cursor-pointer"><a class="static before:absolute before:inset-0 before:cursor-pointer" href="/content/ogc-nice-paris-saint-germain-la-preview-ligue-1-20252026"><h1 class="flex max-w-[calc(100vw-var(--spacing-2xl))] flex-wrap gap-x-2 typography-headline-1-hero mb-xl"><div class="flex overflow-y-hidden"><div class="animate-reveal-text-vertical inline-block">Nice-Paris&nbsp;:</div></div><div class="flex overflow-y-hidden"><div class="animate-reveal-text-vertical inline-block">La</div></div><div class="flex overflow-y-hidden"><div class="animate-reveal-text-vertical inline-block">preview</div></div></h1><div class="typography-button-1 text-dark-content-secondary group-hover:text-dark-content-primary gap-xs duration-medium-3 flex items-center leading-none transition-colors"><span>Lire</span><svg class="block h-4 w-4"><use href="#chevron-right"></use></svg></div></a></div></div></div></div></div><div class="bg-dark-background-primary relative flex min-h-[20.875rem] md:min-h-[21.375rem]"><div class="py-xl container"><h2 class="typography-headline-3 text-content-primary-inverse relative mb-10">Calendrier</h2><div class="group/carousel relative" role="region" aria-roledescription="carousel"><div class="relative"><div class="hidden md:flex"><button class="disabled:text-content-disabled focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-background-secondary text-content-primary hover:bg-background-secondary-hover active:bg-background-secondary-active active:text-content-primary-active disabled:bg-background-primary-disabled focus-visible:ring-background-secondary flex items-center justify-center absolute z-10 transition-opacity duration-300 ease-in-out h-12 w-12 cursor-pointer drop-shadow-carousel-nav opacity-0 top-1/2 -translate-y-1/2 left-0 group-hover/carousel:opacity-100" aria-busy="false" aria-invalid="false" aria-label="Previous"><span class="gap-sm flex items-center justify-center"><svg aria-hidden="true" class="inline h-6 w-6"><use href="#chevron-left"></use></svg></span></button><button class="disabled:text-content-disabled focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-background-secondary text-content-primary hover:bg-background-secondary-hover active:bg-background-secondary-active active:text-content-primary-active disabled:bg-background-primary-disabled focus-visible:ring-background-secondary flex items-center justify-center absolute z-10 transition-opacity duration-300 ease-in-out h-12 w-12 cursor-pointer drop-shadow-carousel-nav opacity-0 top-1/2 -translate-y-1/2 right-0 group-hover/carousel:opacity-100" aria-busy="false" aria-invalid="false" aria-label="Next"><span class="gap-sm flex items-center justify-center"><svg aria-hidden="true" class="inline h-6 w-6"><use href="#chevron-right"></use></svg></span></button></div><div class="carousel-content"><div class="flex gap-md md:gap-2xl" style="transform: translate3d(-1300px, 0px, 0px);"><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(0 * var(--duration-instant))"><div class="group relative cursor-default"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px]" id="8ktt5hcf2g40fr9swvrz98s9g"><img alt="" loading="lazy" width="182" height="147" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/LFFP_svl7yu"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">FEM</span><span class="mt-0.5 leading-none">Terminé</span></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Lyonnes logo" loading="lazy" width="500" height="500" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/OLLyonnes_kn3kfc?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Lyonnes</span><span class="text-content-secondary">1</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span><span class="text-content-secondary">0</span></div></div></div><div><div class="h-4" aria-hidden="true"></div></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(1 * var(--duration-instant))"><div class="group relative cursor-default"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px]" id="e46zhhy3e1ckc7qlboyyqbyms"><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/LiquiMoly_Starligue_vjp8qs"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">HAND</span><span class="mt-0.5 leading-none">Terminé</span></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span><span class="text-content-secondary">0</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Toulouse logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3dbajsvg0i7vqtgjhdhbvcc9n.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Toulouse</span><span class="text-content-secondary">0</span></div></div></div><div><div class="h-4" aria-hidden="true"></div></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(2 * var(--duration-instant))"><div class="group relative cursor-pointer"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px] hover:bg-background-secondary-hover" id="2nekushi1t6nmi7ecukkoza50"><a class="static before:absolute before:inset-0 before:cursor-pointer" aria-label="View match details" href="/matchs/football-masculin/20252026/chelsea-vs-paris-2026-03-17"><div class="hidden" aria-hidden="true"></div></a><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[25%] -bottom-[55%] h-[225px] w-[225px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/Champions_League_cch8lu"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">MASC</span><span class="mt-0.5 leading-none">Terminé</span></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Chelsea logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/9q0arba2kbnywth8bkxlhgmdr.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Chelsea</span><span class="text-content-secondary">0</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span><span class="text-content-secondary">3</span></div></div></div><div><a class="typography-button-2 text-content-secondary md:typography-button-1 gap-xs duration-medium-1 hover:text-content-primary relative z-50 flex items-center transition-colors" aria-label="Match Center" href="/matchs/football-masculin/20252026/chelsea-vs-paris-2026-03-17">Match Center<svg class="inline h-4 w-4"><use href="#chevron-right"></use></svg></a></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(3 * var(--duration-instant))"><div class="group relative cursor-default"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px]" id="7kqdspt5djxvwk51wjxrywpas"><img alt="" loading="lazy" width="106" height="111" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/CDFFem_opwznr"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">FEM</span><span class="mt-0.5 leading-none">Terminé</span></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Dijon logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/axvm5zg0mk4bp06wpec9vw27e.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Dijon</span><span class="text-content-secondary">1</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span><span class="text-content-secondary">2</span></div></div></div><div><div class="h-4" aria-hidden="true"></div></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(4 * var(--duration-instant))"><div class="group relative cursor-pointer"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px] hover:bg-background-secondary-hover" id="9m8t0nd0eroyeg4ua31yq2kgk"><a class="static before:absolute before:inset-0 before:cursor-pointer" aria-label="View match details" href="/matchs/football-masculin/20252026/nice-vs-paris-2026-03-21"><div class="hidden" aria-hidden="true"></div></a><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/Ligue_1_ah8xvt"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">MASC</span><div class="gap-xs flex" style=""><span class="text-content-secondary">21 MARS</span><span class="text-content-black">21:05</span></div></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Nice logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/bx0cdmzr2gwr70ez72dorx82p.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Nice</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span></div></div></div><div><a class="typography-button-2 text-content-secondary md:typography-button-1 gap-xs duration-medium-1 hover:text-content-primary relative z-50 flex items-center transition-colors" aria-label="Match Center" href="/matchs/football-masculin/20252026/nice-vs-paris-2026-03-21">Match Center<svg class="inline h-4 w-4"><use href="#chevron-right"></use></svg></a></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(5 * var(--duration-instant))"><div class="group relative cursor-default"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px]" id="7mkvhdqkymy5gyqovhmxk7ml0"><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/Premier_Ligue_Women_s_bfejpn"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">FEM</span><div class="gap-xs flex" style=""><span class="text-content-secondary">22 MARS</span><span class="text-content-black">17:30</span></div></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Montpellier logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/2w4xxgpg4t4h5b3yl74egastz.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Montpellier</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span></div></div></div><div><div class="h-4" aria-hidden="true"></div></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(6 * var(--duration-instant))"><div class="group relative cursor-default"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px]" id="eafs6p6o5qospawi1wjr9hqms"><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/LiquiMoly_Starligue_vjp8qs"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">HAND</span><div class="gap-xs flex" style=""><span class="text-content-secondary">27 MARS</span><span class="text-content-black">20:00</span></div></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Nîmes logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/dl16m4pm6pomksgca8hjufubi.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Nîmes</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span></div></div></div><div><div class="h-4" aria-hidden="true"></div></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(7 * var(--duration-instant))"><div class="group relative cursor-default"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px]" id="7p9a4ho8ay7e3hu2tx2cdg7bo"><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/Premier_Ligue_Women_s_bfejpn"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">FEM</span><div class="gap-xs flex" style=""><span class="text-content-secondary">28 MARS</span><span class="text-content-black">21:00</span></div></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Nantes logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/5ub6bjk9787lqakrfxs55ljvt.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Nantes</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span></div></div></div><div><div class="h-4" aria-hidden="true"></div></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(8 * var(--duration-instant))"><div class="group relative cursor-pointer"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px] hover:bg-background-secondary-hover" id="9plnaznv3kr2vuaqzhrqm7i8k"><a class="static before:absolute before:inset-0 before:cursor-pointer" aria-label="View match details" href="/matchs/football-masculin/20252026/paris-vs-toulouse-2026-04-05"><div class="hidden" aria-hidden="true"></div></a><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/Ligue_1_ah8xvt"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">MASC</span><div class="gap-xs flex" style=""><span class="text-content-secondary">03 AVR.</span><span class="text-content-black">20:45</span></div></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Toulouse logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/4aghw9tyi8ba3ju1ne83gmf9w.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Toulouse</span></div></div></div><div><a class="typography-button-2 text-content-secondary md:typography-button-1 gap-xs duration-medium-1 hover:text-content-primary relative z-50 flex items-center transition-colors" aria-label="Ticketplace" href="https://billetterie.psg.fr/fr/second/match-foot-masculin-paris-vs-toulouse-2/#bk2cb8b50d-zone">Ticketplace<svg class="inline h-4 w-4"><use href="#chevron-right"></use></svg></a></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(9 * var(--duration-instant))"><div class="group relative cursor-default"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px]" id="eezaj7c2s0plevuqotfc53v9w"><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/LiquiMoly_Starligue_vjp8qs"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">HAND</span><div class="gap-xs flex" style=""><span class="text-content-secondary">05 AVR.</span><span class="text-content-black">16:00</span></div></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/adn45dj48a3j627eseq9dn3v4.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Istres logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/as0hkylr3yveirunw9s01m3sr.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Istres</span></div></div></div><div><div class="h-4" aria-hidden="true"></div></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(10 * var(--duration-instant))"><div class="group relative cursor-pointer"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px] hover:bg-background-secondary-hover" id="7om4mss983m7d0dadr87xfuok"><a class="static before:absolute before:inset-0 before:cursor-pointer" aria-label="View match details" href="/matchs/football-masculin/20252026/paris-vs-liverpool-2026-04-08"><div class="hidden" aria-hidden="true"></div></a><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[25%] -bottom-[55%] h-[225px] w-[225px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/Champions_League_cch8lu"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">MASC</span><div class="gap-xs flex" style=""><span class="text-content-secondary">08 AVR.</span><span class="text-content-black">21:00</span></div></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Liverpool logo" loading="lazy" width="115" height="211" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/liverpool-fc_jt8wrg?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Liverpool</span></div></div></div><div><a class="typography-button-2 text-content-secondary md:typography-button-1 gap-xs duration-medium-1 hover:text-content-primary relative z-50 flex items-center transition-colors" aria-label="Match Center" href="/matchs/football-masculin/20252026/paris-vs-liverpool-2026-04-08">Match Center<svg class="inline h-4 w-4"><use href="#chevron-right"></use></svg></a></div></div></div></div></div></div></div><div role="group" aria-roledescription="slide" class="min-w-0 shrink-0 grow-0"><div class="opacity-0 animate-slide-in-fade-left" style="animation-delay:calc(11 * var(--duration-instant))"><div class="group relative cursor-pointer"><div class="clip-corner duration-medium-1 bg-background-secondary p-lg lg:p-xl relative flex w-[220px] flex-col overflow-hidden md:w-[293px] hover:bg-background-secondary-hover" id="9tgkqlevg5n5o5opx4boqsljo"><a class="static before:absolute before:inset-0 before:cursor-pointer" aria-label="View match details" href="/matchs/football-masculin/20252026/lens-vs-paris-2026-04-11"><div class="hidden" aria-hidden="true"></div></a><img alt="" loading="lazy" width="101" height="100" decoding="async" data-nimg="1" class="transition-opacity duration-300 ease-in text-content-primary/5 pointer-events-none absolute -right-[5%] -bottom-[5%] h-[150px] w-[150px] opacity-5" style="color:transparent" src="https://media.psg.fr/image/upload/Ligue_1_ah8xvt"><div class="gap-lg flex h-full flex-col justify-between"><div class="typography-overline-2 gap-sm flex items-center"><div class="gap-sm flex items-center"><div class="gap-sm flex flex-none items-center"><span class="bg-background-tertiary px-xs pt-0.75 pb-0.5 uppercase">MASC</span><div class="gap-xs flex" style=""><span class="text-content-secondary">11 AVR.</span><span class="text-content-black">17:00</span></div></div></div></div><div class="gap-lg flex flex-col"><div class="gap-md pointer-events-none flex flex-col"><div class="gap-sm flex items-center"><div class="relative"><img alt="Lens logo" loading="lazy" width="64" height="64" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=32 32w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=48 48w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=64 64w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=96 96w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=128 128w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=256 256w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=384 384w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=640 640w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=750 750w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=828 828w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=1080 1080w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=1200 1200w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=1920 1920w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=2048 2048w, https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=3840 3840w" src="https://api.psg.fr/umbraco/akqa/api/v1.0/sportsImage/Team/3xedluek08t2ka7oypwuullcn.png?width=3840"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Lens</span></div></div><div class="gap-sm flex items-center"><div class="relative"><img alt="Paris logo" loading="lazy" width="821" height="844" decoding="async" data-nimg="1" class="h-8 w-8 object-contain" style="color:transparent" sizes="64px" srcset="https://media.psg.fr/image/upload/c_limit,w_33/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 32w, https://media.psg.fr/image/upload/c_limit,w_49/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 48w, https://media.psg.fr/image/upload/c_limit,w_65/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 64w, https://media.psg.fr/image/upload/c_limit,w_97/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 96w, https://media.psg.fr/image/upload/c_limit,w_129/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 128w, https://media.psg.fr/image/upload/c_limit,w_257/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 256w, https://media.psg.fr/image/upload/c_limit,w_385/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 384w, https://media.psg.fr/image/upload/c_limit,w_641/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 640w, https://media.psg.fr/image/upload/c_limit,w_751/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 750w, https://media.psg.fr/image/upload/c_limit,w_829/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 828w, https://media.psg.fr/image/upload/c_limit,w_1081/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1080w, https://media.psg.fr/image/upload/c_limit,w_1201/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1200w, https://media.psg.fr/image/upload/c_limit,w_1921/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 1920w, https://media.psg.fr/image/upload/c_limit,w_2049/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 2048w, https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00 3840w" src="https://media.psg.fr/image/upload/c_limit,w_3841/f_avif/q_75/v1/psg-logo_avcznk?_a=BAVMn6B00"></div><div class="typography-title-4 gap-sm top-0-5 relative flex h-8 items-center leading-none"><span>Paris</span></div></div></div><div><a class="typography-button-2 text-content-secondary md:typography-button-1 gap-xs duration-medium-1 hover:text-content-primary relative z-50 flex items-center transition-colors" aria-label="Match Center" href="/matchs/football-masculin/20252026/lens-vs-paris-2026-04-11">Match Center<svg class="inline h-4 w-4"><use href="#chevron-right"></use></svg></a></div></div></div></div></div></div></div></div></div></div><div class="mt-11 flex items-center justify-center"><div class="relative h-1 w-24 self-center bg-dark-content-primary/10"><div class="absolute top-0 left-0 h-full bg-dark-content-primary" role="progressbar" aria-label="Carousel progress" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 1rem; transform: translateX(40px) skew(-20deg);"></div></div></div></div></div></div></section>

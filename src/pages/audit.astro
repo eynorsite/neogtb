@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Audit GTB Gratuit" description="Évaluez gratuitement la maturité GTB de votre bâtiment selon la norme EN 15232. Répondez à quelques questions et recevez un diagnostic personnalisé avec des recommandations conformes aux exigences réglementaires.">
+<Layout title="Audit GTB gratuit en ligne — Diagnostic EN 15232 en 5 min" description="Évaluez gratuitement le niveau GTB de votre bâtiment tertiaire selon la norme EN 15232. Diagnostic personnalisé avec recommandations et estimation des économies d'énergie CVC." breadcrumbs={[{label: "Outils"}, {label: "Audit GTB"}]}>
 
   <!-- Hero -->
   <section class="hero-lum">
@@ -371,5 +372,11 @@ import Layout from '../layouts/Layout.astro';
       }));
     });
   </script>
+
+  <RelatedPages links={[
+    { href: "/comparateur", title: "Comparateur GTB", description: "Comparez les solutions après votre diagnostic." },
+    { href: "/gtb", title: "Qu'est-ce que la GTB ?", description: "Tout comprendre sur la Gestion Technique du Bâtiment." },
+    { href: "/generateur-cee", title: "Simulateur CEE", description: "Estimez vos primes pour financer votre projet GTB." },
+  ]} />
 
 </Layout>

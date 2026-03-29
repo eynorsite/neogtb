@@ -1,0 +1,538 @@
+<!--
+  SOURCE  : https://strapi.io
+  SECTION : main > section:first-of-type
+  LABEL   : Strapi — CMS headless open source, design dev-first
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de strapi.io.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : __Poppins_6bee3b · sans-serif · Monaco
+  Couleurs    : rgb(20, 20, 20) · rgb(16, 50, 207) · rgb(29, 27, 132) · rgb(94, 112, 157)
+  Border-r    : 6px · 32px · 60px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(24, 24, 38)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex",
+    "line-height": "16px"
+  },
+  "div[2]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "136px 0px 120px",
+    "margin": "0px 120px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "16px",
+    "max-width": "1200px"
+  },
+  "div[3]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 110px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "16px",
+    "max-width": "980px"
+  },
+  "div[4]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "gap": "56px",
+    "display": "flex",
+    "line-height": "16px"
+  },
+  "div[5]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(33, 33, 52)",
+    "padding": "8px 16px 8px 12px",
+    "margin": "0px 281.406px",
+    "border": "1px solid rgb(50, 50, 77)",
+    "border-radius": "10px",
+    "display": "flex",
+    "line-height": "16px"
+  },
+  "div[6]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex",
+    "line-height": "16px"
+  },
+  "div[7]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "13px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(151, 57, 222)",
+    "padding": "4px 8px",
+    "margin": "0px 12px 0px 0px",
+    "border": "0px none rgb(255, 255, 255)",
+    "border-radius": "4px",
+    "display": "block",
+    "line-height": "13px"
+  },
+  "div[8]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "16px"
+  },
+  "p[9]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "13px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block"
+  },
+  "a[10]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "13px",
+    "font-weight": "500",
+    "color": "rgb(151, 57, 222)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(151, 57, 222)",
+    "display": "block",
+    "line-height": "13px"
+  },
+  "div[11]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "16px"
+  },
+  "h1[12]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 16px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "71px",
+    "max-width": "960px"
+  },
+  "div[13]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "71px"
+  },
+  "span[14]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "71px"
+  },
+  "div[15]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[16]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[17]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[18]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[19]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[20]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[21]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[22]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[23]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "div[24]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "53px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "71px"
+  },
+  "h2[25]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "block",
+    "line-height": "28px"
+  },
+  "div[26]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[27]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[28]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[29]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[30]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[31]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[32]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[33]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[34]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[35]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[36]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[37]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[38]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[39]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[40]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[41]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[42]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[43]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[44]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[45]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[46]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[47]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[48]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[49]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  },
+  "div[50]": {
+    "font-family": "__Poppins_6bee3b, __Poppins_Fallback_6bee3b, sans-serif",
+    "font-size": "17px",
+    "font-weight": "400",
+    "color": "rgb(192, 192, 207)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(192, 192, 207)",
+    "display": "inline-block",
+    "line-height": "28px"
+  }
+}
+-->
+<section class="styles_Hero__wTUb8" style="--home-hero-animations-grid-cols:2.04fr 1fr"><div class="styles_background__Yu34K"><img src="/assets/use-case/strapi5_hero.svg" alt="shape" class="styles_img__sgatE" loading="lazy"></div><div class="styles_heroWrapper__GslZr styles_wrapper__bspHs"><div class="styles_innerWrapper__SFDQm"><div class="styles_LabelTitleText__a9uAE textAlign" style="opacity: 1;"><div class="styles_wrapper__H46L4 styles_strapi5Wrapper__WmLdz"><div class="styles_contentWrapper__sb2gY"><div class="styles_tag__xGRtA styles_tagPink__ZiRS_">NEW</div><div class="styles_textWrapper__gPPhR"><p class="typography_Text___rU8X styles_text___SdKO normal themes_white__terWd">Release: Strapi AI Translations</p><a icons="" class="styles_Link__mwEVw styles_link__ihDwG styles_linkPink__Y3OmR" target="_self" rel="noopener" alt="" href="https://strapi.io/blog/shipping-faster-with-strapi-ai-translations-and-more-homepage-customizations">See how it works →</a></div></div></div><div class="styles_textContainer__9tcck"><h1 class="typography_Title__Axpg_ styles_title__s5HXK title-hero themes_white__terWd"><div class="styles_titleContainer__3ANGn"><span><div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">The</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">Open-Source</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">Headless</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">CMS</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">for</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">AI</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">powered</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">Websites</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">and</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">Apps</div></span></div></h1><h2 class="typography_Text___rU8X styles_RichText__neCge styles_text__eDYPb purpleLinks themes_white__terWd"><div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">Design</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">your</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">data</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">models,</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">generate</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">APIs</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">instantly,</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">and</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">integrate</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">with</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">your</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">favorite</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">frameworks,</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">while</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">leveraging</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">AI</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">capabilities</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">and</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">keeping</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">full</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">control</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">of</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">your</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">code</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">and</div> <div style="position: relative; display: inline-block; opacity: 1; transform: perspective(1000px) translate3d(0px, 0px, 0px);" class="styles_word__gPgmq">hosting.</div></h2></div><div class="styles_container__3iiDm"><div class="styles_codeContainer__vsiBt styles_dark__aPrN9"><pre class="styles_code__wltEs">npx create-strapi-app@latest</pre><button class="styles_copyButton__1yY0c">Copy</button></div><div class="styles_orContainer___ib_a"><div class="styles_divider__rVcbE"></div><span class="styles_orText__tDUya">or</span><div class="styles_divider__rVcbE"></div></div><div class="styles_textContainer__9tcck"><div class="styles_btn__oh15o styles_buttonContainer___rpsz"><div class="styles_button__bQxgX styles_blue__oC9eX styles_btn__oh15o"><span class="styles_shadow__V243G" style="opacity: 0;"></span><div class="styles_background__cTBr5 styles_blue__oC9eX" style="transform: perspective(800px);"><div class="styles_hoverCircle__rhm0o" style="opacity: 0; transform: perspective(15px) translate3d(0px, 0px, -90px);"></div></div><a class="styles_Link__mwEVw styles_buttonLink__LImRE typography_Button__PN2AV styles_buttonClass__XSnYR" target="blank" alt="" href="/demo">Request Demo</a></div></div></div></div><div class="styles_featuresRow___DLrf"></div></div></div><div class="styles_animations__OCE8C"><div class="styles_oneAnimation__TwjmG"><video autoplay="" playsinline="" loop="" muted="" class="styles_oneVideo__3_yjH"><source src="https://delicate-dawn-ac25646e6d.media.strapiapp.com/Homepage_animation_one_7c478bafc7.mp4" type="video/mp4"></video></div><div class="styles_oneAnimation__TwjmG"><video autoplay="" playsinline="" loop="" muted="" class="styles_oneVideo__3_yjH"><source src="https://delicate-dawn-ac25646e6d.media.strapiapp.com/Homepage_animation_two_a91fc01a48.mp4" type="video/mp4"></video></div></div><div class="styles_animations__OCE8C"></div><div class="styles_clientsLogos__xfG58"><div class="styles_ClientLogo__L_sZh" rel="noreferrer"><div class="styles_logo__gjhnP styles_coloredLogo__l_PB_ styles_coloredOnly__rgNwE"><div class="styles_ratio__bpoRn styles_fluid__HqCOh"><img class="styles_Img__QpX3_ styles_img__wzegy styles_contain__GgeEe styles_center__7K_1M" src="" alt="n8n_full_white_logo.png" style="opacity: 0; visibility: hidden;"></div></div></div><div class="styles_ClientLogo__L_sZh" rel="noreferrer"><div class="styles_logo__gjhnP styles_coloredLogo__l_PB_ styles_coloredOnly__rgNwE"><div class="styles_ratio__bpoRn styles_fluid__HqCOh"><img class="styles_Img__QpX3_ styles_img__wzegy styles_contain__GgeEe styles_center__7K_1M" src="" alt="1686110100toyota-logo-white.png" style="opacity: 0; visibility: hidden;"></div></div></div><div class="styles_ClientLogo__L_sZh" rel="noreferrer"><div class="styles_logo__gjhnP styles_coloredLogo__l_PB_ styles_coloredOnly__rgNwE"><div class="styles_ratio__bpoRn styles_fluid__HqCOh"><img class="styles_Img__QpX3_ styles_img__wzegy styles_contain__GgeEe styles_center__7K_1M" src="" alt="amazon.png" style="opacity: 0; visibility: hidden;"></div></div></div><div class="styles_ClientLogo__L_sZh" rel="noreferrer"><div class="styles_logo__gjhnP styles_coloredLogo__l_PB_ styles_coloredOnly__rgNwE"><div class="styles_ratio__bpoRn styles_fluid__HqCOh"><img class="styles_Img__QpX3_ styles_img__wzegy styles_contain__GgeEe styles_center__7K_1M" src="" alt="abbott.png" style="opacity: 0; visibility: hidden;"></div></div></div><div class="styles_ClientLogo__L_sZh" rel="noreferrer"><div class="styles_logo__gjhnP styles_coloredLogo__l_PB_ styles_coloredOnly__rgNwE"><div class="styles_ratio__bpoRn styles_fluid__HqCOh"><img class="styles_Img__QpX3_ styles_img__wzegy styles_contain__GgeEe styles_center__7K_1M" src="" alt="cisco.png" style="opacity: 0; visibility: hidden;"></div></div></div><div class="styles_ClientLogo__L_sZh" rel="noreferrer"><div class="styles_logo__gjhnP styles_coloredLogo__l_PB_ styles_coloredOnly__rgNwE"><div class="styles_ratio__bpoRn styles_fluid__HqCOh"><img class="styles_Img__QpX3_ styles_img__wzegy styles_contain__GgeEe styles_center__7K_1M" src="" alt="Carvana_id_jDkY7Bb_0.svg" style="opacity: 0; visibility: hidden;"></div></div></div><div class="styles_ClientLogo__L_sZh" rel="noreferrer"><div class="styles_logo__gjhnP styles_coloredLogo__l_PB_ styles_coloredOnly__rgNwE"><div class="styles_ratio__bpoRn styles_fluid__HqCOh"><img class="styles_Img__QpX3_ styles_img__wzegy styles_contain__GgeEe styles_center__7K_1M" src="" alt="posthog.png" style="opacity: 0; visibility: hidden;"></div></div></div><div class="styles_ClientLogo__L_sZh" rel="noreferrer"><div class="styles_logo__gjhnP styles_coloredLogo__l_PB_ styles_coloredOnly__rgNwE"><div class="styles_ratio__bpoRn styles_fluid__HqCOh"><img class="styles_Img__QpX3_ styles_img__wzegy styles_contain__GgeEe styles_center__7K_1M" src="" alt="tesco.png" style="opacity: 0; visibility: hidden;"></div></div></div></div></div></section>

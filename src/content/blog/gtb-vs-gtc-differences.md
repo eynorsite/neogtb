@@ -1,20 +1,20 @@
 ---
 title: "GTB vs GTC : quelles différences ?"
 description: "GTB et GTC sont souvent confondues. Découvrez les différences fondamentales entre Gestion Technique du Bâtiment et Gestion Technique Centralisée."
-date: "2026-03-08"
+date: "2026-03-09"
 author: "NeoGTB"
-category: "Guide"
-tags: ["GTB", "GTC", "comparatif", "supervision"]
+category: "Guides"
+tags: []
 featured: true
 ---
 
-# GTB vs GTC : quelles différences ?
-
 Les termes **GTB** et **GTC** sont souvent utilisés de manière interchangeable, ce qui crée de la confusion. Pourtant, ces deux systèmes ont des rôles bien distincts.
 
-## GTB : Gestion Technique du Bâtiment
+GTB : Gestion Technique du Bâtiment
+-----------------------------------
 
-La GTB (ou BMS en anglais pour *Building Management System*) est un système complet qui :
+La GTB (ou BMS en anglais) est un système complet qui :
+
 - **Supervise** les équipements techniques
 - **Régule** activement les systèmes (CVC, éclairage...)
 - **Optimise** le fonctionnement en temps réel
@@ -22,9 +22,11 @@ La GTB (ou BMS en anglais pour *Building Management System*) est un système com
 
 La GTB est le **système nerveux complet** du bâtiment : elle capte, réfléchit et agit.
 
-## GTC : Gestion Technique Centralisée
+GTC : Gestion Technique Centralisée
+-----------------------------------
 
 La GTC est un système de **supervision** qui :
+
 - **Centralise** l'affichage des états et mesures
 - **Remonte** les alarmes et événements
 - **Historise** les données pour analyse
@@ -32,31 +34,15 @@ La GTC est un système de **supervision** qui :
 
 La GTC est les **yeux et les oreilles** du bâtiment : elle observe et alerte, mais n'agit pas de manière autonome.
 
-## Tableau comparatif
+Tableau comparatif
+------------------
 
-| Critère | GTB | GTC |
-|---------|-----|-----|
-| **Fonction** | Superviser + Piloter + Optimiser | Superviser + Alerter |
-| **Régulation** | Automatique et autonome | Manuelle ou déléguée |
-| **Périmètre** | 1 bâtiment (tous les lots) | Multi-bâtiments possible |
-| **Complexité** | Élevée (automates, logique) | Modérée (interface) |
-| **Coût** | Plus élevé | Moins élevé |
-| **Anglais** | BMS | SCADA / BCS |
+CritèreGTBGTC**Fonction**Superviser + Piloter + OptimiserSuperviser + Alerter**Régulation**Automatique et autonomeManuelle ou déléguée**Périmètre**1 bâtiment (tous les lots)Multi-bâtiments possible**Complexité**ÉlevéeModérée**Coût**Plus élevéMoins élevé**Anglais**BMSSCADA / BCSQue choisir ?
+-------------
 
-## En pratique
-
-Dans la réalité, la frontière est souvent floue :
-- Une **GTC** moderne peut intégrer des fonctions de pilotage
-- Une **GTB** inclut toujours la supervision (donc la GTC)
-- Les constructeurs utilisent souvent les deux termes de manière indifférenciée
-
-**L'essentiel** : comprendre que la GTB = GTC + régulation + optimisation.
-
-## Que choisir ?
-
-- **GTC seule** : si vous avez déjà des automates de régulation par lot et souhaitez centraliser la supervision
+- **GTC seule** : si vous avez déjà des automates de régulation et souhaitez centraliser la supervision
 - **GTB** : si vous partez de zéro ou souhaitez une solution intégrée de pilotage et d'optimisation
 
----
+**L'essentiel** : GTB = GTC + régulation + optimisation.
 
 *Évaluez le niveau de gestion technique de votre bâtiment avec notre [audit gratuit](/audit).*

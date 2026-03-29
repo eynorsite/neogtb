@@ -1,0 +1,287 @@
+<!--
+  SOURCE  : https://www.lequipe.fr
+  SECTION : header, main > section:first-of-type
+  LABEL   : L'Équipe — média sport #1 France, design editorial sport
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.lequipe.fr.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : sans-serif · DINNextLTPro-Regular · LEQUIPE-Regular
+  Couleurs    : rgba(0, 0, 1, 0.5) · rgb(56, 115, 184) · rgb(248, 248, 248) · rgb(123, 123, 122)
+  Border-r    : 100% · 32px · 50%
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 32px",
+    "margin": "0px 176px",
+    "border": "0px none rgb(29, 29, 27)",
+    "display": "flex",
+    "max-width": "1008px"
+  },
+  "div[1]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "15px 0px",
+    "border": "0px none rgb(29, 29, 27)"
+  },
+  "button[2]": {
+    "font-family": "sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "1px solid rgb(221, 221, 221)",
+    "border-radius": "100%",
+    "display": "inline-block",
+    "line-height": "33px"
+  },
+  "a[3]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "15px 0px",
+    "border": "0px none rgb(29, 29, 27)",
+    "display": "block"
+  },
+  "div[4]": {
+    "font-family": "DINNextLTPro-Regular, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(214, 30, 0)",
+    "padding": "0px 16px",
+    "border": "0px none rgb(255, 255, 255)",
+    "border-radius": "32px",
+    "display": "inline-block",
+    "line-height": "34px"
+  },
+  "a[5]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "block",
+    "line-height": "20px",
+    "max-width": "150px"
+  },
+  "span[6]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline",
+    "line-height": "20px"
+  },
+  "h1[7]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "6.35px 9.6px 3.65px 7.3px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px"
+  },
+  "span[8]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 3px 0px 0px",
+    "margin": "0px -3px 0px 0px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px",
+    "max-width": "11px"
+  },
+  "span[9]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 3px 0px 0px",
+    "margin": "0px -3px 0px 0px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px",
+    "max-width": "7px"
+  },
+  "span[10]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 3px 0px 0px",
+    "margin": "0px -3px 0px 0px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px"
+  },
+  "span[11]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 3px 0px 0px",
+    "margin": "0px -3px 0px 0px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px"
+  },
+  "span[12]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 3px 0px 0px",
+    "margin": "0px -3px 0px 0px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px"
+  },
+  "span[13]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 3px 0px 0px",
+    "margin": "0px -3px 0px 0px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px"
+  },
+  "span[14]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 3px 0px 0px",
+    "margin": "0px -3px 0px 0px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px"
+  },
+  "span[15]": {
+    "font-family": "LEQUIPE-Regular, sans-serif",
+    "font-size": "22px",
+    "font-weight": "400",
+    "color": "rgb(214, 30, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 3px 0px 0px",
+    "margin": "0px -3px 0px 0px",
+    "border": "0px none rgb(214, 30, 0)",
+    "display": "inline-block",
+    "line-height": "22px"
+  },
+  "div[16]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "-1px 0px 0px 483.375px",
+    "border": "0px none rgb(29, 29, 27)",
+    "display": "flex"
+  },
+  "div[17]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(29, 29, 27)",
+    "display": "block"
+  },
+  "div[19]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(29, 29, 27)",
+    "display": "block"
+  },
+  "button[21]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(29, 29, 27)",
+    "display": "inline-block"
+  },
+  "span[22]": {
+    "font-family": "DINNextLTPro-Regular, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgb(255, 187, 0)",
+    "padding": "8px 16px 6px",
+    "border": "0px none rgb(29, 29, 27)",
+    "border-radius": "32px",
+    "display": "inline-block",
+    "line-height": "18px"
+  },
+  "div[23]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(29, 29, 27)",
+    "display": "block"
+  },
+  "div[25]": {
+    "font-family": "sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 0px 8px",
+    "border": "0px none rgb(29, 29, 27)",
+    "display": "block"
+  },
+  "button[26]": {
+    "font-family": "sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(29, 29, 27)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 10px 0px 0px",
+    "border": "0px none rgb(238, 238, 238)",
+    "border-radius": "100%",
+    "display": "inline-block",
+    "line-height": "28px"
+  }
+}
+-->
+<header class="Header Header--animated" id="header"><!----><div class="Header__content layout layout--full"><!----><div class="Header__left Header__menu max--desktop menuButton jsMenu"><button class="icon--browse icon" tabindex="-1"></button></div><a class="Header__left Header__lives min--desktop" href="/Directs" tabindex="-1"><div class="button button--red js-lives-header-button" data-before-content="(9)"> voir les directs </div></a><a href="/" class="Header__logo jsLogo"><span><!----><h1 class="Header__logo--lequipe" alt="L'Équipe - L'actualité du sport en continu"><!--[--><span class="letter letter-1">L</span><span class="letter letter-2">'</span><span class="letter letter-3">É</span><span class="letter letter-4">Q</span><span class="letter letter-5">U</span><span class="letter letter-6">I</span><span class="letter letter-7">P</span><span class="letter letter-8">E</span><!--]--><!----></h1></span></a><div class="Header__right"><div class="Header__impersonation"><island-root id="island-11" data-v-app="" hydrated="" data-component="Unknown"><!----></island-root></div><div class="Header__cta"><island-root id="island-12" data-v-app="" hydrated="" data-component="Unknown"><button data-v-b3234d6e="" class="Header__cta button--unstyled" route="[object Object]"><span data-v-b3234d6e="" class="button button--premium" style="background-color: rgb(255, 187, 0); color: rgb(29, 29, 27);">s'abonner</span></button></island-root></div><div class="Header__account"><island-root id="island-13" data-v-app="" hydrated="" data-component="Unknown"><div data-v-8e429644="" class="UserAvatar Header__signin"><button data-v-8e429644="" class="UserAvatar__signin icon button--unstyled icon--signin"></button></div></island-root></div></div></div></header>

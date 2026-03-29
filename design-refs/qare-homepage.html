@@ -1,0 +1,206 @@
+<!--
+  SOURCE  : https://www.qare.fr
+  SECTION : main > section:first-of-type, .hero
+  LABEL   : Qare — téléconsultation, UX patient optimisée
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.qare.fr.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : sans-serif · Roobert
+  Couleurs    : rgb(52, 51, 67) · rgb(248, 249, 252) · rgba(255, 255, 255, 0.8) · rgb(38, 164, 166)
+  Border-r    : 5px · 3px · 10px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "h2[0]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "32px",
+    "font-weight": "800",
+    "color": "rgb(33, 33, 33)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 24px",
+    "border": "0px none rgb(33, 33, 33)",
+    "display": "block",
+    "line-height": "42px"
+  },
+  "div[3]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgb(255, 255, 255)",
+    "border": "1px solid rgb(211, 211, 211)",
+    "border-radius": "16px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[4]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(52, 51, 67)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[6]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgb(253, 238, 247)",
+    "padding": "4px 12px",
+    "border": "0px none rgb(52, 51, 67)",
+    "border-radius": "16px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "p[7]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "12px",
+    "font-weight": "600",
+    "color": "rgb(229, 78, 170)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(229, 78, 170)",
+    "display": "block",
+    "line-height": "18px"
+  },
+  "div[8]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "16px",
+    "border": "0px none rgb(52, 51, 67)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[9]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(52, 51, 67)",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "p[10]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "14px",
+    "font-weight": "500",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(52, 51, 67)",
+    "display": "block",
+    "line-height": "21px"
+  },
+  "div[11]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(52, 51, 67)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[15]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgb(255, 255, 255)",
+    "border": "1px solid rgb(211, 211, 211)",
+    "border-radius": "16px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[16]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(52, 51, 67)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[18]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgb(254, 244, 239)",
+    "padding": "4px 12px",
+    "border": "0px none rgb(52, 51, 67)",
+    "border-radius": "16px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "p[19]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "12px",
+    "font-weight": "600",
+    "color": "rgb(245, 146, 96)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(245, 146, 96)",
+    "display": "block",
+    "line-height": "18px"
+  },
+  "div[20]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "16px",
+    "border": "0px none rgb(52, 51, 67)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[21]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(52, 51, 67)",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "p[22]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "14px",
+    "font-weight": "500",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(52, 51, 67)",
+    "display": "block",
+    "line-height": "21px"
+  },
+  "div[23]": {
+    "font-family": "Roobert, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(52, 51, 67)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(52, 51, 67)",
+    "display": "block",
+    "line-height": "24px"
+  }
+}
+-->
+<section class="css-5k7itp"><h2 class="css-zlw4r5">Nos programmes</h2><ul class="css-ao1qk9"><li class="css-hpujcd"><div class="css-rf9pv7" role="button" tabindex="0"><div class="css-1ypx2iz"><img src="app-static/1.524.0/assets/qareMind.c1983e5.webp" alt="Qare Mind" class="css-k7hb9y"><div class="css-17ok2du" style="background-color: rgb(253, 238, 247);"><p class="css-25vwr8" style="color: rgb(229, 78, 170);">Qare Mind</p></div></div><div class="css-1oew5uk"><div class="css-1d9ha3i"><p class="css-vcv7uu">Retrouvez votre bien être avec un accompagnement spécialisé et adapté face à l’anxiété et la dépression</p></div><div class="css-f9om2t"><svg viewBox="0 0 24 24" width="24" height="24" style="fill: rgb(38, 164, 166);"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 12a9 9 0 1118 0 9 9 0 01-18 0zm4.5 0a1 1 0 001 1h4.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.086 11H8.5a1 1 0 00-1 1z"></path></svg></div></div></div></li><li class="css-hpujcd"><div class="css-rf9pv7" role="button" tabindex="0"><div class="css-1ypx2iz"><img src="app-static/1.524.0/assets/qareShape.4d503db.webp" alt="Qare Shape" class="css-k7hb9y"><div class="css-17ok2du" style="background-color: rgb(254, 244, 239);"><p class="css-25vwr8" style="color: rgb(245, 146, 96);">Qare Shape</p></div></div><div class="css-1oew5uk"><div class="css-1d9ha3i"><p class="css-vcv7uu">Après les régimes yo-yo, découvrez un accompagnement expert et personnalisé pour une perte de poids durable</p></div><div class="css-f9om2t"><svg viewBox="0 0 24 24" width="24" height="24" style="fill: rgb(38, 164, 166);"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 12a9 9 0 1118 0 9 9 0 01-18 0zm4.5 0a1 1 0 001 1h4.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.086 11H8.5a1 1 0 00-1 1z"></path></svg></div></div></div></li></ul></section>

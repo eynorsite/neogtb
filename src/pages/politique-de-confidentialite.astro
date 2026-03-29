@@ -147,7 +147,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="mb-3">Les sous-traitants techniques suivants peuvent avoir accès aux données dans le cadre strict de leurs prestations :</p>
           <ul class="list-disc pl-5 space-y-1">
             <li><span class="font-medium text-dark-700">OVHcloud</span> (hébergement) — France — Données hébergées en UE</li>
-            <li><span class="font-medium text-dark-700">Google Analytics 4</span> (analytics, si consentement) — États-Unis — Anonymisation IP activée</li>
+            <li><span class="font-medium text-dark-700">Plausible Analytics</span> (mesure d'audience) — Allemagne (UE) — Sans cookies, sans données personnelles</li>
           </ul>
         </section>
 
@@ -213,11 +213,8 @@ import Layout from '../layouts/Layout.astro';
             <li><code class="text-xs bg-dark-50 px-1.5 py-0.5 rounded">neogtb_consent</code> — Stocke vos préférences cookies — Durée : 13 mois</li>
           </ul>
 
-          <h3 class="font-medium text-dark-700 mt-4 mb-2" style="font-size:15px;">Cookies analytiques (consentement requis)</h3>
-          <p class="mb-2">Nous aident à comprendre comment vous utilisez le site pour l'améliorer.</p>
-          <ul class="list-disc pl-5 space-y-1 mb-4">
-            <li><code class="text-xs bg-dark-50 px-1.5 py-0.5 rounded">_ga</code>, <code class="text-xs bg-dark-50 px-1.5 py-0.5 rounded">_ga_*</code> — Google Analytics 4 — Mesure d'audience anonymisée — Durée : 13 mois</li>
-          </ul>
+          <h3 class="font-medium text-dark-700 mt-4 mb-2" style="font-size:15px;">Mesure d'audience</h3>
+          <p class="mb-2">Nous utilisons <span class="font-medium text-dark-700">Plausible Analytics</span>, un outil de mesure d'audience respectueux de la vie privée, hébergé en Allemagne (UE). Plausible ne dépose aucun cookie, ne collecte aucune donnée personnelle et ne nécessite pas de consentement préalable conformément aux recommandations de la CNIL.</p>
 
           <h3 class="font-medium text-dark-700 mt-4 mb-2" style="font-size:15px;">Cookies marketing</h3>
           <p class="mb-4"><span class="font-medium text-dark-700">Actuellement non utilisés.</span> Si nous devions en ajouter à l'avenir, votre consentement serait requis au préalable.</p>
@@ -228,7 +225,7 @@ import Layout from '../layouts/Layout.astro';
 
         <section id="transferts">
           <h2 class="font-heading font-medium text-dark-900 mb-3" style="font-size:18px;">9. Transferts hors UE</h2>
-          <p>Le site est hébergé par OVHcloud en France (données au sein de l'UE). Seul Google Analytics 4 (si consentement) peut impliquer un transfert vers les États-Unis, encadré par le Data Privacy Framework UE-US et l'anonymisation des adresses IP.</p>
+          <p>Le site est hébergé par OVHcloud en France (données au sein de l'UE). Notre outil de mesure d'audience Plausible est hébergé en Allemagne (UE). <span class="font-medium text-dark-700">Aucun transfert de données hors de l'Union européenne n'est effectué.</span></p>
         </section>
 
         <section id="cnil">
@@ -238,7 +235,7 @@ import Layout from '../layouts/Layout.astro';
             <p><span class="font-medium text-dark-700">CNIL</span></p>
             <p>3 Place de Fontenoy, TSA 80715</p>
             <p>75334 Paris Cedex 07</p>
-            <p>Site : <a href="https://www.cnil.fr" class="text-accent-600 hover:text-accent-700" target="_blank" rel="noopener">www.cnil.fr</a></p>
+            <p>Site : <a href="https://www.cnil.fr" class="text-accent-600 hover:text-accent-700" target="_blank" rel="noopener noreferrer">www.cnil.fr</a></p>
           </div>
         </section>
 

@@ -1,0 +1,605 @@
+<!--
+  SOURCE  : https://www.trailrunner.fr
+  SECTION : main, body > section:first-of-type
+  LABEL   : TrailRunner — trail running, media niche design soigné
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.trailrunner.fr.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : Times · Source Sans Pro · FontAwesome
+  Couleurs    : rgb(64, 64, 64) · rgb(221, 221, 221) · rgb(65, 105, 225) · rgb(35, 35, 35)
+  Border-r    : 3px · 50px · 0px 0px 2px 2px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px -20px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[1]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 20px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[4]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(65, 105, 225)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(65, 105, 225)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "h2[7]": {
+    "font-family": "\"Roboto Condensed\", sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "20px 0px 4px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "26px"
+  },
+  "a[8]": {
+    "font-family": "\"Roboto Condensed\", sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(53, 52, 52)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(53, 52, 52)",
+    "display": "inline",
+    "line-height": "26px"
+  },
+  "div[9]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "block",
+    "line-height": "21px"
+  },
+  "span[10]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "a[11]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "span[14]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "span[15]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "a[16]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "div[17]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "10px 0px 30px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[18]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "div[19]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 20px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[22]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(65, 105, 225)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(65, 105, 225)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "h2[25]": {
+    "font-family": "\"Roboto Condensed\", sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "20px 0px 4px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "26px"
+  },
+  "a[26]": {
+    "font-family": "\"Roboto Condensed\", sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(53, 52, 52)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(53, 52, 52)",
+    "display": "inline",
+    "line-height": "26px"
+  },
+  "div[27]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "block",
+    "line-height": "21px"
+  },
+  "span[28]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "a[29]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "span[32]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "span[33]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "a[34]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "span[35]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "a[36]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "div[37]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "10px 0px 30px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[38]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "div[39]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px -20px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[40]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 20px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[43]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(65, 105, 225)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(65, 105, 225)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "h2[46]": {
+    "font-family": "\"Roboto Condensed\", sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(64, 64, 64)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "20px 0px 4px",
+    "border": "0px none rgb(64, 64, 64)",
+    "display": "block",
+    "line-height": "26px"
+  },
+  "a[47]": {
+    "font-family": "\"Roboto Condensed\", sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(53, 52, 52)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(53, 52, 52)",
+    "display": "inline",
+    "line-height": "26px"
+  },
+  "div[48]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "block",
+    "line-height": "21px"
+  },
+  "span[49]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  },
+  "a[50]": {
+    "font-family": "\"Source Sans Pro\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(159, 159, 159)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(159, 159, 159)",
+    "display": "inline",
+    "line-height": "21px"
+  }
+}
+-->
+<main id="main" class="site-main" role="main">
+
+		
+					
+			<div class="row">
+			
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1370" class="genaral-post-item post-1370 post type-post status-publish format-standard has-post-thumbnail sticky hentry category-equipements tag-bons-plans tag-trails tag-ultratrail">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2024/08/16/comparateur-de-chaussures-de-sports/" title="Comparateur de chaussures de sports"><img width="388" height="194" src="https://www.trailrunner.fr/wp-content/uploads/2024/08/Capture-decran-2025-01-14-131231-e1736857531808.png" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" srcset="https://www.trailrunner.fr/wp-content/uploads/2024/08/Capture-decran-2025-01-14-131231-e1736857531808.png 400w, https://www.trailrunner.fr/wp-content/uploads/2024/08/Capture-decran-2025-01-14-131231-e1736857531808-300x150.png 300w" sizes="(max-width: 388px) 100vw, 388px"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2024/08/16/comparateur-de-chaussures-de-sports/" rel="bookmark">Comparateur de chaussures de sports</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2024/08/16/comparateur-de-chaussures-de-sports/" rel="bookmark"><time class="entry-date published" datetime="2024-08-16T10:46:23+02:00">16/08/2024</time><time class="updated" datetime="2025-01-16T08:59:38+01:00">16/01/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		La petite nouveauté du jour, un comparateur de prix pour les chaussures de sports : Route, Trail, Marche et même Basket. Classement par 
+<a class="moretag" href="https://www.trailrunner.fr/2024/08/16/comparateur-de-chaussures-de-sports/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+						
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1833" class="genaral-post-item post-1833 post type-post status-publish format-standard has-post-thumbnail hentry category-comptes-rendus category-infos tag-triathlon">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2025/10/03/mon-aventure-presque-ironman-dans-le-lot/" title="Mon aventure (presque) Ironman dans le Lot"><img width="388" height="220" src="https://www.trailrunner.fr/wp-content/uploads/2025/10/DeWatermark.ai_1759402847830-388x220.jpeg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2025/10/03/mon-aventure-presque-ironman-dans-le-lot/" rel="bookmark">Mon aventure (presque) Ironman dans le Lot</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2025/10/03/mon-aventure-presque-ironman-dans-le-lot/" rel="bookmark"><time class="entry-date published" datetime="2025-10-03T12:45:54+02:00">03/10/2025</time><time class="updated" datetime="2025-10-03T13:10:49+02:00">03/10/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			                        		<span class="comments-link"><a href="https://www.trailrunner.fr/2025/10/03/mon-aventure-presque-ironman-dans-le-lot/#comments">1</a></span>
+            						</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Participer à un triathlon XXL dans le Lot, au cœur du magnifique village de Saint-Cirq Lapopie, c’est un défi hors norme.Entre natation glaciale, 
+<a class="moretag" href="https://www.trailrunner.fr/2025/10/03/mon-aventure-presque-ironman-dans-le-lot/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+			</div><div class="row">			
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1827" class="genaral-post-item post-1827 post type-post status-publish format-standard has-post-thumbnail hentry category-infos tag-entrainement tag-full tag-ironman tag-triathlon">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2025/08/26/progresser-en-triathlon-travailler-ses-points-faibles-en-triathlon-renforcer-ses-points-forts-triathlon-marginal-gains-triathlon/" title="Triathlon : faut-il travailler ses points faibles ou renforcer ses points forts ?"><img width="220" height="220" src="https://www.trailrunner.fr/wp-content/uploads/2025/08/ChatGPT-Image-26-aout-2025-11_09_04.png" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.trailrunner.fr/wp-content/uploads/2025/08/ChatGPT-Image-26-aout-2025-11_09_04.png 1024w, https://www.trailrunner.fr/wp-content/uploads/2025/08/ChatGPT-Image-26-aout-2025-11_09_04-300x300.png 300w, https://www.trailrunner.fr/wp-content/uploads/2025/08/ChatGPT-Image-26-aout-2025-11_09_04-150x150.png 150w, https://www.trailrunner.fr/wp-content/uploads/2025/08/ChatGPT-Image-26-aout-2025-11_09_04-768x768.png 768w" sizes="auto, (max-width: 220px) 100vw, 220px"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2025/08/26/progresser-en-triathlon-travailler-ses-points-faibles-en-triathlon-renforcer-ses-points-forts-triathlon-marginal-gains-triathlon/" rel="bookmark">Triathlon : faut-il travailler ses points faibles ou renforcer ses points forts ?</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2025/08/26/progresser-en-triathlon-travailler-ses-points-faibles-en-triathlon-renforcer-ses-points-forts-triathlon-marginal-gains-triathlon/" rel="bookmark"><time class="entry-date published" datetime="2025-08-26T11:11:21+02:00">26/08/2025</time><time class="updated" datetime="2025-08-26T11:11:23+02:00">26/08/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		En triathlon, chaque athlète se demande un jour : Faut-il consacrer ses entraînements à corriger ses faiblesses ou renforcer ses points forts pour 
+<a class="moretag" href="https://www.trailrunner.fr/2025/08/26/progresser-en-triathlon-travailler-ses-points-faibles-en-triathlon-renforcer-ses-points-forts-triathlon-marginal-gains-triathlon/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+						
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1775" class="genaral-post-item post-1775 post type-post status-publish format-standard has-post-thumbnail hentry category-infos category-non-classe tag-entrainements tag-trails tag-ultratrail">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2025/02/12/preparation-mentale-trail/" title="#5 Préparation mentale en trail : techniques pour gérer le stress et rester motivé."><img width="388" height="194" src="https://www.trailrunner.fr/wp-content/uploads/2025/01/meditation.jpg" class="attachment-featured size-featured wp-post-image" alt="Préparation mentale en trail : techniques pour gérer le stress et booster la motivation" decoding="async" loading="lazy" srcset="https://www.trailrunner.fr/wp-content/uploads/2025/01/meditation.jpg 400w, https://www.trailrunner.fr/wp-content/uploads/2025/01/meditation-300x150.jpg 300w" sizes="auto, (max-width: 388px) 100vw, 388px"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2025/02/12/preparation-mentale-trail/" rel="bookmark">#5 Préparation mentale en trail : techniques pour gérer le stress et rester motivé.</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2025/02/12/preparation-mentale-trail/" rel="bookmark"><time class="entry-date published" datetime="2025-02-12T07:00:37+01:00">12/02/2025</time><time class="updated" datetime="2025-02-12T15:11:35+01:00">12/02/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/yann/">Yann Trailrunner</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Pourquoi la préparation mentale est essentielle en trail ? Le trail running ne repose pas uniquement sur la condition physique. L’aspect mental joue 
+<a class="moretag" href="https://www.trailrunner.fr/2025/02/12/preparation-mentale-trail/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+			</div><div class="row">			
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1638" class="genaral-post-item post-1638 post type-post status-publish format-standard has-post-thumbnail hentry category-infos tag-course-a-pied tag-entrainements tag-trails">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2025/02/05/courir-ou-pedaler-par-grand-froid-preparez-votre-corps/" title="Courir ou pédaler par grand froid : Préparez votre cœur et vos muscles ! ❄️💓"><img width="300" height="200" src="https://www.trailrunner.fr/wp-content/uploads/2025/01/8fc2df21-7e80-42bb-9c0d-c055da99424a-e1737623707689.jpg" class="attachment-featured size-featured wp-post-image" alt="etudes sur les impacts du froid sur la fréquence cardiaque dans le sport" decoding="async" loading="lazy"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2025/02/05/courir-ou-pedaler-par-grand-froid-preparez-votre-corps/" rel="bookmark">Courir ou pédaler par grand froid : Préparez votre cœur et vos muscles ! <img draggable="false" role="img" class="emoji" alt="❄️" src="https://s.w.org/images/core/emoji/17.0.2/svg/2744.svg"><img draggable="false" role="img" class="emoji" alt="💓" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f493.svg"></a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2025/02/05/courir-ou-pedaler-par-grand-froid-preparez-votre-corps/" rel="bookmark"><time class="entry-date published" datetime="2025-02-05T00:05:00+01:00">05/02/2025</time><time class="updated" datetime="2025-01-30T14:08:52+01:00">30/01/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/yann/">Yann Trailrunner</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Quels sont les effets du froid sur la fréquence Cardiaque et les bonnes pratiques en Hiver pour les Coureurs et Cyclistes ? L’hiver, avec ses températures basses et ses conditions climatiques parfois extrêmes, pose un défi particulier aux sportifs.
+<a class="moretag" href="https://www.trailrunner.fr/2025/02/05/courir-ou-pedaler-par-grand-froid-preparez-votre-corps/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+						
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1643" class="genaral-post-item post-1643 post type-post status-publish format-standard has-post-thumbnail hentry category-bons-plans tag-bons-plans tag-codes-reductions tag-reductions tag-soldes">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2025/01/15/codes-et-bons-plans/" title="Codes et bons plans"><img width="377" height="200" src="https://www.trailrunner.fr/wp-content/uploads/2025/01/code-promo-web-e1736949507893.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" loading="lazy"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2025/01/15/codes-et-bons-plans/" rel="bookmark">Codes et bons plans</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2025/01/15/codes-et-bons-plans/" rel="bookmark"><time class="entry-date published" datetime="2025-01-15T14:56:22+01:00">15/01/2025</time><time class="updated" datetime="2025-02-05T09:19:21+01:00">05/02/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Les bons plans et codes de réduction sur les meilleurs sites de sports outdoor que je peux avoir tout au long de l’année. 
+<a class="moretag" href="https://www.trailrunner.fr/2025/01/15/codes-et-bons-plans/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+			</div><div class="row">			
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1381" class="genaral-post-item post-1381 post type-post status-publish format-standard has-post-thumbnail hentry category-bons-plans tag-bons-plans tag-reductions tag-soldes">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2024/11/15/codes-promos-pour-la-fin-d-annee-2/" title="Codes promos pour la fin d’année"><img width="388" height="194" src="https://www.trailrunner.fr/wp-content/uploads/2024/11/f379a40b-5c66-4ec3-8c91-6b56577b68ed-e1736779537330.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.trailrunner.fr/wp-content/uploads/2024/11/f379a40b-5c66-4ec3-8c91-6b56577b68ed-e1736779537330.jpg 400w, https://www.trailrunner.fr/wp-content/uploads/2024/11/f379a40b-5c66-4ec3-8c91-6b56577b68ed-e1736779537330-300x150.jpg 300w" sizes="auto, (max-width: 388px) 100vw, 388px"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2024/11/15/codes-promos-pour-la-fin-d-annee-2/" rel="bookmark">Codes promos pour la fin d’année</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2024/11/15/codes-promos-pour-la-fin-d-annee-2/" rel="bookmark"><time class="entry-date published" datetime="2024-11-15T11:47:48+01:00">15/11/2024</time><time class="updated" datetime="2025-01-16T08:59:25+01:00">16/01/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Avec la fin d'année arrive le black friday et une vague de soldes, bonnes affaires, etc… Je vous liste ci dessous, quelques code 
+<a class="moretag" href="https://www.trailrunner.fr/2024/11/15/codes-promos-pour-la-fin-d-annee-2/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+						
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1383" class="genaral-post-item post-1383 post type-post status-publish format-standard has-post-thumbnail hentry category-infos tag-course-a-pied tag-debutant tag-trails">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2024/10/24/4-quelles-sont-les-meilleures-chaussures-de-trail-running/" title="#4 Quelles sont les meilleures chaussures de trail running ?"><img width="388" height="194" src="https://www.trailrunner.fr/wp-content/uploads/2024/10/cf7db1ad-6b6f-4097-b8aa-89badb50fade-e1736779611474.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.trailrunner.fr/wp-content/uploads/2024/10/cf7db1ad-6b6f-4097-b8aa-89badb50fade-e1736779611474.jpg 400w, https://www.trailrunner.fr/wp-content/uploads/2024/10/cf7db1ad-6b6f-4097-b8aa-89badb50fade-e1736779611474-300x150.jpg 300w" sizes="auto, (max-width: 388px) 100vw, 388px"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2024/10/24/4-quelles-sont-les-meilleures-chaussures-de-trail-running/" rel="bookmark">#4 Quelles sont les meilleures chaussures de trail running ?</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2024/10/24/4-quelles-sont-les-meilleures-chaussures-de-trail-running/" rel="bookmark"><time class="entry-date published" datetime="2024-10-24T09:00:53+02:00">24/10/2024</time><time class="updated" datetime="2025-02-12T15:09:05+01:00">12/02/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Débuter en trail running : un guide pour les néophytes #4&nbsp;Quelles sont les meilleures chaussures de trail running ? Le choix de la 
+<a class="moretag" href="https://www.trailrunner.fr/2024/10/24/4-quelles-sont-les-meilleures-chaussures-de-trail-running/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+			</div><div class="row">			
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1379" class="genaral-post-item post-1379 post type-post status-publish format-standard has-post-thumbnail hentry category-infos tag-course-a-pied tag-debutant tag-trails">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2024/10/24/3-quel-equipement-est-necessaire-pour-pratiquer-le-trail-running-2/" title="#3 Quel équipement est nécessaire pour pratiquer le trail running ?"><img width="388" height="194" src="https://www.trailrunner.fr/wp-content/uploads/2018/04/web-Cimalp-1-e1736779718394.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.trailrunner.fr/wp-content/uploads/2018/04/web-Cimalp-1-e1736779718394.jpg 400w, https://www.trailrunner.fr/wp-content/uploads/2018/04/web-Cimalp-1-e1736779718394-300x150.jpg 300w" sizes="auto, (max-width: 388px) 100vw, 388px"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2024/10/24/3-quel-equipement-est-necessaire-pour-pratiquer-le-trail-running-2/" rel="bookmark">#3 Quel équipement est nécessaire pour pratiquer le trail running ?</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2024/10/24/3-quel-equipement-est-necessaire-pour-pratiquer-le-trail-running-2/" rel="bookmark"><time class="entry-date published" datetime="2024-10-24T09:00:53+02:00">24/10/2024</time><time class="updated" datetime="2025-02-12T15:11:20+01:00">12/02/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Débuter en trail running : un guide pour les néophytes #3 Quel équipement est nécessaire pour pratiquer le trail running ? L’équipement pour 
+<a class="moretag" href="https://www.trailrunner.fr/2024/10/24/3-quel-equipement-est-necessaire-pour-pratiquer-le-trail-running-2/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+						
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1377" class="genaral-post-item post-1377 post type-post status-publish format-standard has-post-thumbnail hentry category-infos tag-course-a-pied tag-debutant tag-trails">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2024/10/24/comment-debuter-en-trail-running-si-je-n-ai-jamais-couru-dans-la-nature/" title="#2 Comment débuter en trail running si je n’ai jamais couru dans la nature ?"><img width="388" height="194" src="https://www.trailrunner.fr/wp-content/uploads/2024/10/863e311e-f1cc-49b1-ab63-4d74e5c3af14-e1736857470238.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.trailrunner.fr/wp-content/uploads/2024/10/863e311e-f1cc-49b1-ab63-4d74e5c3af14-e1736857470238.jpg 400w, https://www.trailrunner.fr/wp-content/uploads/2024/10/863e311e-f1cc-49b1-ab63-4d74e5c3af14-e1736857470238-300x150.jpg 300w" sizes="auto, (max-width: 388px) 100vw, 388px"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2024/10/24/comment-debuter-en-trail-running-si-je-n-ai-jamais-couru-dans-la-nature/" rel="bookmark">#2 Comment débuter en trail running si je n’ai jamais couru dans la nature ?</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2024/10/24/comment-debuter-en-trail-running-si-je-n-ai-jamais-couru-dans-la-nature/" rel="bookmark"><time class="entry-date published" datetime="2024-10-24T09:00:53+02:00">24/10/2024</time><time class="updated" datetime="2025-02-12T15:09:57+01:00">12/02/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Débuter en trail running : un guide pour les néophytes #2 Comment débuter en trail running si je n’ai jamais couru dans la 
+<a class="moretag" href="https://www.trailrunner.fr/2024/10/24/comment-debuter-en-trail-running-si-je-n-ai-jamais-couru-dans-la-nature/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+			</div><div class="row">			
+				<div class="col-xs-12 col-sm-6 col-md-6">
+<article id="post-1374" class="genaral-post-item post-1374 post type-post status-publish format-standard has-post-thumbnail hentry category-infos tag-course-a-pied tag-debutant tag-trails">
+			<figure class="genpost-featured-image">
+			<a href="https://www.trailrunner.fr/2024/10/17/qu-est-ce-que-le-trail-running/" title="#1 Qu’est-ce que le trail running et en quoi est-il différent de la course sur route ?"><img width="388" height="194" src="https://www.trailrunner.fr/wp-content/uploads/2024/10/dfca2951-906f-4c2f-9928-bbd0c7ac14de-e1736857756512.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://www.trailrunner.fr/wp-content/uploads/2024/10/dfca2951-906f-4c2f-9928-bbd0c7ac14de-e1736857756512.jpg 400w, https://www.trailrunner.fr/wp-content/uploads/2024/10/dfca2951-906f-4c2f-9928-bbd0c7ac14de-e1736857756512-300x150.jpg 300w" sizes="auto, (max-width: 388px) 100vw, 388px"></a>
+		</figure>
+	
+	<header class="genpost-entry-header">
+		<h2 class="genpost-entry-title entry-title"><a href="https://www.trailrunner.fr/2024/10/17/qu-est-ce-que-le-trail-running/" rel="bookmark">#1 Qu’est-ce que le trail running et en quoi est-il différent de la course sur route ?</a></h2>
+					<div class="genpost-entry-meta">
+				<span class="posted-on"><a href="https://www.trailrunner.fr/2024/10/17/qu-est-ce-que-le-trail-running/" rel="bookmark"><time class="entry-date published" datetime="2024-10-17T10:03:47+02:00">17/10/2024</time><time class="updated" datetime="2025-02-12T15:10:29+01:00">12/02/2025</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.trailrunner.fr/author/admintr/">Yann</a></span></span>			    			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="genpost-entry-content">
+		Débuter en trail running : un guide pour les néophytes Je commence une série de 10 articles sur le trail running, étonnant ?. 
+<a class="moretag" href="https://www.trailrunner.fr/2024/10/17/qu-est-ce-que-le-trail-running/"> [...]</a>			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</div>			
+						
+			<div class="col-xs-12 col-sm-12 col-md-12">
+					<nav class="navigation paging-navigation" role="navigation">
+		<h2 class="screen-reader-text">Posts navigation</h2>
+			<ul class="page-numbers">
+	<li><span aria-current="page" class="page-numbers current">1</span></li>
+	<li><a class="page-numbers" href="https://www.trailrunner.fr/page/2/">2</a></li>
+	<li><a class="page-numbers" href="https://www.trailrunner.fr/page/3/">3</a></li>
+	<li><a class="page-numbers" href="https://www.trailrunner.fr/page/4/">4</a></li>
+	<li><span class="page-numbers dots">…</span></li>
+	<li><a class="page-numbers" href="https://www.trailrunner.fr/page/28/">28</a></li>
+	<li><a class="next page-numbers" href="https://www.trailrunner.fr/page/2/">Next <span class="meta-nav-next"></span></a></li>
+</ul>
+	</nav><!-- .navigation -->
+				</div>
+		</div><!-- .row -->
+
+		
+		</main>

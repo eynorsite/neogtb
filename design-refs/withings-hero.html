@@ -1,0 +1,457 @@
+<!--
+  SOURCE  : https://www.withings.com/fr/fr/
+  SECTION : main > section:first-of-type, .hero
+  LABEL   : Withings — objets connectés santé, design premium Apple-like
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.withings.com.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : sans-serif · Aeonik · Times
+  Couleurs    : rgb(51, 51, 51) · rgba(255, 255, 255, 0.8) · rgb(68, 68, 68) · rgb(238, 238, 238)
+  Border-r    : 5px · 0px 0px 16px 16px · 8px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px"
+  },
+  "div[1]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "flex",
+    "line-height": "22.8571px"
+  },
+  "div[2]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgb(15, 15, 15)",
+    "padding": "64px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "flex",
+    "line-height": "22.8571px"
+  },
+  "div[3]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 48px",
+    "margin": "0px 120px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px",
+    "max-width": "1200px"
+  },
+  "p[4]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "18px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 16px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block"
+  },
+  "h1[5]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "73.978px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 16px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "83.2253px"
+  },
+  "span[6]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "73.978px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "83.2253px"
+  },
+  "p[7]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "22.7812px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "25.6289px"
+  },
+  "span[8]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "22.7812px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "25.6289px"
+  },
+  "p[9]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "24px 0px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px"
+  },
+  "a[10]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(15, 15, 15)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "16px 24px",
+    "border": "0px none rgb(15, 15, 15)",
+    "border-radius": "16px",
+    "gap": "8px",
+    "display": "inline-flex",
+    "line-height": "19px"
+  },
+  "div[14]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgb(15, 15, 15)",
+    "padding": "64px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "flex",
+    "line-height": "22.8571px"
+  },
+  "div[15]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 48px",
+    "margin": "0px 120px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px",
+    "max-width": "1200px"
+  },
+  "p[16]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "14.2222px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "4px 8px",
+    "margin": "0px 0px 16px",
+    "border": "1px solid rgb(255, 255, 255)",
+    "border-radius": "4px",
+    "display": "inline-block"
+  },
+  "h1[17]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "73.978px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 16px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "83.2253px"
+  },
+  "span[18]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "73.978px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "83.2253px"
+  },
+  "p[19]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "22.7812px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "25.6289px"
+  },
+  "span[20]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "22.7812px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "25.6289px"
+  },
+  "p[21]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "24px 0px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px"
+  },
+  "a[22]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(15, 15, 15)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "16px 24px",
+    "border": "0px none rgb(15, 15, 15)",
+    "border-radius": "16px",
+    "gap": "8px",
+    "display": "inline-flex",
+    "line-height": "19px"
+  },
+  "div[26]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgb(15, 15, 15)",
+    "padding": "64px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "flex",
+    "line-height": "22.8571px"
+  },
+  "div[27]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 48px",
+    "margin": "0px 120px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px",
+    "max-width": "1200px"
+  },
+  "p[28]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "14.2222px",
+    "font-weight": "400",
+    "color": "rgb(103, 132, 254)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "4px 8px",
+    "margin": "0px 0px 16px",
+    "border": "1px solid rgb(103, 132, 254)",
+    "border-radius": "4px",
+    "display": "inline-block"
+  },
+  "h1[29]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "73.978px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 16px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "83.2253px"
+  },
+  "span[30]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "73.978px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "83.2253px"
+  },
+  "p[31]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "22.7812px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "25.6289px"
+  },
+  "span[32]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "22.7812px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "25.6289px"
+  },
+  "p[33]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "24px 0px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px"
+  },
+  "a[34]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(15, 15, 15)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "16px 24px",
+    "border": "0px none rgb(15, 15, 15)",
+    "border-radius": "16px",
+    "gap": "8px",
+    "display": "inline-flex",
+    "line-height": "19px"
+  },
+  "div[38]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgb(15, 15, 15)",
+    "padding": "64px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "flex",
+    "line-height": "22.8571px"
+  },
+  "div[39]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 48px",
+    "margin": "0px 120px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px",
+    "max-width": "1200px"
+  },
+  "p[40]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "14.2222px",
+    "font-weight": "400",
+    "color": "rgb(197, 160, 42)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "4px 8px",
+    "margin": "0px 0px 16px",
+    "border": "1px solid rgb(197, 160, 42)",
+    "border-radius": "4px",
+    "display": "inline-block"
+  },
+  "h1[41]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "73.978px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 16px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "83.2253px"
+  },
+  "span[42]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "73.978px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "83.2253px"
+  },
+  "p[43]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "22.7812px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "25.6289px"
+  },
+  "span[44]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "22.7812px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline",
+    "line-height": "25.6289px"
+  },
+  "p[45]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "24px 0px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "22.8571px"
+  },
+  "a[46]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(15, 15, 15)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "16px 24px",
+    "border": "0px none rgb(15, 15, 15)",
+    "border-radius": "16px",
+    "gap": "8px",
+    "display": "inline-flex",
+    "line-height": "19px"
+  },
+  "div[50]": {
+    "font-family": "Aeonik, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 16px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "flex",
+    "line-height": "22.8571px",
+    "max-width": "1800px"
+  }
+}
+-->
+<section class="swiper-heroes" data-component="swiper-heros"><div class="swiper_hero swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" data-swiper="heroHeader"><div class="swiper-wrapper" id="swiper-wrapper-c41ad18839c69c27" aria-live="off">  <div class="swiper-slide heroHeader bg_overlay swiper-slide-active" data-id="" data-position="center" role="group" aria-label="1 / 4">  <div class="section_container txt_center">  <p class="txt_color_white txt_body_large margin_bottom_4 eyebrow">Offres de printemps</p> <h1 class="txt_headline txt_color_white margin_bottom_4"><span>Jusqu'à 80 € offerts sur nos incontournables</span></h1>  <p class="txt_subtitle description txt_color_white opacity_70"><span>Votre santé prend forme cette saison</span></p>   <p class="margin_top_6  justify_center">       <a class="btn_primary_reversed" href="/fr/fr/store">Découvrir</a>    </p>  </div>   <figure>  <video autoplay="" muted="" loop="" playsinline=""><source src="https://media.withings.com/web/images/homepage/hero-video-spring.mp4" type="video/mp4"></video>  </figure>   </div>  <div class="swiper-slide heroHeader bg_overlay swiper-slide-next" data-id="" data-position="center" role="group" aria-label="2 / 4">  <div class="section_container txt_center"> <p class="badge white  margin_bottom_4">Meilleure vente</p>  <h1 class="txt_headline txt_color_white margin_bottom_4"><span>La station de santé connectée la plus avancée</span></h1>  <p class="txt_subtitle description txt_color_white opacity_70"><span>Body Scan</span></p>   <p class="margin_top_6  justify_center">       <a class="btn_primary_reversed" href="/fr/fr/body-scan">Découvrir</a>    </p>  </div>   <figure>  <video autoplay="" muted="" loop="" playsinline=""><source src="https://media.withings.com/web/images/homepage/hero-body-scan.mp4" type="video/mp4"></video>  </figure>   </div>  <div class="swiper-slide heroHeader bg_overlay" data-id="" data-position="center" role="group" aria-label="3 / 4">  <div class="section_container txt_center"> <p class="badge new  margin_bottom_4">Nouveauté</p>  <h1 class="txt_headline txt_color_white margin_bottom_4"><span>Le premier laboratoire d'analyse d'urine intégré aux toilettes</span></h1>  <p class="txt_subtitle description txt_color_white opacity_70"><span>U-Scan</span></p>   <p class="margin_top_6  justify_center">       <a class="btn_primary_reversed" href="/fr/fr/u-scan">Découvrir</a>    </p>  </div>   <figure>  <video autoplay="" muted="" loop="" playsinline=""><source src="https://media.withings.com/web/images/homepage/hero-u-scan.mp4" type="video/mp4"></video>  </figure>   </div>  <div class="swiper-slide heroHeader bg_overlay" data-id="" data-position="center" role="group" aria-label="4 / 4">  <div class="section_container txt_center"> <p class="badge best  margin_bottom_4">Meilleure vente</p>  <h1 class="txt_headline txt_color_white margin_bottom_4"><span>Restaurez vos nuits. Dynamisez vos journées.</span></h1>  <p class="txt_subtitle description txt_color_white opacity_70"><span>ScanWatch 2</span></p>   <p class="margin_top_6  justify_center">       <a class="btn_primary_reversed" href="/fr/fr/scanwatch-2">Découvrir</a>    </p>  </div>   <figure>  <video autoplay="" muted="" loop="" playsinline=""><source src="https://media.withings.com/web/images/homepage/hero_new_SW2.mp4" type="video/mp4"></video>  </figure>   </div>  </div><div class="swiper-nav"><div class="swiper-btn-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-c41ad18839c69c27" aria-disabled="true"><svg class="symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><polygon points="8 12 9.75 11 7 7 9.75 3 8 2 4 6.92 4 7 4 7.08 8 12"></polygon></svg></div><div class="swiper-btn-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-c41ad18839c69c27" aria-disabled="false"><svg class="symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 14"><polygon points="6 2 4.25 3 7 7 4.25 11 6 12 10 7.08 10 7 10 6.92 6 2"></polygon></svg></div></div><div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span></div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div></section>

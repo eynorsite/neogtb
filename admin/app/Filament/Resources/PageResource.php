@@ -13,6 +13,7 @@ use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class PageResource extends Resource
 {
@@ -20,7 +21,7 @@ class PageResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Contenu';
+    protected static string|\UnitEnum|null $navigationGroup = 'Mon site';
 
     protected static ?string $navigationLabel = 'Pages';
 
@@ -35,52 +36,65 @@ class PageResource extends Resource
             ->components([
                 Tabs::make('Tabs')
                     ->tabs([
-                        Tabs\Tab::make('Page')
+                        Tabs\Tab::make('Informations')
+                            ->icon('heroicon-o-document-text')
                             ->schema([
                                 TextInput::make('name')
                                     ->label('Nom de la page')
+                                    ->helperText('Ce nom apparaît dans la liste de vos pages (pas visible sur le site).')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
 
                                 TextInput::make('slug')
+                                    ->label('Adresse web')
+                                    ->helperText('L\'adresse de la page. Ex : « gtb » donnera neogtb.fr/gtb. Se remplit automatiquement.')
                                     ->required()
                                     ->unique(ignoreRecord: true)
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->prefix('neogtb.fr/'),
 
                                 Toggle::make('is_published')
-                                    ->label('Publiée')
+                                    ->label('Page visible sur le site')
+                                    ->helperText('Désactivez pour masquer cette page aux visiteurs sans la supprimer.')
                                     ->default(true),
 
                                 TextInput::make('order')
-                                    ->label('Ordre')
+                                    ->label('Position dans la liste')
+                                    ->helperText('Numéro pour trier vos pages (0 = en premier).')
                                     ->numeric()
                                     ->default(0),
                             ]),
 
-                        Tabs\Tab::make('SEO')
+                        Tabs\Tab::make('Référencement Google')
+                            ->icon('heroicon-o-magnifying-glass')
                             ->schema([
                                 TextInput::make('meta_title')
-                                    ->label('Meta Title')
+                                    ->label('Titre pour Google')
                                     ->maxLength(70)
-                                    ->helperText('Max 70 caractères'),
+                                    ->helperText('Le titre qui apparaît dans les résultats Google. Max 70 caractères.'),
 
                                 Textarea::make('meta_description')
-                                    ->label('Meta Description')
+                                    ->label('Description pour Google')
                                     ->rows(2)
-                                    ->helperText('Max 160 caractères'),
+                                    ->helperText('Le petit texte sous le titre dans Google. Max 160 caractères.'),
 
                                 TextInput::make('meta_keywords')
-                                    ->label('Meta Keywords'),
+                                    ->label('Mots-clés')
+                                    ->helperText('Mots-clés séparés par des virgules (ex : GTB, bâtiment, énergie).'),
 
                                 TextInput::make('og_title')
-                                    ->label('OG Title'),
+                                    ->label('Titre pour les réseaux sociaux')
+                                    ->helperText('Le titre affiché quand quelqu\'un partage votre page sur LinkedIn, Facebook, etc.'),
 
                                 Textarea::make('og_description')
-                                    ->label('OG Description')
+                                    ->label('Description pour les réseaux sociaux')
                                     ->rows(2),
 
                                 FileUpload::make('og_image')
-                                    ->label('OG Image')
+                                    ->label('Image de partage')
+                                    ->helperText('L\'image affichée quand on partage la page sur les réseaux sociaux. Format idéal : 1200x630px.')
                                     ->image()
                                     ->directory('og'),
                             ]),
@@ -117,12 +131,18 @@ class PageResource extends Resource
             ->reorderable('order')
             ->actions([
                 \Filament\Actions\Action::make('edit_content')
-                    ->label('Contenu')
+                    ->label('Modifier le contenu')
                     ->icon('heroicon-o-pencil-square')
                     ->color('success')
                     ->url(fn ($record) => url('/admin/pages/' . $record->id . '/bricks-editor')),
                 \Filament\Actions\EditAction::make()
-                    ->label('Paramètres'),
+                    ->label('Réglages de la page'),
+                \Filament\Actions\Action::make('viewOnSite')
+                    ->label('Voir sur le site')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->color('gray')
+                    ->url(fn ($record) => "https://neogtb.fr/{$record->slug}", shouldOpenInNewTab: true)
+                    ->visible(fn ($record) => $record->is_published),
             ])
             ->bulkActions([
                 \Filament\Actions\DeleteBulkAction::make(),

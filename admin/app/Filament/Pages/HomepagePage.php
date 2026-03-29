@@ -13,11 +13,13 @@ class HomepagePage extends Page
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-home';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Contenu';
+    protected static string|\UnitEnum|null $navigationGroup = 'Mon site';
 
     protected static ?string $navigationLabel = 'Page d\'accueil';
 
     protected static ?string $title = 'Page d\'accueil — Hero';
+
+    protected static ?string $slug = 'homepage';
 
     protected static ?int $navigationSort = 1;
 
@@ -72,15 +74,26 @@ class HomepagePage extends Page
         }
     }
 
+    public function updatedHeroImage(): void
+    {
+        $this->validate([
+            'hero_image' => 'image|max:10240',
+        ]);
+    }
+
     public function save(): void
     {
         $path = $this->getJsonPath();
         $imagePath = $this->current_image;
 
         if ($this->hero_image) {
-            $filename = 'hero-neogtb-' . time() . '.' . $this->hero_image->getClientOriginalExtension();
-            $destination = base_path('../public/images/');
-            $this->hero_image->move($destination, $filename);
+            $extension = $this->hero_image->getClientOriginalExtension();
+            $filename = 'hero-neogtb-' . time() . '.' . $extension;
+            $destination = base_path('../public/images');
+
+            // Copier le fichier depuis le tmp Livewire vers le dossier public Astro
+            copy($this->hero_image->getRealPath(), $destination . '/' . $filename);
+
             $imagePath = '/images/' . $filename;
             $this->current_image = $imagePath;
             $this->hero_image = null;

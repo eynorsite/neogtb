@@ -1,0 +1,385 @@
+<!--
+  SOURCE  : https://contentsquare.com/fr/
+  SECTION : main > section:first-of-type
+  LABEL   : Contentsquare — UX analytics, licorne française
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de contentsquare.com.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : __Inter_697da2 · __NewEdgeRounded_5045de
+  Couleurs    : rgb(13, 13, 13) · rgb(255, 189, 189) · rgb(255, 255, 255) · rgb(68, 2, 32)
+  Border-r    : 9999px · 2px · 12px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[1]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 48px",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px",
+    "max-width": "1280px"
+  },
+  "div[2]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "gap": "40px normal",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "div[3]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px",
+    "max-width": "470px"
+  },
+  "div[4]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "span[5]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "18.4px"
+  },
+  "span[6]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "20px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "inline",
+    "line-height": "28px"
+  },
+  "h1[7]": {
+    "font-family": "__NewEdgeRounded_5045de, __NewEdgeRounded_Fallback_5045de, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "48px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "32px 0px 0px",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "52.8px",
+    "max-width": "520px"
+  },
+  "div[8]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "16px 0px 0px",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px",
+    "max-width": "480px"
+  },
+  "div[9]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "23.0588px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "32.2824px",
+    "max-width": "100%"
+  },
+  "p[10]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "28px"
+  },
+  "div[11]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "32px 0px 0px",
+    "border": "0px solid rgb(229, 231, 235)",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "a[12]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "div[13]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(205, 50, 70)",
+    "padding": "13px 20px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "128px",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "span[14]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "16px"
+  },
+  "div[15]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "span[16]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "16px"
+  },
+  "a[17]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "div[18]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "13px 20px",
+    "border": "1px solid rgba(255, 255, 255, 0.4)",
+    "border-radius": "128px",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "span[19]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "16px"
+  },
+  "div[20]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "span[21]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "16px"
+  },
+  "div[22]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 0px 24px",
+    "border": "0px solid rgb(229, 231, 235)",
+    "border-radius": "8px",
+    "display": "block",
+    "line-height": "22.4px",
+    "max-width": "586px"
+  },
+  "div[23]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "border-radius": "12px",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[24]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[25]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[26]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[28]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "8px",
+    "border": "1px solid rgb(215, 225, 225)",
+    "border-radius": "9999px",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[29]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(13, 13, 13)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[30]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(13, 13, 13)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[33]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(13, 13, 13)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[36]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(68, 2, 32)",
+    "background-color": "rgb(68, 2, 32)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "border-radius": "0px 0px 12px",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[37]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(68, 2, 32)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[44]": {
+    "font-family": "__Inter_697da2, __Inter_Fallback_697da2, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(68, 2, 32)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(229, 231, 235)",
+    "display": "block",
+    "line-height": "22.4px"
+  }
+}
+-->
+<section id="homepagehero" class="overflow-hidden bg-coral-deep text-white pt-0 pb-0"><div class=""><div class="container space-y-10 md:space-y-[3.75rem]"><div class="grid md:flex md:justify-between md:space-x-6 gap-y-10 md:items-center"><div class="max-w-[29.375rem] md:w-[42%]"><div class="text-card flex flex-col space-y-4 text-left md:text-left items-start  "><span class="text-16 font-medium !leading-[1.15] opacity-80"> <span class="text-20">Au-delà de l’analytics :</span></span><h1 class="text-h2 lg:!mt-8" style="max-width:520px">L’intelligence à l’ère de l’IA</h1><div class="w-full max-w-full" style="max-width:480px"><div class="prose lg:prose-p:text-[1.25rem]  prose-p:leading-[1.4] "><p class="">Connectez les signaux clients sur le web, le mobile, les réseaux sociaux, les conversations et les interactions avec les agents et donnez à vos équipes les insights IA dont elles ont besoin pour améliorer les expériences et booster la croissance.</p></div></div><div class="!mt-5 flex flex-row flex-wrap items-center gap-3 md:gap-4 md:!mt-8"><a class="link-element group inline-flex product-tour" href="/fr-fr/presentation-produit/"><div class="button group relative inline-flex justify-center overflow-hidden whitespace-nowrap rounded-[8rem] px-4 py-[0.6875rem] text-center transition-[background-color,color,opacity,border] duration-300 md:px-5 md:py-[.8125rem]  border border-transparent bg-coral-shade text-white hover:bg-coral-dark"><span class="button-type transition-transform duration-200 group-hover:-translate-y-10">Regarder une démo</span><div class="absolute inset-0 flex translate-y-full transform items-center justify-center transition-transform duration-200 group-hover:translate-y-0" aria-hidden="true"><span class="button-type">Regarder une démo</span></div></div></a><a class="link-element group inline-flex request-demo" href="/fr-fr/demander-une-demo/"><div class="button group relative inline-flex justify-center overflow-hidden whitespace-nowrap rounded-[8rem] px-4 py-[0.6875rem] text-center transition-[background-color,color,opacity,border] duration-300 md:px-5 md:py-[.8125rem]  border border-white/40  text-white hover:bg-white hover:border-white hover:text-black"><span class="button-type transition-transform duration-200 group-hover:-translate-y-10">Demander une démo</span><div class="absolute inset-0 flex translate-y-full transform items-center justify-center transition-transform duration-200 group-hover:translate-y-0" aria-hidden="true"><span class="button-type">Demander une démo</span></div></div></a></div></div></div><div class="relative overflow-hidden rounded-lg 544/550 md:w-[52%] md:max-w-[36.625rem]"><div class="w-full relative h-full overflow-hidden rounded-lg lg:rounded-xl mr-auto" style="aspect-ratio:544/550"><div class="absolute inset-0 h-full w-full"><div class="relative h-full w-full will-change-transform" style="opacity: 1;"><div class="h-full w-full max-lg:pointer-events-none"><canvas width="586" height="592" style="vertical-align: top; width: 586px; height: 592px;"></canvas></div></div><div tabindex="0" role="button" aria-label="Mettre en pause l’animation" aria-pressed="false" class="rive-button group absolute bottom-5 z-20 h-8 w-8 overflow-hidden rounded-full border border-grey-pastel bg-white p-2 transition-colors duration-300 hover:border-coral-shade right-5"><div class="relative h-full w-full text-black"><div class="absolute inset-0 transition-transform duration-200 translate-y-0"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 14 14" fill="none"><path d="M11.8129 2.62455V11.3749C11.8129 11.607 11.7207 11.8295 11.5566 11.9936C11.3925 12.1577 11.1699 12.2499 10.9378 12.2499H8.75026C8.51819 12.2499 8.29562 12.1577 8.13152 11.9936C7.96742 11.8295 7.87523 11.607 7.87523 11.3749V2.62455C7.87523 2.39247 7.96742 2.1699 8.13152 2.0058C8.29562 1.8417 8.51819 1.74951 8.75026 1.74951H10.9378C11.1699 1.74951 11.3925 1.8417 11.5566 2.0058C11.7207 2.1699 11.8129 2.39247 11.8129 2.62455ZM5.25012 1.74951H3.06253C2.83046 1.74951 2.60789 1.8417 2.44379 2.0058C2.27969 2.1699 2.1875 2.39247 2.1875 2.62455V11.3749C2.1875 11.607 2.27969 11.8295 2.44379 11.9936C2.60789 12.1577 2.83046 12.2499 3.06253 12.2499H5.25012C5.4822 12.2499 5.70476 12.1577 5.86887 11.9936C6.03297 11.8295 6.12516 11.607 6.12516 11.3749V2.62455C6.12516 2.39247 6.03297 2.1699 5.86887 2.0058C5.70476 1.8417 5.4822 1.74951 5.25012 1.74951Z" fill="currentColor"></path></svg></div><div class="absolute inset-0 transition-transform duration-200 translate-y-8"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" class=""><path d="M20.7775 11.5841L5.7775 1.58407C5.7022 1.53384 5.61467 1.50498 5.52426 1.50059C5.43384 1.4962 5.34393 1.51643 5.26412 1.55914C5.1843 1.60184 5.11758 1.66541 5.07106 1.74307C5.02455 1.82073 4.99999 1.90955 5 2.00007V22.0001C4.99999 22.0906 5.02455 22.1794 5.07106 22.2571C5.11758 22.3347 5.1843 22.3983 5.26412 22.441C5.34393 22.4837 5.43384 22.504 5.52426 22.4996C5.61467 22.4952 5.7022 22.4663 5.7775 22.4161L20.7775 12.4161C20.846 12.3704 20.9021 12.3086 20.941 12.236C20.9798 12.1634 21.0001 12.0824 21.0001 12.0001C21.0001 11.9178 20.9798 11.8367 20.941 11.7642C20.9021 11.6916 20.846 11.6297 20.7775 11.5841Z" fill="currentColor"></path></svg></div></div></div></div></div><div class="absolute z-10 !h-fit false bg-coral-deep text-coral-deep " style="border-radius: 0px 0px 12px; height: 2rem; top: 0px; left: 0px; width: auto; min-width: 0px;"><div class="absolute transition-all delay-150 duration-500" style="height: 12px; width: 12px; transform: rotate(90deg); left: 0px; top: 100%; opacity: 1;"><svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_4240_4255)"><path d="M0 0V100H100C44.8 100 0 55.2 0 0Z" fill="currentColor"></path></g><defs><clipPath id="clip0_4240_4255"><rect width="100" height="100" fill="currentColor"></rect></clipPath></defs></svg></div><div class="absolute transition-all delay-150 duration-500" style="height: 12px; width: 12px; transform: rotate(90deg); left: 100%; top: 0px; opacity: 1;"><svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_4240_4255)"><path d="M0 0V100H100C44.8 100 0 55.2 0 0Z" fill="currentColor"></path></g><defs><clipPath id="clip0_4240_4255"><rect width="100" height="100" fill="currentColor"></rect></clipPath></defs></svg></div><div class="aspect-[41/21] h-8 md:h-[2.625rem]"></div></div><div class="absolute z-10 !h-fit false bg-coral-deep text-coral-deep " style="border-radius: 12px 0px 0px; height: 2rem; bottom: 0px; right: 0px; width: auto; min-width: 0px;"><div class="absolute transition-all delay-150 duration-500" style="height: 12px; width: 12px; transform: rotate(-90deg); right: 0px; bottom: 100%; opacity: 1;"><svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_4240_4255)"><path d="M0 0V100H100C44.8 100 0 55.2 0 0Z" fill="currentColor"></path></g><defs><clipPath id="clip0_4240_4255"><rect width="100" height="100" fill="currentColor"></rect></clipPath></defs></svg></div><div class="absolute transition-all delay-150 duration-500" style="height: 12px; width: 12px; transform: rotate(-90deg); right: 100%; bottom: 0px; opacity: 1;"><svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_4240_4255)"><path d="M0 0V100H100C44.8 100 0 55.2 0 0Z" fill="currentColor"></path></g><defs><clipPath id="clip0_4240_4255"><rect width="100" height="100" fill="currentColor"></rect></clipPath></defs></svg></div><div class="aspect-[5/1] h-6 md:h-8"></div></div></div></div><div class="space-y-5 md:space-y-8"><div class="shrink-0 space-y-5 md:space-y-4"><h3 class="relative z-[12] font-medium text-18 text-center">3 000 marques et + 1,3&nbsp;million de sites nous font confiance </h3></div><div class="logo-marquee w-full flex-1 space-y-5 overflow-hidden max-md:max-w-[calc(100vw-3rem)] md:w-auto md:space-y-4 max-md:max-w-[calc(100vw-3rem)] w-full md:!space-y-10"><div class="-ml-8 flex items-center justify-between md:min-h-10 min-h-[30px]"><div class="flex items-center justify-center pl-8" style="width: 100%; aspect-ratio: 92 / 26; opacity: 1; transform: none;"><img alt="Moneyfarm" loading="lazy" width="175" height="36" decoding="async" data-nimg="1" class="h-full w-full scale-90 object-contain sm:scale-100 md:max-w-[90%] max-h-[20px]" srcset="//images.ctfassets.net/gwbpo1m641r7/2rKhoPzeQuwsK5vmSRhXzB/f8485b4efafbfbc79f2296002eb3bedf/moneyfarm-white.svg?w=256&amp;q=100&amp;fit=fill 1x, //images.ctfassets.net/gwbpo1m641r7/2rKhoPzeQuwsK5vmSRhXzB/f8485b4efafbfbc79f2296002eb3bedf/moneyfarm-white.svg?w=384&amp;q=100&amp;fit=fill 2x" src="//images.ctfassets.net/gwbpo1m641r7/2rKhoPzeQuwsK5vmSRhXzB/f8485b4efafbfbc79f2296002eb3bedf/moneyfarm-white.svg?w=384&amp;q=100&amp;fit=fill" style="color: transparent;"></div><div class="flex items-center justify-center pl-8" style="width: 100%; aspect-ratio: 92 / 26; opacity: 1; transform: none;"><img alt="Bose" loading="lazy" width="127" height="17" decoding="async" data-nimg="1" class="h-full w-full scale-90 object-contain sm:scale-100 md:max-w-[90%] max-h-[20px]" srcset="//images.ctfassets.net/gwbpo1m641r7/2JgTPg23XQWeVpooWB4YjG/7f13f680c13c176c9d08462757e838fe/Bose_logo_1.svg?w=128&amp;q=100&amp;fit=fill 1x, //images.ctfassets.net/gwbpo1m641r7/2JgTPg23XQWeVpooWB4YjG/7f13f680c13c176c9d08462757e838fe/Bose_logo_1.svg?w=256&amp;q=100&amp;fit=fill 2x" src="//images.ctfassets.net/gwbpo1m641r7/2JgTPg23XQWeVpooWB4YjG/7f13f680c13c176c9d08462757e838fe/Bose_logo_1.svg?w=256&amp;q=100&amp;fit=fill" style="color: transparent;"></div><div class="flex items-center justify-center pl-8" style="width: 100%; aspect-ratio: 92 / 26; opacity: 1; transform: none;"><img alt="Toyota" loading="lazy" width="299" height="41" decoding="async" data-nimg="1" class="h-full w-full scale-90 object-contain sm:scale-100 md:max-w-[90%] max-h-[20px]" srcset="//images.ctfassets.net/gwbpo1m641r7/3kAWFpPl4PcfeLnZ03e00G/c33e606ab8a556220479fdb81b86f0b5/Toyota-Logo-White.svg?w=384&amp;q=100&amp;fit=fill 1x, //images.ctfassets.net/gwbpo1m641r7/3kAWFpPl4PcfeLnZ03e00G/c33e606ab8a556220479fdb81b86f0b5/Toyota-Logo-White.svg?w=640&amp;q=100&amp;fit=fill 2x" src="//images.ctfassets.net/gwbpo1m641r7/3kAWFpPl4PcfeLnZ03e00G/c33e606ab8a556220479fdb81b86f0b5/Toyota-Logo-White.svg?w=640&amp;q=100&amp;fit=fill" style="color: transparent;"></div><div class="flex items-center justify-center pl-8" style="width: 100%; aspect-ratio: 92 / 26; opacity: 1; transform: none;"><img alt="Nespresso" loading="lazy" width="408" height="74" decoding="async" data-nimg="1" class="h-full w-full scale-90 object-contain sm:scale-100 md:max-w-[90%] max-h-[20px]" srcset="//images.ctfassets.net/gwbpo1m641r7/10MckBrGYj6uyYG9hXc1bv/7aeff25fcb5f9d068cb2361361934722/Nespresso.svg?w=640&amp;q=100&amp;fit=fill 1x, //images.ctfassets.net/gwbpo1m641r7/10MckBrGYj6uyYG9hXc1bv/7aeff25fcb5f9d068cb2361361934722/Nespresso.svg?w=828&amp;q=100&amp;fit=fill 2x" src="//images.ctfassets.net/gwbpo1m641r7/10MckBrGYj6uyYG9hXc1bv/7aeff25fcb5f9d068cb2361361934722/Nespresso.svg?w=828&amp;q=100&amp;fit=fill" style="color: transparent;"></div></div></div></div></div></div></section>

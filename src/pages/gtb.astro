@@ -1,28 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Qu'est-ce que la GTB ? — Guide complet" description="Tout comprendre sur la Gestion Technique du Bâtiment (GTB) : définition, niveaux EN 15232, protocoles BACnet/KNX/Modbus, cadre réglementaire (décret BACS, décret tertiaire, RE2020).">
+<Layout title="Qu'est-ce que la GTB ? Définition, niveaux EN 15232 et obligations 2027" description="Guide complet sur la Gestion Technique du Bâtiment : définition, 4 niveaux de performance EN 15232, protocoles BACnet/KNX/Modbus, décret BACS et obligations réglementaires. Mis à jour 2026." breadcrumbs={[{label: "Comprendre"}, {label: "GTB"}]}>
 
   <!-- ==================== HERO ==================== -->
-  <section class="hero-lum">
-    <div class="hero-lum-mesh"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
-    <div class="hero-lum-grid"></div>
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
-      <div class="max-w-2xl">
-        <p class="eyebrow">Comprendre</p>
-        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px;">
-          Qu'est-ce que la <span class="accent">GTB</span> ?
+  <section class="hero-img" style="position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden;">
+    <img
+      src="/images/hero-gtb.webp"
+      alt="Poste de supervision GTB — écrans de contrôle et alertes bâtiment"
+      loading="eager"
+      fetchpriority="high"
+      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    />
+    <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%);"></div>
+
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="width: 100%;">
+      <div style="max-width: 540px;">
+        <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.15); margin-bottom: 24px;">
+          Comprendre
+        </p>
+        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; color: #fff;">
+          Qu'est-ce que la <span style="color: #4ade80;">GTB</span> ?
         </h1>
-        <p style="font-size: 18px; color: var(--color-dark-500); line-height: 1.7; max-width: 560px;">
+        <p style="font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 480px;">
           La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment — du chauffage à l'éclairage, en passant par la ventilation et le contrôle d'accès.
         </p>
         <div style="margin-top: 24px; display: flex; gap: 8px;">
-          <span class="tag tag-gtb">Bâtiment intelligent</span>
-          <span class="tag tag-reglementation">EN 15232</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">Bâtiment intelligent</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">EN 15232</span>
         </div>
       </div>
     </div>
@@ -33,13 +40,13 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-[760px] mx-auto px-6 md:px-10">
       <div class="reveal" x-data x-intersect.once="$el.classList.add('visible')">
         <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 20px;">Définition et rôle de la GTB</h2>
-        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
           La <strong style="color: var(--color-dark-900); font-weight: 500;">Gestion Technique du Bâtiment</strong>, couramment abrégée GTB et connue en anglais sous le terme <em>Building Management System (BMS)</em>, est un système informatique qui centralise la supervision et le pilotage de tous les lots techniques d'un bâtiment.
         </p>
-        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
           Elle collecte en temps réel les données issues de capteurs (température, hygrométrie, luminosité, présence, qualité de l'air, comptage énergétique) et transmet des commandes aux actionneurs pour maintenir les conditions de confort tout en réduisant la consommation d'énergie.
         </p>
-        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 24px;">
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 24px;">
           Contrairement à une simple régulation locale, la GTB offre une <strong style="color: var(--color-dark-900); font-weight: 500;">vision globale du bâtiment</strong>. C'est cette capacité d'interopérabilité entre systèmes qui distingue une GTB d'un simple automate de régulation.
         </p>
 
@@ -98,27 +105,27 @@ import Layout from '../layouts/Layout.astro';
         <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">CVC</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Chauffage, Ventilation, Climatisation</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Régulation des chaudières, PAC, groupes froids, CTA, ventilo-convecteurs. Gestion des consignes par zone, programmation horaire, réduit de nuit, suivi des rendements.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Régulation des chaudières, PAC, groupes froids, CTA, ventilo-convecteurs. Gestion des consignes par zone, programmation horaire, réduit de nuit, suivi des rendements.</p>
         </div>
         <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Éclairage</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Pilotage et gradation</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Pilotage par zone selon présence et luminosité naturelle. Gradation (dimming) via DALI ou KNX. Gestion des circuits de sécurité et d'éclairage extérieur.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Pilotage par zone selon présence et luminosité naturelle. Gradation (dimming) via DALI ou KNX. Gestion des circuits de sécurité et d'éclairage extérieur.</p>
         </div>
         <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Protection solaire</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Stores et BSO</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Gestion automatisée selon ensoleillement, position du soleil, vent. Interaction CVC essentielle : réduction des apports solaires en été, exploitation en hiver.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Gestion automatisée selon ensoleillement, position du soleil, vent. Interaction CVC essentielle : réduction des apports solaires en été, exploitation en hiver.</p>
         </div>
         <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Sécurité</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Contrôle d'accès et sûreté</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Supervision des lecteurs de badges, détection d'intrusion, SSI. Couplage présence/confort : zone inoccupée = chauffage réduit, éclairage éteint.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Supervision des lecteurs de badges, détection d'intrusion, SSI. Couplage présence/confort : zone inoccupée = chauffage réduit, éclairage éteint.</p>
         </div>
         <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Énergie</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Comptage et suivi énergétique</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Centralisation des compteurs (élec, gaz, eau, calories). Suivi des IPE, détection de dérives, reporting OPERAT pour le décret tertiaire.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Centralisation des compteurs (élec, gaz, eau, calories). Suivi des IPE, détection de dérives, reporting OPERAT pour le décret tertiaire.</p>
         </div>
       </div>
     </div>
@@ -357,17 +364,17 @@ import Layout from '../layouts/Layout.astro';
         <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Obligatoire</div>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Décret BACS</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Impose un système d'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2027 (>70 kW).</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Impose un système d'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2027 (>70 kW).</p>
         </div>
         <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Objectifs</div>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Décret tertiaire</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Réduction progressive de la consommation : –40 % (2030), –50 % (2040), –60 % (2050). Déclaration annuelle sur OPERAT.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Réduction progressive de la consommation : –40 % (2030), –50 % (2040), –60 % (2050). Déclaration annuelle sur OPERAT.</p>
         </div>
         <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Neuf</div>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">RE2020</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Applicable aux bâtiments neufs. Seuils de consommation (Cep) et confort d'été (DH) rendant la GTB quasi indispensable.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Applicable aux bâtiments neufs. Seuils de consommation (Cep) et confort d'été (DH) rendant la GTB quasi indispensable.</p>
         </div>
       </div>
     </div>
@@ -375,7 +382,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ==================== CTA ==================== -->
   <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
-    <img src="/images/hero-gtb-illustration.png" alt="" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
+    <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
@@ -388,5 +395,11 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <RelatedPages links={[
+    { href: "/gtc", title: "GTC : quelle différence avec la GTB ?", description: "Supervision centralisée vs automatisation — comprendre les nuances." },
+    { href: "/solutions", title: "Solutions & Technologies GTB", description: "Protocoles BACnet, KNX, Modbus, capteurs et automates." },
+    { href: "/reglementation", title: "Réglementation GTB en France", description: "Décret BACS, décret tertiaire, RE2020 — calendrier et obligations." },
+  ]} />
 
 </Layout>

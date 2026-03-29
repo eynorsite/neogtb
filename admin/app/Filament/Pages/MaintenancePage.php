@@ -11,7 +11,7 @@ class MaintenancePage extends Page
 {
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Système';
+    protected static string|\UnitEnum|null $navigationGroup = 'Réglages';
 
     protected static ?string $navigationLabel = 'Maintenance';
 

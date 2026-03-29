@@ -1,13 +1,37 @@
 ---
 import '../styles/global.css'
 
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
 interface Props {
   title: string;
   description?: string;
+  ogType?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, any>;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
-const { title, description = "NeoGTB — Le tiers de confiance indépendant de la GTB en France" } = Astro.props;
+const { title, description = "NeoGTB — Le tiers de confiance indépendant de la GTB en France", ogType = "website", ogImage = "https://neogtb.fr/images/og-neogtb.png", jsonLd, breadcrumbs } = Astro.props;
 const currentPath = Astro.url.pathname;
+
+// Build BreadcrumbList schema
+const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://neogtb.fr/" },
+    ...breadcrumbs.map((b, i) => ({
+      "@type": "ListItem",
+      "position": i + 2,
+      "name": b.label,
+      ...(b.href ? { "item": `https://neogtb.fr${b.href}` } : {}),
+    })),
+  ],
+} : null;
 ---
 
 <!DOCTYPE html>
@@ -18,17 +42,26 @@ const currentPath = Astro.url.pathname;
   <meta name="description" content={description} />
   <meta name="theme-color" content="#0F172A" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <!-- Schema.org Organization -->
+  <!-- Schema.org Organization + LocalBusiness -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
     "name": "NeoGTB",
+    "alternateName": "EYNOR",
     "url": "https://neogtb.fr",
     "logo": "https://neogtb.fr/images/logo-neogtb.webp",
-    "description": "Le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France.",
-    "address": { "@type": "PostalAddress", "addressLocality": "Eysines", "postalCode": "33320", "addressCountry": "FR" },
+    "image": "https://neogtb.fr/images/og-neogtb.png",
+    "description": "Conseil indépendant en Gestion Technique du Bâtiment (GTB). Diagnostic gratuit, comparateur de solutions, accompagnement décret BACS.",
+    "founder": { "@type": "Person", "name": "Ulrich Calmo", "jobTitle": "Créateur de la marque NeoGTB" },
+    "address": { "@type": "PostalAddress", "streetAddress": "Eysines", "addressLocality": "Eysines", "addressRegion": "Nouvelle-Aquitaine", "postalCode": "33320", "addressCountry": "FR" },
+    "areaServed": { "@type": "Country", "name": "France" },
+    "knowsAbout": ["GTB", "GTC", "BACnet", "KNX", "Modbus", "EN 15232", "Décret BACS", "Smart Building"],
     "sameAs": ["https://www.linkedin.com/in/ulrich-calmo"]
   })} />
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  {breadcrumbJsonLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />}
+  <!-- Google Search Console — remplacer VOTRE_CODE par le code de vérification -->
+  <!-- <meta name="google-site-verification" content="VOTRE_CODE" /> -->
   <!-- Plausible Analytics — hébergé UE, sans cookies, exempt de consentement CNIL -->
   <script defer data-domain="neogtb.fr" src="https://plausible.io/js/script.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,22 +69,25 @@ const currentPath = Astro.url.pathname;
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <title>{title} — NeoGTB</title>
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content="NeoGTB" />
   <meta property="og:title" content={`${title} — NeoGTB`} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={`https://neogtb.fr${currentPath}`} />
-  <meta property="og:image" content="https://neogtb.fr/images/og-neogtb.png" />
+  <meta property="og:image" content={ogImage} />
   <meta property="og:locale" content="fr_FR" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={`${title} — NeoGTB`} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content="https://neogtb.fr/images/og-neogtb.png" />
+  <meta name="twitter:image" content={ogImage} />
   <!-- Canonical -->
   <link rel="canonical" href={`https://neogtb.fr${currentPath}`} />
 </head>
 <body class="min-h-screen bg-white text-dark-900 antialiased" style="font-family: 'Inter', system-ui, sans-serif;">
+
+  <!-- Skip link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">Aller au contenu principal</a>
 
   <!-- NAV — Premium glassmorphism -->
   <header
@@ -71,8 +107,8 @@ const currentPath = Astro.url.pathname;
       <!-- Desktop Nav -->
       <div class="hidden lg:flex items-center gap-1">
         <!-- Dropdown Comprendre -->
-        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-          <button class="text-[14px] font-medium text-dark-500 hover:text-dark-900 transition-colors duration-200 flex items-center gap-1.5 px-4 py-2 rounded-lg hover:bg-dark-50">
+        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @keydown.escape="open = false">
+          <button @click="open = !open" :aria-expanded="open" class="text-[14px] font-medium text-dark-500 hover:text-dark-900 transition-colors duration-200 flex items-center gap-1.5 px-4 py-2 rounded-lg hover:bg-dark-50 focus:ring-2 focus:ring-accent-500 focus:outline-none">
             Comprendre
             <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
@@ -98,8 +134,8 @@ const currentPath = Astro.url.pathname;
         </div>
 
         <!-- Dropdown Outils -->
-        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-          <button class="text-[14px] font-medium text-dark-500 hover:text-dark-900 transition-colors duration-200 flex items-center gap-1.5 px-4 py-2 rounded-lg hover:bg-dark-50">
+        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @keydown.escape="open = false">
+          <button @click="open = !open" :aria-expanded="open" class="text-[14px] font-medium text-dark-500 hover:text-dark-900 transition-colors duration-200 flex items-center gap-1.5 px-4 py-2 rounded-lg hover:bg-dark-50 focus:ring-2 focus:ring-accent-500 focus:outline-none">
             Outils
             <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
@@ -122,6 +158,7 @@ const currentPath = Astro.url.pathname;
 
         <a href="/blog" class={`text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg ${currentPath.startsWith('/blog') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50'}`}>Perspectives</a>
         <a href="/about" class={`text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg ${currentPath === '/about' ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50'}`}>À propos</a>
+        <a href="/faq" class={`text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg ${currentPath === '/faq' ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50'}`}>FAQ</a>
       </div>
 
       <!-- CTA + Mobile toggle -->
@@ -157,12 +194,31 @@ const currentPath = Astro.url.pathname;
         <div class="my-2 h-px bg-dark-100"></div>
         <a href="/blog" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Perspectives</a>
         <a href="/about" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">À propos</a>
+        <a href="/faq" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">FAQ</a>
         <a href="/audit" class="btn-primary text-center justify-center mt-2 text-[14px]">Diagnostic gratuit</a>
       </div>
     </div>
   </header>
 
-  <main class="pt-24 md:pt-[120px]">
+  <main id="main-content" class="pt-24 md:pt-[120px]">
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <nav aria-label="Fil d'Ariane" class="max-w-[1200px] mx-auto px-6 md:px-10 py-3">
+        <ol style="display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; font-size: 12px; color: #94a3b8;">
+          <li><a href="/" style="color: #94a3b8; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#1B3A5C'" onmouseout="this.style.color='#94a3b8'">Accueil</a></li>
+          {breadcrumbs.map((item, i) => (
+            <>
+              <li aria-hidden="true" style="color: #cbd5e1;">›</li>
+              <li>
+                {item.href && i < breadcrumbs.length - 1
+                  ? <a href={item.href} style="color: #94a3b8; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#1B3A5C'" onmouseout="this.style.color='#94a3b8'">{item.label}</a>
+                  : <span style="color: #475569; font-weight: 500;">{item.label}</span>
+                }
+              </li>
+            </>
+          ))}
+        </ol>
+      </nav>
+    )}
     <slot />
   </main>
 
@@ -172,7 +228,7 @@ const currentPath = Astro.url.pathname;
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
         <!-- Brand + Newsletter -->
         <div class="md:col-span-5">
-          <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-16 w-auto" />
+          <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-16 w-auto" loading="lazy" decoding="async" />
           <p class="mt-5 text-[14px] text-dark-500 max-w-md" style="line-height: 1.7;">
             Le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France. Aucun lien commercial avec les fabricants.
           </p>
@@ -194,6 +250,8 @@ const currentPath = Astro.url.pathname;
               "
             >
               <input type="hidden" name="_form" value="newsletter" />
+              <!-- Honeypot anti-spam -->
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
               <div class="flex gap-2" x-show="!nlSent">
                 <input type="email" name="email" placeholder="votre@email.fr" required class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid var(--color-dark-200); background: var(--color-dark-50);" />
                 <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));">
@@ -239,6 +297,7 @@ const currentPath = Astro.url.pathname;
             <li><a href="/audit" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Diagnostic GTB</a></li>
             <li><a href="/generateur-cee" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Générateur CEE</a></li>
             <li><a href="/contact" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Contact</a></li>
+            <li><a href="/faq" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">FAQ</a></li>
           </ul>
         </div>
 
@@ -350,7 +409,7 @@ const currentPath = Astro.url.pathname;
         setCookie(name, value, days) {
           const d = new Date();
           d.setTime(d.getTime() + (days * 86400000));
-          document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+          document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax;Secure';
         },
 
         getCookie(name) {

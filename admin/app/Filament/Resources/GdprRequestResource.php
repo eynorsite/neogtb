@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GdprRequestResource\Pages;
+use App\Mail\GdprResponseMail;
 use App\Models\GdprRequest;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -12,6 +13,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Mail;
 
 class GdprRequestResource extends Resource
 {
@@ -19,9 +21,9 @@ class GdprRequestResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-shield-check';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'RGPD';
+    protected static string|\UnitEnum|null $navigationGroup = 'Boîte de réception';
 
-    protected static ?string $navigationLabel = 'Demandes RGPD';
+    protected static ?string $navigationLabel = 'Droits visiteurs (RGPD)';
 
     protected static ?string $modelLabel = 'Demande RGPD';
     protected static ?string $pluralModelLabel = 'Demandes RGPD';
@@ -48,16 +50,18 @@ class GdprRequestResource extends Resource
     {
         return $schema
             ->components([
-                Section::make('Demande')
+                Section::make('Ce que demande le visiteur')
+                    ->icon('heroicon-o-shield-check')
+                    ->description('Les visiteurs ont le droit de demander l\'accès, la modification ou la suppression de leurs données. Vous avez 30 jours pour répondre.')
                     ->schema([
                         Select::make('type')
                             ->label('Type de demande')
                             ->options([
-                                'access' => 'Droit d\'accès',
-                                'deletion' => 'Droit à l\'effacement',
-                                'portability' => 'Droit à la portabilité',
-                                'rectification' => 'Droit de rectification',
-                                'opposition' => 'Droit d\'opposition',
+                                'access' => 'Voir ses données',
+                                'deletion' => 'Supprimer ses données',
+                                'portability' => 'Récupérer ses données',
+                                'rectification' => 'Corriger ses données',
+                                'opposition' => 'S\'opposer au traitement',
                             ])
                             ->disabled(),
 
@@ -70,32 +74,34 @@ class GdprRequestResource extends Resource
                             ->disabled(),
 
                         Textarea::make('message')
-                            ->label('Message')
+                            ->label('Sa demande')
                             ->disabled()
                             ->rows(4)
                             ->columnSpanFull(),
                     ])->columns(2),
 
-                Section::make('Traitement')
+                Section::make('Votre réponse')
+                    ->icon('heroicon-o-chat-bubble-left-right')
                     ->schema([
                         Select::make('status')
-                            ->label('Statut')
+                            ->label('Où en est le traitement ?')
                             ->options([
-                                'pending' => 'En attente',
+                                'pending' => 'En attente — pas encore traité',
                                 'processing' => 'En cours de traitement',
-                                'completed' => 'Traitée',
-                                'rejected' => 'Rejetée',
+                                'completed' => 'Terminé',
+                                'rejected' => 'Refusé',
                             ])
                             ->required(),
 
                         Textarea::make('response_content')
-                            ->label('Réponse au demandeur')
+                            ->label('Réponse au visiteur')
                             ->rows(4)
                             ->columnSpanFull()
-                            ->helperText('Cette réponse sera envoyée par email au demandeur.'),
+                            ->helperText('Ce texte sera envoyé par email au visiteur quand vous cliquerez sur « Envoyer réponse ».'),
 
                         Textarea::make('admin_notes')
-                            ->label('Notes internes')
+                            ->label('Notes personnelles')
+                            ->helperText('Visible uniquement par vous.')
                             ->rows(2)
                             ->columnSpanFull(),
                     ]),
@@ -192,6 +198,22 @@ class GdprRequestResource extends Resource
                         ]);
                     })
                     ->visible(fn ($record) => $record->status === 'pending'),
+                \Filament\Actions\Action::make('sendResponse')
+                    ->label('Envoyer réponse')
+                    ->icon('heroicon-o-paper-airplane')
+                    ->color('success')
+                    ->requiresConfirmation()
+                    ->modalHeading('Envoyer la réponse RGPD par email')
+                    ->action(function ($record) {
+                        Mail::to($record->email)->send(new GdprResponseMail($record));
+                        $record->update([
+                            'status' => 'completed',
+                            'processed_at' => now(),
+                            'response_sent_at' => now(),
+                            'processed_by' => auth()->guard('admin')->id(),
+                        ]);
+                    })
+                    ->visible(fn ($record) => filled($record->response_content) && $record->status !== 'completed'),
                 \Filament\Actions\Action::make('markCompleted')
                     ->label('Marquer traitée')
                     ->icon('heroicon-o-check-circle')
@@ -205,7 +227,15 @@ class GdprRequestResource extends Resource
                     })
                     ->visible(fn ($record) => in_array($record->status, ['pending', 'processing'])),
             ])
-            ->bulkActions([]);
+            ->bulkActions([
+                \Filament\Actions\BulkAction::make('markProcessing')
+                    ->label('Prendre en charge')
+                    ->icon('heroicon-o-play')
+                    ->action(fn ($records) => $records->each(fn ($r) => $r->update([
+                        'status' => 'processing',
+                        'processed_by' => auth()->guard('admin')->id(),
+                    ]))),
+            ]);
     }
 
     public static function getPages(): array

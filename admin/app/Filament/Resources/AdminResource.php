@@ -21,7 +21,7 @@ class AdminResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-users';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Système';
+    protected static string|\UnitEnum|null $navigationGroup = 'Réglages';
 
     protected static ?string $navigationLabel = 'Administrateurs';
 
@@ -42,14 +42,17 @@ class AdminResource extends Resource
     {
         return $schema
             ->components([
-                Section::make('Informations')
+                Section::make('Compte utilisateur')
+                    ->description('Gérez les personnes qui ont accès à cet espace d\'administration.')
                     ->schema([
                         TextInput::make('name')
-                            ->label('Nom')
+                            ->label('Nom complet')
                             ->required()
                             ->maxLength(255),
 
                         TextInput::make('email')
+                            ->label('Adresse email')
+                            ->helperText('Sert à se connecter à l\'admin.')
                             ->email()
                             ->required()
                             ->unique(ignoreRecord: true)
@@ -62,27 +65,31 @@ class AdminResource extends Resource
                             ->dehydrated(fn ($state) => filled($state))
                             ->required(fn (string $operation): bool => $operation === 'create')
                             ->minLength(8)
-                            ->helperText('Laisser vide pour ne pas modifier'),
+                            ->helperText('Minimum 8 caractères. Laissez vide pour garder le mot de passe actuel.'),
 
                         Select::make('role')
-                            ->label('Rôle')
+                            ->label('Niveau d\'accès')
+                            ->helperText('Super Admin = tout voir et tout modifier. Lecteur = consultation uniquement.')
                             ->options([
-                                'superadmin' => 'Super Admin',
-                                'admin' => 'Admin',
-                                'editeur' => 'Éditeur',
-                                'lecteur' => 'Lecteur',
+                                'superadmin' => 'Super Admin — accès total',
+                                'admin' => 'Admin — gestion courante',
+                                'editeur' => 'Éditeur — contenu uniquement',
+                                'lecteur' => 'Lecteur — consultation seule',
                             ])
                             ->required()
                             ->default('lecteur'),
 
                         Toggle::make('is_active')
-                            ->label('Compte actif')
+                            ->label('Compte activé')
+                            ->helperText('Désactivez pour bloquer l\'accès sans supprimer le compte.')
                             ->default(true),
 
                         FileUpload::make('avatar')
+                            ->label('Photo de profil')
                             ->image()
                             ->avatar()
                             ->directory('avatars')
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                             ->maxSize(2048),
                     ])->columns(2),
             ]);
@@ -102,8 +109,15 @@ class AdminResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('role')
-                    ->label('Rôle')
+                    ->label('Niveau d\'accès')
                     ->badge()
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'superadmin' => 'Super Admin',
+                        'admin' => 'Admin',
+                        'editeur' => 'Éditeur',
+                        'lecteur' => 'Lecteur',
+                        default => $state,
+                    })
                     ->colors([
                         'danger' => 'superadmin',
                         'warning' => 'admin',
@@ -147,7 +161,20 @@ class AdminResource extends Resource
                     ->requiresConfirmation()
                     ->action(fn ($record) => $record->update(['is_active' => ! $record->is_active])),
             ])
-            ->bulkActions([]);
+            ->bulkActions([
+                \Filament\Actions\BulkAction::make('activate')
+                    ->label('Activer')
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->action(fn ($records) => $records->each->update(['is_active' => true])),
+                \Filament\Actions\BulkAction::make('deactivate')
+                    ->label('Désactiver')
+                    ->icon('heroicon-o-x-circle')
+                    ->color('danger')
+                    ->requiresConfirmation()
+                    ->action(fn ($records) => $records->each->update(['is_active' => false])),
+                \Filament\Actions\DeleteBulkAction::make(),
+            ]);
     }
 
     public static function getPages(): array

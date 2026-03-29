@@ -14,9 +14,9 @@ class SiteSettingsPage extends Page
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cog-6-tooth';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+    protected static string|\UnitEnum|null $navigationGroup = 'Réglages';
 
-    protected static ?string $navigationLabel = 'Paramètres du site';
+    protected static ?string $navigationLabel = 'Paramètres généraux';
 
     protected static ?string $title = 'Paramètres du site';
 

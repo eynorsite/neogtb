@@ -1,29 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Qu'est-ce que la GTC ? — Guide complet" description="Tout comprendre sur la Gestion Technique Centralisée (GTC) : définition, différences avec la GTB, architecture type, protocoles (BACnet, Modbus, OPC-UA) et cas d'usage multi-sites.">
+<Layout title="Qu'est-ce que la GTC ? Différences avec la GTB et cas d'usage" description="Guide complet sur la Gestion Technique Centralisée : définition, différences concrètes avec la GTB, architecture type, protocoles OPC-UA/BACnet/Modbus et supervision multi-sites." breadcrumbs={[{label: "Comprendre"}, {label: "GTC"}]}>
 
   <!-- ==================== HERO ==================== -->
-  <section class="hero-lum">
-    <div class="hero-lum-mesh"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
-    <div class="hero-lum-grid"></div>
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
-      <div class="max-w-2xl">
-        <p class="eyebrow">Comprendre</p>
-        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px;">
-          Qu'est-ce que la <span class="accent">GTC</span> ?
+  <section class="hero-img" style="position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden;">
+    <img
+      src="/images/hero-gtc.webp"
+      alt="Bâtiment tertiaire intelligent — supervision GTC centralisée"
+      loading="eager"
+      fetchpriority="high"
+      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    />
+    <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%);"></div>
+
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="width: 100%;">
+      <div style="max-width: 540px;">
+        <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.15); margin-bottom: 24px;">
+          Comprendre
+        </p>
+        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; color: #fff;">
+          Qu'est-ce que la <span style="color: #4ade80;">GTC</span> ?
         </h1>
-        <p style="font-size: 18px; color: var(--color-dark-500); line-height: 1.7; max-width: 560px;">
+        <p style="font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 480px;">
           La Gestion Technique Centralisée (GTC) désigne le système de supervision qui regroupe la surveillance et le pilotage de tous les équipements techniques d'un ou plusieurs bâtiments sur une interface unique.
         </p>
         <div style="margin-top: 24px; display: flex; gap: 8px;">
-          <span class="tag tag-gtb">Supervision</span>
-          <span class="tag tag-reglementation">Multi-sites</span>
-          <span class="tag tag-protocoles">SCADA</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">Supervision</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">Multi-sites</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">SCADA</span>
         </div>
       </div>
     </div>
@@ -34,13 +41,13 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-[760px] mx-auto px-6 md:px-10">
       <div class="reveal" x-data x-intersect.once="$el.classList.add('visible')">
         <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 20px;">Définition et rôle de la GTC</h2>
-        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
           La <strong style="color: var(--color-dark-900); font-weight: 500;">Gestion Technique Centralisée (GTC)</strong> désigne un système informatique dédié à la supervision des lots techniques d'un patrimoine immobilier. Elle collecte en temps réel les données remontées par les capteurs et automates (températures, états de fonctionnement, comptages énergétiques) et les restitue sur des synoptiques graphiques accessibles depuis un poste central ou un navigateur web.
         </p>
-        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
           Contrairement à un simple tableau de bord, la GTC offre une <strong style="color: var(--color-dark-900); font-weight: 500;">couche de supervision active</strong> : déclenchement d'alarmes en cas de dérive, historisation des mesures pour analyse de tendance, et possibilité d'envoyer des commandes simples aux équipements distants.
         </p>
-        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 24px;">
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 24px;">
           Dans le monde anglo-saxon, elle est souvent assimilée à un système de type <strong style="color: var(--color-dark-900); font-weight: 500;">SCADA</strong> (Supervisory Control And Data Acquisition) appliqué au bâtiment.
         </p>
 
@@ -65,7 +72,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="reveal p-7" x-data x-intersect.once="$el.classList.add('visible')" style="background: white; border-radius: 12px; border: 1px solid var(--color-dark-200);">
           <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">GTB</div>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Gestion Technique du Bâtiment</h3>
-          <ul style="font-size: 14px; color: var(--color-dark-500); line-height: 1.8; list-style: none; padding: 0;">
+          <ul style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6; list-style: none; padding: 0;">
             <li style="margin-bottom: 6px;">→ Périmètre : <strong style="color: var(--color-dark-900); font-weight: 500;">un bâtiment</strong>, tous lots confondus</li>
             <li style="margin-bottom: 6px;">→ Fonction : piloter, réguler et optimiser</li>
             <li style="margin-bottom: 6px;">→ Régulation intégrée (boucles PID, lois d'eau)</li>
@@ -77,7 +84,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="reveal reveal-d1 p-7" x-data x-intersect.once="$el.classList.add('visible')" style="background: white; border-radius: 12px; border: 1px solid var(--color-accent-200); box-shadow: 0 0 0 3px var(--color-accent-50);">
           <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">GTC</div>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Gestion Technique Centralisée</h3>
-          <ul style="font-size: 14px; color: var(--color-dark-500); line-height: 1.8; list-style: none; padding: 0;">
+          <ul style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6; list-style: none; padding: 0;">
             <li style="margin-bottom: 6px;">→ Périmètre : <strong style="color: var(--color-dark-900); font-weight: 500;">plusieurs bâtiments</strong> ou un parc</li>
             <li style="margin-bottom: 6px;">→ Fonction : superviser, centraliser, alerter</li>
             <li style="margin-bottom: 6px;">→ Régulation limitée (marche/arrêt)</li>
@@ -110,27 +117,27 @@ import Layout from '../layouts/Layout.astro';
         <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Temps réel</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Supervision en temps réel</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Affichage continu de l'état des équipements sur des synoptiques graphiques : températures, états CTA, consommations, positions de vannes. Vision synthétique du parc, site par site.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Affichage continu de l'état des équipements sur des synoptiques graphiques : températures, états CTA, consommations, positions de vannes. Vision synthétique du parc, site par site.</p>
         </div>
         <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Alertes</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Gestion des alarmes</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Génération d'alarmes classées par priorité, horodatées et transmises par notification (email, SMS). Journal complet pour analyse de récurrence et identification des équipements problématiques.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Génération d'alarmes classées par priorité, horodatées et transmises par notification (email, SMS). Journal complet pour analyse de récurrence et identification des équipements problématiques.</p>
         </div>
         <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Données</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Historisation et reporting</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Archivage en base de toutes les données collectées. Rapports périodiques (quotidiens, hebdomadaires, mensuels) pour le suivi des consommations et la maintenance préventive.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Archivage en base de toutes les données collectées. Rapports périodiques (quotidiens, hebdomadaires, mensuels) pour le suivi des consommations et la maintenance préventive.</p>
         </div>
         <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Commande</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Pilotage à distance</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Envoi de commandes aux équipements distants : modification de consigne, passage en mode réduit, arrêt forcé. Réduction des déplacements sur site et temps de réaction accéléré.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Envoi de commandes aux équipements distants : modification de consigne, passage en mode réduit, arrêt forcé. Réduction des déplacements sur site et temps de réaction accéléré.</p>
         </div>
         <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-600); margin-bottom: 12px;">Conformité</div>
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Reporting réglementaire</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Collecte des données pour le décret BACS et le décret tertiaire (–40 % en 2030, –50 % en 2040, –60 % en 2050). Rôle central pour démontrer la conformité des bâtiments.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Collecte des données pour le décret BACS et le décret tertiaire (–40 % en 2030, –50 % en 2040, –60 % en 2050). Rôle central pour démontrer la conformité des bâtiments.</p>
         </div>
       </div>
     </div>
@@ -269,17 +276,17 @@ import Layout from '../layouts/Layout.astro';
         <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
           <span class="tag tag-gtb" style="margin-bottom: 14px;">Multi-sites</span>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Parcs immobiliers tertiaires</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Un gestionnaire de patrimoine disposant de plusieurs immeubles de bureaux utilise la GTC pour consolider les données énergétiques, comparer les performances bâtiment par bâtiment et détecter les dérives en temps réel.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Un gestionnaire de patrimoine disposant de plusieurs immeubles de bureaux utilise la GTC pour consolider les données énergétiques, comparer les performances bâtiment par bâtiment et détecter les dérives en temps réel.</p>
         </div>
         <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
           <span class="tag tag-reglementation" style="margin-bottom: 14px;">Campus</span>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Enseignement et santé</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Les campus universitaires ou hospitaliers comprennent de nombreux bâtiments d'âges différents. La GTC offre une vision unifiée, facilite la gestion des programmes horaires et aide au respect du décret tertiaire.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Les campus universitaires ou hospitaliers comprennent de nombreux bâtiments d'âges différents. La GTC offre une vision unifiée, facilite la gestion des programmes horaires et aide au respect du décret tertiaire.</p>
         </div>
         <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
           <span class="tag tag-protocoles" style="margin-bottom: 14px;">Collectivités</span>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Communes et intercommunalités</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Les collectivités gèrent un parc diversifié : écoles, gymnases, médiathèques, bâtiments administratifs. La GTC permet de piloter l'ensemble depuis un poste central et de générer les rapports réglementaires.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Les collectivités gèrent un parc diversifié : écoles, gymnases, médiathèques, bâtiments administratifs. La GTC permet de piloter l'ensemble depuis un poste central et de générer les rapports réglementaires.</p>
         </div>
       </div>
     </div>
@@ -298,17 +305,17 @@ import Layout from '../layouts/Layout.astro';
         <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Obligatoire</div>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Décret BACS</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Impose un système d'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2030 (>70 kW). La GTC assure la remontée des données de conformité.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Impose un système d'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2030 (>70 kW). La GTC assure la remontée des données de conformité.</p>
         </div>
         <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Objectifs</div>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">Décret tertiaire</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Réduction progressive de la consommation : –40 % (2030), –50 % (2040), –60 % (2050). La GTC collecte et historise les données nécessaires à la déclaration annuelle OPERAT.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Réduction progressive de la consommation : –40 % (2030), –50 % (2040), –60 % (2050). La GTC collecte et historise les données nécessaires à la déclaration annuelle OPERAT.</p>
         </div>
         <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
           <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-dark-600); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 14px;">Neuf</div>
           <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 10px;">RE2020</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Applicable aux bâtiments neufs. Seuils de consommation (Cep) et confort d'été (DH) qui rendent la supervision centralisée quasi indispensable pour le suivi de performance.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Applicable aux bâtiments neufs. Seuils de consommation (Cep) et confort d'été (DH) qui rendent la supervision centralisée quasi indispensable pour le suivi de performance.</p>
         </div>
       </div>
     </div>
@@ -316,7 +323,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ==================== CTA ==================== -->
   <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
-    <img src="/images/hero-gtb-illustration.png" alt="" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
+    <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
@@ -329,5 +336,11 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <RelatedPages links={[
+    { href: "/gtb", title: "Qu'est-ce que la GTB ?", description: "Définition, niveaux EN 15232 et cadre réglementaire complet." },
+    { href: "/solutions", title: "Solutions & Technologies", description: "Protocoles de communication et architecture technique." },
+    { href: "/comparateur", title: "Comparateur de solutions GTB", description: "Comparez Schneider, Siemens, Honeywell et 10 autres marques." },
+  ]} />
 
 </Layout>

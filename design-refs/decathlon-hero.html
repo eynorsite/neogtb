@@ -1,0 +1,412 @@
+<!--
+  SOURCE  : https://www.decathlon.fr
+  SECTION : main > section:first-of-type, .hero
+  LABEL   : Decathlon — leader sport France, UX e-commerce référence
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.decathlon.fr.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : Decathlon VF · Arial · Roboto Condensed
+  Couleurs    : rgba(0, 0, 0, 0.8) · rgb(51, 51, 51) · rgb(54, 67, 186) · rgb(82, 110, 122)
+  Border-r    : 5px · 8px · 4px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(0, 0, 0)",
+    "gap": "12px",
+    "display": "flex"
+  },
+  "div[1]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(0, 0, 0)",
+    "gap": "4px",
+    "display": "grid",
+    "grid-template-columns": "434.656px 434.672px 434.656px"
+  },
+  "section[2]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "a[3]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(54, 67, 186)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "div[4]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[5]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[6]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[8]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 0px 40px",
+    "border": "0px solid rgb(0, 0, 0)",
+    "gap": "20px",
+    "display": "flex"
+  },
+  "div[9]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "gap": "8px",
+    "display": "flex",
+    "max-width": "67%"
+  },
+  "h2[10]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "48px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "56.0016px"
+  },
+  "span[11]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "48px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "display": "flow-root",
+    "line-height": "56.0016px"
+  },
+  "div[12]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(0, 0, 0)",
+    "gap": "8px",
+    "display": "flex",
+    "max-width": "100%"
+  },
+  "a[13]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "12px",
+    "font-weight": "500",
+    "color": "rgb(16, 16, 16)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "8px 16px",
+    "border": "1px solid rgb(148, 148, 148)",
+    "border-radius": "999px",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "15.6px"
+  },
+  "section[14]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "a[15]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(54, 67, 186)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "div[16]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[17]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[18]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[20]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 0px 32px",
+    "border": "0px solid rgb(0, 0, 0)",
+    "gap": "20px",
+    "display": "flex"
+  },
+  "div[21]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "gap": "8px",
+    "display": "flex",
+    "max-width": "67%"
+  },
+  "h2[22]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "32px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "38px"
+  },
+  "span[23]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "32px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "display": "flow-root",
+    "line-height": "38px"
+  },
+  "div[24]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(0, 0, 0)",
+    "gap": "8px",
+    "display": "flex",
+    "max-width": "100%"
+  },
+  "a[25]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "12px",
+    "font-weight": "500",
+    "color": "rgb(16, 16, 16)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "8px 16px",
+    "border": "1px solid rgb(148, 148, 148)",
+    "border-radius": "999px",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "15.6px"
+  },
+  "section[26]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "a[27]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(54, 67, 186)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "div[28]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[29]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[30]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "500",
+    "color": "rgb(54, 67, 186)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(54, 67, 186)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[32]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 0px 32px",
+    "border": "0px solid rgb(0, 0, 0)",
+    "gap": "20px",
+    "display": "flex"
+  },
+  "div[33]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "gap": "8px",
+    "display": "flex",
+    "max-width": "67%"
+  },
+  "h2[34]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "32px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "38px"
+  },
+  "span[35]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "32px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "display": "flow-root",
+    "line-height": "38px"
+  },
+  "span[36]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "14px",
+    "font-weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(255, 255, 255)",
+    "display": "flow-root",
+    "line-height": "20.0004px"
+  },
+  "div[37]": {
+    "font-family": "\"Decathlon VF\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px solid rgb(0, 0, 0)",
+    "gap": "8px",
+    "display": "flex",
+    "max-width": "100%"
+  },
+  "a[38]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "12px",
+    "font-weight": "500",
+    "color": "rgb(16, 16, 16)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "8px 16px",
+    "border": "1px solid rgb(148, 148, 148)",
+    "border-radius": "999px",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "15.6px"
+  },
+  "a[39]": {
+    "font-family": "\"Decathlon VF\", Inter, \"Inter Fallback\", sans-serif",
+    "font-size": "12px",
+    "font-weight": "500",
+    "color": "rgb(16, 16, 16)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "8px 16px",
+    "border": "1px solid rgb(148, 148, 148)",
+    "border-radius": "999px",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "15.6px"
+  }
+}
+-->
+<section class="promo-card-grid promo-card-grid--hero"><div class="promo-card-grid__content"></div><div class="grid grid-cols-4 grid-cols-m-8 grid-cols-l-12 grid-cols-xl-12 promo-card-grid__cards promo-card-grid__cards--hero"><section class="promo-card"><a id="_R_b0p5fiv69fivb_" class="vp-link" data-part="link" href="https://www.decathlon.fr/boutiques/c-est-le-printemps" aria-label="Découvrez la sélection printemps"><div class="promo-card__media promo-card__media--large"><div class="aspect-ratio aspect-ratio--16-10"><div class="aspect-ratio__content"><img alt="Les beaux jours arrivent" fetchpriority="high" decoding="async" data-nimg="fill" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="(min-width: 1200px) 75vw,(min-width: 600px) 100vw, 100vw" srcset="https://contents.mediadecathlon.com/s1391020/k$9f694ce16efdb810e62c5aa125444dff/defaut.jpg?format=auto&amp;f=320x0 320w, https://contents.mediadecathlon.com/s1391020/k$9f694ce16efdb810e62c5aa125444dff/defaut.jpg?format=auto&amp;f=640x0 640w, https://contents.mediadecathlon.com/s1391020/k$9f694ce16efdb810e62c5aa125444dff/defaut.jpg?format=auto&amp;f=969x0 969w, https://contents.mediadecathlon.com/s1391020/k$9f694ce16efdb810e62c5aa125444dff/defaut.jpg?format=auto&amp;f=1920x0 1920w, https://contents.mediadecathlon.com/s1391020/k$9f694ce16efdb810e62c5aa125444dff/defaut.jpg?format=auto&amp;f=3000x0 3000w" src="https://contents.mediadecathlon.com/s1391020/k$9f694ce16efdb810e62c5aa125444dff/defaut.jpg?format=auto&amp;f=3000x0"></div></div></div></a><div class="promo-card__content promo-card__content--hero-large"><div class="promo-card__content--text"><h2 class="promo-card__content--text--large vp-title-l"><span> Le plein air, à prix léger</span></h2></div><div class="promo-card__content--cta"><a id="_R_6j0p5fiv69fivb_" class="vp-button vp-button--small vp-button--secondary" aria-busy="false" aria-live="polite" data-part="button" href="https://www.decathlon.fr/boutiques/c-est-le-printemps">Découvrez la sélection printemps</a></div></div></section><section class="promo-card"><a id="_R_d0p5fiv69fivb_" class="vp-link" data-part="link" href="https://www.decathlon.fr/tous-les-sports/running-route/bons-plans-trail" aria-label="J'en profite"><div class="promo-card__media"><div class="aspect-ratio aspect-ratio--16-10"><div class="aspect-ratio__content"><img alt="Running Deals : chaussures de trail running New Balance à 89,99€ au lieu de 119,99€." fetchpriority="high" decoding="async" data-nimg="fill" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="(min-width: 1200px) 25vw,(min-width: 600px) 50vw, 100vw" srcset="https://contents.mediadecathlon.com/s1387184/k$443755196dfcf5e1a1ba2127b9a81c4f/defaut.jpg?format=auto&amp;f=320x0 320w, https://contents.mediadecathlon.com/s1387184/k$443755196dfcf5e1a1ba2127b9a81c4f/defaut.jpg?format=auto&amp;f=640x0 640w, https://contents.mediadecathlon.com/s1387184/k$443755196dfcf5e1a1ba2127b9a81c4f/defaut.jpg?format=auto&amp;f=969x0 969w, https://contents.mediadecathlon.com/s1387184/k$443755196dfcf5e1a1ba2127b9a81c4f/defaut.jpg?format=auto&amp;f=1920x0 1920w, https://contents.mediadecathlon.com/s1387184/k$443755196dfcf5e1a1ba2127b9a81c4f/defaut.jpg?format=auto&amp;f=3000x0 3000w" src="https://contents.mediadecathlon.com/s1387184/k$443755196dfcf5e1a1ba2127b9a81c4f/defaut.jpg?format=auto&amp;f=3000x0"></div></div></div></a><div class="promo-card__content promo-card__content--hero"><div class="promo-card__content--text"><h2 class="vp-title-m"><span> Running deals</span></h2></div><div class="promo-card__content--cta"><a id="_R_6l0p5fiv69fivb_" class="vp-button vp-button--small vp-button--secondary" aria-busy="false" aria-live="polite" data-part="button" href="https://www.decathlon.fr/tous-les-sports/running-route/bons-plans-trail">J'en profite</a></div></div></section><section class="promo-card"><a id="_R_f0p5fiv69fivb_" class="vp-link" data-part="link" href="https://www.decathlon.fr/second-life/buy-back#/product_category" aria-label="Estimez-le"><div class="promo-card__media"><div class="aspect-ratio aspect-ratio--16-10"><div class="aspect-ratio__content"><img alt="Profitez d'un bonus reprise. Jusqu'à 100€ pour un VAE, et 10€ pour vos autres équipements" fetchpriority="high" decoding="async" data-nimg="fill" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" sizes="(min-width: 1200px) 25vw,(min-width: 600px) 50vw, 100vw" srcset="https://contents.mediadecathlon.com/s1389307/k$0e93f7544b79e67e2e38c2a7231a411b/defaut.jpg?format=auto&amp;f=320x0 320w, https://contents.mediadecathlon.com/s1389307/k$0e93f7544b79e67e2e38c2a7231a411b/defaut.jpg?format=auto&amp;f=640x0 640w, https://contents.mediadecathlon.com/s1389307/k$0e93f7544b79e67e2e38c2a7231a411b/defaut.jpg?format=auto&amp;f=969x0 969w, https://contents.mediadecathlon.com/s1389307/k$0e93f7544b79e67e2e38c2a7231a411b/defaut.jpg?format=auto&amp;f=1920x0 1920w, https://contents.mediadecathlon.com/s1389307/k$0e93f7544b79e67e2e38c2a7231a411b/defaut.jpg?format=auto&amp;f=3000x0 3000w" src="https://contents.mediadecathlon.com/s1389307/k$0e93f7544b79e67e2e38c2a7231a411b/defaut.jpg?format=auto&amp;f=3000x0"></div></div></div></a><div class="promo-card__content promo-card__content--hero"><div class="promo-card__content--text"><h2 class="vp-title-m"><span>Profitez d'un bonus reprise</span></h2><span class="promo-card__content--text--description vp-body-s">Jusqu'à 100€ pour un VAE, et 10€ pour vos autres équipements</span></div><div class="promo-card__content--cta"><a id="_R_6n0p5fiv69fivb_" class="vp-button vp-button--small vp-button--secondary" aria-busy="false" aria-live="polite" data-part="button" href="https://www.decathlon.fr/second-life/buy-back#/product_category">Estimez-le</a><a id="_R_an0p5fiv69fivb_" class="vp-button vp-button--small vp-button--secondary" aria-busy="false" aria-live="polite" data-part="button" href="https://www.decathlon.fr/circularity/buy-back">Voir conditions</a></div></div></section></div></section>

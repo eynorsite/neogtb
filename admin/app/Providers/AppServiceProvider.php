@@ -11,6 +11,7 @@ use App\Models\PostCategory;
 use App\Models\SitePage;
 use App\Models\SiteSetting;
 use App\Observers\AdminAuditObserver;
+use App\Observers\PostSyncObserver;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
@@ -41,5 +42,8 @@ class AppServiceProvider extends ServiceProvider
         foreach ($models as $model) {
             $model::observe(AdminAuditObserver::class);
         }
+
+        // Auto-sync blog posts to Astro markdown files
+        Post::observe(PostSyncObserver::class);
     }
 }

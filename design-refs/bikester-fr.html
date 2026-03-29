@@ -1,0 +1,2149 @@
+<!--
+  SOURCE  : https://www.bikester.fr
+  SECTION : main > section:first-of-type
+  LABEL   : Bikester — vélo en ligne, e-commerce sport spécialisé
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.bikester.fr.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : Times · Muli · Figtree
+  Couleurs    : rgb(9, 3, 2) · rgba(0, 0, 0, 0.1) · rgba(0, 0, 0, 0.3) · rgb(221, 221, 221)
+  Border-r    : 34px · 5px · 50%
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[2]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 0.02px",
+    "margin": "70.1053px 0px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[3]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 64px",
+    "margin": "0px 56px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px",
+    "max-width": "1328px"
+  },
+  "div[4]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 32px",
+    "border": "0px none rgb(9, 3, 2)",
+    "gap": "normal 32px",
+    "display": "flex",
+    "line-height": "24px",
+    "max-width": "100%"
+  },
+  "h2[5]": {
+    "font-family": "Figtree, sans-serif",
+    "font-size": "21.9248px",
+    "font-weight": "700",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "28.5023px",
+    "max-width": "100%"
+  },
+  "a[6]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[8]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 64px",
+    "margin": "0px 56px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "flex",
+    "line-height": "24px",
+    "max-width": "1328px"
+  },
+  "div[9]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "button[10]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "14.08px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(232, 52, 72)",
+    "padding": "7px",
+    "margin": "12px 0px",
+    "border": "1px solid rgb(226, 0, 26)",
+    "border-radius": "50%",
+    "display": "block",
+    "line-height": "16.896px",
+    "max-width": "100%"
+  },
+  "span[11]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "14.08px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "-1px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "16.896px"
+  },
+  "button[14]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "14.08px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(232, 52, 72)",
+    "padding": "7px",
+    "margin": "12px 0px",
+    "border": "1px solid rgb(226, 0, 26)",
+    "border-radius": "50%",
+    "display": "block",
+    "line-height": "16.896px",
+    "max-width": "100%"
+  },
+  "span[15]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "14.08px",
+    "font-weight": "700",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "-1px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "16.896px"
+  },
+  "div[18]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 64px",
+    "margin": "-133px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[19]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 64px",
+    "margin": "-133px -266px -133px 0px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[20]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 56px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[21]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px",
+    "max-width": "1328px"
+  },
+  "div[25]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgb(242, 242, 242)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[26]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "section[27]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[28]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "5px 0px",
+    "border": "2px solid rgb(237, 237, 237)",
+    "display": "grid",
+    "grid-template-columns": "52.5938px 52.5938px 52.5938px 52.6094px",
+    "line-height": "24px"
+  },
+  "div[29]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 5px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[30]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgb(237, 237, 237)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[32]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 5px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[33]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgb(237, 237, 237)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[35]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 5px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[36]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgb(237, 237, 237)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "a[39]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgb(242, 242, 242)",
+    "padding": "214.391px 0px 0px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[41]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgb(242, 242, 242)",
+    "border": "0px none rgb(9, 3, 2)",
+    "line-height": "24px"
+  },
+  "div[43]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[44]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "8px 0px 0px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[45]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "a[46]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[47]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "14.08px",
+    "font-weight": "700",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "21.12px"
+  },
+  "span[48]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "4px 0px 0px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[49]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[50]": {
+    "font-family": "Muli, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(9, 3, 2)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "8px 0px 0px",
+    "border": "0px none rgb(9, 3, 2)",
+    "display": "block",
+    "line-height": "24px"
+  }
+}
+-->
+<section id="shopify-section-template--24354456699253__featured_collection_KmTmn3" class="shopify-section cc-featured-collection cc-product-card-grid"><link href="//www.bikester.fr/cdn/shop/t/122/assets/featured-collection.css?v=33873815595980366041750253226" rel="stylesheet" type="text/css" media="all">
+  <link href="//www.bikester.fr/cdn/shop/t/122/assets/product.css?v=88681933454729699851769597816" rel="stylesheet" type="text/css" media="all">
+<div class="section"><div class="container">
+      <div class="section__header items-center flex flex-row flex-wrap gap-x-theme cc-animate-init cc-animate-in" data-cc-animate=""><h2 class="h4 mb-0 flex-auto section__heading text-start">Vélos CUBE 2026</h2><a href="/collections/velos-cube-2026" class="link">découvrez tous les modèles CUBE 2026</a></div>
+    </div><carousel-slider class="carousel block">
+          <div class="container relative featured-collection-products" data-overlayscrollbars="host">
+            <div class="slider-nav absolute top-middle end slider-nav--show-on-hover no-hover-hidden hidden md:block no-js-hidden">
+    <button type="button" class="slider-nav__btn tap-target btn btn--primary has-ltr-icon" name="next" aria-controls="slider-template--24354456699253__featured_collection_KmTmn3">
+      <span class="visually-hidden">Suivant</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation" class="icon"><path d="m9.693 4.5 7.5 7.5-7.5 7.5" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg>
+    </button>
+    <button type="button" class="slider-nav__btn tap-target btn btn--primary has-ltr-icon" name="prev" aria-controls="slider-template--24354456699253__featured_collection_KmTmn3" disabled="">
+      <span class="visually-hidden">Précédent</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" role="presentation" class="icon"><path d="m6.797 11.625 8.03-8.03 1.06 1.06-6.97 6.97 6.97 6.97-1.06 1.06z"></path></svg>
+    </button>
+  </div>
+<div class="os-size-observer"><div class="os-size-observer-listener ltr"></div></div><div class="slider is-grabbable" id="slider-template--24354456699253__featured_collection_KmTmn3" data-overlayscrollbars-viewport="scrollbarHidden" style="margin-right: -128px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: -64px; width: calc(100% + 128px); padding: 0px 64px; overflow-x: scroll;"><div class="container products-grid-container shrink-0">
+              <ul class="slider__grid grid grid-flow-col auto-cols-2 small-cards-mobile md:auto-cols-3 lg:auto-cols-4 xl:auto-cols-5 small-cards-desktop gap-x-theme gap-y-8" role="list">
+                    <li class="slider__item cc-animate-init cc-animate-in" data-cc-animate="" data-cc-animate-delay="0.07s" style="animation-delay: 0.07s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  has-thumbnails flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+  <section class="desktop-only">
+    <div class="related-swatch-slider__container">
+      <div class="related-swatch-slider__slide">
+        <a class="related-swatch-slider__item related-swatch-slider__item--current" href="/products/cube-aim-one-smokenblack" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=200">
+          
+          <img srcset="//www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="69" fetchpriority="low" alt="Cube Aim ONE smoke´n´black (2026)">
+        </a> 
+      </div>
+
+      
+      
+<div class="related-swatch-slider__slide">
+          <a class="related-swatch-slider__item" href="/products/cube-aim-one-lightpurple-n-chrome" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=300">
+            
+            <img srcset="//www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/eb2dc1f08459a39768da19dc75627a0b82a5ec67_140120_S_00.jpg?v=1773965189&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="68" fetchpriority="low" alt="Cube Aim ONE lightpurple´n´chrome (2026)">
+          </a> 
+        </div>
+      
+<div class="related-swatch-slider__slide">
+          <a class="related-swatch-slider__item" href="/products/cube-aim-one-sundownernblack" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=300">
+            
+            <img srcset="//www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/b2b47f08488bb1b8ba3ec999dfbf57196a15a370_140110_S_00.jpg?v=1773965188&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="69" fetchpriority="low" alt="Cube Aim ONE sundowner´n´black (2026)">
+          </a> 
+        </div>
+      
+
+      
+      
+      
+    </div>
+  </section>
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-aim-one-smokenblack" aria-label="Cube Aim ONE smoke´n´black (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/3b6b7f5197c93658cb5dbc45c11b41f31801442a_140100_S_00.jpg?v=1773964982&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65750992322933" loading="lazy" width="1200" height="689" fetchpriority="low" alt="Cube Aim ONE smoke´n´black (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-aim-one-smokenblack" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Aim ONE (2026)  | 27,5/29 pouces VTT Hardtail</span>
+        </a><div><div class="price price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€499<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init cc-animate-in" data-cc-animate="" data-cc-animate-delay="0.14s" style="animation-delay: 0.14s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-stereo-hybrid-one44-pro-800-fe-vulcan-n-orange" aria-label="Cube Stereo Hybrid ONE44 Pro 800 FE vulcan´n´orange (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/79ad8678c358b29d3e85b3d4d39466cf2173e573_fccacc903cc07353.png?v=1773965295&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/79ad8678c358b29d3e85b3d4d39466cf2173e573_fccacc903cc07353.png?v=1773965295&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/79ad8678c358b29d3e85b3d4d39466cf2173e573_fccacc903cc07353.png?v=1773965295&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/79ad8678c358b29d3e85b3d4d39466cf2173e573_fccacc903cc07353.png?v=1773965295&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/79ad8678c358b29d3e85b3d4d39466cf2173e573_fccacc903cc07353.png?v=1773965295&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/79ad8678c358b29d3e85b3d4d39466cf2173e573_fccacc903cc07353.png?v=1773965295&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/79ad8678c358b29d3e85b3d4d39466cf2173e573_fccacc903cc07353.png?v=1773965295&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/79ad8678c358b29d3e85b3d4d39466cf2173e573_fccacc903cc07353.png?v=1773965295&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65692913992053" loading="lazy" width="1200" height="658" fetchpriority="low" alt="Cube Stereo Hybrid ONE44 Pro 800 FE vulcan´n´orange (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-stereo-hybrid-one44-pro-800-fe-vulcan-n-orange" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Stereo Hybrid ONE44 Pro 800 FE (2026)  | 27,5/29 pouces VTT électrique tout suspendu</span>
+        </a><div><div class="price price--sold-out price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€3.999<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init cc-animate-in" data-cc-animate="" data-cc-animate-delay="0.21s" style="animation-delay: 0.21s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-kathmandu-hybrid-comfort-pro-800-easy-entry-slabgrey-n-black" aria-label="Cube Kathmandu Hybrid Comfort Pro 800 Easy Entry slabgrey´n´black (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/b237ba31ffb0f4187d39ce11a1771f62c6ffb056_112302_S_00.jpg?v=1773965494&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/b237ba31ffb0f4187d39ce11a1771f62c6ffb056_112302_S_00.jpg?v=1773965494&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/b237ba31ffb0f4187d39ce11a1771f62c6ffb056_112302_S_00.jpg?v=1773965494&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/b237ba31ffb0f4187d39ce11a1771f62c6ffb056_112302_S_00.jpg?v=1773965494&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/b237ba31ffb0f4187d39ce11a1771f62c6ffb056_112302_S_00.jpg?v=1773965494&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/b237ba31ffb0f4187d39ce11a1771f62c6ffb056_112302_S_00.jpg?v=1773965494&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/b237ba31ffb0f4187d39ce11a1771f62c6ffb056_112302_S_00.jpg?v=1773965494&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/b237ba31ffb0f4187d39ce11a1771f62c6ffb056_112302_S_00.jpg?v=1773965494&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65751068180853" loading="lazy" width="1200" height="786" fetchpriority="low" alt="Cube Kathmandu Hybrid Comfort Pro 800 Easy Entry slabgrey´n´black (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-kathmandu-hybrid-comfort-pro-800-easy-entry-slabgrey-n-black" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Kathmandu Hybrid Comfort Pro 800 Easy Entry (2026) | VTC électrique trekking</span>
+        </a><div><div class="price price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€3.799<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init cc-animate-in" data-cc-animate="" data-cc-animate-delay="0.28s" style="animation-delay: 0.28s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  has-thumbnails flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+  <section class="desktop-only">
+    <div class="related-swatch-slider__container">
+      <div class="related-swatch-slider__slide">
+        <a class="related-swatch-slider__item related-swatch-slider__item--current" href="/products/cube-stereo-hybrid-one44-hpc-slx-800-slabgrey-n-orange" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=200">
+          
+          <img srcset="//www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="68" fetchpriority="low" alt="Cube Stereo Hybrid ONE44 HPC SLX 800 slabgrey´n´orange (2026)">
+        </a> 
+      </div>
+
+      
+      
+<div class="related-swatch-slider__slide">
+          <a class="related-swatch-slider__item" href="/products/cube-stereo-hybrid-one44-hpc-slx-800-nebula-n-white" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=300">
+            
+            <img srcset="//www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/bfb0cd0832e45da993f2e03f183b84e48b1129aa_e98ad921e5d59d1d.png?v=1773965113&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="68" fetchpriority="low" alt="Cube Stereo Hybrid ONE44 HPC SLX 800 nebula´n´white (2026)">
+          </a> 
+        </div>
+      
+<div class="related-swatch-slider__slide">
+          <a class="related-swatch-slider__item" href="/products/cube-stereo-hybrid-one44-hpc-slx-800-shiftblush-n-art" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=300">
+            
+            <img srcset="//www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/4b606cd72fca4082a013c3c8e79746ee84428699_18f235118e5e9c0b.png?v=1773965292&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="69" fetchpriority="low" alt="Cube Stereo Hybrid ONE44 HPC SLX 800 shiftblush´n´art (2026)">
+          </a> 
+        </div>
+      
+
+      
+      
+      
+    </div>
+  </section>
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-stereo-hybrid-one44-hpc-slx-800-slabgrey-n-orange" aria-label="Cube Stereo Hybrid ONE44 HPC SLX 800 slabgrey´n´orange (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/5c06526a21292088b1e01a03c0297383ec701896_2fc15aaae051743d.png?v=1773965116&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65692911665525" loading="lazy" width="1200" height="682" fetchpriority="low" alt="Cube Stereo Hybrid ONE44 HPC SLX 800 slabgrey´n´orange (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-stereo-hybrid-one44-hpc-slx-800-slabgrey-n-orange" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Stereo Hybrid ONE44 HPC SLX 800 (2026)  | 27,5/29 pouces E-MTB tout suspendu</span>
+        </a><div><div class="price price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€4.999<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init cc-animate-in" data-cc-animate="" data-cc-animate-delay="0.35s" style="animation-delay: 0.35s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-nuroad-hybrid-c62-race-400x-fe-reedbeigenblack" aria-label="Cube Nuroad Hybrid C:62 Race 400X FE  reedbeige´n´black (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/e0a517f3c6cba1e4e448254fe0e8b34f2bb3bc3b_60d859e99c710f05.png?v=1773964960&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/e0a517f3c6cba1e4e448254fe0e8b34f2bb3bc3b_60d859e99c710f05.png?v=1773964960&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/e0a517f3c6cba1e4e448254fe0e8b34f2bb3bc3b_60d859e99c710f05.png?v=1773964960&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/e0a517f3c6cba1e4e448254fe0e8b34f2bb3bc3b_60d859e99c710f05.png?v=1773964960&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/e0a517f3c6cba1e4e448254fe0e8b34f2bb3bc3b_60d859e99c710f05.png?v=1773964960&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/e0a517f3c6cba1e4e448254fe0e8b34f2bb3bc3b_60d859e99c710f05.png?v=1773964960&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/e0a517f3c6cba1e4e448254fe0e8b34f2bb3bc3b_60d859e99c710f05.png?v=1773964960&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/e0a517f3c6cba1e4e448254fe0e8b34f2bb3bc3b_60d859e99c710f05.png?v=1773964960&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65696382910837" loading="lazy" width="1200" height="675" fetchpriority="low" alt="Cube Nuroad Hybrid C:62 Race 400X FE  reedbeige´n´black (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-nuroad-hybrid-c62-race-400x-fe-reedbeigenblack" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Nuroad Hybrid C:62 Race 400X FE (2026) | E-Gravel bike</span>
+        </a><div><div class="price price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€4.199<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.42s" style="animation-delay: 0.42s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-stereo-hybrid-one22-pro-800-fe-night-n-chrome" aria-label="Cube Stereo Hybrid ONE22 Pro 800 FE  night´n´chrome (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/59b7a7e636a488aa639e81fe298bdb6ff6289171_fa7fc013874e8630.png?v=1773965058&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/59b7a7e636a488aa639e81fe298bdb6ff6289171_fa7fc013874e8630.png?v=1773965058&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/59b7a7e636a488aa639e81fe298bdb6ff6289171_fa7fc013874e8630.png?v=1773965058&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/59b7a7e636a488aa639e81fe298bdb6ff6289171_fa7fc013874e8630.png?v=1773965058&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/59b7a7e636a488aa639e81fe298bdb6ff6289171_fa7fc013874e8630.png?v=1773965058&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/59b7a7e636a488aa639e81fe298bdb6ff6289171_fa7fc013874e8630.png?v=1773965058&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/59b7a7e636a488aa639e81fe298bdb6ff6289171_fa7fc013874e8630.png?v=1773965058&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/59b7a7e636a488aa639e81fe298bdb6ff6289171_fa7fc013874e8630.png?v=1773965058&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65696389431669" loading="lazy" width="1200" height="668" fetchpriority="low" alt="Cube Stereo Hybrid ONE22 Pro 800 FE  night´n´chrome (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-stereo-hybrid-one22-pro-800-fe-night-n-chrome" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Stereo Hybrid ONE22 Pro 800 FE (2026)  | 27,5/29 pouces E-MTB tout suspendu</span>
+        </a><div><div class="price price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€3.899<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.49s" style="animation-delay: 0.49s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-kathmandu-hybrid-one-800-metallicgreyngrey" aria-label="Cube Kathmandu Hybrid ONE 800 gris métallique´n´gris (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/d435e446501f34411b57bb3c45d3700e54d451b5_f246fd42d3081f75.png?v=1773965275&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/d435e446501f34411b57bb3c45d3700e54d451b5_f246fd42d3081f75.png?v=1773965275&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/d435e446501f34411b57bb3c45d3700e54d451b5_f246fd42d3081f75.png?v=1773965275&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/d435e446501f34411b57bb3c45d3700e54d451b5_f246fd42d3081f75.png?v=1773965275&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/d435e446501f34411b57bb3c45d3700e54d451b5_f246fd42d3081f75.png?v=1773965275&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/d435e446501f34411b57bb3c45d3700e54d451b5_f246fd42d3081f75.png?v=1773965275&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/d435e446501f34411b57bb3c45d3700e54d451b5_f246fd42d3081f75.png?v=1773965275&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/d435e446501f34411b57bb3c45d3700e54d451b5_f246fd42d3081f75.png?v=1773965275&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65696387793269" loading="lazy" width="1200" height="755" fetchpriority="low" alt="Cube Kathmandu Hybrid ONE 800 gris métallique´n´gris (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-kathmandu-hybrid-one-800-metallicgreyngrey" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Kathmandu Hybrid ONE 800 (2026) | VTT à assistance électrique de trekking</span>
+        </a><div><div class="price price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€3.199<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.56s" style="animation-delay: 0.56s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  has-thumbnails flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+  <section class="desktop-only">
+    <div class="related-swatch-slider__container">
+      <div class="related-swatch-slider__slide">
+        <a class="related-swatch-slider__item related-swatch-slider__item--current" href="/products/cube-stereo-hybrid-one44-pro-800-shiftblush-n-raisin" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=200">
+          
+          <img srcset="//www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="66" fetchpriority="low" alt="Cube Stereo Hybrid ONE44 Pro shiftblush´n´raisin (2026)">
+        </a> 
+      </div>
+
+      
+      
+<div class="related-swatch-slider__slide">
+          <a class="related-swatch-slider__item" href="/products/cube-stereo-hybrid-one44-pro-800-vulcan-n-orange" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=300">
+            
+            <img srcset="//www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/3fc3c45b2554f28fdd358156a3710cad99cd1e4d_b047e1f4dc0a3504.png?v=1773965169&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="68" fetchpriority="low" alt="Cube Stereo Hybrid ONE44 Pro 800 vulcan´n´orange (2026)">
+          </a> 
+        </div>
+      
+
+      
+      
+      
+    </div>
+  </section>
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-stereo-hybrid-one44-pro-800-shiftblush-n-raisin" aria-label="Cube Stereo Hybrid ONE44 Pro shiftblush´n´raisin (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/d3405c274d2cdfcefaf9d4db81bad197cd29e978_81b7ee73625fb1c8.png?v=1773965105&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65692903768437" loading="lazy" width="1200" height="658" fetchpriority="low" alt="Cube Stereo Hybrid ONE44 Pro shiftblush´n´raisin (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-stereo-hybrid-one44-pro-800-shiftblush-n-raisin" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Stereo Hybrid ONE44 Pro 800 (2026) | VTT électrique tout suspendu 27,5/29 pouces</span>
+        </a><div><div class="price price--sold-out price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€3.799<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.63s" style="animation-delay: 0.63s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  has-thumbnails flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+  <section class="desktop-only">
+    <div class="related-swatch-slider__container">
+      <div class="related-swatch-slider__slide">
+        <a class="related-swatch-slider__item related-swatch-slider__item--current" href="/products/cube-reaction-hybrid-performance-600-indigobluenreflex" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=200">
+          
+          <img srcset="//www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="70" fetchpriority="low" alt="Cube Reaction Hybrid Performance 600 indigoblue´n´reflex (2026)">
+        </a> 
+      </div>
+
+      
+      
+<div class="related-swatch-slider__slide">
+          <a class="related-swatch-slider__item" href="/products/cube-reaction-hybrid-performance-600-electricbluen-dazzle" data-swatch="" data-hover-image="//www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=300">
+            
+            <img srcset="//www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=32 32w, //www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=46 46w, //www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=60 60w, //www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=70 70w, //www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=80 80w, //www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=90 90w, //www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=120 120w" sizes="80px" src="//www.bikester.fr/cdn/shop/files/f05e671c615351b50778214658337550a141ace0_dc1e61eac8084c47.png?v=1773965255&amp;width=460" class="related-swatch-slider__image" alt:="" loading="lazy" width="120" height="70" fetchpriority="low" alt="Cube Reaction Hybrid Performance 600 electricblue´n´dazzle (2026)">
+          </a> 
+        </div>
+      
+
+      
+      
+      
+    </div>
+  </section>
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-reaction-hybrid-performance-600-indigobluenreflex" aria-label="Cube Reaction Hybrid Performance 600 indigoblue´n´reflex (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/74126c1c71338b609bbef0eb38faec35b0bf6792_2f3b36640ebdc2fb.png?v=1773964980&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65692902490485" loading="lazy" width="1200" height="699" fetchpriority="low" alt="Cube Reaction Hybrid Performance 600 indigoblue´n´reflex (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-reaction-hybrid-performance-600-indigobluenreflex" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Reaction Hybrid Performance 600 (2026)  | 27,5/29 pouces E-MTB Hardtail</span>
+        </a><div><div class="price price--sold-out price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€2.499<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.7s" style="animation-delay: 0.7s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-nuroad-c62-pro-fe-vulcan-n-prism" aria-label="Cube Nuroad C:62 Pro FE vulcan´n´prism (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/e61167355ceceafc000a100c3a3cbccc836f7880_d632ccdd50eb2153.png?v=1773965418&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/e61167355ceceafc000a100c3a3cbccc836f7880_d632ccdd50eb2153.png?v=1773965418&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/e61167355ceceafc000a100c3a3cbccc836f7880_d632ccdd50eb2153.png?v=1773965418&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/e61167355ceceafc000a100c3a3cbccc836f7880_d632ccdd50eb2153.png?v=1773965418&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/e61167355ceceafc000a100c3a3cbccc836f7880_d632ccdd50eb2153.png?v=1773965418&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/e61167355ceceafc000a100c3a3cbccc836f7880_d632ccdd50eb2153.png?v=1773965418&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/e61167355ceceafc000a100c3a3cbccc836f7880_d632ccdd50eb2153.png?v=1773965418&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/e61167355ceceafc000a100c3a3cbccc836f7880_d632ccdd50eb2153.png?v=1773965418&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65803974476149" loading="lazy" width="1200" height="705" fetchpriority="low" alt="Cube Nuroad C:62 Pro FE vulcan´n´prism (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-nuroad-c62-pro-fe-vulcan-n-prism" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Nuroad C:62 Pro FE (2026) | Vélo de gravel</span>
+        </a><div><div class="price price--sold-out price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€2.599<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.77s" style="animation-delay: 0.77s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-stereo-hybrid-one22-pro-600-night-n-chrome" aria-label="Cube Stereo Hybrid ONE22 Pro 600 night´n´chrome (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/2f0c4f21ea8af5334a221b34f4349d2946d00b49_3b640915cfaace44.png?v=1773965052&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/2f0c4f21ea8af5334a221b34f4349d2946d00b49_3b640915cfaace44.png?v=1773965052&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/2f0c4f21ea8af5334a221b34f4349d2946d00b49_3b640915cfaace44.png?v=1773965052&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/2f0c4f21ea8af5334a221b34f4349d2946d00b49_3b640915cfaace44.png?v=1773965052&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/2f0c4f21ea8af5334a221b34f4349d2946d00b49_3b640915cfaace44.png?v=1773965052&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/2f0c4f21ea8af5334a221b34f4349d2946d00b49_3b640915cfaace44.png?v=1773965052&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/2f0c4f21ea8af5334a221b34f4349d2946d00b49_3b640915cfaace44.png?v=1773965052&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/2f0c4f21ea8af5334a221b34f4349d2946d00b49_3b640915cfaace44.png?v=1773965052&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65692902064501" loading="lazy" width="1200" height="678" fetchpriority="low" alt="Cube Stereo Hybrid ONE22 Pro 600 night´n´chrome (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-stereo-hybrid-one22-pro-600-night-n-chrome" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Stereo Hybrid ONE22 Pro 600 (2026)  | 27,5/29 pouces E-MTB tout suspendu</span>
+        </a><div><div class="price price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€3.499<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+
+                    <li class="slider__item cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.84s" style="animation-delay: 0.84s;">
+                      
+
+<product-card class="card card--product h-full card--no-lines relative  flex" data-initialized="true"><div class="card__media image-blend relative">
+     <div class="image-with-swatches-wrapper">
+
+
+
+
+<style>
+  .desktop-only {
+    display: none !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-only {
+      display: block !important;
+    }
+  }
+
+  .related-swatch-slider__container {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid #ededed;
+    visibility: hidden;
+  }
+
+  .related-swatch-slider__container::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    pointer-events: none;
+    top: calc(100% + 2px);
+    left: -2px;
+    width: calc(100% + 4px);
+  }
+
+  .image-with-swatches-wrapper:hover .related-swatch-slider__container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .card__media:hover .related-swatch-slider__container {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .related-swatch-slider__slide {
+    scroll-snap-align: start;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .related-swatch-slider__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ededed;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .related-swatch-slider__item--current {
+    border-bottom: 2px solid #333;
+  }
+
+  .related-swatch-slider__item--more {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .related-swatch-slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+<a href="/products/cube-kathmandu-hybrid-one-800-easy-entry-metallicgreyngrey" aria-label="Cube Kathmandu Hybrid ONE 800 Easy Entry gris métallisé´n´gris (2026)" class="media block relative image-blend js-prod-link" style="padding-top: 100%;" tabindex="-1"><img srcset="//www.bikester.fr/cdn/shop/files/943fa5264eb2cca9346cb310fac66a9fd75a3113_0d43fa1b2bcd8605.png?v=1773964995&amp;width=320 320w, //www.bikester.fr/cdn/shop/files/943fa5264eb2cca9346cb310fac66a9fd75a3113_0d43fa1b2bcd8605.png?v=1773964995&amp;width=460 460w, //www.bikester.fr/cdn/shop/files/943fa5264eb2cca9346cb310fac66a9fd75a3113_0d43fa1b2bcd8605.png?v=1773964995&amp;width=600 600w, //www.bikester.fr/cdn/shop/files/943fa5264eb2cca9346cb310fac66a9fd75a3113_0d43fa1b2bcd8605.png?v=1773964995&amp;width=700 700w, //www.bikester.fr/cdn/shop/files/943fa5264eb2cca9346cb310fac66a9fd75a3113_0d43fa1b2bcd8605.png?v=1773964995&amp;width=800 800w, //www.bikester.fr/cdn/shop/files/943fa5264eb2cca9346cb310fac66a9fd75a3113_0d43fa1b2bcd8605.png?v=1773964995&amp;width=900 900w, //www.bikester.fr/cdn/shop/files/943fa5264eb2cca9346cb310fac66a9fd75a3113_0d43fa1b2bcd8605.png?v=1773964995&amp;width=1200 1200w" sizes="(min-width: 1328px) calc((1200px - 96px) / 5), (min-width: 1280px) calc((100vw - 224px) / 5), (min-width: 769px) calc((100vw - 136px) / 4), (min-width: 600px) calc((100vw - 112px) / 3), calc((100vw - 52px) / 2)" src="//www.bikester.fr/cdn/shop/files/943fa5264eb2cca9346cb310fac66a9fd75a3113_0d43fa1b2bcd8605.png?v=1773964995&amp;width=460" class="img-fit img-fit--contain card__main-image" data-media-id="65692833087861" loading="lazy" width="1200" height="781" fetchpriority="low" alt="Cube Kathmandu Hybrid ONE 800 Easy Entry gris métallisé´n´gris (2026)">
+<div class="hover-preview">
+         <img src="" alt="">
+        </div>
+      </a></div>
+    </div>
+
+    <div class="card__info-container flex flex-col flex-auto relative">
+      <div class="card__info w-full">
+        <div class="card__info-inner flex flex-col h-full w-full">
+
+         <a href="/products/cube-kathmandu-hybrid-one-800-easy-entry-metallicgreyngrey" class="card-link text-current js-prod-link"><span class="card__vendor mb-0 text-sm font-bold block">Cube</span><span class="card__title  mt-1 mb-0 block">Kathmandu Hybrid ONE 800 Easy Entry (2026) | Vélo électrique trekking</span>
+        </a><div><div class="price price--sold-out price--bottom">
+  <div class="price__default">
+    <span class="price__current">
+      <span class="visually-hidden js-label">Prix habituel</span>
+    <span class="js-value">€3.199<sup>00
+</sup></span>
+      </span>
+   
+    <span class="price__was price__was--supercents">
+      <span class="visually-hidden js-label"></span>
+      <span class="js-value"></span>
+    </span>
+    
+  </div>
+
+  <div class="unit-price relative" hidden=""><span class="visually-hidden">Prix unitaire</span><span class="unit-price__price">
+</span><span class="unit-price__separator"> / </span><span class="unit-price__unit"></span></div>
+
+  <div class="price__no-variant" hidden="">
+    <strong class="price__current">Indisponible</strong>
+  </div>
+</div>
+
+
+  
+
+</div></div>
+      </div></div>
+  </product-card>
+                    </li>  
+                  
+</ul>
+            </div></div><div class="os-scrollbar os-scrollbar-horizontal os-theme-dark os-scrollbar-auto-hide os-scrollbar-handle-interactive os-scrollbar-visible os-scrollbar-cornerless"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="width: 41.026%;"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-theme-dark os-scrollbar-auto-hide os-scrollbar-handle-interactive os-scrollbar-cornerless os-scrollbar-unusable"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="height: 100%;"></div></div></div></div></carousel-slider></div>
+</section>

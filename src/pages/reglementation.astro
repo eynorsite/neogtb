@@ -1,30 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Réglementation GTB — Décret BACS, Tertiaire, RE2020" description="Toute la réglementation GTB en France : décret BACS 2025/2030, décret tertiaire, RE2020, directive EPBD, norme EN 15232, CEE. Calendrier, obligations et sanctions.">
+<Layout title="Réglementation GTB 2026 — Décret BACS, Tertiaire, RE2020" description="Toute la réglementation GTB en France mise à jour : décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, norme EN 15232, CEE. Calendrier, obligations et sanctions." breadcrumbs={[{label: "Comprendre"}, {label: "Réglementation"}]}>
 
   <!-- ==================== HERO ==================== -->
-  <section class="hero-lum">
-    <div class="hero-lum-mesh"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
-    <div class="hero-lum-grid"></div>
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
-      <div class="max-w-2xl">
-        <p class="eyebrow">Cadre juridique</p>
-        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px;">
-          Réglementation <span class="accent">GTB</span> en France
+  <section class="hero-img" style="position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden;">
+    <img
+      src="/images/hero-reglementation.webp"
+      alt="Réglementation GTB — balance juridique, normes énergétiques et bâtiment tertiaire"
+      loading="eager"
+      fetchpriority="high"
+      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;"
+    />
+    <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%);"></div>
+
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="width: 100%;">
+      <div style="max-width: 540px;">
+        <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.15); margin-bottom: 24px;">
+          Cadre juridique
+        </p>
+        <h1 style="font-size: clamp(36px, 4vw, 48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; color: #fff;">
+          Réglementation <span style="color: #4ade80;">GTB</span> en France
         </h1>
-        <p style="font-size: 18px; color: var(--color-dark-500); line-height: 1.7; max-width: 560px;">
-          Décret BACS, décret tertiaire, RE2020, directive européenne EPBD, norme EN 15232 : toutes les obligations, les échéances et les aides pour la gestion technique du bâtiment. Mis à jour mars 2026.
+        <p style="font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 480px;">
+          Décret BACS, décret tertiaire, RE2020, directive EPBD, norme EN 15232 : obligations, échéances et aides. Mis à jour mars 2026.
         </p>
         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px;">
-          <span class="tag tag-reglementation">Décret BACS</span>
-          <span class="tag tag-reglementation">Décret tertiaire</span>
-          <span class="tag tag-technique">RE2020</span>
-          <span class="tag tag-technique">EN 15232</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">Décret BACS</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">Décret tertiaire</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">RE2020</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">EN 15232</span>
         </div>
       </div>
     </div>
@@ -70,7 +77,7 @@ import Layout from '../layouts/Layout.astro';
                 <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">Existant</td>
                 <td style="padding: 14px 16px; color: var(--color-dark-600);">> 290 kW</td>
                 <td style="padding: 14px 16px; color: var(--color-dark-600);">1er janvier 2025</td>
-                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: #065F46; background: #ECFDF5; padding: 3px 10px; border-radius: 6px;">En vigueur</span></td>
+                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: var(--color-accent-800); background: var(--color-accent-50); padding: 3px 10px; border-radius: 6px;">En vigueur</span></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--color-dark-100);">
                 <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">Existant</td>
@@ -82,13 +89,13 @@ import Layout from '../layouts/Layout.astro';
                 <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">Neuf (permis > 21/07/2021)</td>
                 <td style="padding: 14px 16px; color: var(--color-dark-600);">> 290 kW</td>
                 <td style="padding: 14px 16px; color: var(--color-dark-600);">À la construction</td>
-                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: #065F46; background: #ECFDF5; padding: 3px 10px; border-radius: 6px;">Obligatoire</span></td>
+                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: var(--color-accent-800); background: var(--color-accent-50); padding: 3px 10px; border-radius: 6px;">Obligatoire</span></td>
               </tr>
               <tr>
                 <td style="padding: 14px 16px; font-weight: 500; color: var(--color-dark-900);">Neuf (permis > 08/04/2024)</td>
                 <td style="padding: 14px 16px; color: var(--color-dark-600);">> 70 kW</td>
                 <td style="padding: 14px 16px; color: var(--color-dark-600);">À la construction</td>
-                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: #065F46; background: #ECFDF5; padding: 3px 10px; border-radius: 6px;">Obligatoire</span></td>
+                <td style="padding: 14px 16px;"><span style="font-size: 12px; font-weight: 500; color: var(--color-accent-800); background: var(--color-accent-50); padding: 3px 10px; border-radius: 6px;">Obligatoire</span></td>
               </tr>
             </tbody>
           </table>
@@ -106,13 +113,13 @@ import Layout from '../layouts/Layout.astro';
           <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px;">Décret BACS</h2>
           <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 20px;">Décret n° 2020-887 du 20 juillet 2020 · Modifié par le décret n° 2025-1343 du 26 décembre 2025</p>
 
-          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
             Le décret BACS transpose l'article 14 de la <strong style="color: var(--color-dark-900); font-weight: 500;">directive européenne EPBD 2018/844</strong> sur la performance énergétique des bâtiments. Il impose l'installation de systèmes d'automatisation et de contrôle (<em>Building Automation and Control Systems</em>) dans les bâtiments tertiaires non résidentiels.
           </p>
-          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
             Le système installé doit atteindre <strong style="color: var(--color-dark-900); font-weight: 500;">a minima la classe B</strong> de la norme EN 15232 (NF EN ISO 52120-1). Il doit être capable de :
           </p>
-          <ul style="font-size: 15px; color: var(--color-dark-500); line-height: 1.8; padding-left: 20px; margin-bottom: 20px;">
+          <ul style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; padding-left: 20px; margin-bottom: 20px;">
             <li style="margin-bottom: 8px;">Suivre, enregistrer et analyser la consommation énergétique par usage</li>
             <li style="margin-bottom: 8px;">Ajuster les régulations en fonction de l'occupation et des besoins</li>
             <li style="margin-bottom: 8px;">Détecter les défauts et les dérives de performance</li>
@@ -158,10 +165,10 @@ import Layout from '../layouts/Layout.astro';
           <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px;">Décret tertiaire — Éco Énergie Tertiaire</h2>
           <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 20px;">Décret n° 2019-771 du 23 juillet 2019 · Issu de la loi ELAN</p>
 
-          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
             Le décret tertiaire impose aux bâtiments tertiaires de <strong style="color: var(--color-dark-900); font-weight: 500;">plus de 1 000 m²</strong> une réduction progressive de leur consommation d'énergie finale par rapport à une année de référence (postérieure à 2010).
           </p>
-          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.8; margin-bottom: 16px;">
+          <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
             Les données doivent être déclarées annuellement sur la plateforme <strong style="color: var(--color-dark-900); font-weight: 500;">OPERAT</strong> gérée par l'ADEME. La GTB constitue le levier principal pour atteindre ces objectifs de réduction.
           </p>
 
@@ -226,13 +233,13 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- EPBD -->
         <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
-          <div style="font-size: 13px; font-weight: 500; color: white; background: #4338CA; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Europe · Refonte 2024</div>
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-700); padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Europe · Refonte 2024</div>
           <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Directive EPBD</h3>
           <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Energy Performance of Buildings Directive · 2018/844 → refonte 2024</p>
           <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
             La directive EPBD est le texte européen fondateur qui impose la GTB. L'article 14 est l'origine du décret BACS français. La <strong style="color: var(--color-dark-900);">refonte 2024</strong> renforce les exigences :
           </p>
-          <ul style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7; padding-left: 20px;">
+          <ul style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6; padding-left: 20px;">
             <li style="margin-bottom: 8px;">Objectif bâtiments à émission zéro d'ici 2050</li>
             <li style="margin-bottom: 8px;">Passeport de rénovation pour chaque bâtiment</li>
             <li style="margin-bottom: 8px;">Abaissement progressif des seuils BACS</li>
@@ -252,7 +259,7 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Loi Climat -->
         <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
-          <div style="font-size: 13px; font-weight: 500; color: white; background: #065F46; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Loi · 2021</div>
+          <div style="font-size: 13px; font-weight: 500; color: white; background: var(--color-accent-800); padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Loi · 2021</div>
           <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Loi Climat et Résilience</h3>
           <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Loi n° 2021-1104 du 22 août 2021</p>
           <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7;">
@@ -391,15 +398,15 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid md:grid-cols-3 gap-5">
         <div class="card p-7 reveal" x-data x-intersect.once="$el.classList.add('visible')">
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">DPE tertiaire</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Le Diagnostic de Performance Énergétique est obligatoire pour la vente ou la location de tout bâtiment tertiaire. Une GTB performante améliore directement la classe DPE.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Le Diagnostic de Performance Énergétique est obligatoire pour la vente ou la location de tout bâtiment tertiaire. Une GTB performante améliore directement la classe DPE.</p>
         </div>
         <div class="card p-7 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">Audit énergétique obligatoire</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Obligatoire pour les grandes entreprises (> 250 salariés ou CA > 50 M€) tous les 4 ans. L'audit recommande systématiquement l'installation ou l'optimisation de la GTB.</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Obligatoire pour les grandes entreprises (> 250 salariés ou CA > 50 M€) tous les 4 ans. L'audit recommande systématiquement l'installation ou l'optimisation de la GTB.</p>
         </div>
         <div class="card p-7 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
           <h3 style="font-size: 17px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px;">RT2012 (legacy)</h3>
-          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7;">Remplacée par la RE2020 pour le neuf, mais toujours applicable aux bâtiments construits entre 2013 et 2021. Fixait déjà des exigences de consommation (50 kWhEP/m²/an).</p>
+          <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.6;">Remplacée par la RE2020 pour le neuf, mais toujours applicable aux bâtiments construits entre 2013 et 2021. Fixait déjà des exigences de consommation (50 kWhEP/m²/an).</p>
         </div>
       </div>
     </div>
@@ -415,7 +422,7 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="grid md:grid-cols-2 gap-6">
         <div class="card p-8 reveal" x-data x-intersect.once="$el.classList.add('visible')">
-          <div style="font-size: 13px; font-weight: 500; color: #4338CA; background: #EEF2FF; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Europe · Phase pilote</div>
+          <div style="font-size: 13px; font-weight: 500; color: var(--color-accent-700); background: var(--color-accent-50); padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Europe · Phase pilote</div>
           <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Smart Readiness Indicator (SRI)</h3>
           <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
             Indicateur d'intelligence du bâtiment introduit par l'EPBD. Évalue la capacité d'un bâtiment à utiliser les technologies intelligentes sur <strong style="color: var(--color-dark-900);">9 domaines</strong> : chauffage, refroidissement, ECS, ventilation, éclairage, enveloppe dynamique, électricité, recharge VE, monitoring.
@@ -430,7 +437,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="card p-8 reveal reveal-d1" x-data x-intersect.once="$el.classList.add('visible')">
-          <div style="font-size: 13px; font-weight: 500; color: #065F46; background: #ECFDF5; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Finance durable</div>
+          <div style="font-size: 13px; font-weight: 500; color: var(--color-accent-800); background: var(--color-accent-50); padding: 4px 12px; border-radius: 6px; display: inline-block; margin-bottom: 16px;">Finance durable</div>
           <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">Taxonomie verte européenne</h3>
           <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
             Le règlement UE 2020/852 définit les critères pour qu'un investissement immobilier soit considéré comme "durable". Les bâtiments doivent démontrer une <strong style="color: var(--color-dark-900);">contribution substantielle</strong> à l'atténuation du changement climatique.
@@ -572,7 +579,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ==================== CTA ==================== -->
   <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
-    <img src="/images/hero-gtb-illustration.png" alt="" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
+    <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
@@ -590,5 +597,11 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <RelatedPages links={[
+    { href: "/gtb", title: "Qu'est-ce que la GTB ?", description: "Comprendre la GTB avant de s'attaquer à la réglementation." },
+    { href: "/audit", title: "Audit GTB gratuit", description: "Évaluez votre niveau de conformité EN 15232 en 5 minutes." },
+    { href: "/generateur-cee", title: "Simulateur CEE", description: "Estimez vos primes Certificats d'Économies d'Énergie." },
+  ]} />
 
 </Layout>

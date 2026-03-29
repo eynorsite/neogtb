@@ -1,0 +1,745 @@
+/*
+ * design-refs/open-props.css — ENRICHED
+ * Base de données CSS complète pour NEOGTB
+ *
+ * NIVEAU 1 — Design tokens (Open Props + Radix Colors)
+ * NIVEAU 2 — Composants CSS (shadcn/ui + Uiverse patterns)
+ * NIVEAU 3 — Design systems complets (Vercel Geist + IBM Carbon + Stripe)
+ *
+ * COMMENT CLAUDE CODE UTILISE CE FICHIER :
+ * Avant de créer une valeur CSS custom, chercher ici d'abord.
+ * Ces tokens sont validés par les meilleures équipes design du monde.
+ * Ne jamais hardcoder une valeur qui existe déjà dans ce fichier.
+ */
+
+/* ============================================================
+   IMPORT OPEN PROPS — 500+ tokens CSS sub-atomiques
+   Source : open-props.style (Adam Argyle, ex-Google Chrome)
+   ============================================================ */
+
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+/*
+ * TOKENS OPEN PROPS DISPONIBLES (référence rapide) :
+ *
+ * SPACING   : --size-1 (0.25rem) → --size-15 (7.5rem)
+ *             --size-fluid-1 → --size-fluid-10 (clamp responsive)
+ *
+ * RADIUS    : --radius-1 (2px) --radius-2 (4px) --radius-3 (8px)
+ *             --radius-4 (12px) --radius-5 (16px) --radius-6 (24px)
+ *             --radius-round (50%) --radius-blob-* (formes organiques)
+ *
+ * SHADOWS   : --shadow-1 (légère) → --shadow-6 (très forte)
+ *             --inner-shadow-1 → --inner-shadow-4
+ *
+ * FONTS     : --font-sans --font-serif --font-mono
+ *             --font-size-0 (0.75rem) → --font-size-8 (3.5rem)
+ *             --font-weight-1 (100) → --font-weight-9 (900)
+ *             --font-lineheight-0 (0.95) → --font-lineheight-5 (2)
+ *             --font-letterspacing-0 (-0.05em) → --font-letterspacing-7 (0.5em)
+ *
+ * COLORS    : --gray-0 → --gray-12 (light)
+ *             --red-0 → --red-12, --blue-0 → --blue-12, etc.
+ *             --indigo-*, --violet-*, --purple-*, --pink-*
+ *             --orange-*, --yellow-*, --green-*, --teal-*, --cyan-*
+ *
+ * EASINGS   : --ease-1 → --ease-5 --ease-in-* --ease-out-* --ease-elastic-*
+ *             --ease-spring-* (spring animations)
+ *
+ * ANIMATIONS: --animation-fade-in --animation-fade-out
+ *             --animation-slide-in-up --animation-slide-out-down
+ *             --animation-scale-up --animation-scale-down
+ *             --animation-shake-x --animation-ping
+ *             --animation-blink --animation-float --animation-bounce
+ *
+ * GRADIENTS : --gradient-1 → --gradient-30 (30 dégradés hand-crafted)
+ *
+ * ASPECT    : --ratio-square (1) --ratio-landscape (4/3)
+ *             --ratio-portrait (3/4) --ratio-widescreen (16/9)
+ *             --ratio-golden (1.618/1)
+ *
+ * Z-INDEX   : --layer-1 (1) → --layer-5 (5) --layer-important (2147483647)
+ */
+
+
+/* ============================================================
+   NIVEAU 1A — RADIX COLORS (palettes accessibles, dark auto)
+   Source : radix-ui.com/colors
+   12 stops par couleur : 1=fond très clair → 12=texte fort
+   Dark mode : appliquer .dark sur <body>
+   ============================================================ */
+
+/*
+ * LOGIQUE DES 12 STOPS RADIX :
+ *
+ * 1  → Fond de page (très subtil)
+ * 2  → Fond de composant (hover d'un fond)
+ * 3  → Fond de composant interactif (hover)
+ * 4  → Fond de composant actif / sélectionné
+ * 5  → Fond de composant actif hover
+ * 6  → Fond subtil pour les bordures
+ * 7  → Bordure des éléments UI / séparateurs
+ * 8  → Bordure des éléments interactifs
+ * 9  → Couleur SOLIDE principale (bouton filled, badge)
+ * 10 → Couleur solide hover
+ * 11 → Texte à faible contraste (labels secondaires)
+ * 12 → Texte à fort contraste (titres, texte principal)
+ *
+ * USAGE TYPE :
+ * .btn  { background: var(--violet-9); color: white; }
+ * .btn:hover { background: var(--violet-10); }
+ * .card { background: var(--violet-2); border: 1px solid var(--violet-7); }
+ * .text { color: var(--violet-11); }
+ * .title{ color: var(--violet-12); }
+ */
+
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/violet.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/violet-dark.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/mauve.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/mauve-dark.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/teal.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/teal-dark.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/amber.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/amber-dark.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/red.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/red-dark.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/green.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/green-dark.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/slate.css";
+@import "https://unpkg.com/@radix-ui/colors@3.0.0/slate-dark.css";
+
+
+/* ============================================================
+   NIVEAU 1B — TOKENS NEOGTB (mappés sur Radix + Open Props)
+   Ces variables sont les seules à utiliser dans le code NEOGTB.
+   Elles pointent vers Radix ou Open Props, jamais vers du hex.
+   ============================================================ */
+
+:root {
+  /* ACCENT PRINCIPAL — Violet (consulting authority) */
+  --accent:          var(--violet-9);
+  --accent-hover:    var(--violet-10);
+  --accent-subtle:   var(--violet-2);
+  --accent-border:   var(--violet-7);
+  --accent-text:     var(--violet-11);
+  --accent-text-hi:  var(--violet-12);
+
+  /* SURFACES */
+  --surface:         white;
+  --surface-alt:     var(--mauve-2);
+  --surface-raised:  var(--mauve-1);
+
+  /* TEXTE */
+  --text-primary:    var(--mauve-12);
+  --text-secondary:  var(--mauve-11);
+  --text-muted:      var(--mauve-10);
+
+  /* BORDURES */
+  --border:          var(--mauve-6);
+  --border-hover:    var(--mauve-7);
+  --border-strong:   var(--mauve-8);
+
+  /* FEEDBACK */
+  --success:         var(--teal-9);
+  --success-subtle:  var(--teal-2);
+  --warning:         var(--amber-9);
+  --warning-subtle:  var(--amber-2);
+  --danger:          var(--red-9);
+  --danger-subtle:   var(--red-2);
+
+  /* SPACING (Open Props) */
+  --space-1:  var(--size-1);   /* 0.25rem  4px */
+  --space-2:  var(--size-2);   /* 0.5rem   8px */
+  --space-3:  var(--size-3);   /* 0.75rem  12px */
+  --space-4:  var(--size-4);   /* 1rem     16px */
+  --space-5:  var(--size-5);   /* 1.25rem  20px */
+  --space-6:  var(--size-6);   /* 1.5rem   24px */
+  --space-7:  var(--size-8);   /* 2rem     32px */
+  --space-8:  var(--size-10);  /* 2.5rem   40px */
+  --space-9:  var(--size-12);  /* 3rem     48px */
+  --space-10: var(--size-15);  /* 3.75rem  60px */
+
+  /* RADIUS (Open Props) */
+  --radius-sm:   var(--radius-2);  /* 4px */
+  --radius-md:   var(--radius-3);  /* 8px */
+  --radius-lg:   var(--radius-4);  /* 12px */
+  --radius-xl:   var(--radius-5);  /* 16px */
+  --radius-pill: var(--radius-round); /* 9999px */
+
+  /* SHADOWS (Open Props) */
+  --shadow-sm:   var(--shadow-1);
+  --shadow-md:   var(--shadow-2);
+  --shadow-lg:   var(--shadow-3);
+
+  /* TRANSITIONS (Open Props easings) */
+  --ease-out:    var(--ease-out-3);
+  --ease-spring: var(--ease-spring-3);
+  --duration-sm: 150ms;
+  --duration-md: 250ms;
+
+  /* TYPOGRAPHIE */
+  --font-sans:   -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif:  'Georgia', 'Times New Roman', serif;
+  --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
+
+  /* LAYOUT */
+  --max-width:   1200px;
+  --section-x:   var(--size-10);  /* 40px */
+  --section-y:   var(--size-15);  /* 60px */
+}
+
+/* Dark mode — Radix inverse automatiquement les palettes */
+.dark {
+  --surface:       #0F0F14;
+  --surface-alt:   var(--mauve-2);
+  --surface-raised:var(--mauve-3);
+}
+
+
+/* ============================================================
+   NIVEAU 2A — COMPOSANTS shadcn/ui (patterns de référence)
+   Source : ui.shadcn.com — utilisé par OpenAI, Adobe, Sonos
+   Convention : background + foreground pour chaque rôle
+   ============================================================ */
+
+/*
+ * SYSTÈME DE COULEURS SHADCN (à lire pour comprendre la logique) :
+ *
+ * --background         → fond de la page
+ * --foreground         → texte sur fond de page
+ * --card               → fond des cards
+ * --card-foreground    → texte dans les cards
+ * --primary            → couleur principale (bouton filled)
+ * --primary-foreground → texte sur fond primary
+ * --secondary          → couleur secondaire (bouton ghost)
+ * --muted              → fond des éléments désactivés
+ * --muted-foreground   → texte des placeholders, labels
+ * --accent             → hover interactif
+ * --destructive        → actions dangereuses (supprimer)
+ * --border             → toutes les bordures
+ * --input              → bordure des inputs
+ * --ring               → focus ring
+ */
+
+/* Mapping shadcn → NEOGTB tokens */
+:root {
+  --background:          var(--surface);
+  --foreground:          var(--text-primary);
+  --card:                var(--surface);
+  --card-foreground:     var(--text-primary);
+  --popover:             var(--surface);
+  --popover-foreground:  var(--text-primary);
+  --primary:             var(--accent);
+  --primary-foreground:  var(--violet-1);
+  --secondary:           var(--surface-alt);
+  --secondary-foreground:var(--text-primary);
+  --muted:               var(--surface-alt);
+  --muted-foreground:    var(--text-muted);
+  --destructive:         var(--danger);
+  --destructive-foreground: white;
+  --border:              var(--border);
+  --input:               var(--border);
+  --ring:                var(--accent);
+}
+
+/* ============================================================
+   NIVEAU 2B — PATTERNS COMPOSANTS (Uiverse + shadcn)
+   Composants réels prêts à être utilisés ou adaptés
+   ============================================================ */
+
+/* --- BOUTONS --- */
+
+/* Primary — filled accent */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--duration-sm) var(--ease-out);
+  text-decoration: none;
+  border: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:active { transform: scale(0.98); }
+
+/* Secondary — outline */
+.btn-secondary {
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: var(--secondary); }
+
+/* Ghost — no border */
+.btn-ghost {
+  background: transparent;
+  color: var(--muted-foreground);
+}
+.btn-ghost:hover {
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+/* Destructive */
+.btn-destructive {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+/* Sizes */
+.btn-sm { padding: var(--space-2) var(--space-4); font-size: 0.75rem; }
+.btn-lg { padding: var(--space-4) var(--space-8); font-size: 1rem; }
+.btn-icon { padding: var(--space-3); aspect-ratio: 1; }
+
+
+/* --- CARDS --- */
+
+.card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: border-color var(--duration-sm) var(--ease-out);
+}
+.card:hover { border-color: var(--border-hover); }
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.card-description {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-5);
+}
+
+
+/* --- INPUTS (pattern shadcn) --- */
+
+.input {
+  width: 100%;
+  height: 2.25rem;
+  padding: 0 var(--space-4);
+  font-size: 0.875rem;
+  background: var(--background);
+  border: 1px solid var(--input);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  transition: border-color var(--duration-sm) var(--ease-out),
+              box-shadow var(--duration-sm) var(--ease-out);
+  outline: none;
+}
+.input::placeholder { color: var(--muted-foreground); }
+.input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 20%, transparent);
+}
+.input:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 5rem;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.875rem;
+  font-family: inherit;
+  background: var(--background);
+  border: 1px solid var(--input);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  resize: none;
+  outline: none;
+  transition: border-color var(--duration-sm) var(--ease-out),
+              box-shadow var(--duration-sm) var(--ease-out);
+}
+.textarea:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 20%, transparent);
+}
+
+
+/* --- LABELS --- */
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: var(--space-2);
+}
+.label-muted { color: var(--muted-foreground); }
+
+
+/* --- BADGES / TAGS --- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+}
+.badge-default {
+  background: var(--accent-subtle);
+  color: var(--accent-text);
+}
+.badge-secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+.badge-success {
+  background: var(--success-subtle);
+  color: var(--teal-11);
+}
+.badge-warning {
+  background: var(--warning-subtle);
+  color: var(--amber-11);
+}
+.badge-danger {
+  background: var(--danger-subtle);
+  color: var(--red-11);
+}
+
+
+/* --- SÉPARATEUR --- */
+
+.separator {
+  height: 1px;
+  background: var(--border);
+  margin: var(--space-5) 0;
+  border: none;
+}
+.separator-vertical {
+  width: 1px;
+  height: 100%;
+  background: var(--border);
+}
+
+
+/* --- AVATAR --- */
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.avatar-sm  { width: 1.5rem;  height: 1.5rem;  font-size: 0.625rem; }
+.avatar-md  { width: 2rem;    height: 2rem;    font-size: 0.75rem; }
+.avatar-lg  { width: 2.5rem;  height: 2.5rem;  font-size: 0.875rem; }
+.avatar-xl  { width: 3.5rem;  height: 3.5rem;  font-size: 1.25rem; }
+
+.avatar-accent {
+  background: var(--accent-subtle);
+  color: var(--accent-text);
+}
+
+
+/* --- TOOLTIP --- */
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+}
+.tooltip-content {
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--foreground);
+  color: var(--background);
+  font-size: 0.75rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-sm) var(--ease-out);
+  z-index: 50;
+}
+.tooltip:hover .tooltip-content { opacity: 1; }
+
+
+/* --- SKELETON LOADER --- */
+
+.skeleton {
+  background: var(--surface-alt);
+  border-radius: var(--radius-md);
+  animation: var(--animation-blink);
+}
+
+
+/* --- FOCUS RING --- */
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   NIVEAU 3A — VERCEL GEIST DESIGN SYSTEM
+   Source : vercel.com/geist/introduction
+   L'esthétique cible pour NEOGTB — minimaliste et autoritaire
+   ============================================================ */
+
+/*
+ * PRINCIPES GEIST (Vercel) :
+ *
+ * 1. Contraste fort — noir #000 sur blanc #FFF
+ * 2. Typographie seule suffit — peu d'icônes, peu de déco
+ * 3. Bordures 1px solides, jamais de shadows sauf focus
+ * 4. Dark mode parfait — les deux modes sont first-class
+ * 5. Font : Geist Sans (libre) ou system-ui comme fallback
+ *
+ * TOKENS GEIST :
+ */
+
+:root {
+  /* Geist color system */
+  --geist-background:    #ffffff;
+  --geist-foreground:    #000000;
+  --geist-accents-1:     #fafafa;
+  --geist-accents-2:     #eaeaea;
+  --geist-accents-3:     #999999;
+  --geist-accents-4:     #888888;
+  --geist-accents-5:     #666666;
+  --geist-accents-6:     #444444;
+  --geist-accents-7:     #333333;
+  --geist-accents-8:     #111111;
+  --geist-success:       #0070f3;
+  --geist-error:         #e00;
+  --geist-warning:       #f5a623;
+
+  /* Geist spacing */
+  --geist-gap:           16px;
+  --geist-gap-half:      8px;
+  --geist-gap-quarter:   4px;
+  --geist-gap-double:    32px;
+
+  /* Geist radius */
+  --geist-radius:        5px;
+  --geist-radius-large:  8px;
+}
+
+/*
+ * PATTERN TYPOGRAPHIE GEIST (pour les sections authority) :
+ *
+ * h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -0.04em; }
+ * h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; letter-spacing: -0.03em; }
+ * p  { font-size: 1rem; line-height: 1.75; color: var(--geist-accents-5); }
+ *
+ * NOTE NEOGTB : adapter en 500 au lieu de 700 pour moins de lourdeur.
+ */
+
+
+/* ============================================================
+   NIVEAU 3B — IBM CARBON DESIGN SYSTEM
+   Source : carbondesignsystem.com
+   Référence enterprise B2B — exactement la cible consulting
+   ============================================================ */
+
+/*
+ * PRINCIPES CARBON (IBM) :
+ *
+ * 1. Grille 16 colonnes, gouttières 16px/32px
+ * 2. 8pt grid system — tout multiple de 8 (ou 4)
+ * 3. Hiérarchie de types stricte : Productive vs Expressive
+ * 4. Focus states très visibles (accessibilité enterprise)
+ * 5. Density d'information élevée mais organisée
+ *
+ * TOKENS CARBON les plus utiles :
+ */
+
+:root {
+  /* Carbon spacing (8pt system) */
+  --carbon-spacing-01: 0.125rem;  /* 2px */
+  --carbon-spacing-02: 0.25rem;   /* 4px */
+  --carbon-spacing-03: 0.5rem;    /* 8px */
+  --carbon-spacing-04: 0.75rem;   /* 12px */
+  --carbon-spacing-05: 1rem;      /* 16px */
+  --carbon-spacing-06: 1.5rem;    /* 24px */
+  --carbon-spacing-07: 2rem;      /* 32px */
+  --carbon-spacing-08: 2.5rem;    /* 40px */
+  --carbon-spacing-09: 3rem;      /* 48px */
+  --carbon-spacing-10: 4rem;      /* 64px */
+  --carbon-spacing-11: 5rem;      /* 80px */
+  --carbon-spacing-12: 6rem;      /* 96px */
+  --carbon-spacing-13: 10rem;     /* 160px */
+
+  /* Carbon type scale */
+  --carbon-label-01:     0.75rem;   /* 12px / 400 */
+  --carbon-body-01:      0.875rem;  /* 14px / 400 */
+  --carbon-body-02:      1rem;      /* 16px / 400 */
+  --carbon-heading-01:   0.875rem;  /* 14px / 600 */
+  --carbon-heading-02:   1rem;      /* 16px / 600 */
+  --carbon-heading-03:   1.25rem;   /* 20px / 400 */
+  --carbon-heading-04:   1.75rem;   /* 28px / 400 */
+  --carbon-heading-05:   2rem;      /* 32px / 300 */
+  --carbon-heading-06:   2.625rem;  /* 42px / 300 */
+  --carbon-heading-07:   3.375rem;  /* 54px / 300 */
+}
+
+/*
+ * LEÇON CARBON pour NEOGTB :
+ * Les headers "Productive" (sans serif, sobre) sont pour le contenu dense.
+ * Les headers "Expressive" (avec plus d'air) sont pour les pages marketing.
+ * Sur NEOGTB, tout est expressive — beaucoup d'air, peu de densité.
+ */
+
+
+/* ============================================================
+   NIVEAU 3C — STRIPE DESIGN PATTERNS
+   Source : stripe.com (inspecté)
+   Référence absolue pour forms, inputs, données financières
+   ============================================================ */
+
+/*
+ * PRINCIPES STRIPE :
+ *
+ * 1. La typographie fait 80% du design — peu d'images
+ * 2. Micro-détails parfaits — border-radius 6px partout
+ * 3. Hover states très subtils — opacity ou couleur légèrement plus foncée
+ * 4. Focus ring bleu (#0073e6) systématique
+ * 5. Shadows fonctionnelles uniquement (pas décoratives)
+ * 6. Data affichée en monospace pour les chiffres
+ *
+ * TOKENS STRIPE observés :
+ */
+
+:root {
+  --stripe-color-primary:      #0073e6;
+  --stripe-color-background:   #ffffff;
+  --stripe-color-text:         #1a1f36;
+  --stripe-color-text-light:   #697386;
+  --stripe-color-border:       #e3e8ee;
+  --stripe-color-border-hover: #c1c9d2;
+  --stripe-color-success:      #09825d;
+  --stripe-color-danger:       #cf1124;
+  --stripe-color-surface:      #f7fafc;
+
+  /* Stripe input pattern — le meilleur du marché */
+  --stripe-input-height:       2.375rem;   /* 38px */
+  --stripe-input-padding:      0.5rem 0.75rem;
+  --stripe-input-radius:       0.375rem;   /* 6px */
+  --stripe-input-border:       1px solid var(--stripe-color-border);
+  --stripe-input-shadow:       0 1px 1px rgba(0,0,0,0.03), 0 3px 6px rgba(18,34,65,0.04);
+
+  /* Stripe font — data display */
+  --stripe-font-data: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+/*
+ * PATTERN FORM STRIPE (à reproduire pour le contact NEOGTB) :
+ *
+ * .stripe-input {
+ *   height: var(--stripe-input-height);
+ *   padding: var(--stripe-input-padding);
+ *   border: var(--stripe-input-border);
+ *   border-radius: var(--stripe-input-radius);
+ *   box-shadow: var(--stripe-input-shadow);
+ *   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+ * }
+ * .stripe-input:focus {
+ *   border-color: var(--stripe-color-primary);
+ *   box-shadow: 0 1px 1px rgba(0,0,0,0.03),
+ *               0 3px 6px rgba(18,34,65,0.04),
+ *               0 0 0 3px rgba(0,115,230,0.16);
+ * }
+ */
+
+
+/* ============================================================
+   NIVEAU 3D — RESHAPED / FORMAAT PATTERNS (architecture avancée)
+   Source : reshaped.so — architecture tokens exemplaire
+   ============================================================ */
+
+/*
+ * LEÇON RESHAPED — séparer les tokens en 3 niveaux :
+ *
+ * NIVEAU 1 — Primitifs (valeurs brutes)
+ * --color-violet-500: #7f77dd;
+ *
+ * NIVEAU 2 — Sémantique (rôle dans l'interface)
+ * --color-primary: var(--color-violet-500);
+ *
+ * NIVEAU 3 — Composant (usage spécifique)
+ * --button-background: var(--color-primary);
+ *
+ * NEOGTB suit déjà ce pattern dans CLAUDE.md.
+ * Ce fichier enrichit le niveau 1 (primitifs via Open Props + Radix).
+ */
+
+
+/* ============================================================
+   RÈGLES D'USAGE POUR CLAUDE CODE
+   ============================================================ */
+
+/*
+ * PRIORITÉ DE SÉLECTION :
+ *
+ * 1. En premier : les tokens NEOGTB (--accent, --text-primary, etc.)
+ *    → définis dans la section "NIVEAU 1B" ci-dessus
+ *    → ils mappent vers Radix et Open Props
+ *
+ * 2. En deuxième : Open Props pour spacing/radius/shadows/animations
+ *    → var(--size-*), var(--radius-*), var(--shadow-*), var(--animation-*)
+ *
+ * 3. En troisième : Radix Colors directement pour les nuances
+ *    → var(--violet-2) pour un fond subtil violet
+ *    → var(--slate-11) pour du texte secondaire
+ *
+ * 4. Jamais : des valeurs hex hardcodées
+ *    → #534AB7 ✗ → var(--accent) ✓
+ *    → #F7F7F9 ✗ → var(--surface-alt) ✓
+ *    → rgba(0,0,0,0.08) ✗ → var(--border) ✓
+ *
+ * DARK MODE :
+ * Appliquer .dark sur <body> ou <html>.
+ * Radix inverse automatiquement ses palettes.
+ * Les tokens NEOGTB pointent vers Radix → dark mode automatique.
+ *
+ * ANIMATIONS :
+ * Utiliser var(--animation-fade-in), var(--animation-slide-in-up)
+ * depuis Open Props plutôt que d'écrire des keyframes custom.
+ * Respecter @media (prefers-reduced-motion) via Open Props normalize.
+ */

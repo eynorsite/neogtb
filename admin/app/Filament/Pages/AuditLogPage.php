@@ -16,9 +16,9 @@ class AuditLogPage extends Page implements HasTable
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-clipboard-document-list';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Système';
+    protected static string|\UnitEnum|null $navigationGroup = 'Réglages';
 
-    protected static ?string $navigationLabel = 'Journal d\'activité';
+    protected static ?string $navigationLabel = 'Historique des actions';
 
     protected static ?string $title = 'Journal d\'activité';
 

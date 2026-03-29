@@ -1,0 +1,1679 @@
+<!--
+  SOURCE  : https://eleven-strategy.com
+  SECTION : main, body
+  LABEL   : Eleven Strategy — petit cabinet premium, design épuré
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de eleven-strategy.com.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : Times · Montserrat
+  Couleurs    : rgb(48, 200, 134) · rgb(105, 105, 105) · rgb(246, 246, 246) · rgb(255, 255, 255)
+  Border-r    : 100%
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "136px 0px 0px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "18.4px"
+  },
+  "div[2]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "18.4px"
+  },
+  "div[3]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex",
+    "line-height": "18.4px"
+  },
+  "div[4]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "grid",
+    "grid-template-columns": "120px",
+    "line-height": "18.4px"
+  },
+  "a[5]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(48, 200, 134)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(48, 200, 134)",
+    "display": "grid",
+    "grid-template-columns": "120px",
+    "line-height": "18.4px"
+  },
+  "div[6]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(48, 200, 134)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(48, 200, 134)",
+    "display": "block",
+    "line-height": "18.4px"
+  },
+  "div[9]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "grid",
+    "grid-template-columns": "1440px",
+    "line-height": "18.4px"
+  },
+  "span[12]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "14px",
+    "font-weight": "700",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(48, 200, 134)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[13]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "14px",
+    "font-weight": "700",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[14]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "14px",
+    "font-weight": "700",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(255, 255, 255)",
+    "margin": "-1px 0px 0px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[15]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "18.4px"
+  },
+  "div[16]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex",
+    "line-height": "18.4px"
+  },
+  "nav[17]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(255, 255, 255)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "grid",
+    "grid-template-columns": "220px 1000px 220px",
+    "line-height": "18.4px"
+  },
+  "div[18]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 48px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex",
+    "line-height": "18.4px"
+  },
+  "a[21]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "12px 18px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "flex",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[24]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "12px 18px",
+    "display": "flex",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[28]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[30]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[32]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[34]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[36]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[38]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "12px 18px",
+    "display": "flex",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "span[39]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(48, 200, 134)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(48, 200, 134)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[41]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "12px 18px",
+    "display": "flex",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[44]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[46]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[48]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  },
+  "a[50]": {
+    "font-family": "Montserrat, sans-serif",
+    "font-size": "12px",
+    "font-weight": "800",
+    "color": "rgb(105, 105, 105)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "36px 24px",
+    "border": "0px none rgb(105, 105, 105)",
+    "display": "block",
+    "letter-spacing": "1px",
+    "line-height": "14px"
+  }
+}
+-->
+<body>
+	<!-- Page wrapper -->
+	<div id="nspb-page" class="home wp-singular page-template page-template-nspb-custom page-template-template-accueil page-template-nspb-customtemplate-accueil-php page page-id-260 wp-theme-eleven">
+
+	<!-- Header -->
+	<header id="header--main" class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn">
+<div class="nspb-ly--content nspb-content nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div id="header--main__logo" class="nspb-box">
+<a class="nspb-box--link" href="https://eleven-strategy.com/" title="Page d'accueil">
+<div class="nspb-box__figure">
+<figure class=""><img src="https://eleven-strategy.com/wp-content/uploads/2022/12/logo-eleven-vert.png" srcset="https://eleven-strategy.com/wp-content/uploads/2022/12/logo-eleven-vert-300x78.png 300w, https://eleven-strategy.com/wp-content/uploads/2022/12/logo-eleven-vert-160x42.png 160w" sizes="(max-width:960px) 100px, 120px" width="100" height="26" alt="Logo Eleven" style="object-fit:contain;object-position:left center;"></figure>
+</div>
+</a>
+</div>
+<div id="header--main__navbar" class="nspb-navbar nspb-navbar--double">
+<input type="checkbox" id="nspb-navbar-id-header--main__navbar-toggle" class="nspb-navbar__toggle"><label class="nspb-navbar__toggle" for="nspb-navbar-id-header--main__navbar-toggle"><span class="nspb-navbar__toggleIcon"><span class="nspb-hamburger__box"><span class="nspb-hamburger__inner"></span></span></span></label><div class="nspb-navbar__content"><div class="nspb-navbar__contentContainer"><nav class="nspb-navbar--primary"><div class="nspb-navbar--primaryContainer"><ul id="header--main__primary"><li id="menu-item-1836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1836"><a href="https://eleven-strategy.com/about-eleven/">About<br>eleven</a></li>
+<li id="menu-item-1839" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1839"><a href="https://eleven-strategy.com/strategy-transformation/">Strategy &amp;<br>Transformation</a>
+<ul class="sub-menu">
+	<li id="menu-item-1849" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1849"><a href="https://eleven-strategy.com/strategy-transformation/start-up-studio/">Start-up Studio</a></li>
+	<li id="menu-item-1850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1850"><a href="https://eleven-strategy.com/strategy-transformation/strategic-ideation/">Strategic ideation</a></li>
+	<li id="menu-item-1853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1853"><a href="https://eleven-strategy.com/strategy-transformation/blockchain/">Blockchain</a></li>
+	<li id="menu-item-1846" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1846"><a href="https://eleven-strategy.com/strategy-transformation/strategy/">Strategy</a></li>
+	<li id="menu-item-2670" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2670"><a href="https://eleven-strategy.com/strategy-transformation/digital-expertise/">Digital expertise</a></li>
+</ul>
+</li>
+<li id="menu-item-5389" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5389"><a href="https://eleven-strategy.com/data-ai/generative-ai/"><span style="color: #30C886;">Generative AI</span></a></li>
+<li id="menu-item-1840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1840"><a href="https://eleven-strategy.com/data-ai/">Data &amp; AI</a>
+<ul class="sub-menu">
+	<li id="menu-item-1858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1858"><a href="https://eleven-strategy.com/data-ai/data-exploitation-strategy/">Data exploitation strategy</a></li>
+	<li id="menu-item-1860" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1860"><a href="https://eleven-strategy.com/data-ai/data-science-acceleration/">Data science acceleration</a></li>
+	<li id="menu-item-1861" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1861"><a href="https://eleven-strategy.com/data-ai/data-governance/">Data governance</a></li>
+	<li id="menu-item-1863" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1863"><a href="https://eleven-strategy.com/data-ai/data-science-industrialisation/">Data science industrialisation</a></li>
+	<li id="menu-item-1857" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1857"><a href="https://eleven-strategy.com/data-ai/business-expertise/"><span style="color: #30C886;">Business expertise</span></a></li>
+	<li id="menu-item-1856" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1856"><a href="https://eleven-strategy.com/data-ai/technological-expertise/"><span style="color: #30C886;">Technological expertise</span></a></li>
+</ul>
+</li>
+<li id="menu-item-4488" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4488"><a href="https://eleven-strategy.com/sustainability-strategy/">Sustainability<br>strategy</a>
+<ul class="sub-menu">
+	<li id="menu-item-4496" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4496"><a href="https://eleven-strategy.com/sustainability-strategy/low-carbon-strategy/">Low carbon strategy</a></li>
+	<li id="menu-item-4495" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4495"><a href="https://eleven-strategy.com/sustainability-strategy/optimization-of-operations-performance/">Optimization of operations’ performance</a></li>
+	<li id="menu-item-5150" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5150"><a href="https://eleven-strategy.com/sustainability-strategy/building-natively-sustainable-offers/">Building natively sustainable offers</a></li>
+	<li id="menu-item-4493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4493"><a href="https://eleven-strategy.com/sustainability-strategy/sustainability-due-diligence/">Sustainability due diligence</a></li>
+</ul>
+</li>
+<li id="menu-item-1843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1843"><a href="https://eleven-strategy.com/transaction-private-equity-eleven/">Transaction &amp;<br>Private equity</a>
+<ul class="sub-menu">
+	<li id="menu-item-6013" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6013"><a href="https://eleven-strategy.com/transaction-private-equity-eleven/strategic-services-for-gps/">Strategic Services<br>for GPs</a></li>
+	<li id="menu-item-1866" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1866"><a href="https://eleven-strategy.com/transaction-private-equity-eleven/strategic-due-diligence/">Strategic due diligence</a></li>
+	<li id="menu-item-1865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1865"><a href="https://eleven-strategy.com/transaction-private-equity-eleven/due-diligence-data/">Due diligence data</a></li>
+	<li id="menu-item-1864" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1864"><a href="https://eleven-strategy.com/transaction-private-equity-eleven/digital-due-diligence/">Digital &amp; IA due diligence</a></li>
+	<li id="menu-item-4704" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4704"><a href="https://eleven-strategy.com/transaction-private-equity-eleven/sustainability-due-diligence/">Sustainability due diligence</a></li>
+	<li id="menu-item-2392" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2392"><a href="https://eleven-strategy.com/transaction-private-equity-eleven/our-latest-transactions/">Excerpt of completed transactions</a></li>
+</ul>
+</li>
+</ul></div></nav><div class="nspb-navbar--secondary"><div class="nspb-navbar--secondaryContainer"><ul id="header--main__secondary"><li id="menu-item-1755" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1755"><a href="https://eleven-strategy.com/team/">Team</a></li>
+<li id="menu-item-1756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1756"><a href="https://eleven-strategy.com/join-eleven/">Join us</a></li>
+<li id="menu-item-1757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1757"><a href="https://eleven-strategy.com/publications-eleven/">Publications</a></li>
+<li id="menu-item-2484" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2484"><a href="https://eleven-strategy.fr/business-cases/">Business cases</a></li>
+<li id="menu-item-1758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1758"><a href="https://eleven-strategy.com/contact-us/"><span style="color: #ffffff; background-color:#30C886; padding:0.5em">Contact</span></a></li>
+</ul><ul class="nspb-languageSwitcher">	<li class="lang-item lang-item-2 lang-item-fr lang-item-first"><a lang="fr-FR" hreflang="fr-FR" href="https://eleven-strategy.fr/">fr</a></li>
+	<li class="lang-item lang-item-5 lang-item-en current-lang"><a lang="en-GB" hreflang="en-GB" href="https://eleven-strategy.com/" aria-current="true">en</a></li>
+</ul></div></div></div></div></div>
+</div>
+</div>
+</header>
+	<!-- Header end -->
+<div id="home-feature" class="nspb-sc nspb-ly__split--1 nspb-pageFeature nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn">
+<div class="nspb-ly--content nspb-content nspb-feature nspb-feature--page nspb-halign--xscenter nspb-halign--smcenter nspb-halign--mdleft nspb-halign--lgleft nspb-valign--top">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--contained nspb-boxContent--hleft nspb-boxContent--vbottom">
+<div class="nspb-box__figure" style="padding-top:33%;min-height:350px;">
+<figure><img src="https://eleven-strategy.com/wp-content/uploads/2024/03/eleven-new-home-page-en.png" srcset="https://eleven-strategy.com/wp-content/uploads/2024/03/eleven-new-home-page-en-300x151.png 300w, https://eleven-strategy.com/wp-content/uploads/2024/03/eleven-new-home-page-en-1024x516.png 1024w, https://eleven-strategy.com/wp-content/uploads/2024/03/eleven-new-home-page-en-768x387.png 768w, https://eleven-strategy.com/wp-content/uploads/2024/03/eleven-new-home-page-en-1280x645.png 1280w, https://eleven-strategy.com/wp-content/uploads/2024/03/eleven-new-home-page-en-1920x967.png 1920w" sizes="100vw" width="300" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="home-blocPages" class="nspb-sc nspb-ly__split--1 nspb-bgcolor--grayLighterer">
+<div class="nspb-zn nspb-zn--background nspb-ly--contained" style="overflow:hidden;">
+<figure class="nspb-zn__background"><img height="243" width="300" alt="Data and AI Strategy Consulting | Eleven" style="{object-position:center center;}" srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-expertise-300x244.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-expertise-1024x832.jpg 1024w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-expertise-768x624.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-expertise-1280x1040.jpg 1280w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-expertise-1920x1560.jpg 1920w" sizes="100vw"></figure><div class="nspb-ly--content nspb-content nspb-cmsContent nspb-ly--pmDefault nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<article><a class="nspb-box__link" href="https://eleven-strategy.com/data-ai/"><h3>Data &amp; AI</h3><p>eleven has substantial experience from many successful AI transformation projects, from data strategy to large-scale transformation projects and agile implementation of concrete AI cases.</p><p class="nspb-button--plain"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> <span>More</span></p><div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;min-height:60px;">
+<figure class=""><img width="78" height="78" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;" srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/page-icon2.png 78w" sizes="60px"></figure>
+</div>
+</div>
+</a></article><article><a class="nspb-box__link" href="https://eleven-strategy.com/transaction-private-equity-eleven/"><h3>Transaction &amp; Private equity</h3><p>Strategic due diligence work for investment funds must now include a strong digital component, whether the assets under consideration are themselves natively digital or not.</p><p class="nspb-button--plain"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> <span>More</span></p><div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/page-icon3.png 78w" data-nspb-sizes="60px" width="78" height="77" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</a></article><article><a class="nspb-box__link" href="https://eleven-strategy.com/strategy-transformation/"><h3>Strategy, Innovation, Transformation and Digital</h3><p>Defining a corporate strategy has become a particularly perilous exercise, but one that is still essential to a company’s success.</p><p class="nspb-button--plain"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> <span>More</span></p><div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/page-icon1.png 79w" data-nspb-sizes="60px" width="79" height="79" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</a></article><article><a class="nspb-box__link" href="https://eleven-strategy.com/sustainability-strategy/"><h3>Sustainability strategy</h3><p>Given the devastating effects of climate change and the increasing pressure on companies to address it, sustainability has become a major strategic challenge in all sectors.</p><p class="nspb-button--plain"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> <span>More</span></p><div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/01/innovation-300x300.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/01/innovation-160x160.png 160w" data-nspb-sizes="60px" width="80" height="80" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</a></article></div>
+</div>
+</div>
+<div id="home-clients--type" class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn nspb-bgcolor--white nspb-ly--contained">
+<div class="nspb-ly--content nspb-content nspb-cmsContent nspb-padT--xs2 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-titreFilet__wrapper"><div class="section-titreFilet__title"><p class="nspb-heading--3 nspb-bgcolor--white">Customers</p><p class="home-clients__type nspb-bgcolor--white">LARGE CAP</p></div></div></div>
+<div id="home-clients__sliderLayout--lc" class="nspb-ly--content nspb-content nspb-cmsContent nspb-bgcolor--white nspb-padT--xs0 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="nspb-slider nspb-animation--start" data-nspb-slider-duration="" data-nspb-slider-autoplay="1" data-nspb-slider-options="eyJsb29wIjp0cnVlLCJhdXRvSGVpZ2h0IjpmYWxzZSwic2xpZGVzUGVyVmlldyI6Mywic3BhY2VCZXR3ZWVuIjoxMiwic3BlZWQiOjIwMDAsImJyZWFrcG9pbnRzIjp7IjY0MCI6eyJzbGlkZXNQZXJWaWV3Ijo4LCJzcGFjZUJldHdlZW4iOjEyfX19">
+<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+<div class="swiper-wrapper" id="swiper-wrapper-8ea5784dcbf1ee42" aria-live="off" style="transform: translate3d(-1145px, 0px, 0px); transition: 2000ms;"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="14" role="group" aria-label="1 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/societegenerale-1-300x283.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/societegenerale-1-160x151.png 160w" data-nspb-sizes="100px" width="1070" height="1010" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="15" role="group" aria-label="2 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/04/logo_totalenergies-svg_-300x237.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/04/logo_totalenergies-svg_-160x126.png 160w" data-nspb-sizes="100px" width="2560" height="2022" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="16" role="group" aria-label="3 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/valeo-1-300x143.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/valeo-1-160x76.png 160w" data-nspb-sizes="100px" width="1280" height="609" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="17" role="group" aria-label="4 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/veoliaenvironnement-1-300x79.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/veoliaenvironnement-1-160x42.png 160w" data-nspb-sizes="100px" width="1280" height="338" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="18" role="group" aria-label="5 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/vinci-1-300x83.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/vinci-1-160x45.png 160w" data-nspb-sizes="100px" width="1280" height="356" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="19" role="group" aria-label="6 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/02/logo_savencia_fromage_dairy_rvb-300x117.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/02/logo_savencia_fromage_dairy_rvb-160x62.png 160w" data-nspb-sizes="100px" width="1931" height="752" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="20" role="group" aria-label="7 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/02/dior_logo-svg_-300x130.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/02/dior_logo-svg_-160x69.png 160w" data-nspb-sizes="100px" width="2560" height="1109" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="21" role="group" aria-label="8 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/04/1200px-assicurazioni_generali_logo-svg_-1-300x243.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/04/1200px-assicurazioni_generali_logo-svg_-1-160x130.png 160w" data-nspb-sizes="100px" width="1200" height="973" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="9 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/accor-1-300x257.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/accor-1-160x137.png 160w" data-nspb-sizes="100px" width="1590" height="1361" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="10 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/air_liquide-1-300x58.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/air_liquide-1-160x31.png 160w" data-nspb-sizes="100px" width="1200" height="231" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" role="group" aria-label="11 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/airbus-1-300x60.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/airbus-1-160x32.png 160w" data-nspb-sizes="100px" width="1771" height="355" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="3" role="group" aria-label="12 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/axa-1-300x300.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/axa-1-160x160.png 160w" data-nspb-sizes="100px" width="1200" height="1200" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="13 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/creditdunord-1-300x108.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/creditdunord-1-160x58.png 160w" data-nspb-sizes="100px" width="2500" height="903" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="5" role="group" aria-label="14 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/engie-1-300x180.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/engie-1-160x96.png 160w" data-nspb-sizes="100px" width="4724" height="2835" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="6" role="group" aria-label="15 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/kering-1-300x133.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/kering-1-160x71.jpg 160w" data-nspb-sizes="100px" width="727" height="322" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="7" role="group" aria-label="16 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/merieux-nutrisciences-300x65.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/merieux-nutrisciences-160x34.jpg 160w" data-nspb-sizes="100px" width="2157" height="464" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="8" role="group" aria-label="17 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/michelin-1-300x91.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/michelin-1-160x48.png 160w" data-nspb-sizes="100px" width="2000" height="606" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="9" role="group" aria-label="18 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/orange-1-300x256.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/orange-1-160x136.png 160w" data-nspb-sizes="100px" width="2500" height="2132" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="10" role="group" aria-label="19 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/04/ratp-svg_-160x193.png 160w" data-nspb-sizes="100px" width="1200" height="1447" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="11" role="group" aria-label="20 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/saint-gobain-300x127.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/saint-gobain-160x68.png 160w" data-nspb-sizes="100px" width="1280" height="540" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="12" role="group" aria-label="21 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/servier-1-300x99.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/servier-1-160x53.png 160w" data-nspb-sizes="100px" width="1737" height="573" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="13" role="group" aria-label="22 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/sncf-1-300x158.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/sncf-1-160x84.png 160w" data-nspb-sizes="100px" width="1200" height="631" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="14" role="group" aria-label="23 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/societegenerale-1-300x283.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/societegenerale-1-160x151.png 160w" data-nspb-sizes="100px" width="1070" height="1010" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="15" role="group" aria-label="24 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/04/logo_totalenergies-svg_-300x237.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/04/logo_totalenergies-svg_-160x126.png 160w" data-nspb-sizes="100px" width="2560" height="2022" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="16" role="group" aria-label="25 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/valeo-1-300x143.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/valeo-1-160x76.png 160w" data-nspb-sizes="100px" width="1280" height="609" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="17" role="group" aria-label="26 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/veoliaenvironnement-1-300x79.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/veoliaenvironnement-1-160x42.png 160w" data-nspb-sizes="100px" width="1280" height="338" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="18" role="group" aria-label="27 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/vinci-1-300x83.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/vinci-1-160x45.png 160w" data-nspb-sizes="100px" width="1280" height="356" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="19" role="group" aria-label="28 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/02/logo_savencia_fromage_dairy_rvb-300x117.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/02/logo_savencia_fromage_dairy_rvb-160x62.png 160w" data-nspb-sizes="100px" width="1931" height="752" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="20" role="group" aria-label="29 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/02/dior_logo-svg_-300x130.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/02/dior_logo-svg_-160x69.png 160w" data-nspb-sizes="100px" width="2560" height="1109" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="21" role="group" aria-label="30 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/04/1200px-assicurazioni_generali_logo-svg_-1-300x243.png 300w, https://eleven-strategy.com/wp-content/uploads/2023/04/1200px-assicurazioni_generali_logo-svg_-1-160x130.png 160w" data-nspb-sizes="100px" width="1200" height="973" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="31 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/accor-1-300x257.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/accor-1-160x137.png 160w" data-nspb-sizes="100px" width="1590" height="1361" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="1" role="group" aria-label="32 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/air_liquide-1-300x58.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/air_liquide-1-160x31.png 160w" data-nspb-sizes="100px" width="1200" height="231" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="33 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/airbus-1-300x60.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/airbus-1-160x32.png 160w" data-nspb-sizes="100px" width="1771" height="355" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="3" role="group" aria-label="34 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/axa-1-300x300.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/axa-1-160x160.png 160w" data-nspb-sizes="100px" width="1200" height="1200" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group" aria-label="35 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/creditdunord-1-300x108.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/creditdunord-1-160x58.png 160w" data-nspb-sizes="100px" width="2500" height="903" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" role="group" aria-label="36 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/engie-1-300x180.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/engie-1-160x96.png 160w" data-nspb-sizes="100px" width="4724" height="2835" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" role="group" aria-label="37 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/kering-1-300x133.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/kering-1-160x71.jpg 160w" data-nspb-sizes="100px" width="727" height="322" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" role="group" aria-label="38 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/merieux-nutrisciences-300x65.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/merieux-nutrisciences-160x34.jpg 160w" data-nspb-sizes="100px" width="2157" height="464" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div></div>
+<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div></div>
+</div>
+<div class="nspb-ly--content nspb-content nspb-cmsContent nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-titreFilet__wrapper"><div class="section-titreFilet__title"><p class="nspb-heading--3 nspb-bgcolor--white nspb-color--white">Customers</p><p class="home-clients__type nspb-bgcolor--white">PRIVATE EQUITY</p></div></div></div>
+<div id="home-clients__sliderLayout--pe" class="nspb-ly--content nspb-content nspb-cmsContent nspb-bgcolor--white nspb-padT--xs0 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="nspb-slider nspb-animation--start" data-nspb-slider-duration="" data-nspb-slider-autoplay="1" data-nspb-slider-reverse-direction="1" data-nspb-slider-options="eyJsb29wIjp0cnVlLCJhdXRvSGVpZ2h0IjpmYWxzZSwic2xpZGVzUGVyVmlldyI6Mywic3BhY2VCZXR3ZWVuIjoxMiwic3BlZWQiOjIwMDAsImJyZWFrcG9pbnRzIjp7IjY0MCI6eyJzbGlkZXNQZXJWaWV3Ijo4LCJzcGFjZUJldHdlZW4iOjEyfX19">
+<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+<div class="swiper-wrapper" id="swiper-wrapper-a6fd7786baec19f6" aria-live="off" style="transform: translate3d(-3206px, 0px, 0px); transition: 2000ms;"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="14" role="group" aria-label="1 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/latourcapital-1-300x60.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/latourcapital-1-160x32.jpg 160w" data-nspb-sizes="100px" width="1664" height="331" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="15" role="group" aria-label="2 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/lvhmluxuryventures-1-300x74.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/lvhmluxuryventures-1-160x40.jpg 160w" data-nspb-sizes="100px" width="898" height="222" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="16" role="group" aria-label="3 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/mboandco-1-160x215.jpg 160w" data-nspb-sizes="100px" width="536" height="720" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="17" role="group" aria-label="4 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/naxicappartners-1-300x103.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/naxicappartners-1-160x55.png 160w" data-nspb-sizes="100px" width="917" height="315" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="18" role="group" aria-label="5 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/qualiuminvestissement-1-300x120.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/qualiuminvestissement-1-160x64.png 160w" data-nspb-sizes="100px" width="356" height="142" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="19" role="group" aria-label="6 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/thecarlylegroup-1-300x43.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/thecarlylegroup-1-160x23.png 160w" data-nspb-sizes="100px" width="1280" height="182" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="20" role="group" aria-label="7 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/vitruvianpartners-1-300x129.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/vitruvianpartners-1-160x69.png 160w" data-nspb-sizes="100px" width="800" height="343" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="21" role="group" aria-label="8 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/weinberg-1-300x135.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/weinberg-1-160x72.png 160w" data-nspb-sizes="100px" width="640" height="287" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="9 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/21invest-1-300x113.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/21invest-1-160x60.png 160w" data-nspb-sizes="100px" width="1599" height="600" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="1" role="group" aria-label="10 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/anderapartners-1-300x119.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/anderapartners-1-160x64.png 160w" data-nspb-sizes="100px" width="959" height="381" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="11 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/apaxpartners-1-300x98.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/apaxpartners-1-160x52.png 160w" data-nspb-sizes="100px" width="1200" height="390" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="12 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/ardian-1-300x166.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/ardian-1-160x89.jpg 160w" data-nspb-sizes="100px" width="700" height="388" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="13 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/bpi-1-300x151.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/bpi-1-160x81.png 160w" data-nspb-sizes="100px" width="951" height="480" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="5" role="group" aria-label="14 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/bridgepoint-1-300x297.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/bridgepoint-1-160x158.png 160w" data-nspb-sizes="100px" width="1036" height="1024" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="6" role="group" aria-label="15 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/capza-1-300x121.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/capza-1-160x65.png 160w" data-nspb-sizes="100px" width="1673" height="676" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="7" role="group" aria-label="16 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/cathaycapital-1-300x67.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/cathaycapital-1-160x36.png 160w" data-nspb-sizes="100px" width="1217" height="271" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="8" role="group" aria-label="17 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/eurazeo-1-300x87.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/eurazeo-1-160x47.png 160w" data-nspb-sizes="100px" width="2732" height="796" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="9" role="group" aria-label="18 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/francisco-partners-300x189.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/francisco-partners-160x101.png 160w" data-nspb-sizes="100px" width="3219" height="2023" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="10" role="group" aria-label="19 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/hld-1-300x112.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/hld-1-160x60.jpg 160w" data-nspb-sizes="100px" width="842" height="315" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="11" role="group" aria-label="20 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/ikinvestissement-1-300x67.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/ikinvestissement-1-160x36.jpg 160w" data-nspb-sizes="100px" width="1407" height="315" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="12" role="group" aria-label="21 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/intermediate_capital_group-1-300x131.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/intermediate_capital_group-1-160x70.png 160w" data-nspb-sizes="100px" width="1200" height="523" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="13" role="group" aria-label="22 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/keensightcapital-1-300x124.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/keensightcapital-1-160x66.png 160w" data-nspb-sizes="100px" width="2278" height="943" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="14" role="group" aria-label="23 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/latourcapital-1-300x60.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/latourcapital-1-160x32.jpg 160w" data-nspb-sizes="100px" width="1664" height="331" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="15" role="group" aria-label="24 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/lvhmluxuryventures-1-300x74.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/lvhmluxuryventures-1-160x40.jpg 160w" data-nspb-sizes="100px" width="898" height="222" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="16" role="group" aria-label="25 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/mboandco-1-160x215.jpg 160w" data-nspb-sizes="100px" width="536" height="720" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="17" role="group" aria-label="26 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/naxicappartners-1-300x103.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/naxicappartners-1-160x55.png 160w" data-nspb-sizes="100px" width="917" height="315" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="18" role="group" aria-label="27 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/qualiuminvestissement-1-300x120.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/qualiuminvestissement-1-160x64.png 160w" data-nspb-sizes="100px" width="356" height="142" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="19" role="group" aria-label="28 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/thecarlylegroup-1-300x43.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/thecarlylegroup-1-160x23.png 160w" data-nspb-sizes="100px" width="1280" height="182" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="20" role="group" aria-label="29 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/vitruvianpartners-1-300x129.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/vitruvianpartners-1-160x69.png 160w" data-nspb-sizes="100px" width="800" height="343" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="21" role="group" aria-label="30 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/weinberg-1-300x135.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/weinberg-1-160x72.png 160w" data-nspb-sizes="100px" width="640" height="287" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="31 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/21invest-1-300x113.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/21invest-1-160x60.png 160w" data-nspb-sizes="100px" width="1599" height="600" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" role="group" aria-label="32 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/anderapartners-1-300x119.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/anderapartners-1-160x64.png 160w" data-nspb-sizes="100px" width="959" height="381" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" role="group" aria-label="33 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/apaxpartners-1-300x98.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/apaxpartners-1-160x52.png 160w" data-nspb-sizes="100px" width="1200" height="390" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" role="group" aria-label="34 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/ardian-1-300x166.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/ardian-1-160x89.jpg 160w" data-nspb-sizes="100px" width="700" height="388" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group" aria-label="35 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/bpi-1-300x151.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/bpi-1-160x81.png 160w" data-nspb-sizes="100px" width="951" height="480" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" role="group" aria-label="36 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/bridgepoint-1-300x297.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/bridgepoint-1-160x158.png 160w" data-nspb-sizes="100px" width="1036" height="1024" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" role="group" aria-label="37 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/capza-1-300x121.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/capza-1-160x65.png 160w" data-nspb-sizes="100px" width="1673" height="676" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" role="group" aria-label="38 / 38" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/cathaycapital-1-300x67.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/cathaycapital-1-160x36.png 160w" data-nspb-sizes="100px" width="1217" height="271" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div></div>
+<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div></div>
+</div>
+<div class="nspb-ly--content nspb-content nspb-cmsContent nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-titreFilet__wrapper"><div class="section-titreFilet__title"><p class="nspb-heading--3 nspb-bgcolor--white nspb-color--white">Customers</p><p class="home-clients__type nspb-bgcolor--white">HIGH GROWTH MID-CAP</p></div></div></div>
+<div id="home-clients__sliderLayout--hgmc" class="nspb-ly--content nspb-content nspb-cmsContent nspb-bgcolor--white nspb-padT--xs0 nspb-padB--xs2 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="nspb-slider nspb-animation--start" data-nspb-slider-duration="" data-nspb-slider-autoplay="1" data-nspb-slider-options="eyJsb29wIjp0cnVlLCJhdXRvSGVpZ2h0IjpmYWxzZSwic2xpZGVzUGVyVmlldyI6Mywic3BhY2VCZXR3ZWVuIjoxMiwic3BlZWQiOjIwMDAsImJyZWFrcG9pbnRzIjp7IjY0MCI6eyJzbGlkZXNQZXJWaWV3Ijo4LCJzcGFjZUJldHdlZW4iOjEyfX19">
+<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+<div class="swiper-wrapper" id="swiper-wrapper-8ce53863de5d4e94" aria-live="off" style="transform: translate3d(-1145px, 0px, 0px); transition: 2000ms;"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="27" role="group" aria-label="1 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/iad-1-160x164.png 160w" data-nspb-sizes="100px" width="573" height="587" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="28" role="group" aria-label="2 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/indigogroup-1-300x94.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/indigogroup-1-160x50.png 160w" data-nspb-sizes="100px" width="3349" height="1046" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="29" role="group" aria-label="3 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/intescia-1-300x78.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/intescia-1-160x42.png 160w" data-nspb-sizes="100px" width="346" height="90" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="30" role="group" aria-label="4 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/keolis-2-300x46.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/keolis-2-160x25.png 160w" data-nspb-sizes="100px" width="1280" height="196" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="31" role="group" aria-label="5 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/lagarrigue-1-300x300.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/lagarrigue-1-160x160.png 160w" data-nspb-sizes="100px" width="512" height="512" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="32" role="group" aria-label="6 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/linvoges-1-300x99.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/linvoges-1-160x53.jpg 160w" data-nspb-sizes="100px" width="1182" height="391" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="33" role="group" aria-label="7 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/lsacourtage-1-300x167.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/lsacourtage-1-160x89.png 160w" data-nspb-sizes="100px" width="1920" height="1070" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="34" role="group" aria-label="8 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/micheletaugustin-1-300x121.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/micheletaugustin-1-160x64.jpg 160w" data-nspb-sizes="100px" width="758" height="305" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="9 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/odealim-1-300x103.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/odealim-1-160x55.png 160w" data-nspb-sizes="100px" width="1698" height="582" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="10 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/opngo-1-300x142.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/opngo-1-160x76.png 160w" data-nspb-sizes="100px" width="1312" height="620" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" role="group" aria-label="11 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/park-holidays-300x66.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/park-holidays-160x35.png 160w" data-nspb-sizes="100px" width="500" height="110" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="3" role="group" aria-label="12 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/peters-surgical-300x109.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/peters-surgical-160x58.png 160w" data-nspb-sizes="100px" width="932" height="340" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="13 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/primagaz-2-300x257.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/primagaz-2-160x137.png 160w" data-nspb-sizes="100px" width="430" height="369" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="5" role="group" aria-label="14 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/private-sport-shop-300x70.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/private-sport-shop-160x37.png 160w" data-nspb-sizes="100px" width="466" height="108" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="6" role="group" aria-label="15 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/proprietes-privees-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/proprietes-privees-160x160.jpg 160w" data-nspb-sizes="100px" width="343" height="344" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="7" role="group" aria-label="16 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/recommerce-1-300x37.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/recommerce-1-160x20.png 160w" data-nspb-sizes="100px" width="2056" height="253" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="8" role="group" aria-label="17 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/redspher-1-300x145.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/redspher-1-160x77.png 160w" data-nspb-sizes="100px" width="1181" height="571" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="9" role="group" aria-label="18 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/safti-1-160x160.png 160w, https://eleven-strategy.com/wp-content/uploads/2021/06/safti-1.png 250w" data-nspb-sizes="100px" width="250" height="250" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="10" role="group" aria-label="19 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/sanef-1-300x152.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/sanef-1-160x81.png 160w" data-nspb-sizes="100px" width="532" height="269" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="11" role="group" aria-label="20 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/shark-1-300x73.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/shark-1-160x39.png 160w" data-nspb-sizes="100px" width="3000" height="726" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="12" role="group" aria-label="21 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/slv-1-300x167.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/slv-1-160x89.png 160w" data-nspb-sizes="100px" width="900" height="500" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="13" role="group" aria-label="22 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/snaam-1-300x95.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/snaam-1-160x51.png 160w" data-nspb-sizes="100px" width="1299" height="413" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="14" role="group" aria-label="23 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/starservice-1-300x60.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/starservice-1-160x32.png 160w" data-nspb-sizes="100px" width="2953" height="591" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="15" role="group" aria-label="24 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/vancleefandarpels-1-300x113.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/vancleefandarpels-1-160x60.jpg 160w" data-nspb-sizes="100px" width="600" height="225" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="16" role="group" aria-label="25 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/acolad-1-300x77.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/acolad-1-160x41.png 160w" data-nspb-sizes="100px" width="443" height="114" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="17" role="group" aria-label="26 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/adb-safegate-300x107.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/adb-safegate-160x57.jpg 160w" data-nspb-sizes="100px" width="2560" height="914" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="18" role="group" aria-label="27 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/atlantic-1-300x60.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/atlantic-1-160x32.png 160w" data-nspb-sizes="100px" width="1470" height="295" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="19" role="group" aria-label="28 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/batisante-1-300x43.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/batisante-1-160x23.png 160w" data-nspb-sizes="100px" width="1418" height="202" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="20" role="group" aria-label="29 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/cairn-1-300x110.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/cairn-1-160x59.png 160w" data-nspb-sizes="100px" width="666" height="244" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="21" role="group" aria-label="30 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/consolis-1-300x65.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/consolis-1-160x35.jpg 160w" data-nspb-sizes="100px" width="1022" height="222" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="22" role="group" aria-label="31 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/dataaltares-1-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/dataaltares-1-160x160.jpg 160w" data-nspb-sizes="100px" width="582" height="581" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="23" role="group" aria-label="32 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/enviedefraise-1-300x211.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/enviedefraise-1-160x112.png 160w" data-nspb-sizes="100px" width="1957" height="1376" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="24" role="group" aria-label="33 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/foncia-1-300x83.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/foncia-1-160x44.png 160w" data-nspb-sizes="100px" width="2036" height="565" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="25" role="group" aria-label="34 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/francoise-saget-160x160.png 160w, https://eleven-strategy.com/wp-content/uploads/2021/06/francoise-saget.png 225w" data-nspb-sizes="100px" width="225" height="225" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="26" role="group" aria-label="35 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/giphar-1-300x82.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/giphar-1-160x44.png 160w" data-nspb-sizes="100px" width="898" height="246" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="27" role="group" aria-label="36 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/iad-1-160x164.png 160w" data-nspb-sizes="100px" width="573" height="587" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="28" role="group" aria-label="37 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/indigogroup-1-300x94.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/indigogroup-1-160x50.png 160w" data-nspb-sizes="100px" width="3349" height="1046" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="29" role="group" aria-label="38 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/intescia-1-300x78.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/intescia-1-160x42.png 160w" data-nspb-sizes="100px" width="346" height="90" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="30" role="group" aria-label="39 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/keolis-2-300x46.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/keolis-2-160x25.png 160w" data-nspb-sizes="100px" width="1280" height="196" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="31" role="group" aria-label="40 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/lagarrigue-1-300x300.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/lagarrigue-1-160x160.png 160w" data-nspb-sizes="100px" width="512" height="512" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="32" role="group" aria-label="41 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/linvoges-1-300x99.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/linvoges-1-160x53.jpg 160w" data-nspb-sizes="100px" width="1182" height="391" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="33" role="group" aria-label="42 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/lsacourtage-1-300x167.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/lsacourtage-1-160x89.png 160w" data-nspb-sizes="100px" width="1920" height="1070" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="34" role="group" aria-label="43 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/micheletaugustin-1-300x121.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/micheletaugustin-1-160x64.jpg 160w" data-nspb-sizes="100px" width="758" height="305" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div>
+<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="44 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/odealim-1-300x103.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/odealim-1-160x55.png 160w" data-nspb-sizes="100px" width="1698" height="582" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="1" role="group" aria-label="45 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/opngo-1-300x142.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/opngo-1-160x76.png 160w" data-nspb-sizes="100px" width="1312" height="620" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" role="group" aria-label="46 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/park-holidays-300x66.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/park-holidays-160x35.png 160w" data-nspb-sizes="100px" width="500" height="110" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="3" role="group" aria-label="47 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/peters-surgical-300x109.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/peters-surgical-160x58.png 160w" data-nspb-sizes="100px" width="932" height="340" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group" aria-label="48 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/primagaz-2-300x257.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/primagaz-2-160x137.png 160w" data-nspb-sizes="100px" width="430" height="369" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" role="group" aria-label="49 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/private-sport-shop-300x70.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/private-sport-shop-160x37.png 160w" data-nspb-sizes="100px" width="466" height="108" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" role="group" aria-label="50 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/proprietes-privees-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/proprietes-privees-160x160.jpg 160w" data-nspb-sizes="100px" width="343" height="344" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" role="group" aria-label="51 / 51" style="width: 102.5px; margin-right: 12px;">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:1%;min-height:60px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/06/recommerce-1-300x37.png 300w, https://eleven-strategy.com/wp-content/uploads/2021/06/recommerce-1-160x20.png 160w" data-nspb-sizes="100px" width="2056" height="253" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</div>
+</div></div>
+<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div></div>
+</div>
+</div>
+</div>
+<div id="home-newsSlider" class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed" style="overflow:hidden;">
+<div class="nspb-zn nspb-ly--contained">
+<div class="nspb-ly--content nspb-content nspb-cmsContent nspb-ly--pmDefault nspb-padT--xs0 nspb-padB--xs2 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="nspb-slider" data-nspb-slider-duration="5" data-nspb-slider-navigation="1" data-nspb-slider-options="eyJsb29wIjpmYWxzZSwiYXV0b0hlaWdodCI6ZmFsc2UsInNsaWRlc1BlclZpZXciOjEsInNwYWNlQmV0d2VlbiI6MTIsImJyZWFrcG9pbnRzIjp7IjY0MCI6eyJzbGlkZXNQZXJWaWV3IjoyLCJzcGFjZUJldHdlZW4iOjEyfX19">
+<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+<div class="swiper-wrapper" id="swiper-wrapper-58ed5c8675575c75" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);"><div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 5" style="width: 446px; margin-right: 12px;">
+<article class="nspb-bgcolor--white article--home"><div class="nspb-post__innerContent"><h3 class="nspb-post__title">Generative AI: commodity or core business?</h3><p class="nspb-post__date">04 March 2024</p><p class="nspb-post__excerpt">The choice between buying or developing generative AI in-house depends on the use, the data and the competitive advantage sought. Eleven proposes a methodology for…</p><p class="nspb-post__link"><a href="https://eleven-strategy.com/generative-ai-commodity-or-core-business/" class="nspb-button--plain" title="Read the article"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> Read the article</a></p></div></article></div>
+<div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 5" style="width: 446px; margin-right: 12px;">
+<article class="nspb-bgcolor--white article--home"><div class="nspb-post__innerContent"><h3 class="nspb-post__title">How LLMs can transform your business: impacts, challenges and use cases</h3><p class="nspb-post__date">29 November 2023</p><p class="nspb-post__excerpt">Unlock business transformation with large language models (LLMs). Explore real-world impacts, challenges and use cases. Improve your strategy with Eleven's expertise in AI and innovation.</p><p class="nspb-post__link"><a href="https://eleven-strategy.com/how-llms-can-transform-your-business-impacts-challenges-and-use-cases/" class="nspb-button--plain" title="Read the article"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> Read the article</a></p></div></article></div>
+<div class="swiper-slide" role="group" aria-label="3 / 5" style="width: 446px; margin-right: 12px;">
+<article class="nspb-bgcolor--white article--home"><div class="nspb-post__innerContent"><h3 class="nspb-post__title">Demythifying Voicebots: Transforming Customer Service in the Era of AI<br></h3><p class="nspb-post__date">22 November 2023</p><p class="nspb-post__excerpt">Explore the realm of Voicebots in insurance, uncovering their impact on customer service and the evolving roles within. Delve into the realms of AI and…</p><p class="nspb-post__link"><a href="https://eleven-strategy.com/demythifying-voicebots-transforming-customer-service-in-the-era-of-ai/" class="nspb-button--plain" title="Read the article"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> Read the article</a></p></div></article></div>
+<div class="swiper-slide" role="group" aria-label="4 / 5" style="width: 446px; margin-right: 12px;">
+<article class="nspb-bgcolor--white article--home"><div class="nspb-post__innerContent"><h3 class="nspb-post__title">Electric vehicle charging demand: data and AI to the rescue</h3><p class="nspb-post__date">10 November 2023</p><p class="nspb-post__excerpt">Forecasting demand for electric vehicle charging is a real challenge for companies in the sector, due to its dynamism and complexity. How can the use…</p><p class="nspb-post__link"><a href="https://eleven-strategy.com/electric-vehicle-charging-demand-data-and-ai-to-the-rescue/" class="nspb-button--plain" title="Read the article"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> Read the article</a></p></div></article></div>
+<div class="swiper-slide" role="group" aria-label="5 / 5" style="width: 446px; margin-right: 12px;">
+<article class="nspb-bgcolor--white article--home"><div class="nspb-post__innerContent"><h3 class="nspb-post__title">AI Generative: from hype to concrete business applications</h3><p class="nspb-post__date">25 October 2023</p><p class="nspb-post__excerpt">Unless you've spent the year on a desert island, you've heard of Chat GPT, Dall-E, LLM and AI Generative. Perhaps you use them every day.…</p><p class="nspb-post__link"><a href="https://eleven-strategy.com/ai-generative-from-hype-to-concrete-business-applications/" class="nspb-button--plain" title="Read the article"><span class="nspb-svgIcon nspb-svgIcon--eye"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 1 0 0 6zM0 8s2.997-5.008 8-5.008S16 8 16 8s-2.986 5.03-8 5.03S0 8 0 8zm7 0a1 1 0 1 1 2 0 1 1 0 1 1-2 0zm0 0" fill-rule="evenodd"></path></svg></span> Read the article</a></p></div></article></div>
+</div>
+<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div><div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-58ed5c8675575c75" aria-disabled="true"><span class="nspb-svgIcon nspb-svgIcon--arrowLeftMedium"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path d="M353 450a15 15 0 0 1-10.61-4.39L157.5 260.7a15 15 0 0 1 0-21.21L342.4 54.6a15 15 0 1 1 21.22 21.21l-174.3 174.3 174.3 174.3A15 15 0 0 1 353 450z"></path></svg></span></div><div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-58ed5c8675575c75" aria-disabled="false"><span class="nspb-svgIcon nspb-svgIcon--arrowRightMedium"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path d="M202.1 450a15 15 0 0 1-10.6-25.61l174.3-174.3L191.5 75.8a15 15 0 0 1 21.21-21.21l184.9 184.9a15 15 0 0 1 0 21.21L212.7 445.6A15 15 0 0 1 202.1 450z"></path></svg></span></div></div>
+</div>
+</div>
+</div>
+<div id="home-industrySectors" class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn nspb-bgcolor--grayLighter nspb-ly--contained">
+<div class="nspb-ly--content nspb-content nspb-padT--md4 nspb-padB--md4 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-titreFilet__wrapper"><div class="section-titreFilet__title"><p class="nspb-heading--3 nspb-bgcolor--white"><a href="https://eleven-strategy.com/industry-sectors/" title="View the page">Industry sectors</a></p></div></div><div class="nspb-ly--blocks nspb-content nspb-cmsContent nspb-ly--pmDefault nspb-gutter--xs0 nspb-bpr--xs2 nspb-bpr--sm4 nspb-bpr--md5 nspb-padT--xs0 nspb-padB--xs0">
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/construction-eleven/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/constructions-and-building-materials-nb-300x200.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/constructions-and-building-materials-nb-768x513.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/constructions-and-building-materials-nb-160x107.jpg 160w" data-nspb-sizes="200px" width="2000" height="1335" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Construction</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/energy-utilities/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/energy-and-utilities-nb-300x169.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/energy-and-utilities-nb-768x432.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/energy-and-utilities-nb-160x90.jpg 160w" data-nspb-sizes="200px" width="2000" height="1125" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Energy &amp; Utilities</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/fast-moving-consumer-goods/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/01/eilis-garvey-di_s0kyq1z0-unsplash-1-300x199.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2023/01/eilis-garvey-di_s0kyq1z0-unsplash-1-768x510.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2023/01/eilis-garvey-di_s0kyq1z0-unsplash-1-160x106.jpg 160w" data-nspb-sizes="200px" width="4745" height="3153" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Fast Moving Consumer Goods</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/financial-services/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/financial-services-nb-300x240.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/financial-services-nb-768x614.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/financial-services-nb-160x128.jpg 160w" data-nspb-sizes="200px" width="2000" height="1600" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Financial services</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/healthcare-and-life-sciences/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-sante-nb-300x200.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-sante-nb-768x512.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-sante-nb-160x107.jpg 160w" data-nspb-sizes="200px" width="1920" height="1280" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Healthcare and life sciences</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/industrial-goods-services/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-biens-300x200.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-biens-768x511.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-biens-160x106.jpg 160w" data-nspb-sizes="200px" width="1920" height="1277" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Industrial goods &amp; services</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/infrastructure-asset-management-eleven/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-services-financiers-nb-300x225.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-services-financiers-nb-768x576.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-industries-services-financiers-nb-160x120.jpg 160w" data-nspb-sizes="200px" width="1920" height="1440" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Infrastructure &amp; asset management</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/luxury/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2023/01/marissa-grootes-d4jrahauaic-unsplash-1-768x960.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2023/01/marissa-grootes-d4jrahauaic-unsplash-1-160x200.jpg 160w" data-nspb-sizes="200px" width="2193" height="2741" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Luxury</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/software-data-eleven/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/software-and-data-nb-300x200.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/software-and-data-nb-768x512.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/software-and-data-nb-160x107.jpg 160w" data-nspb-sizes="200px" width="2000" height="1333" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Software &amp; Data</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+<div class="nspb-ly--blockItem nspb-content home-industrySectorsBlock nspb-halign--xscenter nspb-halign--smcenter">
+<div class="nspb-box nspb-box--ratio nspb-box--overlay nspb-boxContent--hcenter nspb-boxContent--vbottom">
+<a class="nspb-box--link" href="https://eleven-strategy.com/industry-sectors/transportation-mobility/" title="View the page">
+<div class="nspb-box__figure" style="padding-top:133%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/transportation-and-mobility-nb-300x204.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2020/12/transportation-and-mobility-nb-768x523.jpg 768w, https://eleven-strategy.com/wp-content/uploads/2020/12/transportation-and-mobility-nb-160x109.jpg 160w" data-nspb-sizes="200px" width="1496" height="1018" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+<div class="nspb-box__filter nspb-filter--gradient_down" style="opacity:0.80;"></div>
+<div class="nspb-box__contentGrid"><div class="nspb-box__contentWrapper"><div class="nspb-box__content"><p class="home-industrySectorsBlock__name nspb-color--primary">Transportation &amp; mobility</p><div class="home-industrySectorsBlock__content"><span class="nspb-svgIcon nspb-color--primary nspb-svgIcon--plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg></span></div></div></div></div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn nspb-bgcolor--grayLighterer nspb-ly--contained">
+<div class="nspb-ly--content nspb-content section-titreFilet nspb-cmsContent nspb-ly--pmDefault nspb-flexibleIndex--1 nspb-padB--xs0 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-titreFilet__wrapper nspb-bgcolor--grayLighterer nspb-padT--xs0 nspb-padR--xs0 nspb-padB--xs0 nspb-padL--xs0"><div class="section-titreFilet__title"><p class="nspb-heading--3 nspb-bgcolor--grayLighterer">Our team</p></div><div class="nspb-content--marginNone"><div class="nspb-ly--content nspb-content nspb-cmsContent nspb-padT--xs2 nspb-padB--xs2 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="nspb-slider nspb-animation--end" data-nspb-slider-duration="5" data-nspb-slider-autoplay="1" data-nspb-slider-navigation="1" data-nspb-slider-options="eyJsb29wIjp0cnVlLCJhdXRvSGVpZ2h0IjpmYWxzZX0=" style="overflow:hidden;">
+<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+<div class="swiper-wrapper" id="swiper-wrapper-07fb8106f95a4cbc5" aria-live="off" style="transform: translate3d(-904px, 0px, 0px); transition: all;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="3" role="group" aria-label="1 / 6" style="width: 904px;">
+<div class="nspb-ly--content nspb-content section-blockImageDecalee section-blockImageDecalee--left nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-blockImageDecalee__wrapper nspb-bgcolor--white">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2024/04/nicolas-julien-72354049-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2024/04/nicolas-julien-72354049-768x768.jpg 768w" data-nspb-sizes="(max-width:640px) 90vw, (max-width:960px) 220px, 320px" width="320" height="320" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+
+<div class="section-blockImageDecalee__content nspb-content--marginNone">
+<p class="nspb-cmsMargin--medium">After specialising in Data Science following a double degree from ESSEC/ENSAE, I wanted to work in an environment that retained a highly technical dimension with high standards, but also had strategic and entrepreneurial components.</p><p class="equipe-member__name">Nicolas JULIEN</p><p class="equipe-member__poste">Consultant</p><p><a class="nspb-button nspb-button--primary" href="https://eleven-strategy.com/join-eleven/" title="View the page">More</a></p></div>
+</div></div>
+</div><div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="2 / 6" style="width: 904px;">
+<div class="nspb-ly--content nspb-content section-blockImageDecalee section-blockImageDecalee--left nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-blockImageDecalee__wrapper nspb-bgcolor--white">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/01/marie-guegain-a72046249-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/01/marie-guegain-a72046249-768x768.jpg 768w" data-nspb-sizes="(max-width:640px) 90vw, (max-width:960px) 220px, 320px" width="320" height="320" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+
+<div class="section-blockImageDecalee__content nspb-content--marginNone">
+<p class="nspb-cmsMargin--medium">After my studies at ENSAE and ESSEC, I wanted to be able to apply my knowledge in a business environment, on practical and high impact projects. One of the strengths of eleven is that it offers its consultants the possibility of working on both data and/or strategic subjects to help in decision-making. The variety of issues we touch as Data Scientists is very real, as much in machine learning as in engineering and optimization. Finally, one of the reasons that made me join this firm is its vision of a responsible business transformation.</p><p class="equipe-member__name">Marie - Senior Consultant &amp; Data Scientist </p><p class="equipe-member__poste">ENSAE, ESSEC</p><p><a class="nspb-button nspb-button--primary" href="https://eleven-strategy.com/join-eleven/" title="View the page">More</a></p></div>
+</div></div>
+</div>
+<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" role="group" aria-label="3 / 6" style="width: 904px;">
+<div class="nspb-ly--content nspb-content section-blockImageDecalee section-blockImageDecalee--left nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-blockImageDecalee__wrapper nspb-bgcolor--white">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2024/04/pierre-lavieille-72353504-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2024/04/pierre-lavieille-72353504-768x768.jpg 768w" data-nspb-sizes="(max-width:640px) 90vw, (max-width:960px) 220px, 320px" width="320" height="320" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+
+<div class="section-blockImageDecalee__content nspb-content--marginNone">
+<p class="nspb-cmsMargin--medium">Having completed a double degree in Artificial Intelligence applied for business, eleven was the perfect environement to blend technical excellence with strategic vision.<br>
+What truly resonates with me about working here is the autonomy and responsibility it offers. I thrive on taking ownership of my tasks, knowing that my contributions directly impact the success of our projects. <br>
+It's this combination of technical challenge, strategic focus, and personal accountability that makes every day at eleven both rewarding and fulfilling.</p><p class="equipe-member__name">Pierre LAVIEILLE</p><p class="equipe-member__poste">Consultant</p><p><a class="nspb-button nspb-button--primary" href="https://eleven-strategy.com/join-eleven/" title="View the page">More</a></p></div>
+</div></div>
+</div>
+<div class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="4 / 6" style="width: 904px;">
+<div class="nspb-ly--content nspb-content section-blockImageDecalee section-blockImageDecalee--left nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-blockImageDecalee__wrapper nspb-bgcolor--white">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/01/adele-ducurtil-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/01/adele-ducurtil-768x768.jpg 768w" data-nspb-sizes="(max-width:640px) 90vw, (max-width:960px) 220px, 320px" width="320" height="320" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+
+<div class="section-blockImageDecalee__content nspb-content--marginNone">
+<p class="nspb-cmsMargin--medium">After HEC, I wanted to join a strategy consulting firm specifically positioned on digital, tech &amp; data issues which are subjects I am passionate about. I have been there for more than 4 years now and I have had the opportunity to participate in all types of projects, from due diligences to "data" assignments, in all industries, from aeronautics to luxury, tourism, health or even construction! A fascinating experience that I continue to enrich every day with enthusiasm.</p><p class="equipe-member__name">Adèle – Manager </p><p class="equipe-member__poste">HEC Paris</p><p><a class="nspb-button nspb-button--primary" href="https://eleven-strategy.com/join-eleven/" title="View the page">More</a></p></div>
+</div></div>
+</div>
+<div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="3" role="group" aria-label="5 / 6" style="width: 904px;">
+<div class="nspb-ly--content nspb-content section-blockImageDecalee section-blockImageDecalee--left nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-blockImageDecalee__wrapper nspb-bgcolor--white">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2024/04/nicolas-julien-72354049-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2024/04/nicolas-julien-72354049-768x768.jpg 768w" data-nspb-sizes="(max-width:640px) 90vw, (max-width:960px) 220px, 320px" width="320" height="320" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+
+<div class="section-blockImageDecalee__content nspb-content--marginNone">
+<p class="nspb-cmsMargin--medium">After specialising in Data Science following a double degree from ESSEC/ENSAE, I wanted to work in an environment that retained a highly technical dimension with high standards, but also had strategic and entrepreneurial components.</p><p class="equipe-member__name">Nicolas JULIEN</p><p class="equipe-member__poste">Consultant</p><p><a class="nspb-button nspb-button--primary" href="https://eleven-strategy.com/join-eleven/" title="View the page">More</a></p></div>
+</div></div>
+</div>
+<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="0" role="group" aria-label="6 / 6" style="width: 904px;">
+<div class="nspb-ly--content nspb-content section-blockImageDecalee section-blockImageDecalee--left nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-blockImageDecalee__wrapper nspb-bgcolor--white">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/01/marie-guegain-a72046249-300x300.jpg 300w, https://eleven-strategy.com/wp-content/uploads/2021/01/marie-guegain-a72046249-768x768.jpg 768w" data-nspb-sizes="(max-width:640px) 90vw, (max-width:960px) 220px, 320px" width="320" height="320" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+
+<div class="section-blockImageDecalee__content nspb-content--marginNone">
+<p class="nspb-cmsMargin--medium">After my studies at ENSAE and ESSEC, I wanted to be able to apply my knowledge in a business environment, on practical and high impact projects. One of the strengths of eleven is that it offers its consultants the possibility of working on both data and/or strategic subjects to help in decision-making. The variety of issues we touch as Data Scientists is very real, as much in machine learning as in engineering and optimization. Finally, one of the reasons that made me join this firm is its vision of a responsible business transformation.</p><p class="equipe-member__name">Marie - Senior Consultant &amp; Data Scientist </p><p class="equipe-member__poste">ENSAE, ESSEC</p><p><a class="nspb-button nspb-button--primary" href="https://eleven-strategy.com/join-eleven/" title="View the page">More</a></p></div>
+</div></div>
+</div></div>
+<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div><div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-07fb8106f95a4cbc5"><span class="nspb-svgIcon nspb-svgIcon--arrowLeftMedium"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path d="M353 450a15 15 0 0 1-10.61-4.39L157.5 260.7a15 15 0 0 1 0-21.21L342.4 54.6a15 15 0 1 1 21.22 21.21l-174.3 174.3 174.3 174.3A15 15 0 0 1 353 450z"></path></svg></span></div><div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-07fb8106f95a4cbc5"><span class="nspb-svgIcon nspb-svgIcon--arrowRightMedium"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path d="M202.1 450a15 15 0 0 1-10.6-25.61l174.3-174.3L191.5 75.8a15 15 0 0 1 21.21-21.21l184.9 184.9a15 15 0 0 1 0 21.21L212.7 445.6A15 15 0 0 1 202.1 450z"></path></svg></span></div></div>
+</div>
+</div></div></div>
+</div>
+</div>
+<div class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn nspb-bgcolor--grayLighterer nspb-ly--contained">
+<div class="nspb-ly--content nspb-content section-blockImageDecalee section-blockImageDecalee--left nspb-content--textLight nspb-cmsContent nspb-ly--pmDefault nspb-flexibleIndex--1 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-blockImageDecalee__wrapper nspb-bgcolor--black">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:100%;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2021/01/join-us-300x300.jpg 300w" data-nspb-sizes="(max-width:640px) 90vw, (max-width:960px) 220px, 320px" width="320" height="319" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+
+<div class="section-blockImageDecalee__content nspb-content--marginNone">
+<figure class="nspb-cmsFigure nspb-lazyLoading"><img decoding="async" class="alignnone size-nspb-small wp-image-17 alignleft" src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" width="160" height="42" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/11/logo-eleven-clair-160x42.png 160w, https://eleven-strategy.com/wp-content/uploads/2020/11/logo-eleven-clair-300x79.png 300w, https://eleven-strategy.com/wp-content/uploads/2020/11/logo-eleven-clair-1024x269.png 1024w, https://eleven-strategy.com/wp-content/uploads/2020/11/logo-eleven-clair-768x202.png 768w, https://eleven-strategy.com/wp-content/uploads/2020/11/logo-eleven-clair-1280x336.png 1280w, https://eleven-strategy.com/wp-content/uploads/2020/11/logo-eleven-clair.png 1314w" data-nspb-sizes="(max-width:1000px) 100vw,1000px"></figure>
+<p class="nspb-cmsMargin--medium">If you would like to send us your application, please fill in the form below, and we will get back to you shortly.</p>
+<p><a class="nspb-button nspb-button--primary" href="https://eleven-strategy.com/join-us/send-your-application/">Send your application</a></p>
+</div>
+</div></div>
+</div>
+</div>
+<div class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn nspb-bgcolor--grayLighterer nspb-ly--contained">
+<div class="nspb-ly--content nspb-content section-titreFilet nspb-cmsContent nspb-ly--pmDefault nspb-flexibleIndex--1 nspb-padT--xs2 nspb-padB--xs1 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="section-titreFilet__wrapper nspb-bgcolor--grayLighterer nspb-padT--xs0 nspb-padR--xs0 nspb-padB--xs0 nspb-padL--xs0"><div class="section-titreFilet__title"><p class="nspb-heading--3 nspb-bgcolor--grayLighterer">our office</p></div><div class="nspb-content--marginNone"></div></div></div>
+</div>
+</div>
+<div id="home-addresses" class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn nspb-bgcustom--alt_graylighterer_white nspb-ly--contained">
+<div class="nspb-ly--columns nspb-content nspb-cmsContent nspb-ly--pmDefault nspb-padT--xs0 nspb-gutter--xs3 nspb-gutter--sm3 nspb-gutter--md4 nspb-gutter--lg4">
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs1 nspb-halign--xscenter nspb-halign--smleft nspb-valign--top">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs1 nspb-halign--xscenter nspb-halign--smleft nspb-valign--top">
+<div class="nspb-box nspb-box--ratio">
+<div class="nspb-box__figure" style="padding-top:153%;min-height:240px;">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-bureau-paris-160x250.jpg 160w, https://eleven-strategy.com/wp-content/uploads/2020/12/eleven-bureau-paris-500x781.jpg 500w" data-nspb-sizes="(max-width:700px) 100vw, 700px" width="640" height="1000" alt="Data and AI Strategy Consulting | Eleven" style="object-fit:cover;object-position:center center;"></figure>
+</div>
+</div>
+
+<ul class="nspb-contact"><li class="nspb-contact--name">eleven Paris</li><li class="nspb-contact--address">5 Avenue Pierre 1er de Serbie,<br>
+75116 Paris, France</li></ul>
+</div>
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs1 nspb-halign--xscenter nspb-halign--smleft nspb-valign--top">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+</div>
+	<!-- Newsletter / Social Networks -->
+	<div id="newsletter-social" class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn nspb-bgcolor--grayLighterer nspb-ly--contained">
+<div class="nspb-ly--columns nspb-content nspb-ly--pmDefault nspb-cmsContent nspb-gutter--xs3 nspb-gutter--sm3 nspb-gutter--md4 nspb-gutter--lg4 nspb-padT--xs3 nspb-padB--xs3">
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs12 nspb-flexS--sm6 nspb-flexS--md7 nspb-flexS--lg7 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<form id="nspb_newsletter--69be9ea9e16bd" class="nspb-form nspb-newsletter nspb-form--ajax" action="https://eleven-strategy.com/wp-admin/admin-ajax.php" method="POST" data-nspb-form-language="fr" data-nspb-form-success="Votre inscription a bien été prise en compte, merci pour votre inscription !" novalidate="">
+<div class="nspb-form__group nspb-form__group--required" data-nspb-form-validation-type="email" data-nspb-form-placeholder="Email address"><input type="email" name="nspb_newsletter_email" placeholder="Email address"></div><div class="nspb-form__group nspb-form__group--submit"><input type="submit" value="register" class="nspb-button nspb-button--primary"></div><input type="text" name="nspbform_hp" class="nspb-form__hp"><input type="hidden" name="nspb_newsletter" value="newsletter"><input type="hidden" name="nspb_newsletter_nonce" value="829ec7b7b3"><input type="hidden" name="action" value="nspb_ajax"><input type="hidden" name="order" value="nspb_newsletter_process"><div class="nspb-form__status"></div></form>
+
+</div>
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs12 nspb-flexS--sm6 nspb-flexS--md5 nspb-flexS--lg5 nspb-halign--xsleft nspb-halign--smjustify nspb-valign--top">
+<div class="nspb-iconlist nspb-iconlist--square nspb-iconlist--horizontal nspb-iconlist--icons">
+<div class="nspb-iconlist__wrapper"><p class="nspb-iconlist__title nspb-heading--3">follow us</p><ul class="nspb-iconlist__list"><li><a href="https://www.facebook.com/eleven.strategy/" title="View our page Facebook" target="_blank"><span class="nspb-svgIcon nspb-svgIcon--facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M9.5 3H12V0H9.5C7.57 0 6 1.57 6 3.5V5H4v3h2v8h3V8h2.5l.5-3H9V3.5c0-.27.23-.5.5-.5z"></path></svg></span></a></li><li><a href="https://twitter.com/ElevenStrategy" title="View our feed Twitter" target="_blank"><span class="nspb-svgIcon nspb-svgIcon--twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M16 3.538a6.46 6.46 0 0 1-1.884.516 3.3 3.3 0 0 0 1.444-1.816c-.634.375-1.338.65-2.084.797a3.28 3.28 0 0 0-5.678 2.247c0 .256.028.506.084.747a9.32 9.32 0 0 1-6.766-3.431c-.28.484-.444 1.05-.444 1.65 0 1.138.578 2.144 1.46 2.73A3.3 3.3 0 0 1 .643 6.57v.04c0 1.59 1.13 2.92 2.634 3.22a3.29 3.29 0 0 1-.866.116c-.212 0-.416-.022-.62-.06.42 1.303 1.63 2.253 3.066 2.28-1.125.88-2.538 1.406-4.078 1.406a6.56 6.56 0 0 1-.784-.047c1.456.934 3.18 1.475 5.034 1.475 6.037 0 9.34-5.003 9.34-9.34 0-.144-.003-.284-.01-.425a6.59 6.59 0 0 0 1.637-1.697z"></path></svg></span></a></li><li><a href="https://www.linkedin.com/company/227198" title="View our page LinkedIn" target="_blank"><span class="nspb-svgIcon nspb-svgIcon--linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M6 6h2.767v1.418h.04C9.192 6.727 10.134 6 11.54 6 14.46 6 15 7.818 15 10.183V15h-2.885v-4.27c0-1.018-.02-2.33-1.5-2.33-1.502 0-1.732 1.1-1.732 2.255V15H6V6zM1 6h3v9H1V6zm3-2.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 1 1 3 0z"></path></svg></span></a></li><li><a href="https://www.youtube.com/channel/UCiPB1Mu4njAPgHqncNSndBw" title="Voir notre chaine Youtube" target="_blank"><span class="nspb-svgIcon nspb-svgIcon--youtube"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.841 4.8c0 0-0.156-1.103-0.637-1.587-0.609-0.637-1.291-0.641-1.603-0.678-2.237-0.163-5.597-0.163-5.597-0.163h-0.006c0 0-3.359 0-5.597 0.163-0.313 0.038-0.994 0.041-1.603 0.678-0.481 0.484-0.634 1.587-0.634 1.587s-0.159 1.294-0.159 2.591v1.213c0 1.294 0.159 2.591 0.159 2.591s0.156 1.103 0.634 1.588c0.609 0.637 1.409 0.616 1.766 0.684 1.281 0.122 5.441 0.159 5.441 0.159s3.363-0.006 5.6-0.166c0.313-0.037 0.994-0.041 1.603-0.678 0.481-0.484 0.637-1.588 0.637-1.588s0.159-1.294 0.159-2.591v-1.213c-0.003-1.294-0.162-2.591-0.162-2.591zM6.347 10.075v-4.497l4.322 2.256-4.322 2.241z"></path></svg></span></a></li></ul></div></div>
+
+</div>
+</div>
+</div>
+</div>
+	<!-- Newsletter / Social Networks End -->
+
+	<!-- Footer -->
+	<footer id="footer--main" class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn">
+<div class="nspb-ly--columns nspb-content nspb-ly--pmDefault nspb-padR--lg8 nspb-padL--lg8 nspb-gutter--xs3 nspb-gutter--sm3 nspb-gutter--md4 nspb-gutter--lg4">
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs12 nspb-flexS--sm3 nspb-flexS--md3 nspb-flexS--lg3 nspb-halign--xscenter nspb-halign--smleft nspb-valign--top">
+<div class="nspb-box nspb-shortcode-logo" style="display:inline-block;margin-bottom:24px;max-width:100px;">
+<a class="nspb-box--link" href="https://eleven-strategy.com/" title="Page d'accueil">
+<div class="nspb-box__figure">
+<figure class="nspb-lazyLoading"><img src="data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-nspb-srcset="https://eleven-strategy.com/wp-content/uploads/2022/12/logo-eleven-vert-300x78.png 300w, https://eleven-strategy.com/wp-content/uploads/2022/12/logo-eleven-vert-160x42.png 160w" data-nspb-sizes="100px" width="100" height="26" alt="Logo Eleven" style="object-fit:contain;object-position:center center;"></figure>
+</div>
+</a>
+</div>
+
+<ul class="nspb-contact"><li class="nspb-contact--name">eleven Paris</li><li class="nspb-contact--address">5 Avenue Pierre 1er de Serbie,<br>
+75116 Paris, France</li><li class="nspb-contact--phone"><a title="Nous contacter par téléphone" href="tel:"></a></li></ul>
+</div>
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs12 nspb-flexS--sm2 nspb-flexS--md2 nspb-flexS--lg2 nspb-halign--xscenter nspb-halign--smleft nspb-valign--top">
+<ul class="nspb-menu"><li id="menu-item-307" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-260 current_page_item menu-item-307"><a href="https://eleven-strategy.com/" aria-current="page">Data and AI Strategy Consulting</a></li>
+<li id="menu-item-1801" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1801"><a href="https://eleven-strategy.com/about-eleven/">About eleven</a></li>
+<li id="menu-item-1803" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1803"><a href="https://eleven-strategy.com/strategy-transformation/">Strategy &amp; Transformation</a></li>
+<li id="menu-item-4756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4756"><a href="https://eleven-strategy.com/sustainability-strategy/">Sustainability strategy</a></li>
+<li id="menu-item-1808" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1808"><a href="https://eleven-strategy.com/data-ai/">Data &amp; AI</a></li>
+<li id="menu-item-1804" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1804"><a href="https://eleven-strategy.com/transaction-private-equity-eleven/">Transaction &amp; Private equity</a></li>
+</ul>
+</div>
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs12 nspb-flexS--sm5 nspb-flexS--md5 nspb-flexS--lg5 nspb-halign--xscenter nspb-halign--smleft nspb-valign--top">
+<p><a href="https://eleven-strategy.com/industry-sectors/">Industry Sectors</a></p>
+<ul class="nspb-menu nspb-list--flex--50"><li id="menu-item-1819" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1819"><a href="https://eleven-strategy.com/industry-sectors/construction-eleven/">Construction</a></li>
+<li id="menu-item-1817" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1817"><a href="https://eleven-strategy.com/industry-sectors/energy-utilities/">Energy &amp; Utilities</a></li>
+<li id="menu-item-4708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4708"><a href="https://eleven-strategy.com/industry-sectors/fast-moving-consumer-goods/">Fast Moving Consumer Goods</a></li>
+<li id="menu-item-1818" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1818"><a href="https://eleven-strategy.com/industry-sectors/financial-services/">Financial services</a></li>
+<li id="menu-item-1826" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1826"><a href="https://eleven-strategy.com/industry-sectors/healthcare-and-life-sciences/">Healthcare and life sciences</a></li>
+<li id="menu-item-1822" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1822"><a href="https://eleven-strategy.com/industry-sectors/industrial-goods-services/">Industrial goods &amp; services</a></li>
+<li id="menu-item-1828" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1828"><a href="https://eleven-strategy.com/industry-sectors/infrastructure-asset-management-eleven/">Infrastructure &amp; asset management</a></li>
+<li id="menu-item-4707" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4707"><a href="https://eleven-strategy.com/industry-sectors/luxury/">Luxury</a></li>
+<li id="menu-item-1824" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1824"><a href="https://eleven-strategy.com/industry-sectors/software-data-eleven/">Software &amp; Data</a></li>
+<li id="menu-item-1825" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1825"><a href="https://eleven-strategy.com/industry-sectors/transportation-mobility/">Transportation &amp; mobility</a></li>
+</ul>
+</div>
+<div class="nspb-ly--columnItem nspb-content nspb-flexS--xs12 nspb-flexS--sm2 nspb-flexS--md2 nspb-flexS--lg2 nspb-halign--xscenter nspb-halign--smleft nspb-valign--top">
+<ul class="nspb-menu"><li id="menu-item-1829" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1829"><a href="https://eleven-strategy.com/team/">Team</a></li>
+<li id="menu-item-1830" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1830"><a href="https://eleven-strategy.com/join-eleven/">Join us</a></li>
+<li id="menu-item-4759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4759"><a href="https://eleven-strategy.com/publications-eleven/">Publications</a></li>
+<li id="menu-item-4762" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4762"><a href="https://eleven-strategy.com/business-cases-2/">Business Cases</a></li>
+<li id="menu-item-1832" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1832"><a href="https://eleven-strategy.com/contact-us/">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<div id="subfooter--main" class="nspb-sc nspb-ly__split--1 nspb-ly--lBleed nspb-ly--rBleed">
+<div class="nspb-zn">
+<div class="nspb-ly--content nspb-content nspb-ly--pmDefault nspb-padT--xs0 nspb-padR--xs4 nspb-padB--xs1 nspb-padL--xs4 nspb-halign--xscenter nspb-halign--smcenter nspb-valign--top">
+<p>All rights reserved Eleven Strategy ©2026</p>
+</div>
+</div>
+</div>
+	<!-- Footer end -->
+
+	<!-- Close Page wrapper -->
+	</div>
+
+	<div id="nspb-backToTop" class="nspb-backToTop--inactive nspb-backToTop--round nspb-bgcolor--black nspb-backToTop--mobilecenter nspb-backToTop--desktopright"><span class="nspb-svgIcon nspb-svgIcon--arrowUpMedium"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32"><path d="M24 21a1 1 0 0 1-.71-.29L16 13.4l-7.3 7.3a1 1 0 1 1-1.42-1.42l8-8a1 1 0 0 1 1.42 0l8 8A1 1 0 0 1 24 21z"></path></svg></span></div>
+	<!-- Javascript -->
+	
+	
+<!-- Matomo -->
+<!-- End Matomo Code -->
+
+<!-- 	<script type="text/javascript">
+	tarteaucitron.user.gajsUa = 'UA-52300955-1';
+	tarteaucitron.user.gajsMore = function () { /* add here your optionnal _ga.push() */ };
+	(tarteaucitron.job = tarteaucitron.job || []).push('gajs');
+	</script>
+ -->
+	
+
+</body>

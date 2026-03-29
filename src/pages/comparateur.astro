@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Comparateur de marques GTB/GTC" description="Comparez les principales marques et solutions de Gestion Technique du Bâtiment : Schneider Electric, Siemens, TheWatchdog, Honeywell, Sauter, Wago, Wattsense et plus.">
+<Layout title="Comparateur GTB indépendant — Schneider, Siemens, Honeywell, Sauter" description="Comparez objectivement 10+ solutions GTB du marché : Schneider EcoStruxure, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense. Aucun lien commercial." breadcrumbs={[{label: "Outils"}, {label: "Comparateur GTB"}]}>
 
   <!-- Hero -->
-  <section class="hero-lum">
+  <section class="hero-lum hero-emerald">
     <div class="hero-lum-mesh"></div>
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
@@ -256,7 +257,7 @@ import Layout from '../layouts/Layout.astro';
                 <span class="text-xs text-dark-400" style="font-weight: 400;">Budget indicatif :</span>
                 <span class="ml-1 text-sm font-medium" :class="brand.budget === 'bas' ? 'text-accent-600' : brand.budget === 'moyen' ? 'text-primary-600' : 'text-orange-600'" x-text="brand.budget_label"></span>
               </div>
-              <a :href="brand.site" target="_blank" rel="noopener" class="text-sm font-medium text-primary-600 hover:text-primary-700" style="transition: 0.15s ease;">
+              <a :href="brand.site" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-primary-600 hover:text-primary-700" style="transition: 0.15s ease;">
                 Site officiel →
               </a>
             </div>
@@ -412,7 +413,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- CTA -->
   <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
-    <img src="/images/hero-gtb-illustration.png" alt="" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
+    <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
@@ -858,5 +859,11 @@ import Layout from '../layouts/Layout.astro';
     }));
   });
   </script>
+
+  <RelatedPages links={[
+    { href: "/audit", title: "Audit GTB gratuit", description: "Diagnostiquez d'abord votre bâtiment avant de comparer." },
+    { href: "/solutions", title: "Solutions & Technologies", description: "Protocoles, capteurs et architecture GTB en détail." },
+    { href: "/gtb", title: "Qu'est-ce que la GTB ?", description: "Les bases pour comprendre la Gestion Technique du Bâtiment." },
+  ]} />
 
 </Layout>

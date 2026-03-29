@@ -1,0 +1,332 @@
+<!--
+  SOURCE  : https://www.livi.fr
+  SECTION : main > section:first-of-type
+  LABEL   : Livi — télémédecine, design nordique épuré
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.livi.fr.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : Times · family_regular · family_medium
+  Couleurs    : rgb(0, 0, 238) · rgb(0, 40, 69) · rgb(230, 251, 255) · rgb(255, 255, 255)
+  Border-r    : 6px · 50% · 7px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 130px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "max-width": "1140px"
+  },
+  "div[1]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 210px 40px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "max-width": "720px"
+  },
+  "h2[2]": {
+    "font-family": "family_black, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "32px",
+    "font-weight": "900",
+    "color": "rgb(0, 40, 69)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 40, 69)",
+    "display": "block",
+    "line-height": "41.6px"
+  },
+  "div[3]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "gap": "20px 30px",
+    "display": "grid",
+    "grid-template-columns": "555px 555px"
+  },
+  "a[4]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "18px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "20px",
+    "display": "flex"
+  },
+  "div[6]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "15px 0px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  },
+  "div[7]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "div[8]": {
+    "font-family": "family_bold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "700",
+    "color": "rgb(0, 40, 69)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 40, 69)",
+    "display": "block"
+  },
+  "div[9]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgba(10, 22, 31, 0.59)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgba(10, 22, 31, 0.59)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "a[12]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "18px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "20px",
+    "display": "flex"
+  },
+  "div[14]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "15px 0px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  },
+  "div[15]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "div[16]": {
+    "font-family": "family_bold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "700",
+    "color": "rgb(0, 40, 69)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 40, 69)",
+    "display": "block"
+  },
+  "div[17]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgba(10, 22, 31, 0.59)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgba(10, 22, 31, 0.59)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "a[20]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "18px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "20px",
+    "display": "flex"
+  },
+  "div[22]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "15px 0px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  },
+  "div[23]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "div[24]": {
+    "font-family": "family_bold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "700",
+    "color": "rgb(0, 40, 69)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 40, 69)",
+    "display": "block"
+  },
+  "div[25]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgba(10, 22, 31, 0.59)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgba(10, 22, 31, 0.59)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "a[28]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "18px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "20px",
+    "display": "flex"
+  },
+  "div[30]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "15px 0px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  },
+  "div[31]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "div[32]": {
+    "font-family": "family_bold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "700",
+    "color": "rgb(0, 40, 69)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 40, 69)",
+    "display": "block"
+  },
+  "div[33]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgba(10, 22, 31, 0.59)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgba(10, 22, 31, 0.59)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "a[36]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "18px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "20px",
+    "display": "flex"
+  },
+  "div[38]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "15px 0px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  },
+  "div[39]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "div[40]": {
+    "font-family": "family_bold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "700",
+    "color": "rgb(0, 40, 69)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 40, 69)",
+    "display": "block"
+  },
+  "div[41]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgba(10, 22, 31, 0.59)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgba(10, 22, 31, 0.59)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "a[44]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "18px",
+    "border": "1px solid rgba(0, 0, 0, 0)",
+    "border-radius": "20px",
+    "display": "flex"
+  },
+  "div[50]": {
+    "font-family": "family_regular, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font-size": "20px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "15px 0px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  }
+}
+-->
+<section id="obtenez-un-avis-medical-des-maintenant" class="css-bx7sr6"><div class="css-1l18hj8"><div class="css-16ikize"><h2 class="css-1qhpmaw">Obtenez un avis médical dès maintenant</h2></div><div class="css-9pp8u8"><a href="https://app.livi.fr/app-link/all/book?symptom_id=other_health_inquiries&amp;care_type=1" target="_self" rel="noopener noreferrer nofollow" id="linkcard|5lY1jjw7Y34nDMwtaJMN9k|voir-un-medecin-generaliste-en-ligne" title=" Voir un médecin généraliste en ligne" aria-label=" Voir un médecin généraliste en ligne" class="css-lbiio2"><img width="50" height="50" src="//images.ctfassets.net/h8qzhh7m9m8u/34ZfqABkGGL5VSFOfIaFe5/07878c88102ad61fe08ce2646bf95e25/Phone_doctor_1.svg" alt="" loading="lazy" class="css-q0ihjz"><div class="css-4d383k"><div><div class="css-xe1k7t"> Voir un médecin généraliste en ligne</div><div class="css-c2rrrk">Vous présentez des symptômes ? Sur Livi, consultez un médecin généraliste en ligne.</div></div><svg width="18" height="18" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" alt="" loading="lazy" class="css-l0gmxg" aria-hidden="true" focusable="false" role="button" aria-label="Expand"><path d="M1 9L9.00615 0.999999L17 8.98771" stroke="rgba(10,22,31,0.2)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></a><a href="/ordonnance-en-ligne/" target="_self" rel="noopener noreferrer " id="linkcard|7Accj7wq6Z0CHzEvqStWr8|ordonnance-en-ligne" title="Ordonnance en ligne" aria-label="Ordonnance en ligne" class="css-lbiio2"><img width="50" height="50" src="//images.ctfassets.net/h8qzhh7m9m8u/G9A6fgxeh1ZRHbiZI5SGW/80c4f371bebc9e8f1115c00fc63d28cc/Kry.no_reseptfornyelse.svg" alt="Ordonnance médicale" loading="lazy" class="css-q0ihjz"><div class="css-4d383k"><div><div class="css-xe1k7t">Ordonnance en ligne</div><div class="css-c2rrrk">Découvrez en plus sur le fonctionnement des ordonnances éléctroniques.</div></div><svg width="18" height="18" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" alt="" loading="lazy" class="css-l0gmxg" aria-hidden="true" focusable="false" role="button" aria-label="Expand"><path d="M1 9L9.00615 0.999999L17 8.98771" stroke="rgba(10,22,31,0.2)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></a><a href="https://app.livi.fr/app-link/all/book?symptom_id=skin_rashes_and_other_dermatology&amp;care_type=1" target="_self" rel="noopener noreferrer nofollow" id="linkcard|5HmJalvIgn1sX5RrCdEmuA|consulter-un-dermatologue-rapidement" title="Consulter un dermatologue rapidement " aria-label="Consulter un dermatologue rapidement " class="css-lbiio2"><img width="50" height="50" src="//images.ctfassets.net/h8qzhh7m9m8u/7neIAUJgZ1YrULkHEIOElc/8dacadcbc3868c2f8040616b7bd85405/Skin_rash3_LinkCards_170x170.svg" alt="Dermatologie" loading="lazy" class="css-q0ihjz"><div class="css-4d383k"><div><div class="css-xe1k7t">Consulter un dermatologue rapidement </div><div class="css-c2rrrk">Acné, eczéma, herpès... Obtenez l'avis médical de nos dermatologues sur Livi.</div></div><svg width="18" height="18" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" alt="" loading="lazy" class="css-l0gmxg" aria-hidden="true" focusable="false" role="button" aria-label="Expand"><path d="M1 9L9.00615 0.999999L17 8.98771" stroke="rgba(10,22,31,0.2)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></a><a href="https://app.livi.fr/app-link/all/mental-health-hub" target="_self" rel="noopener noreferrer nofollow" id="linkcard|2ePFynxOsWBkQ2dSkGTct5|obtenir-de-laide-pour-votre-sante-mentale" title="Obtenir de l'aide pour votre santé mentale" aria-label="Obtenir de l'aide pour votre santé mentale" class="css-lbiio2"><img width="50" height="50" src="//images.ctfassets.net/h8qzhh7m9m8u/14UrKZ3AuOijsYGVD7FLQ7/e130232f0b17dd6f59abba071841d25c/Puff_2_400x400__2_.svg" alt="Problème de santé mentale" loading="lazy" class="css-q0ihjz"><div class="css-4d383k"><div><div class="css-xe1k7t">Obtenir de l'aide pour votre santé mentale</div><div class="css-c2rrrk">Anxiété, dépression, burn-out... Nos psychiatres et psychologues sont à votre écoute 7j/7.</div></div><svg width="18" height="18" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" alt="" loading="lazy" class="css-l0gmxg" aria-hidden="true" focusable="false" role="button" aria-label="Expand"><path d="M1 9L9.00615 0.999999L17 8.98771" stroke="rgba(10,22,31,0.2)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></a><a href="https://app.livi.fr/app-link/all/book?symptom_id=children_illnesses_and_other_pediatry&amp;care_type=1" target="_self" rel="noopener noreferrer nofollow" id="linkcard|24o9UbrVkYGyvK6jG4ky4M|consulter-un-pediatre-sans-rdv" title="Consulter un pédiatre sans RDV " aria-label="Consulter un pédiatre sans RDV " class="css-lbiio2"><img width="50" height="50" src="//images.ctfassets.net/h8qzhh7m9m8u/2DWdtkBkJhljpJWfMbTdmP/e18345e0bfe21478e0b65725a832481f/Child_1.svg" alt="" loading="lazy" class="css-q0ihjz"><div class="css-4d383k"><div><div class="css-xe1k7t">Consulter un pédiatre sans RDV </div><div class="css-c2rrrk">Nos pédiatres prennent en charge toutes les pathologies infantiles.</div></div><svg width="18" height="18" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" alt="" loading="lazy" class="css-l0gmxg" aria-hidden="true" focusable="false" role="button" aria-label="Expand"><path d="M1 9L9.00615 0.999999L17 8.98771" stroke="rgba(10,22,31,0.2)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></a><a href="https://app.livi.fr/app-link/all/book?symptom_id=menstrual_cycle_disorders_and_other_gynecology&amp;care_type=1" target="_self" rel="noopener noreferrer nofollow" id="linkcard|2zvvzTpp41Ppq3A6FjxSLH|voir-un-gynecologue-en-quelques-minutes" title="Voir un gynécologue en quelques minutes" aria-label="Voir un gynécologue en quelques minutes" class="css-lbiio2"><picture><source srcset="//images.ctfassets.net/h8qzhh7m9m8u/65ns2mJRehg5K7XteFinH4/5df719aba955f4d12a849286e30949b8/Cervical_cancer_screening.png?fm=avif&amp;w=100&amp;h=100&amp;bg=rgb:FFFFFF&amp;q=70 2x, //images.ctfassets.net/h8qzhh7m9m8u/65ns2mJRehg5K7XteFinH4/5df719aba955f4d12a849286e30949b8/Cervical_cancer_screening.png?fm=avif&amp;w=50&amp;h=50&amp;bg=rgb:FFFFFF&amp;q=70" type="image/avif"><source srcset="//images.ctfassets.net/h8qzhh7m9m8u/65ns2mJRehg5K7XteFinH4/5df719aba955f4d12a849286e30949b8/Cervical_cancer_screening.png?fm=webp&amp;w=100&amp;h=100&amp;bg=rgb:FFFFFF&amp;q=70 2x, //images.ctfassets.net/h8qzhh7m9m8u/65ns2mJRehg5K7XteFinH4/5df719aba955f4d12a849286e30949b8/Cervical_cancer_screening.png?fm=webp&amp;w=50&amp;h=50&amp;bg=rgb:FFFFFF&amp;q=70" type="image/webp"><source srcset="//images.ctfassets.net/h8qzhh7m9m8u/65ns2mJRehg5K7XteFinH4/5df719aba955f4d12a849286e30949b8/Cervical_cancer_screening.png?fm=jpg&amp;w=100&amp;h=100&amp;bg=rgb:FFFFFF&amp;fl=progressive&amp;q=70 2x, //images.ctfassets.net/h8qzhh7m9m8u/65ns2mJRehg5K7XteFinH4/5df719aba955f4d12a849286e30949b8/Cervical_cancer_screening.png?fm=jpg&amp;w=50&amp;h=50&amp;bg=rgb:FFFFFF&amp;fl=progressive&amp;q=70" type="image/jpeg"><img width="50" height="50" src="//images.ctfassets.net/h8qzhh7m9m8u/65ns2mJRehg5K7XteFinH4/5df719aba955f4d12a849286e30949b8/Cervical_cancer_screening.png" alt="Gynécologie" loading="lazy" class="css-q0ihjz"></picture><div class="css-4d383k"><div><div class="css-xe1k7t">Voir un gynécologue en quelques minutes</div><div class="css-c2rrrk">Syndrome pré-menstruel, IST, contraception... Nos gynécologues assurent votre suivi en ligne.</div></div><svg width="18" height="18" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" alt="" loading="lazy" class="css-l0gmxg" aria-hidden="true" focusable="false" role="button" aria-label="Expand"><path d="M1 9L9.00615 0.999999L17 8.98771" stroke="rgba(10,22,31,0.2)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></a></div></div></section>

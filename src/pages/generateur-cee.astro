@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Générateur de dossier CEE — NeoGTB" description="Estimez vos Certificats d'Économies d'Énergie (CEE) en 3 minutes. Outil gratuit et indépendant — aucun lien commercial avec les obligés ou délégataires.">
+<Layout title="Simulateur CEE GTB gratuit — Estimez vos primes en 3 minutes" description="Estimez vos Certificats d'Économies d'Énergie (CEE) pour un projet GTB en 3 minutes. Outil gratuit et indépendant, sans lien commercial avec les obligés ou délégataires." breadcrumbs={[{label: "Outils"}, {label: "Simulateur CEE"}]}>
 
   <!-- ==================== HERO LUMINEUX + EFFET VISUEL ==================== -->
   <section class="cee-hero">
@@ -332,14 +333,14 @@ import Layout from '../layouts/Layout.astro';
   .cee-hero {
     position: relative; overflow: hidden;
     padding: 80px 0 56px;
-    background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 30%, #f5f0ff 60%, #fef9f0 100%);
+    background: linear-gradient(160deg, #FAFAF9 0%, #F0FDFA 40%, #F5F5F4 70%, #FFFBEB 100%);
   }
   .cee-hero-mesh {
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 80% 50% at 20% 80%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 50% at 50% 50%, rgba(34, 197, 94, 0.03) 0%, transparent 50%);
+      radial-gradient(ellipse 80% 50% at 20% 80%, rgba(13, 148, 136, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(15, 118, 110, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 50% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
     pointer-events: none;
   }
   .cee-hero-grid {
@@ -358,17 +359,17 @@ import Layout from '../layouts/Layout.astro';
   }
   .cee-orb-1 {
     width: 300px; height: 300px; top: -10%; right: 10%;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(13, 148, 136, 0.15) 0%, transparent 70%);
     animation: cee-float 8s ease-in-out infinite;
   }
   .cee-orb-2 {
     width: 250px; height: 250px; bottom: -5%; left: 5%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(15, 118, 110, 0.10) 0%, transparent 70%);
     animation: cee-float 10s ease-in-out infinite reverse;
   }
   .cee-orb-3 {
     width: 200px; height: 200px; top: 30%; left: 40%;
-    background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
     animation: cee-float 12s ease-in-out infinite 2s;
   }
   @keyframes cee-float {
@@ -390,7 +391,7 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-dark-900); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 16px;
   }
   .cee-hero-title span {
-    background: linear-gradient(135deg, var(--color-accent-600) 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, var(--color-accent-700) 0%, var(--color-accent-500) 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
   }
@@ -408,7 +409,7 @@ import Layout from '../layouts/Layout.astro';
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .cee-badge-accent {
-    background: rgba(37, 99, 235, 0.06); border-color: rgba(37, 99, 235, 0.15);
+    background: rgba(13, 148, 136, 0.06); border-color: rgba(13, 148, 136, 0.15);
     color: var(--color-accent-600);
   }
   .cee-scroll-hint {
@@ -474,7 +475,7 @@ import Layout from '../layouts/Layout.astro';
     background: white; transition: all 0.15s;
     font-family: inherit;
   }
-  .cee-input:focus { border-color: var(--color-accent-500); outline: none; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08); }
+  .cee-input:focus { border-color: var(--color-accent-500); outline: none; box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
   .cee-input.has-error { border-color: #ef4444; }
   .cee-input-sm { width: 100%; padding: 8px 12px; border: 1.5px solid var(--color-dark-200); border-radius: 8px; font-size: 13px; font-family: inherit; }
   .cee-input-sm:focus { border-color: var(--color-accent-500); outline: none; }
@@ -501,7 +502,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: inherit;
   }
   .cee-choice:hover { border-color: var(--color-dark-300); background: var(--color-dark-50); }
-  .cee-choice.is-selected { border-color: var(--color-accent-600); background: rgba(37, 99, 235, 0.04); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08); }
+  .cee-choice.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
   .cee-choice-label { font-size: 13px; font-weight: 500; color: var(--color-dark-700); }
   .cee-choice.is-selected .cee-choice-label { color: var(--color-accent-700); }
 
@@ -514,7 +515,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: inherit;
   }
   .cee-zone:hover { border-color: var(--color-dark-300); }
-  .cee-zone.is-selected { border-color: var(--color-accent-600); background: rgba(37, 99, 235, 0.04); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08); }
+  .cee-zone.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
   .cee-zone-id { font-size: 16px; font-weight: 600; color: var(--color-dark-900); }
   .cee-zone-desc { font-size: 11px; color: var(--color-dark-400); }
 
@@ -527,7 +528,7 @@ import Layout from '../layouts/Layout.astro';
     position: relative; font-family: inherit;
   }
   .cee-equip:hover { border-color: var(--color-dark-300); }
-  .cee-equip.is-selected { border-color: var(--color-accent-600); background: rgba(37, 99, 235, 0.04); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08); }
+  .cee-equip.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
   .cee-equip-check {
     position: absolute; top: 8px; right: 8px;
     width: 20px; height: 20px; border-radius: 5px;
@@ -568,7 +569,7 @@ import Layout from '../layouts/Layout.astro';
     background: var(--color-accent-600); color: white;
     border: none; cursor: pointer; transition: all 0.2s;
   }
-  .cee-btn-accent:hover { background: var(--color-accent-700); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+  .cee-btn-accent:hover { background: var(--color-accent-700); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25); }
 
   .cee-btn-ghost {
     display: inline-flex; align-items: center; gap: 8px;
@@ -796,5 +797,11 @@ import Layout from '../layouts/Layout.astro';
     }));
   });
 </script>
+
+  <RelatedPages links={[
+    { href: "/audit", title: "Audit GTB gratuit", description: "Évaluez la maturité GTB de votre bâtiment en 5 minutes." },
+    { href: "/reglementation", title: "Réglementation GTB", description: "Décret BACS, CEE BAT-TH-116 — tout le cadre légal." },
+    { href: "/comparateur", title: "Comparateur de solutions", description: "Comparez les marques GTB pour votre projet." },
+  ]} />
 
 </Layout>

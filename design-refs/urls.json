@@ -1,0 +1,724 @@
+{
+  "targets": [
+    {
+      "name": "doctolib-hero",
+      "url": "https://www.doctolib.fr",
+      "selector": "main section:first-of-type, .hero, header + section",
+      "label": "Doctolib — hero conversion santé, UX référence nationale",
+      "domain": "santé",
+      "pattern": "Hero conversion, CTA primaire/secondaire, rassurant"
+    },
+    {
+      "name": "alan-homepage",
+      "url": "https://alan.com/fr-fr",
+      "selector": "main > section:first-of-type",
+      "label": "Alan — mutuelle digitale, design très moderne, typographie forte",
+      "domain": "santé",
+      "pattern": "Hero minimaliste, couleur signature, copy percutant"
+    },
+    {
+      "name": "withings-hero",
+      "url": "https://www.withings.com/fr/fr/",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Withings — objets connectés santé, design premium Apple-like",
+      "domain": "santé",
+      "pattern": "Product hero, whitespace luxueux, imagery haute qualité"
+    },
+    {
+      "name": "nabla-homepage",
+      "url": "https://www.nabla.com",
+      "selector": "main > section:first-of-type",
+      "label": "Nabla — IA médicale, design SaaS santé, très propre",
+      "domain": "santé",
+      "pattern": "SaaS healthcare, dark/light, autorité tech"
+    },
+    {
+      "name": "qare-homepage",
+      "url": "https://www.qare.fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Qare — téléconsultation, UX patient optimisée",
+      "domain": "santé",
+      "pattern": "Conversion patient, confiance médicale, CTAs forts"
+    },
+    {
+      "name": "gleamer-hero",
+      "url": "https://www.gleamer.ai",
+      "selector": "main > section:first-of-type",
+      "label": "Gleamer — IA radiologie, design startup medtech premium",
+      "domain": "santé",
+      "pattern": "MedTech dark hero, autorité IA, stats impact"
+    },
+    {
+      "name": "owkin-homepage",
+      "url": "https://www.owkin.com",
+      "selector": "main > section:first-of-type",
+      "label": "Owkin — IA oncologie, design scientifique premium",
+      "domain": "santé",
+      "pattern": "Science premium, dark, typographie autoritaire"
+    },
+    {
+      "name": "medicalib-homepage",
+      "url": "https://www.medicalib.fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Medicalib — soins à domicile, UX rassurante",
+      "domain": "santé",
+      "pattern": "Services santé locaux, UX simple, confiance"
+    },
+    {
+      "name": "livi-homepage",
+      "url": "https://www.livi.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Livi — télémédecine, design nordique épuré",
+      "domain": "santé",
+      "pattern": "Nordic clean, vert doux, conversion consultation"
+    },
+    {
+      "name": "therapixel-homepage",
+      "url": "https://therapixel.com",
+      "selector": "main, body > section:first-of-type",
+      "label": "Therapixel — IA mammographie, startup deeptech",
+      "domain": "santé",
+      "pattern": "DeepTech sobre, crédibilité scientifique"
+    },
+    {
+      "name": "lifen-homepage",
+      "url": "https://www.lifen.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Lifen — messagerie santé sécurisée, B2B médical",
+      "domain": "santé",
+      "pattern": "B2B santé, blue institutionnel, confiance"
+    },
+    {
+      "name": "biogroup-homepage",
+      "url": "https://www.biogroup.fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Biogroup — laboratoires d'analyses, réseau national",
+      "domain": "santé",
+      "pattern": "Réseau médical, accès rapide, rassurant"
+    },
+    {
+      "name": "nutricia-homepage",
+      "url": "https://www.nutricia.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Nutricia — nutrition médicale spécialisée",
+      "domain": "santé",
+      "pattern": "Nutrition clinique, blanc/vert, professionnel"
+    },
+    {
+      "name": "shift-health",
+      "url": "https://shift-technology.com",
+      "selector": "main > section:first-of-type",
+      "label": "Shift Technology — IA assurance/santé, B2B premium",
+      "domain": "santé",
+      "pattern": "Enterprise SaaS, dark blue, autorité données"
+    },
+    {
+      "name": "cegedim-homepage",
+      "url": "https://www.cegedim.fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Cegedim — logiciels santé, entreprise établie",
+      "domain": "santé",
+      "pattern": "Solutions métier santé, institutionnel moderne"
+    },
+    {
+      "name": "openclassrooms-hero",
+      "url": "https://openclassrooms.com/fr/",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "OpenClassrooms — plateforme e-learning #1 France, design soigné",
+      "domain": "formation",
+      "pattern": "LMS hero, CTA inscription forte, cours mis en avant"
+    },
+    {
+      "name": "lewagon-homepage",
+      "url": "https://www.lewagon.com/fr",
+      "selector": "main > section:first-of-type",
+      "label": "Le Wagon — bootcamp tech, design startup premium",
+      "domain": "formation",
+      "pattern": "Bootcamp dark hero, urgence, social proof fort"
+    },
+    {
+      "name": "42-homepage",
+      "url": "https://42.fr",
+      "selector": "main, body",
+      "label": "42 — école informatique iconique, design expérimental",
+      "domain": "formation",
+      "pattern": "Dark coding school, identité forte, experimental"
+    },
+    {
+      "name": "studi-homepage",
+      "url": "https://www.studi.com",
+      "selector": "main > section:first-of-type",
+      "label": "Studi — formation en ligne diplômante, UX claire",
+      "domain": "formation",
+      "pattern": "Formation CPF, cours cards grid, conversion"
+    },
+    {
+      "name": "hec-homepage",
+      "url": "https://www.hec.edu/fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "HEC Paris — grande école, prestige institutionnel",
+      "domain": "formation",
+      "pattern": "Grande école prestige, editorial, autorité"
+    },
+    {
+      "name": "essec-homepage",
+      "url": "https://www.essec.edu/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "ESSEC — école commerce internationale",
+      "domain": "formation",
+      "pattern": "Business school, photographie executive, élégant"
+    },
+    {
+      "name": "emlyon-homepage",
+      "url": "https://www.emlyon.com/fr",
+      "selector": "main > section:first-of-type",
+      "label": "emlyon — école commerce innovante",
+      "domain": "formation",
+      "pattern": "Ecole moderne, vidéo hero, jeune public"
+    },
+    {
+      "name": "simplon-homepage",
+      "url": "https://simplon.co",
+      "selector": "main > section:first-of-type",
+      "label": "Simplon — formation numérique inclusive, impact social",
+      "domain": "formation",
+      "pattern": "Impact social, coloré, accessibilité"
+    },
+    {
+      "name": "ynov-homepage",
+      "url": "https://www.ynov.com",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Ynov — campus numérique, design gaming/tech",
+      "domain": "formation",
+      "pattern": "Campus tech jeune, dark/néon, gaming vibes"
+    },
+    {
+      "name": "epitech-homepage",
+      "url": "https://www.epitech.eu",
+      "selector": "main > section:first-of-type",
+      "label": "Epitech — école informatique expertise",
+      "domain": "formation",
+      "pattern": "Tech school dark, code esthétique, autorité"
+    },
+    {
+      "name": "databird-homepage",
+      "url": "https://www.databird.co",
+      "selector": "main > section:first-of-type",
+      "label": "Databird — formation data, startup moderne",
+      "domain": "formation",
+      "pattern": "Data formation, minimal SaaS, conversion"
+    },
+    {
+      "name": "mindvalley-fr",
+      "url": "https://www.mindvalley.com/fr",
+      "selector": "main > section:first-of-type",
+      "label": "Mindvalley France — formation développement personnel premium",
+      "domain": "formation",
+      "pattern": "Personal dev premium, dark luxueux, vidéo"
+    },
+    {
+      "name": "courseware-homepage",
+      "url": "https://www.360learning.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "360Learning — LMS collaboratif, design B2B moderne",
+      "domain": "formation",
+      "pattern": "LMS SaaS B2B, coloré, features grid"
+    },
+    {
+      "name": "coorpacademy-homepage",
+      "url": "https://www.coorpacademy.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Coorpacademy — formation entreprise gamifiée",
+      "domain": "formation",
+      "pattern": "Corporate learning, gamification, énergie"
+    },
+    {
+      "name": "ionis-homepage",
+      "url": "https://www.ionis-group.com",
+      "selector": "main > section:first-of-type",
+      "label": "Ionis Group — groupe écoles privées, multi-campus",
+      "domain": "formation",
+      "pattern": "Groupe scolaire institutionnel, grid écoles"
+    },
+    {
+      "name": "sia-partners-hero",
+      "url": "https://www.sia-partners.com/fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Sia Partners — cabinet conseil international français",
+      "domain": "consulting",
+      "pattern": "Cabinet conseil premium, dark hero, thought leadership"
+    },
+    {
+      "name": "wavestone-homepage",
+      "url": "https://www.wavestone.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Wavestone — transformation digitale, design modern corporate",
+      "domain": "consulting",
+      "pattern": "Corporate transformation, editorial, case studies"
+    },
+    {
+      "name": "artefact-homepage",
+      "url": "https://www.artefact.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Artefact — data/AI consulting, design agence premium",
+      "domain": "consulting",
+      "pattern": "Data consulting modern, dark/light toggle, typographie forte"
+    },
+    {
+      "name": "onepoint-homepage",
+      "url": "https://www.groupeonepoint.com",
+      "selector": "main > section:first-of-type",
+      "label": "Onepoint — consulting digital, design audacieux",
+      "domain": "consulting",
+      "pattern": "Digital consulting créatif, couleur signature, animation"
+    },
+    {
+      "name": "fabernovel-homepage",
+      "url": "https://fabernovel.com/fr",
+      "selector": "main > section:first-of-type",
+      "label": "FaberNovel — innovation consulting, design agency vibe",
+      "domain": "consulting",
+      "pattern": "Innovation studio, expérimental, typographie XXL"
+    },
+    {
+      "name": "weave-homepage",
+      "url": "https://weave.eu/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Weave — management consulting, très sobre et élégant",
+      "domain": "consulting",
+      "pattern": "Management sobre, navy, autorité executive"
+    },
+    {
+      "name": "eleven-strategy",
+      "url": "https://eleven-strategy.com",
+      "selector": "main, body",
+      "label": "Eleven Strategy — petit cabinet premium, design épuré",
+      "domain": "consulting",
+      "pattern": "Boutique consulting, minimaliste extrême, autorité"
+    },
+    {
+      "name": "capgemini-fr",
+      "url": "https://www.capgemini.com/fr-fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Capgemini France — grand groupe conseil/IT",
+      "domain": "consulting",
+      "pattern": "Enterprise consulting, grid services, bleu signature"
+    },
+    {
+      "name": "devoteam-homepage",
+      "url": "https://www.devoteam.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Devoteam — cloud/tech consulting, design moderne",
+      "domain": "consulting",
+      "pattern": "Tech consulting, rouge/noir, partenaires cloud"
+    },
+    {
+      "name": "kpmg-fr",
+      "url": "https://kpmg.com/fr/fr/home.html",
+      "selector": "main > section:first-of-type",
+      "label": "KPMG France — audit/conseil, institutional premium",
+      "domain": "consulting",
+      "pattern": "Big4 institutionnel, bleu marine, thought leadership"
+    },
+    {
+      "name": "mckinsey-fr",
+      "url": "https://www.mckinsey.com/fr",
+      "selector": "main > section:first-of-type",
+      "label": "McKinsey France — référence absolue consulting UX",
+      "domain": "consulting",
+      "pattern": "Authority consulting, insights first, editorial"
+    },
+    {
+      "name": "bain-fr",
+      "url": "https://www.bain.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Bain & Company France — consulting stratégique premium",
+      "domain": "consulting",
+      "pattern": "Strategy consulting, rouge signature, case studies"
+    },
+    {
+      "name": "roland-berger-fr",
+      "url": "https://www.rolandberger.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Roland Berger France — cabinet stratégie européen",
+      "domain": "consulting",
+      "pattern": "Strategy editorial, insights cards, institutionnel"
+    },
+    {
+      "name": "extia-homepage",
+      "url": "https://www.extia.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Extia — ESN conseil IT, culture forte, design humain",
+      "domain": "consulting",
+      "pattern": "ESN humain, people-first design, coloré"
+    },
+    {
+      "name": "soprasteria-fr",
+      "url": "https://www.soprasteria.com/fr",
+      "selector": "main > section:first-of-type",
+      "label": "Sopra Steria — IT consulting/services, groupe français",
+      "domain": "consulting",
+      "pattern": "IT services corporate, bleu foncé, expertise"
+    },
+    {
+      "name": "pierre-herme-hero",
+      "url": "https://www.pierreherme.com/fr/",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Pierre Hermé — pâtisserie luxe, référence design gastronomique",
+      "domain": "alimentaire",
+      "pattern": "Pâtisserie luxe, noir/or, photographie produit premium"
+    },
+    {
+      "name": "laduree-homepage",
+      "url": "https://www.laduree.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Ladurée — macarons Paris, design heritage luxe",
+      "domain": "alimentaire",
+      "pattern": "Heritage luxe, vert pastel signature, editorial"
+    },
+    {
+      "name": "maison-plisson",
+      "url": "https://www.lamaisonplisson.com",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "La Maison Plisson — épicerie fine Paris, design food premium",
+      "domain": "alimentaire",
+      "pattern": "Épicerie fine, beige chaud, photographie culinaire"
+    },
+    {
+      "name": "lafourche-homepage",
+      "url": "https://lafourche.fr",
+      "selector": "main > section:first-of-type",
+      "label": "La Fourche — drive bio, design startup alimentaire moderne",
+      "domain": "alimentaire",
+      "pattern": "Bio startup, vert/blanc, CTA subscription"
+    },
+    {
+      "name": "fauchon-homepage",
+      "url": "https://www.fauchon.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Fauchon — épicerie fine luxe emblématique Paris",
+      "domain": "alimentaire",
+      "pattern": "Épicerie luxe, rose signature, packaging premium"
+    },
+    {
+      "name": "crustac-fr",
+      "url": "https://crustac.fr",
+      "selector": "main, body",
+      "label": "Crustac — crustacés premium, primé Adveris 2025",
+      "domain": "alimentaire",
+      "pattern": "Marque alimentaire premium, animations scroll, épuré"
+    },
+    {
+      "name": "maison-aleph",
+      "url": "https://www.maison-aleph.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Maison Aleph — pâtisserie orientale Paris, design artisanal",
+      "domain": "alimentaire",
+      "pattern": "Artisan alimentaire, chaleureux, photographie intime"
+    },
+    {
+      "name": "yooji-homepage",
+      "url": "https://www.yooji.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Yooji — purées bio bébé, design famille moderne",
+      "domain": "alimentaire",
+      "pattern": "FMCG bio, pastels, famille, conversion e-commerce"
+    },
+    {
+      "name": "nespresso-fr",
+      "url": "https://www.nespresso.com/fr/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Nespresso France — café premium, référence UX e-commerce luxe",
+      "domain": "alimentaire",
+      "pattern": "Café luxe, dark/beige, product storytelling"
+    },
+    {
+      "name": "evian-fr",
+      "url": "https://www.evian.com/fr_fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Evian France — eau premium, design nature/pureté",
+      "domain": "alimentaire",
+      "pattern": "FMCG premium, bleu alpin, pureté minimaliste"
+    },
+    {
+      "name": "bonduelle-fr",
+      "url": "https://www.bonduelle.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Bonduelle — légumes, design marque alimentaire grand public",
+      "domain": "alimentaire",
+      "pattern": "FMCG végétal, vert vif, recettes UX"
+    },
+    {
+      "name": "maisonduchocolat",
+      "url": "https://www.lamaisonduchocolat.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "La Maison du Chocolat — chocolat luxe, primé design fr",
+      "domain": "alimentaire",
+      "pattern": "Chocolat luxe, brun/or, mise en scène produit"
+    },
+    {
+      "name": "naturalia-homepage",
+      "url": "https://www.naturalia.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Naturalia — bio et naturel, chaîne française",
+      "domain": "alimentaire",
+      "pattern": "Bio retail, vert naturel, proximité"
+    },
+    {
+      "name": "biocbon-homepage",
+      "url": "https://www.bio-c-bon.eu/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Bio c'Bon — épicerie bio française, design lifestyle",
+      "domain": "alimentaire",
+      "pattern": "Bio lifestyle, vert/blanc, produits locaux"
+    },
+    {
+      "name": "metro-gastronomie",
+      "url": "https://www.metro.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Metro France — grossiste alimentaire, design pro B2B",
+      "domain": "alimentaire",
+      "pattern": "B2B alimentaire, catalogue dense, pro"
+    },
+    {
+      "name": "decathlon-hero",
+      "url": "https://www.decathlon.fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "Decathlon — leader sport France, UX e-commerce référence",
+      "domain": "sport",
+      "pattern": "E-commerce sport, bleu signature, catégories claires"
+    },
+    {
+      "name": "alltricks-homepage",
+      "url": "https://www.alltricks.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Alltricks — vélo et outdoor, design e-commerce sport premium",
+      "domain": "sport",
+      "pattern": "Sport e-commerce, photographie action, dark accents"
+    },
+    {
+      "name": "lacoste-fr",
+      "url": "https://www.lacoste.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Lacoste France — sport/lifestyle luxe, design heritage",
+      "domain": "sport",
+      "pattern": "Sport luxe français, vert crocodile, editorial lifestyle"
+    },
+    {
+      "name": "psg-homepage",
+      "url": "https://www.psg.fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "PSG — club foot Paris, design football premium",
+      "domain": "sport",
+      "pattern": "Football premium, bleu/rouge, fan engagement"
+    },
+    {
+      "name": "intersport-fr",
+      "url": "https://www.intersport.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Intersport France — multi-sport retail, UX commerce",
+      "domain": "sport",
+      "pattern": "Sport retail, promotions mises en avant, catalog"
+    },
+    {
+      "name": "lequipe-homepage",
+      "url": "https://www.lequipe.fr",
+      "selector": "header, main > section:first-of-type",
+      "label": "L'Équipe — média sport #1 France, design editorial sport",
+      "domain": "sport",
+      "pattern": "Media sport, typographie forte, bleu/rouge/blanc"
+    },
+    {
+      "name": "paris2024-homepage",
+      "url": "https://www.paris2024.org",
+      "selector": "main > section:first-of-type",
+      "label": "Paris 2024 — JO, site événementiel primé design",
+      "domain": "sport",
+      "pattern": "Événementiel mondial, bleu/rouge, Olympic branding"
+    },
+    {
+      "name": "peugeot-cycles",
+      "url": "https://www.peugeot-cycles.com/fr",
+      "selector": "main > section:first-of-type",
+      "label": "Peugeot Cycles — vélos heritage français, design lifestyle",
+      "domain": "sport",
+      "pattern": "Heritage vélo, lion logo, produit storytelling"
+    },
+    {
+      "name": "trailrunner-fr",
+      "url": "https://www.trailrunner.fr",
+      "selector": "main, body > section:first-of-type",
+      "label": "TrailRunner — trail running, media niche design soigné",
+      "domain": "sport",
+      "pattern": "Niche sport media, nature photography, editorial"
+    },
+    {
+      "name": "stade-francais",
+      "url": "https://www.stade.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Stade Français — rugby paris, design club premium",
+      "domain": "sport",
+      "pattern": "Rugby premium, rose/noir signature, fan engagement"
+    },
+    {
+      "name": "fff-homepage",
+      "url": "https://www.fff.fr",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "FFF — Fédération Française Football, institutionnel sport",
+      "domain": "sport",
+      "pattern": "Fédération sport, bleu tricolore, institutional"
+    },
+    {
+      "name": "domyos-homepage",
+      "url": "https://www.domyos.com/fr-fr",
+      "selector": "main > section:first-of-type",
+      "label": "Domyos — fitness Decathlon brand, design home fitness",
+      "domain": "sport",
+      "pattern": "Fitness home, énergique, produit démonstration"
+    },
+    {
+      "name": "sport2000-fr",
+      "url": "https://www.sport2000.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Sport 2000 — enseigne sport France, e-commerce",
+      "domain": "sport",
+      "pattern": "Sport retail réseau, promotions, catalog categories"
+    },
+    {
+      "name": "assos-fr",
+      "url": "https://www.assos.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Assos — cyclisme premium suisse/FR, design luxe sport",
+      "domain": "sport",
+      "pattern": "Cycling premium, dark, performance luxury"
+    },
+    {
+      "name": "bikester-fr",
+      "url": "https://www.bikester.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Bikester — vélo en ligne, e-commerce sport spécialisé",
+      "domain": "sport",
+      "pattern": "Niche e-commerce vélo, filtres avancés, UX product"
+    },
+    {
+      "name": "ovh-homepage",
+      "url": "https://www.ovhcloud.com/fr/",
+      "selector": "main > section:first-of-type, .hero",
+      "label": "OVHcloud — cloud souverain français, design B2B tech",
+      "domain": "informatique",
+      "pattern": "Cloud B2B, bleu tech, souveraineté numérique"
+    },
+    {
+      "name": "scaleway-homepage",
+      "url": "https://www.scaleway.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Scaleway — cloud developer-first, design startup premium",
+      "domain": "informatique",
+      "pattern": "Developer cloud, violet signature, features grid"
+    },
+    {
+      "name": "algolia-homepage",
+      "url": "https://www.algolia.com",
+      "selector": "main > section:first-of-type",
+      "label": "Algolia — Search API, design SaaS tech référence mondiale",
+      "domain": "informatique",
+      "pattern": "API SaaS premium, bleu/blanc, interactive demo"
+    },
+    {
+      "name": "dataiku-homepage",
+      "url": "https://www.dataiku.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Dataiku — data science platform, licorne française",
+      "domain": "informatique",
+      "pattern": "Data platform enterprise, bleu/orange, ROI focused"
+    },
+    {
+      "name": "contentsquare-homepage",
+      "url": "https://contentsquare.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Contentsquare — UX analytics, licorne française",
+      "domain": "informatique",
+      "pattern": "SaaS UX analytics, gradient violet, enterprise"
+    },
+    {
+      "name": "payfit-homepage",
+      "url": "https://payfit.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Payfit — RH/paie SaaS, design produit très soigné",
+      "domain": "informatique",
+      "pattern": "HR SaaS, vert vif, produit screenshots"
+    },
+    {
+      "name": "spendesk-homepage",
+      "url": "https://www.spendesk.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Spendesk — gestion dépenses pro, design fintech moderne",
+      "domain": "informatique",
+      "pattern": "Fintech SaaS, dark blue, dashboard preview"
+    },
+    {
+      "name": "pennylane-fr",
+      "url": "https://www.pennylane.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Pennylane — comptabilité SaaS, design startup premium",
+      "domain": "informatique",
+      "pattern": "Accounting SaaS, vert/bleu, clean moderne"
+    },
+    {
+      "name": "doctrine-fr",
+      "url": "https://www.doctrine.fr",
+      "selector": "main > section:first-of-type",
+      "label": "Doctrine — jurisprudence IA, design legal tech",
+      "domain": "informatique",
+      "pattern": "LegalTech, bleu institutionnel, autorité données"
+    },
+    {
+      "name": "mirakl-homepage",
+      "url": "https://www.mirakl.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Mirakl — marketplace platform, licorne française",
+      "domain": "informatique",
+      "pattern": "Marketplace SaaS, orange signature, enterprise B2B"
+    },
+    {
+      "name": "strapi-homepage",
+      "url": "https://strapi.io",
+      "selector": "main > section:first-of-type",
+      "label": "Strapi — CMS headless open source, design dev-first",
+      "domain": "informatique",
+      "pattern": "Open source CMS, violet/bleu, developer community"
+    },
+    {
+      "name": "aircall-homepage",
+      "url": "https://aircall.io/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Aircall — téléphonie cloud, design SaaS sales",
+      "domain": "informatique",
+      "pattern": "Sales SaaS, vert/blanc, intégrations mise en avant"
+    },
+    {
+      "name": "dashlane-homepage",
+      "url": "https://www.dashlane.com/fr",
+      "selector": "main > section:first-of-type",
+      "label": "Dashlane — password manager, design sécurité premium",
+      "domain": "informatique",
+      "pattern": "Security SaaS, dark blue/green, trust design"
+    },
+    {
+      "name": "partoo-homepage",
+      "url": "https://www.partoo.co/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Partoo — présence locale digitale, design startup B2B",
+      "domain": "informatique",
+      "pattern": "Local SEO SaaS, chaleureux, résultats mis en avant"
+    },
+    {
+      "name": "wimi-homepage",
+      "url": "https://www.wimi-teamwork.com/fr/",
+      "selector": "main > section:first-of-type",
+      "label": "Wimi — collaboration souveraine française, design pro",
+      "domain": "informatique",
+      "pattern": "Collaboration SaaS souverain, bleu/vert, productivité"
+    }
+  ]
+}

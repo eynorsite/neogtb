@@ -1,0 +1,435 @@
+<!--
+  SOURCE  : https://www.mckinsey.com
+  SECTION : nav, header
+  LABEL   : Nav McKinsey - autorité maximale
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.mckinsey.com.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : McKinsey Sans · Times · Bower
+  Couleurs    : rgb(51, 51, 51) · rgb(240, 240, 240) · rgb(255, 255, 255) · rgb(34, 81, 255)
+  Border-r    : 16px · 4px · 2.5px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "14px 35px 14px 96px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "a[1]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(34, 81, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 12px 0px 0px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "span[2]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(34, 81, 255)",
+    "background-color": "rgb(255, 255, 255)",
+    "margin": "8px 0px",
+    "border": "0px none rgb(34, 81, 255)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[3]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(34, 81, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(34, 81, 255)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[4]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[5]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[6]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(5, 28, 44)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "section[7]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(5, 28, 44)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "section[8]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "24px",
+    "max-width": "1440px"
+  },
+  "div[9]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "24px",
+    "max-width": "1232px"
+  },
+  "nav[10]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[13]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 12px 24px",
+    "border": "0px none rgb(255, 255, 255)",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[14]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[15]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "12px",
+    "font-weight": "300",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "inline-block",
+    "line-height": "24px"
+  },
+  "div[16]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(255, 255, 255)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "grid",
+    "grid-template-columns": "1440px",
+    "line-height": "24px",
+    "max-width": "100%"
+  },
+  "div[17]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "40px 72px 48px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[18]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "20px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 0px 24px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex",
+    "line-height": "32px"
+  },
+  "a[19]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "24px",
+    "font-weight": "500",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "gap": "8px",
+    "display": "block",
+    "line-height": "36px"
+  },
+  "span[20]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "24px",
+    "font-weight": "500",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "36px"
+  },
+  "span[21]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "24px",
+    "font-weight": "500",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 16px 0px 8px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "36px"
+  },
+  "div[22]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "a[25]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[26]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "a[28]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[29]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "a[31]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[32]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "a[34]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[35]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "a[37]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[38]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "a[40]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[41]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "a[43]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[44]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "a[46]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[47]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  },
+  "a[49]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 0px 16px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "span[50]": {
+    "font-family": "\"McKinsey Sans\", \"Helvetica Neue\", Calibri, Corbel, Helvetica, Roboto, Droid, sans-serif",
+    "font-size": "16px",
+    "font-weight": "300",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "inline",
+    "line-height": "24px"
+  }
+}
+-->
+<header class="global-header-wrapper mck-c-global-header_ROPqd" data-layer-region="global-header"><div class="logo-container mck-c-global-header__logo_qp7e0" role="navigation"><a class="menu-toggle" href="/" aria-label="Navigation Menu" aria-expanded="false" role="button"><span class="hamburger-menu-icon"></span></a><a href="/" class="names mck-logo-icon alone" aria-label="McKinsey and Company Home"></a></div><div data-focus-guard="true" tabindex="-1" style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"></div><div data-focus-lock-disabled="disabled" class="focus-lock mck-c-global-header__focus-lock_TKm4H"><div data-component="mdc-c-module-wrapper" data-module-theme="dark" data-module-background="deep-blue" data-module-category="" class=""><section data-layer-region="global-hamburger-nav" data-level="1" class="mck-c-hamburger-menu_lFU2G mck-c-hamburger-menu--is-menu-close_RIlot"></section></div><section class="top-bar" data-module-theme="dark"><div class="top-bar-inner mck-c-global-header__top-bar-inner_AZ5_s"><nav class="mck-c-primary-nav_PDNvq mck-c-primary-nav--show-nav_rOdzO" data-nav="navwrapper"><ul data-list="list" class="mck-c-primary-nav__list_omT6I"><li class="mck-c-primary-nav__list-item_bOjO2" aria-hidden="false"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries" class="mck-c-nav-item_i0QUn mck-c-nav-item--with-dropdown_Yu87k mdc-c-link-icon___SEKyg_79c2a62" aria-haspopup="true" aria-expanded="true">Industries<div class="mck-c-nav-item__icon-class_N11Du"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mdc-c-icon--default___f-hQM_79c2a62 mdc-c-icon--size-sm___2FLYH_79c2a62 mck-arrow-down-icon"></span></div></a><div data-component="mdc-c-module-wrapper" data-module-theme="light" data-module-background="white" data-module-category="" class="mck-c-nav-wrapper_Esekf mck-c-nav-wrapper--full-width_HST37 mck-c-nav-wrapper--wrap_tAn1v mck-c-nav-wrapper--one-column-grid_Qbi2y"><div class="mck-c-nav-wrapper__nav-menus_EQXC2 mck-c-nav-wrapper__nav-menus--redesigned-nav-styles_MawBb"><div class="mck-c-nav-title_fzMhs"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries" class="mck-c-nav-title__link mdc-c-link-cta___NBQVi_79c2a62" aria-label="Industries"><span class="mdc-c-link__label___Pfqtd_79c2a62">Industries</span><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mck-link-arrow-right-icon"></span></a></div><div class="mck-c-nav-wrapper__items"><ul class="mck-c-nav-wrapper__links mck-c-nav-wrapper__links--four_C0P2Z"><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/aerospace-and-defense/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Aerospace &amp; Defense"><span>Aerospace &amp; Defense</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/agriculture/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Agriculture"><span>Agriculture</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/automotive-and-assembly/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Automotive &amp; Assembly"><span>Automotive &amp; Assembly</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/chemicals/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Chemicals"><span>Chemicals</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/consumer-packaged-goods/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Consumer Packaged Goods"><span>Consumer Packaged Goods</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/education/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Education"><span>Education</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/electric-power-and-natural-gas/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Electric Power &amp; Natural Gas"><span>Electric Power &amp; Natural Gas</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/energy-and-materials/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Energy and Materials"><span>Energy and Materials</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/engineering-construction-and-building-materials/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Engineering, Construction &amp; Building Materials"><span>Engineering, Construction &amp; Building Materials</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/financial-services/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Financial Services"><span>Financial Services</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/healthcare/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Healthcare"><span>Healthcare</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/industrials/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Industrials"><span>Industrials</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/infrastructure/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Infrastructure"><span>Infrastructure</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/life-sciences/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Life Sciences"><span>Life Sciences</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/logistics/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Logistics"><span>Logistics</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/metals-and-mining/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Metals &amp; Mining"><span>Metals &amp; Mining</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/oil-and-gas/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Oil &amp; Gas"><span>Oil &amp; Gas</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/packaging-and-paper/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Packaging &amp; Paper"><span>Packaging &amp; Paper</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/private-capital/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Private Capital"><span>Private Capital</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/public-sector/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Public Sector"><span>Public Sector</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/real-estate/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Real Estate"><span>Real Estate</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/retail/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Retail"><span>Retail</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/semiconductors/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Semiconductors"><span>Semiconductors</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/social-sector/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Social Sector"><span>Social Sector</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Technology, Media &amp; Telecommunications"><span>Technology, Media &amp; Telecommunications</span></a></li><li class="mck-c-nav-wrapper__nav-link-item_FNnTu"><a data-component="mdc-c-link" href="https://www.mckinsey.com/industries/travel/how-we-help-clients" class="mck-c-nav-wrapper__link_MPsj6 mdc-c-link-heading___Zggl8_79c2a62" aria-label="Travel"><span>Travel</span></a></li></ul></div></div></div></li><li class="mck-c-primary-nav__list-item_bOjO2" aria-hidden="false"><a data-component="mdc-c-link" href="https://www.mckinsey.com/capabilities" class="mck-c-nav-item_i0QUn mck-c-nav-item--with-dropdown_Yu87k mdc-c-link-icon___SEKyg_79c2a62" aria-haspopup="true" aria-expanded="false">Capabilities<div class="mck-c-nav-item__icon-class_N11Du"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mdc-c-icon--default___f-hQM_79c2a62 mdc-c-icon--size-sm___2FLYH_79c2a62 mck-arrow-down-icon"></span></div></a></li><li class="mck-c-primary-nav__list-item_bOjO2" aria-hidden="false"><a data-component="mdc-c-link" href="https://www.mckinsey.com/tech-and-ai" class="mck-c-nav-item_i0QUn mdc-c-link-icon___SEKyg_79c2a62" aria-haspopup="false" aria-expanded="false">Tech &amp; AI</a></li><li class="mck-c-primary-nav__list-item_bOjO2" aria-hidden="false"><a data-component="mdc-c-link" href="https://www.mckinsey.com/featured-insights" class="mck-c-nav-item_i0QUn mck-c-nav-item--with-dropdown_Yu87k mdc-c-link-icon___SEKyg_79c2a62" aria-haspopup="true" aria-expanded="false">Our Insights<div class="mck-c-nav-item__icon-class_N11Du"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mdc-c-icon--default___f-hQM_79c2a62 mdc-c-icon--size-sm___2FLYH_79c2a62 mck-arrow-down-icon"></span></div></a></li><li class="mck-c-primary-nav__list-item_bOjO2" aria-hidden="false"><a data-component="mdc-c-link" href="https://www.mckinsey.com/careers/home" class="mck-c-nav-item_i0QUn mck-c-nav-item--with-dropdown_Yu87k mdc-c-link-icon___SEKyg_79c2a62" aria-haspopup="true" aria-expanded="false">Careers<div class="mck-c-nav-item__icon-class_N11Du"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mdc-c-icon--default___f-hQM_79c2a62 mdc-c-icon--size-sm___2FLYH_79c2a62 mck-arrow-down-icon"></span></div></a></li><li class="mck-c-primary-nav__list-item_bOjO2" aria-hidden="false"><a data-component="mdc-c-link" href="https://www.mckinsey.com/about-us/overview" class="mck-c-nav-item_i0QUn mck-c-nav-item--with-dropdown_Yu87k mdc-c-link-icon___SEKyg_79c2a62" aria-haspopup="true" aria-expanded="false">About Us<div class="mck-c-nav-item__icon-class_N11Du"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mdc-c-icon--default___f-hQM_79c2a62 mdc-c-icon--size-sm___2FLYH_79c2a62 mck-arrow-down-icon"></span></div></a></li><li class="mck-c-primary-nav__list-item_bOjO2" aria-hidden="false"><a data-component="mdc-c-link" href="https://www.mckinsey.com/about-us/new-at-mckinsey-blog" class="mck-c-nav-item_i0QUn mdc-c-link-icon___SEKyg_79c2a62" aria-haspopup="false" aria-expanded="false">McKinsey Blog</a></li><li class="mck-c-more-menu_iWkeg mck-c-more-menu--hidden_Neftr" aria-hidden="true"><a data-component="mdc-c-link" href="/#" class="mck-c-nav-item_i0QUn mck-c-nav-item--hidden_WKIhs mck-c-nav-item--with-dropdown_Yu87k mdc-c-link-icon___SEKyg_79c2a62" aria-haspopup="true" aria-expanded="false"><span class="visually-hidden">More menu options</span><span aria-hidden="true">More</span><div class="mck-c-nav-item__icon-class_N11Du"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mdc-c-icon--default___f-hQM_79c2a62 mdc-c-icon--size-sm___2FLYH_79c2a62 mck-arrow-down-icon"></span></div></a></li></ul></nav><div aria-hidden="true" class="mck-c-search-bar_x5dgd mck-c-search-bar--hide_quV7v"><div data-focus-guard="true" tabindex="0" style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"></div><div data-focus-lock-disabled="false"><div class="visually-hidden"><span id="searchBoxHelpText">Please use UP and DOWN arrow keys to review autocomplete results. Press enter to select and open the results on a new page.</span><span id="searchUpdates" aria-live="assertive" aria-atomic="true"></span></div><label for="global-search-input" class="visually-hidden">Search</label><input class="mck-c-search-bar__search-input_LrnYs" title="Search" placeholder="Type to search..." id="global-search-input" aria-controls="searchNavSuggestions" aria-autocomplete="list" aria-expanded="false" aria-activedescendant="search-suggestion-null" role="combobox" aria-describedby="searchBoxHelpText" autocomplete="off" value=""><button data-component="mdc-c-button" aria-label="Close Search" type="button" id="button_id" class="mdc-c-button___U4iY2_79c2a62 mdc-c-button--ghost mdc-c-button--size-medium mck-c-search-bar__close-button_UMpGe"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mck-cross-icon"></span></button><button data-component="mdc-c-button" aria-label="" type="button" id="button_id" class="mdc-c-button___U4iY2_79c2a62 mdc-c-button--ghost mdc-c-button--size-medium mck-c-search-bar__submit-button_sSjw6" name="search" title="Search"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mck-search-icon"></span></button><div data-component="mdc-c-module-wrapper" data-module-theme="light" data-module-background="transparent" data-module-category="" class=""><ol class="mck-c-search-suggestions-list_LKVo9 mck-c-search-suggestions-list--hide_RKTMp" id="searchNavSuggestions" role="listbox"></ol></div></div><div data-focus-guard="true" tabindex="0" style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"></div></div></div></section></div><div data-focus-guard="true" tabindex="-1" style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"></div><div class="mck-c-global-header__nav-right_iExyX" data-module-theme="dark"><ul role="menu"><li role="menuitem"><ul class="mck-c-guest-user_GlXXq"><li><a data-component="mdc-c-link" href="#/auth-signin" class="mdc-c-link___lBbY1_79c2a62" aria-label="Sign In" data-layer-action="click" aria-haspopup="true" aria-expanded="false"><span class="mdc-c-link__label___Pfqtd_79c2a62">Sign In</span></a></li><li><a data-component="mdc-c-link" href="/user-registration/newsletter" class="mdc-c-link___lBbY1_79c2a62" data-layer-event-prefix="CTA Link" data-layer-action="click" data-layer-category="authentication" data-layer-subcategory="login"><span class="mdc-c-link__label___Pfqtd_79c2a62">Subscribe</span></a></li></ul></li><li role="menuitem"><a data-component="mdc-c-link" href="#" class="mdc-c-link___lBbY1_79c2a62 mdc-c-link--secondary___TSFam_79c2a62" aria-haspopup="true" aria-expanded="false" aria-label="Search icon, hit enter to activate"><span data-component="mdc-c-icon" class="mdc-c-icon___oi7ef_79c2a62 mdc-c-icon--size-xl___3BEee_79c2a62 mck-search-icon"></span></a></li></ul></div></header>

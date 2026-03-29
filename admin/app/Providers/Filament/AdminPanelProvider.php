@@ -7,7 +7,6 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -29,25 +28,27 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->authGuard('admin')
-            ->brandName('NéoGTB Admin')
-            ->favicon(asset('favicon.ico'))
+            ->brandName('NeoGTB Admin')
+            ->brandLogo(asset('images/logo-admin.webp'))
+            ->brandLogoHeight('3rem')
+            ->favicon(asset('favicon.svg'))
             ->font('Inter')
             ->sidebarWidth('16rem')
-            ->darkMode(false)
+            ->darkMode(true)
             ->maxContentWidth('full')
             ->renderHook('panels::styles.after', fn () => view('filament.hooks.admin-styles'))
             ->colors([
                 'primary' => [
-                    50 => '#e8eef5',
-                    100 => '#c5d5e6',
-                    200 => '#9bb5d1',
-                    300 => '#7095bc',
-                    400 => '#4a78a8',
-                    500 => '#1B3A5C',
-                    600 => '#183353',
-                    700 => '#142b47',
-                    800 => '#10233b',
-                    900 => '#0c1b2f',
+                    50 => '#f0f6fb',
+                    100 => '#dce8f3',
+                    200 => '#b8d1e8',
+                    300 => '#84b0d6',
+                    400 => '#5a94c4',
+                    500 => '#3574a8',
+                    600 => '#1B3A5C',
+                    700 => '#183353',
+                    800 => '#142b47',
+                    900 => '#10233b',
                     950 => '#08111f',
                 ],
                 'success' => [
@@ -71,7 +72,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
-                Dashboard::class,
+                \App\Filament\Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
@@ -94,11 +95,15 @@ class AdminPanelProvider extends PanelProvider
             ->spa()
             ->sidebarCollapsibleOnDesktop()
             ->navigationGroups([
-                'Contenu',
-                'Blog',
-                'Communication',
-                'Configuration',
-                'Système',
+                \Filament\Navigation\NavigationGroup::make('Mon site')
+                    ->icon('heroicon-o-globe-alt'),
+                \Filament\Navigation\NavigationGroup::make('Blog')
+                    ->icon('heroicon-o-newspaper'),
+                \Filament\Navigation\NavigationGroup::make('Boîte de réception')
+                    ->icon('heroicon-o-inbox'),
+                \Filament\Navigation\NavigationGroup::make('Réglages')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(),
             ]);
     }
 }

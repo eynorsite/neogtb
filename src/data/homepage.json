@@ -1,14 +1,19 @@
 {
-  "hero": {
-    "image": "/images/hero-neogtb.png",
-    "image_alt": "Salle de contrôle NéoGTB — supervision technique du bâtiment",
-    "badge": "Indépendant · Objectif · Solutions",
-    "subtitle": "NéoGTB",
-    "title": "Le tiers de confiance de la GTB en France",
-    "description": "NeoGTB ne vend rien et ne représente aucun fabricant. Nous aidons les gestionnaires de bâtiments tertiaires à comprendre, comparer et décider.",
-    "cta_text": "Diagnostiquer mon bâtiment",
-    "cta_url": "/audit",
-    "cta2_text": "Notre méthode",
-    "cta2_url": "/about"
-  }
+    "hero": {
+        "image": "/images/hero-neogtb.webp",
+        "image_alt": "Salle de contrôle NéoGTB — supervision technique du bâtiment",
+        "badge": "Décret BACS 2030 · Êtes-vous en conformité ?",
+        "subtitle": "NéoGTB",
+        "title": "Votre bâtiment consomme trop. On vous montre où et pourquoi.",
+        "description": "Diagnostic EN 15232 gratuit, comparateur de solutions sans biais commercial. Les gestionnaires qui nous consultent identifient en moyenne 23 % d'économies sur leur CVC.",
+        "stats": [
+            { "value": "23 %", "label": "d'économies CVC identifiées en moyenne" },
+            { "value": "10+", "label": "fabricants évalués sans lien commercial" },
+            { "value": "0 €", "label": "commission — jamais" }
+        ],
+        "cta_text": "Diagnostiquer mon bâtiment",
+        "cta_url": "/audit",
+        "cta2_text": "Comparer les solutions GTB",
+        "cta2_url": "/comparateur"
+    }
 }

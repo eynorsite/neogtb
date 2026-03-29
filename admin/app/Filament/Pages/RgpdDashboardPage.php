@@ -11,9 +11,9 @@ class RgpdDashboardPage extends Page
 {
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-shield-check';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'RGPD';
+    protected static string|\UnitEnum|null $navigationGroup = 'Boîte de réception';
 
-    protected static ?string $navigationLabel = 'Tableau de bord RGPD';
+    protected static ?string $navigationLabel = 'Suivi RGPD';
 
     protected static ?string $title = 'Tableau de bord RGPD';
 

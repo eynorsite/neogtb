@@ -1,0 +1,373 @@
+<!--
+  SOURCE  : https://www.wimi-teamwork.com/fr/
+  SECTION : main > section:first-of-type
+  LABEL   : Wimi — collaboration souveraine française, design pro
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de www.wimi-teamwork.com.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : sans-serif · Arial · Sf Pro
+  Couleurs    : rgb(51, 51, 51) · rgb(3, 5, 8) · rgb(102, 115, 129) · rgb(255, 255, 255)
+  Border-r    : 15px · 6000px · 8px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "128px 32px 0px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "20px"
+  },
+  "div[1]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "0px 48px",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "20px",
+    "max-width": "1280px"
+  },
+  "div[2]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "0px 32px",
+    "margin": "0px 0px 96px",
+    "border": "0px none rgb(51, 51, 51)",
+    "gap": "96px",
+    "display": "block",
+    "line-height": "20px"
+  },
+  "div[3]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "gap": "48px",
+    "display": "flex",
+    "line-height": "20px",
+    "max-width": "640px"
+  },
+  "div[4]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "gap": "24px",
+    "display": "flex",
+    "line-height": "20px"
+  },
+  "h1[5]": {
+    "font-family": "\"Sf Pro\", \"Palatino Linotype\", sans-serif",
+    "font-size": "64px",
+    "font-weight": "700",
+    "color": "rgb(3, 5, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(3, 5, 8)",
+    "display": "block",
+    "letter-spacing": "-3px",
+    "line-height": "68.48px"
+  },
+  "p[6]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "18px",
+    "font-weight": "500",
+    "color": "rgb(102, 115, 129)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(102, 115, 129)",
+    "display": "block",
+    "line-height": "27px",
+    "max-width": "528px"
+  },
+  "div[7]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "gap": "12px",
+    "display": "flex",
+    "line-height": "20px"
+  },
+  "div[8]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "gap": "16px",
+    "display": "flex",
+    "line-height": "20px"
+  },
+  "a[9]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgb(1, 113, 227)",
+    "padding": "8px 8px 8px 16px",
+    "border": "1px solid rgba(255, 255, 255, 0.2)",
+    "border-radius": "6000px",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "22.4px",
+    "max-width": "100%"
+  },
+  "div[10]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[11]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "div[12]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[13]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "div[16]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "flex",
+    "line-height": "22.4px"
+  },
+  "div[17]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "22.4px"
+  },
+  "a[20]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(3, 5, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(3, 5, 8)",
+    "gap": "4px",
+    "display": "flex",
+    "line-height": "24px",
+    "max-width": "100%"
+  },
+  "div[21]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(3, 5, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(3, 5, 8)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[22]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(3, 5, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(3, 5, 8)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[23]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(3, 5, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(3, 5, 8)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[24]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(3, 5, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(3, 5, 8)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[27]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(3, 5, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(3, 5, 8)",
+    "display": "flex",
+    "line-height": "24px"
+  },
+  "div[28]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(3, 5, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(3, 5, 8)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[31]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "20px"
+  },
+  "div[32]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "20px"
+  },
+  "div[33]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "20px"
+  },
+  "p[39]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(102, 115, 129)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(102, 115, 129)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[40]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "gap": "8px",
+    "display": "flex",
+    "line-height": "20px"
+  },
+  "div[41]": {
+    "font-family": "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(51, 51, 51)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(51, 51, 51)",
+    "display": "block",
+    "line-height": "20px"
+  },
+  "p[50]": {
+    "font-family": "Inter, \"Palatino Linotype\", sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(102, 115, 129)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(102, 115, 129)",
+    "display": "block",
+    "line-height": "24px"
+  }
+}
+-->
+<section class="section z-index-3"><div class="padding-global padding-section-home-hero"><div class="container-large"><div class="home_hero_layout"><div class="home_hero_content"><div class="home_hero_heading-wrapper"><h1>La suite collaborative souveraine et sécurisée</h1><p class="text-size-medium max-width-small">Gérez vos projets, documents et communications sans jongler entre les outils. Une suite complète, hébergée en France, qui protège vos données sensibles.</p></div><div class="hero_cta-wrapper"><div class="button-group"><a data-wf--button--variant="primary" data-w-id="7df091ee-68c9-8f76-57d9-2f10b41a176c" href="https://go.wimi-teamwork.com/reserver-demonstration" target="_blank" class="button w-inline-block"><div class="button-text">Réserver une démo</div><div class="button_icon-wrapper overflow-hidden"><div class="button_icon-wrapper is-1" style="transform: translate3d(0%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"><div data-wf--chevron-right--variant="large" class="icon-1x1-component is-chevron-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none">
+  <path d="M9 18L15 12L9 6" stroke="currentcolor" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></div><div class="button_icon-wrapper is-2" style="width: 0%;"><div class="button_icon-anim w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 12 2" fill="none">
+  <path d="M1 1H15" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></div></div></a><a data-wf--text-link-icon--variant="text-color-primary" data-w-id="684429ca-2552-b5d5-3fb5-788473ff865b" href="https://subscribe.wimi.pro/register" target="_blank" class="text-link-icon w-variant-0400bfa7-cdd1-b2a6-306f-3d291ef32af2 w-inline-block"><div>Essayer gratuitement</div><div class="button_icon-wrapper overflow-hidden"><div class="button_icon-wrapper is-1" style="transform: translate3d(0%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"><div data-wf--chevron-right--variant="large" class="icon-1x1-component is-chevron-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none">
+  <path d="M9 18L15 12L9 6" stroke="currentcolor" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></div><div class="button_icon-wrapper is-2" style="width: 0%;"><div class="button_icon-anim w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 12 2" fill="none">
+  <path d="M1 1H15" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></div></div></a></div><div class="rating-group"><div class="row gap-sm"><div class="icon-1x1-medium w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none">
+  <path d="M0 8.82422L10.1372 8.82621L16.3012 8.82724V2.83129L0 8.82422Z" fill="#FF9D28"></path>
+  <path d="M16.3013 2.83129V24L24.0001 1.52588e-05L16.3013 2.83129Z" fill="#68C5ED"></path>
+  <path d="M16.3013 8.82724L10.1372 8.82621L16.3013 24V8.82724Z" fill="#044D80"></path>
+  <path d="M0 8.82423L11.7179 12.7196L10.1372 8.82621L0 8.82423Z" fill="#E54747"></path>
+</svg></div><p class="text-weight-normal">4,7/5 sur Capterra</p></div><div class="row gap-sm"><div class="icon-1x1-medium w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
+  <g clip-path="url(#clip0_6823_90609)">
+    <path d="M13.982 5.67306H10.157L9.98319 6.18756C10.4287 8.82537 12.659 10.8507 15.392 10.9569C12.4091 11.0739 10.0185 13.4722 9.90167 16.4584C9.83648 14.8061 9.07583 13.336 7.90494 12.3315L5.31055 20H8.49446L9.5349 16.7334H14.5988L15.6392 20H18.8204L13.982 5.67306Z" fill="#122959"></path>
+    <path d="M4.77263 2.17773C4.69113 4.32283 2.97421 6.04053 0.833496 6.12765C2.97149 6.20932 4.69113 7.9325 4.77263 10.0721C4.85413 7.92975 6.57378 6.20932 8.71174 6.12765C6.57104 6.04597 4.85413 4.32283 4.77263 2.17773Z" fill="#122959"></path>
+    <path d="M8.16842 0C8.12224 1.18416 7.17684 2.13149 5.99512 2.17776C7.17409 2.22404 8.12224 3.17409 8.16842 4.35553C8.21459 3.17409 9.16269 2.22404 10.3417 2.17776C9.15999 2.13149 8.21459 1.18144 8.16842 0Z" fill="#122959"></path>
+  </g>
+  <defs>
+    <clipPath id="clip0_6823_90609">
+      <rect width="20" height="20" fill="white"></rect>
+    </clipPath>
+  </defs>
+</svg></div><p class="text-weight-normal">4,7/5 sur AppVizer</p></div><div class="row gap-sm"><img src="https://cdn.prod.website-files.com/693ac8d5968bf76206369fef/698a164ed0109255cb6b81c1_snc-logo.webp" loading="lazy" alt="" class="icon-1x1-medium"><p class="text-weight-normal">SecNumCloud visé 2026</p></div></div></div></div></div></div></div><div class="home_hero_illu-wrapper"><div class="home_hero_elipse-1"></div><img src="https://cdn.prod.website-files.com/693ac8d5968bf76206369fef/69b1acd3c584533697b9968e_home-hero-workboard.webp" loading="eager" fetchpriority="high" alt="Interface principale de Wimi" class="home_hero_illu hide-mobile-landscape"><img src="https://cdn.prod.website-files.com/693ac8d5968bf76206369fef/69739b8d1c19010e6792fae7_home-hero-mobile_illu.webp" loading="eager" fetchpriority="high" alt="Workboard wimi" class="home_hero_illu display-landscape"><div class="home_hero_elipse-2"></div><a href="#" class="home_hero_ligthbox_component w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog"><div data-w-id="28983c11-ba39-cc47-0d98-5da077ae1848" class="button is-video-lightbox"><div>Voir la vidéo de démo</div><div class="button_icon-wrapper overflow-hidden"><div style="transform: translate3d(0%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="button_icon-wrapper is-1"><div data-wf--chevron-right--variant="large" class="icon-1x1-component is-chevron-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none">
+  <path d="M9 18L15 12L9 6" stroke="currentcolor" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></div><div style="width: 0%;" class="button_icon-wrapper is-2"><div class="button_icon-anim w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 12 2" fill="none">
+  <path d="M1 1H15" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg></div></div></div></div></a></div></section>

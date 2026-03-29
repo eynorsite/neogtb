@@ -1,0 +1,1645 @@
+<!--
+  SOURCE  : https://42.fr
+  SECTION : main, body
+  LABEL   : 42 — école informatique iconique, design expérimental
+  SCRAPED : 2026-03-21
+
+  USAGE POUR CLAUDE CODE :
+  Ce fichier contient du HTML réel extrait de 42.fr.
+  S'en inspirer pour les patterns, la structure des classes, les proportions.
+  Ne pas copier tel quel — adapter au design system NEOGTB.
+
+  TOKENS EXTRAITS :
+  Fonts       : Times · futura-pt · Rubik
+  Couleurs    : rgb(0, 0, 238) · rgb(0, 0, 0) · rgb(255, 255, 255) · rgb(128, 128, 128)
+  Border-r    : 20px · 3px · 0px 10px 10px 0px
+-->
+
+
+<!-- COMPUTED STYLES (principaux éléments) :
+{
+  "div[0]": {
+    "font-family": "Rubik, sans-serif",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "line-height": "24px"
+  },
+  "div[1]": {
+    "font-family": "Times",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "a[2]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "-1px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "div[4]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex"
+  },
+  "div[5]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "max-width": "100%"
+  },
+  "div[6]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(0, 0, 0)",
+    "padding": "10px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex"
+  },
+  "div[7]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "div[8]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "a[11]": {
+    "font-family": "futura-pt-bold",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "2px 12px",
+    "margin": "0px 0px 0px 16px",
+    "border": "1px solid rgb(255, 255, 255)",
+    "border-radius": "20px",
+    "display": "block"
+  },
+  "a[13]": {
+    "font-family": "futura-pt-bold",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "2px 12px",
+    "margin": "0px 0px 0px 16px",
+    "border": "1px solid rgb(255, 255, 255)",
+    "border-radius": "20px",
+    "display": "block"
+  },
+  "a[15]": {
+    "font-family": "futura-pt-bold",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "2px 12px",
+    "margin": "0px 0px 0px 16px",
+    "border": "1px solid rgb(255, 255, 255)",
+    "border-radius": "20px",
+    "display": "block"
+  },
+  "a[17]": {
+    "font-family": "futura-pt-bold",
+    "font-size": "12px",
+    "font-weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "padding": "2px 12px",
+    "margin": "0px 0px 0px 16px",
+    "border": "1px solid rgb(255, 255, 255)",
+    "border-radius": "20px",
+    "display": "block"
+  },
+  "div[18]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex"
+  },
+  "div[23]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "h2[24]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "-1px",
+    "border": "0px none rgb(255, 255, 255)",
+    "display": "block",
+    "line-height": "21px"
+  },
+  "div[25]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex"
+  },
+  "a[26]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  },
+  "span[29]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "-1px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "a[30]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  },
+  "span[33]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "-1px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "a[34]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "flex"
+  },
+  "span[37]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "margin": "-1px",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "block"
+  },
+  "div[38]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block",
+    "max-width": "100%"
+  },
+  "div[39]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(255, 255, 255)",
+    "padding": "15px 45px",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "div[40]": {
+    "font-family": "futura-pt",
+    "font-size": "16px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "flex"
+  },
+  "div[41]": {
+    "font-family": "futura-pt",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgb(255, 255, 255)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "div[42]": {
+    "font-family": "futura-pt",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "p[43]": {
+    "font-family": "futura-pt",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  },
+  "a[44]": {
+    "font-family": "futura-pt",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 238)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 238)",
+    "display": "inline"
+  },
+  "p[50]": {
+    "font-family": "futura-pt",
+    "font-size": "14px",
+    "font-weight": "400",
+    "color": "rgb(0, 0, 0)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(0, 0, 0)",
+    "display": "block"
+  }
+}
+-->
+<body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0"><!--googleoff: index--><div class="axeptio_mount" id="axeptio_overlay" data-project-id="65fd4c4f0f1ce65d5ff49443" data-nosnippet="" style="z-index: 2147483647;"><div class="needsclick" style="color-scheme: initial; forced-color-adjust: initial; math-depth: initial; position: initial; position-anchor: initial; text-size-adjust: initial; appearance: initial; color: initial; font: initial; font-palette: initial; font-synthesis: initial; position-area: initial; text-orientation: initial; text-rendering: initial; text-spacing-trim: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; anchor-name: initial; anchor-scope: initial; animation-composition: initial; animation: initial; animation-trigger: initial; app-region: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; baseline-source: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-decoration-break: initial; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-animation: initial; caret-color: initial; caret-shape: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; corner-shape: initial; corner-block-end-shape: initial; corner-block-start-shape: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: block !important; dominant-baseline: initial; dynamic-range-limit: initial; empty-cells: initial; field-sizing: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: initial; hyphenate-character: initial; hyphenate-limit-chars: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; initial-letter: initial; inline-size: initial; inset-block: initial; inset-inline: initial; interactivity: initial; interest-delay: initial; interpolate-size: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: initial; margin-inline: initial; marker: initial; mask: initial; mask-type: initial; math-shift: initial; math-style: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-block: initial; overflow-clip-margin: initial; overflow-inline: initial; overflow-wrap: initial; overflow: initial; overlay: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position-try: initial; position-visibility: initial; print-color-adjust: initial; quotes: initial; r: initial; reading-flow: initial; reading-order: initial; resize: initial; rotate: initial; ruby-align: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-initial-target: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-marker-group: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scroll-target-group: initial; scroll-timeline: initial; scrollbar-color: initial; scrollbar-gutter: initial; scrollbar-width: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-autospace: initial; text-box: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-justify: initial; text-overflow: initial; text-shadow: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; text-wrap: initial; timeline-scope: initial; timeline-trigger: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; trigger-scope: initial; user-select: initial; vector-effect: initial; vertical-align: initial; view-timeline: initial; view-transition-class: initial; view-transition-group: initial; view-transition-name: initial; visibility: initial; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; white-space-collapse: initial; widows: initial; width: initial; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: initial;"></div></div><!--googleon: index-->
+        <a href="#main" class="sr-only go-to-content">Aller au contenu</a>
+        <header role="banner">
+          <div class="navbar-global navbar-fixed-top row m-0">
+            <div class="insert order-3 order-1024-1 col-lg-12 p-0">
+              <div class="d-none flex-row-reverse flex-1024-row d--lg--flex top-nav justify-content-between align-items-center">
+                <div class="h--col"><div class="menu-topnav-fr-container"><ul id="menu-topnav-fr" class="menu"><li id="menu-item-1112" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1112 nav-item"><a href="https://42.fr/alumni/" class="nav-link">Alumni</a></li>
+<li id="menu-item-2407" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2407 nav-item"><a href="https://42.fr/entreprises/actions-de-recrutement-et-de-formation/" class="nav-link">Entreprises</a></li>
+<li id="menu-item-2408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2408 nav-item"><a href="https://42.fr/entreprises/taxe-dapprentissage-et-dons/" class="nav-link">Taxe d’apprentissage</a></li>
+<li id="menu-item-1113" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1113 nav-item"><a href="https://42.fr/presse/" class="nav-link">Presse</a></li>
+</ul></div></div>                <div class="align-items-center d-flex justify-content-between"> 
+                                    <select name="lang_choice_1" id="lang_choice_1" title="Langue du site (rechargement automatique)">
+	<option value="fr" selected="selected">FR</option>
+	<option value="en">EN</option>
+
+</select>
+                                    <div class="footer--col"><h2 class="sn--title sr-only">Suivez-nous</h2><div class="footer__social">
+                                    <a target="_blank" class="text-decoration-none" href="https://www.facebook.com/42born2code" title="42 sur Facebook">
+                <svg focusable="false" aria-hidden="true" class="icon--facebook"><use xlink:href="https://42.fr/wp-content/themes/42/assets/images/socialnetworks.svg#facebook"></use></svg>                <span class="sr-only">42 sur Facebook</span>
+            </a>
+                                <a target="_blank" class="text-decoration-none" href="https://www.linkedin.com/school/42paris" title="42 sur LinkedIn">
+                <svg focusable="false" aria-hidden="true" class="icon--linkedin"><use xlink:href="https://42.fr/wp-content/themes/42/assets/images/socialnetworks.svg#linkedin"></use></svg>                <span class="sr-only">42 sur LinkedIn</span>
+            </a>
+                                <a target="_blank" class="text-decoration-none" href="https://www.instagram.com/42.born2code/" title="42 sur Instagram">
+                <svg focusable="false" aria-hidden="true" class="icon--instagram"><use xlink:href="https://42.fr/wp-content/themes/42/assets/images/socialnetworks.svg#instagram"></use></svg>                <span class="sr-only">42 sur Instagram</span>
+            </a>
+                        </div></div>                </div>
+              </div>
+            </div>
+                          <div class="order-1 order-1024-2 col-lg-12 p-0">
+                <div class="py-1 px-1 px-md-3 alert--message--container">
+                  <div class="d-flex justify-content-center align-items-center flex-column flex-lg-row">
+                    <div class="alert--message">			<div class="textwidget"><p>Participe à la <a href="https://discovery.42paris.fr"><strong>Piscine Discovery</strong> à <strong>42 Paris</strong></a> : une semaine de découverte du code entièrement <strong>gratuite</strong> et <strong>réservée aux femmes</strong>.</p>
+<hr>
+<p>Avec <a href="https://discovery.42paris.fr/discovery-seconde"><strong>Discovery seconde</strong>&nbsp;à <strong>42 Paris</strong></a>, fais ton stage de seconde du 15 au 26 juin 2026. <strong>Ouvert à tous et à toutes</strong> !</p>
+</div>
+		</div>                    <button id="close-alert" type="button" class="ml-lg-2 close close-alert d-flex" data-dismiss="alert">
+                      <span class="sr-only"> Fermer le bandeau d’annonce </span>
+                      <svg focusable="false" aria-hidden="true" width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g transform="translate(-5.000000, -5.000000)" fill="#2E3A59" fill-rule="nonzero">
+                                  <g>
+                                      <path d="M17.5900002,5 L12,10.5900002 L6.40999997,5 L5,6.40999997 L10.5900002,12 L5,17.5900002 L6.40999997,19 L12,13.4099998 L17.5900002,19 L19,17.5900002 L13.4099998,12 L19,6.40999997 L17.5900002,5 Z"></path>
+                                  </g>
+                              </g>
+                          </g>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+                        
+            <div class="order-2 order-1024-3 col-lg-12 p-0">
+              <nav role="navigation" class="position-relative main-navbar navbar navbar-expand-lg d-flex justify-content-between align-items-center flex-wrap">
+                <a class="navbar-brand" href="https://42.fr/"><img alt="Accueil École 42" src="https://42.fr/wp-content/uploads/2021/05/42-Final-sigle-seul.svg"></a>
+                <button class="menu-burger d-block d--lg--none pr-1">
+                <span class="sr-only"> Ouvrir le menu </span>
+                <svg focusable="false" aria-hidden="true" width="27" height="13" viewBox="0 0 27 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M27 0H0V2H27V0Z" fill="black"></path>
+                <path d="M27 5.5H0V7.5H27V5.5Z" fill="black"></path>
+                <path d="M27 11H0V13H27V11Z" fill="black"></path>
+                </svg>
+                </button>
+                <div class="close--btn--menu d--lg--none">
+                <button type="button" class="ml-lg-2 close close--menu-nav" data-dismiss="close-menu">
+                <span class="sr-only"> Fermer le menu </span>
+                  <svg aria-hidden="true" focusable="false" width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g transform="translate(-5.000000, -5.000000)" fill="#2E3A59" fill-rule="nonzero">
+                              <g>
+                                  <path d="M17.5900002,5 L12,10.5900002 L6.40999997,5 L5,6.40999997 L10.5900002,12 L5,17.5900002 L6.40999997,19 L12,13.4099998 L17.5900002,19 L19,17.5900002 L13.4099998,12 L19,6.40999997 L17.5900002,5 Z"></path>
+                              </g>
+                          </g>
+                      </g>
+                  </svg>
+                </button>
+                </div>
+                <div class="collapsed dropdown-container dropdown-container-slidemorph">
+                  <ul id="menu-navigation-fr" class="navbar-nav dropdown--menu position-relative"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-2409 nav-item nav-item"><button title="Le campus de Paris" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-2409">Le campus de Paris</button>
+<ul class="dropdown-menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-0" class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-137" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-137 nav-item nav-item"><a title="Le campus" href="https://42.fr/le-campus-de-paris/42-paris-campus/" class="nav-link">Le campus</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-6138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6138 nav-item nav-item"><a title="NOC 42 : Tout, sauf un campus" href="https://42.fr/le-campus-de-paris/noc-42/" class="nav-link">NOC 42 : Tout, sauf un campus</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-5895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5895 nav-item nav-item"><a title="Forty2 : le campus délocalisé" href="https://42.fr/le-campus-de-paris/forty2/" class="nav-link">Forty2 : le campus délocalisé</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-129" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-129 nav-item nav-item"><a title="Vie étudiante" href="https://42.fr/le-campus-de-paris/vie-sur-le-campus/" class="nav-link">Vie étudiante</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1265 nav-item nav-item"><a title="Formation proposée" href="https://42.fr/le-campus-de-paris/diplome-informatique/" class="nav-link">Formation proposée</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-5170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5170 nav-item nav-item"><a title="42 Start-Up Club" href="https://42.fr/le-campus-de-paris/42-start-up-club/" class="nav-link">42 Start-Up Club</a></li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2637" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-2637 nav-item nav-item"><button title="42 C’est quoi ?" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-2637">42 C’est quoi ?</button>
+<ul class="dropdown-menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-403 nav-item nav-item"><a title="Un concept unique" href="https://42.fr/42-cest-quoi/le-programme-42-explique/" class="nav-link">Un concept unique</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410 nav-item nav-item"><a title="La méthode 42" href="https://42.fr/42-cest-quoi/la-methode-42/" class="nav-link">La méthode 42</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1021 nav-item nav-item"><a title="L’équipe" href="https://42.fr/42-cest-quoi/personnel-de-42/" class="nav-link">L’équipe</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-7022" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7022 nav-item nav-item"><a title="Le projet IOTA" href="https://42.fr/42-cest-quoi/le-projet-iota/" class="nav-link">Le projet IOTA</a></li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-2638 nav-item nav-item"><button title="Le programme" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-2638">Le programme</button>
+<ul class="dropdown-menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1025" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1025 nav-item nav-item"><a title="Le code source" href="https://42.fr/le-programme/apprentissage-innovant/" class="nav-link">Le code source</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1026" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1026 nav-item nav-item"><a title="L’exécution" href="https://42.fr/le-programme/methode-travail/" class="nav-link">L’exécution</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1027" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1027 nav-item nav-item"><a title="Stages et professionnalisation" href="https://42.fr/le-programme/stages-et-professionnalisation/" class="nav-link">Stages et professionnalisation</a></li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-94" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94 nav-item nav-item"><a title="Le réseau mondial" href="https://42.fr/le-reseau-mondial/" class="nav-link">Le réseau mondial</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2639" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-2639 nav-item nav-item"><button title="Admissions" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-2639">Admissions</button>
+<ul class="dropdown-menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1083" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1083 nav-item nav-item"><a title="Le processus d’admission" href="https://42.fr/admissions/admissions/" class="nav-link">Le processus d’admission</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1084" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1084 nav-item nav-item"><a title="La piscine de 42" href="https://42.fr/admissions/42-piscine/" class="nav-link">La piscine de 42</a></li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-92" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-92 nav-item nav-item"><a title="Après 42" href="https://42.fr/apres-42/" class="nav-link">Après 42</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1077" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1077 nav-item nav-item"><a title="FAQ" href="https://42.fr/tout-savoir-sur-faq/" class="nav-link">FAQ</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90 nav-item nav-item"><a title="Contact" href="https://42.fr/entrer-en-contact/" class="nav-link">Contact</a></li>
+</ul>                </div>
+
+                <div class="text-center e--link--container"><ul id="menu-nav-cta-fr" class="e--link d-none d--lg--flex"><li id="menu-item-3288" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3288 nav-item"><a href="https://s.42paris.fr/apply" class="nav-link">Postuler à Paris</a></li>
+</ul></div>              </nav>
+            </div>
+          </div>
+        </header>
+        <main role="main" id="main">                    <div data-bs-spy="scroll" data-bs-target="#scrollspy" data-bs-offset="0" class="scrollspy-container">
+
+                    
+                        
+                                                            
+                                
+
+<div class="hero--section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hero--wrapper">
+                    <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/07/REPORTAGE42_SD-2527-2000x1333.jpg" alt="">
+                    <div class="container hero--content d-flex pt-3">
+                        <div class="col-lg-12 d-flex justify-content-center align-items-center align-items-md-start flex-column">
+                            <h1 data-aos="fade-up" class="text-white h1 text-center text-sm-left aos-init aos-animate">42 : Apprendre le code.                            </h1>
+                            <p data-aos="fade-up" class="text-white hero--stagline aos-init aos-animate">Casser les codes.</p>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                                                        
+                                
+
+<div class="position-relative section--icons-with-background bg--g-blue">
+    <div class="img--wrapper">
+        <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/06/Rectangle.png" alt="">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex justify-content-center">
+                    <div class="r--white-shape"></div>
+                </div>
+                <h2 data-aos="fade-up" class="text-white h2 text-center mb-2 aos-init">Le programme</h2>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-white body--sm text-center px-0 px-sm-3 aos-init">
+                    42, c’est une formation en informatique d’excellence pour tous et toutes. Au programme de cette école différente et innovante : une approche par projets pour progresser et développer des compétences techniques et humaines recherchées sur le marché du travail.
+</p>
+                                <ul class="icons-container d-flex justify-content-around flex-wrap">
+                                        
+                    <li data-aos="fade-up" data-aos-delay="200" class="list--item d-flex justify-content-start align-items-center flex-column icon--container text-center mt-4 mt-md-4 mt-lg-0 aos-init">
+                        <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/05/teacher-white.svg" alt="">
+                        <p class="text-white mt-2 icon--description">Pas de cours. Pas de profs. Pas de classes.</p>
+                    </li>
+                    
+                    <li data-aos="fade-up" data-aos-delay="300" class="list--item d-flex justify-content-start align-items-center flex-column icon--container text-center mt-4 mt-md-4 mt-lg-0 aos-init">
+                        <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/05/projects-white.svg" alt="">
+                        <p class="text-white mt-2 icon--description">Une pédagogie
+par projets</p>
+                    </li>
+                    
+                    <li data-aos="fade-up" data-aos-delay="400" class="list--item d-flex justify-content-start align-items-center flex-column icon--container text-center mt-4 mt-md-4 mt-lg-0 aos-init">
+                        <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/05/peer-to-peer-white.svg" alt="">
+                        <p class="text-white mt-2 icon--description">Un apprentissage
+peer-to-peer</p>
+                    </li>
+                    
+                    <li data-aos="fade-up" data-aos-delay="500" class="list--item d-flex justify-content-start align-items-center flex-column icon--container text-center mt-4 mt-md-4 mt-lg-0 aos-init">
+                        <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/05/gamification.svg-white.svg" alt="">
+                        <p class="text-white mt-2 icon--description">Gamification</p>
+                    </li>
+                                    </ul>
+                                                <div class="d-flex justify-content-center button-container">
+                    <a class="button--primary d-block" href="/le-programme/apprentissage-innovant/" target="_self">Le code source</a>
+                </div>
+                            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                                                        
+                                
+<div class="position-relative section-icons-with-high-image-and-cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div data-aos="fade-up" data-aos-delay="300" class="img--wrapper text-center text-lg-left aos-init">
+                    <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/08/REPORTAGE42_SD-2275.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-end flex-column text--container">
+                <div data-aos="fade-up" class="r--blue-shape mb-2 aos-init"></div>
+                <h2 data-aos="fade-up" data-aos-delay="100" class="h2 mb-2 font--blue aos-init">Nos valeurs</h2>
+                <div data-aos="fade-up" data-aos-delay="150" class="body--blue aos-init"><p><span style="font-weight: 400;">La position de 42 est unique dans le monde de l’enseignement supérieur : elle repose sur des valeurs fortes pour une insertion professionnelle durable sur le marché de l’emploi.</span></p>
+<h4>Pourquoi 42 est-elle si différente ?</h4>
+</div>
+                                <div data-aos="fade-up" data-aos-delay="170" class="d-flex justify-content-start button-container mt-2 aos-init">
+                    <a class="button--primary d-block" href="/42-cest-quoi/le-programme-42-explique/" target="_self">Un concept unique</a>
+                </div>
+                            </div>
+            <div class="col-lg-12">
+                                                <ul class="d-flex justify-content-around flex-wrap icons--container">
+                                        <li data-aos="fade-up" data-aos-delay="300" class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-4 mt-md-0 aos-init">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/06/no-money-grey.svg" alt="">
+                        <p class="mt-2 icon--description">Gratuité</p>
+                    </li>
+                                        <li data-aos="fade-up" data-aos-delay="400" class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-4 mt-md-0 aos-init">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/06/certificate-grey.svg" alt="">
+                        <p class="mt-2 icon--description">Pour tous, pour toutes</p>
+                    </li>
+                                        <li data-aos="fade-up" data-aos-delay="500" class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-4 mt-md-0 aos-init">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/06/no-certificate-grey.svg" alt="">
+                        <p class="mt-2 icon--description">Aucun diplôme requis</p>
+                    </li>
+                                        <li data-aos="fade-up" data-aos-delay="600" class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-4 mt-md-0 aos-init">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/06/programming-grey.svg" alt="">
+                        <p class="mt-2 icon--description">Pas besoin de savoir déjà coder ou d’aimer les maths</p>
+                    </li>
+                                    </ul>
+                            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                                                        
+                                
+<div id="" style="background-size:cover;background-repeat:no-repeat;height:100%;width:100%;background-image: url('https://42.fr/wp-content/uploads/2021/05/Mask-1024x334.png')" class="section-carousel-stats">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="stats--container d-flex flex-column">
+                    <div class="d-flex justify-content-center">
+                        <div data-aos="fade-up" class="r--white-shape aos-init"></div>
+                    </div>
+                    <h2 data-aos="fade-up" class="text-white h2 stats--title text-center aos-init">Statistiques 2023 de 42 à Paris</h2>
+                    <div data-aos="fade-up" class="carousel-cards flex-column aos-init slick-initialized slick-slider slick-dotted" role="region" aria-label="carrousel" tabindex="-1"><button type="button" class="slick-autoplay-toggle-button"><span class="slick-pause-icon" aria-hidden="true"></span><span class="slick-play-icon" aria-hidden="true" style="display: none;"></span><span class="slick-pause-text slick-sr-only">Pause</span><span class="slick-play-text slick-sr-only" style="display: none">Lecture</span></button><button class="previous-button is-control slick-arrow" style="">  <span class="fas fa-angle-left-white" aria-hidden="true"></span>  <span class="sr-only">Diapositive précédente</span></button><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 6973px; transform: translate3d(-1101px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">47 000 €</h3>
+                            <p class="stat--info">Salaire moyen en sortie</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">10 %</h3>
+                            <p class="stat--info">Internationaux</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">0 €</h3>
+                            <p class="stat--info">Coût des études</p>
+                        </div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="0" tabindex="-1" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">plus de 4 000</h3>
+                            <p class="stat--info">Étudiants et étudiantes</p>
+                        </div></div></div><div class="slick-slide slick-active" data-slick-index="1" tabindex="-1" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">35 %</h3>
+                            <p class="stat--info">Sans diplôme</p>
+                        </div></div></div><div class="slick-slide slick-active" data-slick-index="2" tabindex="-1" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">40 %</h3>
+                            <p class="stat--info">ne savaient pas coder</p>
+                        </div></div></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">24 ans</h3>
+                            <p class="stat--info">Moyenne d’âge</p>
+                        </div></div></div><div class="slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">100 % </h3>
+                            <p class="stat--info">Embauche après le tronc commun</p>
+                        </div></div></div><div class="slick-slide" data-slick-index="5" aria-hidden="true" tabindex="-1" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">47 000 €</h3>
+                            <p class="stat--info">Salaire moyen en sortie</p>
+                        </div></div></div><div class="slick-slide" data-slick-index="6" aria-hidden="true" tabindex="-1" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">10 %</h3>
+                            <p class="stat--info">Internationaux</p>
+                        </div></div></div><div class="slick-slide" data-slick-index="7" aria-hidden="true" tabindex="-1" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">0 €</h3>
+                            <p class="stat--info">Coût des études</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">plus de 4 000</h3>
+                            <p class="stat--info">Étudiants et étudiantes</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">35 %</h3>
+                            <p class="stat--info">Sans diplôme</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">40 %</h3>
+                            <p class="stat--info">ne savaient pas coder</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">24 ans</h3>
+                            <p class="stat--info">Moyenne d’âge</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="12" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">100 % </h3>
+                            <p class="stat--info">Embauche après le tronc commun</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="13" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">47 000 €</h3>
+                            <p class="stat--info">Salaire moyen en sortie</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="14" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">10 %</h3>
+                            <p class="stat--info">Internationaux</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="15" id="" aria-hidden="true" style="width: 367px;"><div><div class="text-white carousel-slide" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">0 €</h3>
+                            <p class="stat--info">Coût des études</p>
+                        </div></div></div></div></div><button class="next-button is-control slick-arrow" style="">  <span class="fas fa-angle-right-white" aria-hidden="true"></span>  <span class="sr-only">Diapositive suivante</span></button><ul class="slick-dots" style=""><li class="slick-active"><button type="button" aria-current="true"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à l'information 1</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à l'information 2</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à l'information 3</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à l'information 4</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à l'information 5</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à l'information 6</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à l'information 7</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à l'information 8</span></button></li></ul></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                                                        
+                                
+
+<div class="section-background-image-with-cta">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="img--wrapper">
+                    <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/08/REPORTAGE42_SD-2586_filter-2000x1333.jpg" alt="">
+                    <div class="container section--content d-flex">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-8 d-flex justify-content-center align-items-start flex-column">
+                                <div data-aos="fade-up" class="r--white-shape mb-2 aos-init"></div>
+                                <h2 data-aos="fade-up" class="text-white h2 mb-2 aos-init">Après 42</h2>
+                                <div data-aos="fade-up" class="text-white aos-init"><p><span style="font-weight: 400;">Sur un marché du travail en très forte demande de talents numériques, 42 guide ses étudiantes et ses étudiants vers des carrières à succès et pérennes.</span></p>
+<h4>Quels métiers et carrières après ?</h4>
+</div>
+                                                                    <a data-aos="fade-up" class="button--primary mt-3 d-block aos-init" href="/apres-42/" target="_self">Après 42</a>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                                                        
+                                
+<div class="position-relative section-image-left-overlay-text-right">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <div class="img--wrapper">
+                    <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/08/L1018059.jpg" alt="">
+                </div>
+                <img class="img-fluid overlay d-none d-lg-block" src="https://42.fr/wp-content/uploads/2021/05/Bande-pixel-1-1.png" alt="">
+            </div>
+            <div data-aos="fade-left" class="offset-sm-0 offset-lg-1 col-lg-4 d-flex justify-content-center flex-column aos-init">
+                <div data-aos="fade-up" class="r--blue-shape mb-2 aos-init"></div>
+                <h2 data-aos="fade-up" class="h2 mb-2 font--blue aos-init">Paris</h2>
+                <div data-aos="fade-up" class="body--blue aos-init"><p>C’est à Paris que 42 a lancé son premier campus pour offrir<br>
+le meilleur environnement possible pour apprendre.</p>
+<h4>Découvrir le campus 42 à Paris</h4>
+</div>
+                                <div class="d-flex justify-content-start button-container mt-2">
+                    <a class="button--primary d-block" href="/le-campus-de-paris/42-paris-campus/" target="_self">Le campus</a>
+                </div>
+                            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                                
+<div class="stats--container position-relative">
+    <div class="img--wrapper">
+        <img loading="lazy" class="img-fluid" src="https://42.fr/wp-content/uploads/2021/05/World_map_blue_dots.svg" alt="">
+    </div>
+    <div class="section-map-stats">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-lg-offset-2 col-lg-10 d-flex justify-content-center align-items-center flex-column">
+                    <div data-aos="fade-up" class="r--blue-shape mb-2 aos-init"></div>
+                    <h2 data-aos="fade-up" class="h2 mb-2 font--blue aos-init">Un réseau international</h2>
+                    <div data-aos="fade-up" class="body--blue text-center aos-init"><p><span style="font-weight: 400;">42 a créé le plus grand réseau d’écoles d’informatique au monde gratuites, innovantes et ouvertes à tous et à toutes.</span></p>
+<h4>Où se trouvent les campus 42 dans le monde?</h4>
+</div>
+                                        <div data-aos="fade-up" class="d-flex justify-content-start button-container mt-2 aos-init">
+                        <a class="button--primary d-block" href="/le-reseau-mondial/" target="_self">Le réseau mondial</a>
+                    </div>
+                                        <div class="w-100 stats-container slick-initialized slick-slider slick-dotted" role="region" aria-label="carrousel" tabindex="-1"><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 3164px; transform: translate3d(-904px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-4" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">31</h3>
+                            <p class="stat--info">Pays</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">+21 000</h3>
+                            <p class="stat--info">Étudiantes et étudiants</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">0 €</h3>
+                            <p class="stat--info">Coût des études</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">26</h3>
+                            <p class="stat--info">Âge moyen sur l'ensemble des campus</p>
+                        </div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="0" tabindex="-1" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">54</h3>
+                            <p class="stat--info">Campus</p>
+                        </div></div></div><div class="slick-slide slick-active" data-slick-index="1" tabindex="-1" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">31</h3>
+                            <p class="stat--info">Pays</p>
+                        </div></div></div><div class="slick-slide slick-active" data-slick-index="2" tabindex="-1" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">+21 000</h3>
+                            <p class="stat--info">Étudiantes et étudiants</p>
+                        </div></div></div><div class="slick-slide slick-active" data-slick-index="3" tabindex="-1" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">0 €</h3>
+                            <p class="stat--info">Coût des études</p>
+                        </div></div></div><div class="slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">26</h3>
+                            <p class="stat--info">Âge moyen sur l'ensemble des campus</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="5" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">54</h3>
+                            <p class="stat--info">Campus</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">31</h3>
+                            <p class="stat--info">Pays</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">+21 000</h3>
+                            <p class="stat--info">Étudiantes et étudiants</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">0 €</h3>
+                            <p class="stat--info">Coût des études</p>
+                        </div></div></div><div class="slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 226px;"><div><div data-aos="fade-up" class="stat--item aos-init" style="width: 100%; display: inline-block;">
+                            <h3 class="stat--value">26</h3>
+                            <p class="stat--info">Âge moyen sur l'ensemble des campus</p>
+                        </div></div></div></div></div><ul class="slick-dots" style=""><li class="slick-active"><button type="button" aria-current="true"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à la statistique 1</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à la statistique 2</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à la statistique 3</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à la statistique 4</span></button></li><li><button type="button"><span class="slick-dot-icon" aria-hidden="true"></span><span class="slick-sr-only" tabindex="-1">Allez à la statistique 5</span></button></li></ul></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                                
+<div class="section-repeater-icons-and-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 data-aos="fade-up" class="h2 text-center font--blue title aos-init">En résumé, 42 c'est :</h2>
+            </div>
+
+            
+
+                        <div data-aos="fade-up" data-aos-delay="100" class="col-sm-6 col-md-6 col-lg-4 aos-init">
+                <div class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-2 mt-md-0">
+                    <div class="icon--wrapper d-flex justify-content-center align-items-center">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/05/no-money.svg" alt="">
+                    </div>
+                    <h3 class="icon--title line--height--body">Gratuit</h3>
+                    <p class="icon--description">Une formation en 3 ans sans frais cachés.</p>
+                </div>
+            </div>
+                        <div data-aos="fade-up" data-aos-delay="150" class="col-sm-6 col-md-6 col-lg-4 aos-init">
+                <div class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-2 mt-md-0">
+                    <div class="icon--wrapper d-flex justify-content-center align-items-center">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/05/gender-equality.svg" alt="">
+                    </div>
+                    <h3 class="icon--title line--height--body">Pour toutes, pour tous</h3>
+                    <p class="icon--description">Sans condition de diplôme, dès la majorité.</p>
+                </div>
+            </div>
+                        <div data-aos="fade-up" data-aos-delay="200" class="col-sm-6 col-md-6 col-lg-4 aos-init">
+                <div class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-2 mt-md-0">
+                    <div class="icon--wrapper d-flex justify-content-center align-items-center">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/05/teacher.svg" alt="">
+                    </div>
+                    <h3 class="icon--title line--height--body">Place à l’action</h3>
+                    <p class="icon--description">Pas de cours, pas de profs, mais de l’entraide.</p>
+                </div>
+            </div>
+                        <div data-aos="fade-up" data-aos-delay="250" class="col-sm-6 col-md-6 col-lg-4 aos-init">
+                <div class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-2 mt-md-0">
+                    <div class="icon--wrapper d-flex justify-content-center align-items-center">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/05/international.svg" alt="">
+                    </div>
+                    <h3 class="icon--title line--height--body">Réseau international</h3>
+                    <p class="icon--description">Plus de 50 campus, plus de 30 pays dans le monde.</p>
+                </div>
+            </div>
+                        <div data-aos="fade-up" data-aos-delay="300" class="col-sm-6 col-md-6 col-lg-4 aos-init">
+                <div class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-2 mt-md-0">
+                    <div class="icon--wrapper d-flex justify-content-center align-items-center">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/05/coin.svg" alt="">
+                    </div>
+                    <h3 class="icon--title line--height--body">100% d’embauche</h3>
+                    <p class="icon--description">Dans tous les domaines de l’informatique.</p>
+                </div>
+            </div>
+                        <div data-aos="fade-up" data-aos-delay="350" class="col-sm-6 col-md-6 col-lg-4 aos-init">
+                <div class="d-flex justify-content-start align-items-center flex-column icon--container text-center mt-2 mt-md-0">
+                    <div class="icon--wrapper d-flex justify-content-center align-items-center">
+                        <img loading="lazy" class="img-fluid svg--icon" src="https://42.fr/wp-content/uploads/2021/05/programming.svg" alt="">
+                    </div>
+                    <h3 class="icon--title line--height--body">Pas besoin de déjà savoir coder ou d’aimer les maths</h3>
+                    <p class="icon--description">La formation commence de zéro.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-12">
+                                <div data-aos="fade-up" class="d-flex justify-content-center button-container aos-init">
+                    <a class="button--primary d-block" href="/admissions/trouver-42-campus/" target="_self">Postuler dans un campus 42</a>
+                </div>
+                            </div>
+        </div>
+    </div>
+</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                
+                    
+                    </div>
+
+
+        </main>
+        
+
+
+        <footer role="contentinfo" class="footer text-white">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-sm-4 col-sm-4 col-lg-3">
+                        <a class="f--logo d-block text-decoration-none" href="https://42.fr/"><img alt="Accueil École 42" src="https://42.fr/wp-content/uploads/2021/05/42-Final-sigle-seul.svg"></a>
+                        <div class="footer--col">			<div class="textwidget"><p class="p1"><span class="s1">96 boulevard Bessières – 75017 Paris</span></p>
+<p class="p1"><span class="s1">Établissement d’enseignement supérieur privé technique&nbsp;</span></p>
+<p class="p1"><span class="s1">Organisme à but non lucratif</span></p>
+<p class="p1"><span class="s1">42 est labellisée <a href="https://www.grandeecolenumerique.fr/" target="_blank" rel="noopener">GEN</a></span></p>
+<p class="p1"><span class="s1">42 est certifiée <a href="/nos-engagements/qualiopi/">Qualiopi</a></span></p>
+</div>
+		</div>                        <div class="footer--col"><h2 class="sn--title sr-only">Suivez-nous</h2><div class="footer__social">
+                                    <a target="_blank" class="text-decoration-none" href="https://www.facebook.com/42born2code" title="42 sur Facebook">
+                <svg focusable="false" aria-hidden="true" class="icon--facebook"><use xlink:href="https://42.fr/wp-content/themes/42/assets/images/socialnetworks.svg#facebook"></use></svg>                <span class="sr-only">42 sur Facebook</span>
+            </a>
+                                <a target="_blank" class="text-decoration-none" href="https://www.linkedin.com/school/42paris" title="42 sur LinkedIn">
+                <svg focusable="false" aria-hidden="true" class="icon--linkedin"><use xlink:href="https://42.fr/wp-content/themes/42/assets/images/socialnetworks.svg#linkedin"></use></svg>                <span class="sr-only">42 sur LinkedIn</span>
+            </a>
+                                <a target="_blank" class="text-decoration-none" href="https://www.instagram.com/42.born2code/" title="42 sur Instagram">
+                <svg focusable="false" aria-hidden="true" class="icon--instagram"><use xlink:href="https://42.fr/wp-content/themes/42/assets/images/socialnetworks.svg#instagram"></use></svg>                <span class="sr-only">42 sur Instagram</span>
+            </a>
+                        </div></div>                    </div>
+                    <div class="col-sm-8 col-sm-8  offset-lg-1 col-lg-8">
+                        <div class="footer--nav--custom"><div class="menu-footer-fr-container"><ul id="menu-footer-fr" class="menu"><li id="menu-item-4331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4331 nav-item"><a href="https://42.fr/le-campus-de-paris/" class="nav-link">Le campus de Paris</a>
+<ul class="sub-menu">
+	<li class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li id="menu-item-4332" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4332 nav-item"><a href="https://42.fr/le-campus-de-paris/42-paris-campus/" class="nav-link">Le campus</a></li>
+	<li id="menu-item-6136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6136 nav-item"><a href="https://42.fr/le-campus-de-paris/noc-42/" class="nav-link">NOC 42 : Tout, sauf un campus</a></li>
+	<li id="menu-item-5893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5893 nav-item"><a href="https://42.fr/le-campus-de-paris/forty2/" class="nav-link">Forty2 : le campus délocalisé</a></li>
+	<li id="menu-item-4333" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4333 nav-item"><a href="https://42.fr/le-campus-de-paris/vie-sur-le-campus/" class="nav-link">Vie étudiante</a></li>
+	<li id="menu-item-4334" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4334 nav-item"><a href="https://42.fr/le-campus-de-paris/diplome-informatique/" class="nav-link">Formation proposée</a></li>
+	<li id="menu-item-5168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5168 nav-item"><a href="https://42.fr/le-campus-de-paris/42-start-up-club/" class="nav-link">42 Start-Up Club</a></li>
+</ul>
+</li>
+<li id="menu-item-4337" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4337 nav-item"><a href="https://42.fr/42-cest-quoi/" class="nav-link">42 c’est quoi ?</a>
+<ul class="sub-menu">
+	<li class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li id="menu-item-4338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4338 nav-item"><a href="https://42.fr/42-cest-quoi/le-programme-42-explique/" class="nav-link">Un concept unique</a></li>
+	<li id="menu-item-4339" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4339 nav-item"><a href="https://42.fr/42-cest-quoi/la-methode-42/" class="nav-link">La méthode 42</a></li>
+	<li id="menu-item-4340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4340 nav-item"><a href="https://42.fr/42-cest-quoi/personnel-de-42/" class="nav-link">L’équipe</a></li>
+</ul>
+</li>
+<li id="menu-item-4341" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4341 nav-item"><a href="https://42.fr/le-programme/" class="nav-link">Le programme</a>
+<ul class="sub-menu">
+	<li class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li id="menu-item-4342" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4342 nav-item"><a href="https://42.fr/le-programme/apprentissage-innovant/" class="nav-link">Le code source</a></li>
+	<li id="menu-item-4343" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4343 nav-item"><a href="https://42.fr/le-programme/methode-travail/" class="nav-link">L’exécution</a></li>
+	<li id="menu-item-4344" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4344 nav-item"><a href="https://42.fr/le-programme/stages-et-professionnalisation/" class="nav-link">Stages et expériences professionnelles</a></li>
+</ul>
+</li>
+<li id="menu-item-4345" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4345 nav-item"><a href="https://42.fr/le-reseau-mondial/" class="nav-link">Le réseau mondial</a></li>
+<li id="menu-item-4346" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4346 nav-item"><a href="https://42.fr/admissions/" class="nav-link">Admissions</a>
+<ul class="sub-menu">
+	<li class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li id="menu-item-4347" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4347 nav-item"><a href="https://42.fr/admissions/admissions/" class="nav-link">Le processus</a></li>
+	<li id="menu-item-4348" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4348 nav-item"><a href="https://42.fr/?page_id=1035" class="nav-link">Sélectionner un campus</a></li>
+	<li id="menu-item-4349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4349 nav-item"><a href="https://42.fr/admissions/42-piscine/" class="nav-link">La Piscine de 42</a></li>
+</ul>
+</li>
+<li id="menu-item-4350" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4350 nav-item"><a href="https://42.fr/apres-42/" class="nav-link">Après 42</a></li>
+<li id="menu-item-4351" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4351 nav-item"><a href="https://42.fr/tout-savoir-sur-faq/" class="nav-link">Tout savoir sur…</a></li>
+<li id="menu-item-4352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4352 nav-item"><a href="https://42.fr/alumni/" class="nav-link">Alumni</a></li>
+<li id="menu-item-4353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4353 nav-item"><a href="https://42.fr/entreprises/" class="nav-link">Entreprises</a>
+<ul class="sub-menu">
+	<li class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li id="menu-item-4354" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4354 nav-item"><a href="https://42.fr/entreprises/actions-de-recrutement-et-de-formation/" class="nav-link">Actions de recrutement et de formation</a></li>
+	<li id="menu-item-4355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4355 nav-item"><a href="https://42.fr/entreprises/taxe-dapprentissage-et-dons/" class="nav-link">Taxe d’apprentissage et dons</a></li>
+</ul>
+</li>
+<li id="menu-item-4356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4356 nav-item"><a href="https://42.fr/presse/" class="nav-link">Presse</a></li>
+<li id="menu-item-6016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-6016 nav-item"><a href="https://42.fr/nos-engagements/qualite/" class="nav-link">Nos engagements</a>
+<ul class="sub-menu">
+	<li class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-0 nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li id="menu-item-6631" class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-6631 nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li id="menu-item-6512" class="previous-menu-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-type-button menu-item-6512 nav-item"><button class="go--back" type="button">Menu</button></li>
+	<li id="menu-item-6017" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6017 nav-item"><a href="https://42.fr/nos-engagements/qualite/" class="nav-link">Démarche qualité</a></li>
+	<li id="menu-item-6063" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6063 nav-item"><a href="https://42.fr/nos-engagements/plan-inclusion/" class="nav-link">Diversité, inclusion et égalité des chances</a></li>
+	<li id="menu-item-6195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6195 nav-item"><a href="https://42.fr/nos-engagements/qualiopi/" class="nav-link">Qualiopi</a></li>
+</ul>
+</li>
+<li id="menu-item-4357" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4357 nav-item"><a href="https://42.fr/entrer-en-contact/" class="nav-link">Contact</a></li>
+</ul></div></div>                    </div>
+                </div>
+                <div class="col-lg-12 sub-links"></div>
+                <div class="row mt-2 pb-2 pb-sm-0 pb-md-0 pb-lg-2 d-flex align-items-center">
+
+                    <div class="col-lg-4 order-2 order-lg-1 text-center text-lg-left">
+                        <p class="footer--credits">
+                            © 2024 Association 42 - Tous droits réservés</p>
+                    </div>
+                    <div class="col-lg-8 order-1 order-lg-2">
+                        <div class="footer--submenu--custom"><div class="menu-subfields-fr-container"><ul id="menu-subfields-fr" class="menu"><li id="menu-item-119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-119 nav-item"><a href="https://42.fr/mentions-legales/" class="nav-link">Mentions légales</a></li>
+<li id="menu-item-118" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118 nav-item"><a href="https://42.fr/cgu/" class="nav-link">CGU</a></li>
+<li id="menu-item-1634" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-1634 nav-item"><a href="https://42.fr/politique-de-confidentialite/" class="nav-link">Vie privée</a></li>
+<li id="menu-item-7190" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7190 nav-item"><a href="https://42.fr/cookies/" class="nav-link">Cookies</a></li>
+<li id="menu-item-3811" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3811 nav-item"><a href="https://42.fr/plan-du-site/" class="nav-link">Plan du site</a></li>
+<li id="menu-item-5162" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5162 nav-item"><a href="https://www.welcometothejungle.com/fr/companies/association-42" class="nav-link">Emploi : 42 recrute !</a></li>
+</ul></div></div>                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        
+
+        </body>

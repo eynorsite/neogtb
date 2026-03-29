@@ -20,9 +20,9 @@ class NavigationMenuResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-bars-3';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+    protected static string|\UnitEnum|null $navigationGroup = 'Mon site';
 
-    protected static ?string $navigationLabel = 'Navigation';
+    protected static ?string $navigationLabel = 'Menus du site';
 
     protected static ?string $modelLabel = 'Menu';
     protected static ?string $pluralModelLabel = 'Menus';
@@ -33,63 +33,70 @@ class NavigationMenuResource extends Resource
     {
         return $schema
             ->components([
-                Section::make('Menu')
+                Section::make('Quel menu modifier ?')
+                    ->description('Chaque menu correspond à un endroit du site : le haut de page, le bas de page ou le menu mobile.')
                     ->schema([
                         TextInput::make('name')
                             ->label('Nom du menu')
+                            ->helperText('Un nom pour vous repérer (ex : « Menu principal »).')
                             ->required(),
 
                         Select::make('location')
-                            ->label('Emplacement')
+                            ->label('Où s\'affiche ce menu ?')
                             ->options([
-                                'header' => 'Header (navigation principale)',
-                                'footer' => 'Footer',
-                                'mobile' => 'Menu mobile',
+                                'header' => 'En haut du site (barre de navigation)',
+                                'footer' => 'En bas du site (pied de page)',
+                                'mobile' => 'Menu mobile (hamburger)',
                             ])
                             ->required(),
 
                         Toggle::make('is_active')
-                            ->label('Actif')
+                            ->label('Menu activé')
+                            ->helperText('Désactivez pour masquer ce menu sans le supprimer.')
                             ->default(true),
                     ])->columns(2),
 
-                Section::make('Éléments du menu')
+                Section::make('Liens du menu')
+                    ->description('Ajoutez, réorganisez ou supprimez les liens. Glissez-déposez pour changer l\'ordre.')
                     ->schema([
                         Repeater::make('allItems')
+                            ->label('')
                             ->relationship()
                             ->schema([
                                 TextInput::make('label')
-                                    ->label('Libellé')
+                                    ->label('Texte affiché')
+                                    ->helperText('Le texte que le visiteur verra.')
                                     ->required(),
 
                                 TextInput::make('url')
-                                    ->label('URL')
+                                    ->label('Lien vers')
                                     ->required()
-                                    ->helperText('Ex: /gtb, /blog, ou https://...'),
+                                    ->helperText('Une page du site (ex : /gtb) ou un lien externe (ex : https://...).'),
 
                                 Select::make('target')
-                                    ->label('Ouverture')
+                                    ->label('Ouvrir dans')
                                     ->options([
-                                        '_self' => 'Même fenêtre',
-                                        '_blank' => 'Nouvelle fenêtre',
+                                        '_self' => 'La même page',
+                                        '_blank' => 'Un nouvel onglet',
                                     ])
                                     ->default('_self'),
 
                                 TextInput::make('icon')
-                                    ->label('Icône'),
+                                    ->label('Icône (optionnel)'),
 
                                 TextInput::make('order')
-                                    ->label('Ordre')
+                                    ->label('Position')
                                     ->numeric()
                                     ->default(0),
 
                                 Toggle::make('is_active')
-                                    ->label('Actif')
+                                    ->label('Visible')
                                     ->default(true),
                             ])
                             ->columns(3)
                             ->collapsible()
                             ->orderColumn('order')
+                            ->addActionLabel('Ajouter un lien')
                             ->itemLabel(fn (array $state) => ($state['label'] ?? '') . ' → ' . ($state['url'] ?? '')),
                     ]),
             ]);
@@ -104,8 +111,14 @@ class NavigationMenuResource extends Resource
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('location')
-                    ->label('Emplacement')
-                    ->badge(),
+                    ->label('Affiché où ?')
+                    ->badge()
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'header' => 'Haut du site',
+                        'footer' => 'Bas du site',
+                        'mobile' => 'Menu mobile',
+                        default => $state,
+                    }),
 
                 Tables\Columns\TextColumn::make('all_items_count')
                     ->label('Éléments')

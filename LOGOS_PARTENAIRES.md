@@ -1,25 +1,30 @@
 # LOGOS PARTENAIRES — État des logos
 
-**Date** : 18 mars 2026
+**Date** : 19 mars 2026
 **Emplacement** : `public/images/logos/partenaires/`
 
 ## État de chaque logo
 
-| Marque | Fichier | Format | Statut | Source officielle |
-|--------|---------|--------|--------|-------------------|
-| **Siemens** | `logo-siemens.svg` | SVG placeholder | Placeholder texte | Télécharger depuis press.siemens.com/global/en/material/logos |
-| **Schneider Electric** | `logo-schneider.svg` | SVG placeholder | Placeholder texte | Télécharger depuis se.com/fr/fr/about-us/press/brand-assets/ |
-| **Honeywell** | `logo-honeywell.svg` | SVG placeholder | Placeholder texte | Télécharger depuis honeywell.com/us/en/press/media-resources |
-| **Johnson Controls** | `logo-johnson.svg` | SVG placeholder | Placeholder texte | Télécharger depuis johnsoncontrols.com/media-center |
-| **Sauter** | `logo-sauter.svg` | SVG placeholder | Placeholder texte | Contacter sauter-controls.com/fr pour kit presse |
-| **Distech Controls** | `logo-distech.svg` | SVG placeholder | Placeholder texte | Contacter distech-controls.com/fr pour kit presse |
-| **KNX Association** | `logo-knx.svg` | SVG placeholder | Placeholder texte | Télécharger depuis knx.org section presse |
-| **TheWatchdog** | `logo-watchdog.svg` | SVG placeholder | Placeholder texte | Contacter le site officiel TheWatchdog |
+| Marque | Fichier | Format | Statut | Source |
+|--------|---------|--------|--------|--------|
+| **Siemens** | `logo-siemens.svg` | SVG officiel | ✅ Intégré | Wikimedia Commons |
+| **Schneider Electric** | `logo-schneider.svg` | SVG officiel | ✅ Intégré | se.com (officiel) |
+| **Honeywell** | `logo-honeywell.svg` | SVG officiel | ✅ Intégré | Wikimedia Commons |
+| **Sauter** | `logo-sauter.svg` | SVG officiel | ✅ Intégré | Wikimedia Commons |
+| **KNX Association** | `logo-knx.svg` | SVG officiel | ✅ Intégré | Wikimedia Commons |
+| **TheWatchdog** | `logo-watchdog.png` | PNG officiel | ✅ Intégré | thewatchdog.io |
+
+## Logos exclus du projet
+
+| Marque | Raison |
+|--------|--------|
+| **Johnson Controls** | Retiré par décision du 19/03/2026 |
+| **Distech Controls** | Retiré par décision du 19/03/2026 |
 
 ## Comment obtenir les logos officiels
 
 1. **Siemens, Schneider, Honeywell** : Kits presse disponibles en téléchargement libre sur leurs sites respectifs (section "Press" ou "Media Resources")
-2. **Johnson Controls, Sauter, Distech** : Contacter le service presse/communication pour obtenir les fichiers SVG haute résolution
+2. **Sauter** : Contacter le service presse/communication pour obtenir les fichiers SVG haute résolution
 3. **KNX** : Logo disponible via MyKNX (compte professionnel) ou section presse knx.org
 4. **TheWatchdog** : Contacter directement l'entreprise
 

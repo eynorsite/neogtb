@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactMessageResource\Pages;
+use App\Mail\ContactReplyMail;
 use App\Models\ContactMessage;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -12,6 +13,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Mail;
 
 class ContactMessageResource extends Resource
 {
@@ -19,7 +21,7 @@ class ContactMessageResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-envelope';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Communication';
+    protected static string|\UnitEnum|null $navigationGroup = 'Boîte de réception';
 
     protected static ?string $navigationLabel = 'Messages';
 
@@ -44,44 +46,51 @@ class ContactMessageResource extends Resource
     {
         return $schema
             ->components([
-                Section::make('Message')
+                Section::make('Le visiteur a écrit :')
+                    ->icon('heroicon-o-envelope')
                     ->schema([
                         TextInput::make('name')->label('Nom')->disabled(),
-                        TextInput::make('email')->disabled(),
+                        TextInput::make('email')->label('Email')->disabled(),
                         TextInput::make('phone')->label('Téléphone')->disabled(),
                         TextInput::make('company')->label('Société')->disabled(),
                         TextInput::make('subject')->label('Sujet')->disabled(),
-                        Textarea::make('message')->disabled()->rows(5)->columnSpanFull(),
+                        Textarea::make('message')->label('Message')->disabled()->rows(5)->columnSpanFull(),
                     ])->columns(2),
 
-                Section::make('Gestion')
+                Section::make('Votre réponse')
+                    ->icon('heroicon-o-chat-bubble-left-right')
+                    ->description('Rédigez votre réponse ici, puis cliquez sur « Envoyer réponse » dans la liste des messages.')
                     ->schema([
                         Select::make('status')
-                            ->label('Statut')
+                            ->label('État du message')
+                            ->helperText('Permet de savoir où en est le traitement de ce message.')
                             ->options([
-                                'new' => 'Nouveau',
-                                'read' => 'Lu',
+                                'new' => 'Nouveau — pas encore lu',
+                                'read' => 'Lu — en attente de réponse',
                                 'replied' => 'Répondu',
                                 'archived' => 'Archivé',
-                                'spam' => 'Spam',
+                                'spam' => 'Indésirable (spam)',
                             ])
                             ->required(),
 
                         Textarea::make('reply_content')
-                            ->label('Réponse')
+                            ->label('Votre réponse')
+                            ->helperText('Ce texte sera envoyé par email au visiteur.')
                             ->rows(4)
                             ->columnSpanFull(),
 
                         Textarea::make('admin_notes')
-                            ->label('Notes internes')
+                            ->label('Notes personnelles')
+                            ->helperText('Visible uniquement par vous, jamais par le visiteur.')
                             ->rows(2)
                             ->columnSpanFull(),
                     ]),
 
-                Section::make('Métadonnées')
+                Section::make('Informations techniques')
+                    ->description('D\'où vient ce message.')
                     ->schema([
-                        TextInput::make('source_page')->label('Page source')->disabled(),
-                        TextInput::make('ip_address')->label('IP')->disabled(),
+                        TextInput::make('source_page')->label('Page d\'origine')->disabled(),
+                        TextInput::make('ip_address')->label('Adresse IP')->disabled(),
                     ])
                     ->columns(2)
                     ->collapsed(),
@@ -93,8 +102,16 @@ class ContactMessageResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('status')
-                    ->label('Statut')
+                    ->label('État')
                     ->badge()
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'new' => 'Nouveau',
+                        'read' => 'Lu',
+                        'replied' => 'Répondu',
+                        'archived' => 'Archivé',
+                        'spam' => 'Spam',
+                        default => $state,
+                    })
                     ->colors([
                         'danger' => 'new',
                         'warning' => 'read',
@@ -133,6 +150,18 @@ class ContactMessageResource extends Resource
             ])
             ->actions([
                 \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('sendReply')
+                    ->label('Envoyer réponse')
+                    ->icon('heroicon-o-paper-airplane')
+                    ->color('success')
+                    ->requiresConfirmation()
+                    ->modalHeading('Envoyer la réponse par email')
+                    ->modalDescription(fn ($record) => "Un email sera envoyé à {$record->email}")
+                    ->action(function ($record) {
+                        Mail::to($record->email)->send(new ContactReplyMail($record));
+                        $record->update(['status' => 'replied', 'replied_at' => now()]);
+                    })
+                    ->visible(fn ($record) => filled($record->reply_content) && $record->status !== 'replied'),
                 \Filament\Actions\Action::make('markRead')
                     ->label('Marquer lu')
                     ->icon('heroicon-o-eye')
@@ -146,6 +175,14 @@ class ContactMessageResource extends Resource
                     ->action(fn ($record) => $record->update(['status' => 'spam'])),
             ])
             ->bulkActions([
+                \Filament\Actions\BulkAction::make('markRead')
+                    ->label('Marquer lus')
+                    ->icon('heroicon-o-eye')
+                    ->action(fn ($records) => $records->each->update(['status' => 'read'])),
+                \Filament\Actions\BulkAction::make('archive')
+                    ->label('Archiver')
+                    ->icon('heroicon-o-archive-box')
+                    ->action(fn ($records) => $records->each->update(['status' => 'archived'])),
                 \Filament\Actions\DeleteBulkAction::make(),
             ]);
     }
