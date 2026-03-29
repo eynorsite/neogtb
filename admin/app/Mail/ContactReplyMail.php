@@ -19,7 +19,7 @@ class ContactReplyMail extends Mailable
     {
         return new Envelope(
             subject: "Re: {$this->message->subject} — NeoGTB",
-            replyTo: ['contact@neogtb.fr'],
+            replyTo: ['hello@neogtb.fr'],
         );
     }
 

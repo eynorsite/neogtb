@@ -17,7 +17,7 @@ class BrickFormulaire extends BaseBrick
     {
         return [
             'titre' => 'Envoyez-nous un message',
-            'email_destination' => 'contact@neogtb.fr',
+            'email_destination' => 'hello@neogtb.fr',
             'message_succes' => 'Merci ! Votre message a bien été envoyé.',
         ];
     }
