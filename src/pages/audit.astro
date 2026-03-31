@@ -3,207 +3,490 @@ import Layout from '../layouts/Layout.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Audit GTB gratuit en ligne — Diagnostic EN 15232 en 5 min" description="Évaluez gratuitement le niveau GTB de votre bâtiment tertiaire selon la norme EN 15232. Diagnostic personnalisé avec recommandations et estimation des économies d'énergie CVC." breadcrumbs={[{label: "Outils"}, {label: "Audit GTB"}]}>
+<Layout title="Diagnostic GTB gratuit — Évaluez votre bâtiment en 5 min" description="Simulateur gratuit : évaluez la conformité GTB de votre bâtiment (décret BACS), estimez vos économies d'énergie et recevez un rapport PDF personnalisé avec recommandations EN 15232." breadcrumbs={[{label: "Outils"}, {label: "Diagnostic GTB"}]}>
 
-  <!-- Hero -->
+  <!-- ==================== HERO ==================== -->
   <section class="hero-lum">
     <div class="hero-lum-mesh"></div>
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-orb hero-orb-3"></div>
     <div class="hero-lum-grid"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      <span class="eyebrow">Diagnostic gratuit</span>
-      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px;">Diagnostic <span class="accent">GTB</span> de votre bâtiment</h1>
+    <div class="max-w-[800px] mx-auto px-6 md:px-10 relative z-10 text-center">
+      <p class="diag-eyebrow">Diagnostic gratuit · Rapport PDF</p>
+      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px;">
+        Diagnostic <span class="accent">GTB</span> de votre bâtiment
+      </h1>
       <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: var(--color-dark-500);">
-        Évaluez en 8 questions la maturité de votre gestion technique selon le référentiel EN 15232 et les classes de performance A à D. Recevez un diagnostic et des recommandations personnalisées.
+        Évaluez votre conformité au décret BACS, estimez vos économies d'énergie et recevez un rapport personnalisé avec recommandations EN 15232.
       </p>
+      <div class="diag-hero-badges">
+        <span class="diag-badge">
+          <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          EN 15232 · Décret BACS · Données ADEME
+        </span>
+        <span class="diag-badge diag-badge-accent">
+          <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          100% indépendant · 0 € commission
+        </span>
+      </div>
     </div>
   </section>
 
-  <!-- Audit Wizard -->
-  <section class="pb-20">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ==================== FORMULAIRE ==================== -->
+  <section class="diag-section" x-data="diagWizard()" x-cloak>
+    <div class="max-w-[720px] mx-auto px-5 md:px-8">
 
-      <div x-data="auditWizard()">
-
-        <!-- Progress Bar -->
-        <div class="mb-8">
-          <div class="flex justify-between text-sm text-dark-500 mb-2" style="font-weight: 400;">
-            <span>Question <span x-text="currentStep"></span> / <span x-text="totalSteps"></span></span>
-            <span x-text="Math.round((currentStep - 1) / totalSteps * 100) + '%'"></span>
-          </div>
-          <div class="w-full rounded-full h-1" style="background: rgba(0,0,0,0.06);">
-            <div class="bg-accent-500 h-1 rounded-full" style="transition: width 0.15s ease;" :style="'width: ' + ((currentStep - 1) / totalSteps * 100) + '%'"></div>
-          </div>
+      <!-- Barre de progression -->
+      <div class="diag-progress-wrap">
+        <div class="diag-progress-bar">
+          <div class="diag-progress-fill" :style="`width: ${(step / totalSteps) * 100}%`"></div>
         </div>
-
-        <!-- Questions -->
-        <div x-show="!showResults" class="bg-white rounded-xl p-8" style="border: 0.5px solid rgba(0,0,0,0.08);">
-
-          <!-- Question 1 -->
-          <div x-show="currentStep === 1">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quel type de bâtiment gérez-vous ? La classification EN 15232 varie selon l'usage.</h3>
-            <div class="space-y-3">
-              <template x-for="option in questions[0].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[0] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
-                  <input type="radio" name="q1" :value="option.value" x-model="answers[0]" class="text-accent-500" />
-                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
-                </label>
-              </template>
+        <div class="diag-progress-steps">
+          <template x-for="(s, i) in stepLabels" :key="i">
+            <div class="diag-step-item" :class="{ 'is-active': step === i + 1, 'is-done': step > i + 1 }">
+              <div class="diag-step-dot">
+                <span x-show="step <= i + 1" x-text="i + 1" style="font-size:13px;font-weight:600;"></span>
+                <svg x-show="step > i + 1" style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="diag-step-label" x-text="s"></span>
             </div>
-          </div>
-
-          <!-- Question 2 -->
-          <div x-show="currentStep === 2">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quelle est la surface de votre bâtiment ? Le décret BACS impose une GTB pour les bâtiments tertiaires de plus de 290 kW.</h3>
-            <div class="space-y-3">
-              <template x-for="option in questions[1].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[1] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
-                  <input type="radio" name="q2" :value="option.value" x-model="answers[1]" class="text-accent-500" />
-                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
-                </label>
-              </template>
-            </div>
-          </div>
-
-          <!-- Question 3 -->
-          <div x-show="currentStep === 3">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Disposez-vous d'un système de régulation CVC ? La régulation est un critère central de la norme EN 15232 pour le classement énergétique.</h3>
-            <div class="space-y-3">
-              <template x-for="option in questions[2].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[2] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
-                  <input type="radio" name="q3" :value="option.value" x-model="answers[2]" class="text-accent-500" />
-                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
-                </label>
-              </template>
-            </div>
-          </div>
-
-          <!-- Question 4 -->
-          <div x-show="currentStep === 4">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Comment est géré l'éclairage ? La norme EN 12464-1 définit les niveaux d'éclairement requis selon les usages.</h3>
-            <div class="space-y-3">
-              <template x-for="option in questions[3].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[3] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
-                  <input type="radio" name="q4" :value="option.value" x-model="answers[3]" class="text-accent-500" />
-                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
-                </label>
-              </template>
-            </div>
-          </div>
-
-          <!-- Question 5 -->
-          <div x-show="currentStep === 5">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Avez-vous un suivi des consommations énergétiques ? Le décret tertiaire exige une réduction progressive des consommations avec reporting sur OPERAT.</h3>
-            <div class="space-y-3">
-              <template x-for="option in questions[4].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[4] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
-                  <input type="radio" name="q5" :value="option.value" x-model="answers[4]" class="text-accent-500" />
-                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
-                </label>
-              </template>
-            </div>
-          </div>
-
-          <!-- Question 6 -->
-          <div x-show="currentStep === 6">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Disposez-vous d'une supervision centralisée ? L'intégration multi-lots est un marqueur clé des classes A et B de la norme EN 15232.</h3>
-            <div class="space-y-3">
-              <template x-for="option in questions[5].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[5] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
-                  <input type="radio" name="q6" :value="option.value" x-model="answers[5]" class="text-accent-500" />
-                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
-                </label>
-              </template>
-            </div>
-          </div>
-
-          <!-- Question 7 -->
-          <div x-show="currentStep === 7">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Comment gérez-vous la maintenance ? La norme NF EN 13306 distingue quatre niveaux de maturité en maintenance.</h3>
-            <div class="space-y-3">
-              <template x-for="option in questions[6].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[6] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
-                  <input type="radio" name="q7" :value="option.value" x-model="answers[6]" class="text-accent-500" />
-                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
-                </label>
-              </template>
-            </div>
-          </div>
-
-          <!-- Question 8 -->
-          <div x-show="currentStep === 8">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Quel est votre niveau de conformité réglementaire ? Le décret BACS (2020) et le décret tertiaire imposent des obligations croissantes.</h3>
-            <div class="space-y-3">
-              <template x-for="option in questions[7].options" :key="option.value">
-                <label class="flex items-center gap-3 p-4 rounded-xl cursor-pointer" style="border: 0.5px solid rgba(0,0,0,0.08); transition: border-color 0.15s ease;" :style="answers[7] === option.value ? 'border-color: var(--color-accent-500); background: var(--color-accent-50);' : ''">
-                  <input type="radio" name="q8" :value="option.value" x-model="answers[7]" class="text-accent-500" />
-                  <span class="text-dark-700" style="font-weight: 400;" x-text="option.label"></span>
-                </label>
-              </template>
-            </div>
-          </div>
-
-          <!-- Navigation -->
-          <div class="flex justify-between mt-8">
-            <button x-show="currentStep > 1" @click="currentStep--" class="px-6 py-2 text-dark-600 font-medium rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: background 0.15s ease;">
-              Précédent
-            </button>
-            <div x-show="currentStep === 1"></div>
-            <button x-show="currentStep < totalSteps" @click="if(answers[currentStep-1]) currentStep++" :class="answers[currentStep-1] ? 'bg-accent-500 text-white' : 'bg-dark-100 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-xl" style="transition: opacity 0.15s ease;">
-              Suivant
-            </button>
-            <button x-show="currentStep === totalSteps" @click="calculateResults()" :class="answers[currentStep-1] ? 'bg-accent-500 text-white' : 'bg-dark-100 text-dark-400 cursor-not-allowed'" class="px-6 py-2 font-medium rounded-xl" style="transition: opacity 0.15s ease;">
-              Voir les résultats
-            </button>
-          </div>
+          </template>
         </div>
+      </div>
 
-        <!-- Results -->
-        <div x-show="showResults" class="space-y-8">
-          <div class="bg-white rounded-xl p-8 text-center" style="border: 0.5px solid rgba(0,0,0,0.08);">
-            <h2 class="text-2xl font-heading font-medium text-dark-900">Résultat de votre diagnostic EN 15232</h2>
+      <!-- ═══════════ ÉTAPE 1 : BÂTIMENT ═══════════ -->
+      <div x-show="step === 1" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
+        <div class="diag-card">
+          <div class="diag-card-header">
+            <h2>Décrivez votre bâtiment</h2>
+            <p>Ces données permettent d'estimer votre obligation réglementaire et vos références de consommation ADEME.</p>
+          </div>
+          <div class="diag-card-body">
 
-            <!-- Score -->
-            <div class="mt-8">
-              <div class="inline-flex items-center justify-center w-32 h-32 rounded-full" style="border: 2px solid rgba(0,0,0,0.08);" :class="scoreColor">
-                <div>
-                  <div class="text-3xl font-heading font-medium" :class="scoreTextColor" x-text="score + '/100'"></div>
+            <label class="diag-label">Type de bâtiment</label>
+            <div class="diag-grid-6">
+              <template x-for="type in buildingTypes" :key="type.id">
+                <button @click="form.buildingType = type.id" class="diag-choice" :class="{ 'is-selected': form.buildingType === type.id }">
+                  <span style="font-size:24px;" x-text="type.icon"></span>
+                  <span class="diag-choice-label" x-text="type.label"></span>
+                </button>
+              </template>
+            </div>
+
+            <div class="diag-field-group">
+              <div>
+                <label class="diag-label">Surface utile</label>
+                <div class="diag-input-wrap">
+                  <input type="number" x-model.number="form.surface" min="50" max="500000" placeholder="3 000" class="diag-input" :class="{ 'has-error': errors.surface }">
+                  <span class="diag-input-suffix">m²</span>
                 </div>
+                <p x-show="errors.surface" x-text="errors.surface" class="diag-error"></p>
+              </div>
+              <div>
+                <label class="diag-label">Année de construction</label>
+                <select x-model="form.buildingAge" class="diag-input">
+                  <option value="">Sélectionnez</option>
+                  <option value="before1975">Avant 1975</option>
+                  <option value="1975-2000">1975 — 2000</option>
+                  <option value="2000-2012">2000 — 2012</option>
+                  <option value="after2012">Après 2012 (RT2012 / RE2020)</option>
+                </select>
               </div>
             </div>
 
-            <div class="mt-6">
-              <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium" :class="levelBadge" x-text="level"></span>
-            </div>
-
-            <p class="mt-4 text-dark-500 max-w-lg mx-auto" style="font-weight: 400;" x-text="levelDescription"></p>
-          </div>
-
-          <!-- Recommandations -->
-          <div class="bg-white rounded-xl p-8" style="border: 0.5px solid rgba(0,0,0,0.08);">
-            <h3 class="text-xl font-heading font-medium text-dark-900 mb-6">Recommandations personnalisées</h3>
-            <div class="space-y-3">
-              <template x-for="rec in recommendations" :key="rec">
-                <div class="flex items-start gap-3 p-4 rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
-                  <svg class="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <p class="text-dark-600 text-sm" style="font-weight: 400;" x-text="rec"></p>
-                </div>
+            <label class="diag-label">Où se situe votre bâtiment ?</label>
+            <div class="diag-grid-3">
+              <template x-for="z in [{id:'H1', label:'Nord & Est', villes:'Paris, Lille, Strasbourg, Lyon, Dijon...', icon:'❄️'}, {id:'H2', label:'Ouest & Centre', villes:'Nantes, Bordeaux, Toulouse, Rennes, Limoges...', icon:'🌤️'}, {id:'H3', label:'Méditerranée', villes:'Marseille, Nice, Montpellier, Perpignan...', icon:'☀️'}]" :key="z.id">
+                <button @click="form.climateZone = z.id" class="diag-zone" :class="{ 'is-selected': form.climateZone === z.id }">
+                  <span style="font-size:22px;" x-text="z.icon"></span>
+                  <span class="diag-zone-id" x-text="z.label"></span>
+                  <span class="diag-zone-desc" x-text="z.villes"></span>
+                  <span class="diag-zone-tag" x-text="'Zone ' + z.id"></span>
+                </button>
               </template>
             </div>
           </div>
 
-          <!-- CTA -->
-          <div class="text-center space-y-4">
-            <button @click="resetAudit()" class="px-6 py-3 text-dark-600 font-medium rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08); transition: background 0.15s ease;">
-              Refaire le diagnostic
+          <div class="diag-card-footer">
+            <div></div>
+            <button @click="validateStep1()" class="diag-btn-primary">
+              Continuer
+              <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
-            <a href="/contact" class="btn-primary ml-4">
-              Demander un conseil personnalisé
-            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ ÉTAPE 2 : CONSOMMATIONS ═══════════ -->
+      <div x-show="step === 2" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
+        <div class="diag-card">
+          <div class="diag-card-header">
+            <h2>Vos consommations d'énergie</h2>
+            <p>Renseignez vos consommations annuelles pour obtenir un benchmark ADEME et estimer vos économies potentielles.</p>
+          </div>
+          <div class="diag-card-body">
+
+            <template x-for="(energy, idx) in form.energies" :key="idx">
+              <div class="diag-energy-block">
+                <div class="diag-energy-header">
+                  <span class="diag-energy-title" x-text="'Énergie ' + (idx + 1)"></span>
+                  <button x-show="form.energies.length > 1" @click="form.energies = form.energies.filter((_, i) => i !== idx)" class="diag-energy-delete" title="Supprimer">
+                    <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                  </button>
+                </div>
+
+                <div class="diag-energy-fields">
+                  <div>
+                    <label class="diag-label-sm">Type d'énergie</label>
+                    <select x-model="energy.type" class="diag-input-sm">
+                      <option value="">Sélectionnez</option>
+                      <option value="electricite">Électricité</option>
+                      <option value="gaz">Gaz naturel</option>
+                      <option value="fioul">Fioul domestique</option>
+                      <option value="chauffage_urbain">Réseau de chauffage urbain</option>
+                      <option value="froid_urbain">Réseau de froid urbain</option>
+                      <option value="bois">Bois / Biomasse</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="diag-label-sm">Consommation annuelle</label>
+                    <div class="diag-input-wrap">
+                      <input type="number" x-model.number="energy.conso" min="0" placeholder="150 000" class="diag-input-sm">
+                      <span class="diag-input-suffix-sm">kWh</span>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="diag-label-sm">Facture annuelle</label>
+                    <div class="diag-input-wrap">
+                      <input type="number" x-model.number="energy.facture" min="0" placeholder="25 000" class="diag-input-sm">
+                      <span class="diag-input-suffix-sm">€/an</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+
+            <button x-show="form.energies.length < 5" @click="form.energies.push({ type: '', conso: null, facture: null })" class="diag-btn-add">
+              <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              Ajouter une énergie consommée
+            </button>
+
+            <p x-show="errors.energies" x-text="errors.energies" class="diag-error"></p>
+          </div>
+
+          <div class="diag-card-footer">
+            <button @click="step = 1" class="diag-btn-ghost">
+              <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              Précédent
+            </button>
+            <button @click="validateStep2()" class="diag-btn-primary">
+              Continuer
+              <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ ÉTAPE 3 : MATURITÉ GTB (une question à la fois) ═══════════ -->
+      <div x-show="step === 3" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
+        <div class="diag-card">
+          <!-- Mini progress questions -->
+          <div class="diag-q-progress">
+            <template x-for="(q, qi) in gtbQuestions" :key="qi">
+              <div class="diag-q-dot" :class="{ 'is-done': form.gtbAnswers[qi] !== undefined, 'is-current': currentQuestion === qi }"></div>
+            </template>
+          </div>
+
+          <div class="diag-card-header">
+            <p class="diag-q-counter" x-text="'Question ' + (currentQuestion + 1) + ' / ' + gtbQuestions.length"></p>
+            <h2 x-text="gtbQuestions[currentQuestion].title" style="font-size:17px;line-height:1.5;"></h2>
+          </div>
+
+          <div class="diag-card-body">
+            <div class="diag-question-options">
+              <template x-for="(opt, oi) in gtbQuestions[currentQuestion].options" :key="opt.value">
+                <label class="diag-option" :class="{ 'is-selected': form.gtbAnswers[currentQuestion] === opt.value }" :style="'animation: diag-option-in 0.3s ease ' + (oi * 0.06) + 's both;'" @click="selectAnswer(currentQuestion, opt.value)">
+                  <input type="radio" :name="'q' + currentQuestion" :value="opt.value" x-model.number="form.gtbAnswers[currentQuestion]" class="sr-only">
+                  <div class="diag-option-dot">
+                    <div class="diag-option-dot-inner" x-show="form.gtbAnswers[currentQuestion] === opt.value"></div>
+                  </div>
+                  <span x-text="opt.label"></span>
+                </label>
+              </template>
+            </div>
+          </div>
+
+          <div class="diag-card-footer">
+            <button @click="currentQuestion > 0 ? currentQuestion-- : step = 2" class="diag-btn-ghost">
+              <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              <span x-text="currentQuestion > 0 ? 'Précédent' : 'Retour'"></span>
+            </button>
+            <button x-show="currentQuestion < gtbQuestions.length - 1" @click="nextQuestion()" :disabled="form.gtbAnswers[currentQuestion] === undefined" class="diag-btn-primary" :class="{ 'diag-btn-disabled': form.gtbAnswers[currentQuestion] === undefined }">
+              Suivant
+              <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <button x-show="currentQuestion === gtbQuestions.length - 1" @click="validateStep3()" :disabled="form.gtbAnswers[currentQuestion] === undefined" class="diag-btn-accent" :class="{ 'diag-btn-disabled': form.gtbAnswers[currentQuestion] === undefined }">
+              Voir mon diagnostic
+              <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ ÉTAPE 4 : RÉSULTATS ═══════════ -->
+      <div x-show="step === 4" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
+
+        <!-- Score KPI -->
+        <div class="diag-results-hero">
+          <div class="diag-kpi diag-kpi-animate" :class="'diag-kpi-' + results.levelKey" style="animation: diag-kpi-pop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;">
+            <p class="diag-kpi-label">Score de maturité GTB</p>
+            <p class="diag-kpi-score" x-text="animatedScore + ' / 100'"></p>
+            <p class="diag-kpi-level" x-text="results.levelLabel"></p>
+          </div>
+          <div class="diag-kpi diag-kpi-savings diag-kpi-animate" style="animation: diag-kpi-pop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;">
+            <p class="diag-kpi-label">Économies potentielles estimées</p>
+            <p class="diag-kpi-score" x-text="formatCurrency(results.savingsEuro) + ' /an'"></p>
+            <p class="diag-kpi-level" x-text="'soit ' + results.savingsPercent + '% de vos dépenses énergie'"></p>
+          </div>
+        </div>
+
+        <!-- Prime CEE estimée -->
+        <div x-show="results.cee.eligible" class="diag-card" style="margin-top:20px;">
+          <div class="diag-card-body" style="padding:24px 28px;">
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="width:44px;height:44px;border-radius:12px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg style="width:22px;height:22px;color:#d97706;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <div style="flex:1;">
+                <p style="font-size:14px;font-weight:600;color:var(--color-dark-900);margin-bottom:4px;">Primes CEE estimées — fiches cumulables</p>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+                  <template x-for="f in results.cee.fiches" :key="f.fiche">
+                    <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;background:rgba(245,158,11,0.1);color:#92400e;">
+                      <span x-text="f.fiche"></span>
+                      <span style="font-weight:400;color:#b45309;" x-text="'(' + formatNumber(f.gwh * 1000) + ' MWh)'"></span>
+                    </span>
+                  </template>
+                </div>
+                <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;">
+                  <span style="font-size:28px;font-weight:600;color:#d97706;" x-text="formatCurrency(results.cee.valueLow) + ' — ' + formatCurrency(results.cee.valueHigh)"></span>
+                </div>
+                <p style="font-size:12px;color:var(--color-dark-400);">Volume total cumulé : <span x-text="formatNumber(results.cee.gwh * 1000)"></span> MWh cumac. Cours CEE : 6,50 €/MWh cumac. Estimation indicative, le montant final dépend du dossier et de l'obligé.</p>
+                <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:500;color:var(--color-accent-600);text-decoration:none;">
+                  Affiner avec le simulateur CEE complet
+                  <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jauge EN 15232 -->
+        <div class="diag-card" style="margin-top:20px;">
+          <div class="diag-card-body" style="text-align:center;padding:28px;">
+            <p style="font-size:13px;font-weight:600;color:var(--color-dark-500);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Classe EN 15232</p>
+            <div class="diag-gauge">
+              <template x-for="lvl in [{key:'d', letter:'D', label:'Non performant'}, {key:'c', letter:'C', label:'Standard'}, {key:'b', letter:'B', label:'Avancé'}, {key:'a', letter:'A', label:'Haute perf.'}]" :key="lvl.key">
+                <div class="diag-gauge-bar" :class="'level-' + lvl.key + (results.levelKey === lvl.key ? ' active' : (results.levelKey !== lvl.key ? ' dimmed' : ''))">
+                  <span x-text="lvl.letter"></span>
+                </div>
+              </template>
+            </div>
+            <p class="diag-gauge-desc" x-text="results.levelDescription"></p>
+          </div>
+        </div>
+
+        <!-- Urgence réglementaire -->
+        <div class="diag-card" style="margin-top:20px;" x-show="results.regulatory.show">
+          <div class="diag-card-body" style="padding:24px 28px;">
+            <div class="diag-regulatory" :class="'diag-regulatory-' + results.regulatory.severity">
+              <div class="diag-regulatory-icon">
+                <svg x-show="results.regulatory.severity === 'critical'" style="width:22px;height:22px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+                <svg x-show="results.regulatory.severity === 'warning'" style="width:22px;height:22px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <svg x-show="results.regulatory.severity === 'ok'" style="width:22px;height:22px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <p class="diag-regulatory-title" x-text="results.regulatory.title"></p>
+                <p class="diag-regulatory-text" x-text="results.regulatory.text"></p>
+                <p x-show="results.regulatory.daysLeft > 0" class="diag-regulatory-countdown">
+                  <span x-text="results.regulatory.daysLeft"></span> jours restants avant l'échéance
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Benchmark ADEME -->
+        <div class="diag-card" style="margin-top:20px;">
+          <div class="diag-card-header">
+            <h2>Benchmark énergétique</h2>
+            <p>Positionnement de votre bâtiment par rapport aux références ADEME.</p>
+          </div>
+          <div class="diag-card-body">
+            <div class="diag-benchmark">
+              <div class="diag-benchmark-bar-wrap">
+                <div class="diag-benchmark-zone diag-benchmark-good" :style="'width:' + results.benchmark.goodPercent + '%'">
+                  <span>Performant</span>
+                </div>
+                <div class="diag-benchmark-zone diag-benchmark-avg" :style="'width:' + results.benchmark.avgPercent + '%'">
+                  <span>Moyen</span>
+                </div>
+                <div class="diag-benchmark-zone diag-benchmark-bad" :style="'width:' + results.benchmark.badPercent + '%'">
+                  <span>Énergivore</span>
+                </div>
+              </div>
+              <div class="diag-benchmark-marker" :style="'left:' + results.benchmark.position + '%'">
+                <div class="diag-benchmark-marker-dot"></div>
+                <div class="diag-benchmark-marker-label">
+                  <span x-text="formatNumber(results.benchmark.kwhM2) + ' kWh/m²/an'"></span>
+                  <span style="font-weight:400;color:var(--color-dark-400);font-size:11px;">Votre bâtiment</span>
+                </div>
+              </div>
+            </div>
+            <div class="diag-benchmark-legend">
+              <div>
+                <span class="diag-benchmark-dot" style="background:#16a34a;"></span>
+                <span x-text="'Réf. performant : ' + results.benchmark.refGood + ' kWh/m²/an'"></span>
+              </div>
+              <div>
+                <span class="diag-benchmark-dot" style="background:#f59e0b;"></span>
+                <span x-text="'Réf. moyen : ' + results.benchmark.refAvg + ' kWh/m²/an'"></span>
+              </div>
+              <div>
+                <span class="diag-benchmark-dot" style="background:#ef4444;"></span>
+                <span x-text="'Réf. énergivore : ' + results.benchmark.refBad + ' kWh/m²/an'"></span>
+              </div>
+            </div>
+            <p style="font-size:11px;color:var(--color-dark-400);margin-top:12px;">Sources : OID/ADEME Baromètre 2022, OPERAT 2021, Arrêté valeurs absolues décret tertiaire (24/11/2020). Économies : NF EN ISO 52120-1:2022.</p>
+          </div>
+        </div>
+
+        <!-- Récap énergies -->
+        <div class="diag-card" style="margin-top:20px;">
+          <div class="diag-card-header">
+            <h2>Récapitulatif de vos consommations</h2>
+          </div>
+          <div class="diag-card-body" style="padding-top:0;">
+            <template x-for="(e, i) in results.energySummary" :key="i">
+              <div class="diag-energy-row">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <span style="font-size:20px;" x-text="e.icon"></span>
+                  <div>
+                    <p style="font-size:14px;font-weight:500;color:var(--color-dark-800);" x-text="e.label"></p>
+                    <p style="font-size:12px;color:var(--color-dark-400);" x-text="formatNumber(e.conso) + ' kWh/an'"></p>
+                  </div>
+                </div>
+                <p style="font-size:14px;font-weight:600;color:var(--color-accent-600);" x-text="formatCurrency(e.facture) + ' /an'"></p>
+              </div>
+            </template>
+            <div class="diag-energy-total">
+              <span>Total</span>
+              <span x-text="formatNumber(results.totalConso) + ' kWh — ' + formatCurrency(results.totalFacture) + ' /an'"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommandations -->
+        <div class="diag-card" style="margin-top:20px;">
+          <div class="diag-card-header">
+            <h2>Recommandations personnalisées</h2>
+          </div>
+          <div class="diag-card-body" style="padding-top:0;">
+            <template x-for="(rec, i) in results.recommendations" :key="i">
+              <div class="diag-rec-row">
+                <div class="diag-rec-icon">
+                  <svg style="width:16px;height:16px;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                </div>
+                <p x-text="rec"></p>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- Offre premium -->
+        <div class="diag-premium-card">
+          <div class="diag-premium-badge">Aller plus loin</div>
+          <h3 class="diag-premium-title">Ce diagnostic est une estimation basée sur vos déclarations</h3>
+          <p class="diag-premium-desc">Pour une analyse précise avec mesures terrain, un expert indépendant peut auditer votre bâtiment et identifier les gisements d'économies réels.</p>
+          <div class="diag-premium-grid">
+            <div class="diag-premium-col">
+              <p class="diag-premium-col-title">Diagnostic en ligne</p>
+              <p class="diag-premium-col-subtitle">Ce que vous venez de faire</p>
+              <ul class="diag-premium-list">
+                <li>Score EN 15232 estimé</li>
+                <li>Benchmark ADEME indicatif</li>
+                <li>Recommandations génériques</li>
+                <li>Rapport PDF basique</li>
+              </ul>
+              <p class="diag-premium-price">Gratuit</p>
+            </div>
+            <div class="diag-premium-col diag-premium-col-highlight">
+              <p class="diag-premium-col-title">Audit sur site</p>
+              <p class="diag-premium-col-subtitle">Par un expert indépendant NeoGTB</p>
+              <ul class="diag-premium-list">
+                <li>Mesures terrain instrumentées</li>
+                <li>Classification EN 15232 certifiée</li>
+                <li>Plan d'actions chiffré et priorisé</li>
+                <li>Rapport 20+ pages avec ROI</li>
+                <li>Conformité décret BACS vérifiée</li>
+                <li>Dossier CEE pré-constitué</li>
+              </ul>
+              <a href="/contact" class="diag-btn-accent" style="width:100%;justify-content:center;text-decoration:none;">
+                Demander un audit sur site
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="diag-disclaimer">
+          <svg style="width:18px;height:18px;color:#b45309;flex-shrink:0;margin-top:2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          <div>
+            <p style="font-weight:600;color:#92400e;font-size:13px;margin-bottom:4px;">Estimation indicative</p>
+            <p style="font-size:13px;color:#78350f;line-height:1.6;">Ce résultat est basé sur vos déclarations et des données statistiques (OID/ADEME 2022, OPERAT 2021, NF EN ISO 52120-1:2022). Il ne constitue pas un document réglementaire. NeoGTB est indépendant et ne perçoit aucune commission.</p>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="diag-actions">
+          <button @click="showEmailGate()" class="diag-btn-primary" style="flex:1;">
+            <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Télécharger le rapport PDF
+          </button>
+          <a href="/contact" class="diag-btn-accent" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">
+            Être contacté par un expert
+          </a>
+          <a :href="'/comparateur?surface=' + form.surface + '&type=' + form.buildingType" class="diag-btn-ghost" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">
+            <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            Comparer les solutions GTB
+          </a>
+          <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" class="diag-btn-ghost" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">
+            <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            Estimer mes aides CEE
+          </a>
+          <button @click="resetDiag()" class="diag-btn-ghost" style="flex:1;">
+            <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Nouveau diagnostic
+          </button>
+        </div>
+
+        <!-- Modal email gate -->
+        <div x-show="showEmailModal" x-transition.opacity @keydown.escape.window="showEmailModal = false" class="diag-modal-overlay" role="presentation">
+          <div @click.outside="showEmailModal = false" class="diag-modal" role="dialog" aria-modal="true" aria-labelledby="diag-modal-title">
+            <h3 id="diag-modal-title" style="font-size:18px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">Recevoir votre rapport PDF</h3>
+            <p style="font-size:13px;color:var(--color-dark-400);margin-bottom:16px;">Entrez votre email pour télécharger votre diagnostic complet.</p>
+            <input type="email" x-model="emailAddress" placeholder="votre@email.com" class="diag-input" style="margin-bottom:8px;">
+            <input type="text" x-model="userName" placeholder="Votre nom (optionnel)" class="diag-input" style="margin-bottom:8px;">
+            <input type="text" x-model="userCompany" placeholder="Entreprise (optionnel)" class="diag-input" style="margin-bottom:12px;">
+            <p style="font-size:11px;color:var(--color-dark-400);margin-bottom:16px;">Votre email ne sera utilisé que pour cet envoi. <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">Politique de confidentialité</a></p>
+            <div style="display:flex;gap:12px;">
+              <button @click="showEmailModal = false" class="diag-btn-ghost" style="flex:1;">Annuler</button>
+              <button @click="downloadPDF()" class="diag-btn-accent" style="flex:1;">
+                <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Télécharger
+              </button>
+            </div>
+            <p x-show="emailSent" style="margin-top:12px;font-size:13px;color:var(--color-accent-600);font-weight:500;text-align:center;">PDF téléchargé !</p>
           </div>
         </div>
 
@@ -212,171 +495,1077 @@ import RelatedPages from '../components/RelatedPages.astro';
     </div>
   </section>
 
-  <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('auditWizard', () => ({
-        currentStep: 1,
-        totalSteps: 8,
-        showResults: false,
-        score: 0,
-        level: '',
-        levelDescription: '',
-        scoreColor: '',
-        scoreTextColor: '',
-        levelBadge: '',
-        recommendations: [],
-        answers: {},
-        questions: [
-          {
-            options: [
-              { value: 'bureau', label: 'Bureaux / Tertiaire' },
-              { value: 'commerce', label: 'Commerce / Centre commercial' },
-              { value: 'industrie', label: 'Industriel / Logistique' },
-              { value: 'sante', label: 'Santé / Hôpital' },
-              { value: 'education', label: 'Enseignement / Formation' },
-              { value: 'hotel', label: 'Hôtellerie / Résidentiel' }
-            ]
-          },
-          {
-            options: [
-              { value: 'small', label: 'Moins de 1 000 m²' },
-              { value: 'medium', label: '1 000 à 5 000 m²' },
-              { value: 'large', label: '5 000 à 20 000 m²' },
-              { value: 'xlarge', label: 'Plus de 20 000 m²' }
-            ]
-          },
-          {
-            options: [
-              { value: '0', label: 'Aucune régulation (tout en manuel)' },
-              { value: '1', label: 'Régulation basique (thermostats simples)' },
-              { value: '2', label: 'Régulation par zone avec programmation horaire' },
-              { value: '3', label: 'Régulation avancée avec optimisation automatique' }
-            ]
-          },
-          {
-            options: [
-              { value: '0', label: 'Interrupteurs manuels uniquement' },
-              { value: '1', label: 'Minuteries ou programmation horaire' },
-              { value: '2', label: 'Détection de présence et variation d\'intensité' },
-              { value: '3', label: 'Gestion intelligente complète (daylight, scénarios)' }
-            ]
-          },
-          {
-            options: [
-              { value: '0', label: 'Aucun suivi' },
-              { value: '1', label: 'Relevé manuel des compteurs' },
-              { value: '2', label: 'Sous-comptage automatique par usage' },
-              { value: '3', label: 'Monitoring temps reel avec alertes' }
-            ]
-          },
-          {
-            options: [
-              { value: '0', label: 'Aucune supervision' },
-              { value: '1', label: 'Supervision partielle (un seul lot technique)' },
-              { value: '2', label: 'GTC centralisée sur plusieurs lots' },
-              { value: '3', label: 'GTB complète avec pilotage et optimisation' }
-            ]
-          },
-          {
-            options: [
-              { value: '0', label: 'Maintenance curative uniquement (on répare quand ça casse)' },
-              { value: '1', label: 'Maintenance préventive planifiée' },
-              { value: '2', label: 'Maintenance conditionnelle (basée sur les données)' },
-              { value: '3', label: 'Maintenance prédictive (anticipation des pannes)' }
-            ]
-          },
-          {
-            options: [
-              { value: '0', label: 'Je ne connais pas les obligations réglementaires' },
-              { value: '1', label: 'Connaissance partielle, conformité incertaine' },
-              { value: '2', label: 'Conforme au décret tertiaire, RE2020 en cours' },
-              { value: '3', label: 'Pleinement conforme avec reporting automatisé' }
-            ]
-          }
-        ],
+  <!-- Trust badge -->
+  <section style="padding:48px 0 64px;background:var(--color-dark-50);border-top:1px solid var(--color-dark-200);">
+    <div style="max-width:600px;margin:0 auto;padding:0 24px;text-align:center;">
+      <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:100px;background:white;border:1px solid var(--color-dark-200);">
+        <svg style="width:18px;height:18px;color:var(--color-accent-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">Outil indépendant — NeoGTB ne perçoit aucune commission</span>
+      </div>
+    </div>
+  </section>
 
-        calculateResults() {
-          let total = 0;
-          for (let i = 2; i < 8; i++) {
-            total += parseInt(this.answers[i] || 0);
-          }
-          this.score = Math.round((total / 18) * 100);
+<style>
+  [x-cloak] { display: none !important; }
 
-          if (this.score < 25) {
-            this.level = 'Classe D — Non performant (EN 15232)';
-            this.levelDescription = 'Votre bâtiment ne dispose pas de système de gestion technique conforme. Selon la norme EN 15232, il se situe en classe D. Le potentiel d\'optimisation énergétique est estimé entre 30 et 50 % par rapport à une GTB de classe A.';
-            this.scoreColor = 'border-dark-300';
-            this.scoreTextColor = 'text-dark-600';
-            this.levelBadge = 'bg-dark-100 text-dark-700';
-            this.recommendations = [
-              'Réaliser un audit énergétique conforme à la norme NF EN 16247-2 (bâtiments)',
-              'Installer des capteurs de température et de présence dans les zones principales pour amorcer une régulation automatisée',
-              'Mettre en place un suivi des consommations énergétiques par sous-comptage, prérequis du décret tertiaire (plateforme OPERAT)',
-              'Étudier la faisabilité d\'une GTB de classe C minimum selon EN 15232, obligation du décret BACS pour les bâtiments > 290 kW',
-              'Vérifier vos obligations réglementaires : décret tertiaire (échéance -40 % en 2030), décret BACS (échéance 2025/2027)',
-              'Identifier les CEE (Certificats d\'Économies d\'Énergie) mobilisables pour financer la mise en conformité'
-            ];
-          } else if (this.score < 50) {
-            this.level = 'Classe C — Standard (EN 15232)';
-            this.levelDescription = 'Votre bâtiment dispose d\'une automatisation de base, correspondant à la classe C de la norme EN 15232. Des améliorations vers la classe B permettraient une réduction supplémentaire de 10 à 20 % des consommations.';
-            this.scoreColor = 'border-orange-300';
-            this.scoreTextColor = 'text-orange-600';
-            this.levelBadge = 'bg-orange-50 text-orange-700';
-            this.recommendations = [
-              'Centraliser la supervision de vos lots techniques sur une GTC unique avec protocole BACnet/IP ou KNX pour l\'interopérabilité',
-              'Améliorer la régulation CVC avec des capteurs de qualité d\'air (CO2) conformément à la norme NF EN 16798-1',
-              'Mettre en place un suivi énergétique automatisé avec alertes de dérive, conforme aux exigences du décret tertiaire',
-              'Passer à une maintenance conditionnelle basée sur les données (norme NF EN 13306) pour réduire les coûts de 15 à 25 %',
-              'Former vos équipes techniques à l\'exploitation de la GTB selon le référentiel de compétences AFPAC',
-              'Étudier la migration vers une classe B EN 15232 en priorité sur les lots CVC et éclairage'
-            ];
-          } else if (this.score < 75) {
-            this.level = 'Classe B — Avancé (EN 15232)';
-            this.levelDescription = 'Votre bâtiment dispose d\'une GTB performante de classe B selon EN 15232. Quelques optimisations ciblées peuvent vous rapprocher de la classe A et d\'économies supplémentaires de 5 à 15 %.';
-            this.scoreColor = 'border-primary-300';
-            this.scoreTextColor = 'text-primary-600';
-            this.levelBadge = 'bg-primary-50 text-primary-700';
-            this.recommendations = [
-              'Explorer les solutions d\'intelligence artificielle pour l\'optimisation prédictive des courbes de charge (norme ISO 50001)',
-              'Mettre en place un jumeau numérique de votre bâtiment pour simuler et optimiser les scénarios énergétiques',
-              'Optimiser les scénarios de fonctionnement selon l\'occupation réelle mesurée par capteurs IoT (protocole LoRaWAN ou Zigbee)',
-              'Envisager l\'intégration de capteurs IoT supplémentaires pour un maillage plus fin et une granularité conforme à l\'ISO 52120-1',
-              'Automatiser le reporting réglementaire (décret tertiaire, plateforme OPERAT) et le suivi des objectifs 2030/2040',
-              'Évaluer la conformité au label R2S-4GRIDS pour valoriser votre démarche Smart Building'
-            ];
-          } else {
-            this.level = 'Classe A — Haute performance (EN 15232)';
-            this.levelDescription = 'Votre bâtiment atteint la classe A de la norme EN 15232, le niveau le plus élevé d\'automatisation et de gestion énergétique. Vous êtes conforme aux exigences les plus strictes du décret BACS.';
-            this.scoreColor = 'border-accent-300';
-            this.scoreTextColor = 'text-accent-600';
-            this.levelBadge = 'bg-accent-50 text-accent-700';
-            this.recommendations = [
-              'Partager votre retour d\'expérience pour inspirer le secteur et contribuer aux travaux normatifs (AFNOR, CEN TC 247)',
-              'Explorer les dernières innovations : IA générative pour l\'optimisation, protocole Matter pour l\'interopérabilité, blockchain énergie pour la traçabilité',
-              'Optimiser continuellement via l\'analyse des données historiques et le machine learning conforme à la norme ISO 50006',
-              'Étendre votre approche GTB classe A à l\'ensemble de votre parc immobilier pour un impact global mesurable',
-              'Viser les certifications environnementales (HQE Bâtiment Durable, BREEAM In-Use, LEED O+M) en capitalisant sur votre infrastructure GTB',
-              'Mettre en place un système de management de l\'énergie certifié ISO 50001 pour pérenniser la démarche'
-            ];
-          }
+  .diag-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--color-accent-600); margin-bottom: 20px;
+  }
+  .diag-hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+  .diag-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 500;
+    background: white; border: 1px solid var(--color-dark-200);
+    color: var(--color-dark-500); box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .diag-badge-accent {
+    background: rgba(13, 148, 136, 0.06); border-color: rgba(13, 148, 136, 0.15);
+    color: var(--color-accent-600);
+  }
 
-          this.showResults = true;
+  /* ── Section ── */
+  .diag-section { padding: 48px 0 80px; background: var(--color-dark-50); min-height: 600px; }
+
+  /* ── Progress ── */
+  .diag-progress-wrap { margin-bottom: 40px; }
+  .diag-progress-bar { width: 100%; height: 3px; background: var(--color-dark-200); border-radius: 100px; overflow: hidden; margin-bottom: 24px; }
+  .diag-progress-fill { height: 100%; background: var(--color-accent-600); border-radius: 100px; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  .diag-progress-steps { display: flex; justify-content: center; gap: 48px; }
+  .diag-step-item { display: flex; align-items: center; gap: 10px; }
+  .diag-step-dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: white; color: var(--color-dark-400);
+    border: 1.5px solid var(--color-dark-200); transition: all 0.3s;
+  }
+  .diag-step-item.is-active .diag-step-dot { background: var(--color-dark-900); color: white; border-color: var(--color-dark-900); }
+  .diag-step-item.is-done .diag-step-dot { background: var(--color-accent-600); color: white; border-color: var(--color-accent-600); }
+  .diag-step-label { font-size: 13px; font-weight: 500; color: var(--color-dark-400); transition: color 0.2s; }
+  .diag-step-item.is-active .diag-step-label { color: var(--color-dark-900); }
+  .diag-step-item.is-done .diag-step-label { color: var(--color-accent-700); }
+  @media (max-width: 640px) {
+    .diag-progress-steps { gap: 16px; }
+    .diag-step-label { display: none; }
+  }
+
+  /* ── Card ── */
+  .diag-card {
+    background: white; border-radius: 16px;
+    border: 1px solid var(--color-dark-200); overflow: hidden;
+  }
+  .diag-card-header { padding: 28px 28px 0; }
+  .diag-card-header h2 { font-size: 20px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; margin-bottom: 4px; }
+  .diag-card-header p { font-size: 14px; color: var(--color-dark-500); line-height: 1.6; }
+  .diag-card-body { padding: 24px 28px; }
+  .diag-card-footer {
+    padding: 20px 28px; border-top: 1px solid var(--color-dark-100);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  /* ── Labels & Inputs ── */
+  .diag-label { display: block; font-size: 13px; font-weight: 600; color: var(--color-dark-700); margin-bottom: 10px; letter-spacing: 0.01em; }
+  .diag-label-sm { display: block; font-size: 12px; font-weight: 500; color: var(--color-dark-500); margin-bottom: 6px; }
+  .diag-input {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid var(--color-dark-200); border-radius: 10px;
+    font-size: 14px; color: var(--color-dark-900);
+    background: white; transition: all 0.15s; font-family: inherit;
+  }
+  .diag-input:focus { border-color: var(--color-accent-500); outline: none; box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
+  .diag-input.has-error { border-color: #ef4444; }
+  .diag-input-sm {
+    width: 100%; padding: 10px 14px;
+    border: 1.5px solid var(--color-dark-200); border-radius: 8px;
+    font-size: 13px; font-family: inherit; color: var(--color-dark-900); background: white;
+  }
+  .diag-input-sm:focus { border-color: var(--color-accent-500); outline: none; box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
+  .diag-input-wrap { position: relative; }
+  .diag-input-suffix { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--color-dark-400); font-weight: 500; pointer-events: none; }
+  .diag-input-suffix-sm { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--color-dark-400); font-weight: 500; pointer-events: none; }
+  .diag-error { font-size: 12px; color: #ef4444; margin-top: 6px; }
+
+  /* ── Grids ── */
+  .diag-grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
+  .diag-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .diag-field-group { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 640px) {
+    .diag-grid-6 { grid-template-columns: repeat(2, 1fr); }
+    .diag-field-group { grid-template-columns: 1fr; }
+  }
+
+  /* ── Choice & Zone buttons ── */
+  .diag-choice {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 16px 8px; border-radius: 12px; cursor: pointer;
+    border: 1.5px solid var(--color-dark-200);
+    background: white; transition: all 0.2s; font-family: inherit;
+  }
+  .diag-choice:hover { border-color: var(--color-dark-300); background: var(--color-dark-50); }
+  .diag-choice.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
+  .diag-choice-label { font-size: 13px; font-weight: 500; color: var(--color-dark-700); }
+  .diag-choice.is-selected .diag-choice-label { color: var(--color-accent-700); }
+
+  .diag-zone {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 16px 12px; border-radius: 12px; cursor: pointer;
+    border: 1.5px solid var(--color-dark-200);
+    background: white; transition: all 0.2s; font-family: inherit;
+  }
+  .diag-zone:hover { border-color: var(--color-dark-300); }
+  .diag-zone.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
+  .diag-zone-id { font-size: 14px; font-weight: 600; color: var(--color-dark-900); }
+  .diag-zone-desc { font-size: 11px; color: var(--color-dark-400); text-align: center; line-height: 1.4; }
+  .diag-zone-tag {
+    font-size: 10px; font-weight: 500; color: var(--color-dark-400);
+    background: var(--color-dark-100); padding: 2px 8px; border-radius: 100px;
+    margin-top: 4px; letter-spacing: 0.02em;
+  }
+  .diag-zone.is-selected .diag-zone-tag { background: rgba(13, 148, 136, 0.1); color: var(--color-accent-700); }
+
+  /* ── Energy blocks ── */
+  .diag-energy-block {
+    border: 1.5px solid var(--color-dark-200); border-radius: 14px;
+    padding: 20px; margin-bottom: 16px; background: white;
+    transition: border-color 0.15s;
+  }
+  .diag-energy-block:hover { border-color: var(--color-dark-300); }
+  .diag-energy-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+  }
+  .diag-energy-title { font-size: 15px; font-weight: 600; color: var(--color-dark-800); }
+  .diag-energy-delete {
+    width: 32px; height: 32px; border-radius: 8px; border: none;
+    background: rgba(239, 68, 68, 0.08); color: #ef4444;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .diag-energy-delete:hover { background: rgba(239, 68, 68, 0.15); }
+  .diag-energy-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .diag-energy-fields { grid-template-columns: 1fr; } }
+
+  .diag-btn-add {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 14px; border-radius: 12px;
+    border: 2px dashed var(--color-accent-300);
+    background: rgba(13, 148, 136, 0.02); color: var(--color-accent-600);
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    transition: all 0.2s; font-family: inherit;
+  }
+  .diag-btn-add:hover { background: rgba(13, 148, 136, 0.06); border-color: var(--color-accent-500); }
+
+  /* ── Question progress dots ── */
+  .diag-q-progress {
+    display: flex; gap: 6px; justify-content: center; padding: 20px 28px 0;
+  }
+  .diag-q-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--color-dark-200); transition: all 0.3s;
+  }
+  .diag-q-dot.is-current {
+    background: var(--color-dark-900); transform: scale(1.3);
+    box-shadow: 0 0 0 3px rgba(28, 25, 23, 0.15);
+  }
+  .diag-q-dot.is-done { background: var(--color-accent-500); }
+  .diag-q-counter {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--color-accent-600); margin-bottom: 8px;
+  }
+
+  /* ── GTB Questions ── */
+  .diag-question-options { display: flex; flex-direction: column; gap: 8px; }
+  @keyframes diag-option-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .diag-option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; border-radius: 10px; cursor: pointer;
+    border: 1.5px solid var(--color-dark-100); transition: all 0.15s;
+    font-size: 13px; color: var(--color-dark-600); line-height: 1.5;
+  }
+  .diag-option:hover { border-color: var(--color-dark-300); background: var(--color-dark-50); }
+  .diag-option.is-selected { border-color: var(--color-accent-500); background: rgba(13, 148, 136, 0.04); color: var(--color-accent-800); }
+  .diag-option-dot {
+    width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+    border: 2px solid var(--color-dark-300); display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.15s;
+  }
+  .diag-option.is-selected .diag-option-dot { border-color: var(--color-accent-500); }
+  .diag-option-dot-inner { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent-500); }
+
+  /* ── Buttons ── */
+  .diag-btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 10px;
+    font-size: 14px; font-weight: 500; font-family: inherit;
+    background: var(--color-dark-900); color: white;
+    border: none; cursor: pointer; transition: all 0.2s;
+  }
+  .diag-btn-primary:hover { background: var(--color-dark-800); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .diag-btn-accent {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 10px;
+    font-size: 14px; font-weight: 500; font-family: inherit;
+    background: var(--color-accent-600); color: white;
+    border: none; cursor: pointer; transition: all 0.2s;
+  }
+  .diag-btn-accent:hover { background: var(--color-accent-700); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25); }
+  .diag-btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 10px;
+    font-size: 14px; font-weight: 500; font-family: inherit;
+    background: white; color: var(--color-dark-600);
+    border: 1.5px solid var(--color-dark-200); cursor: pointer; transition: all 0.15s;
+  }
+  .diag-btn-ghost:hover { background: var(--color-dark-50); border-color: var(--color-dark-300); }
+
+  /* ── Results KPIs ── */
+  .diag-results-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .diag-kpi {
+    border-radius: 16px; padding: 32px 24px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .diag-kpi::after {
+    content: ''; position: absolute; top: -50%; right: -30%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .diag-kpi-d { background: #991b1b; }
+  .diag-kpi-c { background: #92400e; }
+  .diag-kpi-b { background: #065f46; }
+  .diag-kpi-a { background: var(--color-accent-700); }
+  .diag-kpi-savings { background: var(--color-dark-900); }
+  .diag-kpi-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .diag-kpi-score { font-size: clamp(28px, 5vw, 40px); font-weight: 500; color: white; letter-spacing: -0.02em; margin: 8px 0 4px; }
+  .diag-kpi-level { font-size: 12px; color: rgba(255,255,255,0.5); }
+  @keyframes diag-kpi-pop {
+    from { opacity: 0; transform: scale(0.9) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .diag-btn-disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+  @media (max-width: 640px) { .diag-results-hero { grid-template-columns: 1fr; } }
+
+  /* ── Gauge EN 15232 ── */
+  .diag-gauge { display: flex; align-items: center; gap: 4px; justify-content: center; margin-bottom: 16px; }
+  .diag-gauge-bar {
+    height: 40px; border-radius: 6px; display: flex;
+    align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
+    color: white; transition: all 0.3s;
+  }
+  .diag-gauge-bar.level-d { background: #DC2626; width: 56px; }
+  .diag-gauge-bar.level-c { background: #F59E0B; width: 68px; }
+  .diag-gauge-bar.level-b { background: #22C55E; width: 80px; }
+  .diag-gauge-bar.level-a { background: var(--color-accent-600); width: 92px; }
+  .diag-gauge-bar.active { transform: scaleY(1.25); box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 1; }
+  .diag-gauge-bar.dimmed { opacity: 0.2; }
+  .diag-gauge-desc { font-size: 14px; color: var(--color-dark-500); max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+  /* ── Regulatory urgency ── */
+  .diag-regulatory { display: flex; gap: 16px; align-items: flex-start; padding: 20px; border-radius: 12px; }
+  .diag-regulatory-critical { background: #fef2f2; border: 1px solid #fecaca; }
+  .diag-regulatory-critical .diag-regulatory-icon { color: #dc2626; }
+  .diag-regulatory-critical .diag-regulatory-title { color: #991b1b; }
+  .diag-regulatory-critical .diag-regulatory-text { color: #7f1d1d; }
+  .diag-regulatory-critical .diag-regulatory-countdown { color: #dc2626; font-weight: 700; font-size: 15px; margin-top: 8px; }
+  .diag-regulatory-warning { background: #fffbeb; border: 1px solid #fde68a; }
+  .diag-regulatory-warning .diag-regulatory-icon { color: #d97706; }
+  .diag-regulatory-warning .diag-regulatory-title { color: #92400e; }
+  .diag-regulatory-warning .diag-regulatory-text { color: #78350f; }
+  .diag-regulatory-warning .diag-regulatory-countdown { color: #d97706; font-weight: 700; font-size: 15px; margin-top: 8px; }
+  .diag-regulatory-ok { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .diag-regulatory-ok .diag-regulatory-icon { color: #16a34a; }
+  .diag-regulatory-ok .diag-regulatory-title { color: #166534; }
+  .diag-regulatory-ok .diag-regulatory-text { color: #14532d; }
+  .diag-regulatory-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .diag-regulatory-text { font-size: 13px; line-height: 1.6; }
+
+  /* ── Benchmark ── */
+  .diag-benchmark { position: relative; margin-bottom: 32px; padding-top: 40px; }
+  .diag-benchmark-bar-wrap { display: flex; height: 28px; border-radius: 8px; overflow: hidden; }
+  .diag-benchmark-zone { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: white; }
+  .diag-benchmark-good { background: #16a34a; }
+  .diag-benchmark-avg { background: #f59e0b; }
+  .diag-benchmark-bad { background: #ef4444; }
+  .diag-benchmark-marker { position: absolute; top: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 2; }
+  .diag-benchmark-marker-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--color-dark-900); border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); margin-bottom: 4px; }
+  .diag-benchmark-marker-label { display: flex; flex-direction: column; align-items: center; font-size: 13px; font-weight: 600; color: var(--color-dark-900); white-space: nowrap; }
+  .diag-benchmark-legend { display: flex; gap: 20px; flex-wrap: wrap; font-size: 12px; color: var(--color-dark-500); }
+  .diag-benchmark-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+
+  /* ── Energy summary ── */
+  .diag-energy-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 16px; border-radius: 10px;
+    border: 1px solid var(--color-dark-100); margin-bottom: 8px;
+  }
+  .diag-energy-total {
+    display: flex; justify-content: space-between; padding: 16px;
+    background: var(--color-dark-50); border-radius: 10px; margin-top: 8px;
+    font-size: 14px; font-weight: 600; color: var(--color-dark-900);
+  }
+
+  /* ── Recommendations ── */
+  .diag-rec-row {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 14px 16px; border-radius: 10px;
+    border: 1px solid var(--color-dark-100); margin-bottom: 8px;
+    font-size: 13px; color: var(--color-dark-600); line-height: 1.6;
+  }
+  .diag-rec-icon { color: var(--color-accent-500); margin-top: 2px; flex-shrink: 0; }
+
+  /* ── Premium card ── */
+  .diag-premium-card {
+    margin-top: 24px; border-radius: 16px; padding: 32px 28px;
+    background: linear-gradient(135deg, #f0fdfa 0%, #ecfdf5 50%, #fffbeb 100%);
+    border: 1.5px solid var(--color-accent-200);
+  }
+  .diag-premium-badge {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-accent-700); background: rgba(13, 148, 136, 0.1); padding: 4px 12px; border-radius: 100px; margin-bottom: 16px;
+  }
+  .diag-premium-title { font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 8px; }
+  .diag-premium-desc { font-size: 14px; color: var(--color-dark-500); line-height: 1.6; margin-bottom: 24px; }
+  .diag-premium-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .diag-premium-grid { grid-template-columns: 1fr; } }
+  .diag-premium-col {
+    background: white; border-radius: 12px; padding: 24px;
+    border: 1px solid var(--color-dark-200);
+  }
+  .diag-premium-col-highlight {
+    border-color: var(--color-accent-500); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08);
+  }
+  .diag-premium-col-title { font-size: 16px; font-weight: 600; color: var(--color-dark-900); margin-bottom: 2px; }
+  .diag-premium-col-subtitle { font-size: 12px; color: var(--color-dark-400); margin-bottom: 16px; }
+  .diag-premium-list {
+    list-style: none; padding: 0; margin: 0 0 20px;
+    font-size: 13px; color: var(--color-dark-600); line-height: 2;
+  }
+  .diag-premium-list li::before { content: '✓ '; color: var(--color-accent-500); font-weight: 700; }
+  .diag-premium-price { font-size: 20px; font-weight: 600; color: var(--color-dark-900); }
+
+  /* ── Disclaimer ── */
+  .diag-disclaimer {
+    display: flex; gap: 12px; padding: 16px 20px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; margin-top: 20px;
+  }
+
+  /* ── Actions ── */
+  .diag-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  @media (max-width: 640px) { .diag-actions { flex-direction: column; } }
+
+  /* ── Accessibility: reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ── Focus states for buttons ── */
+  .diag-btn-primary:focus-visible,
+  .diag-btn-accent:focus-visible,
+  .diag-btn-ghost:focus-visible {
+    outline: 2px solid var(--color-accent-500);
+    outline-offset: 2px;
+  }
+
+  /* ── iOS: prevent auto-zoom on input focus (requires 16px min) ── */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .diag-input, .diag-input-sm, select { font-size: 16px !important; }
+  }
+
+  /* ── Modal ── */
+  .diag-modal-overlay {
+    position: fixed; inset: 0; z-index: 70;
+    display: flex; align-items: center; justify-content: center;
+    padding: 16px; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(8px);
+  }
+  .diag-modal {
+    background: white; border-radius: 16px;
+    max-width: 420px; width: 100%; padding: 28px;
+    border: 1px solid var(--color-dark-200);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+  @media (max-width: 480px) {
+    .diag-modal { max-width: 100%; padding: 20px; }
+    .diag-modal-overlay { padding: 12px; }
+  }
+</style>
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('diagWizard', () => ({
+      step: 1,
+      totalSteps: 4,
+      currentQuestion: 0,
+      animatedScore: 0,
+      stepLabels: ['Bâtiment', 'Consommations', 'Maturité GTB', 'Résultats'],
+      errors: {},
+      showEmailModal: false,
+      emailAddress: '',
+      userName: '',
+      userCompany: '',
+      emailSent: false,
+
+      buildingTypes: [
+        { id: 'bureau', label: 'Bureaux', icon: '🏢' },
+        { id: 'commerce', label: 'Commerce', icon: '🛒' },
+        { id: 'industrie', label: 'Industrie', icon: '🏭' },
+        { id: 'sante', label: 'Santé', icon: '🏥' },
+        { id: 'education', label: 'Enseignement', icon: '🏫' },
+        { id: 'hotel', label: 'Hôtellerie', icon: '🏨' },
+      ],
+
+      energyLabels: {
+        electricite: { label: 'Électricité', icon: '⚡' },
+        gaz: { label: 'Gaz naturel', icon: '🔥' },
+        fioul: { label: 'Fioul domestique', icon: '🛢️' },
+        chauffage_urbain: { label: 'Chauffage urbain', icon: '🌡️' },
+        froid_urbain: { label: 'Froid urbain', icon: '❄️' },
+        bois: { label: 'Bois / Biomasse', icon: '🪵' },
+      },
+
+      // Références kWh EF/m²/an par type [performant, moyen, énergivore]
+      // Sources :
+      // - Bureaux : OID/ADEME Baromètre 2022 (146 kWh EF moyen), Décret tertiaire Cabs 2030 = 107 kWh
+      // - Commerce : ADEME fourchette 200-400 (Covalba/ADEME 2024)
+      // - Industrie : variable, hors périmètre décret tertiaire strict
+      // - Santé : ADEME 2024 — secteur le + énergivore du tertiaire, fourchette 300-700
+      // - Enseignement : OPERAT 2021 — moyenne 118, médiane 109 kWh/m²/an
+      // - Hôtellerie : estimation 200-400 kWh/m²/an
+      ademeRefs: {
+        bureau:     [107, 170, 300],
+        commerce:   [160, 280, 450],
+        industrie:  [100, 220, 400],
+        sante:      [200, 400, 700],
+        education:  [80, 118, 230],
+        hotel:      [150, 260, 420],
+      },
+
+      // Puissance CVC estimée par m² (kW/m²) pour estimation décret BACS
+      // En pratique : ~0.05 à 0.15 kW/m² selon bâtiment
+      puissanceRatios: {
+        bureau: 0.07, commerce: 0.09, industrie: 0.06,
+        sante: 0.12, education: 0.06, hotel: 0.10,
+      },
+
+      gtbQuestions: [
+        {
+          title: 'Régulation CVC — Disposez-vous d\'un système de régulation du chauffage, ventilation et climatisation ?',
+          options: [
+            { value: 0, label: 'Aucune régulation (tout en manuel)' },
+            { value: 1, label: 'Régulation basique (thermostats simples)' },
+            { value: 2, label: 'Régulation par zone avec programmation horaire' },
+            { value: 3, label: 'Régulation avancée avec optimisation automatique' },
+          ]
         },
+        {
+          title: 'Éclairage — Comment est géré l\'éclairage de votre bâtiment ?',
+          options: [
+            { value: 0, label: 'Interrupteurs manuels uniquement' },
+            { value: 1, label: 'Minuteries ou programmation horaire' },
+            { value: 2, label: 'Détection de présence et variation d\'intensité' },
+            { value: 3, label: 'Gestion intelligente complète (daylight harvesting, scénarios)' },
+          ]
+        },
+        {
+          title: 'Suivi des consommations — Avez-vous un suivi énergétique en place ?',
+          options: [
+            { value: 0, label: 'Aucun suivi' },
+            { value: 1, label: 'Relevé manuel des compteurs' },
+            { value: 2, label: 'Sous-comptage automatique par usage' },
+            { value: 3, label: 'Monitoring temps réel avec alertes de dérive' },
+          ]
+        },
+        {
+          title: 'Supervision — Disposez-vous d\'une supervision centralisée des lots techniques ?',
+          options: [
+            { value: 0, label: 'Aucune supervision' },
+            { value: 1, label: 'Supervision partielle (un seul lot technique)' },
+            { value: 2, label: 'GTC centralisée sur plusieurs lots' },
+            { value: 3, label: 'GTB complète avec pilotage et optimisation multi-lots' },
+          ]
+        },
+        {
+          title: 'Maintenance — Quel est votre mode de maintenance dominant ?',
+          options: [
+            { value: 0, label: 'Curative uniquement (on répare quand ça casse)' },
+            { value: 1, label: 'Préventive planifiée' },
+            { value: 2, label: 'Conditionnelle (basée sur les données capteurs)' },
+            { value: 3, label: 'Prédictive (anticipation des pannes par IA/analyse)' },
+          ]
+        },
+        {
+          title: 'Conformité — Quel est votre niveau de connaissance et conformité réglementaire ?',
+          options: [
+            { value: 0, label: 'Je ne connais pas les obligations réglementaires' },
+            { value: 1, label: 'Connaissance partielle, conformité incertaine' },
+            { value: 2, label: 'Conforme au décret tertiaire, BACS en cours' },
+            { value: 3, label: 'Pleinement conforme avec reporting automatisé (OPERAT)' },
+          ]
+        },
+      ],
 
-        resetAudit() {
-          this.currentStep = 1;
-          this.showResults = false;
-          this.score = 0;
-          this.answers = {};
+      form: {
+        buildingType: '',
+        surface: null,
+        buildingAge: '',
+        climateZone: '',
+        energies: [{ type: '', conso: null, facture: null }],
+        gtbAnswers: {},
+      },
+
+      // Coefficients CEE pour estimation prime GTB
+      // Fiches : BAT-TH-116 (GTB CVC), BAT-TH-145 (clim), BAT-EQ-127 (éclairage)
+      // Prix CEE : 6,50 €/MWh cumac
+      // Coefficients zone/âge identiques au générateur CEE
+      ceeZoneCoeff: { 'H1': 1.3, 'H2': 1.0, 'H3': 0.7 },
+      ceeAgeCoeff: { 'before1975': 1.5, '1975-2000': 1.2, '2000-2012': 1.0, 'after2012': 0.6 },
+      ceeTypeCoeff: { 'bureau': 1.0, 'commerce': 0.9, 'industrie': 1.3, 'sante': 1.4, 'education': 1.1, 'hotel': 1.2 },
+      ceePricePerMwh: 6.50, // €/MWh cumac
+
+      results: {
+        score: 0, levelKey: 'd', levelLabel: '', levelDescription: '',
+        savingsEuro: 0, savingsPercent: 0,
+        totalConso: 0, totalFacture: 0,
+        energySummary: [],
+        benchmark: { kwhM2: 0, position: 50, refGood: 0, refAvg: 0, refBad: 0, goodPercent: 33, avgPercent: 34, badPercent: 33 },
+        regulatory: { show: false, severity: 'ok', title: '', text: '', daysLeft: 0 },
+        recommendations: [],
+        cee: { gwh: 0, valueLow: 0, valueHigh: 0, eligible: false, fiches: [] },
+      },
+
+      formatNumber(n) { if (!n) return '0'; return new Intl.NumberFormat('fr-FR').format(Math.round(n)); },
+      formatCurrency(n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n || 0); },
+
+      selectAnswer(qi, value) {
+        this.form.gtbAnswers[qi] = value;
+        // Auto-avance après 800ms si pas dernière question
+        if (qi < this.gtbQuestions.length - 1) {
+          setTimeout(() => { this.nextQuestion(); }, 800);
         }
-      }));
-    });
-  </script>
+      },
+
+      nextQuestion() {
+        if (this.form.gtbAnswers[this.currentQuestion] !== undefined && this.currentQuestion < this.gtbQuestions.length - 1) {
+          this.currentQuestion++;
+        }
+      },
+
+      validateStep1() {
+        this.errors = {};
+        if (!this.form.buildingType) this.errors.buildingType = 'Sélectionnez un type';
+        if (!this.form.surface || this.form.surface < 50) this.errors.surface = 'Surface minimale : 50 m²';
+        if (!this.form.climateZone) this.errors.climateZone = 'Sélectionnez une zone';
+        if (!this.form.buildingAge) this.errors.buildingAge = 'Sélectionnez une période';
+        if (Object.keys(this.errors).length === 0) { this.step = 2; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+      },
+
+      validateStep2() {
+        this.errors = {};
+        const validEnergies = this.form.energies.filter(e => e.type && e.conso > 0);
+        if (validEnergies.length === 0) { this.errors.energies = 'Renseignez au moins une énergie avec sa consommation.'; return; }
+        this.step = 3; window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+
+      validateStep3() {
+        this.errors = {};
+        const answered = Object.keys(this.form.gtbAnswers).length;
+        if (answered < this.gtbQuestions.length) {
+          this.errors.gtb = 'Répondez à toutes les questions.';
+          return;
+        }
+        this.calculateResults();
+        this.animatedScore = 0;
+        this.step = 4;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Pré-charger jsPDF et logo en arrière-plan pour que le PDF soit instantané au clic
+        if (!window._jsPDFModule) { import('jspdf').then(m => { window._jsPDFModule = m; }); }
+        if (!window._neogtbLogo) { const img = new Image(); img.src = '/images/logo-neogtb-pdf.png'; img.onload = () => { window._neogtbLogo = img; }; }
+        // Animation compteur score
+        const target = this.results.score;
+        const self = this;
+        let current = 0;
+        const interval = setInterval(() => {
+          current += Math.ceil(target / 25);
+          if (current >= target) { current = target; clearInterval(interval); }
+          self.animatedScore = current;
+        }, 30);
+        // Sauvegarder en localStorage pour les autres outils
+        try {
+          localStorage.setItem('neogtb_diag', JSON.stringify({
+            buildingType: this.form.buildingType,
+            surface: this.form.surface,
+            buildingAge: this.form.buildingAge,
+            climateZone: this.form.climateZone,
+            score: this.results.score,
+            levelKey: this.results.levelKey,
+          }));
+        } catch(e) {}
+      },
+
+      calculateResults() {
+        // 1. Score GTB (maturité)
+        let gtbTotal = 0;
+        for (let i = 0; i < this.gtbQuestions.length; i++) {
+          gtbTotal += parseInt(this.form.gtbAnswers[i] || 0);
+        }
+        const maxGtb = this.gtbQuestions.length * 3;
+
+        // 2. Totaux énergie
+        // Prix moyens €/kWh pour estimer la facture si non renseignée
+        // Sources : CRE/Eurostat 2024 — tarifs moyens entreprises France
+        const prixMoyenKwh = {
+          electricite: 0.18, gaz: 0.08, fioul: 0.10,
+          chauffage_urbain: 0.09, froid_urbain: 0.11, bois: 0.05,
+        };
+        let totalConso = 0, totalFacture = 0;
+        const energySummary = [];
+        for (const e of this.form.energies) {
+          if (e.type && e.conso > 0) {
+            totalConso += e.conso;
+            // Si facture non renseignée, estimer depuis la conso × prix moyen
+            const facture = (e.facture && e.facture > 0) ? e.facture : Math.round(e.conso * (prixMoyenKwh[e.type] || 0.12));
+            totalFacture += facture;
+            const info = this.energyLabels[e.type] || { label: e.type, icon: '⚡' };
+            energySummary.push({ label: info.label, icon: info.icon, conso: e.conso, facture: facture, estimated: !(e.facture && e.facture > 0) });
+          }
+        }
+        this.results.totalConso = totalConso;
+        this.results.totalFacture = totalFacture;
+        this.results.energySummary = energySummary;
+
+        // 3. Benchmark ADEME
+        const refs = this.ademeRefs[this.form.buildingType] || [100, 200, 350];
+        const kwhM2 = this.form.surface > 0 ? totalConso / this.form.surface : 0;
+        this.results.benchmark.kwhM2 = kwhM2;
+        this.results.benchmark.refGood = refs[0];
+        this.results.benchmark.refAvg = refs[1];
+        this.results.benchmark.refBad = refs[2];
+        const barMax = refs[2] * 1.3;
+        const rawGood = (refs[0] / barMax) * 100;
+        const rawAvg = ((refs[1] - refs[0]) / barMax) * 100;
+        const rawBad = 100 - rawGood - rawAvg;
+        // Arrondi contrôlé : badPercent absorbe les erreurs pour que la somme = 100%
+        this.results.benchmark.goodPercent = Math.floor(rawGood);
+        this.results.benchmark.avgPercent = Math.floor(rawAvg);
+        this.results.benchmark.badPercent = 100 - this.results.benchmark.goodPercent - this.results.benchmark.avgPercent;
+        this.results.benchmark.position = Math.min(98, Math.max(2, Math.round((kwhM2 / barMax) * 100)));
+
+        // 4. Score EN 15232 = basé sur la maturité GTB uniquement
+        // La norme EN 15232 / ISO 52120-1 classe le NIVEAU D'AUTOMATISATION, pas la conso.
+        // Pondération par importance pour la classification :
+        //   - Régulation CVC (q0) : x2 — critère central EN 15232
+        //   - Supervision (q3) : x2 — marqueur clé classes A/B
+        //   - Éclairage (q1), Suivi conso (q2), Maintenance (q4), Conformité (q5) : x1
+        const weights = [2, 1, 1, 2, 1, 1]; // CVC x2, supervision x2
+        let weightedTotal = 0, weightedMax = 0;
+        for (let i = 0; i < this.gtbQuestions.length; i++) {
+          weightedTotal += parseInt(this.form.gtbAnswers[i] || 0) * weights[i];
+          weightedMax += 3 * weights[i];
+        }
+        const score = Math.round((weightedTotal / weightedMax) * 100);
+        this.results.score = score;
+
+        // Score énergie séparé (pour affichage benchmark, pas pour la classe)
+        let energyRating = '';
+        if (kwhM2 <= refs[0]) energyRating = 'performant';
+        else if (kwhM2 <= refs[1]) energyRating = 'moyen';
+        else energyRating = 'énergivore';
+        this.results.energyRating = energyRating;
+
+        // 5. Niveau EN 15232
+        // Seuils alignés sur la logique EN 15232 / ISO 52120-1 :
+        //   D (< 25%) : pas d'automatisation ou fonctions de base manuelles
+        //   C (25-50%) : automatisation standard, régulation basique
+        //   B (50-75%) : système avancé, GTC centralisée multi-lots
+        //   A (≥ 75%) : haute performance, GTB complète avec optimisation
+        if (score < 25) {
+          this.results.levelKey = 'd';
+          this.results.levelLabel = 'Classe D — Non performant';
+          this.results.levelDescription = 'Votre bâtiment ne dispose pas de gestion technique conforme. Le potentiel d\'optimisation est estimé entre 30 et 50 % selon la norme EN 15232.';
+        } else if (score < 50) {
+          this.results.levelKey = 'c';
+          this.results.levelLabel = 'Classe C — Standard';
+          this.results.levelDescription = 'Automatisation de base correspondant à la classe C. Un passage en classe B permettrait 10 à 20 % d\'économies supplémentaires.';
+        } else if (score < 75) {
+          this.results.levelKey = 'b';
+          this.results.levelLabel = 'Classe B — Avancé';
+          this.results.levelDescription = 'GTB performante de classe B. Quelques optimisations ciblées peuvent vous rapprocher de la classe A et d\'économies supplémentaires de 5 à 15 %.';
+        } else {
+          this.results.levelKey = 'a';
+          this.results.levelLabel = 'Classe A — Haute performance';
+          this.results.levelDescription = 'Niveau le plus élevé d\'automatisation (EN 15232). Vous êtes conforme aux exigences les plus strictes du décret BACS.';
+        }
+
+        // 6. Économies potentielles
+        // Basé sur NF EN ISO 52120-1:2022 (ex EN 15232)
+        // Classe D → A : ~30% thermique + 13% électrique ≈ 25-30% global
+        // Classe C → A : ~30% thermique + 13% électrique ≈ 25% global
+        // Classe C → B : ~20% thermique + 7% électrique ≈ 15% global
+        // Classe B → A : ~10% thermique + 6% électrique ≈ 8% global
+        // Source : calculcee.fr / NF EN ISO 52120-1:2022
+        let savingsPercent = 0;
+        if (score < 25) savingsPercent = 30;       // D → passage en A
+        else if (score < 50) savingsPercent = 25;   // C → passage en A
+        else if (score < 75) savingsPercent = 15;   // B → passage en A
+        else savingsPercent = 5;                     // A — optimisation continue
+        this.results.savingsPercent = savingsPercent;
+        this.results.savingsEuro = Math.round(totalFacture * savingsPercent / 100);
+
+        // 6b. Estimation prime CEE — cumul des fiches applicables
+        // Éligible si le bâtiment n'est pas déjà en classe A
+        if (score < 75) {
+          const zC = this.ceeZoneCoeff[this.form.climateZone] || 1;
+          const aC = this.ceeAgeCoeff[this.form.buildingAge] || 1;
+          const tC = this.ceeTypeCoeff[this.form.buildingType] || 1;
+          const surf = this.form.surface;
+
+          // Fiches CEE applicables selon le niveau de maturité
+          // Réponses GTB : 0=régulation CVC, 1=éclairage, 2=suivi conso, 3=supervision
+          const cvcScore = parseInt(this.form.gtbAnswers[0] || 0);   // régulation CVC
+          const eclScore = parseInt(this.form.gtbAnswers[1] || 0);   // éclairage
+
+          const fiches = [];
+
+          // BAT-TH-116 : GTB / régulation CVC — applicable si CVC pas déjà optimisé (score < 3)
+          if (cvcScore < 3) {
+            const gwh = 0.042 * surf * zC * aC * tC / 1000;
+            fiches.push({ fiche: 'BAT-TH-116', label: 'GTB régulation CVC', gwh });
+          }
+
+          // BAT-TH-145 : Climatisation performante — applicable si CVC basique (score < 2)
+          if (cvcScore < 2) {
+            const gwh = 0.028 * surf * zC * aC * tC / 1000;
+            fiches.push({ fiche: 'BAT-TH-145', label: 'Climatisation performante', gwh });
+          }
+
+          // BAT-EQ-127 : Éclairage performant — applicable si éclairage pas intelligent (score < 2)
+          if (eclScore < 2) {
+            const gwh = 0.018 * surf * zC * aC * tC / 1000;
+            fiches.push({ fiche: 'BAT-EQ-127', label: 'Éclairage performant', gwh });
+          }
+
+          const totalGwh = fiches.reduce((sum, f) => sum + f.gwh, 0);
+          const valueBase = totalGwh * this.ceePricePerMwh * 1000;
+
+          this.results.cee = {
+            gwh: totalGwh,
+            valueLow: Math.round(valueBase * 0.75),
+            valueHigh: Math.round(valueBase * 1.25),
+            eligible: fiches.length > 0,
+            fiches: fiches,
+          };
+        } else {
+          this.results.cee = { gwh: 0, valueLow: 0, valueHigh: 0, eligible: false, fiches: [] };
+        }
+
+        // 7. Urgence réglementaire (décret BACS)
+        const puissanceKW = this.form.surface * (this.puissanceRatios[this.form.buildingType] || 0.07);
+        const now = new Date();
+        if (puissanceKW >= 290) {
+          this.results.regulatory = {
+            show: true, severity: 'critical',
+            title: 'Obligation GTB dépassée — décret BACS',
+            text: `Puissance CVC estimée : ${Math.round(puissanceKW)} kW (> 290 kW). L'obligation de GTB de classe C minimum est effective depuis le 1er janvier 2025. Votre bâtiment est potentiellement en infraction.`,
+            daysLeft: 0,
+          };
+        } else if (puissanceKW >= 70) {
+          const deadline = new Date('2027-01-01');
+          const daysLeft = Math.max(0, Math.ceil((deadline - now) / (1000 * 60 * 60 * 24)));
+          this.results.regulatory = {
+            show: true, severity: 'warning',
+            title: 'Échéance décret BACS — 1er janvier 2027',
+            text: `Puissance CVC estimée : ${Math.round(puissanceKW)} kW (> 70 kW). L'obligation GTB de classe C minimum s'appliquera au 1er janvier 2027.`,
+            daysLeft,
+          };
+        } else {
+          this.results.regulatory = {
+            show: true, severity: 'ok',
+            title: 'Pas d\'obligation immédiate',
+            text: `Puissance CVC estimée : ${Math.round(puissanceKW)} kW (< 70 kW). Vous n'êtes pas soumis au décret BACS actuellement, mais la directive EPBD européenne pourrait élargir le périmètre.`,
+            daysLeft: 0,
+          };
+        }
+
+        // 8. Recommandations personnalisées
+        const recs = [];
+        if (score < 25) {
+          recs.push('Réaliser un audit énergétique conforme NF EN 16247-2 pour identifier les gisements d\'économies');
+          recs.push('Installer des capteurs de température et de présence pour amorcer une régulation automatisée');
+          recs.push('Mettre en place un suivi des consommations par sous-comptage (prérequis décret tertiaire, plateforme OPERAT)');
+          recs.push('Étudier la faisabilité d\'une GTB de classe C minimum (obligation décret BACS pour > 290 kW)');
+          recs.push('Identifier les CEE mobilisables (fiches BAT-TH-116, BAT-TH-145) pour financer la mise en conformité');
+        } else if (score < 50) {
+          recs.push('Centraliser la supervision sur une GTC unique avec protocole BACnet/IP ou KNX');
+          recs.push('Améliorer la régulation CVC avec capteurs CO₂ (norme NF EN 16798-1)');
+          recs.push('Automatiser le suivi énergétique avec alertes de dérive (conformité décret tertiaire)');
+          recs.push('Passer à une maintenance conditionnelle basée sur les données pour réduire les coûts de 15 à 25 %');
+          recs.push('Étudier la migration vers une classe B EN 15232 en priorité sur CVC et éclairage');
+        } else if (score < 75) {
+          recs.push('Explorer les solutions d\'IA pour l\'optimisation prédictive des courbes de charge (ISO 50001)');
+          recs.push('Optimiser les scénarios de fonctionnement selon l\'occupation réelle (capteurs IoT LoRaWAN)');
+          recs.push('Automatiser le reporting réglementaire (décret tertiaire, OPERAT) et le suivi des objectifs 2030');
+          recs.push('Évaluer la conformité au label R2S-4GRIDS pour valoriser votre démarche Smart Building');
+        } else {
+          recs.push('Partager votre retour d\'expérience pour contribuer aux travaux normatifs (AFNOR, CEN TC 247)');
+          recs.push('Explorer les dernières innovations : IA générative, protocole Matter, blockchain énergie');
+          recs.push('Étendre votre approche GTB classe A à l\'ensemble de votre parc immobilier');
+          recs.push('Viser les certifications environnementales (HQE, BREEAM In-Use, LEED O+M)');
+        }
+        // Reco spécifique énergie
+        if (kwhM2 > refs[1]) {
+          recs.push(`Votre consommation (${Math.round(kwhM2)} kWh/m²/an) dépasse la moyenne ADEME (${refs[1]} kWh/m²/an) — un audit sur site permettrait d'identifier les postes de surconsommation`);
+        }
+        this.results.recommendations = recs;
+      },
+
+      showEmailGate() {
+        this.showEmailModal = true;
+        this.emailSent = false;
+      },
+
+      async downloadPDF() {
+        try {
+        // Envoyer le lead par email
+        if (this.emailAddress && this.emailAddress.includes('@')) {
+          try {
+            const payload = {
+              _subject: 'Nouveau lead Diagnostic GTB — NeoGTB',
+              email: this.emailAddress,
+              nom: this.userName || 'Non renseigné',
+              entreprise: this.userCompany || 'Non renseigné',
+              score: this.results.score,
+              niveau: this.results.levelLabel,
+              surface: this.form.surface,
+              batiment: this.form.buildingType,
+              economies: this.results.savingsEuro,
+            };
+            fetch('https://formsubmit.co/ajax/hello@neogtb.fr', {
+              method: 'POST', body: JSON.stringify(payload),
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            }).catch(() => {});
+          } catch(e) {}
+        }
+
+        // Générer le PDF
+        // Note : on pré-charge jsPDF et le logo pour éviter les délais async
+        // qui peuvent bloquer doc.save() dans certains navigateurs (anti-popup)
+        let jsPDFModule = window._jsPDFModule;
+        if (!jsPDFModule) {
+          jsPDFModule = await import('jspdf');
+          window._jsPDFModule = jsPDFModule;
+        }
+        const { jsPDF } = jsPDFModule;
+        const doc = new jsPDF();
+        const m = 20;
+        const pw = 170;
+        let y = m;
+
+        // Logo (pré-chargé ou fallback)
+        let logoImg = window._neogtbLogo;
+        if (!logoImg) {
+          logoImg = new Image();
+          logoImg.src = '/images/logo-neogtb-pdf.png';
+          try { await new Promise((resolve, reject) => { logoImg.onload = resolve; logoImg.onerror = resolve; setTimeout(resolve, 2000); }); } catch(e) {}
+          window._neogtbLogo = logoImg;
+        }
+
+        // ── HEADER ──
+        doc.setFillColor(27, 58, 92);
+        doc.rect(0, 0, 210, 45, 'F');
+        try { doc.addImage(logoImg, 'PNG', m, 8, 30, 30); } catch(e) {}
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(20); doc.text('NeoGTB', m + 35, 22);
+        doc.setFontSize(9); doc.setTextColor(180, 200, 220);
+        doc.text('Conseil independant en Gestion Technique du Batiment', m + 35, 30);
+        doc.text('neogtb.fr  |  hello@neogtb.fr  |  06 50 14 32 52', m + 35, 37);
+
+        // Ref + Date
+        const ref = crypto.randomUUID ? crypto.randomUUID().slice(0, 8) : Math.random().toString(36).slice(2, 10);
+        doc.setFontSize(7); doc.setTextColor(140, 170, 200);
+        doc.text('Ref : DIAG-' + ref.toUpperCase(), 190, 10, { align: 'right' });
+        doc.text(new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }), 190, 15, { align: 'right' });
+
+        y = 55;
+
+        // ── TITLE ──
+        doc.setFontSize(18); doc.setTextColor(15, 23, 42);
+        doc.text('Diagnostic GTB — Rapport de performance', m, y);
+        y += 5;
+        doc.setDrawColor(13, 148, 136); doc.setLineWidth(1.5); doc.line(m, y, m + 60, y);
+        y += 15;
+
+        // ── SCORE CARDS ──
+        // Score
+        const levelColors = { d: [153, 27, 27], c: [146, 64, 14], b: [6, 95, 70], a: [13, 148, 136] };
+        const lc = levelColors[this.results.levelKey] || [15, 23, 42];
+        doc.setFillColor(lc[0], lc[1], lc[2]);
+        doc.roundedRect(m, y, 80, 38, 4, 4, 'F');
+        doc.setFontSize(8); doc.setTextColor(255, 255, 255, 160);
+        doc.text('SCORE DE MATURITE GTB', m + 5, y + 10);
+        doc.setFontSize(24); doc.setTextColor(255, 255, 255);
+        doc.text(this.results.score + ' / 100', m + 5, y + 26);
+        doc.setFontSize(9); doc.setTextColor(255, 255, 255, 180);
+        doc.text(this.results.levelLabel, m + 5, y + 34);
+
+        // Économies
+        doc.setFillColor(28, 25, 23);
+        doc.roundedRect(m + 85, y, 85, 38, 4, 4, 'F');
+        doc.setFontSize(8); doc.setTextColor(180, 200, 220);
+        doc.text('ECONOMIES POTENTIELLES', m + 90, y + 10);
+        doc.setFontSize(22); doc.setTextColor(255, 255, 255);
+        doc.text(this.formatCurrency(this.results.savingsEuro) + ' /an', m + 90, y + 26);
+        doc.setFontSize(9); doc.setTextColor(180, 200, 220);
+        doc.text('soit ' + this.results.savingsPercent + '% de vos depenses energie', m + 90, y + 34);
+
+        y += 50;
+
+        // ── PRIME CEE ──
+        if (this.results.cee.eligible) {
+          const fichesText = this.results.cee.fiches.map(f => f.fiche).join(' + ');
+          const ceeH = 24;
+          doc.setFillColor(255, 251, 235);
+          doc.roundedRect(m, y, pw, ceeH, 4, 4, 'F');
+          doc.setDrawColor(217, 119, 6); doc.setLineWidth(0.3);
+          doc.roundedRect(m, y, pw, ceeH, 4, 4, 'S');
+          doc.setFontSize(8); doc.setTextColor(146, 64, 14);
+          doc.text('PRIMES CEE ESTIMEES — ' + fichesText, m + 5, y + 7);
+          doc.setFontSize(14); doc.setTextColor(180, 90, 0);
+          doc.text(this.formatCurrency(this.results.cee.valueLow) + ' — ' + this.formatCurrency(this.results.cee.valueHigh), m + 5, y + 15);
+          doc.setFontSize(8); doc.setTextColor(146, 64, 14);
+          doc.text('Volume total : ' + this.formatNumber(this.results.cee.gwh * 1000) + ' MWh cumac | Cours : 6,50 EUR/MWh cumac', m + 5, y + 21);
+          y += ceeH + 4;
+        }
+
+        // ── PARAMETERS ──
+        doc.setFillColor(248, 250, 252);
+        doc.roundedRect(m, y, pw, 32, 4, 4, 'F');
+        doc.setFontSize(10); doc.setTextColor(15, 23, 42); doc.text('Parametres du batiment', m + 5, y + 10);
+        y += 15;
+        doc.setFontSize(9);
+        const bType = this.buildingTypes.find(b => b.id === this.form.buildingType);
+        const ageLabels = { 'before1975': 'Avant 1975', '1975-2000': '1975-2000', '2000-2012': '2000-2012', 'after2012': 'Apres 2012' };
+        const params = [['Type', bType ? bType.label : ''], ['Surface', this.formatNumber(this.form.surface) + ' m\u00B2'], ['Zone', this.form.climateZone], ['Construction', ageLabels[this.form.buildingAge] || '']];
+        for (const [label, val] of params) {
+          doc.setTextColor(100, 116, 139); doc.text(label, m + 5, y);
+          doc.setTextColor(15, 23, 42); doc.text(val, m + 50, y);
+          y += 5;
+        }
+        y += 10;
+
+        // ── ENERGIES ──
+        doc.setFontSize(10); doc.setTextColor(15, 23, 42); doc.text('Consommations declarees', m, y);
+        y += 8;
+        doc.setFillColor(27, 58, 92);
+        doc.roundedRect(m, y, pw, 8, 2, 2, 'F');
+        doc.setFontSize(8); doc.setTextColor(255, 255, 255);
+        doc.text('ENERGIE', m + 3, y + 5.5);
+        doc.text('CONSOMMATION', 100, y + 5.5);
+        doc.text('FACTURE', 155, y + 5.5);
+        y += 11;
+        doc.setFontSize(9);
+        let rowIdx = 0;
+        for (const e of this.results.energySummary) {
+          if (rowIdx % 2 === 0) { doc.setFillColor(248, 250, 252); doc.rect(m, y - 4, pw, 8, 'F'); }
+          doc.setTextColor(15, 23, 42); doc.text(e.label, m + 3, y);
+          doc.setTextColor(100, 116, 139); doc.text(this.formatNumber(e.conso) + ' kWh', 100, y);
+          doc.setTextColor(13, 148, 136); doc.text(this.formatCurrency(e.facture) + ' /an', 155, y);
+          y += 8; rowIdx++;
+        }
+
+        y += 8;
+
+        // ── BENCHMARK ──
+        doc.setFontSize(10); doc.setTextColor(15, 23, 42); doc.text('Benchmark ADEME', m, y);
+        y += 5;
+        doc.setFontSize(9); doc.setTextColor(100, 116, 139);
+        doc.text('Votre batiment : ' + Math.round(this.results.benchmark.kwhM2) + ' kWh/m\u00B2/an', m, y);
+        doc.text('Reference performant : ' + this.results.benchmark.refGood + ' kWh/m\u00B2/an  |  Moyen : ' + this.results.benchmark.refAvg + '  |  Energivore : ' + this.results.benchmark.refBad, m, y + 5);
+        y += 14;
+
+        // ── REGULATORY ──
+        if (this.results.regulatory.show) {
+          const regColors = { critical: [254, 226, 226], warning: [255, 251, 235], ok: [240, 253, 244] };
+          const regTextColors = { critical: [127, 29, 29], warning: [120, 53, 15], ok: [20, 83, 45] };
+          const rc = regColors[this.results.regulatory.severity] || [240, 240, 240];
+          const rtc = regTextColors[this.results.regulatory.severity] || [15, 23, 42];
+          const regLines = doc.splitTextToSize(this.results.regulatory.text, pw - 10);
+          const regH = 10 + regLines.length * 4;
+          if (y + regH > 270) { doc.addPage(); y = m; }
+          doc.setFillColor(rc[0], rc[1], rc[2]);
+          doc.roundedRect(m, y, pw, regH, 4, 4, 'F');
+          doc.setFontSize(9); doc.setTextColor(rtc[0], rtc[1], rtc[2]);
+          doc.text(this.results.regulatory.title, m + 5, y + 7);
+          doc.setFontSize(8);
+          doc.text(regLines, m + 5, y + 13);
+          y += regH + 4;
+        }
+
+        // ── RECOMMENDATIONS ──
+        if (y > 260) { doc.addPage(); y = m; }
+        doc.setFontSize(10); doc.setTextColor(15, 23, 42); doc.text('Recommandations', m, y);
+        y += 7;
+        doc.setFontSize(8.5); doc.setTextColor(68, 64, 60);
+        for (const rec of this.results.recommendations) {
+          const lines = doc.splitTextToSize('\u2022  ' + rec, pw - 5);
+          const lineH = lines.length * 4.5 + 2;
+          if (y + lineH > 270) { doc.addPage(); y = m; }
+          doc.text(lines, m + 2, y);
+          y += lineH;
+        }
+
+        // ── UPSELL BANNER ──
+        if (y + 20 > 270) { doc.addPage(); y = m; }
+        y = Math.max(y + 5, y);
+        doc.setFillColor(240, 253, 250);
+        doc.roundedRect(m, y, pw, 18, 4, 4, 'F');
+        doc.setDrawColor(13, 148, 136); doc.setLineWidth(0.5);
+        doc.roundedRect(m, y, pw, 18, 4, 4, 'S');
+        doc.setFontSize(9); doc.setTextColor(15, 118, 110);
+        doc.text('Pour un diagnostic approfondi avec mesures terrain :', m + 5, y + 7);
+        doc.setFontSize(8); doc.setTextColor(13, 148, 136);
+        doc.text('Demandez un audit sur site par un expert NeoGTB independant  →  neogtb.fr/contact', m + 5, y + 13);
+
+        // ── FOOTER ──
+        doc.setFillColor(27, 58, 92);
+        doc.rect(0, 282, 210, 15, 'F');
+        doc.setFontSize(7); doc.setTextColor(180, 200, 220);
+        doc.text('NeoGTB — neogtb.fr — Conseil independant en GTB — EYNOR EURL, Eysines (33)', 105, 289, { align: 'center' });
+        doc.setTextColor(140, 170, 200);
+        doc.text('Estimation indicative. Sources : OID/ADEME 2022, OPERAT 2021, NF EN ISO 52120-1:2022, Decret tertiaire.', 105, 293, { align: 'center' });
+
+        doc.save('diagnostic-gtb-neogtb.pdf');
+        this.emailSent = true;
+        setTimeout(() => { this.showEmailModal = false; this.emailSent = false; }, 1500);
+        } catch(err) {
+          console.error('Erreur génération PDF:', err);
+          alert('Erreur lors de la génération du PDF. Vérifiez la console pour plus de détails.');
+        }
+      },
+
+      resetDiag() {
+        this.step = 1;
+        this.currentQuestion = 0;
+        this.animatedScore = 0;
+        this.form = { buildingType: '', surface: null, buildingAge: '', climateZone: '', energies: [{ type: '', conso: null, facture: null }], gtbAnswers: {} };
+        this.results = { score: 0, levelKey: 'd', levelLabel: '', levelDescription: '', savingsEuro: 0, savingsPercent: 0, totalConso: 0, totalFacture: 0, energySummary: [], benchmark: { kwhM2: 0, position: 50, refGood: 0, refAvg: 0, refBad: 0, goodPercent: 33, avgPercent: 34, badPercent: 33 }, regulatory: { show: false, severity: 'ok', title: '', text: '', daysLeft: 0 }, recommendations: [] };
+        this.errors = {};
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+    }));
+  });
+</script>
 
   <RelatedPages links={[
     { href: "/comparateur", title: "Comparateur GTB", description: "Comparez les solutions après votre diagnostic." },
-    { href: "/gtb", title: "Qu'est-ce que la GTB ?", description: "Tout comprendre sur la Gestion Technique du Bâtiment." },
     { href: "/generateur-cee", title: "Simulateur CEE", description: "Estimez vos primes pour financer votre projet GTB." },
+    { href: "/reglementation", title: "Réglementation GTB", description: "Décret BACS, calendrier des obligations." },
   ]} />
 
 </Layout>

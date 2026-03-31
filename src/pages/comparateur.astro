@@ -85,7 +85,7 @@ import RelatedPages from '../components/RelatedPages.astro';
 
   <!-- Comparateur -->
   <section class="py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" x-data="comparateur()">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" x-data="comparateur()" x-init="init()">
 
       <!-- Filtres -->
       <div class="bg-white rounded-2xl p-6 mb-8 sticky top-20 z-40" style="border: 0.5px solid rgba(0,0,0,0.08);">
@@ -440,6 +440,25 @@ import RelatedPages from '../components/RelatedPages.astro';
       filterBuilding: 'all',
       filterBudget: 'all',
       sortBy: 'note',
+
+      // Pré-remplissage depuis le diagnostic (URL params ou localStorage)
+      init() {
+        let surface = null, budgetHint = null;
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('surface')) {
+          surface = Number(params.get('surface'));
+        } else {
+          try { const d = JSON.parse(localStorage.getItem('neogtb_diag') || '{}'); if (d.surface) surface = d.surface; } catch(e) {}
+        }
+        if (surface) {
+          if (surface < 2000) this.filterBuilding = 'petit';
+          else if (surface <= 10000) this.filterBuilding = 'moyen';
+          else this.filterBuilding = 'grand';
+        }
+        // Pré-filtrer budget selon taille (petit = accessible, grand = élevé)
+        if (surface && surface < 2000) this.filterBudget = 'accessible';
+        else if (surface && surface > 10000) this.filterBudget = 'eleve';
+      },
 
       critereLabels: {
         facilite_installation: "Facilité d'installation",

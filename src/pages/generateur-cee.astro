@@ -45,6 +45,7 @@ import RelatedPages from '../components/RelatedPages.astro';
   <!-- ==================== FORMULAIRE ==================== -->
   <section class="cee-section"
     x-data="ceeGenerator()"
+    x-init="init()"
     x-cloak>
     <div class="max-w-[720px] mx-auto px-5 md:px-8">
 
@@ -691,6 +692,26 @@ import RelatedPages from '../components/RelatedPages.astro';
 
       results: { totalGwh: 0, totalValue: 0, lowValue: 0, highValue: 0, details: [] },
 
+      // Pré-remplissage depuis le diagnostic (URL params ou localStorage)
+      init() {
+        const diagMap = { bureau: 'office', commerce: 'commercial', industrie: 'industry', sante: 'health', education: 'education', hotel: 'hotel' };
+        const params = new URLSearchParams(window.location.search);
+        let src = {};
+        // Priorité 1 : URL params
+        if (params.get('type') || params.get('surface')) {
+          src = { buildingType: params.get('type') || '', surface: params.get('surface') ? Number(params.get('surface')) : null, climateZone: params.get('zone') || '', buildingAge: params.get('age') || '' };
+        } else {
+          // Priorité 2 : localStorage
+          try { const d = JSON.parse(localStorage.getItem('neogtb_diag') || '{}'); if (d.buildingType) src = d; } catch(e) {}
+        }
+        if (src.buildingType) {
+          this.form.buildingType = diagMap[src.buildingType] || src.buildingType;
+          if (src.surface) this.form.surface = src.surface;
+          if (src.climateZone) this.form.climateZone = src.climateZone;
+          if (src.buildingAge) this.form.buildingAge = src.buildingAge;
+        }
+      },
+
       zoneCoeff: { 'H1': 1.3, 'H2': 1.0, 'H3': 0.7 },
       ageCoeff: { 'before1975': 1.5, '1975-2000': 1.2, '2000-2012': 1.0, 'after2012': 0.6 },
       typeCoeff: { 'office': 1.0, 'industry': 1.3, 'health': 1.4, 'education': 1.1, 'hotel': 1.2, 'commercial': 0.9 },
@@ -726,7 +747,8 @@ import RelatedPages from '../components/RelatedPages.astro';
 
       calculateResults() {
         const s = this.form.surface, zC = this.zoneCoeff[this.form.climateZone] || 1, aC = this.ageCoeff[this.form.buildingAge] || 1, tC = this.typeCoeff[this.form.buildingType] || 1;
-        const price = 8.5; let details = [], total = 0;
+        const price = 6.50; // €/MWh cumac
+        let details = [], total = 0;
         for (const eqId of this.form.selectedEquipments) {
           const eq = this.getEquipment(eqId), d = this.form.equipmentDetails[eqId] || {};
           const gwh = eq.baseCee * s * zC * aC * tC * (this.actionCoeff[d.action] || 1) * (this.stateCoeff[d.currentState] || 1) / 1000;
