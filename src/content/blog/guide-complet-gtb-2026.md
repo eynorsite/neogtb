@@ -3,8 +3,8 @@ title: "Qu'est-ce que la GTB ? Le guide complet 2026"
 description: "Tout savoir sur la Gestion Technique du Bâtiment : définition, fonctionnement, avantages, coûts et réglementation. Le guide de référence."
 date: "2026-03-09"
 author: "NeoGTB"
-category: "Guides"
-tags: []
+category: "Guide"
+tags: ["GTB", "ISO 52120-1", "Réglementation"]
 featured: true
 ---
 
@@ -43,7 +43,7 @@ Contrôle d'accès, détection d'intrusion, sécurité incendie : la GTB intègr
 
 Tableaux de bord, historiques, rapports automatisés pour le décret tertiaire. La GTB fournit les données nécessaires à la prise de décision.
 
-Les 4 niveaux de performance (EN 15232)
+Les 4 niveaux de performance (ISO 52120-1 (ex-EN 15232))
 ---------------------------------------
 
 ClasseNiveauÉconomies potentiellesDNon performantRéférenceCStandard10-15%BAvancé20-30%AHaute performance30-50%Combien coûte une GTB ?

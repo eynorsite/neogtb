@@ -38,7 +38,7 @@ Or, la GTB est précisément l'outil qui permet de **collecter automatiquement e
 
 Le report ne modifie pas les exigences techniques au fond. Lorsque l'obligation sera applicable, les systèmes devront respecter :
 
-- La **classification EN 15232 / ISO 52120** : niveau de classe **A ou B minimum** requis.
+- La **classification EN ISO 52120-1 (ex-EN 15232)** : niveau de classe **A ou B minimum** requis.
 - Des fonctions d'automatisation et de monitoring conformes aux exigences du décret.
 - Une **inspection périodique** du système GTB selon les modalités définies par arrêté.
 

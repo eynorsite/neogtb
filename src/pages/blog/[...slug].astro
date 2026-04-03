@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import RelatedPages from '../../components/RelatedPages.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -29,6 +30,7 @@ const articleJsonLd = {
   "headline": post.data.title,
   "description": post.data.description,
   "datePublished": new Date(post.data.date).toISOString(),
+  "dateModified": new Date(post.data.date).toISOString(),
   "author": { "@type": "Organization", "name": post.data.author || "NeoGTB", "url": "https://neogtb.fr" },
   "publisher": { "@type": "Organization", "name": "NeoGTB", "url": "https://neogtb.fr", "logo": { "@type": "ImageObject", "url": "https://neogtb.fr/images/logo-neogtb.webp" } },
   "mainEntityOfPage": `https://neogtb.fr/blog/${post.id}`,
@@ -95,7 +97,7 @@ const ogImage = post.data.image ? `https://neogtb.fr${post.data.image}` : "https
   <section class="article-cta">
     <div class="article-cta-inner">
       <h2 class="article-cta-title">Un projet GTB à clarifier ?</h2>
-      <p class="article-cta-text">Diagnostic EN 15232 gratuit en ligne, ou échange de 15 minutes pour cadrer votre besoin.</p>
+      <p class="article-cta-text">Pré-diagnostic ISO 52120-1 gratuit en ligne, ou échange de 15 minutes pour cadrer votre besoin.</p>
       <div class="article-cta-buttons">
         <a href="/audit" class="btn-primary">
           Lancer le diagnostic
@@ -105,6 +107,12 @@ const ogImage = post.data.image ? `https://neogtb.fr${post.data.image}` : "https
       </div>
     </div>
   </section>
+
+  <RelatedPages links={[
+    { href: "/audit", title: "Pré-diagnostic ISO 52120-1 en ligne", description: "Évaluez gratuitement la classe de performance GTB de votre bâtiment." },
+    { href: "/generateur-cee", title: "Générateur de fiches CEE", description: "Estimez vos primes CEE pour un projet GTB en quelques clics." },
+    { href: "/comparateur", title: "Comparateur de solutions GTB", description: "Comparez les protocoles et technologies GTB pour votre projet." },
+  ]} />
 
 </Layout>
 

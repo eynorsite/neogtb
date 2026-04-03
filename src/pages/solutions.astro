@@ -3,13 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Solutions GTB : protocoles BACnet, KNX, Modbus et équipements" description="Comparatif indépendant des protocoles GTB (BACnet, KNX, Modbus, LON), capteurs, automates programmables et architectures techniques. Guide sans lien commercial." breadcrumbs={[{label: "Comprendre"}, {label: "Solutions & Technologies"}]}>
+<Layout title="Solutions GTB : protocoles BACnet, KNX, Modbus" description="Comparatif indépendant des protocoles GTB (BACnet, KNX, Modbus, LON), capteurs et automates. Guide sans lien commercial." breadcrumbs={[{label: "Comprendre"}, {label: "Solutions & Technologies"}]}>
 
   <!-- ==================== HERO ==================== -->
   <section class="hero-img" style="position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden;">
     <img
       src="/images/hero-solutions.webp"
       alt="Technologies GTB — capteurs IoT, protocoles et supervision connectée"
+      width="1200"
+      height="630"
       loading="eager"
       fetchpriority="high"
       style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;"
@@ -109,6 +111,54 @@ import RelatedPages from '../components/RelatedPages.astro';
             <span class="tag tag-gtb">Peer-to-peer</span>
             <span class="tag tag-gtb">Parc existant</span>
             <span class="tag tag-gtb">Migration BACnet</span>
+          </div>
+        </div>
+
+        <!-- DALI -->
+        <div class="card-hover rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="tag tag-technique">IEC 62386</span>
+          </div>
+          <h3 class="text-[18px] font-medium text-dark-900" style="letter-spacing: -0.3px;">DALI / DALI-2</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Standard international dédié au <strong class="font-medium text-dark-700">pilotage de l'éclairage</strong>. DALI-2 apporte l'interopérabilité certifiée entre ballasts, capteurs de présence et luxmètres de marques différentes. Jusqu'à 64 appareils par ligne, adressage individuel, gradation fine. S'intègre à la GTB via des passerelles DALI/BACnet ou DALI/KNX.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="tag tag-technique">Éclairage dédié</span>
+            <span class="tag tag-technique">64 appareils/ligne</span>
+            <span class="tag tag-technique">Gradation fine</span>
+          </div>
+        </div>
+
+        <!-- MQTT / API REST -->
+        <div class="card-hover rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="tag tag-protocoles">IoT / Cloud</span>
+          </div>
+          <h3 class="text-[18px] font-medium text-dark-900" style="letter-spacing: -0.3px;">MQTT & API REST</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Protocoles issus du monde IT, de plus en plus présents en GTB pour <strong class="font-medium text-dark-700">l'interopérabilité cloud</strong>, les jumeaux numériques et l'hypervision multi-sites. MQTT (publish/subscribe) est léger et adapté aux capteurs IoT. Les API REST permettent l'intégration avec les plateformes de GMAO, ERP et analytics. Incontournables pour les architectures GTB modernes orientées données.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="tag tag-protocoles">Publish/Subscribe</span>
+            <span class="tag tag-protocoles">Cloud natif</span>
+            <span class="tag tag-protocoles">Jumeaux numériques</span>
+          </div>
+        </div>
+
+        <!-- EnOcean -->
+        <div class="card-hover rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="tag tag-gtb">ISO/IEC 14543-3-10</span>
+          </div>
+          <h3 class="text-[18px] font-medium text-dark-900" style="letter-spacing: -0.3px;">EnOcean</h3>
+          <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
+            Technologie <strong class="font-medium text-dark-700">sans fil et sans pile</strong> basée sur la récupération d'énergie (piézoélectrique, solaire, thermique). Idéale pour la <strong class="font-medium text-dark-700">rénovation</strong> où le câblage est impossible ou coûteux. Capteurs de température, présence, contact de fenêtre, interrupteurs. Portée 30 m en intérieur. S'intègre via des passerelles EnOcean/BACnet ou EnOcean/KNX.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="tag tag-gtb">Sans fil · Sans pile</span>
+            <span class="tag tag-gtb">Rénovation</span>
+            <span class="tag tag-gtb">Energy harvesting</span>
           </div>
         </div>
 
@@ -287,7 +337,7 @@ import RelatedPages from '../components/RelatedPages.astro';
           </div>
           <h3 class="text-[16px] font-medium text-dark-900" style="letter-spacing: -0.3px;">Décret BACS</h3>
           <p class="mt-2 text-[14px] text-dark-500" style="line-height: 1.7;">
-            Transposition de la directive européenne EPBD (2018/844). Impose l'installation d'un système d'automatisation et de contrôle (BACS) dans les bâtiments tertiaires non résidentiels dont la puissance CVC dépasse 290 kW (échéance 2025) puis 70 kW (échéance 2027). Le système doit atteindre au minimum la classe B de la norme EN 15232.
+            Transposition de la directive européenne EPBD (2018/844). Impose l'installation d'un système d'automatisation et de contrôle (BACS) dans les bâtiments tertiaires non résidentiels dont la puissance nominale utile CVC dépasse 290 kW (en vigueur depuis 2025) puis 70 kW (échéance reportée à 2030). Le système doit atteindre au minimum la classe B de la norme ISO 52120-1.
           </p>
         </div>
 
@@ -332,7 +382,7 @@ import RelatedPages from '../components/RelatedPages.astro';
 
   <!-- ==================== CTA ==================== -->
   <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
-    <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
+    <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="hero-bg-illustration" />
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
@@ -347,7 +397,7 @@ import RelatedPages from '../components/RelatedPages.astro';
   </section>
 
   <RelatedPages links={[
-    { href: "/gtb", title: "Qu'est-ce que la GTB ?", description: "Définition complète, niveaux EN 15232 et obligations réglementaires." },
+    { href: "/gtb", title: "Qu'est-ce que la GTB ?", description: "Définition complète, niveaux ISO 52120-1 et obligations réglementaires." },
     { href: "/comparateur", title: "Comparateur GTB indépendant", description: "Comparez objectivement les marques du marché sans biais commercial." },
     { href: "/reglementation", title: "Réglementation GTB", description: "Décret BACS, décret tertiaire, RE2020 — tout le cadre légal." },
   ]} />

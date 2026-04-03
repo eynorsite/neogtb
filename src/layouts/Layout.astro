@@ -13,10 +13,12 @@ interface Props {
   ogImage?: string;
   jsonLd?: Record<string, any>;
   breadcrumbs?: BreadcrumbItem[];
+  noindex?: boolean;
 }
 
-const { title, description = "NeoGTB — Le tiers de confiance indépendant de la GTB en France", ogType = "website", ogImage = "https://neogtb.fr/images/og-neogtb.png", jsonLd, breadcrumbs } = Astro.props;
-const currentPath = Astro.url.pathname;
+const { title, description = "NeoGTB — Le tiers de confiance indépendant de la GTB en France", ogType = "website", ogImage = "https://neogtb.fr/images/og-neogtb.png", jsonLd, breadcrumbs, noindex = false } = Astro.props;
+const rawPath = Astro.url.pathname;
+const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
 // Build BreadcrumbList schema
 const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
@@ -40,8 +42,11 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
+  <meta name="author" content="Ulrich Calmo — NeoGTB" />
   <meta name="theme-color" content="#0F172A" />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <!-- Schema.org Organization + LocalBusiness -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
@@ -53,9 +58,9 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
     "image": "https://neogtb.fr/images/og-neogtb.png",
     "description": "Conseil indépendant en Gestion Technique du Bâtiment (GTB). Diagnostic gratuit, comparateur de solutions, accompagnement décret BACS.",
     "founder": { "@type": "Person", "name": "Ulrich Calmo", "jobTitle": "Créateur de la marque NeoGTB" },
-    "address": { "@type": "PostalAddress", "streetAddress": "Eysines", "addressLocality": "Eysines", "addressRegion": "Nouvelle-Aquitaine", "postalCode": "33320", "addressCountry": "FR" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Eysines", "addressRegion": "Nouvelle-Aquitaine", "postalCode": "33320", "addressCountry": "FR" },
     "areaServed": { "@type": "Country", "name": "France" },
-    "knowsAbout": ["GTB", "GTC", "BACnet", "KNX", "Modbus", "EN 15232", "Décret BACS", "Smart Building"],
+    "knowsAbout": ["GTB", "GTC", "BACnet", "KNX", "Modbus", "LON", "DALI", "MQTT", "EN ISO 52120-1", "Décret BACS", "Smart Building", "GMAO", "Hypervision"],
     "sameAs": ["https://www.linkedin.com/in/ulrich-calmo"]
   })} />
   {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
@@ -130,6 +135,10 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
               <span class="block font-medium">Réglementation</span>
               <span class="block text-[11px] text-dark-400 mt-0.5">BACS, tertiaire, RE2020</span>
             </a>
+            <a href="/positionnement" class={`block px-4 py-2.5 text-[13px] transition-colors duration-150 ${currentPath === '/positionnement' ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50'}`}>
+              <span class="block font-medium">Pourquoi NeoGTB ?</span>
+              <span class="block text-[11px] text-dark-400 mt-0.5">Notre positionnement</span>
+            </a>
           </div>
         </div>
 
@@ -142,8 +151,8 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
           <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
             class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl py-2 z-50 shadow-lg" style="border: 1px solid rgba(0,0,0,0.06);">
             <a href="/audit" class={`block px-4 py-2.5 text-[13px] transition-colors duration-150 ${currentPath === '/audit' ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50'}`}>
-              <span class="block font-medium">Diagnostic GTB</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">Évaluation EN 15232</span>
+              <span class="block font-medium">Pré-diagnostic GTB</span>
+              <span class="block text-[11px] text-dark-400 mt-0.5">Auto-évaluation ISO 52120-1</span>
             </a>
             <a href="/comparateur" class={`block px-4 py-2.5 text-[13px] transition-colors duration-150 ${currentPath === '/comparateur' ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50'}`}>
               <span class="block font-medium">Comparateur objectif</span>
@@ -164,7 +173,7 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
       <!-- CTA + Mobile toggle -->
       <div class="flex items-center gap-3">
         <a href="/audit" class="hidden lg:inline-flex btn-primary text-[13px] px-5 py-2.5">
-          Diagnostic gratuit
+          Pré-diagnostic gratuit
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
 
@@ -181,21 +190,22 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
       class="lg:hidden bg-white/95 backdrop-blur-xl px-6 pb-6 shadow-lg" style="border-top: 1px solid rgba(0,0,0,0.06);">
       <div class="flex flex-col gap-1 py-3">
         <span class="text-[10px] font-medium uppercase tracking-wider text-dark-400 px-3 pt-3 pb-1">Comprendre</span>
-        <a href="/gtb" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Qu'est-ce que la GTB ?</a>
-        <a href="/gtc" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Qu'est-ce que la GTC ?</a>
-        <a href="/solutions" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Solutions & Technologies</a>
-        <a href="/reglementation" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Réglementation</a>
+        <a href="/gtb" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Qu'est-ce que la GTB ?</a>
+        <a href="/gtc" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Qu'est-ce que la GTC ?</a>
+        <a href="/solutions" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Solutions & Technologies</a>
+        <a href="/reglementation" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Réglementation</a>
+        <a href="/positionnement" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Pourquoi NeoGTB ?</a>
 
         <span class="text-[10px] font-medium uppercase tracking-wider text-dark-400 px-3 pt-4 pb-1">Outils</span>
-        <a href="/audit" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Diagnostic GTB</a>
-        <a href="/comparateur" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Comparateur objectif</a>
-        <a href="/generateur-cee" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Générateur CEE</a>
+        <a href="/audit" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Pré-diagnostic GTB</a>
+        <a href="/comparateur" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Comparateur objectif</a>
+        <a href="/generateur-cee" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Générateur CEE</a>
 
         <div class="my-2 h-px bg-dark-100"></div>
-        <a href="/blog" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Perspectives</a>
-        <a href="/about" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">À propos</a>
-        <a href="/faq" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">FAQ</a>
-        <a href="/audit" class="btn-primary text-center justify-center mt-2 text-[14px]">Diagnostic gratuit</a>
+        <a href="/blog" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Perspectives</a>
+        <a href="/about" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">À propos</a>
+        <a href="/faq" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">FAQ</a>
+        <a href="/audit" @click="mobileOpen = false" class="btn-primary text-center justify-center mt-2 text-[14px]">Pré-diagnostic gratuit</a>
       </div>
     </div>
   </header>
@@ -237,29 +247,27 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
           <div class="mt-8">
             <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-3">Veille GTB mensuelle</p>
             <form
-              action="https://formsubmit.co/ajax/hello@neogtb.fr"
               method="POST"
-              x-data="{ nlSending: false, nlSent: false }"
+              x-data="{ nlSending: false, nlSent: false, nlError: '' }"
               @submit.prevent="
                 nlSending = true;
-                const fd = Object.fromEntries(new FormData($el));
-                fd._subject = 'Nouvelle inscription newsletter NeoGTB';
-                fetch($el.action, { method: 'POST', body: JSON.stringify(fd), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } })
-                  .then(r => { nlSending = false; if (r.ok) { nlSent = true; } })
-                  .catch(() => { nlSending = false; });
+                nlError = '';
+                const email = new FormData($el).get('email');
+                fetch('/api/newsletter', { method: 'POST', body: JSON.stringify({ email }), headers: { 'Content-Type': 'application/json' } })
+                  .then(r => r.json().then(d => ({ ok: r.ok, data: d })))
+                  .then(({ ok, data }) => { nlSending = false; if (ok) { nlSent = true; } else { nlError = data.error || 'Erreur, réessayez.'; } })
+                  .catch(() => { nlSending = false; nlError = 'Erreur réseau, réessayez.'; });
               "
             >
-              <input type="hidden" name="_form" value="newsletter" />
-              <!-- Honeypot anti-spam -->
-              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
               <div class="flex gap-2" x-show="!nlSent">
-                <input type="email" name="email" placeholder="votre@email.fr" required class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid var(--color-dark-200); background: var(--color-dark-50);" />
+                <input type="email" name="email" placeholder="votre@email.com" required class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid var(--color-dark-200); background: var(--color-dark-50);" />
                 <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));">
                   <span x-show="!nlSending">S'inscrire</span>
                   <span x-show="nlSending">...</span>
                 </button>
               </div>
-              <div x-show="nlSent" class="text-[13px] text-accent-500 font-medium">Inscription confirmée.</div>
+              <div x-show="nlSent" class="text-[13px] text-accent-500 font-medium">Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.</div>
+              <p x-show="nlError" x-text="nlError" class="text-[12px] text-red-500 mt-1"></p>
               <label x-show="!nlSent" class="mt-2 flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" required class="mt-0.5 w-3.5 h-3.5 rounded text-accent-500 focus:ring-accent-500/40" />
                 <span class="text-[11px] text-dark-400" style="line-height: 1.5;">J'accepte de recevoir la veille GTB mensuelle. <a href="/politique-de-confidentialite" class="underline hover:text-dark-700">Confidentialité</a></span>
@@ -270,7 +278,7 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
 
           <!-- Normes badges -->
           <div class="mt-6 flex flex-wrap gap-2">
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">EN 15232</span>
+            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">ISO 52120-1</span>
             <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">Décret BACS</span>
             <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">RE2020</span>
             <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">CEE BAT-TH-116</span>
@@ -294,7 +302,7 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
         <div class="md:col-span-2">
           <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">Outils</p>
           <ul class="space-y-3">
-            <li><a href="/audit" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Diagnostic GTB</a></li>
+            <li><a href="/audit" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Pré-diagnostic GTB</a></li>
             <li><a href="/generateur-cee" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Générateur CEE</a></li>
             <li><a href="/contact" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Contact</a></li>
             <li><a href="/faq" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">FAQ</a></li>
@@ -331,14 +339,7 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
       class="fixed bottom-0 left-0 right-0 z-[60] p-4">
       <div class="max-w-xl mx-auto bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl" style="border: 1px solid rgba(0,0,0,0.06);">
         <p class="text-[14px] font-medium text-dark-900 mb-1">Respect de votre vie privée</p>
-        <p class="text-[13px] text-dark-500 mb-4" style="line-height: 1.6;">NeoGTB utilise des cookies essentiels et analytiques. Aucune donnée n'est vendue à des tiers.</p>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="text-[11px] font-medium text-dark-400 bg-dark-50 px-3 py-1 rounded-full">Essentiels</span>
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" x-model="consents.analytics" class="w-4 h-4 rounded text-accent-500 focus:ring-accent-500 focus:ring-2">
-            <span class="text-[12px] text-dark-600">Analytics</span>
-          </label>
-        </div>
+        <p class="text-[13px] text-dark-500 mb-4" style="line-height: 1.6;">NeoGTB utilise uniquement des cookies essentiels au fonctionnement du site. L'outil de mesure d'audience (Plausible) ne dépose aucun cookie et est exempt de consentement CNIL.</p>
         <div class="flex items-center gap-3 justify-end">
           <button @click="rejectAll()" class="text-[13px] font-medium text-dark-500 px-4 py-2 rounded-lg bg-dark-50 transition-colors duration-200 hover:bg-dark-100">Refuser</button>
           <button @click="acceptAll()" class="btn-primary text-[13px] px-4 py-2">Accepter</button>
@@ -373,15 +374,11 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
       Alpine.data('cookieConsent', () => ({
         showBanner: false,
         hasConsented: false,
-        consents: { analytics: false },
 
         init() {
           const saved = this.getCookie('neogtb_consent');
           if (saved) {
-            try {
-              this.consents = JSON.parse(saved);
-              this.hasConsented = true;
-            } catch (e) { this.showBannerDelayed(); }
+            this.hasConsented = true;
           } else {
             this.showBannerDelayed();
           }
@@ -391,17 +388,15 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
         showBannerDelayed() { setTimeout(() => { this.showBanner = true; }, 800); },
 
         acceptAll() {
-          this.consents = { analytics: true };
           this.save();
         },
 
         rejectAll() {
-          this.consents = { analytics: false };
           this.save();
         },
 
         save() {
-          this.setCookie('neogtb_consent', JSON.stringify(this.consents), 395);
+          this.setCookie('neogtb_consent', 'ok', 395);
           this.showBanner = false;
           this.hasConsented = true;
         },

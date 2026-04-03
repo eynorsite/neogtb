@@ -3,13 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Réglementation GTB 2026 — Décret BACS, Tertiaire, RE2020" description="Toute la réglementation GTB en France mise à jour : décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, norme EN 15232, CEE. Calendrier, obligations et sanctions." breadcrumbs={[{label: "Comprendre"}, {label: "Réglementation"}]}>
+<Layout title="Réglementation GTB — Décret BACS, Tertiaire, RE2020" description="Réglementation GTB en France : décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, norme EN ISO 52120-1 (ex-EN 15232). Calendrier et obligations." breadcrumbs={[{label: "Comprendre"}, {label: "Réglementation"}]}>
 
   <!-- ==================== HERO ==================== -->
   <section class="hero-img" style="position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden;">
     <img
       src="/images/hero-reglementation.webp"
       alt="Réglementation GTB — balance juridique, normes énergétiques et bâtiment tertiaire"
+      width="1200"
+      height="630"
       loading="eager"
       fetchpriority="high"
       style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;"
@@ -25,13 +27,13 @@ import RelatedPages from '../components/RelatedPages.astro';
           Réglementation <span style="color: #4ade80;">GTB</span> en France
         </h1>
         <p style="font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 480px;">
-          Décret BACS, décret tertiaire, RE2020, directive EPBD, norme EN 15232 : obligations, échéances et aides. Mis à jour mars 2026.
+          Décret BACS, décret tertiaire, RE2020, directive EPBD, norme EN ISO 52120-1 : obligations, échéances et aides. Mis à jour mars 2026.
         </p>
         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px;">
           <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">Décret BACS</span>
           <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">Décret tertiaire</span>
           <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">RE2020</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">EN 15232</span>
+          <span style="font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 4px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 0.5px solid rgba(255,255,255,0.15);">ISO 52120-1</span>
         </div>
       </div>
     </div>
@@ -145,7 +147,7 @@ import RelatedPages from '../components/RelatedPages.astro';
           <div class="card p-6" style="margin-bottom: 16px;">
             <p style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 8px;">Niveau requis</p>
             <p style="font-size: 28px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.02em;">Classe B</p>
-            <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 4px;">minimum · norme EN 15232</p>
+            <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 4px;">minimum · norme ISO 52120-1</p>
           </div>
           <div class="card p-6">
             <p style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-dark-400); margin-bottom: 8px;">Exemption</p>
@@ -275,7 +277,7 @@ import RelatedPages from '../components/RelatedPages.astro';
     <div class="max-w-[1200px] mx-auto px-6 md:px-10">
       <div class="max-w-xl mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
         <p class="eyebrow">Référentiel technique</p>
-        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Norme EN 15232 / ISO 52120</h2>
+        <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Norme EN ISO 52120-1 (ex-EN 15232)</h2>
         <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7;">La norme de référence pour évaluer le niveau de performance des systèmes GTB. Le décret BACS impose la classe B minimum.</p>
       </div>
 
@@ -360,7 +362,7 @@ import RelatedPages from '../components/RelatedPages.astro';
           <h3 style="font-size: 22px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 12px; letter-spacing: -0.02em;">BAT-TH-116</h3>
           <p style="font-size: 14px; color: var(--color-dark-400); margin-bottom: 16px;">Système de gestion technique du bâtiment pour le chauffage et le refroidissement</p>
           <p style="font-size: 15px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 16px;">
-            Couvre l'installation d'un système GTB de classe A ou B (EN 15232) pour le pilotage du CVC. Le montant de la prime dépend de la surface, de la zone climatique et de la classe atteinte.
+            Couvre l'installation d'un système GTB de classe A ou B (ISO 52120-1) pour le pilotage du CVC. Le montant de la prime dépend de la surface, de la zone climatique et de la classe atteinte.
           </p>
           <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50); border: 1px solid var(--color-dark-200);">
             <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;"><strong style="color: var(--color-dark-900);">Conditions :</strong> Bâtiment tertiaire existant, installation par un professionnel, passage en classe A ou B vérifié.</p>
@@ -558,7 +560,7 @@ import RelatedPages from '../components/RelatedPages.astro';
           <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Financement via la fiche BAT-TH-116. Durée de vie 15 ans.</p>
         </div>
         <div class="card p-6 reveal reveal-d2" x-data x-intersect.once="$el.classList.add('visible')">
-          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">ISO 52120 / EN 15232</p>
+          <p style="font-size: 15px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">EN ISO 52120-1 (ex-EN 15232)</p>
           <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.6;">Performances quantifiées : jusqu'à 30 % d'économies.</p>
         </div>
         <div class="card p-6 reveal" x-data x-intersect.once="$el.classList.add('visible')">
@@ -579,12 +581,12 @@ import RelatedPages from '../components/RelatedPages.astro';
 
   <!-- ==================== CTA ==================== -->
   <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
-    <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" loading="lazy" style="position: absolute; right: 13%; top: 50%; transform: translateY(-50%); height: 110%; max-width: 55%; object-fit: contain; object-position: right center; opacity: 0.55; pointer-events: none;" />
+    <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="hero-bg-illustration" />
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
         <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Vérifiez votre conformité</h2>
-        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px;">Identifiez votre classe EN 15232, évaluez vos obligations BACS et estimez vos aides CEE.</p>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px;">Identifiez votre classe ISO 52120-1, évaluez vos obligations BACS et estimez vos aides CEE.</p>
         <div class="flex flex-wrap gap-4">
           <a href="/audit" class="btn-primary">
             Lancer le diagnostic
@@ -600,7 +602,7 @@ import RelatedPages from '../components/RelatedPages.astro';
 
   <RelatedPages links={[
     { href: "/gtb", title: "Qu'est-ce que la GTB ?", description: "Comprendre la GTB avant de s'attaquer à la réglementation." },
-    { href: "/audit", title: "Audit GTB gratuit", description: "Évaluez votre niveau de conformité EN 15232 en 5 minutes." },
+    { href: "/audit", title: "Audit GTB gratuit", description: "Évaluez votre niveau de conformité ISO 52120-1 en 5 minutes." },
     { href: "/generateur-cee", title: "Simulateur CEE", description: "Estimez vos primes Certificats d'Économies d'Énergie." },
   ]} />
 

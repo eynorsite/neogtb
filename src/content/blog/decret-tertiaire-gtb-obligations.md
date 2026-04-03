@@ -1,10 +1,10 @@
 ---
 title: "Décret tertiaire et GTB : vos obligations en 2026"
 description: "Comprendre le décret tertiaire et le décret BACS : quelles obligations pour votre bâtiment ? Comment la GTB vous aide à être conforme."
-date: "2026-03-09"
+date: "2026-03-18"
 author: "NeoGTB"
 category: "Réglementation"
-tags: []
+tags: ["Décret BACS", "Réglementation", "GTB"]
 featured: false
 ---
 

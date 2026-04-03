@@ -1,10 +1,10 @@
 ---
 title: "BACnet, KNX, Modbus : les protocoles de la GTB expliqués"
 description: "Guide complet des protocoles de communication utilisés en GTB : BACnet, KNX, Modbus et LON. Avantages, inconvénients et cas d'usage."
-date: "2026-03-09"
+date: "2026-03-15"
 author: "NeoGTB"
-category: "Technologies"
-tags: []
+category: "Guide"
+tags: ["Protocoles", "BACnet", "KNX", "Modbus"]
 featured: false
 ---
 

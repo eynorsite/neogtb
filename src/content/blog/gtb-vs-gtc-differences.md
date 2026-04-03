@@ -1,10 +1,10 @@
 ---
 title: "GTB vs GTC : quelles différences ?"
 description: "GTB et GTC sont souvent confondues. Découvrez les différences fondamentales entre Gestion Technique du Bâtiment et Gestion Technique Centralisée."
-date: "2026-03-09"
+date: "2026-03-11"
 author: "NeoGTB"
-category: "Guides"
-tags: []
+category: "Guide"
+tags: ["GTB", "GTC", "Smart Building"]
 featured: true
 ---
 

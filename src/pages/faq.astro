@@ -9,10 +9,10 @@ const faqItems = [
   { q: "Êtes-vous vraiment indépendant ?", a: "Oui. EYNOR, la société derrière NeoGTB, n'a aucun actionnaire fabricant, aucun partenariat commercial rémunéré, aucun lien d'affiliation." },
   { q: "Qu'est-ce que la GTB ?", a: "La Gestion Technique du Bâtiment (GTB) est un système centralisé qui pilote et supervise les équipements techniques d'un bâtiment : chauffage, ventilation, climatisation, éclairage, stores, contrôle d'accès, comptage énergie." },
   { q: "Mon bâtiment est-il concerné par le décret BACS ?", a: "Si votre bâtiment est tertiaire et que sa puissance CVC dépasse 290 kW, vous devez avoir un système BACS de classe B minimum depuis le 1er janvier 2025. Pour les bâtiments entre 70 et 290 kW, l'échéance est fixée à 2030." },
-  { q: "Que signifient les classes A, B, C, D de la norme EN 15232 ?", a: "Classe D : aucune automatisation. Classe C : automatisation standard. Classe B : automatisation avancée avec supervision centralisée — niveau requis par le décret BACS. Classe A : haute performance avec optimisation énergétique et gestion prédictive." },
+  { q: "Que signifient les classes A, B, C, D de la norme ISO 52120-1 (ex-EN 15232) ?", a: "Classe D : aucune automatisation. Classe C : automatisation standard. Classe B : automatisation avancée avec supervision centralisée — niveau requis par le décret BACS. Classe A : haute performance avec optimisation énergétique et gestion prédictive." },
   { q: "Quel protocole choisir : BACnet, KNX ou Modbus ?", a: "BACnet est le standard international de la GTB pour les grands bâtiments tertiaires. KNX excelle pour l'éclairage et les stores. Modbus est simple et dominant pour le comptage énergie." },
   { q: "Combien coûte un audit GTB avec NeoGTB ?", a: "Le diagnostic en ligne est gratuit. Pour un audit approfondi sur site, les tarifs dépendent de la surface, du nombre de sites et de la complexité de l'installation." },
-  { q: "Le diagnostic en ligne est-il fiable ?", a: "Le diagnostic en ligne est un outil d'orientation basé sur la norme EN 15232. Il donne une estimation de votre niveau de maturité GTB. Pour un diagnostic certifié avec mesures sur site, un audit approfondi est nécessaire." },
+  { q: "Le diagnostic en ligne est-il fiable ?", a: "Le diagnostic en ligne est un outil d'orientation basé sur la norme ISO 52120-1. Il donne une estimation de votre niveau de maturité GTB. Pour un diagnostic certifié avec mesures sur site, un audit approfondi est nécessaire." },
   { q: "Dans quelle zone géographique intervenez-vous ?", a: "Les outils en ligne sont accessibles partout. Pour les prestations sur site, j'interviens principalement en Nouvelle-Aquitaine et sur l'ensemble du territoire français selon la mission." },
 ];
 
@@ -135,12 +135,12 @@ const faqJsonLd = {
 
         <div x-data="{ open: false }" style="border-top: 1px solid var(--color-dark-200);">
           <button @click="open = !open" class="w-full flex items-center justify-between py-5 text-left" style="background: none; border: none; cursor: pointer;">
-            <span style="font-size: 15px; font-weight: 500; color: var(--color-dark-900);">Que signifient les classes A, B, C, D de la norme EN 15232 ?</span>
+            <span style="font-size: 15px; font-weight: 500; color: var(--color-dark-900);">Que signifient les classes A, B, C, D de la norme ISO 52120-1 (ex-EN 15232) ?</span>
             <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div x-show="open" x-collapse>
             <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7; padding-bottom: 20px;">
-              La norme EN 15232 classe les systèmes de gestion technique en 4 niveaux. <strong>Classe D</strong> : aucune automatisation, pas performant. <strong>Classe C</strong> : automatisation standard, le minimum. <strong>Classe B</strong> : automatisation avancée avec supervision centralisée — c'est le niveau requis par le décret BACS. <strong>Classe A</strong> : haute performance, avec optimisation énergétique et gestion prédictive. Notre <a href="/audit" style="color: var(--color-accent-600);">diagnostic gratuit</a> vous situe sur cette échelle.
+              La norme ISO 52120-1 (ex-EN 15232) classe les systèmes de gestion technique en 4 niveaux. <strong>Classe D</strong> : aucune automatisation, pas performant. <strong>Classe C</strong> : automatisation standard, le minimum. <strong>Classe B</strong> : automatisation avancée avec supervision centralisée — c'est le niveau requis par le décret BACS. <strong>Classe A</strong> : haute performance, avec optimisation énergétique et gestion prédictive. Notre <a href="/audit" style="color: var(--color-accent-600);">diagnostic gratuit</a> vous situe sur cette échelle.
             </p>
           </div>
         </div>
@@ -181,7 +181,7 @@ const faqJsonLd = {
           </button>
           <div x-show="open" x-collapse>
             <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.7; padding-bottom: 20px;">
-              Le diagnostic en ligne est un outil d'orientation basé sur la norme EN 15232. Il donne une estimation de votre niveau de maturité GTB (classe A à D) et des recommandations générales. Pour un diagnostic certifié avec mesures sur site, un audit approfondi est nécessaire. L'outil en ligne est un excellent point de départ pour savoir si vous avez besoin d'aller plus loin.
+              Le diagnostic en ligne est un outil d'orientation basé sur la norme ISO 52120-1. Il donne une estimation de votre niveau de maturité GTB (classe A à D) et des recommandations générales. Pour un diagnostic certifié avec mesures sur site, un audit approfondi est nécessaire. L'outil en ligne est un excellent point de départ pour savoir si vous avez besoin d'aller plus loin.
             </p>
           </div>
         </div>

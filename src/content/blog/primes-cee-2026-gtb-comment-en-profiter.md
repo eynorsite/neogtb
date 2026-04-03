@@ -19,7 +19,7 @@ Cette fiche CEE couvre spécifiquement l'installation ou l'amélioration d'un sy
 **Conditions d'éligibilité :**
 
 - Bâtiment tertiaire existant de plus de 1 000 m²
-- Installation d'un système GTB atteignant au minimum la **classe B** selon NF EN 15232
+- Installation d'un système GTB atteignant au minimum la **classe B** selon NF EN ISO 52120-1
 - Travaux réalisés par un professionnel qualifié
 - Le bâtiment doit avoir plus de 2 ans d'ancienneté
 
@@ -36,7 +36,7 @@ Le montant varie selon la zone climatique, la surface du bâtiment et le volume 
 ## Les étapes pour obtenir la prime
 
 1. **Avant les travaux** : contacter un obligé CEE (fournisseur d'énergie) ou un délégataire pour obtenir une offre de prime. Le dossier CEE doit être constitué **avant** la signature du devis.
-2. **Pendant les travaux** : conserver toutes les factures et attestations de conformité du système GTB à la norme NF EN 15232.
+2. **Pendant les travaux** : conserver toutes les factures et attestations de conformité du système GTB à la norme NF EN ISO 52120-1.
 3. **Après les travaux** : transmettre le dossier complet (factures, attestation de classe, fiche de synthèse) à l'obligé pour déclencher le versement de la prime.
 
 > **Attention** : Le non-respect de l'ordre des étapes (notamment la constitution du dossier avant signature du devis) peut entraîner la perte totale de la prime. C'est l'erreur la plus fréquente.

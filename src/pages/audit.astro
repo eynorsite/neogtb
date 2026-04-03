@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Diagnostic GTB gratuit — Évaluez votre bâtiment en 5 min" description="Simulateur gratuit : évaluez la conformité GTB de votre bâtiment (décret BACS), estimez vos économies d'énergie et recevez un rapport PDF personnalisé avec recommandations EN 15232." breadcrumbs={[{label: "Outils"}, {label: "Diagnostic GTB"}]}>
+<Layout title="Pré-diagnostic GTB gratuit — Évaluez en 5 min" description="Évaluez la conformité GTB de votre bâtiment (décret BACS), estimez vos économies et recevez un rapport PDF avec recommandations ISO 52120-1 (ex-EN 15232)." breadcrumbs={[{label: "Outils"}, {label: "Pré-diagnostic GTB"}]}>
 
   <!-- ==================== HERO ==================== -->
   <section class="hero-lum">
@@ -15,15 +15,15 @@ import RelatedPages from '../components/RelatedPages.astro';
     <div class="max-w-[800px] mx-auto px-6 md:px-10 relative z-10 text-center">
       <p class="diag-eyebrow">Diagnostic gratuit · Rapport PDF</p>
       <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px;">
-        Diagnostic <span class="accent">GTB</span> de votre bâtiment
+        Pré-diagnostic <span class="accent">GTB</span> de votre bâtiment
       </h1>
       <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: var(--color-dark-500);">
-        Évaluez votre conformité au décret BACS, estimez vos économies d'énergie et recevez un rapport personnalisé avec recommandations EN 15232.
+        Évaluez votre conformité au décret BACS, estimez vos économies d'énergie et recevez un rapport personnalisé avec recommandations ISO 52120-1.
       </p>
       <div class="diag-hero-badges">
         <span class="diag-badge">
           <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          EN 15232 · Décret BACS · Données ADEME
+          ISO 52120-1 · Décret BACS · Données ADEME
         </span>
         <span class="diag-badge diag-badge-accent">
           <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
@@ -73,6 +73,7 @@ import RelatedPages from '../components/RelatedPages.astro';
                 </button>
               </template>
             </div>
+            <p x-show="errors.buildingType" x-text="errors.buildingType" class="diag-error"></p>
 
             <div class="diag-field-group">
               <div>
@@ -92,12 +93,13 @@ import RelatedPages from '../components/RelatedPages.astro';
                   <option value="2000-2012">2000 — 2012</option>
                   <option value="after2012">Après 2012 (RT2012 / RE2020)</option>
                 </select>
+                <p x-show="errors.buildingAge" x-text="errors.buildingAge" class="diag-error"></p>
               </div>
             </div>
 
             <label class="diag-label">Où se situe votre bâtiment ?</label>
-            <div class="diag-grid-3">
-              <template x-for="z in [{id:'H1', label:'Nord & Est', villes:'Paris, Lille, Strasbourg, Lyon, Dijon...', icon:'❄️'}, {id:'H2', label:'Ouest & Centre', villes:'Nantes, Bordeaux, Toulouse, Rennes, Limoges...', icon:'🌤️'}, {id:'H3', label:'Méditerranée', villes:'Marseille, Nice, Montpellier, Perpignan...', icon:'☀️'}]" :key="z.id">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+              <template x-for="z in [{id:'H1', label:'Nord & Est', villes:'Paris, Lille, Strasbourg, Lyon, Dijon...', icon:'❄️'}, {id:'H2', label:'Ouest & Centre', villes:'Nantes, Bordeaux, Toulouse, Rennes, Limoges...', icon:'🌤️'}, {id:'H3', label:'Méditerranée', villes:'Marseille, Nice, Montpellier, Perpignan...', icon:'☀️'}, {id:'DOM', label:'Corse & Outre-mer', villes:'Ajaccio, Bastia, Guadeloupe, Martinique, Réunion...', icon:'🌴'}]" :key="z.id">
                 <button @click="form.climateZone = z.id" class="diag-zone" :class="{ 'is-selected': form.climateZone === z.id }">
                   <span style="font-size:22px;" x-text="z.icon"></span>
                   <span class="diag-zone-id" x-text="z.label"></span>
@@ -106,6 +108,7 @@ import RelatedPages from '../components/RelatedPages.astro';
                 </button>
               </template>
             </div>
+            <p x-show="errors.climateZone" x-text="errors.climateZone" class="diag-error"></p>
           </div>
 
           <div class="diag-card-footer">
@@ -118,61 +121,177 @@ import RelatedPages from '../components/RelatedPages.astro';
         </div>
       </div>
 
-      <!-- ═══════════ ÉTAPE 2 : CONSOMMATIONS ═══════════ -->
+      <!-- ═══════════ ÉTAPE 2 : ÉQUIPEMENTS & LOTS TECHNIQUES ═══════════ -->
       <div x-show="step === 2" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
         <div class="diag-card">
           <div class="diag-card-header">
-            <h2>Vos consommations d'énergie</h2>
-            <p>Renseignez vos consommations annuelles pour obtenir un benchmark ADEME et estimer vos économies potentielles.</p>
+            <h2>Vos lots techniques</h2>
+            <p>Décrivez les équipements et usages de votre bâtiment. Ces informations sont essentielles pour dimensionner votre GTB.</p>
           </div>
           <div class="diag-card-body">
 
-            <template x-for="(energy, idx) in form.energies" :key="idx">
-              <div class="diag-energy-block">
-                <div class="diag-energy-header">
-                  <span class="diag-energy-title" x-text="'Énergie ' + (idx + 1)"></span>
-                  <button x-show="form.energies.length > 1" @click="form.energies = form.energies.filter((_, i) => i !== idx)" class="diag-energy-delete" title="Supprimer">
-                    <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                  </button>
-                </div>
-
-                <div class="diag-energy-fields">
-                  <div>
-                    <label class="diag-label-sm">Type d'énergie</label>
-                    <select x-model="energy.type" class="diag-input-sm">
-                      <option value="">Sélectionnez</option>
-                      <option value="electricite">Électricité</option>
-                      <option value="gaz">Gaz naturel</option>
-                      <option value="fioul">Fioul domestique</option>
-                      <option value="chauffage_urbain">Réseau de chauffage urbain</option>
-                      <option value="froid_urbain">Réseau de froid urbain</option>
-                      <option value="bois">Bois / Biomasse</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label class="diag-label-sm">Consommation annuelle</label>
-                    <div class="diag-input-wrap">
-                      <input type="number" x-model.number="energy.conso" min="0" placeholder="150 000" class="diag-input-sm">
-                      <span class="diag-input-suffix-sm">kWh</span>
-                    </div>
-                  </div>
-                  <div>
-                    <label class="diag-label-sm">Facture annuelle</label>
-                    <div class="diag-input-wrap">
-                      <input type="number" x-model.number="energy.facture" min="0" placeholder="25 000" class="diag-input-sm">
-                      <span class="diag-input-suffix-sm">€/an</span>
-                    </div>
-                  </div>
+            <!-- Surface chauffage -->
+            <div class="diag-lot-block">
+              <div class="diag-lot-header">
+                <span style="font-size: 22px;">🔥</span>
+                <div>
+                  <span class="diag-lot-title">Chauffage</span>
+                  <span class="diag-lot-subtitle">Surface gérée par le système de chauffage</span>
                 </div>
               </div>
-            </template>
+              <div style="margin-top: 12px;">
+                <label class="diag-label-sm">Surface chauffée</label>
+                <div class="diag-input-wrap" style="max-width: 280px;">
+                  <input type="number" x-model.number="form.surfaceChauffage" min="0" max="500000" placeholder="2 500" class="diag-input-sm" :class="{ 'has-error': errors.surfaceChauffage }">
+                  <span class="diag-input-suffix-sm">m²</span>
+                </div>
+                <p x-show="errors.surfaceChauffage" x-text="errors.surfaceChauffage" class="diag-error"></p>
+              </div>
+            </div>
 
-            <button x-show="form.energies.length < 5" @click="form.energies.push({ type: '', conso: null, facture: null })" class="diag-btn-add">
-              <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              Ajouter une énergie consommée
-            </button>
+            <!-- ECS -->
+            <div class="diag-lot-block">
+              <div class="diag-lot-header">
+                <span style="font-size: 22px;">🚿</span>
+                <div>
+                  <span class="diag-lot-title">Eau chaude sanitaire (ECS)</span>
+                  <span class="diag-lot-subtitle">Production et distribution d'eau chaude</span>
+                </div>
+              </div>
+              <div style="margin-top: 12px;">
+                <label class="diag-label-sm">Votre bâtiment dispose-t-il d'une production ECS ?</label>
+                <div style="display: flex; gap: 10px; margin-top: 8px;">
+                  <button @click="form.hasEcs = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasEcs === true }">
+                    <span class="diag-choice-label">Oui</span>
+                  </button>
+                  <button @click="form.hasEcs = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasEcs === false }">
+                    <span class="diag-choice-label">Non</span>
+                  </button>
+                </div>
+                <p x-show="errors.hasEcs" x-text="errors.hasEcs" class="diag-error"></p>
+                <div x-show="form.hasEcs === true" x-transition style="margin-top: 12px;">
+                  <label class="diag-label-sm">Surface desservie par l'ECS</label>
+                  <div class="diag-input-wrap" style="max-width: 280px;">
+                    <input type="number" x-model.number="form.surfaceEcs" min="0" max="500000" placeholder="1 500" class="diag-input-sm" :class="{ 'has-error': errors.surfaceEcs }">
+                    <span class="diag-input-suffix-sm">m²</span>
+                  </div>
+                  <p x-show="errors.surfaceEcs" x-text="errors.surfaceEcs" class="diag-error"></p>
+                </div>
+              </div>
+            </div>
 
-            <p x-show="errors.energies" x-text="errors.energies" class="diag-error"></p>
+            <!-- Climatisation -->
+            <div class="diag-lot-block">
+              <div class="diag-lot-header">
+                <span style="font-size: 22px;">❄️</span>
+                <div>
+                  <span class="diag-lot-title">Climatisation / Refroidissement</span>
+                  <span class="diag-lot-subtitle">Système de climatisation, groupes froids, CTA</span>
+                </div>
+              </div>
+              <div style="margin-top: 12px;">
+                <label class="diag-label-sm">Votre bâtiment est-il climatisé ?</label>
+                <div style="display: flex; gap: 10px; margin-top: 8px;">
+                  <button @click="form.hasClim = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasClim === true }">
+                    <span class="diag-choice-label">Oui</span>
+                  </button>
+                  <button @click="form.hasClim = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasClim === false }">
+                    <span class="diag-choice-label">Non</span>
+                  </button>
+                </div>
+                <p x-show="errors.hasClim" x-text="errors.hasClim" class="diag-error"></p>
+                <div x-show="form.hasClim === true" x-transition style="margin-top: 12px;">
+                  <label class="diag-label-sm">Surface climatisée</label>
+                  <div class="diag-input-wrap" style="max-width: 280px;">
+                    <input type="number" x-model.number="form.surfaceClim" min="0" max="500000" placeholder="2 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceClim }">
+                    <span class="diag-input-suffix-sm">m²</span>
+                  </div>
+                  <p x-show="errors.surfaceClim" x-text="errors.surfaceClim" class="diag-error"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Éclairage -->
+            <div class="diag-lot-block">
+              <div class="diag-lot-header">
+                <span style="font-size: 22px;">💡</span>
+                <div>
+                  <span class="diag-lot-title">Éclairage</span>
+                  <span class="diag-lot-subtitle">Gestion de l'éclairage intérieur et extérieur</span>
+                </div>
+              </div>
+              <div style="margin-top: 12px;">
+                <label class="diag-label-sm">L'éclairage est-il géré de manière centralisée ?</label>
+                <div style="display: flex; gap: 10px; margin-top: 8px;">
+                  <button @click="form.hasEclairage = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasEclairage === true }">
+                    <span class="diag-choice-label">Oui</span>
+                  </button>
+                  <button @click="form.hasEclairage = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasEclairage === false }">
+                    <span class="diag-choice-label">Non</span>
+                  </button>
+                </div>
+                <p x-show="errors.hasEclairage" x-text="errors.hasEclairage" class="diag-error"></p>
+
+                <div x-show="form.hasEclairage === true" x-transition style="margin-top: 12px;">
+                  <label class="diag-label-sm">Surface éclairée</label>
+                  <div class="diag-input-wrap" style="max-width: 280px;">
+                    <input type="number" x-model.number="form.surfaceEclairage" min="0" max="500000" placeholder="3 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceEclairage }">
+                    <span class="diag-input-suffix-sm">m²</span>
+                  </div>
+                  <p x-show="errors.surfaceEclairage" x-text="errors.surfaceEclairage" class="diag-error"></p>
+
+                  <label class="diag-label-sm" style="margin-top: 12px;">Type de gestion</label>
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+                    <button @click="form.eclairage = 'manuel'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'manuel' }">
+                      <span class="diag-choice-label">Manuel</span>
+                    </button>
+                    <button @click="form.eclairage = 'minuterie'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'minuterie' }">
+                      <span class="diag-choice-label">Minuteries</span>
+                    </button>
+                    <button @click="form.eclairage = 'detection'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'detection' }">
+                      <span class="diag-choice-label">Détection de présence</span>
+                    </button>
+                    <button @click="form.eclairage = 'intelligent'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'intelligent' }">
+                      <span class="diag-choice-label">Gestion intelligente</span>
+                    </button>
+                  </div>
+                  <p x-show="errors.eclairage" x-text="errors.eclairage" class="diag-error"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Auxiliaires -->
+            <div class="diag-lot-block">
+              <div class="diag-lot-header">
+                <span style="font-size: 22px;">🔌</span>
+                <div>
+                  <span class="diag-lot-title">Auxiliaires</span>
+                  <span class="diag-lot-subtitle">Contacts de porte, domotique, station météo, sous-comptage, stores, ventilation / CTA...</span>
+                </div>
+              </div>
+              <div style="margin-top: 12px;">
+                <label class="diag-label-sm">Votre bâtiment dispose-t-il d'équipements auxiliaires ?</label>
+                <div style="display: flex; gap: 10px; margin-top: 8px;">
+                  <button @click="form.hasAuxiliaires = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasAuxiliaires === true }">
+                    <span class="diag-choice-label">Oui</span>
+                  </button>
+                  <button @click="form.hasAuxiliaires = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasAuxiliaires === false }">
+                    <span class="diag-choice-label">Non</span>
+                  </button>
+                </div>
+                <p x-show="errors.hasAuxiliaires" x-text="errors.hasAuxiliaires" class="diag-error"></p>
+
+                <div x-show="form.hasAuxiliaires === true" x-transition style="margin-top: 12px;">
+                  <label class="diag-label-sm">Surface concernée par les auxiliaires</label>
+                  <div class="diag-input-wrap" style="max-width: 280px;">
+                    <input type="number" x-model.number="form.surfaceAuxiliaires" min="0" max="500000" placeholder="3 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceAuxiliaires }">
+                    <span class="diag-input-suffix-sm">m²</span>
+                  </div>
+                  <p x-show="errors.surfaceAuxiliaires" x-text="errors.surfaceAuxiliaires" class="diag-error"></p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div class="diag-card-footer">
@@ -231,6 +350,7 @@ import RelatedPages from '../components/RelatedPages.astro';
               <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
             </button>
           </div>
+          <p x-show="errors.gtb" x-text="errors.gtb" class="diag-error"></p>
         </div>
       </div>
 
@@ -284,7 +404,7 @@ import RelatedPages from '../components/RelatedPages.astro';
         <!-- Jauge EN 15232 -->
         <div class="diag-card" style="margin-top:20px;">
           <div class="diag-card-body" style="text-align:center;padding:28px;">
-            <p style="font-size:13px;font-weight:600;color:var(--color-dark-500);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Classe EN 15232</p>
+            <p style="font-size:13px;font-weight:600;color:var(--color-dark-500);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Classe ISO 52120-1</p>
             <div class="diag-gauge">
               <template x-for="lvl in [{key:'d', letter:'D', label:'Non performant'}, {key:'c', letter:'C', label:'Standard'}, {key:'b', letter:'B', label:'Avancé'}, {key:'a', letter:'A', label:'Haute perf.'}]" :key="lvl.key">
                 <div class="diag-gauge-bar" :class="'level-' + lvl.key + (results.levelKey === lvl.key ? ' active' : (results.levelKey !== lvl.key ? ' dimmed' : ''))">
@@ -413,7 +533,7 @@ import RelatedPages from '../components/RelatedPages.astro';
               <p class="diag-premium-col-title">Diagnostic en ligne</p>
               <p class="diag-premium-col-subtitle">Ce que vous venez de faire</p>
               <ul class="diag-premium-list">
-                <li>Score EN 15232 estimé</li>
+                <li>Score ISO 52120-1 estimé</li>
                 <li>Benchmark ADEME indicatif</li>
                 <li>Recommandations génériques</li>
                 <li>Rapport PDF basique</li>
@@ -425,7 +545,7 @@ import RelatedPages from '../components/RelatedPages.astro';
               <p class="diag-premium-col-subtitle">Par un expert indépendant NeoGTB</p>
               <ul class="diag-premium-list">
                 <li>Mesures terrain instrumentées</li>
-                <li>Classification EN 15232 certifiée</li>
+                <li>Classification ISO 52120-1 certifiée</li>
                 <li>Plan d'actions chiffré et priorisé</li>
                 <li>Rapport 20+ pages avec ROI</li>
                 <li>Conformité décret BACS vérifiée</li>
@@ -478,6 +598,7 @@ import RelatedPages from '../components/RelatedPages.astro';
             <input type="email" x-model="emailAddress" placeholder="votre@email.com" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userName" placeholder="Votre nom (optionnel)" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userCompany" placeholder="Entreprise (optionnel)" class="diag-input" style="margin-bottom:12px;">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <p style="font-size:11px;color:var(--color-dark-400);margin-bottom:16px;">Votre email ne sera utilisé que pour cet envoi. <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">Politique de confidentialité</a></p>
             <div style="display:flex;gap:12px;">
               <button @click="showEmailModal = false" class="diag-btn-ghost" style="flex:1;">Annuler</button>
@@ -581,6 +702,7 @@ import RelatedPages from '../components/RelatedPages.astro';
     font-size: 13px; font-family: inherit; color: var(--color-dark-900); background: white;
   }
   .diag-input-sm:focus { border-color: var(--color-accent-500); outline: none; box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
+  .diag-input-sm.has-error { border-color: #ef4444; }
   .diag-input-wrap { position: relative; }
   .diag-input-suffix { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--color-dark-400); font-weight: 500; pointer-events: none; }
   .diag-input-suffix-sm { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--color-dark-400); font-weight: 500; pointer-events: none; }
@@ -654,6 +776,29 @@ import RelatedPages from '../components/RelatedPages.astro';
     transition: all 0.2s; font-family: inherit;
   }
   .diag-btn-add:hover { background: rgba(13, 148, 136, 0.06); border-color: var(--color-accent-500); }
+
+  /* ── Lot technique blocks ── */
+  .diag-lot-block {
+    border: 1.5px solid var(--color-dark-200); border-radius: 14px;
+    padding: 20px; margin-bottom: 16px; background: white;
+    transition: border-color 0.15s;
+  }
+  .diag-lot-block:hover { border-color: var(--color-dark-300); }
+  .diag-lot-header { display: flex; align-items: center; gap: 12px; }
+  .diag-lot-title { font-size: 15px; font-weight: 600; color: var(--color-dark-800); display: block; }
+  .diag-lot-subtitle { font-size: 12px; color: var(--color-dark-400); display: block; margin-top: 2px; }
+
+  /* ── Choice small buttons (Oui/Non, options) ── */
+  .diag-choice-sm {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 8px; cursor: pointer;
+    border: 1.5px solid var(--color-dark-200);
+    background: white; transition: all 0.15s;
+    font-family: inherit; font-size: 13px;
+  }
+  .diag-choice-sm:hover { border-color: var(--color-dark-300); }
+  .diag-choice-sm.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
+  .diag-choice-sm.is-selected .diag-choice-label { color: var(--color-accent-700); }
 
   /* ── Question progress dots ── */
   .diag-q-progress {
@@ -904,7 +1049,7 @@ import RelatedPages from '../components/RelatedPages.astro';
       totalSteps: 4,
       currentQuestion: 0,
       animatedScore: 0,
-      stepLabels: ['Bâtiment', 'Consommations', 'Maturité GTB', 'Résultats'],
+      stepLabels: ['Bâtiment', 'Lots techniques', 'Maturité GTB', 'Résultats'],
       errors: {},
       showEmailModal: false,
       emailAddress: '',
@@ -920,15 +1065,6 @@ import RelatedPages from '../components/RelatedPages.astro';
         { id: 'education', label: 'Enseignement', icon: '🏫' },
         { id: 'hotel', label: 'Hôtellerie', icon: '🏨' },
       ],
-
-      energyLabels: {
-        electricite: { label: 'Électricité', icon: '⚡' },
-        gaz: { label: 'Gaz naturel', icon: '🔥' },
-        fioul: { label: 'Fioul domestique', icon: '🛢️' },
-        chauffage_urbain: { label: 'Chauffage urbain', icon: '🌡️' },
-        froid_urbain: { label: 'Froid urbain', icon: '❄️' },
-        bois: { label: 'Bois / Biomasse', icon: '🪵' },
-      },
 
       // Références kWh EF/m²/an par type [performant, moyen, énergivore]
       // Sources :
@@ -1014,9 +1150,18 @@ import RelatedPages from '../components/RelatedPages.astro';
       form: {
         buildingType: '',
         surface: null,
+        surfaceChauffage: null,
         buildingAge: '',
         climateZone: '',
-        energies: [{ type: '', conso: null, facture: null }],
+        hasEcs: null,
+        surfaceEcs: null,
+        hasClim: null,
+        surfaceClim: null,
+        hasEclairage: null,
+        eclairage: '',
+        surfaceEclairage: null,
+        hasAuxiliaires: null,
+        surfaceAuxiliaires: null,
         gtbAnswers: {},
       },
 
@@ -1024,7 +1169,7 @@ import RelatedPages from '../components/RelatedPages.astro';
       // Fiches : BAT-TH-116 (GTB CVC), BAT-TH-145 (clim), BAT-EQ-127 (éclairage)
       // Prix CEE : 6,50 €/MWh cumac
       // Coefficients zone/âge identiques au générateur CEE
-      ceeZoneCoeff: { 'H1': 1.3, 'H2': 1.0, 'H3': 0.7 },
+      ceeZoneCoeff: { 'H1': 1.3, 'H2': 1.0, 'H3': 0.7, 'DOM': 1.4 },
       ceeAgeCoeff: { 'before1975': 1.5, '1975-2000': 1.2, '2000-2012': 1.0, 'after2012': 0.6 },
       ceeTypeCoeff: { 'bureau': 1.0, 'commerce': 0.9, 'industrie': 1.3, 'sante': 1.4, 'education': 1.1, 'hotel': 1.2 },
       ceePricePerMwh: 6.50, // €/MWh cumac
@@ -1068,9 +1213,17 @@ import RelatedPages from '../components/RelatedPages.astro';
 
       validateStep2() {
         this.errors = {};
-        const validEnergies = this.form.energies.filter(e => e.type && e.conso > 0);
-        if (validEnergies.length === 0) { this.errors.energies = 'Renseignez au moins une énergie avec sa consommation.'; return; }
-        this.step = 3; window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (!this.form.surfaceChauffage || this.form.surfaceChauffage < 1) this.errors.surfaceChauffage = 'Renseignez la surface chauffée.';
+        if (this.form.hasEcs === null) this.errors.hasEcs = 'Répondez à cette question.';
+        if (this.form.hasEcs === true && (!this.form.surfaceEcs || this.form.surfaceEcs < 1)) this.errors.surfaceEcs = 'Renseignez la surface desservie.';
+        if (this.form.hasClim === null) this.errors.hasClim = 'Répondez à cette question.';
+        if (this.form.hasClim === true && (!this.form.surfaceClim || this.form.surfaceClim < 1)) this.errors.surfaceClim = 'Renseignez la surface climatisée.';
+        if (this.form.hasEclairage === null) this.errors.hasEclairage = 'Répondez à cette question.';
+        if (this.form.hasEclairage === true && (!this.form.surfaceEclairage || this.form.surfaceEclairage < 1)) this.errors.surfaceEclairage = 'Renseignez la surface éclairée.';
+        if (this.form.hasEclairage === true && !this.form.eclairage) this.errors.eclairage = 'Sélectionnez un type de gestion.';
+        if (this.form.hasAuxiliaires === null) this.errors.hasAuxiliaires = 'Répondez à cette question.';
+        if (this.form.hasAuxiliaires === true && (!this.form.surfaceAuxiliaires || this.form.surfaceAuxiliaires < 1)) this.errors.surfaceAuxiliaires = 'Renseignez la surface concernée.';
+        if (Object.keys(this.errors).length === 0) { this.step = 3; window.scrollTo({ top: 0, behavior: 'smooth' }); }
       },
 
       validateStep3() {
@@ -1117,25 +1270,57 @@ import RelatedPages from '../components/RelatedPages.astro';
         }
         const maxGtb = this.gtbQuestions.length * 3;
 
-        // 2. Totaux énergie
-        // Prix moyens €/kWh pour estimer la facture si non renseignée
-        // Sources : CRE/Eurostat 2024 — tarifs moyens entreprises France
-        const prixMoyenKwh = {
-          electricite: 0.18, gaz: 0.08, fioul: 0.10,
-          chauffage_urbain: 0.09, froid_urbain: 0.11, bois: 0.05,
+        // 2. Estimation consommation à partir des lots techniques + références ADEME
+        // Ratios moyens kWh/m²/an par usage (sources ADEME / RT tertiaire)
+        const ratiosConso = {
+          chauffage: { bureau: 80, education: 90, commerce: 100, hotel: 110, sante: 120, industrie: 100 },
+          ecs:       { bureau: 10, education: 15, commerce: 8,   hotel: 40,  sante: 35,  industrie: 8 },
+          clim:      { bureau: 30, education: 15, commerce: 50,  hotel: 25,  sante: 20,  industrie: 25 },
+          eclairage: { bureau: 25, education: 20, commerce: 40,  hotel: 15,  sante: 22,  industrie: 30 },
+          auxiliaires: { bureau: 10, education: 8, commerce: 12, hotel: 10,  sante: 15,  industrie: 15 },
         };
-        let totalConso = 0, totalFacture = 0;
+        const prixMoyenKwh = 0.14; // €/kWh moyen pondéré
+        const bt = this.form.buildingType;
+        let totalConso = 0;
         const energySummary = [];
-        for (const e of this.form.energies) {
-          if (e.type && e.conso > 0) {
-            totalConso += e.conso;
-            // Si facture non renseignée, estimer depuis la conso × prix moyen
-            const facture = (e.facture && e.facture > 0) ? e.facture : Math.round(e.conso * (prixMoyenKwh[e.type] || 0.12));
-            totalFacture += facture;
-            const info = this.energyLabels[e.type] || { label: e.type, icon: '⚡' };
-            energySummary.push({ label: info.label, icon: info.icon, conso: e.conso, facture: facture, estimated: !(e.facture && e.facture > 0) });
-          }
+
+        // Chauffage
+        if (this.form.surfaceChauffage > 0) {
+          const ratio = ratiosConso.chauffage[bt] || 90;
+          const conso = Math.round(this.form.surfaceChauffage * ratio);
+          totalConso += conso;
+          energySummary.push({ label: 'Chauffage', icon: '🔥', conso, facture: Math.round(conso * prixMoyenKwh), surface: this.form.surfaceChauffage });
         }
+        // ECS
+        if (this.form.hasEcs && this.form.surfaceEcs > 0) {
+          const ratio = ratiosConso.ecs[bt] || 15;
+          const conso = Math.round(this.form.surfaceEcs * ratio);
+          totalConso += conso;
+          energySummary.push({ label: 'ECS', icon: '🚿', conso, facture: Math.round(conso * prixMoyenKwh), surface: this.form.surfaceEcs });
+        }
+        // Climatisation
+        if (this.form.hasClim && this.form.surfaceClim > 0) {
+          const ratio = ratiosConso.clim[bt] || 30;
+          const conso = Math.round(this.form.surfaceClim * ratio);
+          totalConso += conso;
+          energySummary.push({ label: 'Climatisation', icon: '❄️', conso, facture: Math.round(conso * prixMoyenKwh), surface: this.form.surfaceClim });
+        }
+        // Éclairage
+        if (this.form.hasEclairage && this.form.surfaceEclairage > 0) {
+          const ratio = ratiosConso.eclairage[bt] || 25;
+          const conso = Math.round(this.form.surfaceEclairage * ratio);
+          totalConso += conso;
+          energySummary.push({ label: 'Éclairage', icon: '💡', conso, facture: Math.round(conso * prixMoyenKwh), surface: this.form.surfaceEclairage });
+        }
+        // Auxiliaires
+        if (this.form.hasAuxiliaires && this.form.surfaceAuxiliaires > 0) {
+          const ratio = ratiosConso.auxiliaires[bt] || 10;
+          const conso = Math.round(this.form.surfaceAuxiliaires * ratio);
+          totalConso += conso;
+          energySummary.push({ label: 'Auxiliaires', icon: '🔌', conso, facture: Math.round(conso * prixMoyenKwh), surface: this.form.surfaceAuxiliaires });
+        }
+
+        const totalFacture = Math.round(totalConso * prixMoyenKwh);
         this.results.totalConso = totalConso;
         this.results.totalFacture = totalFacture;
         this.results.energySummary = energySummary;
@@ -1188,7 +1373,7 @@ import RelatedPages from '../components/RelatedPages.astro';
         if (score < 25) {
           this.results.levelKey = 'd';
           this.results.levelLabel = 'Classe D — Non performant';
-          this.results.levelDescription = 'Votre bâtiment ne dispose pas de gestion technique conforme. Le potentiel d\'optimisation est estimé entre 30 et 50 % selon la norme EN 15232.';
+          this.results.levelDescription = 'Votre bâtiment ne dispose pas de gestion technique conforme. Le potentiel d\'optimisation est estimé entre 30 et 50 % selon la norme ISO 52120-1 (ex-EN 15232).';
         } else if (score < 50) {
           this.results.levelKey = 'c';
           this.results.levelLabel = 'Classe C — Standard';
@@ -1200,7 +1385,7 @@ import RelatedPages from '../components/RelatedPages.astro';
         } else {
           this.results.levelKey = 'a';
           this.results.levelLabel = 'Classe A — Haute performance';
-          this.results.levelDescription = 'Niveau le plus élevé d\'automatisation (EN 15232). Vous êtes conforme aux exigences les plus strictes du décret BACS.';
+          this.results.levelDescription = 'Niveau le plus élevé d\'automatisation ISO 52120-1 (ex-EN 15232). Vous êtes conforme aux exigences les plus strictes du décret BACS.';
         }
 
         // 6. Économies potentielles
@@ -1224,30 +1409,30 @@ import RelatedPages from '../components/RelatedPages.astro';
           const zC = this.ceeZoneCoeff[this.form.climateZone] || 1;
           const aC = this.ceeAgeCoeff[this.form.buildingAge] || 1;
           const tC = this.ceeTypeCoeff[this.form.buildingType] || 1;
-          const surf = this.form.surface;
-
-          // Fiches CEE applicables selon le niveau de maturité
-          // Réponses GTB : 0=régulation CVC, 1=éclairage, 2=suivi conso, 3=supervision
-          const cvcScore = parseInt(this.form.gtbAnswers[0] || 0);   // régulation CVC
-          const eclScore = parseInt(this.form.gtbAnswers[1] || 0);   // éclairage
+          // Fiches CEE applicables selon le niveau de maturité et les lots techniques
+          const cvcScore = parseInt(this.form.gtbAnswers[0] || 0);
+          const eclScore = parseInt(this.form.gtbAnswers[1] || 0);
 
           const fiches = [];
 
-          // BAT-TH-116 : GTB / régulation CVC — applicable si CVC pas déjà optimisé (score < 3)
+          // BAT-TH-116 : GTB / régulation CVC — surface chauffage + clim
           if (cvcScore < 3) {
-            const gwh = 0.042 * surf * zC * aC * tC / 1000;
-            fiches.push({ fiche: 'BAT-TH-116', label: 'GTB régulation CVC', gwh });
+            const surfCvc = (this.form.surfaceChauffage || 0) + (this.form.hasClim && this.form.surfaceClim ? this.form.surfaceClim : 0);
+            if (surfCvc > 0) {
+              const gwh = 0.042 * surfCvc * zC * aC * tC / 1000;
+              fiches.push({ fiche: 'BAT-TH-116', label: 'GTB régulation CVC', gwh });
+            }
           }
 
-          // BAT-TH-145 : Climatisation performante — applicable si CVC basique (score < 2)
-          if (cvcScore < 2) {
-            const gwh = 0.028 * surf * zC * aC * tC / 1000;
+          // BAT-TH-145 : Climatisation performante — surface climatisée
+          if (cvcScore < 2 && this.form.hasClim && this.form.surfaceClim > 0) {
+            const gwh = 0.028 * this.form.surfaceClim * zC * aC * tC / 1000;
             fiches.push({ fiche: 'BAT-TH-145', label: 'Climatisation performante', gwh });
           }
 
-          // BAT-EQ-127 : Éclairage performant — applicable si éclairage pas intelligent (score < 2)
-          if (eclScore < 2) {
-            const gwh = 0.018 * surf * zC * aC * tC / 1000;
+          // BAT-EQ-127 : Éclairage performant — surface éclairée
+          if (eclScore < 2 && this.form.hasEclairage && this.form.surfaceEclairage > 0) {
+            const gwh = 0.018 * this.form.surfaceEclairage * zC * aC * tC / 1000;
             fiches.push({ fiche: 'BAT-EQ-127', label: 'Éclairage performant', gwh });
           }
 
@@ -1276,12 +1461,12 @@ import RelatedPages from '../components/RelatedPages.astro';
             daysLeft: 0,
           };
         } else if (puissanceKW >= 70) {
-          const deadline = new Date('2027-01-01');
+          const deadline = new Date('2030-01-01');
           const daysLeft = Math.max(0, Math.ceil((deadline - now) / (1000 * 60 * 60 * 24)));
           this.results.regulatory = {
             show: true, severity: 'warning',
-            title: 'Échéance décret BACS — 1er janvier 2027',
-            text: `Puissance CVC estimée : ${Math.round(puissanceKW)} kW (> 70 kW). L'obligation GTB de classe C minimum s'appliquera au 1er janvier 2027.`,
+            title: 'Échéance décret BACS — 1er janvier 2030',
+            text: `Puissance CVC estimée : ${Math.round(puissanceKW)} kW (> 70 kW). L'obligation GTB de classe C minimum s'appliquera au 1er janvier 2030.`,
             daysLeft,
           };
         } else {
@@ -1306,7 +1491,7 @@ import RelatedPages from '../components/RelatedPages.astro';
           recs.push('Améliorer la régulation CVC avec capteurs CO₂ (norme NF EN 16798-1)');
           recs.push('Automatiser le suivi énergétique avec alertes de dérive (conformité décret tertiaire)');
           recs.push('Passer à une maintenance conditionnelle basée sur les données pour réduire les coûts de 15 à 25 %');
-          recs.push('Étudier la migration vers une classe B EN 15232 en priorité sur CVC et éclairage');
+          recs.push('Étudier la migration vers une classe B ISO 52120-1 en priorité sur CVC et éclairage');
         } else if (score < 75) {
           recs.push('Explorer les solutions d\'IA pour l\'optimisation prédictive des courbes de charge (ISO 50001)');
           recs.push('Optimiser les scénarios de fonctionnement selon l\'occupation réelle (capteurs IoT LoRaWAN)');
@@ -1337,6 +1522,7 @@ import RelatedPages from '../components/RelatedPages.astro';
           try {
             const payload = {
               _subject: 'Nouveau lead Diagnostic GTB — NeoGTB',
+              _gotcha: '',
               email: this.emailAddress,
               nom: this.userName || 'Non renseigné',
               entreprise: this.userCompany || 'Non renseigné',
@@ -1553,8 +1739,8 @@ import RelatedPages from '../components/RelatedPages.astro';
         this.step = 1;
         this.currentQuestion = 0;
         this.animatedScore = 0;
-        this.form = { buildingType: '', surface: null, buildingAge: '', climateZone: '', energies: [{ type: '', conso: null, facture: null }], gtbAnswers: {} };
-        this.results = { score: 0, levelKey: 'd', levelLabel: '', levelDescription: '', savingsEuro: 0, savingsPercent: 0, totalConso: 0, totalFacture: 0, energySummary: [], benchmark: { kwhM2: 0, position: 50, refGood: 0, refAvg: 0, refBad: 0, goodPercent: 33, avgPercent: 34, badPercent: 33 }, regulatory: { show: false, severity: 'ok', title: '', text: '', daysLeft: 0 }, recommendations: [] };
+        this.form = { buildingType: '', surface: null, surfaceChauffage: null, buildingAge: '', climateZone: '', hasEcs: null, surfaceEcs: null, hasClim: null, surfaceClim: null, hasEclairage: null, eclairage: '', surfaceEclairage: null, hasAuxiliaires: null, surfaceAuxiliaires: null, gtbAnswers: {} };
+        this.results = { score: 0, levelKey: 'd', levelLabel: '', levelDescription: '', savingsEuro: 0, savingsPercent: 0, totalConso: 0, totalFacture: 0, energySummary: [], benchmark: { kwhM2: 0, position: 50, refGood: 0, refAvg: 0, refBad: 0, goodPercent: 33, avgPercent: 34, badPercent: 33 }, regulatory: { show: false, severity: 'ok', title: '', text: '', daysLeft: 0 }, cee: { gwh: 0, valueLow: 0, valueHigh: 0, eligible: false, fiches: [] }, recommendations: [] };
         this.errors = {};
         window.scrollTo({ top: 0, behavior: 'smooth' });
       },

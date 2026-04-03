@@ -5,13 +5,13 @@
         "badge": "Décret BACS 2030 · Êtes-vous en conformité ?",
         "subtitle": "NéoGTB",
         "title": "Votre bâtiment consomme trop. On vous montre où et pourquoi.",
-        "description": "Diagnostic EN 15232 gratuit, comparateur de solutions sans biais commercial. Les gestionnaires qui nous consultent identifient en moyenne 23 % d'économies sur leur CVC.",
+        "description": "Pré-diagnostic ISO 52120-1 gratuit, comparateur de solutions sans biais commercial. Les gestionnaires qui nous consultent identifient en moyenne 23 % d'économies CVC sur des bureaux passant de classe D à B.",
         "stats": [
-            { "value": "23 %", "label": "d'économies CVC identifiées en moyenne" },
+            { "value": "23 %", "label": "d'économies CVC en moyenne (bureaux, D→B)" },
             { "value": "10+", "label": "fabricants évalués sans lien commercial" },
             { "value": "0 €", "label": "commission — jamais" }
         ],
-        "cta_text": "Diagnostiquer mon bâtiment",
+        "cta_text": "Évaluer mon bâtiment",
         "cta_url": "/audit",
         "cta2_text": "Comparer les solutions GTB",
         "cta2_url": "/comparateur"

@@ -1,10 +1,10 @@
 ---
 title: "Décret BACS 2030 : toutes les sources officielles vérifiées et commentées"
-description: "Legifrance, rt-re-batiment.gouv.fr, OPERAT, normes NF EN 15232 : toutes les sources de référence du décret BACS compilées, vérifiées et expliquées pour les professionnels."
+description: "Legifrance, rt-re-batiment.gouv.fr, OPERAT, normes NF EN ISO 52120-1 (ex-EN 15232) : toutes les sources de référence du décret BACS compilées, vérifiées et expliquées pour les professionnels."
 date: "2026-02-11"
 author: "NeoGTB"
 category: "Réglementation"
-tags: ["sources officielles", "Legifrance", "OPERAT", "NF EN 15232", "décret BACS", "références"]
+tags: ["sources officielles", "Legifrance", "OPERAT", "ISO 52120-1", "décret BACS", "références"]
 featured: false
 ---
 
@@ -40,7 +40,7 @@ La plateforme OPERAT de l'ADEME fournit une documentation complète sur les moda
 
 ## Les normes techniques de référence
 
-### NF EN 15232-1 / ISO 52120
+### NF EN ISO 52120-1 (ex-EN 15232)
 
 La norme de référence pour la classification des systèmes d'automatisation et de contrôle des bâtiments. Elle définit les quatre classes (A, B, C, D) et les critères techniques associés. Le décret BACS exige un niveau **classe A ou B minimum**.
 

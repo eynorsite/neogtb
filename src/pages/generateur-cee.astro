@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import RelatedPages from '../components/RelatedPages.astro';
 ---
 
-<Layout title="Simulateur CEE GTB gratuit — Estimez vos primes en 3 minutes" description="Estimez vos Certificats d'Économies d'Énergie (CEE) pour un projet GTB en 3 minutes. Outil gratuit et indépendant, sans lien commercial avec les obligés ou délégataires." breadcrumbs={[{label: "Outils"}, {label: "Simulateur CEE"}]}>
+<Layout title="Simulateur CEE GTB — Estimez vos primes" description="Estimez vos Certificats d'Économies d'Énergie (CEE) pour un projet GTB en 3 minutes. Outil gratuit, sans lien commercial." breadcrumbs={[{label: "Outils"}, {label: "Simulateur CEE"}]}>
 
   <!-- ==================== HERO LUMINEUX + EFFET VISUEL ==================== -->
   <section class="cee-hero">
@@ -27,7 +27,7 @@ import RelatedPages from '../components/RelatedPages.astro';
       <div class="cee-hero-badges">
         <span class="cee-badge">
           <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          BAT-TH-116 · BAT-SE-104
+          BAT-TH-116
         </span>
         <span class="cee-badge cee-badge-accent">
           <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
@@ -88,6 +88,7 @@ import RelatedPages from '../components/RelatedPages.astro';
                 </button>
               </template>
             </div>
+            <p x-show="errors.buildingType" x-text="errors.buildingType" class="cee-error"></p>
 
             <div style="margin-bottom: 24px;">
               <label class="cee-label">Surface totale chauffée</label>
@@ -99,18 +100,38 @@ import RelatedPages from '../components/RelatedPages.astro';
               <p x-show="errors.surface" x-text="errors.surface" class="cee-error"></p>
             </div>
 
-            <label class="cee-label">Zone climatique</label>
-            <div class="cee-grid-3">
-              <template x-for="z in [{id:'H1', desc:'Nord & Est', color:'#3b82f6'}, {id:'H2', desc:'Ouest & Centre', color:'#8b5cf6'}, {id:'H3', desc:'Méditerranée', color:'#f59e0b'}]" :key="z.id">
-                <button
-                  @click="form.climateZone = z.id"
-                  class="cee-zone"
-                  :class="{ 'is-selected': form.climateZone === z.id }">
-                  <span class="cee-zone-id" x-text="z.id"></span>
-                  <span class="cee-zone-desc" x-text="z.desc"></span>
-                </button>
-              </template>
+            <label class="cee-label">Où se situe votre bâtiment ?</label>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+              <button @click="form.climateZone = 'H1'" class="cee-zone" :class="{ 'is-selected': form.climateZone === 'H1' }">
+                <span style="font-size: 22px;">❄️</span>
+                <span class="cee-zone-id">Nord & Est</span>
+                <span class="cee-zone-cities">Paris, Lille, Strasbourg, Lyon, Dijon...</span>
+                <span class="cee-zone-tag">Zone H1</span>
+                <span class="cee-zone-depts">01, 02, 03, 05, 08, 10, 14, 15, 19, 21, 23, 25, 27, 28, 38, 39, 42, 43, 45, 51, 52, 54, 55, 57, 58, 59, 60, 61, 62, 63, 67, 68, 69, 70, 71, 73, 74, 75, 76, 77, 78, 80, 87, 88, 89, 90, 91, 92, 93, 94, 95</span>
+              </button>
+              <button @click="form.climateZone = 'H2'" class="cee-zone" :class="{ 'is-selected': form.climateZone === 'H2' }">
+                <span style="font-size: 22px;">🌤️</span>
+                <span class="cee-zone-id">Ouest & Centre</span>
+                <span class="cee-zone-cities">Nantes, Bordeaux, Toulouse, Rennes, Limoges...</span>
+                <span class="cee-zone-tag">Zone H2</span>
+                <span class="cee-zone-depts">04, 07, 09, 12, 16, 17, 18, 22, 24, 26, 29, 31, 32, 33, 35, 36, 37, 40, 41, 44, 46, 47, 48, 49, 50, 53, 56, 64, 65, 72, 79, 81, 82, 84, 85, 86</span>
+              </button>
+              <button @click="form.climateZone = 'H3'" class="cee-zone" :class="{ 'is-selected': form.climateZone === 'H3' }">
+                <span style="font-size: 22px;">☀️</span>
+                <span class="cee-zone-id">Méditerranée</span>
+                <span class="cee-zone-cities">Marseille, Nice, Montpellier, Perpignan...</span>
+                <span class="cee-zone-tag">Zone H3</span>
+                <span class="cee-zone-depts">06, 11, 13, 30, 34, 66, 83</span>
+              </button>
+              <button @click="form.climateZone = 'DOM'" class="cee-zone" :class="{ 'is-selected': form.climateZone === 'DOM' }">
+                <span style="font-size: 22px;">🌴</span>
+                <span class="cee-zone-id">Corse & Outre-mer</span>
+                <span class="cee-zone-cities">Ajaccio, Bastia, Guadeloupe, Martinique, Guyane, Réunion, Mayotte...</span>
+                <span class="cee-zone-tag">Zone DOM</span>
+                <span class="cee-zone-depts">2A, 2B, 971, 972, 973, 974, 976</span>
+              </button>
             </div>
+            <p x-show="errors.climateZone" x-text="errors.climateZone" class="cee-error"></p>
           </div>
 
           <div class="cee-card-footer">
@@ -134,16 +155,13 @@ import RelatedPages from '../components/RelatedPages.astro';
           <div class="cee-card-body">
 
             <!-- ═══ BAT-TH-116 — Système GTB ═══ -->
-            <div class="cee-fiche-toggle" :class="{ 'is-active': form.enableTH116 }" x-show="form.buildingType !== 'sport'">
-              <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
-                <input type="checkbox" x-model="form.enableTH116" style="margin-top: 5px; width: 18px; height: 18px; accent-color: var(--color-accent-600);">
-                <div>
-                  <p style="font-size: 15px; font-weight: 600; color: var(--color-dark-900);">BAT-TH-116 — Système GTB</p>
-                  <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.5;">Installation ou amélioration d'un système de gestion technique du bâtiment (durée de vie : 15 ans)</p>
-                </div>
-              </label>
+            <div class="cee-fiche-toggle is-active" x-show="form.buildingType !== 'sport'">
+              <div style="margin-bottom: 20px;">
+                <p style="font-size: 15px; font-weight: 600; color: var(--color-dark-900);">BAT-TH-116 — Système de GTB pour le chauffage, l'ECS, le refroidissement/climatisation, l'éclairage et les auxiliaires</p>
+                <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.5;">Installation ou amélioration d'un système de gestion technique du bâtiment (durée de vie : 15 ans)</p>
+              </div>
 
-              <div x-show="form.enableTH116" x-transition style="margin-top: 20px;">
+              <div>
                 <label class="cee-label">Classe GTB visée (NF EN ISO 52120-1 : 2022)</label>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 320px; margin-bottom: 24px;">
                   <button @click="form.gtbClass = 'A'" class="cee-zone" :class="{ 'is-selected': form.gtbClass === 'A' }">
@@ -177,74 +195,15 @@ import RelatedPages from '../components/RelatedPages.astro';
               </div>
             </div>
 
-            <!-- ═══ BAT-SE-104 — CPE Services ═══ -->
-            <div class="cee-fiche-toggle" :class="{ 'is-active': form.enableSE104 }" style="margin-top: 16px;">
-              <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
-                <input type="checkbox" x-model="form.enableSE104" style="margin-top: 5px; width: 18px; height: 18px; accent-color: var(--color-accent-600);">
-                <div>
-                  <p style="font-size: 15px; font-weight: 600; color: var(--color-dark-900);">BAT-SE-104 — CPE Services Chauffage</p>
-                  <p style="font-size: 13px; color: var(--color-dark-500); line-height: 1.5;">Contrat de Performance Énergétique pour l'exploitation des installations (durée de vie : 2 à 10 ans)</p>
-                </div>
-              </label>
-
-              <div x-show="form.enableSE104" x-transition style="margin-top: 20px;">
-                <div style="margin-bottom: 24px;">
-                  <label class="cee-label">Durée de garantie du CPE</label>
-                  <select x-model.number="form.cpeDuration" class="cee-input" style="max-width: 280px;">
-                    <option value="2">2 ans</option>
-                    <option value="3">3 ans</option>
-                    <option value="4">4 ans</option>
-                    <option value="5">5 ans</option>
-                    <option value="6">6 ans</option>
-                    <option value="7">7 ans</option>
-                    <option value="8">8 ans</option>
-                    <option value="9">9 ans</option>
-                    <option value="10">10 ans ou plus</option>
-                  </select>
-                </div>
-
-                <label class="cee-label">Usages complémentaires inclus au CPE</label>
-                <p style="font-size: 12px; color: var(--color-dark-400); margin-bottom: 12px;">Le chauffage est toujours inclus. Chaque usage supplémentaire augmente le facteur correctif F.</p>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;">
-                  <button @click="form.usages104.ecs = !form.usages104.ecs" class="cee-equip" :class="{ 'is-selected': form.usages104.ecs }">
-                    <div class="cee-equip-check">
-                      <svg x-show="form.usages104.ecs" style="width: 12px; height: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                    </div>
-                    <span style="font-size: 22px;">🚿</span>
-                    <span class="cee-equip-label">ECS</span>
-                    <span class="cee-equip-fiche" x-text="'f = ' + (se104Factors[form.buildingType]?.ecs ?? '—')"></span>
-                  </button>
-                  <button @click="form.usages104.cooling = !form.usages104.cooling" class="cee-equip" :class="{ 'is-selected': form.usages104.cooling }">
-                    <div class="cee-equip-check">
-                      <svg x-show="form.usages104.cooling" style="width: 12px; height: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                    </div>
-                    <span style="font-size: 22px;">❄️</span>
-                    <span class="cee-equip-label">Climatisation</span>
-                    <span class="cee-equip-fiche" x-text="'f = ' + (se104Factors[form.buildingType]?.cooling ?? '—')"></span>
-                  </button>
-                  <button @click="form.usages104.elec = !form.usages104.elec" class="cee-equip" :class="{ 'is-selected': form.usages104.elec }">
-                    <div class="cee-equip-check">
-                      <svg x-show="form.usages104.elec" style="width: 12px; height: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                    </div>
-                    <span style="font-size: 22px;">⚡</span>
-                    <span class="cee-equip-label">Élec. spécifique</span>
-                    <span class="cee-equip-fiche" x-text="'f = ' + (se104Factors[form.buildingType]?.elec ?? '—')"></span>
-                  </button>
-                </div>
-                <p style="font-size: 13px; color: var(--color-accent-700); font-weight: 600;" x-text="'Facteur F = ' + calculateF().toFixed(2)"></p>
-              </div>
-            </div>
-
-            <!-- Avertissement non-cumul -->
-            <div x-show="form.enableTH116 && form.enableSE104" class="cee-disclaimer" style="margin-top: 20px;">
-              <svg style="width: 18px; height: 18px; color: #b45309; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+            <!-- Info autres fiches -->
+            <div class="cee-disclaimer" style="margin-top: 20px;">
+              <svg style="width: 18px; height: 18px; color: #3b82f6; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               <div>
-                <p style="font-weight: 600; color: #92400e; font-size: 13px; margin-bottom: 4px;">Non-cumul</p>
-                <p style="font-size: 13px; color: #78350f; line-height: 1.6;">BAT-TH-116 et BAT-SE-104 ne sont généralement pas cumulables sur un même bâtiment. Les deux résultats sont affichés pour comparaison.</p>
+                <p style="font-weight: 600; color: #1e40af; font-size: 13px; margin-bottom: 4px;">Autres fiches CEE éligibles</p>
+                <p style="font-size: 13px; color: #1e3a5f; line-height: 1.6;">D'autres fiches CEE peuvent s'appliquer à votre projet : BAT-SE-104 (CPE Services), BAT-TH-145 (Optimisation climatisation), BAT-EQ-127 (Éclairage), etc. <a href="/contact" style="color: var(--color-accent-600); font-weight: 500; text-decoration: underline;">Contactez-nous</a> pour une étude complète.</p>
               </div>
             </div>
 
-            <p x-show="errors.fiches" x-text="errors.fiches" class="cee-error" style="margin-top: 16px;"></p>
           </div>
 
           <div class="cee-card-footer">
@@ -263,8 +222,13 @@ import RelatedPages from '../components/RelatedPages.astro';
       <!-- ÉTAPE 3 : Résultats -->
       <div x-show="step === 3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
 
+        <!-- Avertissement date de mise à jour -->
+        <div style="background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 10px; padding: 12px 16px; margin-bottom: 16px;">
+          <p style="font-size: 12px; color: #78350F; line-height: 1.5;">Barèmes CEE basés sur les fiches BAT-TH-116 et BAT-TH-112 en vigueur. <strong>Dernière mise à jour : avril 2026.</strong> Les montants et conditions d'éligibilité évoluent régulièrement — vérifiez auprès de votre obligé avant engagement.</p>
+        </div>
+
         <!-- ═══ BAT-TH-116 Résultats ═══ -->
-        <div x-show="form.enableTH116 && results.th116.total > 0">
+        <div x-show="results.th116.total > 0">
           <div class="cee-results-hero">
             <div class="cee-kpi cee-kpi-primary">
               <p class="cee-kpi-label">BAT-TH-116 — Volume CEE</p>
@@ -287,7 +251,6 @@ import RelatedPages from '../components/RelatedPages.astro';
                     <span style="font-size: 20px;" x-text="d.icon"></span>
                     <div>
                       <p class="cee-result-name" x-text="d.label"></p>
-                      <p class="cee-result-fiche" x-text="d.montant + ' kWh/m² × ' + zoneCoeff116[form.climateZone] + ' × ' + formatNumber(form.surface) + ' m²'"></p>
                     </div>
                   </div>
                   <div style="text-align: right;">
@@ -300,74 +263,12 @@ import RelatedPages from '../components/RelatedPages.astro';
           </div>
         </div>
 
-        <!-- ═══ BAT-SE-104 Résultats ═══ -->
-        <div x-show="form.enableSE104 && results.se104.total > 0" :style="form.enableTH116 ? 'margin-top: 32px;' : ''">
-          <div class="cee-results-hero">
-            <div class="cee-kpi cee-kpi-primary">
-              <p class="cee-kpi-label">BAT-SE-104 — Volume CEE</p>
-              <p class="cee-kpi-value" x-text="formatMwh(results.se104.total)"></p>
-              <p class="cee-kpi-sub">cumac · CPE <span x-text="form.cpeDuration"></span> ans · F = <span x-text="results.se104.factorF.toFixed(2)"></span></p>
-            </div>
-            <div class="cee-kpi cee-kpi-accent">
-              <p class="cee-kpi-label">Valeur financière estimée</p>
-              <p class="cee-kpi-value" x-text="formatCurrency(results.se104.value)"></p>
-              <p class="cee-kpi-sub" x-text="formatCurrency(results.se104.value * 0.75) + ' — ' + formatCurrency(results.se104.value * 1.25)"></p>
-            </div>
-          </div>
-
-          <div class="cee-card" style="margin-top: 20px;">
-            <div class="cee-card-header"><h2>Détail BAT-SE-104</h2></div>
-            <div class="cee-card-body" style="padding-top: 0;">
-              <div class="cee-result-row">
-                <div>
-                  <p class="cee-result-name">Formule de calcul</p>
-                  <p class="cee-result-fiche" x-text="results.se104.baseUnit + ' kWh/m² × ' + formatNumber(form.surface) + ' m² × F(' + results.se104.factorF.toFixed(2) + ')'"></p>
-                </div>
-                <div style="text-align: right;">
-                  <p class="cee-result-gwh" x-text="formatMwh(results.se104.total)"></p>
-                </div>
-              </div>
-              <div class="cee-result-row" style="background: var(--color-dark-50);">
-                <div>
-                  <p class="cee-result-name" style="font-size: 13px;">Chauffage (inclus par défaut)</p>
-                </div>
-                <div style="text-align: right;">
-                  <p class="cee-result-fiche">f = base</p>
-                </div>
-              </div>
-              <template x-for="d in results.se104.details" :key="d.id">
-                <div class="cee-result-row" style="background: var(--color-dark-50);">
-                  <div>
-                    <p class="cee-result-name" style="font-size: 13px;" x-text="'+ ' + d.label"></p>
-                  </div>
-                  <div style="text-align: right;">
-                    <p class="cee-result-fiche" x-text="'f = +' + d.factor"></p>
-                  </div>
-                </div>
-              </template>
-            </div>
-          </div>
-        </div>
-
-        <!-- Comparaison si les deux fiches sont actives -->
-        <div x-show="form.enableTH116 && form.enableSE104 && results.th116.total > 0 && results.se104.total > 0" class="cee-disclaimer" style="margin-top: 20px;">
-          <svg style="width: 18px; height: 18px; color: #3b82f6; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <div>
-            <p style="font-weight: 600; color: #1e40af; font-size: 13px; margin-bottom: 4px;">Comparaison</p>
-            <p style="font-size: 13px; color: #1e3a5f; line-height: 1.6;">
-              <strong>BAT-TH-116</strong> : <span x-text="formatMwh(results.th116.total)"></span> cumac = <span x-text="formatCurrency(results.th116.value)"></span><br>
-              <strong>BAT-SE-104</strong> : <span x-text="formatMwh(results.se104.total)"></span> cumac = <span x-text="formatCurrency(results.se104.value)"></span><br>
-              <span style="font-style: italic; opacity: 0.8;">Ces deux fiches ne sont pas cumulables. Choisissez l'option la plus avantageuse.</span>
-            </p>
-          </div>
-        </div>
-
         <!-- Avertissement -->
         <div class="cee-disclaimer" style="margin-top: 20px;">
           <svg style="width: 18px; height: 18px; color: #b45309; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
           <div>
             <p style="font-weight: 600; color: #92400e; font-size: 13px; margin-bottom: 4px;">Estimation indicative</p>
-            <p style="font-size: 13px; color: #78350f; line-height: 1.6;">Calculs basés sur les fiches officielles BAT-TH-116 (v. A62.6) et BAT-SE-104. Les volumes réels dépendent du respect des critères d'éligibilité et d'un dossier complet. NeoGTB ne perçoit aucune commission.</p>
+            <p style="font-size: 13px; color: #78350f; line-height: 1.6;">Calculs basés sur la fiche officielle BAT-TH-116 (v. A62.6). Les volumes réels dépendent du respect des critères d'éligibilité et d'un dossier complet. D'autres fiches CEE (BAT-SE-104, BAT-TH-145, BAT-EQ-127...) peuvent compléter votre projet. NeoGTB ne perçoit aucune commission.</p>
           </div>
         </div>
 
@@ -386,26 +287,18 @@ import RelatedPages from '../components/RelatedPages.astro';
               </div>
               <div class="cee-param">
                 <span class="cee-param-label">Zone climatique</span>
-                <span class="cee-param-value" x-text="form.climateZone + ' (coeff. ' + (zoneCoeff116[form.climateZone] || '') + ')'"></span>
-              </div>
-              <div class="cee-param" x-show="form.enableTH116">
-                <span class="cee-param-label">Classe GTB</span>
-                <span class="cee-param-value" x-text="'Classe ' + form.gtbClass"></span>
-              </div>
-              <div class="cee-param" x-show="form.enableSE104">
-                <span class="cee-param-label">Durée CPE</span>
-                <span class="cee-param-value" x-text="form.cpeDuration + ' ans'"></span>
+                <span class="cee-param-value" x-text="form.climateZone"></span>
               </div>
               <div class="cee-param">
-                <span class="cee-param-label">Prix CEE</span>
-                <span class="cee-param-value" x-text="results.price + ' €/MWh cumac'"></span>
+                <span class="cee-param-label">Classe GTB</span>
+                <span class="cee-param-value" x-text="'Classe ' + form.gtbClass"></span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Actions -->
-        <div class="cee-actions">
+        <div class="cee-actions" x-show="results.th116.total > 0">
           <button @click="downloadPDF()" class="cee-btn-primary" style="flex: 1;">
             <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             Télécharger PDF
@@ -428,6 +321,7 @@ import RelatedPages from '../components/RelatedPages.astro';
           <div @click.outside="showEmailModal = false" class="cee-modal">
             <h3 style="font-size: 18px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 16px;">Recevoir mon estimation</h3>
             <input type="email" x-model="emailAddress" placeholder="votre@email.com" class="cee-input" style="margin-bottom: 12px;">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <p style="font-size: 12px; color: var(--color-dark-400); margin-bottom: 16px;">Votre email ne sera utilisé que pour cet envoi. Aucun démarchage.</p>
             <div style="display: flex; gap: 12px;">
               <button @click="showEmailModal = false" class="cee-btn-ghost" style="flex: 1;">Annuler</button>
@@ -633,16 +527,18 @@ import RelatedPages from '../components/RelatedPages.astro';
 
   /* ── Zone buttons ── */
   .cee-zone {
-    display: flex; flex-direction: column; align-items: center; gap: 2px;
-    padding: 14px; border-radius: 10px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 16px 12px; border-radius: 10px; cursor: pointer;
     border: 1.5px solid var(--color-dark-200);
     background: white; transition: all 0.2s;
     font-family: inherit;
   }
   .cee-zone:hover { border-color: var(--color-dark-300); }
   .cee-zone.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
-  .cee-zone-id { font-size: 16px; font-weight: 600; color: var(--color-dark-900); }
-  .cee-zone-desc { font-size: 11px; color: var(--color-dark-400); }
+  .cee-zone-id { font-size: 15px; font-weight: 600; color: var(--color-dark-900); }
+  .cee-zone-cities { font-size: 11px; color: var(--color-dark-400); text-align: center; line-height: 1.4; }
+  .cee-zone-tag { font-size: 11px; font-weight: 500; color: var(--color-dark-500); background: var(--color-dark-100); padding: 2px 8px; border-radius: 4px; margin-top: 4px; }
+  .cee-zone-depts { font-size: 10px; color: var(--color-dark-300); text-align: center; line-height: 1.4; margin-top: 4px; }
 
   /* ── Equipment cards ── */
   .cee-equip {
@@ -812,7 +708,6 @@ import RelatedPages from '../components/RelatedPages.astro';
         { id: 'commercial', label: 'Commerce', icon: '🛒' },
         { id: 'hotel', label: 'Hôtellerie / Restauration', icon: '🏨' },
         { id: 'health', label: 'Santé', icon: '🏥' },
-        { id: 'sport', label: 'Sport, Loisirs, Culture', icon: '🏟️' },
       ],
 
       usageList: [
@@ -845,51 +740,18 @@ import RelatedPages from '../components/RelatedPages.astro';
       },
 
       // Coefficients zone climatique BAT-TH-116
-      zoneCoeff116: { H1: 1.1, H2: 0.9, H3: 0.6 },
-
-      // ══════════════════════════════════════════════
-      // BAT-SE-104 — Tableaux officiels
-      // Montant unitaire kWh cumac / m² par durée et zone
-      // ══════════════════════════════════════════════
-      se104Table: {
-        2:  { H1: 23, H2: 19, H3: 13 },
-        3:  { H1: 34, H2: 28, H3: 18 },
-        4:  { H1: 44, H2: 36, H3: 24 },
-        5:  { H1: 54, H2: 44, H3: 30 },
-        6:  { H1: 64, H2: 52, H3: 35 },
-        7:  { H1: 73, H2: 60, H3: 40 },
-        8:  { H1: 82, H2: 67, H3: 45 },
-        9:  { H1: 90, H2: 74, H3: 49 },
-        10: { H1: 99, H2: 81, H3: 54 },
-      },
-
-      // Facteurs correctifs BAT-SE-104 par secteur
-      se104Factors: {
-        office:     { ecs: 0.06, cooling: 0.28, elec: 0.78 },
-        hotel:      { ecs: 0.38, cooling: 0.26, elec: 1.09 },
-        commercial: { ecs: 0.16, cooling: 0.25, elec: 0.82 },
-        health:     { ecs: 0.32, cooling: 0.13, elec: 0.32 },
-        education:  { ecs: 0.14, cooling: 0.02, elec: 0.20 },
-        sport:      { ecs: 0.52, cooling: 0.13, elec: 0.41 },
-      },
+      zoneCoeff116: { H1: 1.1, H2: 0.9, H3: 0.6, DOM: 1.2 },
 
       form: {
         buildingType: '',
         surface: null,
         climateZone: '',
-        // BAT-TH-116
-        enableTH116: true,
         gtbClass: 'A',
         usages116: { heating: true, cooling: false, ecs: false, lighting: false, auxiliary: false },
-        // BAT-SE-104
-        enableSE104: false,
-        cpeDuration: 5,
-        usages104: { ecs: false, cooling: false, elec: false },
       },
 
       results: {
         th116: { total: 0, value: 0, details: [] },
-        se104: { total: 0, value: 0, factorF: 1, baseUnit: 0, details: [] },
         price: 7,
       },
 
@@ -927,17 +789,6 @@ import RelatedPages from '../components/RelatedPages.astro';
         return table[bt][usageId] || 0;
       },
 
-      // Calcule le facteur F pour BAT-SE-104
-      calculateF() {
-        const factors = this.se104Factors[this.form.buildingType];
-        if (!factors) return 1;
-        let sumF = 0;
-        if (this.form.usages104.ecs && factors.ecs) sumF += factors.ecs;
-        if (this.form.usages104.cooling && factors.cooling) sumF += factors.cooling;
-        if (this.form.usages104.elec && factors.elec) sumF += factors.elec;
-        return 1 + sumF;
-      },
-
       getBuildingTypeLabel() {
         const t = this.buildingTypes.find(b => b.id === this.form.buildingType);
         return t ? t.label : '';
@@ -963,24 +814,14 @@ import RelatedPages from '../components/RelatedPages.astro';
         if (!this.form.buildingType) this.errors.buildingType = 'Sélectionnez un secteur';
         if (!this.form.surface || this.form.surface < 100) this.errors.surface = 'Surface minimale : 100 m²';
         if (!this.form.climateZone) this.errors.climateZone = 'Sélectionnez une zone';
-        if (Object.keys(this.errors).length === 0) {
-          if (this.form.buildingType === 'sport') {
-            this.form.enableTH116 = false;
-            this.form.enableSE104 = true;
-          }
-          this.step = 2;
-        }
+        if (Object.keys(this.errors).length === 0) { this.step = 2; }
       },
 
       validateStep2() {
         this.errors = {};
-        if (!this.form.enableTH116 && !this.form.enableSE104) {
-          this.errors.fiches = 'Sélectionnez au moins une fiche CEE';
-          return;
-        }
-        if (this.form.enableTH116 && this.form.buildingType !== 'sport') {
+        if (this.form.buildingType !== 'sport') {
           const hasUsage = Object.values(this.form.usages116).some(v => v);
-          if (!hasUsage) { this.errors.usages116 = 'Sélectionnez au moins un usage pour BAT-TH-116'; return; }
+          if (!hasUsage) { this.errors.usages116 = 'Sélectionnez au moins un usage'; return; }
         }
         this.calculateResults();
         this.step = 3;
@@ -994,7 +835,7 @@ import RelatedPages from '../components/RelatedPages.astro';
         // ── BAT-TH-116 ──
         let th116Total = 0;
         let th116Details = [];
-        if (this.form.enableTH116 && this.form.buildingType !== 'sport') {
+        if (this.form.buildingType !== 'sport') {
           const zc = this.zoneCoeff116[zone] || 1;
           const table = this.th116[this.form.gtbClass]?.[this.form.buildingType];
           if (table) {
@@ -1011,29 +852,8 @@ import RelatedPages from '../components/RelatedPages.astro';
           }
         }
 
-        // ── BAT-SE-104 ──
-        let se104Total = 0;
-        let se104Details = [];
-        let factorF = 1;
-        let baseUnit = 0;
-        if (this.form.enableSE104) {
-          baseUnit = this.se104Table[this.form.cpeDuration]?.[zone] || 0;
-          const factors = this.se104Factors[this.form.buildingType] || {};
-          const labels104 = { ecs: 'Eau chaude sanitaire', cooling: 'Climatisation', elec: 'Électricité spécifique' };
-          let sumF = 0;
-          for (const [uid, enabled] of Object.entries(this.form.usages104)) {
-            if (enabled && factors[uid]) {
-              sumF += factors[uid];
-              se104Details.push({ id: uid, label: labels104[uid], factor: factors[uid] });
-            }
-          }
-          factorF = 1 + sumF;
-          se104Total = baseUnit * s * factorF / 1000; // MWh cumac
-        }
-
         this.results = {
           th116: { total: th116Total, value: th116Total * price, details: th116Details },
-          se104: { total: se104Total, value: se104Total * price, factorF, baseUnit, details: se104Details },
           price,
         };
       },
@@ -1087,7 +907,7 @@ import RelatedPages from '../components/RelatedPages.astro';
         y += 36;
 
         // ── BAT-TH-116 ──
-        if (this.form.enableTH116 && this.results.th116.total > 0) {
+        if (this.results.th116.total > 0) {
           doc.setFillColor(240, 253, 250);
           doc.roundedRect(m, y, 80, 30, 4, 4, 'F');
           doc.setDrawColor(13, 148, 136); doc.setLineWidth(0.3);
@@ -1128,31 +948,6 @@ import RelatedPages from '../components/RelatedPages.astro';
           y += 8;
         }
 
-        // ── BAT-SE-104 ──
-        if (this.form.enableSE104 && this.results.se104.total > 0) {
-          doc.setFillColor(240, 253, 250);
-          doc.roundedRect(m, y, 80, 30, 4, 4, 'F');
-          doc.setDrawColor(13, 148, 136); doc.setLineWidth(0.3);
-          doc.roundedRect(m, y, 80, 30, 4, 4, 'S');
-          doc.setFontSize(7); doc.setTextColor(13, 148, 136); doc.text('BAT-SE-104 — CPE ' + this.form.cpeDuration + ' ANS', m + 5, y + 8);
-          doc.setFontSize(16); doc.setTextColor(15, 23, 42);
-          doc.text(this.formatMwh(this.results.se104.total), m + 5, y + 20);
-          doc.setFontSize(8); doc.setTextColor(100, 116, 139); doc.text('cumac · F = ' + this.results.se104.factorF.toFixed(2), m + 5, y + 26);
-
-          doc.setFillColor(13, 148, 136);
-          doc.roundedRect(m + 85, y, 85, 30, 4, 4, 'F');
-          doc.setFontSize(7); doc.setTextColor(180, 240, 220); doc.text('VALEUR ESTIMEE', m + 90, y + 8);
-          doc.setFontSize(18); doc.setTextColor(255, 255, 255);
-          doc.text(this.formatCurrency(this.results.se104.value), m + 90, y + 21);
-          doc.setFontSize(8); doc.setTextColor(180, 240, 220);
-          doc.text(this.formatCurrency(this.results.se104.value * 0.75) + ' - ' + this.formatCurrency(this.results.se104.value * 1.25), m + 90, y + 27);
-          y += 38;
-
-          doc.setFontSize(9); doc.setTextColor(100, 116, 139);
-          doc.text('Formule : ' + this.results.se104.baseUnit + ' kWh/m\u00B2 x ' + this.formatNumber(this.form.surface) + ' m\u00B2 x F(' + this.results.se104.factorF.toFixed(2) + ')', m, y);
-          y += 12;
-        }
-
         // ── DISCLAIMER ──
         if (y > 250) { doc.addPage(); y = 20; }
         doc.setFillColor(255, 251, 235);
@@ -1162,7 +957,7 @@ import RelatedPages from '../components/RelatedPages.astro';
         doc.setFontSize(8); doc.setTextColor(146, 64, 14);
         doc.text('ESTIMATION INDICATIVE', m + 5, y + 7);
         doc.setTextColor(120, 80, 20);
-        doc.text('Calculs bases sur les fiches officielles BAT-TH-116 (v. A62.6) et BAT-SE-104.', m + 5, y + 13);
+        doc.text('Calculs bases sur la fiche officielle BAT-TH-116 (v. A62.6).', m + 5, y + 13);
         doc.text('NeoGTB ne percoit aucune commission sur les CEE. Independance totale.', m + 5, y + 18);
 
         // ── FOOTER ──
@@ -1182,24 +977,24 @@ import RelatedPages from '../components/RelatedPages.astro';
         try {
           const payload = {
             _subject: 'Estimation CEE NeoGTB',
+            _gotcha: '',
             email: this.emailAddress,
             th116_mwh: this.results.th116.total,
             th116_value: this.results.th116.value,
-            se104_mwh: this.results.se104.total,
-            se104_value: this.results.se104.value,
             secteur: this.getBuildingTypeLabel(),
             surface: this.form.surface,
             zone: this.form.climateZone,
           };
           await fetch('https://formsubmit.co/ajax/hello@neogtb.fr', { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } });
+          this.emailSent = true;
+          setTimeout(() => { this.showEmailModal = false; this.emailSent = false; }, 2000);
         } catch (e) {}
-        this.emailSent = true;
-        setTimeout(() => { this.showEmailModal = false; this.emailSent = false; }, 2000);
       },
 
       resetResults() {
-        this.results = { th116: { total: 0, value: 0, details: [] }, se104: { total: 0, value: 0, factorF: 1, baseUnit: 0, details: [] }, price: 7 };
+        this.results = { th116: { total: 0, value: 0, details: [] }, price: 7 };
         this.errors = {};
+        this.form = { buildingType: '', surface: null, climateZone: '', gtbClass: 'A', usages116: { heating: true, cooling: false, ecs: false, lighting: false, auxiliary: false } };
       },
     }));
   });

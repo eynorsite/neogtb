@@ -1,10 +1,10 @@
 ---
 title: "Smart Building : les 5 tendances majeures en 2026"
 description: "IA, jumeaux numériques, IoT, cybersécurité et décarbonation : découvrez les tendances qui transforment la GTB en 2026."
-date: "2026-03-09"
+date: "2026-03-25"
 author: "NeoGTB"
 category: "Tendances"
-tags: []
+tags: ["Smart Building", "GTB", "IA"]
 featured: true
 ---
 

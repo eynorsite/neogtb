@@ -28,7 +28,7 @@ Pour les bâtiments neufs, la date du permis de construire est déterminante. Si
 
 ### 5. Qu'est-ce qu'un système BACS conforme exactement ?
 
-Un Building Automation and Control System (BACS) conforme au décret doit atteindre au minimum la **classe B de la norme NF EN 15232-1**. Cela implique une supervision automatisée du CVC, un monitoring en temps réel des consommations, une gestion des plages horaires et une capacité de reporting compatible avec la plateforme OPERAT.
+Un Building Automation and Control System (BACS) conforme au décret doit atteindre au minimum la **classe B de la norme NF EN ISO 52120-1**. Cela implique une supervision automatisée du CVC, un monitoring en temps réel des consommations, une gestion des plages horaires et une capacité de reporting compatible avec la plateforme OPERAT.
 
 ### 6. Quelles sont les sanctions en cas de non-conformité à l'échéance ?
 

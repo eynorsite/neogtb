@@ -10,7 +10,7 @@ featured: false
 
 ## Au-delà de la conformité : la GTB comme fondation du bâtiment intelligent
 
-Le décret BACS impose un plancher technique — la classe B de la norme NF EN 15232. Mais pour les décideurs qui regardent au-delà de 2030, la GTB n'est pas une fin en soi. C'est la **fondation technique** sur laquelle se construira le bâtiment intelligent de la prochaine décennie.
+Le décret BACS impose un plancher technique — la classe B de la norme NF EN ISO 52120-1. Mais pour les décideurs qui regardent au-delà de 2030, la GTB n'est pas une fin en soi. C'est la **fondation technique** sur laquelle se construira le bâtiment intelligent de la prochaine décennie.
 
 ## Les 5 tendances qui transformeront la GTB d'ici 2035
 

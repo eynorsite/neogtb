@@ -1,10 +1,10 @@
 ---
 title: "Décret BACS 2030 : puissances, classes de performance et commissioning – Le point technique"
-description: "Puissance nominale utile, classification NF EN 15232, fonctions de monitoring, inspection périodique : le décret 2025-1343 décrypté pour les bureaux d'études et les ingénieurs."
+description: "Puissance nominale utile, classification NF EN ISO 52120-1 (ex-EN 15232), fonctions de monitoring, inspection périodique : le décret 2025-1343 décrypté pour les bureaux d'études et les ingénieurs."
 date: "2025-11-21"
 author: "NeoGTB"
-category: "Technique"
-tags: ["BACS", "NF EN 15232", "ISO 52120", "commissioning", "bureaux d'études", "CVC"]
+category: "Réglementation"
+tags: ["BACS", "ISO 52120-1", "commissioning", "bureaux d'études", "CVC"]
 featured: false
 ---
 
@@ -24,9 +24,9 @@ Le déclenchement de l'obligation BACS repose sur un critère précis et non mod
 | 70–290 kW (neuf, PC ≥ 8 avr. 2024) | En vigueur | GTB intégrée RE2020 | Depuis avr. 2024 |
 | > 290 kW (neuf, PC ≥ jan. 2021) | En vigueur | GTB intégrée | Depuis jan. 2021 |
 
-## La norme NF EN 15232 / ISO 52120 : comprendre les classes
+## La norme NF EN ISO 52120-1 (ex-EN 15232) : comprendre les classes
 
-Le décret exige un niveau de classe **A ou B minimum** selon la norme **NF EN 15232-1** (reprise dans ISO 52120). Cette norme définit quatre niveaux d'automatisation des bâtiments :
+Le décret exige un niveau de classe **A ou B minimum** selon la norme **NF EN ISO 52120-1** (anciennement EN 15232). Cette norme définit quatre niveaux d'automatisation des bâtiments :
 
 - **Classe D** : automatisation non conforme au BACS. Systèmes manuels ou très peu automatisés. Facteur d'efficacité énergétique le plus bas.
 - **Classe C** : automatisation standard. Contrôle automatique basique. Niveau minimal acceptable dans d'autres contextes mais non suffisant pour le décret.

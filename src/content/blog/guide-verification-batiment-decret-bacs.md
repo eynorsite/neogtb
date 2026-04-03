@@ -26,7 +26,7 @@ Votre puissance est connue ? **Moins de 70 kW** → pas d'obligation. **70 à 29
 
 ### Étape 4 : Identifier le niveau de conformité actuel
 
-Avez-vous déjà un système GTB ? Si oui, quel est son niveau selon NF EN 15232 ? Un simple automate de régulation sans supervision n'est généralement **pas suffisant** pour atteindre la classe B. Un audit BACS qualifiera précisément votre situation.
+Avez-vous déjà un système GTB ? Si oui, quel est son niveau selon NF EN ISO 52120-1 ? Un simple automate de régulation sans supervision n'est généralement **pas suffisant** pour atteindre la classe B. Un audit BACS qualifiera précisément votre situation.
 
 ## Où trouver la puissance nominale utile ?
 
