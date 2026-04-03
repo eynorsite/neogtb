@@ -6,7 +6,10 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://neogtb.fr',
-  integrations: [sitemap()],
+  trailingSlash: 'never',
+  integrations: [sitemap({
+    lastmod: new Date(),
+  })],
   vite: {
     plugins: [tailwindcss()]
   }

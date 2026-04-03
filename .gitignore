@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 # Audit screenshots
 audit_screenshots/
+.vercel
+.env*.local

@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Exercer vos droits RGPD" description="Exercez vos droits RGPD sur NeoGTB : accès, rectification, suppression, portabilité et opposition. Formulaire sécurisé, réponse sous 30 jours.">
+<Layout title="Exercer vos droits RGPD" description="Droits RGPD sur NeoGTB : accès, rectification, suppression, portabilité, opposition. Réponse sous 30 jours.">
 
   <section class="py-16 md:py-20">
     <div class="max-w-[680px] mx-auto px-4 sm:px-6">
@@ -98,6 +98,7 @@ import Layout from '../layouts/Layout.astro';
               class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 focus:ring-2 focus:ring-accent-500 focus:outline-none resize-y"
               style="border:0.5px solid rgba(0,0,0,0.08);"></textarea>
           </div>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         </div>
 
         <!-- Info sécurité -->
@@ -170,7 +171,7 @@ import Layout from '../layouts/Layout.astro';
       async submitForm() {
         if (!this.form.type || !this.form.email || !this.form.name) return;
         try {
-          const payload = { _subject: 'Demande RGPD — ' + this.form.type, type: this.form.type, email: this.form.email, name: this.form.name, message: this.form.message };
+          const payload = { _subject: 'Demande RGPD — ' + this.form.type, _gotcha: '', type: this.form.type, email: this.form.email, name: this.form.name, message: this.form.message };
           const res = await fetch('https://formsubmit.co/ajax/hello@neogtb.fr', {
             method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
           });
