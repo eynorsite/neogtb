@@ -19,7 +19,7 @@ class RecentMessages extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
-            ->query(ContactMessage::query()->latest()->limit(5))
+            ->query(ContactMessage::query()->latest())
             ->columns([
                 Tables\Columns\TextColumn::make('status')
                     ->label('Statut')
@@ -42,7 +42,7 @@ class RecentMessages extends BaseWidget
                     ->label('Reçu')
                     ->since(),
             ])
-            ->paginated(false)
+            ->defaultPaginationPageOption(5)
             ->emptyStateHeading('Aucun message')
             ->emptyStateDescription('Aucun message de contact pour le moment.')
             ->emptyStateIcon('heroicon-o-envelope');

@@ -19,7 +19,7 @@ class RecentActivity extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
-            ->query(AdminActivityLog::query()->with('admin')->latest('created_at')->limit(10))
+            ->query(AdminActivityLog::query()->with('admin')->latest('created_at'))
             ->columns([
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Date')
@@ -40,6 +40,6 @@ class RecentActivity extends BaseWidget
                     ->label('Type')
                     ->formatStateUsing(fn ($state) => $state ? class_basename($state) : '—'),
             ])
-            ->paginated(false);
+            ->defaultPaginationPageOption(5);
     }
 }

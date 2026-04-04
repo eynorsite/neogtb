@@ -22,8 +22,8 @@ class PostSyncObserver
     private function sync(Post $post, string $event): void
     {
         try {
-            Artisan::call('sync:blog');
-            Log::info("Blog sync déclenché ({$event}): {$post->slug}");
+            Artisan::call('sync:blog', ['--rebuild' => true]);
+            Log::info("Blog sync + rebuild déclenché ({$event}): {$post->slug}");
         } catch (\Throwable $e) {
             Log::error("Erreur sync blog ({$event}): {$e->getMessage()}");
         }

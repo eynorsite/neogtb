@@ -17,7 +17,7 @@ class SyncBlogCommand extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->blogDir = base_path('../src/content/blog');
+        $this->blogDir = '/var/www/neogtb-src/src/content/blog';
     }
 
     public function handle(): int
@@ -53,12 +53,11 @@ class SyncBlogCommand extends Command
         }
 
         if ($this->option('rebuild') && $synced > 0) {
-            $this->info('Rebuild Astro en cours...');
-            $projectRoot = realpath(base_path('..'));
-            $process = Process::path($projectRoot)->timeout(120)->run('npm run build');
+            $this->info('Rebuild Astro en cours (build sécurisé)...');
+            $process = Process::timeout(180)->run('sudo /bin/bash /var/www/neogtb-src/deploy.sh');
 
             if ($process->successful()) {
-                $this->info('✓ Build Astro terminé.');
+                $this->info('✓ Build et déploiement terminés.');
             } else {
                 $this->error('✗ Erreur build Astro :');
                 $this->line($process->errorOutput());

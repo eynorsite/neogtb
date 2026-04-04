@@ -31,10 +31,11 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('NeoGTB Admin')
             ->brandLogo(asset('images/logo-admin.webp'))
             ->brandLogoHeight('3rem')
+            ->homeUrl('https://neogtb.fr')
             ->favicon(asset('favicon.svg'))
             ->font('Inter')
             ->sidebarWidth('16rem')
-            ->darkMode(true)
+            ->darkMode(false)
             ->maxContentWidth('full')
             ->renderHook('panels::styles.after', fn () => view('filament.hooks.admin-styles'))
             ->colors([
@@ -92,7 +93,7 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
                 EnsureAdminIsActive::class,
             ])
-            ->spa()
+            // ->spa()
             ->sidebarCollapsibleOnDesktop()
             ->navigationGroups([
                 \Filament\Navigation\NavigationGroup::make('Mon site')

@@ -207,11 +207,6 @@
             padding: 1.5rem;
         }
 
-        .dark .hp-card {
-            background: rgb(17 24 39);
-            border-color: rgb(55 65 81);
-        }
-
         .hp-card-header {
             display: flex;
             align-items: center;
@@ -219,10 +214,6 @@
             margin-bottom: 1.25rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid #f1f5f9;
-        }
-
-        .dark .hp-card-header {
-            border-bottom-color: rgb(55 65 81);
         }
 
         .hp-card-icon {
@@ -242,8 +233,6 @@
             margin: 0;
             line-height: 1.3;
         }
-
-        .dark .hp-card-title { color: #f1f5f9; }
 
         .hp-card-desc {
             font-size: 0.78rem;
@@ -269,8 +258,6 @@
             margin-bottom: 0.35rem;
         }
 
-        .dark .hp-label { color: #cbd5e1; }
-
         .hp-label-tag {
             display: inline-block;
             font-size: 0.65rem;
@@ -281,11 +268,6 @@
             border-radius: 4px;
             margin-left: 4px;
             vertical-align: middle;
-        }
-
-        .dark .hp-label-tag {
-            background: rgb(55 65 81);
-            color: #94a3b8;
         }
 
         .hp-input {
@@ -299,12 +281,6 @@
             border-radius: 9px;
             transition: all 0.15s ease;
             outline: none;
-        }
-
-        .dark .hp-input {
-            background: rgb(31 41 55);
-            border-color: rgb(75 85 99);
-            color: #f1f5f9;
         }
 
         .hp-input:focus {
@@ -351,19 +327,9 @@
             background: #fafbfc;
         }
 
-        .dark .hp-upload-zone {
-            background: rgb(31 41 55);
-            border-color: rgb(75 85 99);
-        }
-
         .hp-upload-zone:hover {
             border-color: #93c5fd;
             background: #f0f7ff;
-        }
-
-        .dark .hp-upload-zone:hover {
-            border-color: #3b82f6;
-            background: rgb(30 58 92 / 0.3);
         }
 
         .hp-progress-bar {
@@ -421,10 +387,6 @@
             margin-bottom: 0;
         }
 
-        .dark .hp-btn-group {
-            background: rgb(31 41 55);
-        }
-
         .hp-btn-group-label {
             font-size: 0.72rem;
             font-weight: 700;
@@ -440,10 +402,6 @@
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid #e2e8f0;
-        }
-
-        .dark .hp-current-image {
-            border-color: rgb(75 85 99);
         }
 
         .hp-current-image img {
