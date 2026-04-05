@@ -10,7 +10,10 @@ use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\SitePage;
 use App\Models\SiteSetting;
+use App\Models\PageBrick;
 use App\Observers\AdminAuditObserver;
+use App\Observers\BrickSyncObserver;
+use App\Observers\PageSyncObserver;
 use App\Observers\PostSyncObserver;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
@@ -45,5 +48,9 @@ class AppServiceProvider extends ServiceProvider
 
         // Auto-sync blog posts to Astro markdown files
         Post::observe(PostSyncObserver::class);
+
+        // Auto-sync pages + bricks to Astro JSON
+        SitePage::observe(PageSyncObserver::class);
+        PageBrick::observe(BrickSyncObserver::class);
     }
 }

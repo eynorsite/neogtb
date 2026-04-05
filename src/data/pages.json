@@ -1,0 +1,1319 @@
+{
+    "index": {
+        "slug": "index",
+        "name": "Accueil",
+        "hero": {
+            "title": "Conseil GTB indépendant",
+            "subtitle": "Néo GTB",
+            "description": "Pré-diagnostic ISO 52120-1 gratuit et comparateur GTB sans biais commercial. En moyenne 23 % d'économies CVC sur bureaux classe D→B.",
+            "cta_text": "Pré-diagnostic gratuit",
+            "cta_url": "/audit",
+            "image": null
+        },
+        "seo": {
+            "meta_title": "NeoGTB — Conseil GTB indépendant | Pré-diagnostic ISO 52120 gratuit",
+            "meta_description": "Pré-diagnostic ISO 52120-1 gratuit et comparateur GTB sans biais commercial. En moyenne 23 % d'économies CVC sur bureaux classe D→B.",
+            "meta_keywords": "GTB, conseil GTB, pré-diagnostic, ISO 52120-1, décret BACS, gestion technique bâtiment",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": []
+    },
+    "gtb": {
+        "slug": "gtb",
+        "name": "Qu'est-ce que la GTB ?",
+        "hero": {
+            "title": "Qu'est-ce que la GTB ?",
+            "subtitle": "Guide complet de la Gestion Technique du Bâtiment",
+            "description": "La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment — du chauffage à l'éclairage, en passant par la ventilation et le contrôle d'accès.",
+            "cta_text": "Faire un audit GTB",
+            "cta_url": "/audit",
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Qu'est-ce que la GTB ? Définition et niveaux ISO 52120-1",
+            "meta_description": "Guide GTB : définition, 4 niveaux ISO 52120-1 (ex-EN 15232), protocoles BACnet/KNX/Modbus, décret BACS et obligations. Mis à jour 2026.",
+            "meta_keywords": "GTB, gestion technique du bâtiment, ISO 52120-1, EN 15232, décret BACS, BACnet, KNX, Modbus",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero GTB",
+                "content": {
+                    "badge": "📘 Guide éducatif",
+                    "titre": "Qu'est-ce que la GTB ?",
+                    "sous_titre": "La Gestion Technique du Bâtiment est le cerveau intelligent qui pilote, supervise et optimise l'ensemble des équipements techniques d'un bâtiment.",
+                    "cta_texte": "Évaluer mon bâtiment",
+                    "cta_lien": "/audit",
+                    "cta2_texte": "GTB vs GTC →",
+                    "cta2_lien": "/gtc"
+                },
+                "settings": {
+                    "hauteur": "medium",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "texte",
+                "name": "Définition de la GTB",
+                "content": {
+                    "titre": "Définition de la GTB",
+                    "contenu": "<p>La <strong>Gestion Technique du Bâtiment (GTB)</strong>, aussi appelée <em>Building Management System (BMS)</em> en anglais, est un système informatique centralisé qui permet de <strong>superviser, piloter et optimiser</strong> l'ensemble des équipements techniques d'un bâtiment.</p><p>Elle agit comme le <strong>système nerveux central</strong> du bâtiment en collectant les données de milliers de capteurs, en les analysant et en envoyant des commandes aux équipements pour maintenir le confort tout en minimisant la consommation énergétique.</p><p>📋 <strong>Réglementation :</strong> La GTB est obligatoire dans les bâtiments tertiaires de plus de 1 000 m² depuis le <strong>décret BACS (2020)</strong>, dans le cadre du décret tertiaire.</p>"
+                },
+                "settings": {
+                    "position_image": "none",
+                    "couleur_fond": "#ffffff"
+                }
+            },
+            {
+                "type": "chiffres",
+                "name": "La GTB en chiffres",
+                "content": {
+                    "titre": "La GTB en chiffres",
+                    "stats": [
+                        {
+                            "icone": "📉",
+                            "valeur": "40",
+                            "suffixe": "%",
+                            "label": "d'économies d'énergie"
+                        },
+                        {
+                            "icone": "📅",
+                            "valeur": "3",
+                            "suffixe": " ans",
+                            "label": "retour sur investissement"
+                        },
+                        {
+                            "icone": "🔧",
+                            "valeur": "30",
+                            "suffixe": "%",
+                            "label": "de maintenance en moins"
+                        }
+                    ]
+                },
+                "settings": {
+                    "couleur_fond": "#f8fafc",
+                    "animation": true
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Les 6 fonctions principales",
+                "content": {
+                    "titre_section": "Les 6 fonctions principales de la GTB",
+                    "cartes": [
+                        {
+                            "icone": "🌡️",
+                            "titre": "CVC",
+                            "description": "Chauffage, Ventilation et Climatisation. Régulation de la température, qualité de l'air, gestion des centrales de traitement d'air.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "💡",
+                            "titre": "Éclairage",
+                            "description": "Gestion intelligente : détection de présence, variation d'intensité, scénarios lumineux, gestion horaire.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "⚡",
+                            "titre": "Énergie",
+                            "description": "Comptage énergétique, suivi des consommations, détection des dérives, optimisation tarifaire et délestage.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🔐",
+                            "titre": "Sécurité",
+                            "description": "Contrôle d'accès, détection d'intrusion, vidéosurveillance, sécurité incendie et alarmes techniques.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🤖",
+                            "titre": "Automatisation",
+                            "description": "Scénarios automatiques, programmation horaire, gestion des modes (occupation, inoccupation, vacances).",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "📊",
+                            "titre": "Reporting",
+                            "description": "Tableaux de bord, historiques, rapports automatisés, indicateurs de performance et alertes.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 3
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Les 4 niveaux de GTB",
+                "content": {
+                    "titre_section": "Les 4 niveaux de GTB (norme EN 15232)",
+                    "cartes": [
+                        {
+                            "icone": "🔴",
+                            "titre": "Classe D — Non performant",
+                            "description": "Aucun système de gestion. Équipements manuels sans automatisation. 0% d'économies.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🟠",
+                            "titre": "Classe C — Standard",
+                            "description": "Automatisation de base. Régulation simple, programmation horaire. 10-15% d'économies.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🟢",
+                            "titre": "Classe B — Avancé",
+                            "description": "GTB centralisée. Supervision complète, suivi énergétique détaillé. 20-30% d'économies.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🔵",
+                            "titre": "Classe A — Haute performance",
+                            "description": "GTB intelligente. Optimisation prédictive, IA, auto-apprentissage. 30-50% d'économies.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 2
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Architecture GTB",
+                "content": {
+                    "titre_section": "Architecture d'un système GTB",
+                    "cartes": [
+                        {
+                            "icone": "🖥️",
+                            "titre": "Niveau Gestion — Supervision",
+                            "description": "Logiciel de supervision (SCADA), base de données, interface web, reporting et historiques.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "⚙️",
+                            "titre": "Niveau Automatisme — Contrôleurs",
+                            "description": "Automates programmables (PLC), contrôleurs de zone, régulateurs. Communication BACnet, Modbus, KNX.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "📡",
+                            "titre": "Niveau Terrain — Capteurs",
+                            "description": "Sondes de température, détecteurs de présence, vannes, variateurs. Les organes sensoriels du bâtiment.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 3
+                }
+            },
+            {
+                "type": "cta",
+                "name": "CTA GTB",
+                "content": {
+                    "titre": "Évaluez le niveau GTB de votre bâtiment",
+                    "sous_titre": "Notre diagnostic gratuit identifie votre classe actuelle (EN 15232) et les axes d'amélioration.",
+                    "bouton_texte": "Lancer le diagnostic",
+                    "bouton_lien": "/audit",
+                    "bouton2_texte": "Découvrir la GTC →",
+                    "bouton2_lien": "/gtc"
+                },
+                "settings": {
+                    "style": "dark"
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Cartes",
+                "content": {
+                    "titre_section": "",
+                    "cartes": []
+                },
+                "settings": {
+                    "colonnes": 3
+                }
+            },
+            {
+                "type": "chiffres",
+                "name": "Chiffres clés",
+                "content": {
+                    "titre": "",
+                    "sous_titre": "",
+                    "stats": []
+                },
+                "settings": {
+                    "couleur_fond": "#f8fafc",
+                    "animation": true
+                }
+            },
+            {
+                "type": "faq",
+                "name": "FAQ",
+                "content": {
+                    "titre": "Questions fréquentes",
+                    "questions": []
+                },
+                "settings": []
+            },
+            {
+                "type": "comparatif",
+                "name": "Comparatif",
+                "content": {
+                    "titre": "",
+                    "sous_titre": "",
+                    "colonne_gauche_titre": "Avant",
+                    "colonne_droite_titre": "Après",
+                    "lignes_gauche": [],
+                    "lignes_droite": []
+                },
+                "settings": []
+            },
+            {
+                "type": "formulaire",
+                "name": "Formulaire",
+                "content": {
+                    "titre": "Envoyez-nous un message",
+                    "email_destination": "contact@neogtb.fr",
+                    "message_succes": "Merci ! Votre message a bien été envoyé."
+                },
+                "settings": []
+            }
+        ]
+    },
+    "gtc": {
+        "slug": "gtc",
+        "name": "Qu'est-ce que la GTC ?",
+        "hero": {
+            "title": "Qu'est-ce que la GTC ?",
+            "subtitle": "Supervision et pilotage centralisé",
+            "description": "La Gestion Technique Centralisée (GTC) désigne le système de supervision qui regroupe la surveillance et le pilotage de tous les équipements techniques d'un ou plusieurs bâtiments sur une interface unique.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Qu'est-ce que la GTC ? Différences avec la GTB",
+            "meta_description": "Guide GTC : définition, différences avec la GTB, architecture type, protocoles OPC-UA/BACnet/Modbus et supervision multi-sites.",
+            "meta_keywords": "GTC, gestion technique centralisée, supervision, SCADA, multi-sites, OPC-UA, BACnet, Modbus",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero GTC",
+                "content": {
+                    "badge": "📗 Guide éducatif",
+                    "titre": "Qu'est-ce que la GTC ?",
+                    "sous_titre": "La Gestion Technique Centralisée est le système de supervision qui centralise la surveillance et le contrôle de tous les équipements sur une interface unique.",
+                    "cta_texte": "Évaluer mon bâtiment",
+                    "cta_lien": "/audit",
+                    "cta2_texte": "GTB vs GTC →",
+                    "cta2_lien": "/gtb"
+                },
+                "settings": {
+                    "hauteur": "medium",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "texte",
+                "name": "Définition GTC",
+                "content": {
+                    "titre": "Définition de la GTC",
+                    "contenu": "<p>La <strong>Gestion Technique Centralisée (GTC)</strong> est un système informatique qui permet de centraliser la supervision de l'ensemble des lots techniques d'un bâtiment ou d'un parc immobilier sur une <strong>seule interface</strong>.</p><p>Contrairement à la GTB qui se concentre sur un bâtiment unique, la GTC peut <strong>superviser plusieurs bâtiments simultanément</strong>, offrant une vision globale à l'exploitant.</p><p>Elle collecte en temps réel les données des différents systèmes (CVC, éclairage, sécurité, énergie), les affiche sur des <strong>synoptiques graphiques</strong> et permet de piloter les équipements à distance.</p>"
+                },
+                "settings": {
+                    "position_image": "none",
+                    "couleur_fond": "#ffffff"
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Fonctions clés GTC",
+                "content": {
+                    "titre_section": "Les fonctions clés de la GTC",
+                    "cartes": [
+                        {
+                            "icone": "🖥️",
+                            "titre": "Supervision en temps réel",
+                            "description": "Visualisation de tous les états et mesures sur des synoptiques interactifs.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🚨",
+                            "titre": "Gestion des alarmes",
+                            "description": "Détection automatique des anomalies, alertes et historique des événements.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "📱",
+                            "titre": "Pilotage à distance",
+                            "description": "Commande des équipements depuis un poste central ou un appareil mobile.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "📈",
+                            "titre": "Historisation & Reporting",
+                            "description": "Archivage des données, courbes de tendance, rapports automatisés.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🏢",
+                            "titre": "Multi-sites",
+                            "description": "Supervision de plusieurs bâtiments depuis une plateforme centralisée.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 3
+                }
+            },
+            {
+                "type": "comparatif",
+                "name": "GTB vs GTC",
+                "content": {
+                    "titre": "GTB vs GTC : quelles différences ?",
+                    "sous_titre": "En pratique, les termes sont souvent utilisés de manière interchangeable. L'important est de comprendre que la GTC supervise tandis que la GTB supervise ET pilote.",
+                    "colonne_gauche_titre": "GTB (Building Management)",
+                    "colonne_droite_titre": "GTC (Supervision Centralisée)",
+                    "lignes_gauche": [
+                        {
+                            "texte": "1 bâtiment, tous les lots techniques"
+                        },
+                        {
+                            "texte": "Fonction : piloter et optimiser"
+                        },
+                        {
+                            "texte": "Régulation intégrée (automates)"
+                        },
+                        {
+                            "texte": "Plus complexe, plus puissante"
+                        },
+                        {
+                            "texte": "Utilisateur : technicien maintenance"
+                        }
+                    ],
+                    "lignes_droite": [
+                        {
+                            "texte": "Plusieurs bâtiments ou 1 lot technique"
+                        },
+                        {
+                            "texte": "Fonction : superviser et centraliser"
+                        },
+                        {
+                            "texte": "Lecture seule ou commandes simples"
+                        },
+                        {
+                            "texte": "Plus simple, interface de supervision"
+                        },
+                        {
+                            "texte": "Utilisateur : gestionnaire technique"
+                        }
+                    ]
+                },
+                "settings": []
+            },
+            {
+                "type": "cartes",
+                "name": "Composants GTC",
+                "content": {
+                    "titre_section": "Les composants d'une GTC",
+                    "cartes": [
+                        {
+                            "icone": "🖥️",
+                            "titre": "Poste de supervision",
+                            "description": "Interface graphique avec synoptiques, courbes, alarmes. Accessible depuis un navigateur web.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🌐",
+                            "titre": "Réseau de communication",
+                            "description": "Infrastructure réseau (IP, BACnet, Modbus) reliant les automates au serveur. Filaire ou sans fil.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "💾",
+                            "titre": "Serveur & Base de données",
+                            "description": "Stockage des historiques, gestion des utilisateurs, moteur de règles et rapports automatiques.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 3
+                }
+            },
+            {
+                "type": "cta",
+                "name": "CTA GTC",
+                "content": {
+                    "titre": "Besoin d'évaluer votre système de supervision ?",
+                    "sous_titre": "Notre audit gratuit analyse votre installation GTB/GTC et identifie les optimisations possibles.",
+                    "bouton_texte": "Lancer l'audit gratuit",
+                    "bouton_lien": "/audit",
+                    "bouton2_texte": "Découvrir la GTB →",
+                    "bouton2_lien": "/gtb"
+                },
+                "settings": {
+                    "style": "dark"
+                }
+            }
+        ]
+    },
+    "solutions": {
+        "slug": "solutions",
+        "name": "Solutions & Technologies",
+        "hero": {
+            "title": "Solutions & technologies GTB",
+            "subtitle": "Technologies",
+            "description": "Les protocoles de communication, capteurs, contrôleurs et superviseurs qui composent un système de gestion technique du bâtiment. Architecture ouverte et interopérable.",
+            "cta_text": "Accéder au comparateur",
+            "cta_url": "/comparateur",
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Solutions GTB : protocoles BACnet, KNX, Modbus",
+            "meta_description": "Comparatif indépendant des protocoles GTB (BACnet, KNX, Modbus, LON), capteurs et automates. Guide sans lien commercial.",
+            "meta_keywords": "solutions GTB, BACnet, KNX, Modbus, LON, capteurs, automates, protocoles GTB",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero Solutions",
+                "content": {
+                    "badge": "🔧 Technologies",
+                    "titre": "Solutions & Technologies",
+                    "sous_titre": "Les protocoles de communication, capteurs, automates et logiciels qui composent un système GTB/GTC moderne.",
+                    "cta_texte": "Comparer les marques",
+                    "cta_lien": "/comparateur"
+                },
+                "settings": {
+                    "hauteur": "compact",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Protocoles de communication",
+                "content": {
+                    "titre_section": "Les protocoles de communication",
+                    "cartes": [
+                        {
+                            "icone": "🌐",
+                            "titre": "BACnet",
+                            "description": "Protocole standard international (ISO 16484-5) pour la GTB. Indépendant des constructeurs, il permet l'interopérabilité entre équipements de marques différentes.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🏠",
+                            "titre": "KNX",
+                            "description": "Protocole européen standardisé (EN 50090) pour l'automatisation du bâtiment. Très utilisé pour l'éclairage, les stores et le CVC.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "⚙️",
+                            "titre": "Modbus",
+                            "description": "Protocole industriel simple et robuste. Existe en version série (RS-485) et réseau (TCP/IP). Idéal pour les compteurs et équipements industriels.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🔗",
+                            "titre": "LonWorks",
+                            "description": "Réseau de contrôle distribué par Echelon. Chaque nœud possède sa propre intelligence. Utilisé dans les grandes installations.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 2
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Capteurs & Actionneurs",
+                "content": {
+                    "titre_section": "Capteurs & Actionneurs",
+                    "cartes": [
+                        {
+                            "icone": "🌡️",
+                            "titre": "Sondes de température",
+                            "description": "Mesure ambiante, gaine, extérieure, contact, immersion.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "👁️",
+                            "titre": "Détecteurs de présence",
+                            "description": "PIR, ultrasons, double technologie pour l'éclairage et le CVC.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "⚡",
+                            "titre": "Compteurs d'énergie",
+                            "description": "Électricité, gaz, eau, calories — suivi en temps réel.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🔄",
+                            "titre": "Vannes & Actionneurs",
+                            "description": "Vannes 2/3 voies, registres, variateurs de vitesse.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 4
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Tendances & Innovations",
+                "content": {
+                    "titre_section": "Tendances & Innovations",
+                    "cartes": [
+                        {
+                            "icone": "📡",
+                            "titre": "IoT & Capteurs connectés",
+                            "description": "Les capteurs sans fil (LoRaWAN, Zigbee, EnOcean) révolutionnent l'installation et permettent un maillage dense à moindre coût.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🧠",
+                            "titre": "Intelligence Artificielle",
+                            "description": "L'IA optimise la régulation en temps réel, prédit les pannes et adapte le fonctionnement aux usages réels.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🏗️",
+                            "titre": "Jumeaux numériques",
+                            "description": "La réplique virtuelle du bâtiment permet de simuler des scénarios, optimiser les systèmes et former les équipes.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 3
+                }
+            },
+            {
+                "type": "cta",
+                "name": "CTA Solutions",
+                "content": {
+                    "titre": "Quelle solution pour votre bâtiment ?",
+                    "sous_titre": "Notre audit gratuit analyse vos besoins et vous recommande les technologies adaptées.",
+                    "bouton_texte": "Lancer l'audit gratuit",
+                    "bouton_lien": "/audit"
+                },
+                "settings": {
+                    "style": "dark"
+                }
+            }
+        ]
+    },
+    "reglementation": {
+        "slug": "reglementation",
+        "name": "Réglementation GTB",
+        "hero": {
+            "title": "Réglementation GTB en France",
+            "subtitle": "Décret BACS, Décret tertiaire, RE2020",
+            "description": "Décret BACS, décret tertiaire, RE2020, directive EPBD, norme EN ISO 52120-1 : obligations, échéances et aides. Mis à jour mars 2026.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Réglementation GTB — Décret BACS, Tertiaire, RE2020",
+            "meta_description": "Réglementation GTB en France : décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, norme EN ISO 52120-1 (ex-EN 15232). Calendrier et obligations.",
+            "meta_keywords": "réglementation GTB, décret BACS, décret tertiaire, RE2020, EPBD, ISO 52120-1, EN 15232",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": []
+    },
+    "audit": {
+        "slug": "audit",
+        "name": "Pré-diagnostic GTB",
+        "hero": {
+            "title": "Pré-diagnostic GTB de votre bâtiment",
+            "subtitle": "Diagnostic gratuit · Rapport PDF",
+            "description": "Évaluez votre conformité au décret BACS, estimez vos économies d'énergie et recevez un rapport personnalisé avec recommandations ISO 52120-1.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Pré-diagnostic GTB gratuit — Évaluez en 5 min",
+            "meta_description": "Évaluez la conformité GTB de votre bâtiment (décret BACS), estimez vos économies et recevez un rapport PDF avec recommandations ISO 52120-1 (ex-EN 15232).",
+            "meta_keywords": "pré-diagnostic GTB, audit GTB, décret BACS, ISO 52120-1, économies énergie, rapport PDF",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero Audit",
+                "content": {
+                    "badge": "🔍 Diagnostic gratuit",
+                    "titre": "Audit GTB Gratuit",
+                    "sous_titre": "Évaluez le niveau de maturité technique de votre bâtiment en 5 minutes.",
+                    "description": "Répondez à quelques questions et recevez un rapport personnalisé avec des recommandations concrètes.",
+                    "cta_texte": "Commencer le diagnostic",
+                    "cta_lien": "#audit-form"
+                },
+                "settings": {
+                    "hauteur": "medium",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Ce que vous obtiendrez",
+                "content": {
+                    "titre_section": "Ce que vous obtiendrez",
+                    "cartes": [
+                        {
+                            "icone": "📊",
+                            "titre": "Score de maturité",
+                            "description": "Évaluation de votre niveau GTB sur une échelle de 1 à 4 (norme EN 15232).",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "💡",
+                            "titre": "Recommandations",
+                            "description": "Actions concrètes pour améliorer la performance de votre bâtiment.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "💰",
+                            "titre": "Estimation ROI",
+                            "description": "Potentiel d'économies d'énergie et retour sur investissement estimé.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 3
+                }
+            },
+            {
+                "type": "cta",
+                "name": "CTA Audit",
+                "content": {
+                    "titre": "Prêt à évaluer votre bâtiment ?",
+                    "sous_titre": "Gratuit, sans engagement, résultat immédiat.",
+                    "bouton_texte": "Commencer maintenant",
+                    "bouton_lien": "#audit-form"
+                },
+                "settings": {
+                    "style": "dark"
+                }
+            }
+        ]
+    },
+    "comparateur": {
+        "slug": "comparateur",
+        "name": "Comparateur GTB",
+        "hero": {
+            "title": "Comparateur objectif GTB",
+            "subtitle": "Outil indépendant",
+            "description": "Analysez et comparez les solutions des principaux acteurs du marché de la Gestion Technique du Bâtiment. Notes, protocoles, budgets et retours terrain pour un choix éclairé.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Comparateur GTB — Schneider, Siemens, Honeywell",
+            "meta_description": "Comparez 10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense. Comparatif indépendant.",
+            "meta_keywords": "comparateur GTB, Schneider, Siemens, Honeywell, Niagara, Desigo, Sauter, Wago, Wattsense",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero Comparateur",
+                "content": {
+                    "badge": "⚖️ Comparatif indépendant",
+                    "titre": "Comparateur de marques GTB/GTC",
+                    "sous_titre": "Comparez objectivement les principales marques du marché. Aucun partenariat commercial.",
+                    "cta_texte": "Voir le comparatif",
+                    "cta_lien": "#comparateur"
+                },
+                "settings": {
+                    "hauteur": "medium",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Marques analysées",
+                "content": {
+                    "titre_section": "Marques analysées",
+                    "cartes": [
+                        {
+                            "icone": "🏭",
+                            "titre": "Siemens",
+                            "description": "Desigo CC, gamme complète BACnet/KNX, forte présence en France.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🏭",
+                            "titre": "Schneider Electric",
+                            "description": "EcoStruxure Building, leader français, intégration IoT.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🏭",
+                            "titre": "Honeywell",
+                            "description": "Niagara Framework, solution ouverte multi-protocoles.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🏭",
+                            "titre": "Sauter",
+                            "description": "Spécialiste CVC, excellent rapport qualité/prix.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 2
+                }
+            },
+            {
+                "type": "cta",
+                "name": "CTA Comparateur",
+                "content": {
+                    "titre": "Besoin d'aide pour choisir ?",
+                    "sous_titre": "Notre diagnostic gratuit vous aide à identifier la marque la plus adaptée.",
+                    "bouton_texte": "Diagnostic gratuit",
+                    "bouton_lien": "/audit"
+                },
+                "settings": {
+                    "style": "dark"
+                }
+            }
+        ]
+    },
+    "generateur-cee": {
+        "slug": "generateur-cee",
+        "name": "Simulateur CEE",
+        "hero": {
+            "title": "Générateur de dossier CEE",
+            "subtitle": "Outil indépendant · Estimation gratuite",
+            "description": "Estimez vos Certificats d'Économies d'Énergie en 3 minutes. Calcul basé sur les fiches standardisées — résultat objectif, sans engagement.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Simulateur CEE GTB — Estimez vos primes",
+            "meta_description": "Estimez vos Certificats d'Économies d'Énergie (CEE) pour un projet GTB en 3 minutes. Outil gratuit, sans lien commercial.",
+            "meta_keywords": "CEE, certificats économies énergie, simulateur CEE, prime GTB, BAT-TH-116",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": []
+    },
+    "faq": {
+        "slug": "faq",
+        "name": "FAQ",
+        "hero": {
+            "title": "Questions fréquentes",
+            "subtitle": "FAQ",
+            "description": "Tout ce que vous devez savoir sur NeoGTB, la GTB, le décret BACS et nos outils.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "FAQ — Questions fréquentes sur la GTB et NeoGTB",
+            "meta_description": "Réponses aux questions les plus fréquentes sur la GTB, le décret BACS, les outils NeoGTB et notre modèle d'indépendance.",
+            "meta_keywords": "FAQ GTB, questions GTB, décret BACS FAQ, NeoGTB aide",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": []
+    },
+    "contact": {
+        "slug": "contact",
+        "name": "Contact",
+        "hero": {
+            "title": "Engageons une conversation",
+            "subtitle": "Contact",
+            "description": "Un échange factuel pour comprendre votre contexte. Sans engagement, sans pitch commercial.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Contact — Conseil GTB indépendant",
+            "meta_description": "Contactez NeoGTB pour un avis indépendant sur votre projet GTB. Basé à Bordeaux, réponse sous 48h.",
+            "meta_keywords": "contact GTB, conseil GTB, NeoGTB contact, Bordeaux",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero Contact",
+                "content": {
+                    "badge": "📞 Réponse sous 48h",
+                    "titre": "Besoin d'un avis indépendant ?",
+                    "sous_titre": "Posez votre question à notre équipe. Réponse factuelle, sans agenda commercial."
+                },
+                "settings": {
+                    "hauteur": "compact",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "texte",
+                "name": "Formulaire info",
+                "content": {
+                    "titre": "Envoyez-nous un message",
+                    "contenu": "<p>Contactez-nous directement par email à <strong>contact@neogtb.fr</strong> ou utilisez le formulaire de notre site.</p><p>Nous nous engageons à répondre sous <strong>48 heures ouvrées</strong>. NéoGTB est un tiers de confiance indépendant : aucune démarche commerciale suite à votre contact.</p>"
+                },
+                "settings": {
+                    "position_image": "none",
+                    "couleur_fond": "#ffffff"
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Coordonnées",
+                "content": {
+                    "titre_section": "",
+                    "cartes": [
+                        {
+                            "icone": "📧",
+                            "titre": "Email",
+                            "description": "contact@neogtb.fr",
+                            "lien": "mailto:contact@neogtb.fr"
+                        },
+                        {
+                            "icone": "📍",
+                            "titre": "Localisation",
+                            "description": "Eysines, Bordeaux — France",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🏢",
+                            "titre": "Entreprise",
+                            "description": "EURL EYNOR",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "⏱️",
+                            "titre": "Temps de réponse",
+                            "description": "Sous 48h ouvrées, sans démarche commerciale",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 4
+                }
+            },
+            {
+                "type": "formulaire",
+                "name": "Formulaire de contact",
+                "content": {
+                    "titre": "Envoyez-nous un message",
+                    "email_destination": "contact@neogtb.fr",
+                    "message_succes": "Merci ! Votre message a bien été envoyé. Nous vous répondons sous 48h."
+                },
+                "settings": []
+            },
+            {
+                "type": "cta",
+                "name": "CTA Diagnostic",
+                "content": {
+                    "titre": "Préférez un diagnostic en ligne ?",
+                    "sous_titre": "Évaluez la maturité GTB de votre bâtiment en 5 minutes — résultat immédiat.",
+                    "bouton_texte": "Lancer le diagnostic gratuit",
+                    "bouton_lien": "/audit"
+                },
+                "settings": {
+                    "style": "dark"
+                }
+            }
+        ]
+    },
+    "positionnement": {
+        "slug": "positionnement",
+        "name": "Pourquoi NeoGTB",
+        "hero": {
+            "title": "Vous cherchez un conseil GTB qui ne cherche pas à vous vendre quelque chose",
+            "subtitle": "Pourquoi nous",
+            "description": "Sur le marché français, celui qui conseille est souvent celui qui vend. NeoGTB est né pour offrir l'alternative : un regard technique, sans conflit d'intérêts.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Pourquoi NeoGTB — Conseil GTB 100 % indépendant",
+            "meta_description": "NeoGTB n'est lié à aucun fabricant. Zéro commission, zéro affiliation, zéro revente de données. Preuves d'indépendance.",
+            "meta_keywords": "NeoGTB indépendant, conseil GTB neutre, sans commission, sans affiliation",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": []
+    },
+    "about": {
+        "slug": "about",
+        "name": "À propos",
+        "hero": {
+            "title": "Je suis Ulrich Calmo, et j'ai créé NeoGTB pour une raison simple",
+            "subtitle": "À propos",
+            "description": "Le marché de la GTB en France manque d'un interlocuteur neutre. Quelqu'un qui ne vend rien, qui connaît le terrain, et qui vous aide à prendre la bonne décision. C'est ce que je fais.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "À propos — Ulrich Calmo, consultant GTB",
+            "meta_description": "NeoGTB est fondé par Ulrich Calmo, consultant GTB indépendant basé à Bordeaux. Zéro lien fabricant, zéro commission.",
+            "meta_keywords": "Ulrich Calmo, consultant GTB, NeoGTB fondateur, Bordeaux, EYNOR",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero À Propos",
+                "content": {
+                    "badge": "ℹ️ Qui sommes-nous",
+                    "titre": "À Propos de NéoGTB",
+                    "sous_titre": "Le tiers de confiance indépendant de la GTB en France. Nous ne vendons rien — nous vous aidons à décider.",
+                    "cta_texte": "Nous contacter",
+                    "cta_lien": "/contact"
+                },
+                "settings": {
+                    "hauteur": "compact",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "texte",
+                "name": "Notre mission",
+                "content": {
+                    "titre": "Notre mission",
+                    "contenu": "<p>La GTB est un levier puissant pour réduire la consommation énergétique des bâtiments. Pourtant, elle reste mal connue et chaque acteur du marché vous oriente vers ses propres produits.</p><p><strong>NéoGTB</strong> est né d'un constat simple : il n'existait aucun <strong>tiers de confiance indépendant</strong> capable de vous accompagner dans vos choix GTB sans conflit d'intérêts.</p><p>Notre mission : être le partenaire objectif qui vous aide à <strong>comprendre, comparer et décider</strong> en connaissance de cause.</p>"
+                },
+                "settings": {
+                    "position_image": "none",
+                    "couleur_fond": "#ffffff"
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Nos valeurs",
+                "content": {
+                    "titre_section": "Nos valeurs",
+                    "cartes": [
+                        {
+                            "icone": "🎓",
+                            "titre": "Pédagogie",
+                            "description": "Vulgariser les concepts techniques sans trahir la rigueur. Seul un vrai expert peut simplifier sans simplisme.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🌍",
+                            "titre": "Transition écologique",
+                            "description": "La GTB est un levier majeur de décarbonation. Chaque bâtiment optimisé est une victoire pour le climat.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🎯",
+                            "titre": "Indépendance",
+                            "description": "Contenus neutres et objectifs. Nous ne vendons pas, ne représentons personne, prescrivons ce qui est adapté.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 3
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "À qui s'adresse NéoGTB",
+                "content": {
+                    "titre_section": "À qui s'adresse NéoGTB ?",
+                    "cartes": [
+                        {
+                            "icone": "🏢",
+                            "titre": "Gestionnaires de patrimoine",
+                            "description": "Optimisez la gestion énergétique et le confort de vos bâtiments.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🔧",
+                            "titre": "Installateurs & Intégrateurs",
+                            "description": "Restez à jour sur les technologies et les bonnes pratiques.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "📐",
+                            "titre": "Bureaux d'études",
+                            "description": "Ressources techniques pour vos projets de conception GTB.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🎓",
+                            "titre": "Étudiants & Curieux",
+                            "description": "Découvrez le monde passionnant du smart building.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 4
+                }
+            },
+            {
+                "type": "texte",
+                "name": "Fondateur",
+                "content": {
+                    "titre": "Qui est derrière NéoGTB ?",
+                    "contenu": "<p><strong>Ulrich CALMO</strong> — Fondateur & gérant, de la société EYNOR</p><p>Passionné par la GTB et la performance énergétique des bâtiments, j'ai créé la marque NéoGTB pour offrir enfin un espace indépendant où décideurs, techniciens et curieux peuvent accéder à une information fiable, sans pression commerciale.</p><p>📍 Eysines, Bordeaux — 🏢 Société EYNOR</p>"
+                },
+                "settings": {
+                    "position_image": "none",
+                    "couleur_fond": "#f8fafc"
+                }
+            },
+            {
+                "type": "cta",
+                "name": "CTA About",
+                "content": {
+                    "titre": "Prêt à explorer la GTB ?",
+                    "sous_titre": "Commencez par nos guides éducatifs ou lancez un diagnostic gratuit de votre bâtiment.",
+                    "bouton_texte": "Découvrir la GTB",
+                    "bouton_lien": "/gtb",
+                    "bouton2_texte": "Lire le blog",
+                    "bouton2_lien": "/blog"
+                },
+                "settings": {
+                    "style": "dark"
+                }
+            }
+        ]
+    },
+    "mentions-legales": {
+        "slug": "mentions-legales",
+        "name": "Mentions légales",
+        "hero": {
+            "title": "Mentions légales",
+            "subtitle": "Informations légales",
+            "description": "Informations légales concernant l'éditeur, l'hébergeur et les conditions d'utilisation du site neogtb.fr.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Mentions légales",
+            "meta_description": "Mentions légales de NeoGTB.fr : éditeur, hébergeur, propriété intellectuelle et conditions d'utilisation.",
+            "meta_keywords": "mentions légales, NeoGTB, EYNOR, éditeur, hébergeur",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero Mentions",
+                "content": {
+                    "titre": "Mentions légales",
+                    "sous_titre": "Informations légales conformément à la loi."
+                },
+                "settings": {
+                    "hauteur": "compact",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "texte",
+                "name": "Contenu mentions",
+                "content": {
+                    "titre": "",
+                    "contenu": "<h3>Éditeur du site</h3><p><strong>EURL EYNOR</strong><br>Siège social : Eysines, Bordeaux, France<br>Email : contact@neogtb.fr</p><h3>Hébergement</h3><p>Le site est hébergé par des services cloud professionnels.</p><h3>Propriété intellectuelle</h3><p>L'ensemble des contenus présents sur le site NéoGTB (textes, images, logos, graphismes) est protégé par le droit d'auteur. Toute reproduction est interdite sans autorisation préalable.</p><h3>Responsabilité</h3><p>NéoGTB s'efforce de fournir des informations exactes et à jour. Toutefois, nous ne pouvons garantir l'exactitude de toutes les informations. NéoGTB ne saurait être tenu responsable des décisions prises sur la base des informations publiées.</p>"
+                },
+                "settings": {
+                    "position_image": "none",
+                    "couleur_fond": "#ffffff"
+                }
+            }
+        ]
+    },
+    "politique-de-confidentialite": {
+        "slug": "politique-de-confidentialite",
+        "name": "Politique de confidentialité",
+        "hero": {
+            "title": "Politique de confidentialité",
+            "subtitle": "Protection des données",
+            "description": "Comment NeoGTB collecte, utilise et protège vos données personnelles conformément au RGPD.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Politique de confidentialité",
+            "meta_description": "Comment NeoGTB collecte, utilise et protège vos données personnelles conformément au RGPD.",
+            "meta_keywords": "politique confidentialité, RGPD, données personnelles, NeoGTB",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero Confidentialité",
+                "content": {
+                    "titre": "Politique de confidentialité",
+                    "sous_titre": "Comment nous protégeons vos données personnelles."
+                },
+                "settings": {
+                    "hauteur": "compact",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "texte",
+                "name": "Contenu RGPD",
+                "content": {
+                    "titre": "",
+                    "contenu": "<h3>Responsable du traitement</h3><p>EURL EYNOR — contact@neogtb.fr</p><h3>Données collectées</h3><p>Nous collectons uniquement les données que vous nous fournissez volontairement via le formulaire de contact : nom, email, entreprise, message.</p><h3>Finalités</h3><p>Vos données sont utilisées exclusivement pour répondre à vos demandes. Elles ne sont jamais vendues, louées ou transmises à des tiers.</p><h3>Conservation</h3><p>Les données sont conservées pendant 2 ans maximum, puis supprimées automatiquement.</p><h3>Cookies</h3><p>Le site utilise des cookies essentiels au fonctionnement. Les cookies analytiques (Google Analytics) ne sont activés qu'avec votre consentement.</p><h3>Vos droits</h3><p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité. Contactez-nous à contact@neogtb.fr.</p>"
+                },
+                "settings": {
+                    "position_image": "none",
+                    "couleur_fond": "#ffffff"
+                }
+            }
+        ]
+    },
+    "mes-droits-rgpd": {
+        "slug": "mes-droits-rgpd",
+        "name": "Exercer vos droits RGPD",
+        "hero": {
+            "title": "Exercer vos droits RGPD",
+            "subtitle": "RGPD — Vos droits",
+            "description": "Conformément au RGPD, vous disposez de droits sur vos données personnelles. Sélectionnez le type de demande ci-dessous.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Exercer vos droits RGPD",
+            "meta_description": "Droits RGPD sur NeoGTB : accès, rectification, suppression, portabilité, opposition. Réponse sous 30 jours.",
+            "meta_keywords": "RGPD, droits données, accès, rectification, suppression, portabilité, NeoGTB",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": [
+            {
+                "type": "hero",
+                "name": "Hero RGPD",
+                "content": {
+                    "titre": "Vos droits RGPD",
+                    "sous_titre": "Exercez vos droits sur vos données personnelles."
+                },
+                "settings": {
+                    "hauteur": "compact",
+                    "alignement": "center"
+                }
+            },
+            {
+                "type": "cartes",
+                "name": "Droits RGPD",
+                "content": {
+                    "titre_section": "Vos droits",
+                    "cartes": [
+                        {
+                            "icone": "👁️",
+                            "titre": "Droit d'accès",
+                            "description": "Savoir quelles données nous détenons sur vous.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "✏️",
+                            "titre": "Droit de rectification",
+                            "description": "Corriger vos données personnelles.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "🗑️",
+                            "titre": "Droit à l'effacement",
+                            "description": "Demander la suppression de vos données.",
+                            "lien": ""
+                        },
+                        {
+                            "icone": "📦",
+                            "titre": "Droit à la portabilité",
+                            "description": "Recevoir vos données dans un format standard.",
+                            "lien": ""
+                        }
+                    ]
+                },
+                "settings": {
+                    "colonnes": 2
+                }
+            },
+            {
+                "type": "texte",
+                "name": "Comment exercer",
+                "content": {
+                    "titre": "Comment exercer vos droits",
+                    "contenu": "<p>Envoyez un email à <strong>contact@neogtb.fr</strong> en précisant votre demande. Nous nous engageons à répondre sous 30 jours conformément au RGPD.</p>"
+                },
+                "settings": {
+                    "position_image": "none",
+                    "couleur_fond": "#f8fafc"
+                }
+            }
+        ]
+    },
+    "newsletter-confirmee": {
+        "slug": "newsletter-confirmee",
+        "name": "Newsletter confirmée",
+        "hero": {
+            "title": "Inscription confirmée",
+            "subtitle": "Newsletter",
+            "description": "Vous recevrez la veille GTB mensuelle NeoGTB dans votre boîte mail. 1 email par mois, désabonnement en 1 clic.",
+            "cta_text": null,
+            "cta_url": null,
+            "image": null
+        },
+        "seo": {
+            "meta_title": "Inscription confirmée",
+            "meta_description": "Votre inscription à la veille GTB mensuelle NeoGTB est confirmée.",
+            "meta_keywords": null,
+            "og_title": null,
+            "og_description": null,
+            "og_image": null
+        },
+        "bricks": []
+    }
+}

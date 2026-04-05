@@ -5,10 +5,13 @@ namespace App\Filament\Pages;
 use App\Filament\Bricks\BrickRegistry;
 use App\Models\PageBrick;
 use App\Models\SitePage;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Illuminate\Support\Facades\Artisan;
 
 class BrickEditorPage extends Page implements HasForms
 {
@@ -18,7 +21,7 @@ class BrickEditorPage extends Page implements HasForms
 
     protected string $view = 'filament.pages.brick-editor';
 
-    protected static ?string $title = 'Éditeur de bricks';
+    protected static ?string $title = 'Éditeur de page';
 
     protected static ?string $slug = 'pages/{pageId}/bricks';
 
@@ -30,16 +33,19 @@ class BrickEditorPage extends Page implements HasForms
 
     public array $editingContent = [];
 
+    public bool $showPreview = false;
+
+    public bool $isPublishing = false;
+
     public function mount(int $pageId): void
     {
         $this->page = SitePage::findOrFail($pageId);
-
         $this->loadBricks();
     }
 
     public function getTitle(): string
     {
-        return 'Bricks — ' . ($this->page->name ?? 'Page');
+        return ($this->page->name ?? 'Page') . ' — Éditeur';
     }
 
     protected function loadBricks(): void
@@ -62,17 +68,29 @@ class BrickEditorPage extends Page implements HasForms
         $this->bricks = array_values($this->bricks);
     }
 
+    public function getBrickForm(): ?array
+    {
+        if ($this->selectedBrickIndex === null || !isset($this->bricks[$this->selectedBrickIndex])) {
+            return null;
+        }
+
+        $brick = $this->bricks[$this->selectedBrickIndex];
+        $brickDef = BrickRegistry::get($brick['brick_type']);
+
+        return $brickDef?->schema() ?? [];
+    }
+
     public function addBrick(string $type): void
     {
         $brickDef = BrickRegistry::get($type);
-        if (! $brickDef) {
+        if (!$brickDef) {
             return;
         }
 
         $order = count($this->bricks);
         $admin = auth()->guard('admin')->user();
 
-        $brick = PageBrick::create([
+        PageBrick::create([
             'page_id' => $this->page->id,
             'brick_type' => $type,
             'brick_name' => $brickDef->name(),
@@ -87,17 +105,17 @@ class BrickEditorPage extends Page implements HasForms
 
         $this->loadBricks();
         $this->selectedBrickIndex = count($this->bricks) - 1;
-        $this->editingContent = array_merge(
-            ['content' => $brickDef->defaultContent()],
-            ['settings' => $brickDef->defaultSettings()]
-        );
+        $this->editingContent = [
+            'content' => $brickDef->defaultContent(),
+            'settings' => $brickDef->defaultSettings(),
+        ];
 
         Notification::make()->title('Brick ajoutée : ' . $brickDef->name())->success()->send();
     }
 
     public function selectBrick(int $index): void
     {
-        if (! isset($this->bricks[$index])) {
+        if (!isset($this->bricks[$index])) {
             return;
         }
 
@@ -111,14 +129,14 @@ class BrickEditorPage extends Page implements HasForms
 
     public function saveBrick(): void
     {
-        if ($this->selectedBrickIndex === null || ! isset($this->bricks[$this->selectedBrickIndex])) {
+        if ($this->selectedBrickIndex === null || !isset($this->bricks[$this->selectedBrickIndex])) {
             return;
         }
 
         $brickData = $this->bricks[$this->selectedBrickIndex];
         $brick = PageBrick::find($brickData['id']);
 
-        if (! $brick) {
+        if (!$brick) {
             return;
         }
 
@@ -127,23 +145,53 @@ class BrickEditorPage extends Page implements HasForms
         $brick->update([
             'content' => $this->editingContent['content'] ?? $brick->content,
             'settings' => $this->editingContent['settings'] ?? $brick->settings,
+            'brick_name' => $this->editingContent['content']['titre']
+                ?? $this->editingContent['content']['titre_section']
+                ?? $brick->brick_name,
             'updated_by' => $admin?->id,
         ]);
 
         $this->loadBricks();
 
-        Notification::make()->title('Brick enregistrée')->success()->send();
+        Notification::make()->title('Enregistré')->success()->send();
+    }
+
+    public function publishPage(): void
+    {
+        $this->isPublishing = true;
+
+        try {
+            Artisan::call('sync:pages', ['--rebuild' => true]);
+            Notification::make()
+                ->title('Page publiée')
+                ->body('Le site a été mis à jour avec vos modifications.')
+                ->success()
+                ->send();
+        } catch (\Throwable $e) {
+            Notification::make()
+                ->title('Erreur de publication')
+                ->body($e->getMessage())
+                ->danger()
+                ->send();
+        }
+
+        $this->isPublishing = false;
+    }
+
+    public function togglePreview(): void
+    {
+        $this->showPreview = !$this->showPreview;
     }
 
     public function toggleVisibility(int $index): void
     {
-        if (! isset($this->bricks[$index])) {
+        if (!isset($this->bricks[$index])) {
             return;
         }
 
         $brick = PageBrick::find($this->bricks[$index]['id']);
         if ($brick) {
-            $brick->update(['is_visible' => ! $brick->is_visible]);
+            $brick->update(['is_visible' => !$brick->is_visible]);
             $this->loadBricks();
         }
     }
@@ -156,7 +204,6 @@ class BrickEditorPage extends Page implements HasForms
             return;
         }
 
-        // Check locked
         if ($this->bricks[$index]['is_locked'] || $this->bricks[$targetIndex]['is_locked']) {
             Notification::make()->title('Brick verrouillée')->warning()->send();
             return;
@@ -179,7 +226,7 @@ class BrickEditorPage extends Page implements HasForms
 
     public function deleteBrick(int $index): void
     {
-        if (! isset($this->bricks[$index])) {
+        if (!isset($this->bricks[$index])) {
             return;
         }
 
@@ -194,15 +241,44 @@ class BrickEditorPage extends Page implements HasForms
             $this->selectedBrickIndex = null;
             $this->editingContent = [];
             $this->loadBricks();
-
             Notification::make()->title('Brick supprimée')->success()->send();
         }
+    }
+
+    public function duplicateBrick(int $index): void
+    {
+        if (!isset($this->bricks[$index])) {
+            return;
+        }
+
+        $source = PageBrick::find($this->bricks[$index]['id']);
+        if (!$source) {
+            return;
+        }
+
+        $admin = auth()->guard('admin')->user();
+
+        PageBrick::create([
+            'page_id' => $source->page_id,
+            'brick_type' => $source->brick_type,
+            'brick_name' => $source->brick_name . ' (copie)',
+            'content' => $source->content,
+            'settings' => $source->settings,
+            'order' => $source->order + 1,
+            'is_visible' => true,
+            'is_locked' => false,
+            'created_by' => $admin?->id,
+            'updated_by' => $admin?->id,
+        ]);
+
+        $this->loadBricks();
+        Notification::make()->title('Brick dupliquée')->success()->send();
     }
 
     public function getBrickDefinition(string $type): ?array
     {
         $def = BrickRegistry::get($type);
-        if (! $def) {
+        if (!$def) {
             return null;
         }
 
@@ -225,5 +301,11 @@ class BrickEditorPage extends Page implements HasForms
     public function getAvailableBricksProperty(): array
     {
         return BrickRegistry::byCategory();
+    }
+
+    public function getPreviewUrlProperty(): string
+    {
+        $slug = $this->page->slug === 'index' ? '' : $this->page->slug;
+        return 'https://neogtb.fr/' . $slug;
     }
 }

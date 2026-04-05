@@ -134,7 +134,7 @@ class PageResource extends Resource
                     ->label('Modifier le contenu')
                     ->icon('heroicon-o-pencil-square')
                     ->color('success')
-                    ->url(fn ($record) => url('/admin/pages/' . $record->id . '/bricks-editor')),
+                    ->url(fn ($record) => url('/admin/pages/' . $record->id . '/bricks')),
                 \Filament\Actions\EditAction::make()
                     ->label('Réglages de la page'),
                 \Filament\Actions\Action::make('viewOnSite')
