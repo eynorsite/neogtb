@@ -141,3 +141,18 @@ NeoGTB
 
 **Version** : 0.1.0
 **Dernière mise à jour** : 9 mars 2026
+
+---
+
+## RÈGLE D'ISOLATION — IMPORTANT
+
+Ce projet est **100% indépendant**. Ne JAMAIS :
+- Toucher aux fichiers d'un autre projet (site-eynor, tools-habelec, nfc18510-app)
+- Importer du code ou des dépendances d'un autre projet
+- Mélanger les bases de données ou configurations
+
+Les 4 projets dans ~/projets/ sont totalement séparés :
+- `site-eynor/` → Site web EYNOR (Laravel + Filament + PostgreSQL)
+- `neogtb/` → **CE PROJET** (Astro + Laravel admin)
+- `tools-habelec/` → Outils habilitation (Laravel + Livewire)
+- `nfc18510-app/` → App NFC 18-510 (React + Vite)

@@ -7,3 +7,36 @@
 /storage/framework/views/*
 /storage/logs/*.log
 /bootstrap/cache/*
+
+# Astro — gardé en local uniquement
+/src/
+/api/
+/astro.config.mjs
+/tsconfig.json
+/vercel.json
+/dist/
+/.astro/
+/.vercel/
+/.env.local
+/audit_screenshots/
+/design-refs/
+/scripts/
+
+# Ancienne copie Laravel racine — remplacée par admin/
+/app/
+/bootstrap/
+/config/
+/database/
+/lang/
+/public/
+/resources/
+/routes/
+/storage/
+/tests/
+/artisan
+/phpunit.xml
+/vite.config.js
+/composer.json
+/composer.lock
+/package.json
+/package-lock.json
