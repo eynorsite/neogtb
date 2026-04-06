@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
 use App\Models\Post;
+use App\Models\PostCategory;
 use App\Models\SitePage;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
@@ -27,24 +28,30 @@ class PageController extends Controller
         $posts = Post::where('status', 'published')
             ->with('category')
             ->orderByDesc('published_at')
-            ->paginate(9);
+            ->paginate(12);
+
+        $categories = PostCategory::where('is_active', true)
+            ->withCount(['posts' => fn ($q) => $q->where('status', 'published')])
+            ->orderBy('order')
+            ->get();
 
         $settings = SiteSetting::getAllCached();
 
-        return view('front.blog', compact('posts', 'settings'));
+        return view('front.blog', compact('posts', 'categories', 'settings'));
     }
 
     public function article(string $slug)
     {
         $post = Post::where('slug', $slug)
             ->where('status', 'published')
-            ->with('category')
+            ->with(['category', 'tags'])
             ->firstOrFail();
 
-        $post->increment('views');
+        $post->increment('views_count');
         $related = Post::where('status', 'published')
             ->where('id', '!=', $post->id)
             ->where('category_id', $post->category_id)
+            ->latest('published_at')
             ->limit(3)
             ->get();
 

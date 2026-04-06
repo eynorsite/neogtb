@@ -1,41 +1,212 @@
 @extends('front.layouts.app')
-@section('title', 'Blog — NeoGTB')
+@section('title', 'Perspectives — Analyses & veille technique GTB | NeoGTB')
+@section('description', 'Analyses, veille technique et guides pratiques sur la Gestion Technique du Batiment (GTB) : decret BACS, protocoles, tendances smart building.')
 
 @section('content')
-<section class="hero-gradient py-16 text-center text-white">
-    <h1 class="text-4xl font-black">Blog NeoGTB</h1>
-    <p class="mt-3 text-lg text-blue-200">Articles, guides et actualités GTB/GTC</p>
+
+{{-- ══════════════════════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════════════════════ --}}
+<section class="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 pt-24 pb-20">
+    {{-- Decorative elements --}}
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-16 left-10 w-72 h-72 bg-accent-400 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-8 right-16 w-96 h-96 bg-primary-300 rounded-full blur-3xl"></div>
+    </div>
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-block text-xs font-semibold tracking-widest uppercase text-accent-300 mb-4">Perspectives</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight">
+            Analyses & veille <span class="text-accent-300">technique</span>
+        </h1>
+        <p class="mt-5 text-base sm:text-lg text-primary-200 max-w-2xl mx-auto leading-relaxed">
+            Decryptages, retours terrain et points de vue sur la GTB, la GTC et le batiment intelligent.
+        </p>
+    </div>
 </section>
 
-<section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+{{-- ══════════════════════════════════════════════════════════════
+     FILTER + GRID
+     ══════════════════════════════════════════════════════════════ --}}
+<section class="py-16 lg:py-24 bg-dark-50" x-data="{ active: 'all' }">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {{-- Category filter pills --}}
+        <div class="flex flex-wrap gap-2 mb-12 justify-center">
+            <button
+                class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer"
+                :class="active === 'all'
+                    ? 'bg-primary-600 text-white shadow-md shadow-primary-600/25'
+                    : 'bg-white text-dark-600 hover:bg-dark-100 border border-dark-200'"
+                @click="active = 'all'"
+            >
+                Tous les articles
+            </button>
+            @foreach($categories as $cat)
+                <button
+                    class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer"
+                    :class="active === '{{ $cat->slug }}'
+                        ? 'bg-primary-600 text-white shadow-md shadow-primary-600/25'
+                        : 'bg-white text-dark-600 hover:bg-dark-100 border border-dark-200'"
+                    @click="active = '{{ $cat->slug }}'"
+                >
+                    {{ $cat->name }}
+                    <span class="ml-1 text-xs opacity-60">({{ $cat->posts_count }})</span>
+                </button>
+            @endforeach
+        </div>
+
+        {{-- Articles grid --}}
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             @foreach($posts as $post)
-                <a href="/blog/{{ $post->slug }}" class="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:shadow-md">
+                <a href="/blog/{{ $post->slug }}"
+                   class="group card-hover block bg-white rounded-2xl overflow-hidden border border-dark-100"
+                   x-show="active === 'all' || active === '{{ $post->category?->slug }}'"
+                   x-transition:enter="transition ease-out duration-200"
+                   x-transition:enter-start="opacity-0 scale-95"
+                   x-transition:enter-end="opacity-100 scale-100"
+                >
+                    {{-- Image --}}
                     @if($post->featured_image)
-                        <img src="{{ asset('storage/' . $post->featured_image) }}" alt="" class="h-48 w-full object-cover">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="{{ asset('storage/' . $post->featured_image) }}"
+                                 alt="{{ $post->title }}"
+                                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
                     @else
-                        <div class="flex h-48 items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200">
-                            <span class="text-4xl">📰</span>
+                        <div class="relative h-48 overflow-hidden bg-gradient-to-br from-primary-50 via-primary-100 to-accent-50">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <svg class="w-12 h-12 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                                </svg>
+                            </div>
+                            <div class="absolute inset-0" style="background-image: radial-gradient(circle, rgba(27,58,92,0.04) 1px, transparent 1px); background-size: 16px 16px;"></div>
                         </div>
                     @endif
-                    <div class="p-5">
-                        @if($post->category)
-                            <span class="inline-block rounded-full bg-primary-50 px-2.5 py-0.5 text-xs font-semibold text-primary-700">
-                                {{ $post->category->name }}
+
+                    {{-- Content --}}
+                    <div class="p-6">
+                        {{-- Category + Reading time --}}
+                        <div class="flex items-center justify-between mb-3">
+                            @if($post->category)
+                                <span class="inline-block px-2.5 py-1 rounded text-[11px] font-semibold uppercase tracking-wide
+                                    @if($post->category->color)
+                                        text-white
+                                    @else
+                                        text-accent-700 bg-accent-50
+                                    @endif
+                                "
+                                @if($post->category->color)
+                                    style="background-color: {{ $post->category->color }}"
+                                @endif
+                                >
+                                    {{ $post->category->name }}
+                                </span>
+                            @endif
+                            @if($post->reading_time)
+                                <span class="text-xs text-dark-400 font-normal">{{ $post->reading_time }} min</span>
+                            @endif
+                        </div>
+
+                        {{-- Title --}}
+                        <h2 class="text-base font-heading font-bold text-dark-900 leading-snug mb-2 group-hover:text-primary-600 transition-colors duration-200 line-clamp-2" style="letter-spacing: -0.2px;">
+                            {{ $post->title }}
+                        </h2>
+
+                        {{-- Excerpt --}}
+                        <p class="text-sm text-dark-500 leading-relaxed line-clamp-2 mb-4">
+                            {{ $post->excerpt }}
+                        </p>
+
+                        {{-- Footer: date + arrow --}}
+                        <div class="flex items-center justify-between pt-3 border-t border-dark-100">
+                            <time class="text-xs text-dark-400" datetime="{{ $post->published_at?->toDateString() }}">
+                                {{ $post->published_at?->translatedFormat('d F Y') }}
+                            </time>
+                            <span class="text-primary-500 transition-transform duration-200 group-hover:translate-x-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
                             </span>
-                        @endif
-                        <h2 class="mt-2 text-lg font-bold text-gray-900 group-hover:text-primary-600">{{ $post->title }}</h2>
-                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">{{ $post->excerpt }}</p>
-                        <div class="mt-4 text-xs text-gray-400">{{ $post->published_at?->format('d/m/Y') }}</div>
+                        </div>
                     </div>
                 </a>
             @endforeach
         </div>
 
-        <div class="mt-12">
-            {{ $posts->links() }}
+        {{-- Empty state --}}
+        <div class="text-center py-20" x-show="false" x-ref="empty">
+            <svg class="w-12 h-12 text-dark-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+            </svg>
+            <p class="text-dark-400 text-sm">Aucun article dans cette categorie.</p>
+        </div>
+
+        {{-- Pagination --}}
+        @if($posts->hasPages())
+            <div class="mt-16 flex justify-center">
+                <nav class="flex items-center gap-1" aria-label="Pagination">
+                    {{-- Previous --}}
+                    @if($posts->onFirstPage())
+                        <span class="px-3 py-2 rounded-lg text-sm text-dark-300 cursor-not-allowed">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </span>
+                    @else
+                        <a href="{{ $posts->previousPageUrl() }}" class="px-3 py-2 rounded-lg text-sm text-dark-600 hover:bg-white hover:shadow-sm transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </a>
+                    @endif
+
+                    {{-- Pages --}}
+                    @foreach($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
+                        @if($page == $posts->currentPage())
+                            <span class="px-4 py-2 rounded-lg text-sm font-semibold bg-primary-600 text-white shadow-md shadow-primary-600/25">{{ $page }}</span>
+                        @else
+                            <a href="{{ $url }}" class="px-4 py-2 rounded-lg text-sm font-medium text-dark-600 hover:bg-white hover:shadow-sm transition-all">{{ $page }}</a>
+                        @endif
+                    @endforeach
+
+                    {{-- Next --}}
+                    @if($posts->hasMorePages())
+                        <a href="{{ $posts->nextPageUrl() }}" class="px-3 py-2 rounded-lg text-sm text-dark-600 hover:bg-white hover:shadow-sm transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    @else
+                        <span class="px-3 py-2 rounded-lg text-sm text-dark-300 cursor-not-allowed">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </span>
+                    @endif
+                </nav>
+            </div>
+        @endif
+
+    </div>
+</section>
+
+{{-- ══════════════════════════════════════════════════════════════
+     CTA BOTTOM
+     ══════════════════════════════════════════════════════════════ --}}
+<section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-dark-900 tracking-tight">
+            Un projet GTB a clarifier ?
+        </h2>
+        <p class="mt-4 text-base text-dark-500 leading-relaxed max-w-xl mx-auto">
+            Pre-diagnostic ISO 52120-1 gratuit en ligne, ou echange de 15 minutes pour cadrer votre besoin.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/audit" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors btn-glow">
+                Lancer le diagnostic
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/contact" class="text-sm font-medium text-dark-500 hover:text-primary-600 transition-colors">
+                Me contacter &rarr;
+            </a>
         </div>
     </div>
 </section>
+
 @endsection
