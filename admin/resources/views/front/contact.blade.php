@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
-@section('title', 'Contact — Conseil GTB independant')
-@section('description', 'Contactez NeoGTB pour un avis independant sur votre projet GTB. Base a Bordeaux, reponse sous 48h.')
+@section('title', 'Contact — Conseil GTB indépendant')
+@section('description', 'Contactez NeoGTB pour un avis indépendant sur votre projet GTB. Basé à Bordeaux, réponse sous 48h.')
 
 @push('head')
 <script type="application/ld+json">
@@ -23,7 +23,7 @@
                     Engageons une <span class="text-gradient">conversation</span>
                 </h1>
                 <p class="mt-5 text-[15px] text-dark-500 leading-relaxed max-w-[440px]">
-                    Un echange factuel pour comprendre votre contexte. Sans engagement, sans pitch commercial.
+                    Un échange factuel pour comprendre votre contexte. Sans engagement, sans pitch commercial.
                 </p>
 
                 <div class="mt-10 space-y-5">
@@ -48,7 +48,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-[13px] text-dark-400">Telephone</p>
+                            <p class="text-[13px] text-dark-400">Téléphone</p>
                             <a href="tel:+33650143252" class="text-[15px] font-medium text-dark-900 hover:text-accent-600 transition-colors">06 50 14 32 52</a>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-[13px] text-dark-400">Temps de reponse</p>
+                            <p class="text-[13px] text-dark-400">Temps de réponse</p>
                             <p class="text-[15px] font-medium text-dark-900">Sous 48h</p>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                     <svg class="w-4 h-4 text-dark-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                     </svg>
-                    <p class="text-xs text-dark-400">Tiers de confiance independant — aucun demarchage</p>
+                    <p class="text-xs text-dark-400">Tiers de confiance indépendant — aucun démarchage</p>
                 </div>
             </div>
 
@@ -81,8 +81,8 @@
                 <div class="rounded-xl p-6 md:p-8 bg-white border border-dark-100 shadow-sm">
                     @if(session('contact_success'))
                     <div class="p-4 rounded-lg bg-accent-50 border border-accent-200" role="alert">
-                        <p class="text-sm font-medium text-accent-700">Message envoye.</p>
-                        <p class="text-[13px] text-dark-500 mt-1">Nous vous repondrons sous 48h.</p>
+                        <p class="text-sm font-medium text-accent-700">Message envoyé.</p>
+                        <p class="text-[13px] text-dark-500 mt-1">Nous vous répondrons sous 48h.</p>
                     </div>
                     @else
                     <form
@@ -123,7 +123,7 @@
                                     <option value="" disabled selected>Choisir un sujet</option>
                                     <option value="Avis sur un devis">Avis sur un devis</option>
                                     <option value="Aide au choix technologique">Aide au choix technologique</option>
-                                    <option value="Question reglementaire">Question reglementaire</option>
+                                    <option value="Question réglementaire">Question réglementaire</option>
                                     <option value="Demande d'audit">Demande d'audit</option>
                                     <option value="Autre">Autre</option>
                                 </select>
@@ -131,7 +131,7 @@
 
                             <div>
                                 <label for="message" class="block text-[13px] font-medium text-dark-700 mb-1.5">Message</label>
-                                <textarea id="message" name="message" rows="4" required placeholder="Decrivez votre contexte..."
+                                <textarea id="message" name="message" rows="4" required placeholder="Décrivez votre contexte..."
                                     class="w-full px-4 py-2.5 text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 resize-y placeholder:text-dark-300"></textarea>
                             </div>
 
@@ -152,7 +152,7 @@
                             <label class="flex items-start gap-2 cursor-pointer">
                                 <input type="checkbox" required class="mt-0.5 rounded border-dark-300 text-accent-600 focus:ring-accent-500" />
                                 <span class="text-[11px] text-dark-400 leading-relaxed">
-                                    J'accepte que mes donnees soient traitees par NeoGTB pour repondre a ma demande (interet legitime, art. 6.1.f RGPD). Conservees 3 ans. <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">Politique de confidentialite</a> &middot; <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">Exercer vos droits</a>
+                                    J'accepte que mes données soient traitées par NeoGTB pour répondre à ma demande (intérêt légitime, art. 6.1.f RGPD). Conservées 3 ans. <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">Politique de confidentialité</a> &middot; <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">Exercer vos droits</a>
                                 </span>
                             </label>
 

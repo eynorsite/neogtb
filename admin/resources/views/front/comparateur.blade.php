@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('title', 'Comparateur GTB — Schneider, Siemens, Honeywell — NeoGTB')
-@section('description', 'Comparez 10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense. Comparatif independant.')
+@section('description', 'Comparez 10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense. Comparatif indépendant.')
 
 @push('head')
 <style>
@@ -15,9 +15,10 @@
     --color-dark-900: #1C1917;
   }
   [x-cloak] { display: none !important; }
-  .hero-lum { position: relative; overflow: hidden; padding: 80px 0 64px; background: linear-gradient(160deg, #FAFAF9 0%, #F0FDFA 40%, #F5F5F4 70%, #FFFBEB 100%); }
-  .hero-lum.hero-emerald { background: linear-gradient(160deg, #F0FDF8 0%, #D1FAE5 40%, #ECFDF5 70%, #A7F3D0 100%); }
-  .hero-lum-mesh { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 80% 50% at 20% 80%, rgba(16,185,129,0.06) 0%, transparent 50%), radial-gradient(ellipse 60% 60% at 80% 20%, rgba(5,150,105,0.04) 0%, transparent 50%); }
+  .hero-lum { position: relative; overflow: hidden; padding: 80px 0 64px; background: #edf5f7; }
+  .hero-lum-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hero-lum.hero-emerald { background: #edf5f7; }
+  .hero-lum-mesh { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(237,245,247,0.4) 0%, rgba(237,245,247,0.95) 100%); }
   .hero-lum-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(16,185,129,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.04) 1px, transparent 1px), radial-gradient(circle 2px at center, rgba(16,185,129,0.12) 0%, transparent 2px); background-size: 48px 48px, 48px 48px, 48px 48px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%); }
   .hero-orb { position: absolute; pointer-events: none; opacity: 0.5; }
   .hero-orb-1 { width: 200px; height: 200px; top: 8%; right: 15%; border: 1px solid rgba(16,185,129,0.08); border-radius: 50%; animation: hero-float 12s ease-in-out infinite; }
@@ -50,16 +51,13 @@
 
   <!-- Hero -->
   <section class="hero-lum hero-emerald">
+    <img src="/images/hero-comparateur.png" alt="Comparaison de bâtiments intelligents — GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
-    <div class="hero-lum-grid"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      <span class="eyebrow">Outil independant</span>
-      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium">Comparateur objectif <span class="accent">GTB</span></h1>
+      <span class="eyebrow">Outil indépendant</span>
+      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="color: var(--color-dark-900);">Comparateur objectif <span class="accent">GTB</span></h1>
       <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: var(--color-dark-500);">
-        Analysez et comparez les solutions des principaux acteurs du marche de la Gestion Technique du Batiment. Notes, protocoles, budgets et retours terrain pour un choix eclaire.
+        Analysez et comparez les solutions des principaux acteurs du marché de la Gestion Technique du Bâtiment. Notes, protocoles, budgets et retours terrain pour un choix éclairé.
       </p>
     </div>
   </section>
@@ -68,9 +66,9 @@
   <section class="py-4">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="rounded-xl p-5" style="background: #FFF7ED; border: 1px solid #FED7AA;">
-        <p style="font-size: 14px; font-weight: 500; color: #9A3412; margin-bottom: 6px;">Avertissement &mdash; Comparateur independant</p>
+        <p style="font-size: 14px; font-weight: 500; color: #9A3412; margin-bottom: 6px;">Avertissement &mdash; Comparateur indépendant</p>
         <p style="font-size: 13px; color: #78350F; line-height: 1.7;">
-          Ce comparateur est un outil educatif a visee informative. Les donnees techniques proviennent de la documentation officielle des constructeurs. Les notes sont des <strong>estimations editoriales</strong> de la redaction NeoGTB. Les budgets indicatifs sont des ordres de grandeur. NeoGTB ne percoit aucune remuneration des marques listees. Derniere mise a jour : mars 2026.
+          Ce comparateur est un outil éducatif à visée informative. Les données techniques proviennent de la documentation officielle des constructeurs. Les notes sont des <strong>estimations éditoriales</strong> de la rédaction NeoGTB. Les budgets indicatifs sont des ordres de grandeur. NeoGTB ne perçoit aucune rémunération des marques listées. Dernière mise à jour : mars 2026.
         </p>
       </div>
     </div>
@@ -82,23 +80,23 @@
       <div class="bg-white rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);" x-data="{ open: false }">
         <button @click="open = !open" class="flex items-center justify-between w-full text-left">
           <div>
-            <p style="font-size: 16px; font-weight: 500; color: #111;">Methodologie de notation</p>
-            <p style="font-size: 13px; color: #6b7280; margin-top: 2px;">6 criteres, ponderation egale, sources documentaires constructeurs</p>
+            <p style="font-size: 16px; font-weight: 500; color: #111;">Méthodologie de notation</p>
+            <p style="font-size: 13px; color: #6b7280; margin-top: 2px;">6 critères, pondération égale, sources documentaires constructeurs</p>
           </div>
           <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div x-show="open" x-collapse>
           <div class="mt-6 pt-6" style="border-top: 0.5px solid rgba(0,0,0,0.08);">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
-              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Facilite d'installation</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Temps de deploiement, necessite de cablage, complexite de mise en service.</p></div>
-              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Rapport qualite/prix</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Cout total de possession rapporte aux fonctionnalites offertes.</p></div>
-              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Fonctionnalites</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Etendue des fonctions natives : regulation, supervision, alarmes, historisation, reporting, IA.</p></div>
-              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Support en France</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Presence commerciale et technique sur le territoire, reseau d'integrateurs.</p></div>
-              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Innovation</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Adoption des technologies recentes : cloud natif, IA/ML, IoT, cybersecurite.</p></div>
-              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Interoperabilite</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Nombre et diversite des protocoles supportes nativement, certifications BTL/KNX.</p></div>
+              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Facilité d'installation</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Temps de déploiement, nécessité de câblage, complexité de mise en service.</p></div>
+              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Rapport qualité/prix</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Coût total de possession rapporté aux fonctionnalités offertes.</p></div>
+              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Fonctionnalités</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Étendue des fonctions natives : régulation, supervision, alarmes, historisation, reporting, IA.</p></div>
+              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Support en France</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Présence commerciale et technique sur le territoire, réseau d'intégrateurs.</p></div>
+              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Innovation</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Adoption des technologies récentes : cloud natif, IA/ML, IoT, cybersécurité.</p></div>
+              <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Interopérabilité</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Nombre et diversité des protocoles supportés nativement, certifications BTL/KNX.</p></div>
             </div>
             <div class="rounded-lg p-4" style="background: #F9FAFB; border: 0.5px solid rgba(0,0,0,0.08);">
-              <p style="font-size: 12px; color: #6b7280; line-height: 1.7;"><strong style="color: #374151;">Sources :</strong> Documentation technique officielle des constructeurs, norme NF EN ISO 52120-1:2022, rapports BMS Market 2026. Les notes /10 sont des estimations editoriales de la redaction NeoGTB.</p>
+              <p style="font-size: 12px; color: #6b7280; line-height: 1.7;"><strong style="color: #374151;">Sources :</strong> Documentation technique officielle des constructeurs, norme NF EN ISO 52120-1:2022, rapports BMS Market 2026. Les notes /10 sont des estimations éditoriales de la rédaction NeoGTB.</p>
             </div>
           </div>
         </div>
@@ -114,11 +112,11 @@
       <div class="bg-white rounded-2xl p-6 mb-8 sticky top-20 z-40" style="border: 0.5px solid rgba(0,0,0,0.08);">
         <div class="flex flex-wrap items-center gap-4">
           <div>
-            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Categorie</label>
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Catégorie</label>
             <select x-model="filterCategory" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
               <option value="all">Toutes</option>
               <option value="leader">Leaders mondiaux</option>
-              <option value="europeen">Europeens</option>
+              <option value="europeen">Européens</option>
               <option value="supervision">Supervision / Logiciel</option>
               <option value="iot">IoT / Sans fil</option>
             </select>
@@ -133,7 +131,7 @@
             </select>
           </div>
           <div>
-            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Type de batiment</label>
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Type de bâtiment</label>
             <select x-model="filterBuilding" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
               <option value="all">Tous</option>
               <option value="petit">Petit (&lt; 2 000 m&sup2;)</option>
@@ -144,21 +142,21 @@
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Budget</label>
             <select x-model="filterBudget" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
-              <option value="all">Tous</option><option value="bas">Accessible</option><option value="moyen">Moyen</option><option value="eleve">Eleve</option>
+              <option value="all">Tous</option><option value="bas">Accessible</option><option value="moyen">Moyen</option><option value="eleve">Élevé</option>
             </select>
           </div>
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Trier par</label>
             <select x-model="sortBy" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
-              <option value="nom">Nom</option><option value="note">Note globale</option><option value="prix">Prix (croissant)</option><option value="facilite">Facilite d'installation</option>
+              <option value="nom">Nom</option><option value="note">Note globale</option><option value="prix">Prix (croissant)</option><option value="facilite">Facilité d'installation</option>
             </select>
           </div>
           <div class="ml-auto">
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">&nbsp;</label>
-            <button @click="resetFilters()" class="px-4 py-2 text-sm text-dark-500 rounded-lg hover:text-dark-700" style="border: 0.5px solid rgba(0,0,0,0.08);">Reinitialiser</button>
+            <button @click="resetFilters()" class="px-4 py-2 text-sm text-dark-500 rounded-lg hover:text-dark-700" style="border: 0.5px solid rgba(0,0,0,0.08);">Réinitialiser</button>
           </div>
         </div>
-        <div class="mt-3 text-sm text-dark-400" style="font-weight: 400;"><span x-text="filteredBrands().length"></span> marque(s) affichee(s)</div>
+        <div class="mt-3 text-sm text-dark-400" style="font-weight: 400;"><span x-text="filteredBrands().length"></span> marque(s) affichée(s)</div>
       </div>
 
       <!-- Cards des marques -->
@@ -232,7 +230,7 @@
               </div>
             </div>
             <div class="px-6 pb-4">
-              <h4 class="text-xs font-medium text-dark-400 uppercase tracking-wider mb-2">Ideal pour</h4>
+              <h4 class="text-xs font-medium text-dark-400 uppercase tracking-wider mb-2">Idéal pour</h4>
               <div class="flex flex-wrap gap-1.5">
                 <template x-for="usage in brand.ideal_pour" :key="usage">
                   <span class="px-2 py-1 bg-dark-100 text-dark-600 text-xs rounded-full" style="font-weight: 400;" x-text="usage"></span>
@@ -251,8 +249,8 @@
       </div>
 
       <div x-show="filteredBrands().length === 0" class="text-center py-16">
-        <p class="text-dark-400 text-lg" style="font-weight: 400;">Aucune marque ne correspond a vos filtres.</p>
-        <button @click="resetFilters()" class="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">Reinitialiser les filtres</button>
+        <p class="text-dark-400 text-lg" style="font-weight: 400;">Aucune marque ne correspond à vos filtres.</p>
+        <button @click="resetFilters()" class="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">Réinitialiser les filtres</button>
       </div>
     </div>
   </section>
@@ -298,8 +296,8 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#127970;</div>
-          <h3 class="font-medium text-dark-900">Petit batiment</h3>
-          <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">&lt; 2 000 m&sup2; &mdash; Budget limite</p>
+          <h3 class="font-medium text-dark-900">Petit bâtiment</h3>
+          <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">&lt; 2 000 m&sup2; &mdash; Budget limité</p>
           <div class="mt-3 space-y-1">
             <p class="text-sm font-medium text-primary-600">&rarr; TheWatchdog</p>
             <p class="text-sm font-medium text-primary-600">&rarr; Wago</p>
@@ -308,7 +306,7 @@
         </div>
         <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#127980;</div>
-          <h3 class="font-medium text-dark-900">Batiment moyen</h3>
+          <h3 class="font-medium text-dark-900">Bâtiment moyen</h3>
           <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">2 000 - 10 000 m&sup2;</p>
           <div class="mt-3 space-y-1">
             <p class="text-sm font-medium text-primary-600">&rarr; TheWatchdog</p>
@@ -317,7 +315,7 @@
         </div>
         <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#127961;&#65039;</div>
-          <h3 class="font-medium text-dark-900">Grand batiment</h3>
+          <h3 class="font-medium text-dark-900">Grand bâtiment</h3>
           <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">&gt; 10 000 m&sup2;</p>
           <div class="mt-3 space-y-1">
             <p class="text-sm font-medium text-primary-600">&rarr; Schneider Electric</p>
@@ -328,7 +326,7 @@
         <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#128260;</div>
           <h3 class="font-medium text-dark-900">Retrofit / Existant</h3>
-          <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">Mise a niveau sans travaux</p>
+          <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">Mise à niveau sans travaux</p>
           <div class="mt-3 space-y-1">
             <p class="text-sm font-medium text-primary-600">&rarr; TheWatchdog</p>
             <p class="text-sm font-medium text-primary-600">&rarr; Wattsense</p>
@@ -345,7 +343,7 @@
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
         <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Besoin d'aide pour choisir ?</h2>
-        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px;">Notre audit gratuit analyse votre batiment et vous recommande les solutions les plus adaptees.</p>
+        <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px;">Notre audit gratuit analyse votre bâtiment et vous recommande les solutions les plus adaptées.</p>
         <div class="flex flex-wrap gap-4">
           <a href="/audit" class="btn-primary">Lancer l'audit gratuit <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
           <a href="/contact" class="btn-secondary">Demander un conseil</a>
@@ -354,22 +352,22 @@
     </div>
   </section>
 
-  <!-- Pages associees -->
+  <!-- Pages associées -->
   <section class="py-12 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associees</h2>
+      <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associées</h2>
       <div class="grid md:grid-cols-3 gap-4">
         <a href="/audit" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Audit GTB gratuit</p>
-          <p class="text-sm text-dark-400 mt-1">Diagnostiquez d'abord votre batiment avant de comparer.</p>
+          <p class="text-sm text-dark-400 mt-1">Diagnostiquez d'abord votre bâtiment avant de comparer.</p>
         </a>
         <a href="/solutions" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Solutions & Technologies</p>
-          <p class="text-sm text-dark-400 mt-1">Protocoles, capteurs et architecture GTB en detail.</p>
+          <p class="text-sm text-dark-400 mt-1">Protocoles, capteurs et architecture GTB en détail.</p>
         </a>
         <a href="/gtb" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Qu'est-ce que la GTB ?</p>
-          <p class="text-sm text-dark-400 mt-1">Les bases pour comprendre la Gestion Technique du Batiment.</p>
+          <p class="text-sm text-dark-400 mt-1">Les bases pour comprendre la Gestion Technique du Bâtiment.</p>
         </a>
       </div>
     </div>

@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('title', 'Exercer vos droits RGPD')
-@section('description', 'Droits RGPD sur NeoGTB : acces, rectification, suppression, portabilite, opposition. Reponse sous 30 jours.')
+@section('description', 'Droits RGPD sur NeoGTB : accès, rectification, suppression, portabilité, opposition. Réponse sous 30 jours.')
 
 @section('content')
 
@@ -12,7 +12,7 @@
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">RGPD — Vos droits</p>
             <h1 class="font-heading font-medium text-dark-900 text-[26px] tracking-tight">Exercer vos droits RGPD</h1>
             <p class="mt-4 text-dark-500 max-w-xl mx-auto text-sm leading-relaxed">
-                Conformement au RGPD, vous disposez de droits sur vos donnees personnelles. Selectionnez le type de demande ci-dessous.
+                Conformément au RGPD, vous disposez de droits sur vos données personnelles. Sélectionnez le type de demande ci-dessous.
             </p>
         </div>
 
@@ -23,11 +23,11 @@
                 <label class="block text-sm font-medium text-dark-700 mb-3">Type de demande</label>
                 <div class="space-y-2">
                     @foreach([
-                        ['value' => 'access', 'title' => 'Acceder a mes donnees', 'desc' => "Droit d'acces — Obtenir une copie de toutes vos donnees"],
-                        ['value' => 'rectification', 'title' => 'Corriger mes donnees', 'desc' => 'Droit de rectification — Corriger des informations inexactes'],
-                        ['value' => 'deletion', 'title' => 'Supprimer mes donnees', 'desc' => "Droit a l'oubli — Effacer definitivement vos donnees"],
-                        ['value' => 'portability', 'title' => 'Exporter mes donnees', 'desc' => 'Droit a la portabilite — Recevoir vos donnees en format structure'],
-                        ['value' => 'opposition', 'title' => "M'opposer au traitement", 'desc' => "Droit d'opposition — Cesser le traitement de vos donnees"],
+                        ['value' => 'access', 'title' => 'Accéder à mes données', 'desc' => "Droit d'accès — Obtenir une copie de toutes vos données"],
+                        ['value' => 'rectification', 'title' => 'Corriger mes données', 'desc' => 'Droit de rectification — Corriger des informations inexactes'],
+                        ['value' => 'deletion', 'title' => 'Supprimer mes données', 'desc' => "Droit à l'oubli — Effacer définitivement vos données"],
+                        ['value' => 'portability', 'title' => 'Exporter mes données', 'desc' => 'Droit à la portabilité — Recevoir vos données en format structuré'],
+                        ['value' => 'opposition', 'title' => "M'opposer au traitement", 'desc' => "Droit d'opposition — Cesser le traitement de vos données"],
                     ] as $option)
                     <label class="flex items-start gap-3 p-3 rounded-lg cursor-pointer transition-all border border-dark-100 hover:bg-dark-50"
                         :class="form.type === '{{ $option['value'] }}' ? 'border-accent-500 bg-accent-50' : ''">
@@ -50,24 +50,24 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-dark-700 mb-1">Votre nom</label>
-                    <input type="text" x-model="form.name" placeholder="Prenom Nom" required
+                    <input type="text" x-model="form.name" placeholder="Prénom Nom" required
                         class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 border border-dark-200 focus:ring-2 focus:ring-accent-500 focus:outline-none focus:border-accent-500">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-dark-700 mb-1">Precisions <span class="text-dark-400 font-normal">(optionnel)</span></label>
-                    <textarea x-model="form.message" rows="4" placeholder="Decrivez votre demande si necessaire..."
+                    <label class="block text-sm font-medium text-dark-700 mb-1">Précisions <span class="text-dark-400 font-normal">(optionnel)</span></label>
+                    <textarea x-model="form.message" rows="4" placeholder="Décrivez votre demande si nécessaire..."
                         class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 border border-dark-200 focus:ring-2 focus:ring-accent-500 focus:outline-none focus:border-accent-500 resize-y"></textarea>
                 </div>
                 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             </div>
 
-            <!-- Info securite -->
+            <!-- Info sécurité -->
             <div class="bg-accent-50 rounded-xl p-4 mb-6 border border-accent-200">
                 <div class="flex gap-3">
                     <svg class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                     <div class="text-sm leading-relaxed">
-                        <p class="font-medium text-accent-800">Vos donnees sont protegees</p>
-                        <p class="text-accent-700 mt-1">Votre demande sera chiffree et traitee dans un delai legal de 30 jours. Seul le responsable RGPD de NeoGTB y aura acces.</p>
+                        <p class="font-medium text-accent-800">Vos données sont protégées</p>
+                        <p class="text-accent-700 mt-1">Votre demande sera chiffrée et traitée dans un délai légal de 30 jours. Seul le responsable RGPD de NeoGTB y aura accès.</p>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                 <template x-if="submitted">
                     <span class="flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        Demande envoyee
+                        Demande envoyée
                     </span>
                 </template>
             </button>
@@ -96,8 +96,8 @@
                 <div class="flex gap-3">
                     <svg class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     <div class="text-sm leading-relaxed">
-                        <p class="font-medium text-accent-800">Demande enregistree</p>
-                        <p class="text-accent-700 mt-1">Nous avons bien recu votre demande. Vous recevrez une confirmation par email et une reponse dans un delai maximum de 30 jours.</p>
+                        <p class="font-medium text-accent-800">Demande enregistrée</p>
+                        <p class="text-accent-700 mt-1">Nous avons bien reçu votre demande. Vous recevrez une confirmation par email et une réponse dans un délai maximum de 30 jours.</p>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
         <!-- Lien retour -->
         <div class="text-center mt-8">
             <a href="/politique-de-confidentialite" class="text-sm text-accent-600 hover:text-accent-700 font-medium">
-                &larr; Consulter notre politique de confidentialite
+                &larr; Consulter notre politique de confidentialité
             </a>
         </div>
 

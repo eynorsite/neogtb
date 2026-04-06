@@ -1,27 +1,23 @@
 @extends('front.layouts.app')
 @section('title', 'Perspectives — Analyses & veille technique GTB | NeoGTB')
-@section('description', 'Analyses, veille technique et guides pratiques sur la Gestion Technique du Batiment (GTB) : decret BACS, protocoles, tendances smart building.')
+@section('description', 'Analyses, veille technique et guides pratiques sur la Gestion Technique du Bâtiment (GTB) : décret BACS, protocoles, tendances smart building.')
 
 @section('content')
 
 {{-- ══════════════════════════════════════════════════════════════
      HERO
      ══════════════════════════════════════════════════════════════ --}}
-<section class="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 pt-24 pb-20">
-    {{-- Decorative elements --}}
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-16 left-10 w-72 h-72 bg-accent-400 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-8 right-16 w-96 h-96 bg-primary-300 rounded-full blur-3xl"></div>
-    </div>
-    <div class="absolute inset-0" style="background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 32px 32px;"></div>
+<section class="relative overflow-hidden pt-24 pb-20" style="background: #edf5f7;">
+    <img src="/images/hero-blog.png" alt="Veille technique GTB — bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <span class="inline-block text-xs font-semibold tracking-widest uppercase text-accent-300 mb-4">Perspectives</span>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight">
-            Analyses & veille <span class="text-accent-300">technique</span>
+        <span class="inline-block text-xs font-semibold tracking-widest uppercase text-accent-600 mb-4">Perspectives</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-dark-900 tracking-tight leading-tight">
+            Analyses & veille <span class="text-accent-600">technique</span>
         </h1>
-        <p class="mt-5 text-base sm:text-lg text-primary-200 max-w-2xl mx-auto leading-relaxed">
-            Decryptages, retours terrain et points de vue sur la GTB, la GTC et le batiment intelligent.
+        <p class="mt-5 text-base sm:text-lg text-dark-500 max-w-2xl mx-auto leading-relaxed">
+            Décryptages, retours terrain et points de vue sur la GTB, la GTC et le bâtiment intelligent.
         </p>
     </div>
 </section>
@@ -142,7 +138,7 @@
             <svg class="w-12 h-12 text-dark-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
             </svg>
-            <p class="text-dark-400 text-sm">Aucun article dans cette categorie.</p>
+            <p class="text-dark-400 text-sm">Aucun article dans cette catégorie.</p>
         </div>
 
         {{-- Pagination --}}
@@ -192,10 +188,10 @@
 <section class="py-16 lg:py-20 bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-dark-900 tracking-tight">
-            Un projet GTB a clarifier ?
+            Un projet GTB à clarifier ?
         </h2>
         <p class="mt-4 text-base text-dark-500 leading-relaxed max-w-xl mx-auto">
-            Pre-diagnostic ISO 52120-1 gratuit en ligne, ou echange de 15 minutes pour cadrer votre besoin.
+            Pré-diagnostic ISO 52120-1 gratuit en ligne, ou échange de 15 minutes pour cadrer votre besoin.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="/audit" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors btn-glow">

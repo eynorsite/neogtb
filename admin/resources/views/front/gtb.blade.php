@@ -1,13 +1,13 @@
 @extends('front.layouts.app')
 
-@section('title', "Qu'est-ce que la GTB ? Definition et niveaux ISO 52120-1")
-@section('description', 'Guide GTB : definition, 4 niveaux ISO 52120-1 (ex-EN 15232), protocoles BACnet/KNX/Modbus, decret BACS et obligations. Mis a jour 2026.')
+@section('title', "Qu'est-ce que la GTB ? Définition et niveaux ISO 52120-1")
+@section('description', 'Guide GTB : définition, 4 niveaux ISO 52120-1 (ex-EN 15232), protocoles BACnet/KNX/Modbus, décret BACS et obligations. Mis à jour 2026.')
 
 @section('content')
 
 <!-- HERO IMAGE -->
 <section class="relative min-h-[480px] flex items-center overflow-hidden">
-    <img src="/images/hero-gtb.webp" alt="Poste de supervision GTB — ecrans de controle et alertes batiment" width="1200" height="630" loading="eager" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-center" />
+    <img src="/images/hero-gtb.webp" alt="Poste de supervision GTB — écrans de contrôle et alertes bâtiment" width="1200" height="630" loading="eager" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-center" />
     <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%);"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 w-full">
         <div class="max-w-[540px]">
@@ -16,10 +16,10 @@
                 Qu'est-ce que la <span class="text-green-400">GTB</span> ?
             </h1>
             <p class="text-[17px] text-white/70 leading-relaxed max-w-[480px]">
-                La Gestion Technique du Batiment (GTB) designe le systeme centralise qui supervise, pilote et optimise l'ensemble des equipements techniques d'un batiment — du chauffage a l'eclairage, en passant par la ventilation et le controle d'acces.
+                La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment — du chauffage à l'éclairage, en passant par la ventilation et le contrôle d'accès.
             </p>
             <div class="mt-6 flex gap-2">
-                <span class="text-xs font-medium px-3 py-1 rounded bg-white/10 text-white/80 border border-white/15">Batiment intelligent</span>
+                <span class="text-xs font-medium px-3 py-1 rounded bg-white/10 text-white/80 border border-white/15">Bâtiment intelligent</span>
                 <span class="text-xs font-medium px-3 py-1 rounded bg-white/10 text-white/80 border border-white/15">ISO 52120-1</span>
             </div>
         </div>
@@ -30,19 +30,19 @@
 <section class="py-20">
     <div class="max-w-[760px] mx-auto px-6 md:px-10">
         <div x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-5">Definition et role de la GTB</h2>
+            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-5">Définition et rôle de la GTB</h2>
             <p class="text-base text-dark-500 leading-relaxed mb-4">
-                La <strong class="text-dark-900 font-medium">Gestion Technique du Batiment</strong>, couramment abregee GTB et connue en anglais sous le terme <em>Building Management System (BMS)</em>, est un systeme informatique qui centralise la supervision et le pilotage de tous les lots techniques d'un batiment.
+                La <strong class="text-dark-900 font-medium">Gestion Technique du Bâtiment</strong>, couramment abrégée GTB et connue en anglais sous le terme <em>Building Management System (BMS)</em>, est un système informatique qui centralise la supervision et le pilotage de tous les lots techniques d'un bâtiment.
             </p>
             <p class="text-base text-dark-500 leading-relaxed mb-4">
-                Elle collecte en temps reel les donnees issues de capteurs (temperature, hygrometrie, luminosite, presence, qualite de l'air, comptage energetique) et transmet des commandes aux actionneurs pour maintenir les conditions de confort tout en reduisant la consommation d'energie.
+                Elle collecte en temps réel les données issues de capteurs (température, hygrométrie, luminosité, présence, qualité de l'air, comptage énergétique) et transmet des commandes aux actionneurs pour maintenir les conditions de confort tout en réduisant la consommation d'énergie.
             </p>
             <p class="text-base text-dark-500 leading-relaxed mb-6">
-                Contrairement a une simple regulation locale, la GTB offre une <strong class="text-dark-900 font-medium">vision globale du batiment</strong>. C'est cette capacite d'interoperabilite entre systemes qui distingue une GTB d'un simple automate de regulation.
+                Contrairement à une simple régulation locale, la GTB offre une <strong class="text-dark-900 font-medium">vision globale du bâtiment</strong>. C'est cette capacité d'interopérabilité entre systèmes qui distingue une GTB d'un simple automate de régulation.
             </p>
             <div class="bg-accent-50 border border-accent-200 rounded-xl p-6">
-                <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Point cle</p>
-                <p class="text-sm text-dark-600 leading-relaxed">Depuis le decret BACS (2020), la mise en place d'un systeme d'automatisation est <strong>obligatoire</strong> pour les batiments tertiaires dont la puissance CVC depasse 290 kW (2025), puis 70 kW (2030).</p>
+                <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Point clé</p>
+                <p class="text-sm text-dark-600 leading-relaxed">Depuis le décret BACS (2020), la mise en place d'un système d'automatisation est <strong>obligatoire</strong> pour les bâtiments tertiaires dont la puissance CVC dépasse 290 kW (2025), puis 70 kW (2030).</p>
             </div>
         </div>
     </div>
@@ -54,15 +54,15 @@
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Classification</p>
             <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Les 4 niveaux ISO 52120-1</h2>
-            <p class="text-base text-dark-500 leading-relaxed">La norme EN ISO 52120-1 (ex-EN 15232) definit quatre classes de performance pour les systemes de gestion technique du batiment.</p>
+            <p class="text-base text-dark-500 leading-relaxed">La norme EN ISO 52120-1 (ex-EN 15232) définit quatre classes de performance pour les systèmes de gestion technique du bâtiment.</p>
         </div>
         <div class="grid md:grid-cols-4 gap-5">
             @php
             $classes = [
-                ['badge' => 'Classe D', 'bg' => 'bg-dark-400', 'title' => 'Non performant', 'desc' => 'Aucun systeme d\'automatisation. Pilotage manuel, sans regulation ni programmation. Reference basse a depasser.', 'highlight' => false],
-                ['badge' => 'Classe C', 'bg' => 'bg-dark-500', 'title' => 'Standard', 'desc' => 'Regulation de base et programmation horaire. Regulateurs individuels sans supervision centralisee. Niveau minimal pour les batiments neufs.', 'highlight' => false],
-                ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avance', 'desc' => 'GTB centralisee, suivi energetique, detection de derives. Communication BACnet/KNX/Modbus. <strong class="text-accent-600">Exigence du decret BACS.</strong>', 'highlight' => true],
-                ['badge' => 'Classe A', 'bg' => 'bg-dark-800', 'title' => 'Haute performance', 'desc' => 'Regulation piece par piece, optimisation multi-lots, analyse avancee, detection automatique des defauts, ajustement predictif.', 'highlight' => false],
+                ['badge' => 'Classe D', 'bg' => 'bg-dark-400', 'title' => 'Non performant', 'desc' => 'Aucun système d\'automatisation. Pilotage manuel, sans régulation ni programmation. Référence basse à dépasser.', 'highlight' => false],
+                ['badge' => 'Classe C', 'bg' => 'bg-dark-500', 'title' => 'Standard', 'desc' => 'Régulation de base et programmation horaire. Régulateurs individuels sans supervision centralisée. Niveau minimal pour les bâtiments neufs.', 'highlight' => false],
+                ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives. Communication BACnet/KNX/Modbus. <strong class="text-accent-600">Exigence du décret BACS.</strong>', 'highlight' => true],
+                ['badge' => 'Classe A', 'bg' => 'bg-dark-800', 'title' => 'Haute performance', 'desc' => 'Régulation pièce par pièce, optimisation multi-lots, analyse avancée, détection automatique des défauts, ajustement prédictif.', 'highlight' => false],
             ];
             @endphp
             @foreach($classes as $class)
@@ -80,17 +80,17 @@
 <section class="py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Perimetre</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Lots techniques pilotes</h2>
-            <p class="text-base text-dark-500 leading-relaxed">Une GTB supervise et coordonne l'ensemble des systemes du batiment.</p>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Périmètre</p>
+            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Lots techniques pilotés</h2>
+            <p class="text-base text-dark-500 leading-relaxed">Une GTB supervise et coordonne l'ensemble des systèmes du bâtiment.</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach([
-                ['cat' => 'CVC', 'title' => 'Chauffage, Ventilation, Climatisation', 'desc' => 'Regulation des chaudieres, PAC, groupes froids, CTA, ventilo-convecteurs. Gestion des consignes par zone, programmation horaire, reduit de nuit, suivi des rendements.'],
-                ['cat' => 'Eclairage', 'title' => 'Pilotage et gradation', 'desc' => 'Pilotage par zone selon presence et luminosite naturelle. Gradation (dimming) via DALI ou KNX. Gestion des circuits de securite et d\'eclairage exterieur.'],
-                ['cat' => 'Protection solaire', 'title' => 'Stores et BSO', 'desc' => 'Gestion automatisee selon ensoleillement, position du soleil, vent. Interaction CVC essentielle : reduction des apports solaires en ete, exploitation en hiver.'],
-                ['cat' => 'Securite', 'title' => 'Controle d\'acces et surete', 'desc' => 'Supervision des lecteurs de badges, detection d\'intrusion, SSI. Couplage presence/confort : zone inoccupee = chauffage reduit, eclairage eteint.'],
-                ['cat' => 'Energie', 'title' => 'Comptage et suivi energetique', 'desc' => 'Centralisation des compteurs (elec, gaz, eau, calories). Suivi des IPE, detection de derives, reporting OPERAT pour le decret tertiaire.'],
+                ['cat' => 'CVC', 'title' => 'Chauffage, Ventilation, Climatisation', 'desc' => 'Régulation des chaudières, PAC, groupes froids, CTA, ventilo-convecteurs. Gestion des consignes par zone, programmation horaire, réduit de nuit, suivi des rendements.'],
+                ['cat' => 'Éclairage', 'title' => 'Pilotage et gradation', 'desc' => 'Pilotage par zone selon présence et luminosité naturelle. Gradation (dimming) via DALI ou KNX. Gestion des circuits de sécurité et d\'éclairage extérieur.'],
+                ['cat' => 'Protection solaire', 'title' => 'Stores et BSO', 'desc' => 'Gestion automatisée selon ensoleillement, position du soleil, vent. Interaction CVC essentielle : réduction des apports solaires en été, exploitation en hiver.'],
+                ['cat' => 'Sécurité', 'title' => 'Contrôle d\'accès et sûreté', 'desc' => 'Supervision des lecteurs de badges, détection d\'intrusion, SSI. Couplage présence/confort : zone inoccupée = chauffage réduit, éclairage éteint.'],
+                ['cat' => 'Énergie', 'title' => 'Comptage et suivi énergétique', 'desc' => 'Centralisation des compteurs (élec, gaz, eau, calories). Suivi des IPE, détection de dérives, reporting OPERAT pour le décret tertiaire.'],
             ] as $lot)
             <div class="bg-white rounded-xl p-7 border border-dark-200 shadow-sm card-hover">
                 <div class="text-[11px] font-medium uppercase tracking-widest text-accent-600 mb-3">{{ $lot['cat'] }}</div>
@@ -106,9 +106,9 @@
 <section class="py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Interoperabilite</p>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Interopérabilité</p>
             <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Protocoles de communication</h2>
-            <p class="text-base text-dark-500 leading-relaxed">Le choix du protocole conditionne l'interoperabilite, la maintenabilite et la perennite de l'installation.</p>
+            <p class="text-base text-dark-500 leading-relaxed">Le choix du protocole conditionne l'interopérabilité, la maintenabilité et la pérennité de l'installation.</p>
         </div>
 
         <!-- Terrain -->
@@ -116,9 +116,9 @@
             <h3 class="text-xs font-medium uppercase tracking-widest text-dark-400 mb-4">Protocoles terrain (capteurs / actionneurs)</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 @foreach([
-                    ['name' => 'BACnet MS/TP', 'tag' => 'ISO 16484-5', 'desc' => 'BACnet sur bus RS-485 serie. Protocole terrain de reference pour connecter automates, boites VAV et capteurs.'],
-                    ['name' => 'Modbus RTU', 'tag' => 'RS-485', 'desc' => 'Protocole industriel (1979, Modicon). Architecture maitre-esclave sur liaison serie. Dominant pour le comptage energie.'],
-                    ['name' => 'KNX TP', 'tag' => 'ISO/IEC 14543-3', 'desc' => 'Bus filaire paire torsadee. Architecture decentralisee, 500+ fabricants. Standard europeen pour eclairage, stores, CVC.'],
+                    ['name' => 'BACnet MS/TP', 'tag' => 'ISO 16484-5', 'desc' => 'BACnet sur bus RS-485 série. Protocole terrain de référence pour connecter automates, boîtes VAV et capteurs.'],
+                    ['name' => 'Modbus RTU', 'tag' => 'RS-485', 'desc' => 'Protocole industriel (1979, Modicon). Architecture maître-esclave sur liaison série. Dominant pour le comptage énergie.'],
+                    ['name' => 'KNX TP', 'tag' => 'ISO/IEC 14543-3', 'desc' => 'Bus filaire paire torsadée. Architecture décentralisée, 500+ fabricants. Standard européen pour éclairage, stores, CVC.'],
                     ['name' => 'DALI / DALI-2', 'tag' => 'IEC 62386', 'desc' => 'Digital Addressable Lighting Interface. Bus 2 fils, 64 appareils par ligne. Standard ouvert pour ballasts et dimmers.'],
                 ] as $proto)
                 <div class="bg-white rounded-xl p-6 border border-dark-200 shadow-sm">
@@ -134,14 +134,14 @@
 
         <!-- Reseau / IP -->
         <div class="mb-10">
-            <h3 class="text-xs font-medium uppercase tracking-widest text-dark-400 mb-4">Protocoles reseau et IP</h3>
+            <h3 class="text-xs font-medium uppercase tracking-widest text-dark-400 mb-4">Protocoles réseau et IP</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 @foreach([
-                    ['name' => 'BACnet/IP', 'tag' => 'ISO 16484-5', 'desc' => 'BACnet sur UDP/IP. Protocole backbone de reference pour la supervision GTB moderne.'],
-                    ['name' => 'BACnet/SC', 'tag' => 'ASHRAE 135', 'desc' => 'Secure Connect. TLS + WebSocket pour la communication securisee a travers les firewalls IT.'],
-                    ['name' => 'Modbus TCP', 'tag' => 'Ethernet', 'desc' => 'Modbus encapsule en TCP/IP. Simplicite du Modbus avec la vitesse et la portee de l\'Ethernet.'],
-                    ['name' => 'OPC UA', 'tag' => 'IEC 62541', 'desc' => 'Standard d\'interoperabilite cross-systeme. Communication securisee, pont entre OT et IT.'],
-                    ['name' => 'MQTT', 'tag' => 'ISO/IEC 20922', 'desc' => 'Messaging publish/subscribe leger pour IoT. Ideal pour la telemetrie capteurs vers cloud.'],
+                    ['name' => 'BACnet/IP', 'tag' => 'ISO 16484-5', 'desc' => 'BACnet sur UDP/IP. Protocole backbone de référence pour la supervision GTB moderne.'],
+                    ['name' => 'BACnet/SC', 'tag' => 'ASHRAE 135', 'desc' => 'Secure Connect. TLS + WebSocket pour la communication sécurisée à travers les firewalls IT.'],
+                    ['name' => 'Modbus TCP', 'tag' => 'Ethernet', 'desc' => 'Modbus encapsulé en TCP/IP. Simplicité du Modbus avec la vitesse et la portée de l\'Ethernet.'],
+                    ['name' => 'OPC UA', 'tag' => 'IEC 62541', 'desc' => 'Standard d\'interopérabilité cross-système. Communication sécurisée, pont entre OT et IT.'],
+                    ['name' => 'MQTT', 'tag' => 'ISO/IEC 20922', 'desc' => 'Messaging publish/subscribe léger pour IoT. Idéal pour la télémétrie capteurs vers cloud.'],
                 ] as $proto)
                 <div class="bg-white rounded-xl p-6 border border-dark-200 shadow-sm">
                     <div class="flex items-center justify-between mb-2">
@@ -159,12 +159,12 @@
             <h3 class="text-xs font-medium uppercase tracking-widest text-dark-400 mb-4">Protocoles sans fil</h3>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach([
-                    ['name' => 'EnOcean', 'tag' => 'ISO/IEC 14543-3-10', 'desc' => 'Sans batterie — alimente par l\'energie ambiante. Ideal pour la renovation sans cablage.'],
-                    ['name' => 'ZigBee 3.0', 'tag' => 'IEEE 802.15.4', 'desc' => 'Reseau mesh basse consommation, auto-reparant. Tres utilise pour l\'eclairage commercial.'],
-                    ['name' => 'Thread / Matter', 'tag' => 'CSA', 'desc' => 'Mesh IPv6 basse consommation. Standard d\'interoperabilite Apple, Google, Amazon, Samsung.'],
-                    ['name' => 'LoRaWAN', 'tag' => 'LoRa Alliance', 'desc' => 'Longue portee (km), tres basse consommation. Capteurs distribues, campus, batiments distants.'],
-                    ['name' => 'BLE Mesh', 'tag' => 'IEEE 802.15.1', 'desc' => 'BLE pour capteurs de proximite et beacons. Bluetooth Mesh pour reseaux d\'eclairage grande echelle.'],
-                    ['name' => 'NB-IoT / LTE-M', 'tag' => '3GPP', 'desc' => 'IoT cellulaire pour monitoring distant. Parcs geographiquement distribues.'],
+                    ['name' => 'EnOcean', 'tag' => 'ISO/IEC 14543-3-10', 'desc' => 'Sans batterie — alimenté par l\'énergie ambiante. Idéal pour la rénovation sans câblage.'],
+                    ['name' => 'ZigBee 3.0', 'tag' => 'IEEE 802.15.4', 'desc' => 'Réseau mesh basse consommation, auto-réparant. Très utilisé pour l\'éclairage commercial.'],
+                    ['name' => 'Thread / Matter', 'tag' => 'CSA', 'desc' => 'Mesh IPv6 basse consommation. Standard d\'interopérabilité Apple, Google, Amazon, Samsung.'],
+                    ['name' => 'LoRaWAN', 'tag' => 'LoRa Alliance', 'desc' => 'Longue portée (km), très basse consommation. Capteurs distribués, campus, bâtiments distants.'],
+                    ['name' => 'BLE Mesh', 'tag' => 'IEEE 802.15.1', 'desc' => 'BLE pour capteurs de proximité et beacons. Bluetooth Mesh pour réseaux d\'éclairage grande échelle.'],
+                    ['name' => 'NB-IoT / LTE-M', 'tag' => '3GPP', 'desc' => 'IoT cellulaire pour monitoring distant. Parcs géographiquement distribués.'],
                 ] as $proto)
                 <div class="bg-white rounded-xl p-6 border border-dark-200 shadow-sm">
                     <p class="text-base font-medium text-dark-900 mb-1">{{ $proto['name'] }}</p>
@@ -181,15 +181,15 @@
 <section class="py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Conformite</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Cadre reglementaire</h2>
-            <p class="text-base text-dark-500 leading-relaxed">Plusieurs textes encadrent la mise en place de systemes GTB dans les batiments tertiaires en France.</p>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Conformité</p>
+            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Cadre réglementaire</h2>
+            <p class="text-base text-dark-500 leading-relaxed">Plusieurs textes encadrent la mise en place de systèmes GTB dans les bâtiments tertiaires en France.</p>
         </div>
         <div class="grid md:grid-cols-3 gap-5">
             @foreach([
-                ['badge' => 'Obligatoire', 'bg' => 'bg-accent-600', 'title' => 'Decret BACS', 'desc' => 'Impose un systeme d\'automatisation (classe B min.) pour les batiments tertiaires. Echeance 2025 (>290 kW CVC), 2030 (>70 kW).'],
-                ['badge' => 'Objectifs', 'bg' => 'bg-dark-600', 'title' => 'Decret tertiaire', 'desc' => 'Reduction progressive de la consommation : -40 % (2030), -50 % (2040), -60 % (2050). Declaration annuelle sur OPERAT.'],
-                ['badge' => 'Neuf', 'bg' => 'bg-dark-600', 'title' => 'RE2020', 'desc' => 'Applicable aux batiments neufs. Seuils de consommation (Cep) et confort d\'ete (DH) rendant la GTB quasi indispensable.'],
+                ['badge' => 'Obligatoire', 'bg' => 'bg-accent-600', 'title' => 'Décret BACS', 'desc' => 'Impose un système d\'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2030 (>70 kW).'],
+                ['badge' => 'Objectifs', 'bg' => 'bg-dark-600', 'title' => 'Décret tertiaire', 'desc' => 'Réduction progressive de la consommation : -40 % (2030), -50 % (2040), -60 % (2050). Déclaration annuelle sur OPERAT.'],
+                ['badge' => 'Neuf', 'bg' => 'bg-dark-600', 'title' => 'RE2020', 'desc' => 'Applicable aux bâtiments neufs. Seuils de consommation (Cep) et confort d\'été (DH) rendant la GTB quasi indispensable.'],
             ] as $reg)
             <div class="bg-white rounded-xl p-7 border border-dark-200 shadow-sm card-hover">
                 <span class="inline-block text-[13px] font-medium text-white {{ $reg['bg'] }} px-2.5 py-1 rounded-md mb-3.5">{{ $reg['badge'] }}</span>
@@ -207,8 +207,8 @@
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">
         <div class="max-w-lg">
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Evaluez le niveau GTB de votre batiment</h2>
-            <p class="text-base text-dark-500 leading-relaxed mb-7">Identifiez votre classe ISO 52120-1, verifiez votre conformite BACS et reperez les axes d'amelioration.</p>
+            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Évaluez le niveau GTB de votre bâtiment</h2>
+            <p class="text-base text-dark-500 leading-relaxed mb-7">Identifiez votre classe ISO 52120-1, vérifiez votre conformité BACS et repérez les axes d'amélioration.</p>
             <a href="/audit" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow">
                 Lancer le diagnostic
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -222,9 +222,9 @@
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['href' => '/gtc', 'title' => 'GTC : quelle difference avec la GTB ?', 'desc' => 'Supervision centralisee vs automatisation — comprendre les nuances.'],
+                ['href' => '/gtc', 'title' => 'GTC : quelle différence avec la GTB ?', 'desc' => 'Supervision centralisée vs automatisation — comprendre les nuances.'],
                 ['href' => '/solutions', 'title' => 'Solutions & Technologies GTB', 'desc' => 'Protocoles BACnet, KNX, Modbus, capteurs et automates.'],
-                ['href' => '/reglementation', 'title' => 'Reglementation GTB en France', 'desc' => 'Decret BACS, decret tertiaire, RE2020 — calendrier et obligations.'],
+                ['href' => '/reglementation', 'title' => 'Réglementation GTB en France', 'desc' => 'Décret BACS, décret tertiaire, RE2020 — calendrier et obligations.'],
             ] as $link)
             <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-xl p-6 border border-dark-200 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>

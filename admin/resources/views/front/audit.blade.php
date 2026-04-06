@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
-@section('title', 'Pre-diagnostic GTB gratuit — Evaluez en 5 min — NeoGTB')
-@section('description', 'Evaluez la conformite GTB de votre batiment (decret BACS), estimez vos economies et recevez un rapport PDF avec recommandations ISO 52120-1 (ex-EN 15232).')
+@section('title', 'Pré-diagnostic GTB gratuit — Évaluez en 5 min — NeoGTB')
+@section('description', 'Évaluez la conformité GTB de votre bâtiment (décret BACS), estimez vos économies et recevez un rapport PDF avec recommandations ISO 52120-1 (ex-EN 15232).')
 
 @push('head')
 <style>
@@ -18,8 +18,9 @@
   [x-cloak] { display: none !important; }
 
   /* Hero */
-  .hero-lum { position: relative; overflow: hidden; padding: 80px 0 64px; background: linear-gradient(160deg, #FAFAF9 0%, #F0FDFA 40%, #F5F5F4 70%, #FFFBEB 100%); }
-  .hero-lum-mesh { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 80% 50% at 20% 80%, rgba(13,148,136,0.06) 0%, transparent 50%), radial-gradient(ellipse 60% 60% at 80% 20%, rgba(15,118,110,0.04) 0%, transparent 50%), radial-gradient(ellipse 50% 50% at 50% 50%, rgba(245,158,11,0.03) 0%, transparent 50%); }
+  .hero-lum { position: relative; overflow: hidden; padding: 80px 0 64px; background: #0a1628; }
+  .hero-lum-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.45; }
+  .hero-lum-mesh { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.3) 50%, rgba(10,22,40,0.6) 100%); }
   .hero-lum-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(13,148,136,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,0.04) 1px, transparent 1px), radial-gradient(circle 2px at center, rgba(13,148,136,0.12) 0%, transparent 2px); background-size: 48px 48px, 48px 48px, 48px 48px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%); }
   .hero-orb { position: absolute; pointer-events: none; opacity: 0.5; }
   .hero-orb-1 { width: 200px; height: 200px; top: 8%; right: 15%; border: 1px solid rgba(13,148,136,0.08); border-radius: 50%; animation: hero-float 12s ease-in-out infinite; }
@@ -32,8 +33,8 @@
 
   .diag-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent-600); margin-bottom: 20px; }
   .diag-hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
-  .diag-badge { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; font-size: 12px; font-weight: 500; background: white; border: 1px solid var(--color-dark-200); color: var(--color-dark-500); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .diag-badge-accent { background: rgba(13, 148, 136, 0.06); border-color: rgba(13, 148, 136, 0.15); color: var(--color-accent-600); }
+  .diag-badge { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; font-size: 12px; font-weight: 500; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
+  .diag-badge-accent { background: rgba(45,212,191,0.12); border-color: rgba(45,212,191,0.25); color: #2DD4BF; }
   .diag-section { padding: 48px 0 80px; background: var(--color-dark-50); min-height: 600px; }
   .diag-progress-wrap { margin-bottom: 40px; }
   .diag-progress-bar { width: 100%; height: 3px; background: var(--color-dark-200); border-radius: 100px; overflow: hidden; margin-bottom: 24px; }
@@ -181,38 +182,35 @@
     <span class="mx-2">/</span>
     <span class="text-dark-300">Outils</span>
     <span class="mx-2">/</span>
-    <span class="text-dark-600 font-medium">Pre-diagnostic GTB</span>
+    <span class="text-dark-600 font-medium">Pré-diagnostic GTB</span>
   </nav>
 
   <!-- HERO -->
   <section class="hero-lum">
+    <img src="/images/hero-audit.png" alt="Bâtiment intelligent connecté — GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
-    <div class="hero-lum-grid"></div>
     <div class="max-w-[800px] mx-auto px-6 md:px-10 relative z-10 text-center">
-      <p class="diag-eyebrow">Diagnostic gratuit &middot; Rapport PDF</p>
-      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px;">
-        Pre-diagnostic <span style="background: linear-gradient(135deg, var(--color-accent-700) 0%, var(--color-accent-500) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">GTB</span> de votre batiment
+      <p class="diag-eyebrow" style="color: rgba(255,255,255,0.7);">Diagnostic gratuit &middot; Rapport PDF</p>
+      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px; color: #fff;">
+        Pré-diagnostic <span style="color: #2DD4BF;">GTB</span> de votre bâtiment
       </h1>
-      <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: var(--color-dark-500);">
-        Evaluez votre conformite au decret BACS, estimez vos economies d'energie et recevez un rapport personnalise avec recommandations ISO 52120-1.
+      <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: rgba(255,255,255,0.65);">
+        Évaluez votre conformité au décret BACS, estimez vos économies d'énergie et recevez un rapport personnalisé avec recommandations ISO 52120-1.
       </p>
       <div class="diag-hero-badges">
         <span class="diag-badge">
           <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          ISO 52120-1 &middot; Decret BACS &middot; Donnees ADEME
+          ISO 52120-1 &middot; Décret BACS &middot; Données ADEME
         </span>
         <span class="diag-badge diag-badge-accent">
           <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          100% independant &middot; 0 &euro; commission
+          100% indépendant &middot; 0 &euro; commission
         </span>
       </div>
     </div>
   </section>
 
-  <!-- FORMULAIRE (Alpine.js identique a Astro) -->
+  <!-- FORMULAIRE (Alpine.js identique à Astro) -->
   <section class="diag-section" x-data="diagWizard()" x-cloak>
     <div class="max-w-[720px] mx-auto px-5 md:px-8">
 
@@ -234,15 +232,15 @@
         </div>
       </div>
 
-      <!-- ETAPE 1 : BATIMENT -->
+      <!-- ÉTAPE 1 : BÂTIMENT -->
       <div x-show="step === 1" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
         <div class="diag-card">
           <div class="diag-card-header">
-            <h2>Decrivez votre batiment</h2>
-            <p>Ces donnees permettent d'estimer votre obligation reglementaire et vos references de consommation ADEME.</p>
+            <h2>Décrivez votre bâtiment</h2>
+            <p>Ces données permettent d'estimer votre obligation réglementaire et vos références de consommation ADEME.</p>
           </div>
           <div class="diag-card-body">
-            <label class="diag-label">Type de batiment</label>
+            <label class="diag-label">Type de bâtiment</label>
             <div class="diag-grid-6">
               <template x-for="type in buildingTypes" :key="type.id">
                 <button @click="form.buildingType = type.id" class="diag-choice" :class="{ 'is-selected': form.buildingType === type.id }">
@@ -263,19 +261,19 @@
                 <p x-show="errors.surface" x-text="errors.surface" class="diag-error"></p>
               </div>
               <div>
-                <label class="diag-label">Annee de construction</label>
+                <label class="diag-label">Année de construction</label>
                 <select x-model="form.buildingAge" class="diag-input">
-                  <option value="">Selectionnez</option>
+                  <option value="">Sélectionnez</option>
                   <option value="before1975">Avant 1975</option>
                   <option value="1975-2000">1975 &mdash; 2000</option>
                   <option value="2000-2012">2000 &mdash; 2012</option>
-                  <option value="after2012">Apres 2012 (RT2012 / RE2020)</option>
+                  <option value="after2012">Après 2012 (RT2012 / RE2020)</option>
                 </select>
                 <p x-show="errors.buildingAge" x-text="errors.buildingAge" class="diag-error"></p>
               </div>
             </div>
 
-            <label class="diag-label">Ou se situe votre batiment ?</label>
+            <label class="diag-label">Où se situe votre bâtiment ?</label>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
               <template x-for="z in [{id:'H1', label:'Nord & Est', villes:'Paris, Lille, Strasbourg, Lyon, Dijon...', icon:'&#10052;&#65039;'}, {id:'H2', label:'Ouest & Centre', villes:'Nantes, Bordeaux, Toulouse, Rennes, Limoges...', icon:'&#127780;&#65039;'}, {id:'H3', label:'Mediterranee', villes:'Marseille, Nice, Montpellier, Perpignan...', icon:'&#9728;&#65039;'}, {id:'DOM', label:'Corse & Outre-mer', villes:'Ajaccio, Bastia, Guadeloupe, Martinique, Reunion...', icon:'&#127796;'}]" :key="z.id">
                 <button @click="form.climateZone = z.id" class="diag-zone" :class="{ 'is-selected': form.climateZone === z.id }">
@@ -298,12 +296,12 @@
         </div>
       </div>
 
-      <!-- ETAPE 2 : EQUIPEMENTS & LOTS TECHNIQUES -->
+      <!-- ÉTAPE 2 : ÉQUIPEMENTS & LOTS TECHNIQUES -->
       <div x-show="step === 2" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
         <div class="diag-card">
           <div class="diag-card-header">
             <h2>Vos lots techniques</h2>
-            <p>Decrivez les equipements et usages de votre batiment. Ces informations sont essentielles pour dimensionner votre GTB.</p>
+            <p>Décrivez les équipements et usages de votre bâtiment. Ces informations sont essentielles pour dimensionner votre GTB.</p>
           </div>
           <div class="diag-card-body">
 
@@ -313,11 +311,11 @@
                 <span style="font-size: 22px;">&#128293;</span>
                 <div>
                   <span class="diag-lot-title">Chauffage</span>
-                  <span class="diag-lot-subtitle">Surface geree par le systeme de chauffage</span>
+                  <span class="diag-lot-subtitle">Surface gérée par le système de chauffage</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">Surface chauffee</label>
+                <label class="diag-label-sm">Surface chauffée</label>
                 <div class="diag-input-wrap" style="max-width: 280px;">
                   <input type="number" x-model.number="form.surfaceChauffage" min="0" max="500000" placeholder="2 500" class="diag-input-sm" :class="{ 'has-error': errors.surfaceChauffage }">
                   <span class="diag-input-suffix-sm">m&sup2;</span>
@@ -336,7 +334,7 @@
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">Votre batiment dispose-t-il d'une production ECS ?</label>
+                <label class="diag-label-sm">Votre bâtiment dispose-t-il d'une production ECS ?</label>
                 <div style="display: flex; gap: 10px; margin-top: 8px;">
                   <button @click="form.hasEcs = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasEcs === true }"><span class="diag-choice-label">Oui</span></button>
                   <button @click="form.hasEcs = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasEcs === false }"><span class="diag-choice-label">Non</span></button>
@@ -359,18 +357,18 @@
                 <span style="font-size: 22px;">&#10052;&#65039;</span>
                 <div>
                   <span class="diag-lot-title">Climatisation / Refroidissement</span>
-                  <span class="diag-lot-subtitle">Systeme de climatisation, groupes froids, CTA</span>
+                  <span class="diag-lot-subtitle">Système de climatisation, groupes froids, CTA</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">Votre batiment est-il climatise ?</label>
+                <label class="diag-label-sm">Votre bâtiment est-il climatisé ?</label>
                 <div style="display: flex; gap: 10px; margin-top: 8px;">
                   <button @click="form.hasClim = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasClim === true }"><span class="diag-choice-label">Oui</span></button>
                   <button @click="form.hasClim = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasClim === false }"><span class="diag-choice-label">Non</span></button>
                 </div>
                 <p x-show="errors.hasClim" x-text="errors.hasClim" class="diag-error"></p>
                 <div x-show="form.hasClim === true" x-transition style="margin-top: 12px;">
-                  <label class="diag-label-sm">Surface climatisee</label>
+                  <label class="diag-label-sm">Surface climatisée</label>
                   <div class="diag-input-wrap" style="max-width: 280px;">
                     <input type="number" x-model.number="form.surfaceClim" min="0" max="500000" placeholder="2 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceClim }">
                     <span class="diag-input-suffix-sm">m&sup2;</span>
@@ -380,24 +378,24 @@
               </div>
             </div>
 
-            <!-- Eclairage -->
+            <!-- Éclairage -->
             <div class="diag-lot-block">
               <div class="diag-lot-header">
                 <span style="font-size: 22px;">&#128161;</span>
                 <div>
-                  <span class="diag-lot-title">Eclairage</span>
-                  <span class="diag-lot-subtitle">Gestion de l'eclairage interieur et exterieur</span>
+                  <span class="diag-lot-title">Éclairage</span>
+                  <span class="diag-lot-subtitle">Gestion de l'éclairage intérieur et extérieur</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">L'eclairage est-il gere de maniere centralisee ?</label>
+                <label class="diag-label-sm">L'éclairage est-il géré de manière centralisée ?</label>
                 <div style="display: flex; gap: 10px; margin-top: 8px;">
                   <button @click="form.hasEclairage = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasEclairage === true }"><span class="diag-choice-label">Oui</span></button>
                   <button @click="form.hasEclairage = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasEclairage === false }"><span class="diag-choice-label">Non</span></button>
                 </div>
                 <p x-show="errors.hasEclairage" x-text="errors.hasEclairage" class="diag-error"></p>
                 <div x-show="form.hasEclairage === true" x-transition style="margin-top: 12px;">
-                  <label class="diag-label-sm">Surface eclairee</label>
+                  <label class="diag-label-sm">Surface éclairée</label>
                   <div class="diag-input-wrap" style="max-width: 280px;">
                     <input type="number" x-model.number="form.surfaceEclairage" min="0" max="500000" placeholder="3 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceEclairage }">
                     <span class="diag-input-suffix-sm">m&sup2;</span>
@@ -407,7 +405,7 @@
                   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
                     <button @click="form.eclairage = 'manuel'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'manuel' }"><span class="diag-choice-label">Manuel</span></button>
                     <button @click="form.eclairage = 'minuterie'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'minuterie' }"><span class="diag-choice-label">Minuteries</span></button>
-                    <button @click="form.eclairage = 'detection'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'detection' }"><span class="diag-choice-label">Detection de presence</span></button>
+                    <button @click="form.eclairage = 'detection'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'detection' }"><span class="diag-choice-label">Détection de présence</span></button>
                     <button @click="form.eclairage = 'intelligent'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'intelligent' }"><span class="diag-choice-label">Gestion intelligente</span></button>
                   </div>
                   <p x-show="errors.eclairage" x-text="errors.eclairage" class="diag-error"></p>
@@ -421,18 +419,18 @@
                 <span style="font-size: 22px;">&#128268;</span>
                 <div>
                   <span class="diag-lot-title">Auxiliaires</span>
-                  <span class="diag-lot-subtitle">Contacts de porte, domotique, station meteo, sous-comptage, stores, ventilation / CTA...</span>
+                  <span class="diag-lot-subtitle">Contacts de porte, domotique, station météo, sous-comptage, stores, ventilation / CTA...</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">Votre batiment dispose-t-il d'equipements auxiliaires ?</label>
+                <label class="diag-label-sm">Votre bâtiment dispose-t-il d'équipements auxiliaires ?</label>
                 <div style="display: flex; gap: 10px; margin-top: 8px;">
                   <button @click="form.hasAuxiliaires = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasAuxiliaires === true }"><span class="diag-choice-label">Oui</span></button>
                   <button @click="form.hasAuxiliaires = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasAuxiliaires === false }"><span class="diag-choice-label">Non</span></button>
                 </div>
                 <p x-show="errors.hasAuxiliaires" x-text="errors.hasAuxiliaires" class="diag-error"></p>
                 <div x-show="form.hasAuxiliaires === true" x-transition style="margin-top: 12px;">
-                  <label class="diag-label-sm">Surface concernee par les auxiliaires</label>
+                  <label class="diag-label-sm">Surface concernée par les auxiliaires</label>
                   <div class="diag-input-wrap" style="max-width: 280px;">
                     <input type="number" x-model.number="form.surfaceAuxiliaires" min="0" max="500000" placeholder="3 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceAuxiliaires }">
                     <span class="diag-input-suffix-sm">m&sup2;</span>
@@ -446,7 +444,7 @@
           <div class="diag-card-footer">
             <button @click="step = 1" class="diag-btn-ghost">
               <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-              Precedent
+              Précédent
             </button>
             <button @click="validateStep2()" class="diag-btn-primary">
               Continuer
@@ -456,7 +454,7 @@
         </div>
       </div>
 
-      <!-- ETAPE 3 : MATURITE GTB -->
+      <!-- ÉTAPE 3 : MATURITÉ GTB -->
       <div x-show="step === 3" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
         <div class="diag-card">
           <div class="diag-q-progress">
@@ -484,7 +482,7 @@
           <div class="diag-card-footer">
             <button @click="currentQuestion > 0 ? currentQuestion-- : step = 2" class="diag-btn-ghost">
               <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-              <span x-text="currentQuestion > 0 ? 'Precedent' : 'Retour'"></span>
+              <span x-text="currentQuestion > 0 ? 'Précédent' : 'Retour'"></span>
             </button>
             <button x-show="currentQuestion < gtbQuestions.length - 1" @click="nextQuestion()" :disabled="form.gtbAnswers[currentQuestion] === undefined" class="diag-btn-primary" :class="{ 'diag-btn-disabled': form.gtbAnswers[currentQuestion] === undefined }">
               Suivant
@@ -499,19 +497,19 @@
         </div>
       </div>
 
-      <!-- ETAPE 4 : RESULTATS -->
+      <!-- ÉTAPE 4 : RÉSULTATS -->
       <div x-show="step === 4" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100">
 
         <div class="diag-results-hero">
           <div class="diag-kpi diag-kpi-animate" :class="'diag-kpi-' + results.levelKey" style="animation: diag-kpi-pop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;">
-            <p class="diag-kpi-label">Score de maturite GTB</p>
+            <p class="diag-kpi-label">Score de maturité GTB</p>
             <p class="diag-kpi-score" x-text="animatedScore + ' / 100'"></p>
             <p class="diag-kpi-level" x-text="results.levelLabel"></p>
           </div>
           <div class="diag-kpi diag-kpi-savings diag-kpi-animate" style="animation: diag-kpi-pop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;">
-            <p class="diag-kpi-label">Economies potentielles estimees</p>
+            <p class="diag-kpi-label">Économies potentielles estimées</p>
             <p class="diag-kpi-score" x-text="formatCurrency(results.savingsEuro) + ' /an'"></p>
-            <p class="diag-kpi-level" x-text="'soit ' + results.savingsPercent + '% de vos depenses energie'"></p>
+            <p class="diag-kpi-level" x-text="'soit ' + results.savingsPercent + '% de vos dépenses énergie'"></p>
           </div>
         </div>
 
@@ -523,7 +521,7 @@
                 <svg style="width:22px;height:22px;color:#d97706;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
               </div>
               <div style="flex:1;">
-                <p style="font-size:14px;font-weight:600;color:var(--color-dark-900);margin-bottom:4px;">Primes CEE estimees &mdash; fiches cumulables</p>
+                <p style="font-size:14px;font-weight:600;color:var(--color-dark-900);margin-bottom:4px;">Primes CEE estimées &mdash; fiches cumulables</p>
                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
                   <template x-for="f in results.cee.fiches" :key="f.fiche">
                     <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;background:rgba(245,158,11,0.1);color:#92400e;">
@@ -535,7 +533,7 @@
                 <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;">
                   <span style="font-size:28px;font-weight:600;color:#d97706;" x-text="formatCurrency(results.cee.valueLow) + ' — ' + formatCurrency(results.cee.valueHigh)"></span>
                 </div>
-                <p style="font-size:12px;color:var(--color-dark-400);">Volume total cumule : <span x-text="formatNumber(results.cee.gwh * 1000)"></span> MWh cumac. Cours CEE : 6,50 &euro;/MWh cumac. Estimation indicative.</p>
+                <p style="font-size:12px;color:var(--color-dark-400);">Volume total cumulé : <span x-text="formatNumber(results.cee.gwh * 1000)"></span> MWh cumac. Cours CEE : 6,50 &euro;/MWh cumac. Estimation indicative.</p>
                 <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:500;color:var(--color-accent-600);text-decoration:none;">
                   Affiner avec le simulateur CEE complet
                   <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -550,7 +548,7 @@
           <div class="diag-card-body" style="text-align:center;padding:28px;">
             <p style="font-size:13px;font-weight:600;color:var(--color-dark-500);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Classe ISO 52120-1</p>
             <div class="diag-gauge">
-              <template x-for="lvl in [{key:'d', letter:'D', label:'Non performant'}, {key:'c', letter:'C', label:'Standard'}, {key:'b', letter:'B', label:'Avance'}, {key:'a', letter:'A', label:'Haute perf.'}]" :key="lvl.key">
+              <template x-for="lvl in [{key:'d', letter:'D', label:'Non performant'}, {key:'c', letter:'C', label:'Standard'}, {key:'b', letter:'B', label:'Avancé'}, {key:'a', letter:'A', label:'Haute perf.'}]" :key="lvl.key">
                 <div class="diag-gauge-bar" :class="'level-' + lvl.key + (results.levelKey === lvl.key ? ' active' : (results.levelKey !== lvl.key ? ' dimmed' : ''))">
                   <span x-text="lvl.letter"></span>
                 </div>
@@ -560,7 +558,7 @@
           </div>
         </div>
 
-        <!-- Urgence reglementaire -->
+        <!-- Urgence réglementaire -->
         <div class="diag-card" style="margin-top:20px;" x-show="results.regulatory.show">
           <div class="diag-card-body" style="padding:24px 28px;">
             <div class="diag-regulatory" :class="'diag-regulatory-' + results.regulatory.severity">
@@ -573,7 +571,7 @@
                 <p class="diag-regulatory-title" x-text="results.regulatory.title"></p>
                 <p class="diag-regulatory-text" x-text="results.regulatory.text"></p>
                 <p x-show="results.regulatory.daysLeft > 0" class="diag-regulatory-countdown">
-                  <span x-text="results.regulatory.daysLeft"></span> jours restants avant l'echeance
+                  <span x-text="results.regulatory.daysLeft"></span> jours restants avant l'échéance
                 </p>
               </div>
             </div>
@@ -582,34 +580,34 @@
 
         <!-- Benchmark ADEME -->
         <div class="diag-card" style="margin-top:20px;">
-          <div class="diag-card-header"><h2>Benchmark energetique</h2><p>Positionnement de votre batiment par rapport aux references ADEME.</p></div>
+          <div class="diag-card-header"><h2>Benchmark énergétique</h2><p>Positionnement de votre bâtiment par rapport aux références ADEME.</p></div>
           <div class="diag-card-body">
             <div class="diag-benchmark">
               <div class="diag-benchmark-bar-wrap">
                 <div class="diag-benchmark-zone diag-benchmark-good" :style="'width:' + results.benchmark.goodPercent + '%'"><span>Performant</span></div>
                 <div class="diag-benchmark-zone diag-benchmark-avg" :style="'width:' + results.benchmark.avgPercent + '%'"><span>Moyen</span></div>
-                <div class="diag-benchmark-zone diag-benchmark-bad" :style="'width:' + results.benchmark.badPercent + '%'"><span>Energivore</span></div>
+                <div class="diag-benchmark-zone diag-benchmark-bad" :style="'width:' + results.benchmark.badPercent + '%'"><span>Énergivore</span></div>
               </div>
               <div class="diag-benchmark-marker" :style="'left:' + results.benchmark.position + '%'">
                 <div class="diag-benchmark-marker-dot"></div>
                 <div class="diag-benchmark-marker-label">
                   <span x-text="formatNumber(results.benchmark.kwhM2) + ' kWh/m\u00B2/an'"></span>
-                  <span style="font-weight:400;color:var(--color-dark-400);font-size:11px;">Votre batiment</span>
+                  <span style="font-weight:400;color:var(--color-dark-400);font-size:11px;">Votre bâtiment</span>
                 </div>
               </div>
             </div>
             <div class="diag-benchmark-legend">
-              <div><span class="diag-benchmark-dot" style="background:#16a34a;"></span><span x-text="'Ref. performant : ' + results.benchmark.refGood + ' kWh/m\u00B2/an'"></span></div>
-              <div><span class="diag-benchmark-dot" style="background:#f59e0b;"></span><span x-text="'Ref. moyen : ' + results.benchmark.refAvg + ' kWh/m\u00B2/an'"></span></div>
-              <div><span class="diag-benchmark-dot" style="background:#ef4444;"></span><span x-text="'Ref. energivore : ' + results.benchmark.refBad + ' kWh/m\u00B2/an'"></span></div>
+              <div><span class="diag-benchmark-dot" style="background:#16a34a;"></span><span x-text="'Réf. performant : ' + results.benchmark.refGood + ' kWh/m\u00B2/an'"></span></div>
+              <div><span class="diag-benchmark-dot" style="background:#f59e0b;"></span><span x-text="'Réf. moyen : ' + results.benchmark.refAvg + ' kWh/m\u00B2/an'"></span></div>
+              <div><span class="diag-benchmark-dot" style="background:#ef4444;"></span><span x-text="'Réf. énergivore : ' + results.benchmark.refBad + ' kWh/m\u00B2/an'"></span></div>
             </div>
-            <p style="font-size:11px;color:var(--color-dark-400);margin-top:12px;">Sources : OID/ADEME Barometre 2022, OPERAT 2021, Arrete valeurs absolues decret tertiaire (24/11/2020). Economies : NF EN ISO 52120-1:2022.</p>
+            <p style="font-size:11px;color:var(--color-dark-400);margin-top:12px;">Sources : OID/ADEME Baromètre 2022, OPERAT 2021, Arrêté valeurs absolues décret tertiaire (24/11/2020). Économies : NF EN ISO 52120-1:2022.</p>
           </div>
         </div>
 
-        <!-- Recap energies -->
+        <!-- Récap énergies -->
         <div class="diag-card" style="margin-top:20px;">
-          <div class="diag-card-header"><h2>Recapitulatif de vos consommations</h2></div>
+          <div class="diag-card-header"><h2>Récapitulatif de vos consommations</h2></div>
           <div class="diag-card-body" style="padding-top:0;">
             <template x-for="(e, i) in results.energySummary" :key="i">
               <div class="diag-energy-row">
@@ -632,7 +630,7 @@
 
         <!-- Recommandations -->
         <div class="diag-card" style="margin-top:20px;">
-          <div class="diag-card-header"><h2>Recommandations personnalisees</h2></div>
+          <div class="diag-card-header"><h2>Recommandations personnalisées</h2></div>
           <div class="diag-card-body" style="padding-top:0;">
             <template x-for="(rec, i) in results.recommendations" :key="i">
               <div class="diag-rec-row">
@@ -648,30 +646,30 @@
         <!-- Offre premium -->
         <div class="diag-premium-card">
           <div class="diag-premium-badge">Aller plus loin</div>
-          <h3 class="diag-premium-title">Ce diagnostic est une estimation basee sur vos declarations</h3>
-          <p class="diag-premium-desc">Pour une analyse precise avec mesures terrain, un expert independant peut auditer votre batiment et identifier les gisements d'economies reels.</p>
+          <h3 class="diag-premium-title">Ce diagnostic est une estimation basée sur vos déclarations</h3>
+          <p class="diag-premium-desc">Pour une analyse précise avec mesures terrain, un expert indépendant peut auditer votre bâtiment et identifier les gisements d'économies réels.</p>
           <div class="diag-premium-grid">
             <div class="diag-premium-col">
               <p class="diag-premium-col-title">Diagnostic en ligne</p>
               <p class="diag-premium-col-subtitle">Ce que vous venez de faire</p>
               <ul class="diag-premium-list">
-                <li>Score ISO 52120-1 estime</li>
+                <li>Score ISO 52120-1 estimé</li>
                 <li>Benchmark ADEME indicatif</li>
-                <li>Recommandations generiques</li>
+                <li>Recommandations génériques</li>
                 <li>Rapport PDF basique</li>
               </ul>
               <p class="diag-premium-price">Gratuit</p>
             </div>
             <div class="diag-premium-col diag-premium-col-highlight">
               <p class="diag-premium-col-title">Audit sur site</p>
-              <p class="diag-premium-col-subtitle">Par un expert independant NeoGTB</p>
+              <p class="diag-premium-col-subtitle">Par un expert indépendant NeoGTB</p>
               <ul class="diag-premium-list">
-                <li>Mesures terrain instrumentees</li>
-                <li>Classification ISO 52120-1 certifiee</li>
-                <li>Plan d'actions chiffre et priorise</li>
+                <li>Mesures terrain instrumentées</li>
+                <li>Classification ISO 52120-1 certifiée</li>
+                <li>Plan d'actions chiffré et priorisé</li>
                 <li>Rapport 20+ pages avec ROI</li>
-                <li>Conformite decret BACS verifiee</li>
-                <li>Dossier CEE pre-constitue</li>
+                <li>Conformité décret BACS vérifiée</li>
+                <li>Dossier CEE pré-constitué</li>
               </ul>
               <a href="/contact" class="diag-btn-accent" style="width:100%;justify-content:center;text-decoration:none;">
                 Demander un audit sur site
@@ -685,7 +683,7 @@
           <svg style="width:18px;height:18px;color:#b45309;flex-shrink:0;margin-top:2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
           <div>
             <p style="font-weight:600;color:#92400e;font-size:13px;margin-bottom:4px;">Estimation indicative</p>
-            <p style="font-size:13px;color:#78350f;line-height:1.6;">Ce resultat est base sur vos declarations et des donnees statistiques (OID/ADEME 2022, OPERAT 2021, NF EN ISO 52120-1:2022). Il ne constitue pas un document reglementaire. NeoGTB est independant et ne percoit aucune commission.</p>
+            <p style="font-size:13px;color:#78350f;line-height:1.6;">Ce résultat est basé sur vos déclarations et des données statistiques (OID/ADEME 2022, OPERAT 2021, NF EN ISO 52120-1:2022). Il ne constitue pas un document réglementaire. NeoGTB est indépendant et ne perçoit aucune commission.</p>
           </div>
         </div>
 
@@ -693,9 +691,9 @@
         <div class="diag-actions">
           <button @click="showEmailGate()" class="diag-btn-primary" style="flex:1;">
             <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Telecharger le rapport PDF
+            Télécharger le rapport PDF
           </button>
-          <a href="/contact" class="diag-btn-accent" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">Etre contacte par un expert</a>
+          <a href="/contact" class="diag-btn-accent" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">Être contacté par un expert</a>
           <a :href="'/comparateur?surface=' + form.surface + '&type=' + form.buildingType" class="diag-btn-ghost" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">
             <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
             Comparer les solutions GTB
@@ -714,20 +712,20 @@
         <div x-show="showEmailModal" x-transition.opacity @keydown.escape.window="showEmailModal = false" class="diag-modal-overlay" role="presentation">
           <div @click.outside="showEmailModal = false" class="diag-modal" role="dialog" aria-modal="true">
             <h3 style="font-size:18px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">Recevoir votre rapport PDF</h3>
-            <p style="font-size:13px;color:var(--color-dark-400);margin-bottom:16px;">Entrez votre email pour telecharger votre diagnostic complet.</p>
+            <p style="font-size:13px;color:var(--color-dark-400);margin-bottom:16px;">Entrez votre email pour télécharger votre diagnostic complet.</p>
             <input type="email" x-model="emailAddress" placeholder="votre@email.com" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userName" placeholder="Votre nom (optionnel)" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userCompany" placeholder="Entreprise (optionnel)" class="diag-input" style="margin-bottom:12px;">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-            <p style="font-size:11px;color:var(--color-dark-400);margin-bottom:16px;">Votre email ne sera utilise que pour cet envoi. <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">Politique de confidentialite</a></p>
+            <p style="font-size:11px;color:var(--color-dark-400);margin-bottom:16px;">Votre email ne sera utilisé que pour cet envoi. <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">Politique de confidentialité</a></p>
             <div style="display:flex;gap:12px;">
               <button @click="showEmailModal = false" class="diag-btn-ghost" style="flex:1;">Annuler</button>
               <button @click="downloadPDF()" class="diag-btn-accent" style="flex:1;">
                 <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                Telecharger
+                Télécharger
               </button>
             </div>
-            <p x-show="emailSent" style="margin-top:12px;font-size:13px;color:var(--color-accent-600);font-weight:500;text-align:center;">PDF telecharge !</p>
+            <p x-show="emailSent" style="margin-top:12px;font-size:13px;color:var(--color-accent-600);font-weight:500;text-align:center;">PDF téléchargé !</p>
           </div>
         </div>
 
@@ -741,27 +739,27 @@
     <div style="max-width:600px;margin:0 auto;padding:0 24px;text-align:center;">
       <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:100px;background:white;border:1px solid var(--color-dark-200);">
         <svg style="width:18px;height:18px;color:var(--color-accent-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">Outil independant &mdash; NeoGTB ne percoit aucune commission</span>
+        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">Outil indépendant &mdash; NeoGTB ne perçoit aucune commission</span>
       </div>
     </div>
   </section>
 
-  <!-- Pages associees -->
+  <!-- Pages associées -->
   <section class="py-12 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associees</h2>
+      <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associées</h2>
       <div class="grid md:grid-cols-3 gap-4">
         <a href="/comparateur" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Comparateur GTB</p>
-          <p class="text-sm text-dark-400 mt-1">Comparez les solutions apres votre diagnostic.</p>
+          <p class="text-sm text-dark-400 mt-1">Comparez les solutions après votre diagnostic.</p>
         </a>
         <a href="/generateur-cee" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Simulateur CEE</p>
           <p class="text-sm text-dark-400 mt-1">Estimez vos primes pour financer votre projet GTB.</p>
         </a>
         <a href="/reglementation" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
-          <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Reglementation GTB</p>
-          <p class="text-sm text-dark-400 mt-1">Decret BACS, calendrier des obligations.</p>
+          <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Réglementation GTB</p>
+          <p class="text-sm text-dark-400 mt-1">Décret BACS, calendrier des obligations.</p>
         </a>
       </div>
     </div>
@@ -995,7 +993,7 @@
           doc.setFillColor(27, 58, 92); doc.rect(0, 0, 210, 45, 'F');
           try { doc.addImage(logoImg, 'PNG', m, 8, 30, 30); } catch(e) {}
           doc.setTextColor(255,255,255); doc.setFontSize(20); doc.text('NeoGTB', m+35, 22);
-          doc.setFontSize(9); doc.setTextColor(180,200,220); doc.text('Conseil independant en GTB', m+35, 30);
+          doc.setFontSize(9); doc.setTextColor(180,200,220); doc.text('Conseil indépendant en GTB', m+35, 30);
           doc.text('neogtb.fr  |  hello@neogtb.fr', m+35, 37);
           const ref = crypto.randomUUID ? crypto.randomUUID().slice(0,8) : Math.random().toString(36).slice(2,10);
           doc.setFontSize(7); doc.setTextColor(140,170,200); doc.text('Ref : DIAG-'+ref.toUpperCase(), 190, 10, {align:'right'});
@@ -1006,19 +1004,19 @@
           const levelColors = {d:[153,27,27],c:[146,64,14],b:[6,95,70],a:[13,148,136]};
           const lc = levelColors[this.results.levelKey] || [15,23,42];
           doc.setFillColor(lc[0],lc[1],lc[2]); doc.roundedRect(m, y, 80, 38, 4, 4, 'F');
-          doc.setFontSize(8); doc.setTextColor(255,255,255,160); doc.text('SCORE DE MATURITE GTB', m+5, y+10);
+          doc.setFontSize(8); doc.setTextColor(255,255,255,160); doc.text('SCORE DE MATURITÉ GTB', m+5, y+10);
           doc.setFontSize(24); doc.setTextColor(255,255,255); doc.text(this.results.score+' / 100', m+5, y+26);
           doc.setFontSize(9); doc.setTextColor(255,255,255,180); doc.text(this.results.levelLabel, m+5, y+34);
           doc.setFillColor(28,25,23); doc.roundedRect(m+85, y, 85, 38, 4, 4, 'F');
-          doc.setFontSize(8); doc.setTextColor(180,200,220); doc.text('ECONOMIES POTENTIELLES', m+90, y+10);
+          doc.setFontSize(8); doc.setTextColor(180,200,220); doc.text('ÉCONOMIES POTENTIELLES', m+90, y+10);
           doc.setFontSize(22); doc.setTextColor(255,255,255); doc.text(this.formatCurrency(this.results.savingsEuro)+' /an', m+90, y+26);
-          doc.setFontSize(9); doc.setTextColor(180,200,220); doc.text('soit '+this.results.savingsPercent+'% de vos depenses', m+90, y+34);
+          doc.setFontSize(9); doc.setTextColor(180,200,220); doc.text('soit '+this.results.savingsPercent+'% de vos dépenses', m+90, y+34);
           y += 50;
           doc.setFillColor(248,250,252); doc.roundedRect(m, y, pw, 32, 4, 4, 'F');
-          doc.setFontSize(10); doc.setTextColor(15,23,42); doc.text('Parametres du batiment', m+5, y+10); y += 15;
+          doc.setFontSize(10); doc.setTextColor(15,23,42); doc.text('Paramètres du bâtiment', m+5, y+10); y += 15;
           doc.setFontSize(9);
           const bType = this.buildingTypes.find(b => b.id === this.form.buildingType);
-          const ageLabels = {'before1975':'Avant 1975','1975-2000':'1975-2000','2000-2012':'2000-2012','after2012':'Apres 2012'};
+          const ageLabels = {'before1975':'Avant 1975','1975-2000':'1975-2000','2000-2012':'2000-2012','after2012':'Après 2012'};
           const params = [['Type', bType ? bType.label : ''],['Surface', this.formatNumber(this.form.surface)+' m\u00B2'],['Zone', this.form.climateZone],['Construction', ageLabels[this.form.buildingAge]||'']];
           for (const [label, val] of params) { doc.setTextColor(100,116,139); doc.text(label, m+5, y); doc.setTextColor(15,23,42); doc.text(val, m+50, y); y += 5; }
           y += 10;
@@ -1026,7 +1024,7 @@
           doc.setFontSize(8.5); doc.setTextColor(68,64,60);
           for (const rec of this.results.recommendations) { const lines = doc.splitTextToSize('\u2022  '+rec, pw-5); const lineH = lines.length*4.5+2; if (y+lineH > 270) { doc.addPage(); y = m; } doc.text(lines, m+2, y); y += lineH; }
           doc.setFillColor(27,58,92); doc.rect(0, 282, 210, 15, 'F');
-          doc.setFontSize(7); doc.setTextColor(180,200,220); doc.text('NeoGTB \u2014 neogtb.fr \u2014 Conseil independant en GTB', 105, 289, {align:'center'});
+          doc.setFontSize(7); doc.setTextColor(180,200,220); doc.text('NeoGTB \u2014 neogtb.fr \u2014 Conseil indépendant en GTB', 105, 289, {align:'center'});
           doc.save('diagnostic-gtb-neogtb.pdf');
           this.emailSent = true; setTimeout(() => { this.showEmailModal = false; this.emailSent = false; }, 1500);
         } catch(err) { console.error('Erreur PDF:', err); alert('Erreur lors de la g\u00e9n\u00e9ration du PDF.'); }

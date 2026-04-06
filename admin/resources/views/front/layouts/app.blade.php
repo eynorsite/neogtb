@@ -13,17 +13,17 @@
   {{-- Schema.org Organization + LocalBusiness --}}
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness"],
+    "@@context": "https://schema.org",
+    "@@type": ["Organization", "LocalBusiness"],
     "name": "NeoGTB",
     "alternateName": "EYNOR",
     "url": "https://neogtb.fr",
     "logo": "https://neogtb.fr/images/logo-neogtb.webp",
     "image": "https://neogtb.fr/images/og-neogtb.png",
     "description": "Conseil indépendant en Gestion Technique du Bâtiment (GTB). Diagnostic gratuit, comparateur de solutions, accompagnement décret BACS.",
-    "founder": { "@type": "Person", "name": "Ulrich Calmo", "jobTitle": "Créateur de la marque NeoGTB" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Eysines", "addressRegion": "Nouvelle-Aquitaine", "postalCode": "33320", "addressCountry": "FR" },
-    "areaServed": { "@type": "Country", "name": "France" },
+    "founder": { "@@type": "Person", "name": "Ulrich Calmo", "jobTitle": "Créateur de la marque NeoGTB" },
+    "address": { "@@type": "PostalAddress", "addressLocality": "Eysines", "addressRegion": "Nouvelle-Aquitaine", "postalCode": "33320", "addressCountry": "FR" },
+    "areaServed": { "@@type": "Country", "name": "France" },
     "knowsAbout": ["GTB", "GTC", "BACnet", "KNX", "Modbus", "LON", "DALI", "MQTT", "EN ISO 52120-1", "Décret BACS", "Smart Building", "GMAO", "Hypervision"],
     "sameAs": ["https://www.linkedin.com/in/ulrich-calmo"]
   }
@@ -81,6 +81,29 @@
   </script>
 
   <style>
+    :root {
+      --color-accent-50:  #eaf5ee;
+      --color-accent-100: #d0e8d6;
+      --color-accent-200: #a3d4b2;
+      --color-accent-500: #2D8B4E;
+      --color-accent-600: #267a43;
+      --color-dark-50:    #f8fafc;
+      --color-dark-100:   #f1f5f9;
+      --color-dark-200:   #e2e8f0;
+      --color-dark-300:   #cbd5e1;
+      --color-dark-400:   #94a3b8;
+      --color-dark-500:   #64748b;
+      --color-dark-600:   #475569;
+      --color-dark-700:   #334155;
+      --color-dark-800:   #1e293b;
+      --color-dark-900:   #0f172a;
+      --color-primary-50: #e8eef5;
+      --color-primary-500:#1B3A5C;
+      --color-primary-600:#183353;
+      --color-energy-500: #D97706;
+      --color-energy-600: #B45309;
+    }
+
     /* === NeoGTB Design System === */
     @keyframes fade-in-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }

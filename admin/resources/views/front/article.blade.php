@@ -155,7 +155,7 @@
                 <svg x-show="copied" x-cloak class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span x-text="copied ? 'Lien copie !' : 'Copier le lien'"></span>
+                <span x-text="copied ? 'Lien copié !' : 'Copier le lien'"></span>
             </button>
         </div>
 
@@ -174,7 +174,7 @@
         <section class="border-t border-dark-100 bg-dark-50 py-16 lg:py-20">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10">
-                    <span class="text-xs font-semibold tracking-widest uppercase text-dark-400">A lire aussi</span>
+                    <span class="text-xs font-semibold tracking-widest uppercase text-dark-400">À lire aussi</span>
                     <h2 class="mt-2 text-xl sm:text-2xl font-heading font-extrabold text-dark-900">Articles similaires</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -212,10 +212,10 @@
     <section class="py-16 lg:py-20 bg-white border-t border-dark-100">
         <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-dark-900 tracking-tight leading-tight">
-                Un projet GTB a clarifier ?
+                Un projet GTB à clarifier ?
             </h2>
             <p class="mt-3 text-sm sm:text-base text-dark-500 leading-relaxed">
-                Pre-diagnostic ISO 52120-1 gratuit en ligne, ou echange de 15 minutes pour cadrer votre besoin.
+                Pré-diagnostic ISO 52120-1 gratuit en ligne, ou échange de 15 minutes pour cadrer votre besoin.
             </p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="/audit" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors btn-glow">

@@ -1,21 +1,22 @@
 @extends('front.layouts.app')
 
-@section('title', 'A propos — Ulrich Calmo, consultant GTB')
-@section('description', 'NeoGTB est fonde par Ulrich Calmo, consultant GTB independant base a Bordeaux. Zero lien fabricant, zero commission.')
+@section('title', 'À propos — Ulrich Calmo, consultant GTB')
+@section('description', 'NeoGTB est fondé par Ulrich Calmo, consultant GTB indépendant basé à Bordeaux. Zéro lien fabricant, zéro commission.')
 
 @section('content')
 
 <!-- HERO -->
-<section class="relative overflow-hidden bg-gradient-to-br from-dark-50 to-dark-100" style="padding: 80px 0 64px;">
-    <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+<section class="relative overflow-hidden" style="padding: 100px 0 80px; min-height: 420px; background: #edf5f7;">
+    <img src="/images/hero-about.png" alt="Consultant indépendant GTB au centre des bâtiments" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center top;" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.15) 0%, rgba(237,245,247,0.88) 60%, rgba(237,245,247,1) 100%);"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
         <div class="max-w-2xl">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">A propos</p>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">À propos</p>
             <h1 class="font-heading text-4xl md:text-5xl font-medium text-dark-900 leading-tight tracking-tight mb-5">
-                Je suis Ulrich Calmo, et j'ai cree <span class="text-gradient">NeoGTB</span> pour une raison simple
+                Je suis Ulrich Calmo, et j'ai créé <span class="text-gradient">NeoGTB</span> pour une raison simple
             </h1>
             <p class="text-lg text-dark-500 leading-relaxed max-w-xl">
-                Le marche de la GTB en France manque d'un interlocuteur neutre. Quelqu'un qui ne vend rien, qui connait le terrain, et qui vous aide a prendre la bonne decision. C'est ce que je fais.
+                Le marché de la GTB en France manque d'un interlocuteur neutre. Quelqu'un qui ne vend rien, qui connaît le terrain, et qui vous aide à prendre la bonne décision. C'est ce que je fais.
             </p>
         </div>
     </div>
@@ -29,7 +30,7 @@
             <!-- Left: createur -->
             <div class="lg:col-span-2" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
                 <div class="bg-white rounded-xl p-8 border border-dark-200 shadow-sm">
-                    <img src="/images/ulrich-calmo.webp" alt="Ulrich Calmo, createur de la marque NeoGTB" width="120" height="120" loading="lazy" decoding="async" class="w-[120px] h-[120px] rounded-full object-cover mx-auto mb-5 border-[3px] border-accent-300" />
+                    <img src="/images/ulrich-calmo.webp" alt="Ulrich Calmo, créateur de la marque NeoGTB" width="120" height="120" loading="lazy" decoding="async" class="w-[120px] h-[120px] rounded-full object-cover mx-auto mb-5 border-[3px] border-accent-300" />
                     <p class="text-[22px] font-medium text-dark-900 text-center mb-1">Ulrich Calmo</p>
                     <p class="text-sm font-medium text-accent-600 text-center mb-1">Fondateur de NeoGTB</p>
                     <p class="text-xs text-dark-400 text-center mb-5">EYNOR — Eysines, Bordeaux</p>
@@ -39,7 +40,7 @@
                     <ul class="space-y-2.5">
                         <li class="flex items-center gap-3">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0"></div>
-                            <span class="text-sm text-dark-500">GTB / GTC / Supervision batiment</span>
+                            <span class="text-sm text-dark-500">GTB / GTC / Supervision bâtiment</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0"></div>
@@ -47,11 +48,11 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0"></div>
-                            <span class="text-sm text-dark-500">Reglementation : decret BACS, tertiaire</span>
+                            <span class="text-sm text-dark-500">Réglementation : décret BACS, tertiaire</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0"></div>
-                            <span class="text-sm text-dark-500">Audit energetique & AMO GTB</span>
+                            <span class="text-sm text-dark-500">Audit énergétique & AMO GTB</span>
                         </li>
                     </ul>
 
@@ -65,11 +66,11 @@
                 <div class="grid grid-cols-2 gap-4 mt-6">
                     <div class="bg-white rounded-xl p-5 text-center border border-dark-200 shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">10+</p>
-                        <p class="text-xs text-dark-400 mt-1">technologies analysees</p>
+                        <p class="text-xs text-dark-400 mt-1">technologies analysées</p>
                     </div>
                     <div class="bg-white rounded-xl p-5 text-center border border-dark-200 shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">41</p>
-                        <p class="text-xs text-dark-400 mt-1">protocoles references</p>
+                        <p class="text-xs text-dark-400 mt-1">protocoles référencés</p>
                     </div>
                     <div class="bg-white rounded-xl p-5 text-center border border-dark-200 shadow-sm">
                         <p class="text-[28px] font-medium text-accent-600 tracking-tight">0 &euro;</p>
@@ -77,26 +78,26 @@
                     </div>
                     <div class="bg-white rounded-xl p-5 text-center border border-dark-200 shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">100 %</p>
-                        <p class="text-xs text-dark-400 mt-1">independant</p>
+                        <p class="text-xs text-dark-400 mt-1">indépendant</p>
                     </div>
                 </div>
             </div>
 
             <!-- Right: parcours + conviction -->
             <div class="lg:col-span-3" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
-                <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-6">Pourquoi j'ai cree NeoGTB</h2>
+                <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-6">Pourquoi j'ai créé NeoGTB</h2>
 
                 <p class="text-base text-dark-500 leading-relaxed mb-4">
-                    En travaillant sur des projets de gestion technique du batiment, j'ai constate un probleme recurrent : <strong class="text-dark-900 font-medium">les decideurs n'ont personne vers qui se tourner pour un avis neutre.</strong> Chaque interlocuteur vend sa solution. Les bureaux d'etudes prescrivent ce qu'ils connaissent. Les installateurs poussent leurs partenariats.
+                    En travaillant sur des projets de gestion technique du bâtiment, j'ai constaté un problème récurrent : <strong class="text-dark-900 font-medium">les décideurs n'ont personne vers qui se tourner pour un avis neutre.</strong> Chaque interlocuteur vend sa solution. Les bureaux d'études prescrivent ce qu'ils connaissent. Les installateurs poussent leurs partenariats.
                 </p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">
-                    J'ai cree NeoGTB pour combler ce vide. Ma mission : <strong class="text-dark-900 font-medium">eduquer le marche francais sur la GTB</strong>, fournir des outils d'analyse independants, et permettre a chaque professionnel de comprendre, comparer et decider en connaissance de cause.
+                    J'ai créé NeoGTB pour combler ce vide. Ma mission : <strong class="text-dark-900 font-medium">éduquer le marché français sur la GTB</strong>, fournir des outils d'analyse indépendants, et permettre à chaque professionnel de comprendre, comparer et décider en connaissance de cause.
                 </p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">
-                    NeoGTB est une marque de ma societe <strong class="text-dark-900 font-medium">EYNOR</strong>, basee a Eysines pres de Bordeaux. Je travaille seul, et c'est un choix assume : pas d'actionnaires fabricants, pas de pression commerciale, pas de compromis sur les recommandations.
+                    NeoGTB est une marque de ma société <strong class="text-dark-900 font-medium">EYNOR</strong>, basée à Eysines près de Bordeaux. Je travaille seul, et c'est un choix assumé : pas d'actionnaires fabricants, pas de pression commerciale, pas de compromis sur les recommandations.
                 </p>
                 <p class="text-base text-dark-500 leading-relaxed mb-8">
-                    Mon seul engagement, c'est envers vous : vous donner les cles pour decider en toute connaissance de cause, sans qu'un interet commercial vienne fausser l'analyse.
+                    Mon seul engagement, c'est envers vous : vous donner les clés pour décider en toute connaissance de cause, sans qu'un intérêt commercial vienne fausser l'analyse.
                 </p>
 
                 <!-- Ce que je fais concretement -->
@@ -107,23 +108,23 @@
                     </div>
                     <div class="flex items-start gap-3">
                         <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0 mt-2.5"></div>
-                        <p class="text-[15px] text-dark-600 leading-relaxed"><strong class="font-medium text-dark-900">Zero lien commercial avec les fabricants.</strong> Pas de commission, pas d'affiliation, pas de partenariat remunere. Jamais.</p>
+                        <p class="text-[15px] text-dark-600 leading-relaxed"><strong class="font-medium text-dark-900">Zéro lien commercial avec les fabricants.</strong> Pas de commission, pas d'affiliation, pas de partenariat rémunéré. Jamais.</p>
                     </div>
                     <div class="flex items-start gap-3">
                         <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0 mt-2.5"></div>
-                        <p class="text-[15px] text-dark-600 leading-relaxed"><strong class="font-medium text-dark-900">Mes criteres de comparaison sont publics.</strong> Chaque analyse est verifiable. Si je recommande BACnet plutot que LON, c'est technique, pas commercial.</p>
+                        <p class="text-[15px] text-dark-600 leading-relaxed"><strong class="font-medium text-dark-900">Mes critères de comparaison sont publics.</strong> Chaque analyse est vérifiable. Si je recommande BACnet plutôt que LON, c'est technique, pas commercial.</p>
                     </div>
                 </div>
 
                 <!-- Charte d'independance -->
                 <div class="bg-accent-50 border border-accent-200 rounded-xl p-6">
-                    <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-4">Ma charte d'independance</p>
+                    <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-4">Ma charte d'indépendance</p>
                     <ul class="space-y-3">
                         @foreach([
                             'Aucun lien commercial avec les fabricants GTB',
                             'Aucune commission sur les ventes ou prescriptions',
-                            'Methodologie d\'evaluation transparente et verifiable',
-                            'Vos donnees ne sont jamais transmises a des tiers',
+                            'Méthodologie d\'évaluation transparente et vérifiable',
+                            'Vos données ne sont jamais transmises à des tiers',
                             'Correction ouverte en cas d\'erreur factuelle',
                         ] as $item)
                         <li class="flex items-start gap-3">
@@ -138,22 +139,22 @@
     </div>
 </section>
 
-<!-- METHODE -->
+<!-- MÉTHODE -->
 <section class="py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Mon approche</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Ma methode — 4 phases</h2>
-            <p class="text-base text-dark-500 leading-relaxed">Une approche structuree pour accompagner chaque projet GTB, du diagnostic a la mise en oeuvre.</p>
+            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Ma méthode — 4 phases</h2>
+            <p class="text-base text-dark-500 leading-relaxed">Une approche structurée pour accompagner chaque projet GTB, du diagnostic à la mise en œuvre.</p>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             @php
             $steps = [
-                ['num' => '01', 'title' => 'Etat des lieux', 'desc' => "J'audite l'existant : equipements en place, protocoles utilises, niveau d'integration, points de friction.", 'highlight' => false],
-                ['num' => '02', 'title' => 'Analyse comparative', 'desc' => "J'evalue les solutions disponibles. Comparaison par criteres objectifs : interoperabilite, cout, evolutivite.", 'highlight' => false],
-                ['num' => '03', 'title' => 'Recommandations', 'desc' => "Je vous livre une synthese argumentee. Chaque recommandation est justifiee, tracable et libre de conflit d'interets.", 'highlight' => true],
-                ['num' => '04', 'title' => 'Accompagnement', 'desc' => "Je suis la mise en oeuvre, verifie la conformite et transfere les competences a vos equipes internes.", 'highlight' => false],
+                ['num' => '01', 'title' => 'État des lieux', 'desc' => "J'audite l'existant : équipements en place, protocoles utilisés, niveau d'intégration, points de friction.", 'highlight' => false],
+                ['num' => '02', 'title' => 'Analyse comparative', 'desc' => "J'évalue les solutions disponibles. Comparaison par critères objectifs : interopérabilité, coût, évolutivité.", 'highlight' => false],
+                ['num' => '03', 'title' => 'Recommandations', 'desc' => "Je vous livre une synthèse argumentée. Chaque recommandation est justifiée, traçable et libre de conflit d'intérêts.", 'highlight' => true],
+                ['num' => '04', 'title' => 'Accompagnement', 'desc' => "Je suis la mise en œuvre, vérifie la conformité et transfère les compétences à vos équipes internes.", 'highlight' => false],
             ];
             @endphp
             @foreach($steps as $step)
@@ -173,8 +174,8 @@
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">
         <div class="max-w-lg">
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Un projet GTB a clarifier ?</h2>
-            <p class="text-base text-dark-500 leading-relaxed mb-7">Echangeons sur votre situation. Sans engagement, sans pression commerciale.</p>
+            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Un projet GTB à clarifier ?</h2>
+            <p class="text-base text-dark-500 leading-relaxed mb-7">Échangeons sur votre situation. Sans engagement, sans pression commerciale.</p>
             <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow">
                 Me contacter directement
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -188,9 +189,9 @@
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['href' => '/positionnement', 'title' => 'Pourquoi NeoGTB ?', 'desc' => 'Les preuves de notre independance totale.'],
+                ['href' => '/positionnement', 'title' => 'Pourquoi NeoGTB ?', 'desc' => 'Les preuves de notre indépendance totale.'],
                 ['href' => '/contact', 'title' => 'Contactez Ulrich', 'desc' => 'Discutons de votre projet GTB sans engagement.'],
-                ['href' => '/audit', 'title' => 'Audit GTB gratuit', 'desc' => 'Diagnostiquez votre batiment en 5 minutes.'],
+                ['href' => '/audit', 'title' => 'Audit GTB gratuit', 'desc' => 'Diagnostiquez votre bâtiment en 5 minutes.'],
             ] as $link)
             <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-xl p-6 border border-dark-200 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>

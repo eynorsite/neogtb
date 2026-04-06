@@ -21,14 +21,15 @@
   .cee-hero {
     position: relative; overflow: hidden;
     padding: 80px 0 56px;
-    background: linear-gradient(160deg, #FAFAF9 0%, #F0FDFA 40%, #F5F5F4 70%, #FFFBEB 100%);
+    background: #edf5f7;
+  }
+  .cee-hero-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
   }
   .cee-hero-mesh {
     position: absolute; inset: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse 80% 50% at 20% 80%, rgba(13,148,136,0.06) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(15,118,110,0.04) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 50% at 50% 50%, rgba(245,158,11,0.03) 0%, transparent 50%);
+    background: linear-gradient(to bottom, rgba(237,245,247,0.4) 0%, rgba(237,245,247,0.95) 100%);
   }
   .cee-hero-grid {
     position: absolute; inset: 0; pointer-events: none;
@@ -220,11 +221,8 @@
 
   {{-- ==================== HERO ==================== --}}
   <section class="cee-hero">
+    <img src="/images/hero-comparateur.png" alt="Bâtiments intelligents — Générateur CEE" class="cee-hero-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="cee-hero-mesh"></div>
-    <div class="cee-orb cee-orb-1"></div>
-    <div class="cee-orb cee-orb-2"></div>
-    <div class="cee-orb cee-orb-3"></div>
-    <div class="cee-hero-grid"></div>
 
     <div class="max-w-[800px] mx-auto px-6 md:px-10 relative z-10 text-center">
       <p class="cee-hero-eyebrow">Outil indépendant · Estimation gratuite</p>
@@ -773,7 +771,7 @@
         doc.setTextColor(255, 255, 255);
         doc.setFontSize(20); doc.text('NeoGTB', m + 35, 22);
         doc.setFontSize(9); doc.setTextColor(180, 200, 220);
-        doc.text('Conseil independant en Gestion Technique du Batiment', m + 35, 30);
+        doc.text('Conseil indépendant en Gestion Technique du Bâtiment', m + 35, 30);
         doc.text('neogtb.fr  |  hello@neogtb.fr  |  06 50 14 32 52', m + 35, 37);
         doc.setFontSize(8); doc.setTextColor(140, 170, 200);
         doc.text(new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }), 190, 37, { align: 'right' });
@@ -782,7 +780,7 @@
 
         // ── TITLE ──
         doc.setFontSize(18); doc.setTextColor(15, 23, 42);
-        doc.text("Estimation Certificats d'Economies d'Energie (CEE)", m, y);
+        doc.text("Estimation Certificats d'Économies d'Énergie (CEE)", m, y);
         y += 5;
         doc.setDrawColor(13, 148, 136); doc.setLineWidth(1.5); doc.line(m, y, m + 60, y);
         y += 15;
@@ -817,7 +815,7 @@
 
           doc.setFillColor(13, 148, 136);
           doc.roundedRect(m + 85, y, 85, 30, 4, 4, 'F');
-          doc.setFontSize(7); doc.setTextColor(180, 240, 220); doc.text('VALEUR ESTIMEE', m + 90, y + 8);
+          doc.setFontSize(7); doc.setTextColor(180, 240, 220); doc.text('VALEUR ESTIMÉE', m + 90, y + 8);
           doc.setFontSize(18); doc.setTextColor(255, 255, 255);
           doc.text(this.formatCurrency(this.results.th116.value), m + 90, y + 21);
           doc.setFontSize(8); doc.setTextColor(180, 240, 220);
@@ -855,14 +853,14 @@
         doc.setFontSize(8); doc.setTextColor(146, 64, 14);
         doc.text('ESTIMATION INDICATIVE', m + 5, y + 7);
         doc.setTextColor(120, 80, 20);
-        doc.text('Calculs bases sur la fiche officielle BAT-TH-116 (v. A62.6).', m + 5, y + 13);
-        doc.text('NeoGTB ne percoit aucune commission sur les CEE. Independance totale.', m + 5, y + 18);
+        doc.text('Calculs basés sur la fiche officielle BAT-TH-116 (v. A62.6).', m + 5, y + 13);
+        doc.text('NeoGTB ne perçoit aucune commission sur les CEE. Indépendance totale.', m + 5, y + 18);
 
         // ── FOOTER ──
         doc.setFillColor(27, 58, 92);
         doc.rect(0, 282, 210, 15, 'F');
         doc.setFontSize(7); doc.setTextColor(180, 200, 220);
-        doc.text('NeoGTB — neogtb.fr — Conseil independant en GTB — EYNOR EURL, Eysines (33)', 105, 289, { align: 'center' });
+        doc.text('NeoGTB — neogtb.fr — Conseil indépendant en GTB — EYNOR EURL, Eysines (33)', 105, 289, { align: 'center' });
         doc.setTextColor(140, 170, 200);
         doc.text('Ce document ne constitue pas un engagement contractuel.', 105, 293, { align: 'center' });
 
