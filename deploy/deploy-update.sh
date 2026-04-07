@@ -4,7 +4,10 @@
 # Usage : sudo bash deploy/deploy-update.sh
 set -euo pipefail
 
-REPO_DIR="${REPO_DIR:-$HOME/neogtb}"
+# SUDO_USER = utilisateur qui a invoqué sudo (ex: ubuntu) → on cherche son $HOME
+INVOKING_USER="${SUDO_USER:-$USER}"
+INVOKING_HOME=$(getent passwd "$INVOKING_USER" | cut -d: -f6)
+REPO_DIR="${REPO_DIR:-${INVOKING_HOME:-$HOME}/neogtb}"
 DEPLOY_ROOT="/var/www/neogtb"
 SHARED_DIR="$DEPLOY_ROOT/shared/admin"
 RELEASE_DIR="$DEPLOY_ROOT/releases/$(date +%Y%m%d-%H%M%S)"
