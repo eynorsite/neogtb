@@ -15,8 +15,27 @@
         .preview-frame { border: none; width: 100%; height: 100%; min-height: 600px; border-radius: 0 0 8px 8px; }
         .brick-card { transition: all 0.15s ease; }
         .brick-card:hover { transform: translateY(-1px); }
+        /* Split-view A3 */
+        .splitview { display: flex; gap: 0; min-height: calc(100vh - 140px); }
+        .splitview-editor { min-width: 320px; overflow: auto; }
+        .splitview-resizer { width: 4px; cursor: col-resize; background: #e5e7eb; transition: background 0.15s; flex-shrink: 0; }
+        .splitview-resizer:hover, .splitview-resizer.dragging { background: #6366f1; }
+        .splitview-preview { flex: 1; min-width: 320px; display: flex; flex-direction: column; }
+        .preview-iframe-wrap { flex: 1; display: flex; align-items: flex-start; justify-content: center; background: #f3f4f6; overflow: auto; padding: 12px; }
+        .preview-iframe-wrap iframe { background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.08); border: 1px solid #e5e7eb; border-radius: 8px; height: 100%; min-height: 600px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .badge-spin { animation: spin 0.8s linear infinite; }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+
+    {{-- A3: Wrapper with global keyboard shortcut Cmd/Ctrl+S --}}
+    <div
+        x-data="brickEditorA3()"
+        x-on:keydown.window.prevent.cmd.s="triggerSave()"
+        x-on:keydown.window.prevent.ctrl.s="triggerSave()"
+        x-on:autosave-start.window="saveStatus = 'saving'"
+        x-on:brick-saved.window="onBrickSaved($event)"
+    >
 
     {{-- Header bar --}}
     <div class="mb-4 flex items-center justify-between rounded-xl bg-white px-5 py-3 shadow-sm border border-gray-100">
@@ -202,8 +221,32 @@
                         </div>
                     </div>
 
-                    {{-- Form --}}
-                    <form wire:submit="saveBrick" class="p-4 space-y-4">
+                    {{-- A3: Dirty state badge --}}
+                    <div class="px-4 pt-3">
+                        <div class="flex items-center justify-between rounded-lg border px-3 py-1.5 text-xs font-medium"
+                             :class="{
+                                'border-emerald-200 bg-emerald-50 text-emerald-700': saveStatus === 'saved',
+                                'border-amber-200 bg-amber-50 text-amber-700': saveStatus === 'dirty',
+                                'border-blue-200 bg-blue-50 text-blue-700': saveStatus === 'saving'
+                             }">
+                            <span class="flex items-center gap-1.5">
+                                <template x-if="saveStatus === 'saved'"><span>🟢</span></template>
+                                <template x-if="saveStatus === 'dirty'"><span>🟡</span></template>
+                                <template x-if="saveStatus === 'saving'">
+                                    <svg class="w-3 h-3 badge-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                                </template>
+                                <span x-show="saveStatus === 'saved'" x-text="'Enregistré ' + formatTimeAgo()"></span>
+                                <span x-show="saveStatus === 'dirty'">Modifications en cours…</span>
+                                <span x-show="saveStatus === 'saving'">Enregistrement…</span>
+                            </span>
+                            <span class="text-[10px] text-gray-400">⌘S</span>
+                        </div>
+                    </div>
+
+                    {{-- Form (A3: autosave wrapper on @input debounce 800ms) --}}
+                    <form wire:submit="saveBrick" class="p-4 space-y-4"
+                          x-on:input.debounce.800ms="saveStatus = 'dirty'; $wire.autoSaveBrick($wire.selectedBrickId ?? $wire.selectedBrickIndex, $wire.editingContent)"
+                          x-on:input="saveStatus = 'dirty'">
                         {{-- Content fields --}}
                         <div>
                             <p class="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
@@ -339,22 +382,138 @@
             </div>
         </div>
 
-        {{-- PREVIEW (conditional) --}}
+        {{-- PREVIEW (conditional) — A3 split-view + responsive switcher + hot reload --}}
         @if($showPreview)
-            <div>
-                <div class="sticky top-4 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden" style="height: calc(100vh - 100px);">
+            <div
+                x-data="{
+                    previewWidth: '100%',
+                    previewSrc: '/admin/api/bricks/preview/{{ $page->id ?? 0 }}',
+                    editorWidth: 50,
+                    dragging: false,
+                    startDrag(e) {
+                        this.dragging = true;
+                        const startX = e.clientX;
+                        const startW = this.editorWidth;
+                        const parentW = this.$root.offsetWidth;
+                        const move = (ev) => {
+                            const dx = ev.clientX - startX;
+                            let pct = startW + (dx / parentW) * 100;
+                            if (pct < 25) pct = 25;
+                            if (pct > 75) pct = 75;
+                            this.editorWidth = pct;
+                        };
+                        const up = () => {
+                            this.dragging = false;
+                            window.removeEventListener('mousemove', move);
+                            window.removeEventListener('mouseup', up);
+                            try { localStorage.setItem('brickEditorSplit', this.editorWidth); } catch(e) {}
+                        };
+                        window.addEventListener('mousemove', move);
+                        window.addEventListener('mouseup', up);
+                    },
+                    init() {
+                        try {
+                            const saved = parseFloat(localStorage.getItem('brickEditorSplit'));
+                            if (saved && !isNaN(saved)) this.editorWidth = saved;
+                        } catch(e) {}
+                    }
+                }"
+                x-on:brick-saved.window="
+                    const f = $refs.previewIframe;
+                    if (f && f.contentWindow) {
+                        f.contentWindow.postMessage({
+                            type: 'brick-updated',
+                            brickId: $event.detail?.brickId ?? null,
+                            version: $event.detail?.version ?? Date.now()
+                        }, '*');
+                    }
+                "
+                class="splitview"
+                style="grid-column: 1 / -1;"
+            >
+                <div class="splitview-editor" :style="{ width: editorWidth + '%' }">
+                    {{-- Editor zone is rendered above; this column is a spacer to keep grid+split happy --}}
+                </div>
+                <div class="splitview-resizer" :class="{ dragging }" @mousedown.prevent="startDrag($event)"></div>
+                <div class="splitview-preview rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden ml-2">
                     <div class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-3 py-2">
                         <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Apercu du site</span>
-                        <button onclick="document.getElementById('preview-iframe').src = document.getElementById('preview-iframe').src"
-                            class="rounded p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-700 transition" title="Rafraichir">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                        </button>
+                        <div class="flex items-center gap-1">
+                            <button @click="previewWidth = '375px'" type="button"
+                                class="rounded px-2 py-1 text-xs hover:bg-gray-200 transition"
+                                :class="previewWidth === '375px' ? 'bg-primary-100 text-primary-700' : 'text-gray-500'"
+                                title="Mobile 375">📱</button>
+                            <button @click="previewWidth = '768px'" type="button"
+                                class="rounded px-2 py-1 text-xs hover:bg-gray-200 transition"
+                                :class="previewWidth === '768px' ? 'bg-primary-100 text-primary-700' : 'text-gray-500'"
+                                title="Tablette 768">💻</button>
+                            <button @click="previewWidth = '1280px'" type="button"
+                                class="rounded px-2 py-1 text-xs hover:bg-gray-200 transition"
+                                :class="previewWidth === '1280px' ? 'bg-primary-100 text-primary-700' : 'text-gray-500'"
+                                title="Desktop 1280">🖥️</button>
+                            <button @click="previewWidth = '100%'" type="button"
+                                class="rounded px-2 py-1 text-xs hover:bg-gray-200 transition"
+                                :class="previewWidth === '100%' ? 'bg-primary-100 text-primary-700' : 'text-gray-500'"
+                                title="Full">⛶</button>
+                            <button type="button" @click="$refs.previewIframe.src = $refs.previewIframe.src"
+                                class="rounded p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-700 transition ml-1" title="Rafraichir">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            </button>
+                        </div>
                     </div>
-                    <iframe id="preview-iframe" src="{{ $this->previewUrl }}" style="border: none; width: 100%; height: calc(100% - 36px); border-radius: 0 0 8px 8px;"></iframe>
+                    <div class="preview-iframe-wrap">
+                        <iframe
+                            x-ref="previewIframe"
+                            id="preview-iframe"
+                            :src="previewSrc"
+                            :style="{ width: previewWidth, transition: 'width 0.3s ease' }"
+                        ></iframe>
+                    </div>
                 </div>
             </div>
         @endif
     </div>
+
+    </div> {{-- /A3 wrapper --}}
+
+    {{-- A3: Alpine component for save status + shortcuts --}}
+    <script>
+        function brickEditorA3() {
+            return {
+                saveStatus: 'saved', // 'saved' | 'dirty' | 'saving'
+                lastSaveTime: Date.now(),
+                _tick: 0,
+                init() {
+                    setInterval(() => { this._tick++; }, 1000);
+                },
+                formatTimeAgo() {
+                    this._tick; // reactivity tick
+                    const s = Math.max(0, Math.floor((Date.now() - this.lastSaveTime) / 1000));
+                    if (s < 5) return "à l'instant";
+                    if (s < 60) return 'il y a ' + s + 's';
+                    const m = Math.floor(s / 60);
+                    if (m < 60) return 'il y a ' + m + ' min';
+                    const h = Math.floor(m / 60);
+                    return 'il y a ' + h + 'h';
+                },
+                triggerSave() {
+                    this.saveStatus = 'saving';
+                    if (window.Livewire) {
+                        try {
+                            const c = window.Livewire.find(document.querySelector('[wire\\:id]')?.getAttribute('wire:id'));
+                            if (c && typeof c.call === 'function') {
+                                c.call('autoSaveBrick', c.get('selectedBrickId') ?? c.get('selectedBrickIndex'), c.get('editingContent'));
+                            }
+                        } catch (e) { console.warn(e); }
+                    }
+                },
+                onBrickSaved(e) {
+                    this.saveStatus = 'saved';
+                    this.lastSaveTime = Date.now();
+                }
+            };
+        }
+    </script>
 
     {{-- SortableJS --}}
     <script>

@@ -44,6 +44,17 @@ Route::middleware('throttle:5,1')->group(function () {
 });
 Route::get('/newsletter/confirm/{token}', [\App\Http\Controllers\NewsletterController::class, 'confirm'])->name('newsletter.confirm');
 
+// Brick editor preview routes
+Route::middleware(['web'])->prefix('admin/api/bricks')->group(function () {
+    Route::get('/preview/{pageId}', [\App\Http\Controllers\BrickPreviewController::class, 'previewPage'])
+        ->where('pageId', '[0-9]+')
+        ->name('admin.bricks.preview.page');
+
+    Route::get('/{brickId}/render', [\App\Http\Controllers\BrickPreviewController::class, 'renderBrick'])
+        ->where('brickId', '[0-9]+')
+        ->name('admin.bricks.preview.render');
+});
+
 // Dynamic pages catch-all (from database)
 Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show'])->where('slug', '^(?!admin|livewire).*$');
 

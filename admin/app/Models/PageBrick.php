@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PageBrick extends Model
 {
+    public const INITIAL_VERSION = 1;
+
     protected $fillable = [
         'page_id',
         'brick_type',
@@ -15,16 +18,21 @@ class PageBrick extends Model
         'settings',
         'order',
         'is_visible',
+        'version',
         'created_by',
         'updated_by',
     ];
 
-    protected $casts = [
-        'content' => 'array',
-        'settings' => 'array',
-        'is_visible' => 'boolean',
-        'is_locked' => 'boolean',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'content' => 'array',
+            'settings' => 'array',
+            'is_visible' => 'boolean',
+            'is_locked' => 'boolean',
+            'version' => 'integer',
+        ];
+    }
 
     public function page(): BelongsTo
     {
@@ -51,5 +59,18 @@ class PageBrick extends Model
         $content = $this->content ?? [];
         data_set($content, $key, $value);
         $this->content = $content;
+    }
+
+    public function bumpVersion(): int
+    {
+        $this->version = (int) ($this->version ?? self::INITIAL_VERSION) + 1;
+        $this->save();
+
+        return $this->version;
+    }
+
+    public function scopeWithVersion(Builder $query, int $version): Builder
+    {
+        return $query->where('version', $version);
     }
 }

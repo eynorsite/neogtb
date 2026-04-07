@@ -12,6 +12,8 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 
 class BrickEditorPage extends Page implements HasForms
 {
@@ -30,6 +32,8 @@ class BrickEditorPage extends Page implements HasForms
     public array $bricks = [];
 
     public ?int $selectedBrickIndex = null;
+
+    public ?int $selectedBrickId = null;
 
     public array $editingContent = [];
 
@@ -121,20 +125,134 @@ class BrickEditorPage extends Page implements HasForms
 
         $this->selectedBrickIndex = $index;
         $brick = $this->bricks[$index];
+        $this->selectedBrickId = $brick['id'] ?? null;
         $this->editingContent = [
             'content' => $brick['content'] ?? [],
             'settings' => $brick['settings'] ?? [],
         ];
     }
 
-    public function saveBrick(): void
+    protected function updateBrickInState(int $brickId): void
     {
-        if ($this->selectedBrickIndex === null || !isset($this->bricks[$this->selectedBrickIndex])) {
+        $brick = PageBrick::find($brickId);
+        if (!$brick) {
             return;
         }
 
-        $brickData = $this->bricks[$this->selectedBrickIndex];
-        $brick = PageBrick::find($brickData['id']);
+        $payload = [
+            'id' => $brick->id,
+            'brick_type' => $brick->brick_type,
+            'brick_name' => $brick->brick_name,
+            'content' => $brick->content ?? [],
+            'settings' => $brick->settings ?? [],
+            'is_visible' => $brick->is_visible,
+            'is_locked' => $brick->is_locked,
+            'order' => $brick->order,
+        ];
+
+        foreach ($this->bricks as $i => $b) {
+            if (($b['id'] ?? null) === $brickId) {
+                $this->bricks[$i] = $payload;
+                return;
+            }
+        }
+    }
+
+    public function autoSaveBrick(int $brickId, array $data): void
+    {
+        try {
+            $brick = PageBrick::find($brickId);
+
+            if (!$brick) {
+                Notification::make()
+                    ->title('Brick introuvable')
+                    ->warning()
+                    ->send();
+                return;
+            }
+
+            if (array_key_exists('expected_version', $data)
+                && isset($brick->version)
+                && (int) $data['expected_version'] !== (int) $brick->version) {
+                Notification::make()
+                    ->title('Conflit : un autre onglet a modifié ce bloc. Recharger pour voir.')
+                    ->warning()
+                    ->send();
+                return;
+            }
+
+            $admin = auth()->guard('admin')->user();
+
+            $update = [
+                'content' => $data['content'] ?? $brick->content,
+                'settings' => $data['settings'] ?? $brick->settings,
+                'updated_by' => $admin?->id,
+            ];
+
+            if (isset($brick->version)) {
+                $update['version'] = (int) $brick->version + 1;
+            }
+
+            $brick->update($update);
+            $brick->refresh();
+
+            $this->updateBrickInState($brickId);
+
+            if ($this->selectedBrickId === $brickId) {
+                $this->editingContent = [
+                    'content' => $brick->content ?? [],
+                    'settings' => $brick->settings ?? [],
+                ];
+            }
+
+            $this->dispatch('brick-saved', [
+                'brickId' => $brickId,
+                'version' => $brick->version ?? null,
+                'savedAt' => now()->toIso8601String(),
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('autoSaveBrick failed', [
+                'brickId' => $brickId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function renderBrickPreview(int $brickId): string
+    {
+        try {
+            $brick = PageBrick::find($brickId);
+            if (!$brick) {
+                return '<div style="padding:1rem;border:1px solid #fca5a5;background:#fef2f2;color:#991b1b;border-radius:6px;font-family:sans-serif;">Brick introuvable (#' . $brickId . ')</div>';
+            }
+
+            $type = $brick->brick_type;
+
+            return View::make("front.bricks.{$type}", [
+                'brick' => $brick,
+                'content' => $brick->content,
+                'settings' => $brick->settings,
+            ])->render();
+        } catch (\Throwable $e) {
+            Log::error('renderBrickPreview failed', [
+                'brickId' => $brickId,
+                'error' => $e->getMessage(),
+            ]);
+
+            return '<div style="padding:1rem;border:1px solid #fca5a5;background:#fef2f2;color:#991b1b;border-radius:6px;font-family:sans-serif;"><strong>Erreur de rendu</strong><br><span style="font-size:0.85em;">' . e($e->getMessage()) . '</span></div>';
+        }
+    }
+
+    public function saveBrick(): void
+    {
+        $brick = null;
+        if ($this->selectedBrickId !== null) {
+            $brick = PageBrick::find($this->selectedBrickId);
+        }
+
+        if (!$brick && $this->selectedBrickIndex !== null && isset($this->bricks[$this->selectedBrickIndex])) {
+            $brick = PageBrick::find($this->bricks[$this->selectedBrickIndex]['id']);
+        }
 
         if (!$brick) {
             return;
@@ -152,6 +270,15 @@ class BrickEditorPage extends Page implements HasForms
         ]);
 
         $this->loadBricks();
+
+        if ($this->selectedBrickId !== null) {
+            foreach ($this->bricks as $i => $b) {
+                if (($b['id'] ?? null) === $this->selectedBrickId) {
+                    $this->selectedBrickIndex = $i;
+                    break;
+                }
+            }
+        }
 
         Notification::make()->title('Enregistré')->success()->send();
     }
@@ -189,10 +316,22 @@ class BrickEditorPage extends Page implements HasForms
             return;
         }
 
-        $brick = PageBrick::find($this->bricks[$index]['id']);
+        $brickId = $this->bricks[$index]['id'];
+        if ($this->selectedBrickId !== null && $this->selectedBrickId === $brickId) {
+            // keep selection by id
+        }
+        $brick = PageBrick::find($brickId);
         if ($brick) {
             $brick->update(['is_visible' => !$brick->is_visible]);
             $this->loadBricks();
+            if ($this->selectedBrickId !== null) {
+                foreach ($this->bricks as $i => $b) {
+                    if (($b['id'] ?? null) === $this->selectedBrickId) {
+                        $this->selectedBrickIndex = $i;
+                        break;
+                    }
+                }
+            }
         }
     }
 
@@ -235,12 +374,25 @@ class BrickEditorPage extends Page implements HasForms
             return;
         }
 
-        $brick = PageBrick::find($this->bricks[$index]['id']);
+        $brickId = $this->bricks[$index]['id'];
+        $brick = PageBrick::find($brickId);
         if ($brick) {
             $brick->delete();
-            $this->selectedBrickIndex = null;
-            $this->editingContent = [];
+            if ($this->selectedBrickId === $brickId) {
+                $this->selectedBrickId = null;
+                $this->selectedBrickIndex = null;
+                $this->editingContent = [];
+            }
             $this->loadBricks();
+            if ($this->selectedBrickId !== null) {
+                $this->selectedBrickIndex = null;
+                foreach ($this->bricks as $i => $b) {
+                    if (($b['id'] ?? null) === $this->selectedBrickId) {
+                        $this->selectedBrickIndex = $i;
+                        break;
+                    }
+                }
+            }
             Notification::make()->title('Brick supprimée')->success()->send();
         }
     }
@@ -296,6 +448,16 @@ class BrickEditorPage extends Page implements HasForms
         }
 
         $this->loadBricks();
+
+        if ($this->selectedBrickId !== null) {
+            $this->selectedBrickIndex = null;
+            foreach ($this->bricks as $i => $b) {
+                if (($b['id'] ?? null) === $this->selectedBrickId) {
+                    $this->selectedBrickIndex = $i;
+                    break;
+                }
+            }
+        }
     }
 
     public function getAvailableBricksProperty(): array

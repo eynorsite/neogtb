@@ -19,6 +19,7 @@ class PageBrickFactory extends Factory
             'settings' => [],
             'order' => 0,
             'is_visible' => true,
+            'version' => 1,
         ];
     }
 }

@@ -471,5 +471,21 @@
   </script>
 
   @stack('scripts')
+
+  {{-- Brick editor preview bridge (only when loaded in iframe with ?preview=1) --}}
+  @if(request()->query('preview') == '1')
+  <script>
+      (function() {
+          if (window.parent === window) return;
+          window.addEventListener('message', function(event) {
+              if (event.data && event.data.type === 'brick-updated') {
+                  // Soft reload : just refresh the iframe
+                  window.location.reload();
+              }
+          });
+          window.parent.postMessage({ type: 'preview-ready', pageId: {{ $page->id ?? 'null' }} }, '*');
+      })();
+  </script>
+  @endif
 </body>
 </html>
