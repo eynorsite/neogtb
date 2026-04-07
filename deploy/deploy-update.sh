@@ -40,28 +40,28 @@ rsync -a --delete \
 
 cd "$RELEASE_DIR/admin"
 
-echo "==> [2/9] Composer install (production)"
-sudo -u www-data COMPOSER_ALLOW_SUPERUSER=0 composer install \
-    --no-dev --optimize-autoloader --no-interaction --prefer-dist 2>&1 | tail -5
-
-echo "==> [3/9] NPM install + build Vite"
-sudo -u www-data npm ci --silent || sudo -u www-data npm install --silent
-sudo -u www-data npm run build 2>&1 | tail -3
-
-echo "==> [4/9] Symlinks shared (.env, storage, database SQLite)"
-ln -sf "$SHARED_DIR/.env" "$RELEASE_DIR/admin/.env"
-rm -rf "$RELEASE_DIR/admin/storage"
-ln -sf "$SHARED_DIR/storage" "$RELEASE_DIR/admin/storage"
-ln -sf "$SHARED_DIR/database/database.sqlite" "$RELEASE_DIR/admin/database/database.sqlite"
-
-echo "==> [5/9] Permissions"
+echo "==> [2/9] Permissions initiales (avant composer/npm)"
 chown -R www-data:www-data "$RELEASE_DIR"
 find "$RELEASE_DIR" -type d -exec chmod 755 {} \;
 find "$RELEASE_DIR" -type f -exec chmod 644 {} \;
 chmod -R 775 "$RELEASE_DIR/admin/bootstrap/cache"
-# Le .sh et artisan restent exécutables
 chmod +x "$RELEASE_DIR/admin/artisan" 2>/dev/null || true
 find "$RELEASE_DIR/deploy" -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
+
+echo "==> [3/9] Composer install (production)"
+sudo -u www-data -H COMPOSER_ALLOW_SUPERUSER=0 COMPOSER_HOME=/tmp/composer composer install \
+    --no-dev --optimize-autoloader --no-interaction --prefer-dist 2>&1 | tail -5
+
+echo "==> [4/9] NPM install + build Vite"
+sudo -u www-data -H npm ci --silent 2>&1 | tail -3 || sudo -u www-data -H npm install --silent 2>&1 | tail -3
+sudo -u www-data -H npm run build 2>&1 | tail -3
+
+echo "==> [5/9] Symlinks shared (.env, storage, database SQLite)"
+ln -sf "$SHARED_DIR/.env" "$RELEASE_DIR/admin/.env"
+rm -rf "$RELEASE_DIR/admin/storage"
+ln -sf "$SHARED_DIR/storage" "$RELEASE_DIR/admin/storage"
+ln -sf "$SHARED_DIR/database/database.sqlite" "$RELEASE_DIR/admin/database/database.sqlite"
+chown -h www-data:www-data "$RELEASE_DIR/admin/.env" "$RELEASE_DIR/admin/storage" "$RELEASE_DIR/admin/database/database.sqlite"
 
 echo "==> [6/9] Migrations + storage:link"
 sudo -u www-data php artisan migrate --force 2>&1 | tail -10
