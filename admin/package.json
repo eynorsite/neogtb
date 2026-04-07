@@ -17,6 +17,7 @@
     "dependencies": {
         "@alpinejs/collapse": "^3.14.9",
         "@alpinejs/intersect": "^3.14.9",
+        "@fontsource-variable/inter": "^5.2.8",
         "alpinejs": "^3.14.9"
     }
 }
