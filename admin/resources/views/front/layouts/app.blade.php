@@ -1,31 +1,101 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  @php($page = $page ?? null)
+  @php($seoTitle = $page->meta_title ?? 'Conseil GTB indépendant & décret BACS 2027 | NeoGTB')
+  @php($seoDescription = $page->meta_description ?? 'Tiers de confiance GTB. Pré-diagnostic ISO 52120-1 gratuit, comparateur indépendant, accompagnement décret BACS pour bâtiments tertiaires.')
+  @php($seoOgImage = $page->og_image ?? '/images/og-neogtb.png')
+  @php($seoOgImageAbs = \Illuminate\Support\Str::startsWith($seoOgImage, ['http://', 'https://']) ? $seoOgImage : url($seoOgImage))
+  @php($seoUrl = url()->current())
+  @php($seoBreadcrumbName = $page->title ?? $seoTitle)
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="@yield('description', 'NeoGTB — Le tiers de confiance indépendant de la GTB en France')" />
   <meta name="author" content="Ulrich Calmo — NeoGTB" />
   <meta name="theme-color" content="#0F172A" />
   @hasSection('noindex')<meta name="robots" content="noindex, nofollow" />@endif
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
 
-  {{-- Schema.org Organization + LocalBusiness --}}
+  <title>{{ $seoTitle }}</title>
+  <meta name="description" content="{{ $seoDescription }}" />
+
+  {{-- Canonical --}}
+  <link rel="canonical" href="{{ $seoUrl }}" />
+
+  {{-- Open Graph --}}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NeoGTB" />
+  <meta property="og:title" content="{{ $seoTitle }}" />
+  <meta property="og:description" content="{{ $seoDescription }}" />
+  <meta property="og:url" content="{{ $seoUrl }}" />
+  <meta property="og:image" content="{{ $seoOgImageAbs }}" />
+  <meta property="og:locale" content="fr_FR" />
+
+  {{-- Twitter Card --}}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ $seoTitle }}" />
+  <meta name="twitter:description" content="{{ $seoDescription }}" />
+  <meta name="twitter:image" content="{{ $seoOgImageAbs }}" />
+
+  {{-- CSRF token for AJAX --}}
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+  {{-- Schema.org Organization --}}
   <script type="application/ld+json">
   {
     "@@context": "https://schema.org",
-    "@@type": ["Organization", "LocalBusiness"],
+    "@@type": "Organization",
+    "@@id": "https://neogtb.fr/#organization",
     "name": "NeoGTB",
-    "alternateName": "EYNOR",
     "url": "https://neogtb.fr",
     "logo": "https://neogtb.fr/images/logo-neogtb.webp",
+    "sameAs": []
+  }
+  </script>
+
+  {{-- Schema.org LocalBusiness --}}
+  <script type="application/ld+json">
+  {
+    "@@context": "https://schema.org",
+    "@@type": "LocalBusiness",
+    "@@id": "https://neogtb.fr/#localbusiness",
+    "name": "NeoGTB",
+    "url": "https://neogtb.fr",
     "image": "https://neogtb.fr/images/og-neogtb.png",
-    "description": "Conseil indépendant en Gestion Technique du Bâtiment (GTB). Diagnostic gratuit, comparateur de solutions, accompagnement décret BACS.",
-    "founder": { "@@type": "Person", "name": "Ulrich Calmo", "jobTitle": "Créateur de la marque NeoGTB" },
-    "address": { "@@type": "PostalAddress", "addressLocality": "Eysines", "addressRegion": "Nouvelle-Aquitaine", "postalCode": "33320", "addressCountry": "FR" },
-    "areaServed": { "@@type": "Country", "name": "France" },
-    "knowsAbout": ["GTB", "GTC", "BACnet", "KNX", "Modbus", "LON", "DALI", "MQTT", "EN ISO 52120-1", "Décret BACS", "Smart Building", "GMAO", "Hypervision"],
-    "sameAs": ["https://www.linkedin.com/in/ulrich-calmo"]
+    "telephone": null,
+    "priceRange": "€€",
+    "address": {
+      "@@type": "PostalAddress",
+      "streetAddress": "",
+      "addressLocality": "Eysines",
+      "addressRegion": "Bordeaux",
+      "postalCode": "33320",
+      "addressCountry": "FR"
+    },
+    "areaServed": { "@@type": "Country", "name": "France" }
+  }
+  </script>
+
+  {{-- Schema.org BreadcrumbList --}}
+  <script type="application/ld+json">
+  {
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "{{ url('/') }}"
+      },
+      {
+        "@@type": "ListItem",
+        "position": 2,
+        "name": @json($seoBreadcrumbName),
+        "item": "{{ $seoUrl }}"
+      }
+    ]
   }
   </script>
 
@@ -34,122 +104,8 @@
   {{-- Plausible Analytics — hébergé UE, sans cookies, exempt de consentement CNIL --}}
   <script defer data-domain="neogtb.fr" src="https://plausible.io/js/script.js"></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-
-  <title>@yield('title', 'NeoGTB — Gestion Technique du Bâtiment') — NeoGTB</title>
-
-  {{-- Open Graph --}}
-  <meta property="og:type" content="@yield('og_type', 'website')" />
-  <meta property="og:site_name" content="NeoGTB" />
-  <meta property="og:title" content="@yield('title', 'NeoGTB — Gestion Technique du Bâtiment') — NeoGTB" />
-  <meta property="og:description" content="@yield('description', 'NeoGTB — Le tiers de confiance indépendant de la GTB en France')" />
-  <meta property="og:url" content="{{ url()->current() }}" />
-  <meta property="og:image" content="@yield('og_image', 'https://neogtb.fr/images/og-neogtb.png')" />
-  <meta property="og:locale" content="fr_FR" />
-
-  {{-- Twitter Card --}}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="@yield('title', 'NeoGTB — Gestion Technique du Bâtiment') — NeoGTB" />
-  <meta name="twitter:description" content="@yield('description', 'NeoGTB — Le tiers de confiance indépendant de la GTB en France')" />
-  <meta name="twitter:image" content="@yield('og_image', 'https://neogtb.fr/images/og-neogtb.png')" />
-
-  {{-- CSRF token for AJAX --}}
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-  {{-- Canonical --}}
-  <link rel="canonical" href="{{ url()->current() }}" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: {50:'#e8eef5',100:'#c5d5e6',200:'#9bb5d1',300:'#7095bc',400:'#4a78a8',500:'#1B3A5C',600:'#183353',700:'#142b47',800:'#10233b',900:'#0c1b2f',950:'#08111f'},
-            accent: {50:'#eaf5ee',100:'#d0e8d6',200:'#a3d4b2',300:'#6fbc88',400:'#4caf64',500:'#2D8B4E',600:'#267a43',700:'#1f6637',800:'#19532d',900:'#134023',950:'#0c2916'},
-            dark: {50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a',950:'#020617'},
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-            heading: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
-
-  <style>
-    :root {
-      --color-accent-50:  #eaf5ee;
-      --color-accent-100: #d0e8d6;
-      --color-accent-200: #a3d4b2;
-      --color-accent-500: #2D8B4E;
-      --color-accent-600: #267a43;
-      --color-dark-50:    #f8fafc;
-      --color-dark-100:   #f1f5f9;
-      --color-dark-200:   #e2e8f0;
-      --color-dark-300:   #cbd5e1;
-      --color-dark-400:   #94a3b8;
-      --color-dark-500:   #64748b;
-      --color-dark-600:   #475569;
-      --color-dark-700:   #334155;
-      --color-dark-800:   #1e293b;
-      --color-dark-900:   #0f172a;
-      --color-primary-50: #e8eef5;
-      --color-primary-500:#1B3A5C;
-      --color-primary-600:#183353;
-      --color-energy-500: #D97706;
-      --color-energy-600: #B45309;
-    }
-
-    /* === NeoGTB Design System === */
-    @keyframes fade-in-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(27, 58, 92, 0.3); } 50% { box-shadow: 0 0 20px 6px rgba(27, 58, 92, 0.15); } }
-
-    .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-    .animate-float { animation: float 4s ease-in-out infinite; }
-    .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-
-    .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1); }
-    .card-hover-glow { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover-glow:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(27, 58, 92, 0.15); border-color: #9bb5d1; }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      color: #fff;
-      background: linear-gradient(135deg, #2D8B4E, #267a43);
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.15s ease;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #267a43, #1f6637);
-      box-shadow: 0 4px 12px rgba(45, 139, 78, 0.25);
-    }
-
-    .btn-glow { transition: all 0.3s ease; }
-    .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(45, 139, 78, 0.4); }
-    .btn-glow:active { transform: translateY(0); }
-
-    .text-gradient { background: linear-gradient(135deg, #1B3A5C, #2D8B4E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-    .section-divider { position: relative; }
-    .section-divider::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #1B3A5C, #2D8B4E); border-radius: 2px; }
-
-    .bg-grid-pattern { background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px); background-size: 24px 24px; }
-
-    .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); }
-
-    [x-cloak] { display: none !important; }
-  </style>
+  {{-- Tailwind v4 + design tokens NeoGTB + Alpine.js (self-hosted) compilés via Vite --}}
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   @stack('head')
 </head>
@@ -227,6 +183,10 @@
               <span class="block font-medium">Générateur CEE</span>
               <span class="block text-[11px] text-dark-400 mt-0.5">Estimation en 3 min</span>
             </a>
+            <a href="/tables-modbus" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('tables-modbus') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
+              <span class="block font-medium">Tables Modbus</span>
+              <span class="block text-[11px] text-dark-400 mt-0.5">19 équipements GTB</span>
+            </a>
           </div>
         </div>
 
@@ -265,6 +225,7 @@
         <a href="/audit" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Pré-diagnostic GTB</a>
         <a href="/comparateur" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Comparateur objectif</a>
         <a href="/generateur-cee" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Générateur CEE</a>
+        <a href="/tables-modbus" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Tables Modbus</a>
 
         <div class="my-2 h-px bg-dark-100"></div>
         <a href="/blog" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Perspectives</a>
@@ -368,6 +329,7 @@
           <ul class="space-y-3">
             <li><a href="/audit" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Pré-diagnostic GTB</a></li>
             <li><a href="/generateur-cee" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Générateur CEE</a></li>
+            <li><a href="/tables-modbus" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Tables Modbus</a></li>
             <li><a href="/contact" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Contact</a></li>
             <li><a href="/faq" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">FAQ</a></li>
           </ul>
@@ -415,11 +377,6 @@
       </div>
     </div>
   </div>
-
-  {{-- ===== Alpine.js (versions fixes 3.14.9) ===== --}}
-  <script src="https://unpkg.com/@alpinejs/intersect@3.14.9/dist/cdn.min.js" defer></script>
-  <script src="https://unpkg.com/@alpinejs/collapse@3.14.9/dist/cdn.min.js" defer></script>
-  <script src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js" defer></script>
 
   <script>
     // Nav hide on scroll down, show on scroll up

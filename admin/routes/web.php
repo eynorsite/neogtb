@@ -36,6 +36,7 @@ Route::get('/newsletter-confirmee', [\App\Http\Controllers\StaticPageController:
 Route::get('/audit', [\App\Http\Controllers\StaticPageController::class, 'audit'])->name('front.audit');
 Route::get('/comparateur', [\App\Http\Controllers\StaticPageController::class, 'comparateur'])->name('front.comparateur');
 Route::get('/generateur-cee', [\App\Http\Controllers\StaticPageController::class, 'generateurCee'])->name('front.generateur-cee');
+Route::get('/tables-modbus', [\App\Http\Controllers\StaticPageController::class, 'tablesModbus'])->name('front.tables-modbus');
 
 // Newsletter (double opt-in)
 Route::middleware('throttle:5,1')->group(function () {

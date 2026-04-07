@@ -2,9 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SitePage;
+use App\Models\SiteSetting;
+
 class StaticPageController extends Controller
 {
-    public function accueil()              { return view('front.accueil'); }
+    public function accueil()
+    {
+        $page = SitePage::where('slug', 'accueil')->firstOrFail();
+        $bricks = $page->visibleBricks()->get();
+        $settings = SiteSetting::getAllCached();
+
+        return view('front.page', compact('page', 'bricks', 'settings'));
+    }
     public function about()                { return view('front.about'); }
     public function faq()                  { return view('front.faq'); }
     public function contact()              { return view('front.contact'); }
@@ -20,4 +30,5 @@ class StaticPageController extends Controller
     public function audit()                { return view('front.audit'); }
     public function comparateur()          { return view('front.comparateur'); }
     public function generateurCee()        { return view('front.generateur-cee'); }
+    public function tablesModbus()         { return view('front.tables-modbus'); }
 }

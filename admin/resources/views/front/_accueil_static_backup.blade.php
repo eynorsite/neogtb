@@ -1,83 +1,6 @@
 @extends('front.layouts.app')
 
-@push('head')
-<style>
-/* Reveal animations */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-d1 { transition-delay: 0.1s; }
-.reveal-d2 { transition-delay: 0.2s; }
-
-/* Card */
-.card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; transition: box-shadow 0.2s ease, transform 0.2s ease; }
-.card:hover { box-shadow: 0 8px 24px -4px rgba(0,0,0,0.08); transform: translateY(-2px); }
-
-/* Eyebrow label */
-.eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #267a43; margin-bottom: 8px; }
-
-/* Buttons */
-.btn-secondary { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: 8px; background: #fff; border: 1px solid #e2e8f0; color: #0f172a; text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s; }
-.btn-secondary:hover { border-color: #94a3b8; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.06); }
-.btn-ghost { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 500; color: #267a43; text-decoration: none; border-bottom: 1px solid #a3d4b2; transition: border-color 0.2s; }
-.btn-ghost:hover { border-color: #267a43; }
-
-/* Gauge EN 15232 */
-.gauge-en15232 { display: flex; gap: 4px; }
-.gauge-en15232-bar { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 6px; font-size: 13px; font-weight: 600; color: #fff; }
-.gauge-en15232-bar.level-d { background: #ef4444; }
-.gauge-en15232-bar.level-c { background: #f97316; }
-.gauge-en15232-bar.level-b { background: #2D8B4E; }
-.gauge-en15232-bar.level-a { background: #0284c7; }
-.gauge-en15232-bar.dimmed { opacity: 0.25; }
-.gauge-en15232-bar.active { box-shadow: 0 0 0 2px #fff, 0 0 0 4px currentColor; }
-
-/* Tags */
-.tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 20px; }
-.tag-reglementation { background: #fef3c7; color: #92400e; }
-.tag-technique { background: #dbeafe; color: #1e40af; }
-.tag-protocoles { background: #ede9fe; color: #5b21b6; }
-.tag-gtb { background: #dcfce7; color: #166534; }
-
-/* Method flow */
-.method-flow { display: flex; align-items: center; gap: 0; }
-.method-flow-step { flex: 1; text-align: center; position: relative; }
-.method-flow-node { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-size: 14px; font-weight: 600; background: #f1f5f9; color: #64748b; border: 2px solid #e2e8f0; transition: all 0.3s; }
-.method-flow-step.active-step .method-flow-node { background: #2D8B4E; color: #fff; border-color: #2D8B4E; box-shadow: 0 0 0 6px rgba(45,139,78,0.12); }
-.method-flow-connector { width: 32px; height: 2px; background: #e2e8f0; flex-shrink: 0; }
-
-/* Comparateur preview */
-.comparateur-preview { width: 100%; }
-.comparateur-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.comparateur-bar { flex: 1; height: 8px; border-radius: 4px; background: #f1f5f9; overflow: hidden; }
-.comparateur-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #2D8B4E, #4caf64); transition: width 1s cubic-bezier(0.4,0,0.2,1); }
-
-/* Timeline réglementation */
-.timeline-regl { display: flex; flex-direction: column; gap: 0; }
-.timeline-regl-point { display: flex; align-items: flex-start; gap: 16px; padding-bottom: 24px; position: relative; }
-.timeline-regl-point:not(:last-child)::before { content: ''; position: absolute; left: 7px; top: 20px; bottom: 0; width: 2px; background: #e2e8f0; }
-.timeline-regl-dot { width: 16px; height: 16px; border-radius: 50%; background: #e2e8f0; border: 2px solid #fff; box-shadow: 0 0 0 2px #e2e8f0; flex-shrink: 0; margin-top: 2px; }
-.timeline-regl-dot.past { background: #267a43; box-shadow: 0 0 0 2px #267a43; }
-.timeline-regl-dot.current { background: #1B3A5C; box-shadow: 0 0 0 2px #1B3A5C; }
-.timeline-regl-dot.future { background: #fff; }
-.timeline-regl-year { font-size: 11px; font-weight: 700; color: #267a43; text-transform: uppercase; letter-spacing: 0.05em; }
-.timeline-regl-label { font-size: 14px; color: #475569; line-height: 1.5; }
-
-/* Hero background illustration */
-.hero-bg-illustration { position: absolute; right: 0; top: 0; height: 100%; width: 50%; object-fit: cover; object-position: left center; opacity: 0.15; pointer-events: none; }
-
-/* Sticky CTA mobile */
-.sticky-cta-mobile { position: fixed; bottom: 0; left: 0; right: 0; z-index: 40; padding: 12px 16px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-top: 1px solid #e2e8f0; display: flex; justify-content: center; }
-.sticky-cta-btn { display: inline-flex; align-items: center; gap: 8px; width: 100%; max-width: 400px; justify-content: center; padding: 14px 24px; border-radius: 12px; background: linear-gradient(135deg, #2D8B4E, #267a43); color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 16px -4px rgba(45,139,78,0.4); }
-
-/* Separator */
-.sep { height: 1px; background: #e2e8f0; margin: 0; }
-
-/* Utility */
-.metric-cell { padding: 14px; border-radius: 8px; background: #f8fafc; }
-.approach-block { border-left: 2px solid #2D8B4E; padding-left: 16px; margin-bottom: 24px; }
-.dot-accent { width: 5px; height: 5px; border-radius: 50%; background: #2D8B4E; flex-shrink: 0; }
-</style>
-@endpush
+{{-- Styles partagés extraits vers resources/css/front/home-components.css (phase 2 audit NeoGTB) --}}
 
 @section('title', 'NeoGTB — Conseil GTB indépendant | Pré-diagnostic ISO 52120 gratuit')
 
@@ -396,7 +319,7 @@
   <section style="padding: 64px 0; border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
     <div class="max-w-[900px] mx-auto px-6 md:px-10">
       <div class="text-center mb-8 reveal" x-data x-intersect.once="$el.classList.add('visible')">
-        <p class="eyebrow" style="color: var(--color-energy-600);">Échéances réglementaires</p>
+        <p class="eyebrow" style="color: var(--color-accent-600);">Échéances réglementaires</p>
         <h2 style="font-size: clamp(22px, 2.5vw, 28px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2;">Décret BACS & Décret Tertiaire — le calendrier qui vous concerne</h2>
       </div>
 
@@ -424,7 +347,7 @@
       </div>
 
       <p style="text-align: center; font-size: 13px; color: var(--color-dark-400); margin-top: 24px;">
-        <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-energy-500);"></span> En vigueur</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent-500);"></span> En vigueur</span>
         <span style="margin-left: 16px; display: inline-flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent-500);"></span> À venir</span>
       </p>
     </div>
@@ -464,7 +387,7 @@
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
-              <p style="font-size: 22px; font-weight: 500; color: var(--color-energy-600); letter-spacing: -0.02em;">-23 %</p>
+              <p style="font-size: 22px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.02em;">-23 %</p>
               <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 4px;">conso CVC</p>
             </div>
             <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
@@ -499,7 +422,7 @@
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
-              <p style="font-size: 22px; font-weight: 500; color: var(--color-energy-600); letter-spacing: -0.02em;">-35 %</p>
+              <p style="font-size: 22px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.02em;">-35 %</p>
               <p style="font-size: 11px; color: var(--color-dark-400); margin-top: 4px;">objectif réduction</p>
             </div>
             <div style="padding: 14px; border-radius: 8px; background: var(--color-dark-50);">
@@ -571,7 +494,7 @@
             <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 4px;">comparaisons lancées</p>
           </div>
           <div>
-            <p style="font-size: 36px; font-weight: 500; color: var(--color-energy-600); letter-spacing: -0.03em;">2,4 M€</p>
+            <p style="font-size: 36px; font-weight: 500; color: var(--color-accent-600); letter-spacing: -0.03em;">2,4 M€</p>
             <p style="font-size: 13px; color: var(--color-dark-400); margin-top: 4px;">CEE estimés via l'outil</p>
           </div>
           <div>

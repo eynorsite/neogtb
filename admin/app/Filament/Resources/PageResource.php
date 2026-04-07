@@ -1,10 +1,27 @@
 <?php
 
+/**
+ * PageResource — édite les SitePage (slug, hero_*, meta_*, og_*)
+ * et la liste de leurs PageBrick via un Repeater (relationship 'bricks').
+ *
+ * Pour l'édition fine du contenu d'un brick (schema dynamique selon le type
+ * via BrickRegistry::get($type)->schema()), un éditeur dédié existe :
+ * App\Filament\Pages\BrickEditorPage (route /admin/pages/{id}/bricks),
+ * accessible depuis l'action "Modifier le contenu" dans la table.
+ *
+ * Le Repeater "Contenu (blocs)" présent ici permet une gestion rapide :
+ * réorder, ajouter, supprimer, renommer, masquer, et éditer le content/settings
+ * via Textarea JSON. Le Select brick_type pioche dans BrickRegistry::types().
+ */
+
 namespace App\Filament\Resources;
 
+use App\Filament\Bricks\BrickRegistry;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\SitePage;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -121,6 +138,91 @@ class PageResource extends Resource
                                     ->helperText('L\'image affichée quand on partage la page sur les réseaux sociaux. Format idéal : 1200x630px.')
                                     ->image()
                                     ->directory('og'),
+                            ]),
+
+                        Tabs\Tab::make('Hero')
+                            ->icon('heroicon-o-photo')
+                            ->schema([
+                                TextInput::make('hero_title')
+                                    ->label('Titre du hero')
+                                    ->maxLength(255),
+                                TextInput::make('hero_subtitle')
+                                    ->label('Sous-titre du hero')
+                                    ->maxLength(255),
+                                Textarea::make('hero_description')
+                                    ->label('Description du hero')
+                                    ->rows(3),
+                                TextInput::make('hero_cta_text')
+                                    ->label('Texte du bouton (CTA)')
+                                    ->maxLength(255),
+                                TextInput::make('hero_cta_url')
+                                    ->label('Lien du bouton (CTA)')
+                                    ->maxLength(255),
+                                FileUpload::make('hero_image')
+                                    ->label('Image du hero')
+                                    ->image()
+                                    ->directory('hero'),
+                            ]),
+
+                        Tabs\Tab::make('Contenu (blocs)')
+                            ->icon('heroicon-o-squares-2x2')
+                            ->schema([
+                                Repeater::make('bricks')
+                                    ->label('Blocs de la page')
+                                    ->relationship('bricks')
+                                    ->orderColumn('order')
+                                    ->reorderable()
+                                    ->collapsible()
+                                    ->cloneable()
+                                    ->itemLabel(fn (array $state): ?string => ($state['brick_name'] ?? null) ?: ($state['brick_type'] ?? 'Bloc'))
+                                    ->addActionLabel('Ajouter un bloc')
+                                    ->helperText('Pour une édition avancée du contenu d\'un bloc (formulaires dédiés par type), utilisez l\'action "Modifier le contenu" depuis la liste des pages.')
+                                    ->schema([
+                                        Select::make('brick_type')
+                                            ->label('Type de bloc')
+                                            ->options(fn () => collect(BrickRegistry::types())
+                                                ->mapWithKeys(fn ($t) => [$t => $t])
+                                                ->all())
+                                            ->required()
+                                            ->searchable()
+                                            ->live()
+                                            ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                                                if (!$state) {
+                                                    return;
+                                                }
+                                                $def = BrickRegistry::get($state);
+                                                if (!$def) {
+                                                    return;
+                                                }
+                                                if (!$get('brick_name')) {
+                                                    $set('brick_name', $def->name());
+                                                }
+                                                if (!$get('content')) {
+                                                    $set('content', json_encode($def->defaultContent(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                                                }
+                                                if (!$get('settings')) {
+                                                    $set('settings', json_encode($def->defaultSettings(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                                                }
+                                            }),
+                                        TextInput::make('brick_name')
+                                            ->label('Nom interne')
+                                            ->maxLength(255),
+                                        Toggle::make('is_visible')
+                                            ->label('Visible')
+                                            ->default(true),
+                                        Textarea::make('content')
+                                            ->label('Contenu (JSON)')
+                                            ->rows(6)
+                                            ->helperText('JSON brut. Pour l\'édition guidée, utilisez "Modifier le contenu".')
+                                            ->formatStateUsing(fn ($state) => is_array($state) ? json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) : $state)
+                                            ->dehydrateStateUsing(fn ($state) => is_string($state) && $state !== '' ? (json_decode($state, true) ?? []) : []),
+                                        Textarea::make('settings')
+                                            ->label('Réglages (JSON)')
+                                            ->rows(4)
+                                            ->formatStateUsing(fn ($state) => is_array($state) ? json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) : $state)
+                                            ->dehydrateStateUsing(fn ($state) => is_string($state) && $state !== '' ? (json_decode($state, true) ?? []) : []),
+                                    ])
+                                    ->columnSpanFull(),
                             ]),
                     ])->columnSpanFull(),
             ]);

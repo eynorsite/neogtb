@@ -20,7 +20,8 @@
 
     @if(!empty($content['image']))
         <div class="absolute inset-0">
-            <img src="{{ asset('storage/' . $content['image']) }}" alt="" class="h-full w-full object-cover opacity-20">
+            @php $heroImg = $content['image']; $heroImgUrl = str_starts_with($heroImg, '/') || str_starts_with($heroImg, 'http') ? $heroImg : asset('storage/' . $heroImg); @endphp
+            <img src="{{ $heroImgUrl }}" alt="{{ $content['image_alt'] ?? '' }}" class="h-full w-full object-cover opacity-20">
         </div>
     @endif
 

@@ -1,11 +1,171 @@
 @import 'tailwindcss';
 
+/* Self-hosted fonts (woff2) — supprime la dépendance Google Fonts */
+@import '@fontsource-variable/inter/index.css';
+
+/* Composants partagés du front (extraits de accueil.blade.php — phase 2) */
+@import './front/home-components.css';
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+/* ============================================================
+   NeoGTB — Design tokens (Tailwind v4 @theme)
+   ============================================================ */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    --font-heading: 'Inter Variable', 'Inter', system-ui, sans-serif;
+    --font-display: 'Inter Variable', 'Inter', system-ui, sans-serif;
+
+    /* Échelle typo stricte (px) */
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 20px;
+    --text-2xl: 28px;
+    --text-4xl: 40px;
+    --text-6xl: 56px;
+
+    /* Primary — bleu marine institutionnel */
+    --color-primary-50:  #e8eef5;
+    --color-primary-100: #c5d5e6;
+    --color-primary-200: #9bb5d1;
+    --color-primary-300: #7095bc;
+    --color-primary-400: #4a78a8;
+    --color-primary-500: #1B3A5C;
+    --color-primary-600: #183353;
+    --color-primary-700: #142b47;
+    --color-primary-800: #10233b;
+    --color-primary-900: #0c1b2f;
+    --color-primary-950: #08111f;
+
+    /* Accent — vert NeoGTB */
+    --color-accent-50:  #eaf5ee;
+    --color-accent-100: #d0e8d6;
+    --color-accent-200: #a3d4b2;
+    --color-accent-300: #6fbc88;
+    --color-accent-400: #4caf64;
+    --color-accent-500: #2D8B4E;
+    --color-accent-600: #267a43;
+    --color-accent-700: #1f6637;
+    --color-accent-800: #19532d;
+    --color-accent-900: #134023;
+    --color-accent-950: #0c2916;
+
+    /* Dark — neutres slate */
+    --color-dark-50:  #f8fafc;
+    --color-dark-100: #f1f5f9;
+    --color-dark-200: #e2e8f0;
+    --color-dark-300: #cbd5e1;
+    --color-dark-400: #94a3b8;
+    --color-dark-500: #64748b;
+    --color-dark-600: #475569;
+    --color-dark-700: #334155;
+    --color-dark-800: #1e293b;
+    --color-dark-900: #0f172a;
+    --color-dark-950: #020617;
+
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+.animate-float      { /* removed: float infinite */ }
+.animate-pulse-glow { /* removed: pulse-glow infinite */ }
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up {
+        animation: none !important;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================================
+   Composants utilitaires
+   ============================================================ */
+.card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.card-hover:hover {
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover-glow { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.card-hover-glow:hover {
+    box-shadow: 0 20px 40px -12px rgba(27, 58, 92, 0.15);
+    border-color: var(--color-primary-200);
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-700));
+    box-shadow: 0 4px 12px rgba(45, 139, 78, 0.25);
+}
+
+.btn-glow { transition: all 0.3s ease; }
+.btn-glow:hover {
+    box-shadow: 0 8px 24px -4px rgba(45, 139, 78, 0.4);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-divider { position: relative; }
+.section-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-500));
+    border-radius: 2px;
+}
+
+.bg-grid-pattern {
+    background-image: radial-gradient(circle, var(--color-dark-200) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[x-cloak] { display: none !important; }
+
+/* Focus visible global (accessibilité WCAG 2.4.7) */
+:focus-visible {
+    outline: 2px solid var(--color-accent-600);
+    outline-offset: 2px;
+    border-radius: 4px;
 }

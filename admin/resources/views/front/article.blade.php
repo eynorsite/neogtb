@@ -45,6 +45,13 @@
 
 @section('content')
 
+@php
+    $cta = \App\Helpers\BlogCta::for(
+        $post->tags?->pluck('name')->all() ?? [],
+        $post->category?->name
+    );
+@endphp
+
 <article>
     {{-- ══════════════════════════════════════════════════════════════
          ARTICLE HEADER
@@ -212,14 +219,14 @@
     <section class="py-16 lg:py-20 bg-white border-t border-dark-100">
         <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-dark-900 tracking-tight leading-tight">
-                Un projet GTB à clarifier ?
+                {{ $cta['title'] }}
             </h2>
             <p class="mt-3 text-sm sm:text-base text-dark-500 leading-relaxed">
-                Pré-diagnostic ISO 52120-1 gratuit en ligne, ou échange de 15 minutes pour cadrer votre besoin.
+                {{ $cta['description'] }}
             </p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/audit" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors btn-glow">
-                    Lancer le diagnostic
+                <a href="{{ $cta['link'] }}" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors btn-glow">
+                    {{ $cta['linkText'] }}
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
                 <a href="/contact" class="text-sm font-medium text-dark-500 hover:text-primary-600 transition-colors">

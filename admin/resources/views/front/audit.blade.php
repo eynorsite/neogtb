@@ -4,6 +4,28 @@
 @section('description', 'Évaluez la conformité GTB de votre bâtiment (décret BACS), estimez vos économies et recevez un rapport PDF avec recommandations ISO 52120-1 (ex-EN 15232).')
 
 @push('head')
+@verbatim
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Pré-diagnostic GTB ISO 52120-1",
+  "description": "Évaluez la maturité technique de votre bâtiment en 8 questions et obtenez une estimation de classe GTB (A/B/C/D) selon la norme ISO 52120-1 (ex-EN 15232).",
+  "totalTime": "PT5M",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Décrivez votre bâtiment", "text": "Renseignez le type de bâtiment (bureaux, commerce, industrie, santé, enseignement, hôtellerie), la surface utile et la zone climatique (H1, H2, H3 ou DOM)." },
+    { "@type": "HowToStep", "position": 2, "name": "Identifiez vos lots techniques", "text": "Sélectionnez les lots techniques présents dans votre bâtiment (CVC, éclairage, ECS, stores, comptage, etc.) afin de calibrer le diagnostic." },
+    { "@type": "HowToStep", "position": 3, "name": "Régulation CVC", "text": "Indiquez le niveau de régulation du chauffage, ventilation et climatisation (manuel, thermostats, programmation horaire ou optimisation automatique)." },
+    { "@type": "HowToStep", "position": 4, "name": "Gestion de l'éclairage", "text": "Précisez le mode de gestion de l'éclairage (interrupteurs, minuteries, détection de présence ou gestion intelligente avec daylight harvesting)." },
+    { "@type": "HowToStep", "position": 5, "name": "Suivi des consommations", "text": "Indiquez le niveau de suivi énergétique (aucun, relevé manuel, sous-comptage automatique ou monitoring temps réel avec alertes de dérive)." },
+    { "@type": "HowToStep", "position": 6, "name": "Supervision des lots techniques", "text": "Précisez si vous disposez d'une supervision centralisée (aucune, partielle, GTC multi-lots ou GTB complète avec pilotage)." },
+    { "@type": "HowToStep", "position": 7, "name": "Maintenance dominante", "text": "Indiquez votre mode de maintenance principal : curatif, préventif planifié, conditionnel basé sur les capteurs ou prédictif." },
+    { "@type": "HowToStep", "position": 8, "name": "Conformité réglementaire", "text": "Précisez votre niveau de conformité au décret tertiaire et au décret BACS (inconnu, partiel, en cours ou pleinement conforme avec reporting OPERAT)." },
+    { "@type": "HowToStep", "position": 9, "name": "Recevez vos résultats", "text": "Obtenez instantanément votre classe GTB estimée (A/B/C/D), un benchmark énergétique, un récapitulatif et des recommandations personnalisées au format PDF." }
+  ]
+}
+</script>
+@endverbatim
 <style>
   :root {
     --color-accent-50: #F0FDFA; --color-accent-100: #CCFBF1; --color-accent-200: #99F6E4;
