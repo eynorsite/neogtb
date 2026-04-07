@@ -89,7 +89,7 @@
                         action="/contact/send"
                         method="POST"
                         x-data="{ sending: false }"
-                        @submit="sending = true"
+                        x-on:submit="sending = true"
                     >
                         @csrf
                         <input type="hidden" name="source_page" value="contact" />
