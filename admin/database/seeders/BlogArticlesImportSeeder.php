@@ -28,12 +28,20 @@ class BlogArticlesImportSeeder extends Seeder
 {
     public function run(): void
     {
-        $astroPath = base_path('../src/content/blog');
+        // Source primaire : dossier versionné dans le repo
+        $blogPath = database_path('seed-data/blog');
 
-        if (! is_dir($astroPath)) {
-            $this->command->error("Répertoire Astro introuvable : {$astroPath}");
+        // Fallback historique : dossier Astro (cas dev local pré-migration)
+        if (! is_dir($blogPath)) {
+            $blogPath = base_path('../src/content/blog');
+        }
+
+        if (! is_dir($blogPath)) {
+            $this->command->error("Répertoire blog introuvable : {$blogPath}");
             return;
         }
+
+        $astroPath = $blogPath;
 
         // Convertisseur Markdown -> HTML (avec support tables)
         $environment = new Environment([
