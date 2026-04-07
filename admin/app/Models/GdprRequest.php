@@ -27,6 +27,8 @@ class GdprRequest extends Model
             'email' => 'encrypted',
             'name' => 'encrypted',
             'message' => 'encrypted',
+            'response_content' => 'encrypted',
+            'admin_notes' => 'encrypted',
             'processed_at' => 'datetime',
             'response_sent_at' => 'datetime',
         ];

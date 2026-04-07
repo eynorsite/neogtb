@@ -983,7 +983,7 @@
       async downloadPDF() {
         try {
           if (this.emailAddress && this.emailAddress.includes('@')) {
-            try { fetch('https://formsubmit.co/ajax/hello@neogtb.fr', { method: 'POST', body: JSON.stringify({ _subject: 'Nouveau lead Diagnostic GTB', _gotcha: '', email: this.emailAddress, nom: this.userName || 'Non renseign\u00e9', entreprise: this.userCompany || 'Non renseign\u00e9', score: this.results.score, niveau: this.results.levelLabel, surface: this.form.surface, batiment: this.form.buildingType, economies: this.results.savingsEuro }), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } }).catch(() => {}); } catch(e) {}
+            try { fetch('/audit/lead', { method: 'POST', body: JSON.stringify({ email: this.emailAddress, name: this.userName || null, company: this.userCompany || null, score: this.results.score, level_label: this.results.levelLabel, surface: this.form.surface, building_type: this.form.buildingType, savings_euro: this.results.savingsEuro, payload: { form: this.form, results: this.results } }), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || '', 'X-Requested-With': 'XMLHttpRequest' } }).catch(() => {}); } catch(e) {}
           }
           const jsPDFModule = window.jspdf || await import('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm');
           const { jsPDF } = jsPDFModule;

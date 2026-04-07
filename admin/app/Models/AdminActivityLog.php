@@ -26,6 +26,8 @@ class AdminActivityLog extends Model
             'old_values' => 'array',
             'new_values' => 'array',
             'created_at' => 'datetime',
+            'ip_address' => 'encrypted',
+            'user_agent' => 'encrypted',
         ];
     }
 

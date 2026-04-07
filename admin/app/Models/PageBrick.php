@@ -15,7 +15,6 @@ class PageBrick extends Model
         'settings',
         'order',
         'is_visible',
-        'is_locked',
         'created_by',
         'updated_by',
     ];

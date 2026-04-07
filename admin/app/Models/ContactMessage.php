@@ -12,13 +12,22 @@ class ContactMessage extends Model
     protected $fillable = [
         'name', 'email', 'phone', 'company', 'subject', 'message',
         'source_page', 'ip_address', 'user_agent',
-        'status', 'replied_at', 'reply_content', 'admin_notes',
+    ];
+
+    protected $attributes = [
+        'status' => 'new',
     ];
 
     protected function casts(): array
     {
         return [
             'replied_at' => 'datetime',
+            'name' => 'encrypted',
+            'email' => 'encrypted',
+            'phone' => 'encrypted',
+            'company' => 'encrypted',
+            'message' => 'encrypted',
+            'user_agent' => 'encrypted',
         ];
     }
 }

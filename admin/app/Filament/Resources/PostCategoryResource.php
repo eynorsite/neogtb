@@ -28,6 +28,35 @@ class PostCategoryResource extends Resource
 
     protected static ?int $navigationSort = 25;
 
+    public static function canAccess(): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
+    }
+
+    public static function canCreate(): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin']);
+    }
+
+    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin']);
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin']);
+    }
+
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        return parent::getEloquentQuery()->withCount('posts');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return $schema

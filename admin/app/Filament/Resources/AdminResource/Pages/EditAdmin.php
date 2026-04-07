@@ -14,7 +14,7 @@ class EditAdmin extends EditRecord
     {
         return [
             Actions\DeleteAction::make()
-                ->visible(fn () => ! $this->record->isSuperAdmin()),
+                ->visible(fn () => auth()->guard('admin')->user()?->isSuperAdmin() && !$this->record->isSuperAdmin()),
         ];
     }
 }

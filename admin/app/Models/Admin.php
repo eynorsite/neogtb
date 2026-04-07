@@ -40,6 +40,7 @@ class Admin extends Authenticatable implements FilamentUser, HasAvatar
             'password' => 'hashed',
             'is_active' => 'boolean',
             'last_login_at' => 'datetime',
+            'last_login_ip' => 'encrypted',
         ];
     }
 

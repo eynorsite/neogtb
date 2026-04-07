@@ -15,6 +15,8 @@ Route::get('/', [\App\Http\Controllers\StaticPageController::class, 'accueil'])-
 Route::get('/blog', [\App\Http\Controllers\PageController::class, 'blog'])->name('front.blog');
 Route::get('/blog/{slug}', [\App\Http\Controllers\PageController::class, 'article'])->name('front.article');
 Route::post('/contact/send', [\App\Http\Controllers\PageController::class, 'sendContact'])->middleware('throttle:5,1')->name('front.contact.send');
+Route::post('/audit/lead', [\App\Http\Controllers\PageController::class, 'storeAuditLead'])->middleware('throttle:5,1')->name('front.audit.lead');
+Route::post('/cee/lead', [\App\Http\Controllers\PageController::class, 'storeCeeLead'])->middleware('throttle:5,1')->name('front.cee.lead');
 
 // Static pages (Blade views — must be BEFORE the catch-all)
 Route::get('/about', [\App\Http\Controllers\StaticPageController::class, 'about'])->name('front.about');
@@ -34,6 +36,13 @@ Route::get('/newsletter-confirmee', [\App\Http\Controllers\StaticPageController:
 Route::get('/audit', [\App\Http\Controllers\StaticPageController::class, 'audit'])->name('front.audit');
 Route::get('/comparateur', [\App\Http\Controllers\StaticPageController::class, 'comparateur'])->name('front.comparateur');
 Route::get('/generateur-cee', [\App\Http\Controllers\StaticPageController::class, 'generateurCee'])->name('front.generateur-cee');
+
+// Newsletter (double opt-in)
+Route::middleware('throttle:5,1')->group(function () {
+    Route::post('/newsletter', [\App\Http\Controllers\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+    Route::post('/newsletter/unsubscribe', [\App\Http\Controllers\NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+});
+Route::get('/newsletter/confirm/{token}', [\App\Http\Controllers\NewsletterController::class, 'confirm'])->name('newsletter.confirm');
 
 // Dynamic pages catch-all (from database)
 Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show'])->where('slug', '^(?!admin|livewire).*$');

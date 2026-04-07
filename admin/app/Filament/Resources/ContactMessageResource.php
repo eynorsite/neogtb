@@ -30,6 +30,29 @@ class ContactMessageResource extends Resource
 
     protected static ?int $navigationSort = 30;
 
+    public static function canAccess(): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin']);
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin']);
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && $admin->role === 'superadmin';
+    }
+
     public static function getNavigationBadge(): ?string
     {
         $count = ContactMessage::where('status', 'new')->count();

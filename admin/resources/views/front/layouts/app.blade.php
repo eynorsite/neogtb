@@ -398,16 +398,19 @@
     </div>
   </footer>
 
-  {{-- ===== Cookie Consent Banner ===== --}}
-  <div x-data="cookieConsent()" x-cloak>
+  {{-- ===== Bandeau d'information cookies (purement informatif — Plausible cookieless, exempt CNIL) ===== --}}
+  <div x-data="cookieNotice()" x-cloak>
     <div x-show="showBanner" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
       class="fixed bottom-0 left-0 right-0 z-[60] p-4">
       <div class="max-w-xl mx-auto bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl" style="border: 1px solid rgba(0,0,0,0.06);">
         <p class="text-[14px] font-medium text-dark-900 mb-1">Respect de votre vie privée</p>
-        <p class="text-[13px] text-dark-500 mb-4" style="line-height: 1.6;">NeoGTB utilise uniquement des cookies essentiels au fonctionnement du site. L'outil de mesure d'audience (Plausible) ne dépose aucun cookie et est exempt de consentement CNIL.</p>
-        <div class="flex items-center gap-3 justify-end">
-          <button @click="rejectAll()" class="text-[13px] font-medium text-dark-500 px-4 py-2 rounded-lg bg-dark-50 transition-colors duration-200 hover:bg-dark-100">Refuser</button>
-          <button @click="acceptAll()" class="btn-primary text-[13px] px-4 py-2">Accepter</button>
+        <p class="text-[13px] text-dark-500 mb-4" style="line-height: 1.6;">
+          Ce site n'utilise <span class="font-medium text-dark-700">aucun cookie de tracking</span>.
+          La mesure d'audience est assurée par <a href="https://plausible.io/data-policy" target="_blank" rel="noopener" class="text-accent-600 hover:text-accent-700 underline">Plausible Analytics</a> (sans cookies, hébergé en UE, exempt de consentement CNIL).
+          Pour en savoir plus, consultez notre <a href="/politique-de-confidentialite" class="text-accent-600 hover:text-accent-700 underline">politique de confidentialité</a>.
+        </p>
+        <div class="flex items-center justify-end">
+          <button @click="dismiss()" class="btn-primary text-[13px] px-4 py-2">J'ai compris</button>
         </div>
       </div>
     </div>
@@ -435,31 +438,22 @@
       }, { passive: true });
     })();
 
-    // Cookie consent Alpine component
+    // Bandeau d'information cookies (purement informatif — aucun cookie de tracking, Plausible exempt CNIL)
     document.addEventListener('alpine:init', () => {
-      Alpine.data('cookieConsent', () => ({
+      Alpine.data('cookieNotice', () => ({
         showBanner: false,
-        hasConsented: false,
 
         init() {
-          const saved = this.getCookie('neogtb_consent');
-          if (saved) {
-            this.hasConsented = true;
-          } else {
-            this.showBannerDelayed();
+          const dismissed = this.getCookie('neogtb_notice_dismissed');
+          if (!dismissed) {
+            setTimeout(() => { this.showBanner = true; }, 800);
           }
           window.addEventListener('open-cookie-settings', () => { this.showBanner = true; });
         },
 
-        showBannerDelayed() { setTimeout(() => { this.showBanner = true; }, 800); },
-
-        acceptAll() { this.save(); },
-        rejectAll() { this.save(); },
-
-        save() {
-          this.setCookie('neogtb_consent', 'ok', 395);
+        dismiss() {
+          this.setCookie('neogtb_notice_dismissed', '1', 395);
           this.showBanner = false;
-          this.hasConsented = true;
         },
 
         setCookie(name, value, days) {

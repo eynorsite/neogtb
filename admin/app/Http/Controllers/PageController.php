@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactMessage;
+use App\Http\Requests\SubmitAuditLeadRequest;
+use App\Http\Requests\SubmitCeeLeadRequest;
+use App\Http\Requests\SubmitContactMessageRequest;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\SitePage;
 use App\Models\SiteSetting;
-use Illuminate\Http\Request;
+use App\Services\Contact\ContactSubmissionService;
+use App\Services\Lead\AuditLeadService;
+use App\Services\Lead\CeeLeadService;
 
 class PageController extends Controller
 {
@@ -60,28 +64,36 @@ class PageController extends Controller
         return view('front.article', compact('post', 'related', 'settings'));
     }
 
-    public function sendContact(Request $request)
+    public function sendContact(SubmitContactMessageRequest $request, ContactSubmissionService $service)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:100',
-            'email' => 'required|email|max:100',
-            'company' => 'nullable|string|max:100',
-            'subject' => 'required|string|max:200',
-            'message' => 'required|string|max:5000',
-            'source_page' => 'nullable|string|max:200',
-        ]);
-
-        ContactMessage::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'company' => $validated['company'] ?? null,
-            'subject' => $validated['subject'],
-            'message' => $validated['message'],
-            'source_page' => $validated['source_page'] ?? null,
-            'ip_address' => $request->ip(),
-            'status' => 'new',
-        ]);
+        $service->submit(
+            $request->validated(),
+            hash('sha256', $request->ip()),
+            $request->userAgent()
+        );
 
         return back()->with('contact_success', true);
+    }
+
+    public function storeAuditLead(SubmitAuditLeadRequest $request, AuditLeadService $service)
+    {
+        $service->submit(
+            $request->validated(),
+            hash('sha256', $request->ip()),
+            $request->userAgent()
+        );
+
+        return response()->json(['status' => 'ok']);
+    }
+
+    public function storeCeeLead(SubmitCeeLeadRequest $request, CeeLeadService $service)
+    {
+        $service->submit(
+            $request->validated(),
+            hash('sha256', $request->ip()),
+            $request->userAgent()
+        );
+
+        return response()->json(['status' => 'ok']);
     }
 }

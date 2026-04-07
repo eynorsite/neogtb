@@ -1,0 +1,16 @@
+# ============================================================================
+# Crontab pour NeoGTB Admin (scheduler Laravel)
+# ----------------------------------------------------------------------------
+# Installation sur le VPS :
+#   sudo crontab -u www-data -e
+# Puis coller la ligne ci-dessous (sans le #).
+#
+# Vérifier que le cron tourne :
+#   sudo grep CRON /var/log/syslog | tail
+#
+# Le scheduler Laravel exécute :
+#   - EscalateOverdueGdprRequestsJob (chaque jour à 09:00)
+#   - PurgeDataCommand (1er du mois à 03:00)
+# ============================================================================
+
+* * * * * cd /var/www/neogtb-admin && php artisan schedule:run >> /dev/null 2>&1

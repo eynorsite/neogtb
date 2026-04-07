@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Post;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class PostSyncObserver
@@ -22,7 +22,11 @@ class PostSyncObserver
     private function sync(Post $post, string $event): void
     {
         try {
-            Artisan::call('sync:blog', ['--rebuild' => true]);
+            $key = 'sync_blog_debounce';
+            if (!Cache::has($key)) {
+                Cache::put($key, true, 30);
+                \App\Jobs\SyncBlogJob::dispatch()->delay(now()->addSeconds(15));
+            }
             Log::info("Blog sync + rebuild déclenché ({$event}): {$post->slug}");
         } catch (\Throwable $e) {
             Log::error("Erreur sync blog ({$event}): {$e->getMessage()}");

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubmitGdprRequest;
 use App\Models\CookieConsent;
-use App\Models\GdprRequest;
+use App\Services\Gdpr\GdprRequestService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -86,16 +87,9 @@ class RgpdConsentController extends Controller
     /**
      * Soumettre une demande RGPD (droit d'accès, effacement, etc.).
      */
-    public function submitGdprRequest(Request $request): JsonResponse
+    public function submitGdprRequest(SubmitGdprRequest $request, GdprRequestService $service): JsonResponse
     {
-        $validated = $request->validate([
-            'type' => 'required|in:access,deletion,portability,rectification,opposition',
-            'email' => 'required|email|max:255',
-            'name' => 'required|string|max:255',
-            'message' => 'nullable|string|max:2000',
-        ]);
-
-        GdprRequest::create($validated);
+        $service->submit($request->validated());
 
         return response()->json([
             'status' => 'ok',

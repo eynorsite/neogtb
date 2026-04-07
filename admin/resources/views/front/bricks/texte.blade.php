@@ -12,7 +12,7 @@
         @if($pos !== 'none' && !empty($content['image']))
             <div class="flex flex-col gap-12 lg:gap-16 items-center {{ $pos === 'right' ? 'lg:flex-row' : 'lg:flex-row-reverse' }}">
                 <div class="flex-1 prose prose-lg max-w-none text-dark-600 prose-headings:font-heading prose-headings:text-dark-900 prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-dark-800 prose-li:marker:text-primary-500">
-                    {!! $content['contenu'] ?? '' !!}
+                    {!! \Stevebauman\Purify\Facades\Purify::clean($content['contenu'] ?? '') !!}
                 </div>
                 <div class="flex-1">
                     <div class="relative">
@@ -23,7 +23,7 @@
             </div>
         @else
             <div class="prose prose-lg mx-auto max-w-4xl text-dark-600 prose-headings:font-heading prose-headings:text-dark-900 prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-dark-800 prose-li:marker:text-primary-500">
-                {!! $content['contenu'] ?? '' !!}
+                {!! \Stevebauman\Purify\Facades\Purify::clean($content['contenu'] ?? '') !!}
             </div>
         @endif
     </div>

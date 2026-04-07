@@ -11,8 +11,8 @@
         <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Protection des données</p>
         <h1 class="font-heading font-medium text-dark-900 mb-2 text-[26px] tracking-tight">Politique de confidentialité</h1>
         <div class="flex items-center gap-4 mb-12">
-            <span class="text-sm text-dark-400">Dernière mise à jour : 18 mars 2026</span>
-            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-primary-50 text-primary-700 border border-primary-100">Version 1.0</span>
+            <span class="text-sm text-dark-400">Dernière mise à jour : 7 avril 2026</span>
+            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-primary-50 text-primary-700 border border-primary-100">Version 1.1</span>
         </div>
 
         <!-- Table des matières -->
@@ -53,8 +53,8 @@
                 <div class="space-y-4 mt-4">
                     @foreach([
                         ['title' => 'Formulaire de contact', 'data' => 'Nom, email, entreprise (optionnel), sujet, message', 'purpose' => 'Répondre à votre demande d\'information', 'basis' => 'Intérêt légitime (répondre à une demande)', 'note' => null],
-                        ['title' => 'Diagnostic GTB (audit)', 'data' => 'Type de bâtiment, surface, réponses au questionnaire', 'purpose' => 'Générer un diagnostic personnalisé', 'basis' => 'Consentement (utilisation volontaire de l\'outil)', 'note' => 'Aucune donnée personnelle identifiante n\'est collectée par l\'outil de diagnostic. Les données sont traitées localement dans votre navigateur.'],
-                        ['title' => 'Générateur CEE', 'data' => 'Type de bâtiment, surface, zone climatique, équipements', 'purpose' => 'Estimer les Certificats d\'Économies d\'Énergie', 'basis' => 'Consentement (utilisation volontaire de l\'outil)', 'note' => 'Toutes les données sont traitées localement dans votre navigateur. Aucune donnée n\'est transmise à nos serveurs ni à des tiers.'],
+                        ['title' => 'Diagnostic GTB (audit)', 'data' => 'Type de bâtiment, surface, réponses au questionnaire — calcul effectué localement. Si vous demandez à recevoir le rapport par email : email, nom (optionnel), entreprise (optionnel)', 'purpose' => 'Générer un diagnostic personnalisé et vous transmettre le rapport par email si demandé', 'basis' => 'Consentement (saisie volontaire de votre email pour recevoir le rapport)', 'note' => 'Le calcul du diagnostic se fait dans votre navigateur. Vos coordonnées ne sont enregistrées que si vous demandez explicitement le rapport par email. Stockage chiffré côté serveur.'],
+                        ['title' => 'Générateur CEE', 'data' => 'Type de bâtiment, surface, zone climatique, équipements — calcul effectué localement. Si vous demandez à recevoir l\'estimation par email : email', 'purpose' => 'Estimer les Certificats d\'Économies d\'Énergie et vous transmettre le résultat par email si demandé', 'basis' => 'Consentement (saisie volontaire de votre email pour recevoir l\'estimation)', 'note' => 'Le calcul se fait dans votre navigateur. Votre email n\'est enregistré que si vous demandez explicitement l\'estimation par email. Stockage chiffré côté serveur.'],
                         ['title' => 'Mesure d\'audience (Plausible Analytics)', 'data' => 'Pages visitées, durée de visite, appareil, navigateur (anonymisées, sans données personnelles)', 'purpose' => 'Améliorer le contenu et l\'expérience utilisateur', 'basis' => 'Intérêt légitime — exempt de consentement conformément aux recommandations CNIL (pas de cookies, pas de données personnelles, hébergé en UE)', 'note' => null],
                         ['title' => 'Demande d\'exercice de droits RGPD', 'data' => 'Nom, email, type de demande, précisions', 'purpose' => 'Traiter votre demande conformément au RGPD', 'basis' => 'Obligation légale (RGPD art. 15 à 21)', 'note' => null],
                     ] as $block)
@@ -97,6 +97,7 @@
                         </thead>
                         <tbody>
                             <tr><td class="p-3 border-b border-dark-100">Messages de contact</td><td class="p-3 border-b border-dark-100">3 ans après le dernier contact</td></tr>
+                            <tr><td class="p-3 border-b border-dark-100">Leads diagnostic GTB / générateur CEE</td><td class="p-3 border-b border-dark-100">3 ans à compter de la soumission</td></tr>
                             <tr><td class="p-3 border-b border-dark-100">Consentements cookies</td><td class="p-3 border-b border-dark-100">13 mois</td></tr>
                             <tr><td class="p-3 border-b border-dark-100">Demandes RGPD</td><td class="p-3 border-b border-dark-100">3 ans après traitement</td></tr>
                             <tr><td class="p-3">Données de navigation (analytics)</td><td class="p-3">25 mois</td></tr>
@@ -112,6 +113,7 @@
                 <p class="mb-3">Les sous-traitants techniques suivants peuvent avoir accès aux données dans le cadre strict de leurs prestations :</p>
                 <ul class="list-disc pl-5 space-y-1">
                     <li><span class="font-medium text-dark-700">OVHcloud</span> (hébergement) — France — Données hébergées en UE</li>
+                    <li><span class="font-medium text-dark-700">Brevo (Sendinblue SAS)</span> (envoi des emails transactionnels) — France (UE)</li>
                     <li><span class="font-medium text-dark-700">Plausible Analytics</span> (mesure d'audience) — Allemagne (UE) — Sans cookies, sans données personnelles</li>
                 </ul>
             </section>

@@ -30,6 +30,30 @@ class PageResource extends Resource
 
     protected static ?int $navigationSort = 10;
 
+    public static function canAccess(): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
+    }
+
+    public static function canCreate(): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
+    }
+
+    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        $admin = auth()->guard('admin')->user();
+        return $admin && in_array($admin->role, ['superadmin', 'admin']);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return $schema

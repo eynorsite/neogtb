@@ -873,19 +873,23 @@
         if (!this.emailAddress || !this.emailAddress.includes('@')) return;
         try {
           const payload = {
-            _subject: 'Estimation CEE NeoGTB',
-            _gotcha:     '',
-            email:       this.emailAddress,
-            th116_mwh:   this.results.th116.total,
-            th116_value: this.results.th116.value,
-            secteur:     this.getBuildingTypeLabel(),
-            surface:     this.form.surface,
-            zone:        this.form.climateZone,
+            email:        this.emailAddress,
+            th116_mwh:    this.results.th116.total,
+            th116_value:  this.results.th116.value,
+            sector:       this.getBuildingTypeLabel(),
+            surface:      this.form.surface,
+            climate_zone: this.form.climateZone,
+            payload:      { form: this.form, results: this.results },
           };
-          await fetch('https://formsubmit.co/ajax/hello@neogtb.fr', {
+          await fetch('/cee/lead', {
             method: 'POST',
             body: JSON.stringify(payload),
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || '',
+              'X-Requested-With': 'XMLHttpRequest',
+            }
           });
           this.emailSent = true;
           setTimeout(() => { this.showEmailModal = false; this.emailSent = false; }, 2000);

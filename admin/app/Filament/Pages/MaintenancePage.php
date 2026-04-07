@@ -6,6 +6,8 @@ use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class MaintenancePage extends Page
 {
@@ -68,8 +70,10 @@ class MaintenancePage extends Page
             Artisan::call('up');
             Notification::make()->title('Mode maintenance désactivé')->success()->send();
         } else {
-            Artisan::call('down', ['--secret' => 'neogtb-admin-bypass']);
-            Notification::make()->title('Mode maintenance activé')->warning()->body('Secret de contournement : neogtb-admin-bypass')->send();
+            $secret = Str::random(40);
+            Cache::put('maintenance_secret', $secret, 3600);
+            Artisan::call('down', ['--secret' => $secret]);
+            Notification::make()->title('Mode maintenance activé')->warning()->send();
         }
     }
 }

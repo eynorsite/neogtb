@@ -16,6 +16,7 @@ use App\Observers\BrickSyncObserver;
 use App\Observers\PageSyncObserver;
 use App\Observers\PostSyncObserver;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -40,6 +41,11 @@ class AppServiceProvider extends ServiceProvider
             ContactMessage::class,
             NavigationMenu::class,
             NavigationItem::class,
+            \App\Models\GdprRequest::class,
+            \App\Models\AuditLead::class,
+            \App\Models\CeeLead::class,
+            \App\Models\CookieConsent::class,
+            \App\Models\NewsletterSubscriber::class,
         ];
 
         foreach ($models as $model) {
@@ -52,5 +58,11 @@ class AppServiceProvider extends ServiceProvider
         // Auto-sync pages + bricks to Astro JSON
         SitePage::observe(PageSyncObserver::class);
         PageBrick::observe(BrickSyncObserver::class);
+
+        // Track admin logins (fills admins.last_login_at / last_login_ip)
+        Event::listen(
+            \Illuminate\Auth\Events\Login::class,
+            \App\Listeners\RecordAdminLogin::class,
+        );
     }
 }

@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use App\Models\PageBrick;
 use App\Models\SitePage;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class PageSyncObserver
@@ -22,7 +22,11 @@ class PageSyncObserver
     private function sync(string $event): void
     {
         try {
-            Artisan::call('sync:pages', ['--rebuild' => true]);
+            $key = 'sync_pages_debounce';
+            if (!Cache::has($key)) {
+                Cache::put($key, true, 30);
+                \App\Jobs\SyncPagesJob::dispatch()->delay(now()->addSeconds(15));
+            }
             Log::info("Pages sync + rebuild déclenché ({$event})");
         } catch (\Throwable $e) {
             Log::error("Erreur sync pages ({$event}): {$e->getMessage()}");

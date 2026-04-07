@@ -125,9 +125,15 @@
             async submitForm() {
                 if (!this.form.type || !this.form.email || !this.form.name) return;
                 try {
-                    const payload = { _subject: 'Demande RGPD — ' + this.form.type, _gotcha: '', type: this.form.type, email: this.form.email, name: this.form.name, message: this.form.message };
-                    const res = await fetch('https://formsubmit.co/ajax/hello@neogtb.fr', {
-                        method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+                    const res = await fetch('/rgpd/request', {
+                        method: 'POST',
+                        body: JSON.stringify(this.form),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || '',
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
                     });
                     if (res.ok) { this.submitted = true; }
                     else { window.location.href = 'mailto:rgpd@neogtb.fr?subject=Demande RGPD — ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message); }

@@ -12,6 +12,7 @@
         "laravel/tinker": "^3.0",
         "league/commonmark": "^2.8",
         "league/html-to-markdown": "^5.1",
+        "stevebauman/purify": "^6.3",
         "symfony/yaml": "^8.0"
     },
     "require-dev": {
