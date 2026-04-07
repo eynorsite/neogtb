@@ -7,8 +7,16 @@ DOMAIN="neogtb.fr"
 EMAIL="hello@neogtb.fr"
 NGINX_CONF="/etc/nginx/sites-available/neogtb"
 
+# Détecte automatiquement la version de PHP-FPM installée (8.3, 8.4, etc.)
+PHP_FPM_SOCK=$(ls /run/php/php*-fpm.sock 2>/dev/null | grep -v 'alternatives' | head -1)
+if [ -z "$PHP_FPM_SOCK" ]; then
+    echo "❌ Aucun socket PHP-FPM trouvé dans /run/php/. Installe PHP-FPM avant de relancer."
+    exit 1
+fi
+echo "==> Socket PHP-FPM détecté : $PHP_FPM_SOCK"
+
 echo "==> [1/5] Écriture config Nginx HTTP-only (étape 1, Certbot ajoutera SSL)"
-cat > "$NGINX_CONF" <<'NGINXCONF'
+cat > "$NGINX_CONF" <<NGINXCONF
 # NeoGTB — 100% Laravel (front public + admin Filament)
 # Étape 1 : HTTP-only pour permettre à Certbot d'obtenir le cert.
 # Certbot --nginx ajoutera automatiquement le bloc HTTPS et la redirection.
@@ -26,22 +34,22 @@ server {
     gzip_min_length 1024;
 
     # Cache assets statiques (build Vite admin + uploads)
-    location ~* \.(webp|jpg|jpeg|png|gif|ico|css|js|woff2?|svg)$ {
+    location ~* \.(webp|jpg|jpeg|png|gif|ico|css|js|woff2?|svg)\$ {
         expires 1y;
         add_header Cache-Control "public, immutable";
-        try_files $uri =404;
+        try_files \$uri =404;
     }
 
     # Tout passe par Laravel (front public + admin Filament)
     location / {
-        try_files $uri $uri/ /index.php?$query_string;
+        try_files \$uri \$uri/ /index.php?\$query_string;
     }
 
-    location ~ \.php$ {
-        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+    location ~ \.php\$ {
+        fastcgi_pass unix:${PHP_FPM_SOCK};
         fastcgi_index index.php;
         include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
     }
 
     # Bloquer accès aux fichiers cachés (sauf .well-known pour Certbot)
