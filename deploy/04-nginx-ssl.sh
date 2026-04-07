@@ -7,27 +7,18 @@ DOMAIN="neogtb.fr"
 EMAIL="hello@neogtb.fr"
 NGINX_CONF="/etc/nginx/sites-available/neogtb"
 
-echo "==> [1/4] Écriture config Nginx"
+echo "==> [1/5] Écriture config Nginx HTTP-only (étape 1, Certbot ajoutera SSL)"
 cat > "$NGINX_CONF" <<'NGINXCONF'
 # NeoGTB — 100% Laravel (front public + admin Filament)
+# Étape 1 : HTTP-only pour permettre à Certbot d'obtenir le cert.
+# Certbot --nginx ajoutera automatiquement le bloc HTTPS et la redirection.
 server {
     listen 80;
     listen [::]:80;
     server_name neogtb.fr www.neogtb.fr;
-    return 301 https://$host$request_uri;
-}
-
-server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-    server_name neogtb.fr www.neogtb.fr;
 
     root /var/www/neogtb/current/admin/public;
     index index.php index.html;
-
-    # SSL géré par Certbot (sera ajouté en bas par certbot --nginx)
-    # ssl_certificate /etc/letsencrypt/live/neogtb.fr/fullchain.pem;
-    # ssl_certificate_key /etc/letsencrypt/live/neogtb.fr/privkey.pem;
 
     # Compression
     gzip on;
@@ -51,10 +42,9 @@ server {
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param HTTPS on;
     }
 
-    # Bloquer accès aux fichiers cachés
+    # Bloquer accès aux fichiers cachés (sauf .well-known pour Certbot)
     location ~ /\.(?!well-known).* {
         deny all;
     }
@@ -67,16 +57,28 @@ server {
 }
 NGINXCONF
 
-echo "==> [2/4] Activation site"
+echo "==> [2/5] Activation site + désactivation default"
 ln -sfn /etc/nginx/sites-available/neogtb /etc/nginx/sites-enabled/neogtb
 rm -f /etc/nginx/sites-enabled/default
 
-echo "==> [3/4] Test config Nginx + reload"
+echo "==> [3/5] Test config Nginx + reload (HTTP-only)"
 nginx -t
 systemctl reload nginx
 
-echo "==> [4/4] Certificat SSL Let's Encrypt"
-certbot --nginx -d "$DOMAIN" -d "www.$DOMAIN" --non-interactive --agree-tos -m "$EMAIL" --redirect
+echo "==> [4/5] Certificat SSL Let's Encrypt + upgrade Nginx vers HTTPS"
+# certbot --nginx :
+#   - obtient le cert via HTTP-01 challenge (Nginx HTTP en place)
+#   - édite le vhost pour ajouter le bloc 443 ssl + redirection 80→443
+#   - reload Nginx automatiquement
+certbot --nginx \
+    -d "$DOMAIN" -d "www.$DOMAIN" \
+    --non-interactive --agree-tos \
+    -m "$EMAIL" \
+    --redirect
+
+echo "==> [5/5] Vérification finale"
+nginx -t
+systemctl reload nginx
 
 echo ""
 echo "✅ Déploiement terminé."
