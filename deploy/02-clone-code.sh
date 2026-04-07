@@ -3,7 +3,7 @@
 # Usage : sudo bash 02-clone-code.sh
 set -euo pipefail
 
-REPO_URL="${REPO_URL:-https://github.com/calmoulrich/neogtb.git}"  # à ajuster
+REPO_URL="${REPO_URL:-https://github.com/eynorsite/neogtb.git}"
 DEPLOY_ROOT="/var/www/neogtb"
 RELEASE_DIR="$DEPLOY_ROOT/releases/$(date +%Y%m%d-%H%M%S)"
 
