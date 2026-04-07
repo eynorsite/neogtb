@@ -6,23 +6,23 @@
 {{-- Schema.org Article JSON-LD --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Article",
+    "@@context": "https://schema.org",
+    "@@type": "Article",
     "headline": @json($post->title),
     "description": @json($post->excerpt ?? $post->meta_description),
     "datePublished": "{{ $post->published_at?->toIso8601String() }}",
     "dateModified": "{{ $post->updated_at?->toIso8601String() }}",
     "author": {
-        "@type": "Organization",
+        "@@type": "Organization",
         "name": "NeoGTB",
         "url": "https://neogtb.fr"
     },
     "publisher": {
-        "@type": "Organization",
+        "@@type": "Organization",
         "name": "NeoGTB",
         "url": "https://neogtb.fr",
         "logo": {
-            "@type": "ImageObject",
+            "@@type": "ImageObject",
             "url": "https://neogtb.fr/images/logo-neogtb.webp"
         }
     },

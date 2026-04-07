@@ -5,7 +5,9 @@
 
 @push('head')
 <script type="application/ld+json">
+@verbatim
 {"@context":"https://schema.org","@type":"ContactPage","name":"Contact NeoGTB","url":"https://neogtb.fr/contact"}
+@endverbatim
 </script>
 @endpush
 
