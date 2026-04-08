@@ -4,6 +4,15 @@
 # Usage : sudo bash deploy/deploy-update.sh
 set -euo pipefail
 
+# Empêche 2 déploiements simultanés (lock fd 9 sur /var/lock/neogtb-deploy.lock).
+# Si le lock est déjà pris, le 2e deploy abort proprement au lieu de croiser.
+LOCK_FILE="/var/lock/neogtb-deploy.lock"
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+    echo "❌ Un autre déploiement NeoGTB est déjà en cours (lock $LOCK_FILE). Abort."
+    exit 1
+fi
+
 # SUDO_USER = utilisateur qui a invoqué sudo (ex: ubuntu) → on cherche son $HOME
 INVOKING_USER="${SUDO_USER:-$USER}"
 INVOKING_HOME=$(getent passwd "$INVOKING_USER" | cut -d: -f6)
@@ -13,6 +22,12 @@ SHARED_DIR="$DEPLOY_ROOT/shared/admin"
 RELEASE_DIR="$DEPLOY_ROOT/releases/$(date +%Y%m%d-%H%M%S)"
 PREVIOUS_RELEASE="$(readlink -f "$DEPLOY_ROOT/current" 2>/dev/null || echo "")"
 KEEP_RELEASES="${KEEP_RELEASES:-5}"
+
+# Sanitize KEEP_RELEASES : doit être un entier positif. Sinon fallback à 5.
+if ! [[ "$KEEP_RELEASES" =~ ^[0-9]+$ ]]; then
+    echo "⚠  KEEP_RELEASES='$KEEP_RELEASES' invalide (entier positif attendu) → fallback 5"
+    KEEP_RELEASES=5
+fi
 
 if [ ! -d "$REPO_DIR" ]; then
     echo "❌ Repo introuvable : $REPO_DIR (set REPO_DIR=... si chemin différent)"
@@ -87,11 +102,33 @@ fi
 nginx -t && systemctl reload nginx
 
 echo "==> [9/9] Cleanup anciennes releases (garde les $KEEP_RELEASES dernières)"
-cd "$DEPLOY_ROOT/releases"
-ls -1t | tail -n +$((KEEP_RELEASES + 1)) | while read old; do
-    echo "    🗑  rm $old"
-    rm -rf "$old"
-done
+# Tri par NOM (les noms sont YYYYMMDD-HHMMSS donc lexicographique == chronologique).
+# Évite le piège `ls -1t` qui trie par mtime — peu fiable car rsync/chown ne
+# touchent pas au mtime du dossier parent → la release qu'on vient de créer
+# peut apparaître comme "la plus vieille" et se faire supprimer juste après
+# le swap. Triple garde-fou : on skip explicitement la release courante
+# (CURRENT_NAME) et la cible du symlink courant (CURRENT_TARGET) pour zéro
+# risque même si KEEP_RELEASES=0.
+CURRENT_NAME="$(basename "$RELEASE_DIR")"
+CURRENT_TARGET="$(readlink -f "$DEPLOY_ROOT/current" 2>/dev/null || echo "")"
+mapfile -t ALL_RELEASES < <(find "$DEPLOY_ROOT/releases" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | LC_ALL=C sort)
+TOTAL=${#ALL_RELEASES[@]}
+TO_REMOVE=$(( TOTAL - KEEP_RELEASES ))
+if (( TO_REMOVE > 0 )); then
+    for old in "${ALL_RELEASES[@]:0:TO_REMOVE}"; do
+        # Triple garde-fou : jamais la release courante, jamais la cible du symlink
+        if [ "$old" = "$CURRENT_NAME" ] || [ "$DEPLOY_ROOT/releases/$old" = "$CURRENT_TARGET" ]; then
+            echo "    ⚠  skip $old (release courante)"
+            continue
+        fi
+        echo "    🗑  rm $old"
+        # || true : un rm bloqué (fichier busy) ne doit PAS faire crasher le script
+        # alors que le swap [8/9] est déjà fait et la prod sert la nouvelle release.
+        rm -rf -- "$DEPLOY_ROOT/releases/$old" || echo "    ⚠  rm $old a échoué (ignoré)"
+    done
+else
+    echo "    (rien à supprimer, $TOTAL releases ≤ $KEEP_RELEASES)"
+fi
 
 echo ""
 echo "✅ Déploiement terminé."
