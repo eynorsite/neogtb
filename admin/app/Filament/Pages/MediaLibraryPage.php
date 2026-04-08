@@ -89,6 +89,7 @@ class MediaLibraryPage extends Page implements HasTable
                     ->icon('heroicon-o-arrow-up-tray')
                     ->form([
                         \Filament\Forms\Components\FileUpload::make('files')
+                            ->disk('public')
                             ->label('Fichiers')
                             ->multiple()
                             ->directory('media')

@@ -85,6 +85,7 @@ class AdminResource extends Resource
                             ->default(true),
 
                         FileUpload::make('avatar')
+                            ->disk('public')
                             ->label('Photo de profil')
                             ->image()
                             ->avatar()

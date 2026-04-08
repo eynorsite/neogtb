@@ -81,6 +81,7 @@ class BrickFondateur extends BaseBrick
                 ->rows(5),
 
             FileUpload::make('content.photo')
+                ->disk('public')
                 ->label('Photo')
                 ->image()
                 ->directory('bricks/fondateur'),

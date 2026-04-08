@@ -106,5 +106,13 @@ class SiteSetting extends Model
         foreach ($groups as $group) {
             Cache::forget("site_settings_group.{$group}");
         }
+
+        Cache::forget('site_settings_all');
+    }
+
+    protected static function booted(): void
+    {
+        static::saved(fn () => static::clearCache());
+        static::deleted(fn () => static::clearCache());
     }
 }

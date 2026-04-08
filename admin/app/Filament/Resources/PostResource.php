@@ -101,6 +101,7 @@ class PostResource extends Resource
                             ->icon('heroicon-o-photo')
                             ->schema([
                                 FileUpload::make('featured_image')
+                                    ->disk('public')
                                     ->label('Image principale')
                                     ->helperText('L\'image affichée en haut de l\'article et dans la liste du blog.')
                                     ->image()
@@ -108,6 +109,7 @@ class PostResource extends Resource
                                     ->maxSize(5120),
 
                                 FileUpload::make('og_image')
+                                    ->disk('public')
                                     ->label('Image de partage (réseaux sociaux)')
                                     ->helperText('Si vide, l\'image principale sera utilisée. Format idéal : 1200x630px.')
                                     ->image()

@@ -114,12 +114,65 @@
   {{-- Skip link --}}
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">Aller au contenu principal</a>
 
-  {{-- ===== NAV — Premium glassmorphism ===== --}}
+  {{-- ===== NAV mega-menu ===== --}}
+  @php
+$exploreItems = [
+  'comprendre' => [
+    'label' => 'Comprendre',
+    'items' => [
+      ['href'=>'/gtb','title'=>"Qu'est-ce que la GTB ?",'desc'=>'Fondamentaux, normes EN 15232, niveaux','icon'=>'academic-cap','match'=>'gtb'],
+      ['href'=>'/gtc','title'=>"Qu'est-ce que la GTC ?",'desc'=>'Supervision technique, différences avec GTB','icon'=>'computer-desktop','match'=>'gtc'],
+      ['href'=>'/solutions','title'=>'Solutions & technologies','desc'=>'Protocoles BACnet, KNX, Modbus, LON','icon'=>'cpu-chip','match'=>'solutions'],
+    ],
+  ],
+  'conformer' => [
+    'label' => 'Se conformer',
+    'items' => [
+      ['href'=>'/reglementation','title'=>'Réglementation','desc'=>'Décret BACS, tertiaire, RE2020, calendrier 2026-2035','icon'=>'scale','match'=>'reglementation'],
+      ['href'=>'/positionnement','title'=>'Pourquoi NeoGTB ?','desc'=>"Tiers de confiance indépendant, sans conflit d'intérêt",'icon'=>'shield-check','match'=>'positionnement'],
+      ['href'=>'/faq','title'=>'FAQ','desc'=>'Questions fréquentes sur la conformité GTB','icon'=>'question-mark-circle','match'=>'faq'],
+    ],
+  ],
+  'agir' => [
+    'label' => 'Agir',
+    'items' => [
+      ['href'=>'/audit','title'=>'Pré-diagnostic GTB','desc'=>'Auto-évaluation ISO 52120-1, 7 min, gratuit','icon'=>'clipboard-document-check','match'=>'audit'],
+      ['href'=>'/comparateur','title'=>'Comparateur objectif','desc'=>'10+ fabricants comparés sans biais commercial','icon'=>'arrows-right-left','match'=>'comparateur'],
+      ['href'=>'/generateur-cee','title'=>'Générateur CEE','desc'=>'Estimation de votre prime CEE en 3 minutes','icon'=>'banknotes','match'=>'generateur-cee'],
+      ['href'=>'/tables-modbus','title'=>'Tables Modbus','desc'=>'19 équipements GTB, référence technique','icon'=>'table-cells','match'=>'tables-modbus'],
+    ],
+  ],
+];
+  @endphp
+
+  @php
+$icons = [
+      'academic-cap' => '<path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>',
+      'computer-desktop' => '<path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"/>',
+      'cpu-chip' => '<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"/>',
+      'scale' => '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/>',
+      'shield-check' => '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>',
+      'question-mark-circle' => '<path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/>',
+      'clipboard-document-check' => '<path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75"/>',
+      'arrows-right-left' => '<path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/>',
+      'banknotes' => '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V12Zm-12 0h.008v.008H6V12Z"/>',
+      'table-cells' => '<path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0 1 18 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0 0c0 .621-.504 1.125-1.125 1.125M6 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0h1.125m-1.125 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 0 1 6 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25C6 11.496 5.496 12 4.875 12M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621-.504 1.125-1.125 1.125M6 13.125v1.5c0 .621-.504 1.125-1.125 1.125m0 0h-1.5m1.5 0c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M19.125 12h-1.5m1.5 0c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h1.5m14.25 0h1.5"/>',
+      'magnifying-glass' => '<path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>',
+      'bars-3' => '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>',
+      'x-mark' => '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>',
+      'chevron-down' => '<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>',
+      'arrow-right' => '<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>',
+    ])
+
   <header
     class="fixed top-0 w-full z-50 transition-all duration-200 ease-out"
     id="main-header"
-    x-data="{ mobileOpen: false, scrolled: false }"
-    x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 20 }, { passive: true })"
+    x-data="neogtbNav()"
+    x-init="init()"
+    @keydown.escape.window="closeAll()"
+    @click.outside="closeExplorer()"
+    @scroll.window.passive="onScroll()"
+    @resize.window="onResize()"
     :class="scrolled ? 'bg-white/80 backdrop-blur-xl shadow-sm' : 'bg-white/0'"
     :style="scrolled ? 'border-bottom: 1px solid rgba(0,0,0,0.06)' : ''"
   >
@@ -131,110 +184,297 @@
 
       {{-- Desktop Nav --}}
       <div class="hidden lg:flex items-center gap-1">
+        {{-- Trigger Explorer --}}
+        <button
+          type="button"
+          id="explorer-trigger"
+          x-ref="trigger"
+          @click="toggleExplorer()"
+          @keydown.arrow-down.prevent="openExplorerAndFocus()"
+          @mouseenter="hoverOpen()"
+          @mouseleave="hoverClose()"
+          :class="explorerOpen ? 'text-dark-900 bg-dark-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50'"
+          :aria-expanded="explorerOpen.toString()"
+          aria-haspopup="true"
+          aria-controls="explorer-panel"
+          class="text-[14px] font-medium transition-colors duration-200 flex items-center gap-1.5 px-4 py-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 min-h-[44px]"
+        >
+          Explorer
+          <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="explorerOpen && 'rotate-180'" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['chevron-down'] !!}</svg>
+        </button>
 
-        {{-- Dropdown Comprendre --}}
-        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @keydown.escape="open = false">
-          <button @click="open = !open" :aria-expanded="open" class="text-[14px] font-medium text-dark-500 hover:text-dark-900 transition-colors duration-200 flex items-center gap-1.5 px-4 py-2 rounded-lg hover:bg-dark-50 focus:ring-2 focus:ring-accent-500 focus:outline-none">
-            Comprendre
-            <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-            class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl py-2 z-50 shadow-lg" style="border: 1px solid rgba(0,0,0,0.06);">
-            <a href="/gtb" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('gtb') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Qu'est-ce que la GTB ?</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">Guide complet</span>
-            </a>
-            <a href="/gtc" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('gtc') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Qu'est-ce que la GTC ?</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">Supervision technique</span>
-            </a>
-            <a href="/solutions" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('solutions') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Solutions & Technologies</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">BACnet, KNX, Modbus</span>
-            </a>
-            <a href="/reglementation" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('reglementation') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Réglementation</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">BACS, tertiaire, RE2020</span>
-            </a>
-            <a href="/positionnement" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('positionnement') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Pourquoi NeoGTB ?</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">Notre positionnement</span>
-            </a>
-          </div>
-        </div>
-
-        {{-- Dropdown Outils --}}
-        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @keydown.escape="open = false">
-          <button @click="open = !open" :aria-expanded="open" class="text-[14px] font-medium text-dark-500 hover:text-dark-900 transition-colors duration-200 flex items-center gap-1.5 px-4 py-2 rounded-lg hover:bg-dark-50 focus:ring-2 focus:ring-accent-500 focus:outline-none">
-            Outils
-            <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-            class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl py-2 z-50 shadow-lg" style="border: 1px solid rgba(0,0,0,0.06);">
-            <a href="/audit" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('audit') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Pré-diagnostic GTB</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">Auto-évaluation ISO 52120-1</span>
-            </a>
-            <a href="/comparateur" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('comparateur') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Comparateur objectif</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">10+ fabricants</span>
-            </a>
-            <a href="/generateur-cee" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('generateur-cee') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Générateur CEE</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">Estimation en 3 min</span>
-            </a>
-            <a href="/tables-modbus" class="block px-4 py-2.5 text-[13px] transition-colors duration-150 {{ request()->is('tables-modbus') ? 'text-accent-600 font-medium bg-accent-50' : 'text-dark-600 hover:text-dark-900 hover:bg-dark-50' }}">
-              <span class="block font-medium">Tables Modbus</span>
-              <span class="block text-[11px] text-dark-400 mt-0.5">19 équipements GTB</span>
-            </a>
-          </div>
-        </div>
-
-        <a href="/blog" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg {{ request()->is('blog*') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}">Perspectives</a>
-        <a href="/about" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg {{ request()->is('about') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}">À propos</a>
-        <a href="/faq" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg {{ request()->is('faq') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}">FAQ</a>
+        <a href="/blog" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('blog*') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('blog*')) aria-current="page" @endif>Perspectives</a>
+        <a href="/about" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('about') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('about')) aria-current="page" @endif>À propos</a>
+        <a href="/faq" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('faq') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('faq')) aria-current="page" @endif>FAQ</a>
+        <a href="/contact" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('contact') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('contact')) aria-current="page" @endif>Contact</a>
       </div>
 
-      {{-- CTA + Mobile toggle --}}
-      <div class="flex items-center gap-3">
+      {{-- CTA + search + Mobile toggle --}}
+      <div class="flex items-center gap-2">
+        <button type="button" aria-label="Rechercher" class="hidden lg:inline-flex items-center justify-center w-10 h-10 rounded-lg text-dark-500 hover:text-dark-900 hover:bg-dark-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['magnifying-glass'] !!}</svg>
+        </button>
         <a href="/audit" class="hidden lg:inline-flex btn-primary text-[13px] px-5 py-2.5">
           Pré-diagnostic gratuit
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
-
         {{-- Hamburger --}}
-        <button @click="mobileOpen = !mobileOpen" class="lg:hidden p-2 rounded-lg hover:bg-dark-50 transition-colors" aria-label="Menu">
-          <svg x-show="!mobileOpen" class="w-5 h-5 text-dark-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h12M4 18h16" /></svg>
-          <svg x-show="mobileOpen" class="w-5 h-5 text-dark-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        <button @click="openMobile()" class="lg:hidden p-2 rounded-lg hover:bg-dark-50 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Ouvrir le menu" aria-controls="mobile-drawer" :aria-expanded="mobileOpen.toString()">
+          <svg class="w-6 h-6 text-dark-700" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">{!! $icons['bars-3'] !!}</svg>
         </button>
       </div>
     </nav>
 
-    {{-- Mobile Menu --}}
-    <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150"
-      class="lg:hidden bg-white/95 backdrop-blur-xl px-6 pb-6 shadow-lg" style="border-top: 1px solid rgba(0,0,0,0.06);">
-      <div class="flex flex-col gap-1 py-3">
-        <span class="text-[10px] font-medium uppercase tracking-wider text-dark-400 px-3 pt-3 pb-1">Comprendre</span>
-        <a href="/gtb" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Qu'est-ce que la GTB ?</a>
-        <a href="/gtc" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Qu'est-ce que la GTC ?</a>
-        <a href="/solutions" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Solutions & Technologies</a>
-        <a href="/reglementation" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Réglementation</a>
-        <a href="/positionnement" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Pourquoi NeoGTB ?</a>
+    {{-- ===== MEGA-MENU DESKTOP ===== --}}
+    <div
+      id="explorer-panel"
+      role="region"
+      aria-label="Menu Explorer"
+      x-show="explorerOpen"
+      x-cloak
+      @mouseenter="hoverOpen()"
+      @mouseleave="hoverClose()"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2 scale-[0.98]"
+      x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+      x-transition:leave="transition ease-in duration-[120ms]"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="hidden lg:block absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl rounded-b-3xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]"
+      style="border-top: 1px solid rgba(0,0,0,0.06);"
+    >
+      <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-10 grid grid-cols-4 gap-8">
+        @foreach(['comprendre','conformer','agir'] as $colKey)
+          @php $col = $exploreItems[$colKey]; @endphp
+          <div>
+            <h3 class="text-[11px] font-semibold uppercase tracking-[0.12em] text-dark-400 mb-4 px-3">{{ $col['label'] }}</h3>
+            <ul class="flex flex-col gap-1">
+              @foreach($col['items'] as $it)
+                @php $active = request()->is($it['match']); @endphp
+                <li>
+                  <a href="{{ $it['href'] }}"
+                    @if($active) aria-current="page" @endif
+                    class="group flex gap-3 px-3 py-3 rounded-xl transition-colors duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500 min-h-[44px] {{ $active ? 'bg-accent-50 border-l-2 border-accent-600' : 'hover:bg-accent-50/60' }}">
+                    <span class="shrink-0 mt-0.5 transition-transform duration-200 group-hover:translate-x-[2px]">
+                      <svg class="w-5 h-5 {{ $active ? 'text-accent-600' : 'text-dark-400 group-hover:text-accent-600' }} transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons[$it['icon']] !!}</svg>
+                    </span>
+                    <span class="flex-1 min-w-0">
+                      <span class="block text-[13px] {{ $active ? 'text-accent-700 font-semibold' : 'text-dark-900 font-medium group-hover:text-accent-700' }} transition-colors">{{ $it['title'] }}</span>
+                      <span class="block text-[12px] text-dark-500 mt-0.5 leading-snug">{{ $it['desc'] }}</span>
+                    </span>
+                  </a>
+                </li>
+              @endforeach
+            </ul>
+          </div>
+        @endforeach
 
-        <span class="text-[10px] font-medium uppercase tracking-wider text-dark-400 px-3 pt-4 pb-1">Outils</span>
-        <a href="/audit" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Pré-diagnostic GTB</a>
-        <a href="/comparateur" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Comparateur objectif</a>
-        <a href="/generateur-cee" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Générateur CEE</a>
-        <a href="/tables-modbus" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Tables Modbus</a>
-
-        <div class="my-2 h-px bg-dark-100"></div>
-        <a href="/blog" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">Perspectives</a>
-        <a href="/about" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">À propos</a>
-        <a href="/faq" @click="mobileOpen = false" class="text-[14px] text-dark-600 hover:text-dark-900 px-3 py-2.5 rounded-lg transition-colors hover:bg-dark-50">FAQ</a>
-        <a href="/audit" @click="mobileOpen = false" class="btn-primary text-center justify-center mt-2 text-[14px] px-5 py-3">Pré-diagnostic gratuit</a>
+        {{-- Col 4 — Spotlight --}}
+        <div class="flex flex-col">
+          <h3 class="text-[11px] font-semibold uppercase tracking-[0.12em] text-dark-400 mb-4 px-3">Spotlight</h3>
+          <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-accent-50 to-accent-100 border border-accent-100/60 flex-1 flex flex-col">
+            <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-accent-50 to-accent-100 flex items-center justify-center">
+              <img src="/images/hero-audit.png" alt="" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'" />
+            </div>
+            <div class="p-5 flex flex-col gap-3">
+              <h3 class="text-[15px] font-heading font-semibold text-dark-900 leading-snug">Diagnostic GTB en 7 minutes</h3>
+              <p class="text-[12px] text-dark-600 leading-relaxed">Obtenez votre score ISO 52120-1 gratuitement et sans engagement.</p>
+              <a href="/audit" class="btn-primary text-[12px] px-4 py-2 inline-flex items-center gap-1.5 self-start">
+                Lancer le diagnostic
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['arrow-right'] !!}</svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{-- Footer panneau --}}
+      <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-4 flex items-center justify-between text-[12px] text-dark-500" style="border-top: 1px solid rgba(0,0,0,0.06);">
+        <div class="flex items-center gap-2">
+          <span>Besoin d'aide pour choisir ?</span>
+          <a href="/contact" class="text-accent-700 hover:text-accent-800 font-medium inline-flex items-center gap-1">
+            Contactez un expert
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['arrow-right'] !!}</svg>
+          </a>
+        </div>
+        <div class="flex items-center gap-2 text-dark-400">
+          <kbd class="px-2 py-1 bg-dark-50 rounded-md text-[11px] font-mono text-dark-600 border border-dark-100">⌘K</kbd>
+          <span>Rechercher</span>
+        </div>
       </div>
     </div>
+
+  {{-- ===== MOBILE DRAWER ===== --}}
+  <div
+    x-show="mobileOpen"
+    x-cloak
+    class="lg:hidden fixed inset-0 z-[60]"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu de navigation"
+    id="mobile-drawer"
+    x-init="$watch('mobileOpen', v => document.body.style.overflow = v ? 'hidden' : '')"
+  >
+    {{-- Overlay --}}
+    <div
+      x-show="mobileOpen"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      @click="closeMobile()"
+      class="absolute inset-0 bg-dark-900/40 backdrop-blur-sm"
+    ></div>
+
+    {{-- Drawer panel --}}
+    <aside
+      x-show="mobileOpen"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="translate-x-full"
+      x-transition:enter-end="translate-x-0"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="translate-x-0"
+      x-transition:leave-end="translate-x-full"
+      class="absolute top-0 right-0 h-full w-[88%] max-w-[400px] bg-white shadow-2xl flex flex-col"
+      @click.stop
+    >
+      {{-- Header sticky --}}
+      <div class="sticky top-0 bg-white z-10 flex items-center justify-between px-5 py-4 border-b border-dark-100">
+        <a href="/" class="flex items-center">
+          <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-10 w-auto" />
+        </a>
+        <button type="button" x-ref="mobileClose" @click="closeMobile()" class="p-2 rounded-lg hover:bg-dark-50 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500" aria-label="Fermer le menu">
+          <svg class="w-6 h-6 text-dark-700" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">{!! $icons['x-mark'] !!}</svg>
+        </button>
+      </div>
+
+      {{-- Body scrollable --}}
+      <div class="flex-1 overflow-y-auto px-5 py-4">
+        {{-- Search (visuel) --}}
+        <div class="relative mb-5">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-dark-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['magnifying-glass'] !!}</svg>
+          </span>
+          <input type="search" placeholder="Rechercher…" aria-label="Rechercher" class="w-full pl-10 pr-3 py-3 text-[14px] bg-dark-50 border border-dark-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-500 focus:bg-white" />
+        </div>
+
+        {{-- Accordion sections --}}
+        @foreach($exploreItems as $colKey => $col)
+          @php $openByDefault = $colKey === 'comprendre'; @endphp
+          <div x-data="{ open: {{ $openByDefault ? 'true' : 'false' }} }" class="mb-2 border-b border-dark-100 pb-2">
+            <button type="button" @click="open = !open" :aria-expanded="open.toString()" class="w-full flex items-center justify-between py-3 text-left min-h-[44px]">
+              <span class="flex items-center gap-2">
+                <span class="text-[11px] font-semibold uppercase tracking-[0.12em] text-dark-500">{{ $col['label'] }}</span>
+                <span class="text-[11px] text-dark-400">({{ count($col['items']) }})</span>
+              </span>
+              <svg class="w-4 h-4 text-dark-400 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['chevron-down'] !!}</svg>
+            </button>
+            <div x-show="open" x-collapse>
+              <ul class="flex flex-col gap-1 pb-2">
+                @foreach($col['items'] as $it)
+                  @php $active = request()->is($it['match']); @endphp
+                  <li>
+                    <a href="{{ $it['href'] }}" @click="closeMobile()"
+                      @if($active) aria-current="page" @endif
+                      class="flex gap-3 px-3 py-3 rounded-xl min-h-[44px] {{ $active ? 'bg-accent-50' : 'hover:bg-dark-50' }}">
+                      <svg class="w-5 h-5 shrink-0 mt-0.5 {{ $active ? 'text-accent-600' : 'text-dark-400' }}" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons[$it['icon']] !!}</svg>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-[14px] {{ $active ? 'text-accent-700 font-semibold' : 'text-dark-900 font-medium' }}">{{ $it['title'] }}</span>
+                        <span class="block text-[12px] text-dark-500 mt-0.5 truncate">{{ $it['desc'] }}</span>
+                      </span>
+                    </a>
+                  </li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
+        @endforeach
+
+        {{-- Liens directs --}}
+        <div class="mt-2 flex flex-col">
+          @foreach([['/blog','Perspectives','blog*'],['/about','À propos','about'],['/faq','FAQ','faq'],['/contact','Contact','contact']] as $direct)
+            @php $active = request()->is($direct[2]); @endphp
+            <a href="{{ $direct[0] }}" @click="closeMobile()"
+              @if($active) aria-current="page" @endif
+              class="py-3 px-3 text-[15px] min-h-[44px] flex items-center rounded-xl {{ $active ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-dark-900 font-medium hover:bg-dark-50' }}">
+              {{ $direct[1] }}
+            </a>
+          @endforeach
+        </div>
+      </div>
+
+      {{-- CTA sticky bottom --}}
+      <div class="bg-white border-t border-dark-100 px-5 pt-4" style="padding-bottom: max(16px, env(safe-area-inset-bottom));">
+        <a href="/audit" @click="closeMobile()" class="btn-primary w-full justify-center text-[14px] py-3">
+          Pré-diagnostic gratuit
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </aside>
+  </div>
   </header>
+
+  <script>
+    function neogtbNav() {
+      return {
+        scrolled: false,
+        explorerOpen: false,
+        mobileOpen: false,
+        _hoverTimer: null,
+        _reduced: false,
+        init() {
+          this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        },
+        onScroll() {
+          this.scrolled = window.scrollY > 20;
+          if (window.scrollY > 50 && this.explorerOpen) this.closeExplorer();
+        },
+        onResize() {
+          if (window.innerWidth >= 1024 && this.mobileOpen) {
+            this.mobileOpen = false;
+            document.body.style.overflow = '';
+          }
+          if (window.innerWidth < 1024 && this.explorerOpen) this.closeExplorer();
+        },
+        toggleExplorer() { this.explorerOpen = !this.explorerOpen; },
+        closeExplorer() { this.explorerOpen = false; },
+        openExplorerAndFocus() {
+          this.explorerOpen = true;
+          this.$nextTick(() => {
+            const first = document.querySelector('#explorer-panel a');
+            if (first) first.focus();
+          });
+        },
+        hoverOpen() {
+          if (this._reduced) return;
+          clearTimeout(this._hoverTimer);
+          this._hoverTimer = setTimeout(() => { this.explorerOpen = true; }, 120);
+        },
+        hoverClose() {
+          if (this._reduced) return;
+          clearTimeout(this._hoverTimer);
+          this._hoverTimer = setTimeout(() => { this.explorerOpen = false; }, 200);
+        },
+        openMobile() {
+          this.mobileOpen = true;
+          this.$nextTick(() => {
+            const btn = document.querySelector('#mobile-drawer [aria-label="Fermer le menu"]');
+            if (btn) btn.focus();
+          });
+        },
+        closeMobile() {
+          this.mobileOpen = false;
+          document.body.style.overflow = '';
+          this.$nextTick(() => { if (this.$refs.trigger) this.$refs.trigger.focus(); });
+        },
+        closeAll() {
+          if (this.explorerOpen) { this.closeExplorer(); if (this.$refs.trigger) this.$refs.trigger.focus(); }
+          if (this.mobileOpen) this.closeMobile();
+        },
+      }
+    }
+  </script>
 
   {{-- ===== MAIN CONTENT ===== --}}
   <main id="main-content" class="pt-24 md:pt-[120px]">

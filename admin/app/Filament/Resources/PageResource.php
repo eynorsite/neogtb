@@ -134,6 +134,7 @@ class PageResource extends Resource
                                     ->rows(2),
 
                                 FileUpload::make('og_image')
+                                    ->disk('public')
                                     ->label('Image de partage')
                                     ->helperText('L\'image affichée quand on partage la page sur les réseaux sociaux. Format idéal : 1200x630px.')
                                     ->image()
@@ -159,6 +160,7 @@ class PageResource extends Resource
                                     ->label('Lien du bouton (CTA)')
                                     ->maxLength(255),
                                 FileUpload::make('hero_image')
+                                    ->disk('public')
                                     ->label('Image du hero')
                                     ->image()
                                     ->directory('hero'),

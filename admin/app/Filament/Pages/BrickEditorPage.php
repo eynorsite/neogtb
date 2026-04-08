@@ -11,7 +11,6 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
@@ -285,22 +284,15 @@ class BrickEditorPage extends Page implements HasForms
 
     public function publishPage(): void
     {
+        // Avec l'archi Laravel-only, le front lit la DB en direct via PageController.
+        // Plus besoin de rebuild Astro — la page est "publiée" dès le save.
         $this->isPublishing = true;
 
-        try {
-            Artisan::call('sync:pages', ['--rebuild' => true]);
-            Notification::make()
-                ->title('Page publiée')
-                ->body('Le site a été mis à jour avec vos modifications.')
-                ->success()
-                ->send();
-        } catch (\Throwable $e) {
-            Notification::make()
-                ->title('Erreur de publication')
-                ->body($e->getMessage())
-                ->danger()
-                ->send();
-        }
+        Notification::make()
+            ->title('Page publiée')
+            ->body('Le site a été mis à jour avec vos modifications.')
+            ->success()
+            ->send();
 
         $this->isPublishing = false;
     }

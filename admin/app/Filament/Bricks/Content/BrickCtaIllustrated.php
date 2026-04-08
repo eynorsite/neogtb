@@ -77,6 +77,7 @@ class BrickCtaIllustrated extends BaseBrick
                 ->placeholder('/contact'),
 
             FileUpload::make('content.image_fond')
+                ->disk('public')
                 ->label('Image de fond')
                 ->image()
                 ->directory('bricks/cta'),

@@ -65,6 +65,7 @@ class BrickTexte extends BaseBrick
                 ->columnSpanFull(),
 
             FileUpload::make('content.image')
+                ->disk('public')
                 ->label('Image')
                 ->image()
                 ->directory('bricks/texte'),

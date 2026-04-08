@@ -84,6 +84,7 @@ class BrickHeroImage extends BaseBrick
                 ->maxLength(500),
 
             FileUpload::make('content.image')
+                ->disk('public')
                 ->label('Image de fond')
                 ->image()
                 ->directory('bricks/hero-image')

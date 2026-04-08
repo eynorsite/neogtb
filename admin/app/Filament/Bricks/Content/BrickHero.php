@@ -86,6 +86,7 @@ class BrickHero extends BaseBrick
                 ->placeholder('/contact'),
 
             FileUpload::make('content.image')
+                ->disk('public')
                 ->label('Image de fond')
                 ->image()
                 ->directory('bricks/hero')
