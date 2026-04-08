@@ -32,10 +32,10 @@
     <!-- TODO: créer hero-faq.webp dédié, image partagée temporairement avec /blog -->
     <img src="/images/hero-blog.png" alt="FAQ GTB — bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
         <div class="max-w-2xl">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">FAQ</p>
-            <h1 class="font-heading text-4xl md:text-5xl font-medium text-dark-900 leading-tight tracking-tight mb-4">
+            <h1 class="font-heading text-[30px] lg:text-[44px] font-medium text-dark-900 leading-tight tracking-tight mb-4">
                 Questions fréquentes
             </h1>
             <p class="text-[17px] text-dark-500 leading-relaxed max-w-lg">
@@ -46,8 +46,8 @@
 </section>
 
 <!-- FAQ SECTIONS -->
-<section class="py-16">
-    <div class="max-w-[720px] mx-auto px-6 md:px-10">
+<section class="py-12 lg:py-24">
+    <div class="max-w-[720px] mx-auto px-5 lg:px-10">
 
         @php
         $sections = [
@@ -86,7 +86,7 @@
 
             @foreach($section['items'] as $index => $item)
             <div x-data="{ open: false }" class="border-t border-dark-200 @if($loop->last) border-b @endif">
-                <button @click="open = !open" class="w-full flex items-center justify-between py-5 text-left bg-transparent border-none cursor-pointer">
+                <button @click="open = !open" class="w-full flex items-center justify-between py-5 min-h-[56px] text-left bg-transparent border-none cursor-pointer">
                     <span class="text-[15px] font-medium text-dark-900 pr-4">{{ $item['q'] }}</span>
                     <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-400 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
@@ -111,15 +111,15 @@
 </section>
 
 <!-- Related pages -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
-        <div class="grid md:grid-cols-3 gap-6">
+<section class="py-12 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+        <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
                 ['href' => '/audit', 'title' => 'Audit GTB gratuit', 'desc' => 'Diagnostiquez votre bâtiment en 5 minutes.'],
                 ['href' => '/contact', 'title' => 'Contactez-nous', 'desc' => 'Une question ? Réponse sous 48h, sans démarche commerciale.'],
                 ['href' => '/gtb', 'title' => "Qu'est-ce que la GTB ?", 'desc' => 'Le guide complet pour tout comprendre.'],
             ] as $link)
-            <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-xl p-6 border border-dark-200 card-hover-glow">
+            <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-2xl p-5 lg:p-7 border border-dark-100 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>
                 <p class="text-sm text-dark-500">{{ $link['desc'] }}</p>
             </a>

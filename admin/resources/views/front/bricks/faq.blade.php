@@ -1,15 +1,15 @@
-<section class="py-12 md:py-20 lg:py-28">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+<section class="py-12 lg:py-28">
+    <div class="mx-auto max-w-3xl px-5 lg:px-10">
         @if(!empty($content['titre']))
             <div class="text-center mb-14 animate-fade-in-up">
-                <h2 class="text-3xl font-heading font-extrabold text-dark-900 sm:text-4xl lg:text-5xl">{{ $content['titre'] }}</h2>
+                <h2 class="text-[28px] lg:text-[44px] font-heading font-extrabold text-dark-900">{{ $content['titre'] }}</h2>
                 <div class="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
             </div>
         @endif
 
         <div class="space-y-4" x-data="{ open: null }">
             @foreach($content['questions'] ?? [] as $i => $q)
-                <div class="rounded-2xl border border-dark-100 bg-white shadow-sm overflow-hidden transition-all duration-300 animate-fade-in-up"
+                <div class="rounded-2xl border border-dark-100 bg-white lg:shadow-sm overflow-hidden transition-all duration-300 animate-fade-in-up"
                      style="animation-delay: {{ $i * 80 }}ms"
                      :class="open === {{ $i }} ? 'border-l-4 border-l-accent-500 shadow-md' : ''">
 

@@ -12,7 +12,7 @@
     };
 @endphp
 
-<section class="{{ $hauteur }} relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-dark-950 via-primary-900 to-dark-900">
+<section data-hero class="{{ $hauteur }} min-h-[460px] max-h-[72vh] lg:min-h-[520px] lg:max-h-none pt-[72px] pb-10 lg:pt-[136px] lg:pb-20 relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-dark-950 via-primary-900 to-dark-900">
     <div class="absolute top-20 left-10 w-72 h-72 bg-accent-500/20 rounded-full blur-3xl animate-float"></div>
     <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-3xl"></div>
@@ -25,7 +25,7 @@
         </div>
     @endif
 
-    <div class="relative z-10 mx-auto max-w-4xl px-4 py-24 {{ $align }}">
+    <div class="relative z-10 mx-auto max-w-4xl px-5 lg:px-10 {{ $align }}">
         @if(!empty($content['badge']))
             <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-accent-500/20 border border-accent-500/30 px-4 py-1.5 text-sm font-medium text-accent-300 backdrop-blur-sm animate-fade-in-up">
                 {{ $content['badge'] }}
@@ -33,7 +33,7 @@
         @endif
 
         @if(!empty($content['titre']))
-            <h1 class="text-4xl font-heading font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl animate-fade-in-up" style="animation-delay: 0.1s;">
+            <h1 class="text-[30px] lg:text-[44px] font-heading font-extrabold leading-tight text-white animate-fade-in-up" style="animation-delay: 0.1s;">
                 {!! preg_replace('/\b(GTB|GTC|NeoGTB)\b/', '<span class="text-gradient">$1</span>', e($content['titre'])) !!}
             </h1>
         @endif

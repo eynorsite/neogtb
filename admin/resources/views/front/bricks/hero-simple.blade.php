@@ -4,9 +4,9 @@
     $ctaLabel = $content['cta_label'] ?? null;
     $ctaUrl = $content['cta_url'] ?? '#';
 @endphp
-<section class="py-12 md:py-20 bg-gradient-to-b from-dark-50 to-white">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-dark-900 mb-6">{{ $titre }}</h1>
+<section data-hero class="pt-[72px] pb-10 lg:pt-[136px] lg:pb-20 min-h-[460px] max-h-[72vh] lg:min-h-[520px] lg:max-h-none bg-gradient-to-b from-dark-50 to-white">
+    <div class="max-w-4xl mx-auto px-5 lg:px-10 text-center">
+        <h1 class="text-[30px] lg:text-[44px] font-bold text-dark-900 mb-6">{{ $titre }}</h1>
         @if($sousTitre)
             <p class="text-xl text-dark-600 mb-8">{{ $sousTitre }}</p>
         @endif

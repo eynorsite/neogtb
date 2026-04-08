@@ -1,5 +1,5 @@
 <section style="padding: 56px 0 64px; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10">
         <x-front.shared.section-header
             :eyebrow="$content['eyebrow'] ?? null"
             :title="$content['titre'] ?? ''"

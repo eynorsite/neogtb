@@ -24,8 +24,8 @@
     overlay="gradient"
 />
 
-<section class="relative overflow-hidden bg-white py-12 md:py-20" id="formulaire">
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+<section class="relative overflow-hidden bg-white py-10 lg:py-20" id="formulaire">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
         <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
 
             <!-- Left: Info -->
@@ -82,7 +82,7 @@
 
             <!-- Right: Form -->
             <div>
-                <div class="rounded-xl p-6 md:p-8 bg-white border border-dark-100 shadow-sm">
+                <div class="rounded-2xl p-5 lg:p-7 bg-white border border-dark-100 lg:shadow-sm">
                     @if(session('contact_success'))
                     <div class="p-4 rounded-lg bg-accent-50 border border-accent-200" role="alert">
                         <p class="text-sm font-medium text-accent-700">Merci pour votre demande.</p>
@@ -102,13 +102,13 @@
                             <div>
                                 <label for="name" class="block text-[13px] font-medium text-dark-700 mb-1.5">Nom</label>
                                 <input type="text" id="name" name="name" required placeholder="Votre nom"
-                                    class="w-full px-4 py-2.5 text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 placeholder:text-dark-300" />
+                                    class="w-full px-4 py-2.5 text-[16px] lg:text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 placeholder:text-dark-300" />
                             </div>
 
                             <div>
                                 <label for="email" class="block text-[13px] font-medium text-dark-700 mb-1.5">Email professionnel</label>
                                 <input type="email" id="email" name="email" required placeholder="vous@entreprise.fr"
-                                    class="w-full px-4 py-2.5 text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 placeholder:text-dark-300" />
+                                    class="w-full px-4 py-2.5 text-[16px] lg:text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 placeholder:text-dark-300" />
                             </div>
 
                             <div>
@@ -116,13 +116,13 @@
                                     Entreprise <span class="text-dark-300 font-normal">(optionnel)</span>
                                 </label>
                                 <input type="text" id="company" name="company" placeholder="Nom de votre entreprise"
-                                    class="w-full px-4 py-2.5 text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 placeholder:text-dark-300" />
+                                    class="w-full px-4 py-2.5 text-[16px] lg:text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 placeholder:text-dark-300" />
                             </div>
 
                             <div>
                                 <label for="subject" class="block text-[13px] font-medium text-dark-700 mb-1.5">Sujet</label>
                                 <select id="subject" name="subject" required
-                                    class="w-full px-4 py-2.5 text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 appearance-none"
+                                    class="w-full px-4 py-2.5 text-[16px] lg:text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 appearance-none"
                                     style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239ca3af' stroke-width='1.5' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 12px center;">
                                     <option value="" disabled selected>Choisir un sujet</option>
                                     <option value="Avis sur un devis">Avis sur un devis</option>
@@ -136,7 +136,7 @@
                             <div>
                                 <label for="message" class="block text-[13px] font-medium text-dark-700 mb-1.5">Message</label>
                                 <textarea id="message" name="message" rows="4" required placeholder="Décrivez votre contexte..."
-                                    class="w-full px-4 py-2.5 text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 resize-y placeholder:text-dark-300"></textarea>
+                                    class="w-full px-4 py-2.5 text-[16px] lg:text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 resize-y placeholder:text-dark-300"></textarea>
                             </div>
 
                             <div>

@@ -7,10 +7,10 @@
 <section class="relative overflow-hidden" style="padding: 100px 0 80px; min-height: 420px; background: #edf5f7;">
     <img src="/images/hero-about.png" alt="Consultant indépendant GTB au centre des bâtiments" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.15) 0%, rgba(237,245,247,0.88) 60%, rgba(237,245,247,1) 100%);"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
         <div class="max-w-2xl">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">À propos</p>
-            <h1 class="font-heading text-4xl md:text-5xl font-medium text-dark-900 leading-tight tracking-tight mb-5">
+            <h1 class="font-heading text-[30px] lg:text-[44px] font-medium text-dark-900 leading-tight tracking-tight mb-5">
                 Je suis Ulrich Calmo, et j'ai créé <span class="text-gradient">NeoGTB</span> pour une raison simple
             </h1>
             <p class="text-lg text-dark-500 leading-relaxed max-w-xl">
@@ -21,13 +21,13 @@
 </section>
 
 <!-- FONDATEUR -->
-<section class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
             <!-- Left: createur -->
             <div class="lg:col-span-2" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
-                <div class="bg-white rounded-xl p-8 border border-dark-200 shadow-sm">
+                <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                     <img src="/images/ulrich-calmo.webp" alt="Ulrich Calmo, créateur de la marque NeoGTB" width="120" height="120" loading="lazy" decoding="async" class="w-[120px] h-[120px] rounded-full object-cover mx-auto mb-5 border-[3px] border-accent-300" />
                     <p class="text-[22px] font-medium text-dark-900 text-center mb-1">Ulrich Calmo</p>
                     <p class="text-sm font-medium text-accent-600 text-center mb-1">Fondateur de NeoGTB</p>
@@ -62,19 +62,19 @@
 
                 <!-- Stats -->
                 <div class="grid grid-cols-2 gap-4 mt-6">
-                    <div class="bg-white rounded-xl p-5 text-center border border-dark-200 shadow-sm">
+                    <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">10+</p>
                         <p class="text-xs text-dark-400 mt-1">technologies analysées</p>
                     </div>
-                    <div class="bg-white rounded-xl p-5 text-center border border-dark-200 shadow-sm">
+                    <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">41</p>
                         <p class="text-xs text-dark-400 mt-1">protocoles référencés</p>
                     </div>
-                    <div class="bg-white rounded-xl p-5 text-center border border-dark-200 shadow-sm">
+                    <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-accent-600 tracking-tight">0 &euro;</p>
                         <p class="text-xs text-dark-400 mt-1">commission fabricant</p>
                     </div>
-                    <div class="bg-white rounded-xl p-5 text-center border border-dark-200 shadow-sm">
+                    <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">100 %</p>
                         <p class="text-xs text-dark-400 mt-1">indépendant</p>
                     </div>
@@ -83,7 +83,7 @@
 
             <!-- Right: parcours + conviction -->
             <div class="lg:col-span-3" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
-                <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-6">Pourquoi j'ai créé NeoGTB</h2>
+                <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-6">Pourquoi j'ai créé NeoGTB</h2>
 
                 <p class="text-base text-dark-500 leading-relaxed mb-4">
                     En travaillant sur des projets de gestion technique du bâtiment, j'ai constaté un problème récurrent : <strong class="text-dark-900 font-medium">les décideurs n'ont personne vers qui se tourner pour un avis neutre.</strong> Chaque interlocuteur vend sa solution. Les bureaux d'études prescrivent ce qu'ils connaissent. Les installateurs poussent leurs partenariats.
@@ -138,15 +138,15 @@
 </section>
 
 <!-- MÉTHODE -->
-<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20 bg-dark-50 border-t border-b border-dark-200">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-12" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Mon approche</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Ma méthode — 4 phases</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Ma méthode — 4 phases</h2>
             <p class="text-base text-dark-500 leading-relaxed">Une approche structurée pour accompagner chaque projet GTB, du diagnostic à la mise en œuvre.</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
             @php
             $steps = [
                 ['num' => '01', 'title' => 'État des lieux', 'desc' => "J'audite l'existant : équipements en place, protocoles utilisés, niveau d'intégration, points de friction.", 'highlight' => false],
@@ -156,7 +156,7 @@
             ];
             @endphp
             @foreach($steps as $step)
-            <div class="{{ $step['highlight'] ? 'bg-white rounded-xl border border-accent-200 shadow-[0_0_0_3px] shadow-accent-50' : 'bg-white rounded-xl border border-dark-200 shadow-sm' }} p-6 card-hover" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
+            <div class="{{ $step['highlight'] ? 'bg-white rounded-2xl border border-accent-200 shadow-[0_0_0_3px] shadow-accent-50' : 'bg-white rounded-2xl border border-dark-100 lg:shadow-sm' }} p-5 lg:p-7 card-hover" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
                 <p class="text-[40px] font-medium {{ $step['highlight'] ? 'text-accent-400' : 'text-dark-200' }} leading-none mb-4 tracking-tight">{{ $step['num'] }}</p>
                 <h3 class="text-[15px] font-medium text-dark-900 mb-2">{{ $step['title'] }}</h3>
                 <p class="text-[13px] text-dark-500 leading-relaxed">{{ $step['desc'] }}</p>
@@ -170,12 +170,12 @@
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden py-12 md:py-20 bg-dark-100 border-t border-dark-200">
+<section class="relative overflow-hidden py-10 lg:py-20 bg-dark-100 border-t border-dark-200">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="absolute right-0 top-0 h-full w-auto object-cover opacity-20" />
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 flex items-center min-h-[200px]">
         <div class="max-w-lg">
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Un projet GTB à clarifier ?</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Un projet GTB à clarifier ?</h2>
             <p class="text-base text-dark-500 leading-relaxed mb-7">Échangeons sur votre situation. Sans engagement, sans pression commerciale.</p>
             <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow">
                 Me contacter directement
@@ -186,15 +186,15 @@
 </section>
 
 <!-- Related pages -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
-        <div class="grid md:grid-cols-3 gap-6">
+<section class="py-12 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+        <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
                 ['href' => '/positionnement', 'title' => 'Pourquoi NeoGTB ?', 'desc' => 'Les preuves de notre indépendance totale.'],
                 ['href' => '/contact', 'title' => 'Contactez Ulrich', 'desc' => 'Discutons de votre projet GTB sans engagement.'],
                 ['href' => '/audit', 'title' => 'Audit GTB gratuit', 'desc' => 'Diagnostiquez votre bâtiment en 5 minutes.'],
             ] as $link)
-            <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-xl p-6 border border-dark-200 card-hover-glow">
+            <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-2xl p-5 lg:p-7 border border-dark-100 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>
                 <p class="text-sm text-dark-500">{{ $link['desc'] }}</p>
             </a>

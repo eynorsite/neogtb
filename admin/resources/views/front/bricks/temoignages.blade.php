@@ -1,16 +1,16 @@
-<section class="py-14 md:py-24 bg-dark-50/50 relative overflow-hidden">
+<section class="py-12 lg:py-24 bg-dark-50/50 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
-    <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
         @if(!empty($content['titre']))
             <div class="text-center mb-16 animate-fade-in-up">
-                <h2 class="text-3xl font-heading font-extrabold text-dark-900 sm:text-4xl lg:text-5xl">{{ $content['titre'] }}</h2>
+                <h2 class="text-[28px] lg:text-[44px] font-heading font-extrabold text-dark-900">{{ $content['titre'] }}</h2>
                 <div class="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
             </div>
         @endif
 
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-5 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
             @foreach($content['avis'] ?? [] as $i => $avis)
-                <div class="relative rounded-2xl bg-white p-8 shadow-sm border border-dark-100 card-hover animate-fade-in-up"
+                <div class="relative rounded-2xl bg-white p-5 lg:p-7 lg:shadow-sm border border-dark-100 card-hover animate-fade-in-up"
                      style="animation-delay: {{ $i * 100 }}ms">
 
                     {{-- Guillemet decoratif --}}

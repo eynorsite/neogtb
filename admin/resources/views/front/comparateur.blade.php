@@ -13,7 +13,9 @@
     --color-dark-900: #1C1917;
   }
   [x-cloak] { display: none !important; }
-  .hero-lum { position: relative; overflow: hidden; padding: 80px 0 64px; background: #edf5f7; }
+  .hero-lum { position: relative; overflow: hidden; padding: 56px 0 32px; background: #edf5f7; }
+  @media (min-width: 1024px) { .hero-lum { padding: 80px 0 64px; } }
+  @media (max-width: 1023px) { .hero-orb-1, .hero-orb-2, .hero-orb-3, .hero-lum-grid { display: none !important; } }
   .hero-lum-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
   .hero-lum.hero-emerald { background: #edf5f7; }
   .hero-lum-mesh { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(237,245,247,0.4) 0%, rgba(237,245,247,0.95) 100%); }
@@ -39,7 +41,7 @@
 @section('content')
 
   {{-- Breadcrumbs --}}
-  <nav class="max-w-7xl mx-auto px-6 md:px-10 py-3 text-sm text-dark-400">
+  <nav class="max-w-7xl mx-auto px-5 lg:px-10 py-3 text-sm text-dark-400">
     <a href="/" class="hover:text-primary-600 transition-colors">Accueil</a>
     <span class="mx-2">/</span>
     <span class="text-dark-300">Outils</span>
@@ -48,12 +50,12 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero-lum hero-emerald">
+  <section class="hero-lum hero-emerald" data-hero>
     <img src="/images/hero-comparateur.png" alt="Comparaison de bâtiments intelligents — GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-10 text-center relative z-10">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 text-center relative z-10">
       <span class="eyebrow">Outil indépendant</span>
-      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="color: var(--color-dark-900);">Comparateur objectif <span class="accent">GTB</span></h1>
+      <h1 class="mt-5 text-[30px] lg:text-[44px] font-heading font-medium" style="color: var(--color-dark-900);">Comparateur objectif <span class="accent">GTB</span></h1>
       <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: var(--color-dark-500);">
         Analysez et comparez les solutions des principaux acteurs du marché de la Gestion Technique du Bâtiment. Notes, protocoles, budgets et retours terrain pour un choix éclairé.
       </p>
@@ -62,7 +64,7 @@
 
   <!-- Disclaimer -->
   <section class="py-4">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
       <div class="rounded-xl p-5" style="background: #FFF7ED; border: 1px solid #FED7AA;">
         <p style="font-size: 14px; font-weight: 500; color: #9A3412; margin-bottom: 6px;">Avertissement &mdash; Comparateur indépendant</p>
         <p style="font-size: 13px; color: #78350F; line-height: 1.7;">
@@ -74,7 +76,7 @@
 
   <!-- Methodologie -->
   <section class="py-8">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
       <div class="bg-white rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);" x-data="{ open: false }">
         <button @click="open = !open" class="flex items-center justify-between w-full text-left">
           <div>
@@ -103,11 +105,11 @@
   </section>
 
   <!-- Comparateur -->
-  <section class="py-12">
-    <div class="max-w-7xl mx-auto px-6 md:px-10" x-data="comparateur()" x-init="init()">
+  <section class="py-10 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10" x-data="comparateur()" x-init="init()">
 
       <!-- Filtres -->
-      <div class="bg-white rounded-2xl p-6 mb-8 sticky top-20 z-40" style="border: 0.5px solid rgba(0,0,0,0.08);">
+      <div class="bg-white rounded-2xl p-5 lg:p-7 mb-8 lg:sticky lg:top-20 z-40" style="border: 0.5px solid rgba(0,0,0,0.08);">
         <div class="flex flex-wrap items-center gap-4">
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Catégorie</label>
@@ -158,9 +160,9 @@
       </div>
 
       <!-- Cards des marques -->
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 gap-4 lg:gap-6">
         <template x-for="brand in filteredBrands()" :key="brand.nom">
-          <div class="card-hover bg-white rounded-xl overflow-hidden" style="border: 0.5px solid rgba(0,0,0,0.08);">
+          <div class="card-hover bg-white rounded-2xl overflow-hidden" style="border: 0.5px solid rgba(0,0,0,0.08);">
             <div class="p-6" style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">
               <div class="flex items-start justify-between">
                 <div>
@@ -254,9 +256,13 @@
   </section>
 
   <!-- Tableau comparatif rapide -->
-  <section class="py-16 bg-dark-50">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
-      <h2 class="text-[28px] font-heading font-medium text-dark-900 mb-8 text-center">Tableau comparatif rapide</h2>
+  <section class="py-12 lg:py-24 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+      <h2 class="text-[22px] lg:text-[28px] font-heading font-medium text-dark-900 mb-6 lg:mb-8 text-center">Tableau comparatif rapide</h2>
+      <div class="lg:hidden flex items-center gap-2 text-[12px] text-dark-400 mb-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7l4-4m0 0l4 4m-4-4v18"/></svg>
+        Faites glisser horizontalement
+      </div>
       <div class="overflow-x-auto">
         <table class="w-full bg-white rounded-xl overflow-hidden text-sm" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <thead>
@@ -288,11 +294,11 @@
   </section>
 
   <!-- Guide de choix -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
-      <h2 class="text-[28px] font-heading font-medium text-dark-900 mb-8 text-center">Comment choisir ?</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
+  <section class="py-12 lg:py-24">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+      <h2 class="text-[22px] lg:text-[28px] font-heading font-medium text-dark-900 mb-6 lg:mb-8 text-center">Comment choisir ?</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div class="card-hover p-5 lg:p-7 bg-white rounded-2xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#127970;</div>
           <h3 class="font-medium text-dark-900">Petit bâtiment</h3>
           <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">&lt; 2 000 m&sup2; &mdash; Budget limité</p>
@@ -302,7 +308,7 @@
             <p class="text-sm font-medium text-primary-600">&rarr; Wattsense</p>
           </div>
         </div>
-        <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
+        <div class="card-hover p-5 lg:p-7 bg-white rounded-2xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#127980;</div>
           <h3 class="font-medium text-dark-900">Bâtiment moyen</h3>
           <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">2 000 - 10 000 m&sup2;</p>
@@ -311,7 +317,7 @@
             <p class="text-sm font-medium text-primary-600">&rarr; Sauter</p>
           </div>
         </div>
-        <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
+        <div class="card-hover p-5 lg:p-7 bg-white rounded-2xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#127961;&#65039;</div>
           <h3 class="font-medium text-dark-900">Grand bâtiment</h3>
           <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">&gt; 10 000 m&sup2;</p>
@@ -321,7 +327,7 @@
             <p class="text-sm font-medium text-primary-600">&rarr; Honeywell</p>
           </div>
         </div>
-        <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
+        <div class="card-hover p-5 lg:p-7 bg-white rounded-2xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#128260;</div>
           <h3 class="font-medium text-dark-900">Retrofit / Existant</h3>
           <p class="mt-2 text-sm text-dark-500" style="font-weight: 400;">Mise à niveau sans travaux</p>
@@ -338,7 +344,7 @@
   <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="hero-bg-illustration" />
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
         <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Besoin d'aide pour choisir ?</h2>
         <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px;">Notre audit gratuit analyse votre bâtiment et vous recommande les solutions les plus adaptées.</p>
@@ -351,19 +357,19 @@
   </section>
 
   <!-- Pages associées -->
-  <section class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-6 md:px-10">
+  <section class="py-10 lg:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5 lg:px-10">
       <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associées</h2>
       <div class="grid md:grid-cols-3 gap-4">
-        <a href="/audit" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
+        <a href="/audit" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Audit GTB gratuit</p>
           <p class="text-sm text-dark-400 mt-1">Diagnostiquez d'abord votre bâtiment avant de comparer.</p>
         </a>
-        <a href="/solutions" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
+        <a href="/solutions" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Solutions & Technologies</p>
           <p class="text-sm text-dark-400 mt-1">Protocoles, capteurs et architecture GTB en détail.</p>
         </a>
-        <a href="/gtb" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
+        <a href="/gtb" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Qu'est-ce que la GTB ?</p>
           <p class="text-sm text-dark-400 mt-1">Les bases pour comprendre la Gestion Technique du Bâtiment.</p>
         </a>

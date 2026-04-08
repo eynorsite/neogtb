@@ -1,8 +1,8 @@
-<section class="py-12 md:py-20 lg:py-28 relative overflow-hidden">
+<section class="py-12 lg:py-28 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
-    <div class="relative z-10 mx-auto max-w-3xl px-4 sm:px-6">
+    <div class="relative z-10 mx-auto max-w-3xl px-5 lg:px-10">
 
-        <div class="rounded-3xl bg-white border border-dark-100 shadow-xl p-8 sm:p-10 lg:p-12 animate-fade-in-up">
+        <div class="rounded-3xl bg-white border border-dark-100 lg:shadow-xl p-5 lg:p-12 animate-fade-in-up">
 
             @if(!empty($content['titre']))
                 <div class="mb-10">

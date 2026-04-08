@@ -21,7 +21,7 @@
 
         <div class="grid md:grid-cols-{{ $settings['colonnes'] ?? 3 }} gap-4 lg:gap-6">
             @foreach($content['cartes'] ?? [] as $i => $carte)
-                <x-front.shared.card :href="$carte['lien'] ?? '#'" padding="p-6" :delay="$i % 3">
+                <x-front.shared.card :href="$carte['lien'] ?? '#'" padding="p-5 lg:p-7" :delay="$i % 3">
                     @if(!empty($carte['tag']))
                         <x-front.shared.tag :variant="$carte['tag_variant'] ?? 'gtb'">{{ $carte['tag'] }}</x-front.shared.tag>
                     @endif

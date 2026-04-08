@@ -4,7 +4,7 @@
     $imgUrl = $img ? (str_starts_with($img, '/') || str_starts_with($img, 'http') ? $img : asset('storage/' . $img)) : null;
 @endphp
 
-<section class="hero-img" style="position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden;">
+<section class="hero-img" data-hero style="position: relative; min-height: 460px; max-height: 72vh; display: flex; align-items: center; overflow: hidden; padding: 72px 0 40px;">
     @if($imgUrl)
         <img src="{{ $imgUrl }}"
              alt="{{ $content['image_alt'] ?? '' }}"
@@ -13,7 +13,7 @@
     @endif
     <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.1) 100%);"></div>
 
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 relative z-10" style="width: 100%;">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10 relative z-10" style="width: 100%;">
         <div style="max-width: 560px; margin-left: auto;">
             @if(!empty($content['badge']))
                 <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.15); margin-bottom: 24px;">
@@ -28,7 +28,7 @@
             @endif
 
             @if(!empty($content['titre']))
-                <h1 style="font-size: clamp(32px, 4.5vw, 48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px;">
+                <h1 class="text-[30px] lg:text-[44px]" style="font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px;">
                     {{ $content['titre'] }}
                 </h1>
             @endif

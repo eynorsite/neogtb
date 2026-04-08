@@ -362,12 +362,12 @@
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden py-12 md:py-20 bg-dark-100 border-t border-dark-200">
+<section class="relative overflow-hidden py-10 lg:py-20 bg-dark-100 border-t border-dark-200">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="absolute right-0 top-0 h-full w-auto object-cover opacity-20" />
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 flex items-center min-h-[200px]">
         <div class="max-w-lg">
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Vérifiez votre conformité</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Vérifiez votre conformité</h2>
             <p class="text-base text-dark-500 leading-relaxed mb-7">Identifiez votre classe ISO 52120-1, évaluez vos obligations BACS et estimez vos aides CEE.</p>
             <div class="flex flex-wrap gap-4">
                 <a href="/audit" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow">
@@ -383,15 +383,15 @@
 </section>
 
 <!-- Related pages -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
-        <div class="grid md:grid-cols-3 gap-6">
+<section class="py-12 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+        <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
                 ['href' => '/gtb', 'title' => "Qu'est-ce que la GTB ?", 'desc' => 'Comprendre la GTB avant de s\'attaquer à la réglementation.'],
                 ['href' => '/audit', 'title' => 'Audit GTB gratuit', 'desc' => 'Évaluez votre niveau de conformité ISO 52120-1 en 5 minutes.'],
                 ['href' => '/generateur-cee', 'title' => 'Simulateur CEE', 'desc' => 'Estimez vos primes Certificats d\'Économies d\'Énergie.'],
             ] as $link)
-            <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-xl p-6 border border-dark-200 card-hover-glow">
+            <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-2xl p-5 lg:p-7 border border-dark-100 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>
                 <p class="text-sm text-dark-500">{{ $link['desc'] }}</p>
             </a>

@@ -3,8 +3,8 @@
 
 @section('content')
 
-<section class="py-32 text-center">
-    <div class="max-w-[600px] mx-auto px-6">
+<section class="py-16 lg:py-32 text-center">
+    <div class="max-w-[600px] mx-auto px-5 lg:px-6">
         <div class="w-16 h-16 rounded-full bg-accent-50 flex items-center justify-center mx-auto mb-6">
             <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" class="text-accent-600"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         </div>

@@ -1,11 +1,11 @@
 @php $style = $settings['style'] ?? 'primary'; @endphp
 
-<section class="relative overflow-hidden bg-gradient-to-br from-dark-950 via-primary-900 to-dark-900 py-12 md:py-20 lg:py-24">
+<section class="relative overflow-hidden bg-gradient-to-br from-dark-950 via-primary-900 to-dark-900 py-10 lg:py-24">
     <div class="absolute top-10 right-10 w-64 h-64 bg-accent-500/15 rounded-full blur-3xl animate-float"></div>
     <div class="absolute bottom-10 left-10 w-48 h-48 bg-primary-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
     <div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
         @if(!empty($content['titre']))
-            <h2 class="text-3xl font-heading font-extrabold text-white sm:text-4xl lg:text-5xl">
+            <h2 class="text-[28px] lg:text-[44px] font-heading font-extrabold text-white">
                 {!! preg_replace('/\b(GTB|GTC|NeoGTB)\b/', '<span class="text-gradient">$1</span>', e($content['titre'])) !!}
             </h2>
         @endif

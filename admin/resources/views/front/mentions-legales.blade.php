@@ -3,7 +3,7 @@
 
 @section('content')
 
-<section class="py-16 md:py-20">
+<section class="py-12 lg:py-24">
     <div class="max-w-[680px] mx-auto px-4 sm:px-6">
 
         <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Informations légales</p>

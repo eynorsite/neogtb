@@ -18,9 +18,11 @@
   /* ── Hero ── */
   .cee-hero {
     position: relative; overflow: hidden;
-    padding: 80px 0 56px;
+    padding: 56px 0 32px;
     background: #edf5f7;
   }
+  @media (min-width: 1024px) { .cee-hero { padding: 80px 0 56px; } }
+  @media (max-width: 1023px) { .cee-orb-1, .cee-orb-2, .cee-orb-3, .cee-hero-grid { display: none !important; } }
   .cee-hero-img {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center;
@@ -88,18 +90,22 @@
   @media (max-width: 640px) { .cee-progress-steps { gap: 16px; } .cee-step-label { display: none; } }
 
   /* ── Card ── */
-  .cee-card { background: white; border-radius: 16px; border: 1px solid var(--color-dark-200); overflow: hidden; }
-  .cee-card-header { padding: 28px 28px 0; }
+  .cee-card { background: white; border-radius: 16px; border: 1px solid var(--color-dark-100); overflow: hidden; }
+  .cee-card-header { padding: 20px 20px 0; }
+  @media (min-width: 1024px) { .cee-card-header { padding: 28px 28px 0; } }
   .cee-card-header h2 { font-size: 20px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; margin-bottom: 4px; }
   .cee-card-header p { font-size: 14px; color: var(--color-dark-500); line-height: 1.6; }
-  .cee-card-body { padding: 24px 28px; }
-  .cee-card-footer { padding: 20px 28px; border-top: 1px solid var(--color-dark-100); display: flex; justify-content: space-between; align-items: center; }
+  .cee-card-body { padding: 20px; }
+  @media (min-width: 1024px) { .cee-card-body { padding: 24px 28px; } }
+  .cee-card-footer { padding: 16px 20px; border-top: 1px solid var(--color-dark-100); display: flex; justify-content: space-between; align-items: center; }
+  @media (min-width: 1024px) { .cee-card-footer { padding: 20px 28px; } }
 
   /* ── Labels ── */
   .cee-label { display: block; font-size: 13px; font-weight: 600; color: var(--color-dark-700); margin-bottom: 10px; letter-spacing: 0.01em; }
 
   /* ── Inputs ── */
-  .cee-input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--color-dark-200); border-radius: 10px; font-size: 14px; color: var(--color-dark-900); background: white; transition: all 0.15s; font-family: inherit; }
+  .cee-input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--color-dark-200); border-radius: 10px; font-size: 16px; color: var(--color-dark-900); background: white; transition: all 0.15s; font-family: inherit; }
+  @media (min-width: 1024px) { .cee-input { font-size: 14px; } }
   .cee-input:focus { border-color: var(--color-accent-500); outline: none; box-shadow: 0 0 0 3px rgba(13,148,136,0.08); }
   .cee-input.has-error { border-color: #ef4444; }
   .cee-input-wrap { position: relative; }
@@ -218,12 +224,12 @@
   </nav>
 
   {{-- ==================== HERO ==================== --}}
-  <section class="cee-hero">
+  <section class="cee-hero" data-hero>
     {{-- Hero image: aucune image dédiée hero-cee/hero-generateur/hero-economie/hero-energie n'existe dans /public/images/. Fallback sur hero-gtb-illustration.webp (image mutualisée, meilleure qualité que hero-comparateur.png et évite le doublon visuel avec /comparateur). TODO: créer un visuel dédié CEE. --}}
     <img src="/images/hero-gtb-illustration.webp" alt="Illustration GTB — Générateur de dossier CEE" class="cee-hero-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="cee-hero-mesh"></div>
 
-    <div class="max-w-[800px] mx-auto px-6 md:px-10 relative z-10 text-center">
+    <div class="max-w-[800px] mx-auto px-5 lg:px-10 relative z-10 text-center">
       <p class="cee-hero-eyebrow">Outil indépendant · Estimation gratuite</p>
       <h1 class="cee-hero-title">
         Générateur de dossier <span>CEE</span>

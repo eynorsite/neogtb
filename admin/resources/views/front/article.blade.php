@@ -185,7 +185,7 @@
          RELATED ARTICLES
          ══════════════════════════════════════════════════════════════ --}}
     @if($related->isNotEmpty())
-        <section class="border-t border-dark-100 bg-dark-50 py-16 lg:py-20">
+        <section class="border-t border-dark-100 bg-dark-50 py-12 lg:py-20">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10">
                     <span class="text-xs font-semibold tracking-widest uppercase text-dark-400">À lire aussi</span>
@@ -223,7 +223,7 @@
     {{-- ══════════════════════════════════════════════════════════════
          CTA
          ══════════════════════════════════════════════════════════════ --}}
-    <section class="py-16 lg:py-20 bg-white border-t border-dark-100">
+    <section class="py-12 lg:py-20 bg-white border-t border-dark-100">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-dark-900 tracking-tight leading-tight">
                 {{ $cta['title'] }}

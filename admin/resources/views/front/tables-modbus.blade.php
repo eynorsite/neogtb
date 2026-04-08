@@ -8,10 +8,10 @@
 @section('content')
 
   {{-- Hero --}}
-  <section class="relative overflow-hidden bg-gradient-to-br from-primary-900 to-primary-800">
-    <div class="max-w-7xl mx-auto px-6 md:px-10 py-20 text-center relative z-10">
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary-900 to-primary-800" data-hero>
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 py-10 lg:py-20 text-center relative z-10">
       <span class="inline-block text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-200 mb-4">Catalogue technique</span>
-      <h1 class="text-4xl md:text-5xl font-medium text-white">
+      <h1 class="text-[30px] lg:text-[44px] font-medium text-white">
         Tables d'adressage Modbus — Catalogue technique
       </h1>
       <p class="mt-5 text-lg max-w-3xl mx-auto text-primary-100/90">
@@ -22,8 +22,8 @@
 
   {{-- Disclaimer --}}
   <section class="py-6">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
-      <div class="rounded-xl p-5 border border-amber-200 bg-amber-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+      <div class="rounded-2xl p-5 border border-amber-200 bg-amber-50">
         <p class="text-sm text-amber-900">
           <strong>⚠️ Données indicatives</strong> — Vérifiez toujours la documentation fabricant à jour avant intégration. Les adresses, fonctions et plages de registres peuvent varier selon le firmware, le modèle exact et la version du protocole.
         </p>
@@ -34,8 +34,8 @@
 
   {{-- Section explicative dépliable --}}
   <section class="py-8">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
-      <div class="bg-white rounded-xl p-6 border border-dark-200" x-data="{ open: false }">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+      <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100" x-data="{ open: false }">
         <button @click="open = !open" class="flex items-center justify-between w-full text-left">
           <div>
             <p class="text-base font-semibold text-dark-900">Comprendre les 4 types de registres Modbus</p>
@@ -89,10 +89,10 @@
 
   {{-- Catalogue interactif --}}
   <section class="py-8">
-    <div class="max-w-7xl mx-auto px-6 md:px-10" x-data="modbusCatalogue()">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10" x-data="modbusCatalogue()">
 
       {{-- Filtres --}}
-      <div class="bg-white rounded-2xl p-6 mb-8 border border-dark-200 sticky top-24 md:top-[120px] z-30">
+      <div class="bg-white rounded-2xl p-5 lg:p-7 mb-8 border border-dark-100 lg:sticky lg:top-[120px] z-30">
         <div class="flex flex-col gap-4">
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Recherche</label>
@@ -136,9 +136,9 @@
       </div>
 
       {{-- Grid équipements --}}
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
         <template x-for="(eq, idx) in filteredEquipements()" :key="idx">
-          <button @click="openModal(eq)" class="text-left bg-white rounded-xl p-5 border border-dark-200 hover:border-primary-300 hover:shadow-md transition-all">
+          <button @click="openModal(eq)" class="text-left bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 hover:border-primary-300 lg:hover:shadow-md transition-all">
             <div class="flex items-start justify-between mb-3">
               <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-50 text-primary-700" x-text="eq.categorie"></span>
               <span class="text-[11px] text-dark-400" x-text="eq.protocole"></span>
@@ -200,6 +200,10 @@
               </div>
               <div class="flex-1 overflow-auto p-6">
                 <p class="text-xs font-semibold uppercase tracking-wider text-dark-500 mb-3">Registres</p>
+                <div class="lg:hidden flex items-center gap-2 text-[12px] text-dark-400 mb-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7l4-4m0 0l4 4m-4-4v18"/></svg>
+                  Faites glisser horizontalement
+                </div>
                 <div class="overflow-x-auto">
                   <table class="w-full text-xs">
                     <thead class="bg-dark-50 text-dark-500 uppercase text-[10px] tracking-wider">
@@ -237,19 +241,19 @@
   </section>
 
   {{-- Related pages --}}
-  <section class="py-16 bg-dark-50">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+  <section class="py-12 lg:py-24 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
       <p class="text-xs font-semibold uppercase tracking-wider text-dark-500 mb-6">Pour aller plus loin</p>
-      <div class="grid md:grid-cols-3 gap-5">
-        <a href="/solutions" class="block bg-white rounded-xl p-6 border border-dark-200 hover:border-primary-300 hover:shadow-md transition-all">
+      <div class="grid md:grid-cols-3 gap-3 lg:gap-5">
+        <a href="/solutions" class="block bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 hover:border-primary-300 lg:hover:shadow-md transition-all">
           <p class="font-semibold text-dark-900">Solutions & Technologies</p>
           <p class="text-sm text-dark-500 mt-1">Protocoles, capteurs et automates utilisés en GTB.</p>
         </a>
-        <a href="/comparateur" class="block bg-white rounded-xl p-6 border border-dark-200 hover:border-primary-300 hover:shadow-md transition-all">
+        <a href="/comparateur" class="block bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 hover:border-primary-300 lg:hover:shadow-md transition-all">
           <p class="font-semibold text-dark-900">Comparateur GTB</p>
           <p class="text-sm text-dark-500 mt-1">10+ solutions GTB analysées objectivement.</p>
         </a>
-        <a href="/audit" class="block bg-white rounded-xl p-6 border border-dark-200 hover:border-primary-300 hover:shadow-md transition-all">
+        <a href="/audit" class="block bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 hover:border-primary-300 lg:hover:shadow-md transition-all">
           <p class="font-semibold text-dark-900">Pré-diagnostic GTB</p>
           <p class="text-sm text-dark-500 mt-1">Auto-évaluation ISO 52120-1 en quelques minutes.</p>
         </a>

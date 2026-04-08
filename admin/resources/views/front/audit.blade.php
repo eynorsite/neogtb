@@ -29,7 +29,9 @@
   [x-cloak] { display: none !important; }
 
   /* Hero */
-  .hero-lum { position: relative; overflow: hidden; padding: 80px 0 64px; background: #0a1628; }
+  .hero-lum { position: relative; overflow: hidden; padding: 56px 0 32px; background: #0a1628; }
+  @media (min-width: 1024px) { .hero-lum { padding: 80px 0 64px; } }
+  @media (max-width: 1023px) { .hero-orb-1, .hero-orb-2, .hero-orb-3, .hero-lum-grid { display: none !important; } }
   .hero-lum-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.45; }
   .hero-lum-mesh { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.3) 50%, rgba(10,22,40,0.6) 100%); }
   .hero-lum-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(13,148,136,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,0.04) 1px, transparent 1px), radial-gradient(circle 2px at center, rgba(13,148,136,0.12) 0%, transparent 2px); background-size: 48px 48px, 48px 48px, 48px 48px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%); }
@@ -59,12 +61,15 @@
   .diag-step-item.is-active .diag-step-label { color: var(--color-dark-900); }
   .diag-step-item.is-done .diag-step-label { color: var(--color-accent-700); }
   @media (max-width: 640px) { .diag-progress-steps { gap: 16px; } .diag-step-label { display: none; } }
-  .diag-card { background: white; border-radius: 16px; border: 1px solid var(--color-dark-200); overflow: hidden; }
-  .diag-card-header { padding: 28px 28px 0; }
+  .diag-card { background: white; border-radius: 16px; border: 1px solid var(--color-dark-100); overflow: hidden; }
+  .diag-card-header { padding: 20px 20px 0; }
+  @media (min-width: 1024px) { .diag-card-header { padding: 28px 28px 0; } }
   .diag-card-header h2 { font-size: 20px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; margin-bottom: 4px; }
   .diag-card-header p { font-size: 14px; color: var(--color-dark-500); line-height: 1.6; }
-  .diag-card-body { padding: 24px 28px; }
-  .diag-card-footer { padding: 20px 28px; border-top: 1px solid var(--color-dark-100); display: flex; justify-content: space-between; align-items: center; }
+  .diag-card-body { padding: 20px; }
+  @media (min-width: 1024px) { .diag-card-body { padding: 24px 28px; } }
+  .diag-card-footer { padding: 16px 20px; border-top: 1px solid var(--color-dark-100); display: flex; justify-content: space-between; align-items: center; }
+  @media (min-width: 1024px) { .diag-card-footer { padding: 20px 28px; } }
   .diag-label { display: block; font-size: 13px; font-weight: 600; color: var(--color-dark-700); margin-bottom: 10px; letter-spacing: 0.01em; }
   .diag-label-sm { display: block; font-size: 12px; font-weight: 500; color: var(--color-dark-500); margin-bottom: 6px; }
   .diag-input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--color-dark-200); border-radius: 10px; font-size: 14px; color: var(--color-dark-900); background: white; transition: all 0.15s; font-family: inherit; }
@@ -188,7 +193,7 @@
 @section('content')
 
   {{-- Breadcrumbs --}}
-  <nav class="max-w-7xl mx-auto px-6 md:px-10 py-3 text-sm text-dark-400">
+  <nav class="max-w-7xl mx-auto px-5 lg:px-10 py-3 text-sm text-dark-400">
     <a href="/" class="hover:text-primary-600 transition-colors">Accueil</a>
     <span class="mx-2">/</span>
     <span class="text-dark-300">Outils</span>
@@ -197,12 +202,12 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero-lum">
+  <section class="hero-lum" data-hero>
     <img src="/images/hero-audit.png" alt="Bâtiment intelligent connecté — GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
-    <div class="max-w-[800px] mx-auto px-6 md:px-10 relative z-10 text-center">
+    <div class="max-w-[800px] mx-auto px-5 lg:px-10 relative z-10 text-center">
       <p class="diag-eyebrow" style="color: rgba(255,255,255,0.7);">Diagnostic gratuit &middot; Rapport PDF</p>
-      <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="letter-spacing: -0.4px; color: #fff;">
+      <h1 class="mt-5 text-[30px] lg:text-[44px] font-heading font-medium" style="letter-spacing: -0.4px; color: #fff;">
         Pré-diagnostic <span style="color: #2DD4BF;">GTB</span> de votre bâtiment
       </h1>
       <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: rgba(255,255,255,0.65);">
@@ -769,19 +774,19 @@
   </section>
 
   <!-- Pages associées -->
-  <section class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-6 md:px-10">
+  <section class="py-10 lg:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5 lg:px-10">
       <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associées</h2>
       <div class="grid md:grid-cols-3 gap-4">
-        <a href="/comparateur" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
+        <a href="/comparateur" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Comparateur GTB</p>
           <p class="text-sm text-dark-400 mt-1">Comparez les solutions après votre diagnostic.</p>
         </a>
-        <a href="/generateur-cee" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
+        <a href="/generateur-cee" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Simulateur CEE</p>
           <p class="text-sm text-dark-400 mt-1">Estimez vos primes pour financer votre projet GTB.</p>
         </a>
-        <a href="/reglementation" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
+        <a href="/reglementation" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Réglementation GTB</p>
           <p class="text-sm text-dark-400 mt-1">Décret BACS, calendrier des obligations.</p>
         </a>

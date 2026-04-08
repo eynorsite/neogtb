@@ -11,9 +11,9 @@
     <img src="/images/hero-blog.png" alt="Veille technique GTB — bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-10 text-center">
+    <div class="relative z-10 max-w-5xl mx-auto px-5 lg:px-10 text-center">
         <span class="inline-block text-xs font-semibold tracking-widest uppercase text-accent-600 mb-4">Perspectives</span>
-        <h1 class="text-4xl md:text-5xl font-heading font-bold text-dark-900 tracking-tight leading-tight">
+        <h1 class="text-[30px] lg:text-[44px] font-heading font-bold text-dark-900 tracking-tight leading-tight">
             Analyses & veille <span class="text-accent-600">technique</span>
         </h1>
         <p class="mt-5 text-base sm:text-lg text-dark-500 max-w-2xl mx-auto leading-relaxed">
@@ -25,8 +25,8 @@
 {{-- ══════════════════════════════════════════════════════════════
      FILTER + GRID
      ══════════════════════════════════════════════════════════════ --}}
-<section class="py-16 lg:py-24 bg-dark-50" x-data="{ active: 'all' }">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-12 lg:py-24 bg-dark-50" x-data="{ active: 'all' }">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
 
         {{-- Search bar --}}
         <div x-data="{ q: '' }" class="mb-6 flex justify-center">
@@ -45,7 +45,7 @@
         @include('front.bricks.cta-mini.cta-slim-banner', ['href' => '/reglementation', 'text' => 'Vous cherchez une réponse rapide sur la réglementation BACS ? Consultez la page réglementation.', 'linkText' => 'Voir le guide', 'storageKey' => 'blog_reglementation'])
 
         {{-- Category filter pills --}}
-        <div class="flex flex-wrap gap-2 mb-12 justify-center">
+        <div class="flex gap-2 mb-12 overflow-x-auto flex-nowrap snap-x pb-2 -mx-5 px-5 lg:flex-wrap lg:overflow-visible lg:mx-0 lg:px-0 lg:justify-center">
             <button
                 class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer"
                 :class="active === 'all'
@@ -70,7 +70,7 @@
         </div>
 
         {{-- Articles grid --}}
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             @foreach($posts as $post)
                 <a href="/blog/{{ $post->slug }}"
                    class="group card-hover block bg-white rounded-2xl overflow-hidden border border-dark-100"
@@ -102,7 +102,7 @@
                     </div>
 
                     {{-- Content --}}
-                    <div class="p-6">
+                    <div class="p-5 lg:p-7">
                         {{-- Category + Reading time --}}
                         <div class="flex items-center justify-between mb-3">
                             @if($post->category)
@@ -212,8 +212,8 @@
 {{-- ══════════════════════════════════════════════════════════════
      CTA BOTTOM
      ══════════════════════════════════════════════════════════════ --}}
-<section class="py-16 lg:py-20 bg-white">
-    <div class="max-w-3xl mx-auto px-6 md:px-10 text-center">
+<section class="py-12 lg:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-5 lg:px-10 text-center">
         <h2 class="text-2xl sm:text-3xl font-heading font-bold text-dark-900 tracking-tight">
             Un projet GTB à clarifier ?
         </h2>

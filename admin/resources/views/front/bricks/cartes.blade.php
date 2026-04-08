@@ -1,6 +1,6 @@
 @php $cols = $settings['colonnes'] ?? 3; @endphp
 
-<section class="py-14 md:py-24 bg-dark-50/50 relative overflow-hidden">
+<section class="py-12 lg:py-24 bg-dark-50/50 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
         @if(!empty($content['titre_section']))
@@ -10,7 +10,7 @@
             </div>
         @endif
 
-        <div class="grid grid-cols-1 gap-5 lg:gap-8 sm:grid-cols-2 lg:grid-cols-{{ $cols }}">
+        <div class="grid grid-cols-1 gap-3 lg:gap-8 sm:grid-cols-2 lg:grid-cols-{{ $cols }}">
             @foreach($content['cartes'] ?? [] as $i => $carte)
                 <a href="{{ $carte['lien'] ?? '#' }}"
                    class="group relative rounded-2xl border border-dark-100 bg-white p-5 lg:p-7 lg:shadow-sm card-hover-glow block transition-all duration-300 animate-fade-in-up"

@@ -3,7 +3,7 @@
 
 @section('content')
 
-<section class="py-16 md:py-20">
+<section class="py-12 lg:py-24">
     <div class="max-w-[680px] mx-auto px-4 sm:px-6">
 
         <div class="text-center mb-12">
@@ -14,7 +14,7 @@
             </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 md:p-8 border border-dark-100 shadow-sm" x-data="rgpdForm()">
+        <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm" x-data="rgpdForm()">
 
             <!-- Type de demande -->
             <div class="mb-8">

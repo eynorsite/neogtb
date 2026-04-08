@@ -1,10 +1,10 @@
 <section style="padding: 56px 0 64px;">
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
 
             {{-- Photo + identité --}}
             <x-front.shared.reveal class="lg:col-span-4">
-                <div class="card p-8" style="text-align: center;">
+                <div class="card p-5 lg:p-7" style="text-align: center;">
                     @if(!empty($content['photo']))
                         <img src="{{ $content['photo'] }}"
                              alt="{{ $content['photo_alt'] ?? '' }}"
