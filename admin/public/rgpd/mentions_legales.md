@@ -36,11 +36,12 @@ Contact : contact@neogtb.fr
 
 | | |
 |---|---|
-| **Hébergeur** | Vercel Inc. |
-| **Adresse** | 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis |
-| **Site web** | vercel.com |
+| **Hébergeur** | OVH SAS |
+| **Adresse** | 2 rue Kellermann, 59100 Roubaix, France |
+| **Téléphone** | 1007 |
+| **Site web** | ovh.com |
 
-Les transferts de données vers les États-Unis sont encadrés par le Data Privacy Framework (décision d'adéquation de la Commission européenne du 10 juillet 2023).
+Les données sont hébergées en France (Union européenne). Aucun transfert hors UE n'est effectué pour le service d'hébergement.
 
 ---
 
