@@ -27,6 +27,8 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->passwordReset()
+            ->authPasswordBroker('admins')
             ->authGuard('admin')
             ->brandName('NeoGTB Admin')
             ->brandLogo(asset('images/logo-admin.webp'))
