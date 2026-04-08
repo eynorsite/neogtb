@@ -17,6 +17,7 @@ class SubmitCeeLeadRequest extends FormRequest
             'sector' => ['nullable', 'string', 'max:50'],
             'th116_mwh' => ['nullable', 'numeric', 'min:0', 'max:100000'],
             'th116_value' => ['nullable', 'numeric', 'min:0', 'max:999999'],
+            'consentement_rgpd' => ['accepted'],
             'payload' => ['nullable', 'array'],
         ];
     }

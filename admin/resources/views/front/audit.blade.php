@@ -190,7 +190,7 @@
 @section('content')
 
   {{-- Breadcrumbs --}}
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-sm text-dark-400">
+  <nav class="max-w-7xl mx-auto px-6 md:px-10 py-3 text-sm text-dark-400">
     <a href="/" class="hover:text-primary-600 transition-colors">Accueil</a>
     <span class="mx-2">/</span>
     <span class="text-dark-300">Outils</span>
@@ -730,10 +730,23 @@
             <input type="text" x-model="userName" placeholder="Votre nom (optionnel)" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userCompany" placeholder="Entreprise (optionnel)" class="diag-input" style="margin-bottom:12px;">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-            <p style="font-size:11px;color:var(--color-dark-400);margin-bottom:16px;">Votre email ne sera utilisé que pour cet envoi. <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">Politique de confidentialité</a></p>
+
+            <label style="display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--color-dark-200);border-radius:10px;background:var(--color-dark-50);margin-bottom:12px;cursor:pointer;" :style="consentError ? 'border-color:#dc2626;background:#fef2f2;' : ''">
+              <input type="checkbox" x-model="consentRgpd" @change="consentError = false" style="margin-top:3px;width:16px;height:16px;accent-color:var(--color-accent-600);flex-shrink:0;" aria-required="true">
+              <span style="font-size:12px;color:var(--color-dark-700);line-height:1.55;">
+                J'accepte que NeoGTB utilise mon email pour m'envoyer mon rapport d'audit personnalisé et, le cas échéant, un suivi conseil. <span style="color:#dc2626;">*</span>
+              </span>
+            </label>
+            <p x-show="consentError" x-transition style="font-size:11px;color:#dc2626;margin:-6px 0 10px;">Merci de cocher cette case pour recevoir votre rapport.</p>
+
+            <div style="font-size:10.5px;color:var(--color-dark-400);line-height:1.6;margin-bottom:16px;padding:10px 12px;border-left:2px solid var(--color-dark-200);background:var(--color-dark-50);border-radius:0 6px 6px 0;">
+              <p style="margin:0 0 4px;font-weight:600;color:var(--color-dark-600);">Information RGPD (art. 13)</p>
+              <p style="margin:0;">Responsable : NeoGTB. <strong>Finalité</strong> : envoi du rapport d'audit GTB personnalisé et suivi conseil. <strong>Base légale</strong> : consentement. <strong>Durée de conservation</strong> : 3 ans à compter du dernier contact. Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité, ainsi que du droit de retirer votre consentement à tout moment, via <a href="/mes-droits-rgpd" style="color:var(--color-accent-600);">/mes-droits-rgpd</a>. Détails : <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">politique de confidentialité</a>.</p>
+            </div>
+
             <div style="display:flex;gap:12px;">
               <button @click="showEmailModal = false" class="diag-btn-ghost" style="flex:1;">Annuler</button>
-              <button @click="downloadPDF()" class="diag-btn-accent" style="flex:1;">
+              <button @click="downloadPDF()" class="diag-btn-accent" style="flex:1;" :disabled="!consentRgpd || !emailAddress" :style="(!consentRgpd || !emailAddress) ? 'opacity:0.5;cursor:not-allowed;' : ''">
                 <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                 Télécharger
               </button>
@@ -759,7 +772,7 @@
 
   <!-- Pages associées -->
   <section class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto px-6 md:px-10">
       <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associées</h2>
       <div class="grid md:grid-cols-3 gap-4">
         <a href="/comparateur" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">
@@ -795,6 +808,8 @@
       userName: '',
       userCompany: '',
       emailSent: false,
+      consentRgpd: false,
+      consentError: false,
 
       buildingTypes: [
         { id: 'bureau', label: 'Bureaux', icon: '\u{1F3E2}' },
@@ -994,9 +1009,10 @@
       showEmailGate() { this.showEmailModal = true; this.emailSent = false; },
 
       async downloadPDF() {
+        if (!this.consentRgpd) { this.consentError = true; return; }
         try {
           if (this.emailAddress && this.emailAddress.includes('@')) {
-            try { fetch('/audit/lead', { method: 'POST', body: JSON.stringify({ email: this.emailAddress, name: this.userName || null, company: this.userCompany || null, score: this.results.score, level_label: this.results.levelLabel, surface: this.form.surface, building_type: this.form.buildingType, savings_euro: this.results.savingsEuro, payload: { form: this.form, results: this.results } }), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || '', 'X-Requested-With': 'XMLHttpRequest' } }).catch(() => {}); } catch(e) {}
+            try { fetch('/audit/lead', { method: 'POST', body: JSON.stringify({ email: this.emailAddress, name: this.userName || null, company: this.userCompany || null, consentement_rgpd: true, score: this.results.score, level_label: this.results.levelLabel, surface: this.form.surface, building_type: this.form.buildingType, savings_euro: this.results.savingsEuro, payload: { form: this.form, results: this.results } }), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || '', 'X-Requested-With': 'XMLHttpRequest' } }).catch(() => {}); } catch(e) {}
           }
           const jsPDFModule = window.jspdf || await import('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm');
           const { jsPDF } = jsPDFModule;

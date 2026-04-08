@@ -2,7 +2,7 @@
 @php $fondClass = ($settings['fond'] ?? '') === 'dark-50' ? 'background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);' : ''; @endphp
 
 <section style="padding: 56px 0 64px; {{ $fondClass }}">
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
         <div class="flex items-end justify-between mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
             <div>
                 @if(!empty($content['eyebrow']))

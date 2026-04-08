@@ -1,4 +1,4 @@
-<section class="py-20 lg:py-28">
+<section class="py-12 md:py-20 lg:py-28">
     <div class="mx-auto max-w-3xl px-4 sm:px-6">
         @if(!empty($content['titre']))
             <div class="text-center mb-14 animate-fade-in-up">

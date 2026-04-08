@@ -13,7 +13,7 @@
     @endif
     <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.1) 100%);"></div>
 
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="width: 100%;">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 relative z-10" style="width: 100%;">
         <div style="max-width: 560px; margin-left: auto;">
             @if(!empty($content['badge']))
                 <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.15); margin-bottom: 24px;">

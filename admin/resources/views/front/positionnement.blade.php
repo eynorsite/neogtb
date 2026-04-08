@@ -46,9 +46,9 @@
 
 <!-- LE PROBLÈME -->
 <section class="py-16">
-    <div class="max-w-[680px] mx-auto px-6 md:px-10">
+    <div class="max-w-[760px] mx-auto px-6 md:px-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Le problème</p>
-        <h2 class="text-2xl font-medium text-dark-900 tracking-tight leading-tight mb-5">
+        <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-5">
             Pourquoi le conseil GTB classique pose problème
         </h2>
         <div class="space-y-4">
@@ -68,13 +68,14 @@
 
 <!-- COMMENT VÉRIFIER -->
 <section class="py-16 bg-dark-50 border-t border-b border-dark-200">
-    <div class="max-w-[680px] mx-auto px-6 md:px-10">
+    <div class="max-w-[760px] mx-auto px-6 md:px-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Vérifiez vous-même</p>
-        <h2 class="text-2xl font-medium text-dark-900 tracking-tight leading-tight mb-6">
+        <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-6">
             Comment savoir si un conseil GTB est vraiment indépendant
         </h2>
 
-        <div class="border border-dark-200 rounded-xl overflow-hidden">
+        <div class="border border-dark-200 rounded-xl overflow-x-auto">
+         <div class="min-w-[560px]">
             <div class="grid grid-cols-3 bg-dark-100 border-b border-dark-200">
                 <p class="text-xs font-medium text-dark-400 p-3">Question à poser</p>
                 <p class="text-xs font-medium text-dark-400 p-3 text-center">Intégrateur classique</p>
@@ -92,6 +93,7 @@
                 <p class="text-sm text-accent-600 font-medium p-3 text-center">{!! $row['neo'] !!}</p>
             </div>
             @endforeach
+         </div>
         </div>
         @include('front.bricks.cta-mini.cta-text-link-underline', ['beforeText' => 'Envie de confronter ces critères à un cas concret ?', 'linkText' => 'Le pré-diagnostic est un bon test de la méthode', 'href' => '/audit', 'afterText' => '.'])
     </div>
@@ -99,9 +101,9 @@
 
 <!-- MODÈLE ÉCONOMIQUE -->
 <section class="py-16">
-    <div class="max-w-[680px] mx-auto px-6 md:px-10">
+    <div class="max-w-[760px] mx-auto px-6 md:px-10">
         <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Transparence</p>
-        <h2 class="text-2xl font-medium text-dark-900 tracking-tight leading-tight mb-3">
+        <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">
             Comment NeoGTB gagne de l'argent
         </h2>
         <p class="text-[15px] text-dark-500 leading-relaxed mb-7">
@@ -150,7 +152,7 @@
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden py-20 bg-dark-100 border-t border-dark-200">
+<section class="relative overflow-hidden py-12 md:py-20 bg-dark-100 border-t border-dark-200">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="absolute right-0 top-0 h-full w-auto object-cover opacity-20" />
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">

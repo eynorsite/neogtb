@@ -10,7 +10,7 @@
         <div style="position: absolute; inset: 0; background: linear-gradient(to right, {{ $bg }} 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
     @endif
 
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 230px;">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 230px;">
         <div style="max-width: 520px;">
             @if(!empty($content['titre']))
                 <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px;">

@@ -1,6 +1,6 @@
-<section class="py-24 relative overflow-hidden">
+<section class="py-14 md:py-24 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
-    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
         @if(!empty($content['titre']))
             <div class="text-center mb-16 animate-fade-in-up">
                 <h2 class="text-3xl font-heading font-extrabold text-dark-900 sm:text-4xl lg:text-5xl">

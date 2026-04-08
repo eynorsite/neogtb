@@ -1,7 +1,9 @@
 # ============================================================================
 # Crontab pour NeoGTB Admin (scheduler Laravel)
 # ----------------------------------------------------------------------------
-# Installation sur le VPS :
+# Installation sur le VPS (méthode recommandée, idempotente) :
+#   sudo crontab -u www-data /var/www/neogtb/current/admin/deploy/crontab-neogtb.txt
+# Ou en édition manuelle :
 #   sudo crontab -u www-data -e
 # Puis coller la ligne ci-dessous (sans le #).
 #
@@ -13,4 +15,4 @@
 #   - PurgeDataCommand (1er du mois à 03:00)
 # ============================================================================
 
-* * * * * cd /var/www/neogtb-admin && php artisan schedule:run >> /dev/null 2>&1
+* * * * * cd /var/www/neogtb/current/admin && /usr/bin/php artisan schedule:run >> /dev/null 2>&1

@@ -1,5 +1,5 @@
-<section class="py-20 lg:py-28" style="background-color: {{ $settings['couleur_fond'] ?? '#ffffff' }}">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="py-12 md:py-20 lg:py-28" style="background-color: {{ $settings['couleur_fond'] ?? '#ffffff' }}">
+    <div class="mx-auto max-w-7xl px-6 md:px-10">
         @if(!empty($content['titre']))
             <div class="mb-10 animate-fade-in-up">
                 <h2 class="text-3xl font-heading font-extrabold text-dark-900 sm:text-4xl lg:text-5xl">{{ $content['titre'] }}</h2>

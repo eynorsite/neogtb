@@ -1,2 +1,10 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+Sitemap: https://neogtb.fr/sitemap.xml

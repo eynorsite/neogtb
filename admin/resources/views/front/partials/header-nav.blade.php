@@ -62,7 +62,7 @@ $icons = [
   :class="scrolled ? 'bg-white/80 backdrop-blur-xl shadow-sm' : 'bg-white/0'"
   :style="scrolled ? 'border-bottom: 1px solid rgba(0,0,0,0.06)' : ''"
 >
-  <nav class="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-24 md:h-[120px]">
+  <nav class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 flex items-center justify-between h-24 md:h-[120px]">
     {{-- Logo --}}
     <a href="/" class="flex items-center">
       <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-20 md:h-[100px] w-auto" />
@@ -127,7 +127,7 @@ $icons = [
     class="hidden lg:block absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl rounded-b-3xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]"
     style="border-top: 1px solid rgba(0,0,0,0.06);"
   >
-    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-6 grid grid-cols-3 gap-8 max-h-[calc(100vh-160px)] overflow-y-auto">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-6 grid grid-cols-3 gap-8 max-h-[calc(100vh-160px)] overflow-y-auto">
       @foreach(['comprendre','conformer','agir'] as $colKey)
         @php($col = $exploreItems[$colKey])
         <div>
@@ -154,7 +154,7 @@ $icons = [
       @endforeach
 
     </div>
-    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-2.5 flex items-center justify-between text-[11px] text-dark-500" style="border-top: 1px solid rgba(0,0,0,0.06);">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-2.5 flex items-center justify-between text-[11px] text-dark-500" style="border-top: 1px solid rgba(0,0,0,0.06);">
       <div class="flex items-center gap-2">
         <span>Besoin d'aide pour choisir ?</span>
         <a href="/contact" class="text-accent-700 hover:text-accent-800 font-medium inline-flex items-center gap-1">

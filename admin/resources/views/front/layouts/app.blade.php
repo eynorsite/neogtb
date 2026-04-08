@@ -2,11 +2,20 @@
 <html lang="fr">
 <head>
   @php($page = $page ?? null)
-  @php($seoTitle = $page->meta_title ?? 'Conseil GTB indépendant & décret BACS 2027 | NeoGTB')
-  @php($seoDescription = $page->meta_description ?? 'Tiers de confiance GTB. Pré-diagnostic ISO 52120-1 gratuit, comparateur indépendant, accompagnement décret BACS pour bâtiments tertiaires.')
-  @php($seoOgImage = $page->og_image ?? '/images/og-neogtb.png')
+  @php($seoTitle = $seoTitle ?? null)
+  @php($seoDescription = $seoDescription ?? null)
+  {{-- Priorité : variable explicite du controller > @section du blade > meta_title de la page dynamique > défaut global --}}
+  @hasSection('title')
+    @php($seoTitle = $seoTitle ?: trim($__env->yieldContent('title')))
+  @endif
+  @hasSection('description')
+    @php($seoDescription = $seoDescription ?: trim($__env->yieldContent('description')))
+  @endif
+  @php($seoTitle = $seoTitle ?: ($page->meta_title ?? 'Conseil GTB indépendant & décret BACS 2027 | NeoGTB'))
+  @php($seoDescription = $seoDescription ?: ($page->meta_description ?? 'Tiers de confiance GTB. Pré-diagnostic ISO 52120-1 gratuit, comparateur indépendant, accompagnement décret BACS pour bâtiments tertiaires.'))
+  @php($seoOgImage = $seoOgImage ?? ($page->og_image ?? '/images/og-neogtb.png'))
   @php($seoOgImageAbs = \Illuminate\Support\Str::startsWith($seoOgImage, ['http://', 'https://']) ? $seoOgImage : url($seoOgImage))
-  @php($seoUrl = url()->current())
+  @php($seoUrl = $seoUrl ?? url()->current())
   @php($seoBreadcrumbName = $page->title ?? $seoTitle)
 
   <meta charset="UTF-8" />
@@ -50,7 +59,9 @@
     "name": "NeoGTB",
     "url": "https://neogtb.fr",
     "logo": "https://neogtb.fr/images/logo-neogtb.webp",
-    "sameAs": []
+    "sameAs": [
+      "https://www.linkedin.com/company/neogtb"
+    ]
   }
   </script>
 
@@ -63,7 +74,6 @@
     "name": "NeoGTB",
     "url": "https://neogtb.fr",
     "image": "https://neogtb.fr/images/og-neogtb.png",
-    "telephone": null,
     "priceRange": "€€",
     "address": {
       "@@type": "PostalAddress",
@@ -121,7 +131,7 @@
   <main id="main-content" class="pt-24 md:pt-[120px]">
     {{-- Breadcrumbs --}}
     @hasSection('breadcrumbs')
-      <nav aria-label="Fil d'Ariane" class="max-w-[1200px] mx-auto px-6 md:px-10 py-3">
+      <nav aria-label="Fil d'Ariane" class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-3">
         <ol style="display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; font-size: 12px; color: #94a3b8;">
           @yield('breadcrumbs')
         </ol>
@@ -133,7 +143,7 @@
 
   {{-- ===== FOOTER — Premium 4 colonnes ===== --}}
   <footer style="background: #fff; border-top: 0.5px solid #e2e8f0;">
-    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-16">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
 
         {{-- Brand + Newsletter --}}
@@ -222,6 +232,7 @@
           <ul class="space-y-3">
             <li><a href="/mentions-legales" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Mentions légales</a></li>
             <li><a href="/politique-de-confidentialite" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Confidentialité</a></li>
+            <li><a href="/cookies" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Cookies</a></li>
             <li><a href="/mes-droits-rgpd" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Vos droits RGPD</a></li>
           </ul>
         </div>

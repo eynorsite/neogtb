@@ -11,9 +11,9 @@
     <img src="/images/hero-blog.png" alt="Veille technique GTB — bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-10 text-center">
         <span class="inline-block text-xs font-semibold tracking-widest uppercase text-accent-600 mb-4">Perspectives</span>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-dark-900 tracking-tight leading-tight">
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-dark-900 tracking-tight leading-tight">
             Analyses & veille <span class="text-accent-600">technique</span>
         </h1>
         <p class="mt-5 text-base sm:text-lg text-dark-500 max-w-2xl mx-auto leading-relaxed">
@@ -26,7 +26,7 @@
      FILTER + GRID
      ══════════════════════════════════════════════════════════════ --}}
 <section class="py-16 lg:py-24 bg-dark-50" x-data="{ active: 'all' }">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
 
         {{-- Search bar --}}
         <div x-data="{ q: '' }" class="mb-6 flex justify-center">
@@ -38,7 +38,7 @@
                     el.style.display = txt.includes(q.toLowerCase()) ? '' : 'none';
                 })"
                 placeholder="Rechercher un article..."
-                class="w-full max-w-md px-4 py-3 rounded-xl border border-dark-200 focus:border-accent-500 focus:ring-2 focus:ring-accent-100 outline-none transition"
+                class="w-full max-w-lg px-4 py-3 rounded-xl border border-dark-200 focus:border-accent-500 focus:ring-2 focus:ring-accent-100 outline-none transition"
             />
         </div>
 
@@ -213,8 +213,8 @@
      CTA BOTTOM
      ══════════════════════════════════════════════════════════════ --}}
 <section class="py-16 lg:py-20 bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-dark-900 tracking-tight">
+    <div class="max-w-3xl mx-auto px-6 md:px-10 text-center">
+        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-dark-900 tracking-tight">
             Un projet GTB à clarifier ?
         </h2>
         <p class="mt-4 text-base text-dark-500 leading-relaxed max-w-xl mx-auto">

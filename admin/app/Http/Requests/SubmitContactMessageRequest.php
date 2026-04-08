@@ -17,6 +17,14 @@ class SubmitContactMessageRequest extends FormRequest
             'subject' => ['required', 'string', 'max:200', 'not_regex:/[\r\n]/'],
             'message' => ['required', 'string', 'min:10', 'max:5000'],
             'source_page' => ['nullable', 'string', 'max:200'],
+            'consentement_rgpd' => ['accepted'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'consentement_rgpd.accepted' => 'Vous devez accepter le traitement de vos donnees pour envoyer votre message.',
         ];
     }
 }

@@ -61,7 +61,24 @@ class PageController extends Controller
 
         $settings = SiteSetting::getAllCached();
 
-        return view('front.article', compact('post', 'related', 'settings'));
+        $seoTitle = $post->meta_title ?: ($post->title . ' — NeoGTB');
+        $seoDescription = $post->meta_description ?: $post->excerpt;
+
+        $ogImageRaw = $post->og_image ?: $post->featured_image;
+        if ($ogImageRaw) {
+            $seoOgImage = str_starts_with($ogImageRaw, '/') || str_starts_with($ogImageRaw, 'http')
+                ? $ogImageRaw
+                : asset('storage/' . $ogImageRaw);
+        } else {
+            $seoOgImage = '/images/og-neogtb.png';
+        }
+
+        $seoUrl = route('front.article', $post->slug);
+
+        return view('front.article', compact(
+            'post', 'related', 'settings',
+            'seoTitle', 'seoDescription', 'seoOgImage', 'seoUrl'
+        ));
     }
 
     public function sendContact(SubmitContactMessageRequest $request, ContactSubmissionService $service)

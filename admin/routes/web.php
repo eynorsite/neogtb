@@ -10,6 +10,9 @@ Route::middleware('throttle:10,1')->group(function () {
     Route::post('/rgpd/request', [\App\Http\Controllers\RgpdConsentController::class, 'submitGdprRequest']);
 });
 
+// Sitemap XML (dynamic)
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('front.sitemap');
+
 // Frontend public routes
 Route::get('/', [\App\Http\Controllers\StaticPageController::class, 'accueil'])->name('front.home');
 Route::get('/blog', [\App\Http\Controllers\PageController::class, 'blog'])->name('front.blog');
@@ -30,6 +33,7 @@ Route::get('/solutions', [\App\Http\Controllers\StaticPageController::class, 'so
 Route::get('/mentions-legales', [\App\Http\Controllers\StaticPageController::class, 'mentionsLegales'])->name('front.mentions-legales');
 Route::get('/politique-de-confidentialite', [\App\Http\Controllers\StaticPageController::class, 'politiqueConfidentialite'])->name('front.politique-confidentialite');
 Route::get('/mes-droits-rgpd', [\App\Http\Controllers\StaticPageController::class, 'mesDroitsRgpd'])->name('front.mes-droits-rgpd');
+Route::get('/cookies', [\App\Http\Controllers\StaticPageController::class, 'cookies'])->name('front.cookies');
 Route::get('/newsletter-confirmee', [\App\Http\Controllers\StaticPageController::class, 'newsletterConfirmee'])->name('front.newsletter-confirmee');
 
 // Interactive tools

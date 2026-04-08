@@ -19,7 +19,7 @@
 />
 
 <!-- DEFINITION -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-[760px] mx-auto px-6 md:px-10">
         <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-5">Définition et rôle de la GTC</h2>
         <p class="text-base text-dark-500 leading-relaxed mb-4">
@@ -39,36 +39,36 @@
 </section>
 
 <!-- GTB vs GTC -->
-<section class="py-20 bg-dark-50 border-t border-b border-dark-200">
+<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Comparaison</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">GTB vs GTC : differences factuelles</h2>
+            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">GTB vs GTC : différences factuelles</h2>
             <p class="text-base text-dark-500 leading-relaxed">Les deux acronymes sont fréquemment utilisés de manière interchangeable. Pourtant, ils recouvrent des périmètres distincts.</p>
         </div>
         <div class="grid md:grid-cols-2 gap-5 mb-10">
             <div class="bg-white rounded-xl p-7 border border-dark-200">
                 <span class="inline-block text-[13px] font-medium text-white bg-dark-600 px-2.5 py-1 rounded-md mb-3.5">GTB</span>
-                <h3 class="text-lg font-medium text-dark-900 mb-2.5">Gestion Technique du Batiment</h3>
+                <h3 class="text-lg font-medium text-dark-900 mb-2.5">Gestion Technique du Bâtiment</h3>
                 <ul class="text-sm text-dark-500 leading-relaxed space-y-1.5">
                     <li>&rarr; Périmètre : <strong class="text-dark-900 font-medium">un bâtiment</strong>, tous lots confondus</li>
                     <li>&rarr; Fonction : piloter, réguler et optimiser</li>
                     <li>&rarr; Régulation intégrée (boucles PID, lois d'eau)</li>
                     <li>&rarr; Utilisateur : technicien, energy manager</li>
                     <li>&rarr; Protocoles : BACnet, LON, KNX</li>
-                    <li>&rarr; Equivalent : <em>BMS (Building Management System)</em></li>
+                    <li>&rarr; Équivalent : <em>BMS (Building Management System)</em></li>
                 </ul>
             </div>
             <div class="bg-white rounded-xl p-7 border border-accent-200 shadow-[0_0_0_3px] shadow-accent-50">
                 <span class="inline-block text-[13px] font-medium text-white bg-accent-600 px-2.5 py-1 rounded-md mb-3.5">GTC</span>
-                <h3 class="text-lg font-medium text-dark-900 mb-2.5">Gestion Technique Centralisee</h3>
+                <h3 class="text-lg font-medium text-dark-900 mb-2.5">Gestion Technique Centralisée</h3>
                 <ul class="text-sm text-dark-500 leading-relaxed space-y-1.5">
                     <li>&rarr; Périmètre : <strong class="text-dark-900 font-medium">plusieurs bâtiments</strong> ou un parc</li>
                     <li>&rarr; Fonction : superviser, centraliser, alerter</li>
                     <li>&rarr; Régulation limitée (marche/arrêt)</li>
                     <li>&rarr; Utilisateur : gestionnaire de patrimoine</li>
                     <li>&rarr; Protocoles : BACnet/IP, Modbus TCP, OPC-UA</li>
-                    <li>&rarr; Equivalent : <em>SCADA / BCS</em></li>
+                    <li>&rarr; Équivalent : <em>SCADA / BCS</em></li>
                 </ul>
             </div>
         </div>
@@ -81,7 +81,7 @@
 </section>
 
 <!-- FONCTIONS PRINCIPALES -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Fonctionnalités</p>
@@ -107,7 +107,7 @@
 </section>
 
 <!-- ARCHITECTURE -->
-<section class="py-20 bg-dark-50 border-t border-b border-dark-200">
+<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Infrastructure</p>
@@ -140,7 +140,7 @@
 </section>
 
 <!-- PROTOCOLES GTC -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Communication</p>
@@ -169,7 +169,7 @@
 </section>
 
 <!-- CAS D'USAGE -->
-<section class="py-20 bg-dark-50 border-t border-b border-dark-200">
+<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Applications</p>
@@ -193,7 +193,7 @@
 </section>
 
 <!-- REGLEMENTATION -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Conformité</p>
@@ -217,7 +217,7 @@
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden py-20 bg-dark-100 border-t border-dark-200">
+<section class="relative overflow-hidden py-12 md:py-20 bg-dark-100 border-t border-dark-200">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="absolute right-0 top-0 h-full w-auto object-cover opacity-20" />
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">

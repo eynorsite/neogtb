@@ -87,7 +87,7 @@
 
             <section id="duree">
                 <h2 class="font-heading font-medium text-dark-900 mb-3 text-lg">4. Durée de conservation</h2>
-                <div class="overflow-hidden rounded-lg border border-dark-100">
+                <div class="overflow-x-auto rounded-lg border border-dark-100">
                     <table class="w-full text-sm">
                         <thead>
                             <tr class="bg-dark-50">

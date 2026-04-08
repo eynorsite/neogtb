@@ -26,9 +26,9 @@
     overlay="gradient"
 />
 
-<section class="relative overflow-hidden bg-white py-20" id="formulaire">
-    <div class="max-w-7xl mx-auto px-5 md:px-10 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-16 lg:gap-20">
+<section class="relative overflow-hidden bg-white py-12 md:py-20" id="formulaire">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
 
             <!-- Left: Info -->
             <div class="flex flex-col justify-center">
@@ -87,8 +87,8 @@
                 <div class="rounded-xl p-6 md:p-8 bg-white border border-dark-100 shadow-sm">
                     @if(session('contact_success'))
                     <div class="p-4 rounded-lg bg-accent-50 border border-accent-200" role="alert">
-                        <p class="text-sm font-medium text-accent-700">Message envoyé.</p>
-                        <p class="text-[13px] text-dark-500 mt-1">Nous vous répondrons sous 48h.</p>
+                        <p class="text-sm font-medium text-accent-700">Merci pour votre demande.</p>
+                        <p class="text-[13px] text-dark-500 mt-1">Nous avons bien reçu votre message et reviendrons vers vous sous 48h ouvrées.</p>
                     </div>
                     @else
                     <form
@@ -144,7 +144,7 @@
                             <div>
                                 <button type="submit" :disabled="sending"
                                     class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow disabled:opacity-50">
-                                    <span x-show="!sending">Envoyer</span>
+                                    <span x-show="!sending">Envoyer ma demande</span>
                                     <span x-show="sending" class="flex items-center gap-2">
                                         <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" />

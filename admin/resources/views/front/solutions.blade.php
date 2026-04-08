@@ -20,10 +20,10 @@
 
 <!-- PROTOCOLES DE COMMUNICATION -->
 <section class="py-12 md:py-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-10">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="mb-10">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Fondations</p>
-            <h2 class="text-[26px] md:text-[32px] font-medium text-dark-900 leading-tight tracking-tight">Protocoles de communication</h2>
+            <h2 class="text-[28px] font-medium text-dark-900 leading-tight tracking-tight">Protocoles de communication</h2>
             <p class="mt-3 text-sm text-dark-500 max-w-xl leading-relaxed">Le protocole est le langage commun entre équipements. Le choix du protocole conditionne l'interopérabilité, la maintenabilité et la pérennité de l'installation.</p>
         </div>
         <div class="grid md:grid-cols-2 gap-5">
@@ -59,10 +59,10 @@
 
 <!-- EQUIPEMENTS PILOTES -->
 <section class="py-12 md:py-16 bg-dark-50">
-    <div class="max-w-7xl mx-auto px-5 md:px-10">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="mb-10">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Périmètre</p>
-            <h2 class="text-[26px] md:text-[32px] font-medium text-dark-900 leading-tight tracking-tight">Équipements pilotés</h2>
+            <h2 class="text-[28px] font-medium text-dark-900 leading-tight tracking-tight">Équipements pilotés</h2>
             <p class="mt-3 text-sm text-dark-500 max-w-xl leading-relaxed">La GTB supervise et régule l'ensemble des lots techniques d'un bâtiment.</p>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -86,10 +86,10 @@
 
 <!-- ARCHITECTURE TYPE -->
 <section class="py-12 md:py-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-10">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="mb-10">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Structure</p>
-            <h2 class="text-[26px] md:text-[32px] font-medium text-dark-900 leading-tight tracking-tight">Architecture type d'un système GTB</h2>
+            <h2 class="text-[28px] font-medium text-dark-900 leading-tight tracking-tight">Architecture type d'un système GTB</h2>
             <p class="mt-3 text-sm text-dark-500 max-w-xl leading-relaxed">Un système GTB s'organise en couches successives, du terrain jusqu'à l'interface utilisateur.</p>
         </div>
         <div class="grid md:grid-cols-5 gap-4">
@@ -116,10 +116,10 @@
 
 <!-- CADRE REGLEMENTAIRE -->
 <section class="py-12 md:py-16 bg-dark-50">
-    <div class="max-w-7xl mx-auto px-5 md:px-10">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="mb-10">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Réglementation</p>
-            <h2 class="text-[26px] md:text-[32px] font-medium text-dark-900 leading-tight tracking-tight">Cadre réglementaire</h2>
+            <h2 class="text-[28px] font-medium text-dark-900 leading-tight tracking-tight">Cadre réglementaire</h2>
             <p class="mt-3 text-sm text-dark-500 max-w-xl leading-relaxed">Plusieurs textes réglementaires français et européens encadrent le déploiement de systèmes GTB dans les bâtiments tertiaires.</p>
         </div>
         <div class="grid md:grid-cols-2 gap-5">
@@ -142,7 +142,7 @@
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden py-20 bg-dark-100 border-t border-dark-200">
+<section class="relative overflow-hidden py-12 md:py-20 bg-dark-100 border-t border-dark-200">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="absolute right-0 top-0 h-full w-auto object-cover opacity-20" />
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">

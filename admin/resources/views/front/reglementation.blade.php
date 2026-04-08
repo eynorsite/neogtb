@@ -34,15 +34,15 @@
 </section>
 
 <!-- CALENDRIER -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Vue d'ensemble</p>
             <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Calendrier des obligations</h2>
             <p class="text-base text-dark-500 leading-relaxed">Toutes les échéances réglementaires liées à la GTB, actualisées après le décret de décembre 2025.</p>
         </div>
-        <div class="border border-dark-200 rounded-xl overflow-hidden">
-            <table class="w-full border-collapse text-sm">
+        <div class="border border-dark-200 rounded-xl overflow-x-auto">
+            <table class="w-full min-w-[640px] border-collapse text-sm">
                 <thead>
                     <tr class="bg-dark-50">
                         <th class="text-left text-[11px] font-medium uppercase tracking-widest text-dark-400 p-3 border-b border-dark-200">Type</th>
@@ -84,9 +84,9 @@
 </section>
 
 <!-- DÉCRET BACS -->
-<section class="py-20 bg-dark-50 border-t border-b border-dark-200">
+<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
-        <div class="grid lg:grid-cols-5 gap-12">
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
             <div class="lg:col-span-3">
                 <span class="inline-block text-[13px] font-medium text-white bg-accent-600 px-3 py-1 rounded-md mb-4">Obligation principale</span>
                 <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret BACS</h2>
@@ -130,9 +130,9 @@
 </section>
 
 <!-- DÉCRET TERTIAIRE -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
-        <div class="grid lg:grid-cols-2 gap-12">
+        <div class="grid md:grid-cols-2 gap-12">
             <div>
                 <span class="inline-block text-[13px] font-medium text-white bg-dark-600 px-3 py-1 rounded-md mb-4">Objectifs de réduction</span>
                 <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret tertiaire — Éco Énergie Tertiaire</h2>
@@ -164,7 +164,7 @@
 </section>
 
 <!-- RE2020 + EPBD -->
-<section class="py-20 bg-dark-50 border-t border-b border-dark-200">
+<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Bâtiments neufs et Europe</p>
@@ -192,7 +192,7 @@
 </section>
 
 <!-- NORME EN ISO 52120-1 -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Référentiel technique</p>
@@ -217,8 +217,8 @@
 
         <!-- Gains par classe -->
         <h3 class="text-lg font-medium text-dark-900 mb-4">Gains énergétiques estimés par la norme</h3>
-        <div class="border border-dark-200 rounded-xl overflow-hidden">
-            <table class="w-full border-collapse text-sm">
+        <div class="border border-dark-200 rounded-xl overflow-x-auto">
+            <table class="w-full min-w-[640px] border-collapse text-sm">
                 <thead>
                     <tr class="bg-dark-50">
                         <th class="text-left text-[11px] font-medium uppercase tracking-widest text-dark-400 p-3 border-b border-dark-200">Passage</th>
@@ -253,11 +253,11 @@
 </section>
 
 <!-- CEE -->
-<section class="py-20 bg-dark-50 border-t border-b border-dark-200">
+<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Aides financières</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Certificats d'Economies d'Energie (CEE)</h2>
+            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Certificats d'Économies d'Énergie (CEE)</h2>
             <p class="text-base text-dark-500 leading-relaxed">Les CEE financent une partie significative de l'installation GTB. Deux fiches standardisées couvrent les travaux de GTB.</p>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
@@ -284,7 +284,7 @@
 </section>
 
 <!-- SYNTHÈSE -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Synthèse</p>
@@ -313,7 +313,7 @@
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden py-20 bg-dark-100 border-t border-dark-200">
+<section class="relative overflow-hidden py-12 md:py-20 bg-dark-100 border-t border-dark-200">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="absolute right-0 top-0 h-full w-auto object-cover opacity-20" />
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">

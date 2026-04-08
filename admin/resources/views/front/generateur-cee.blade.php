@@ -537,10 +537,17 @@
             <h3 style="font-size:18px;font-weight:500;color:var(--color-dark-900);margin-bottom:16px;">Recevoir mon estimation</h3>
             <input type="email" x-model="emailAddress" placeholder="votre@email.com" class="cee-input" style="margin-bottom:12px;">
             <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
-            <p style="font-size:12px;color:var(--color-dark-400);margin-bottom:16px;">Votre email ne sera utilisé que pour cet envoi. Aucun démarchage.</p>
+
+            <label class="flex items-start gap-2 cursor-pointer" style="margin-bottom:16px;">
+              <input type="checkbox" x-model="consentRgpd" required class="mt-0.5 rounded border-dark-300 text-accent-600 focus:ring-accent-500" />
+              <span class="text-[11px] text-dark-400 leading-relaxed">
+                J'accepte que mon email soit traité par NeoGTB pour recevoir mon estimation CEE et d'éventuelles informations liées à ma demande (consentement, art. 6.1.a RGPD). Données conservées 3 ans puis supprimées. <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">Politique de confidentialité</a> &middot; <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">Exercer vos droits</a>
+              </span>
+            </label>
+
             <div style="display:flex;gap:12px;">
               <button @click="showEmailModal = false" class="cee-btn-ghost" style="flex:1;">Annuler</button>
-              <button @click="sendEmail()" class="cee-btn-primary" style="flex:1;">Envoyer</button>
+              <button @click="sendEmail()" class="cee-btn-primary" style="flex:1;" :disabled="!consentRgpd" :style="!consentRgpd ? 'flex:1;opacity:0.5;cursor:not-allowed;' : 'flex:1;'">Envoyer</button>
             </div>
             <p x-show="emailSent" style="margin-top:12px;font-size:13px;color:var(--color-accent-600);font-weight:500;text-align:center;">Email envoyé ✓</p>
           </div>
@@ -593,6 +600,7 @@
       showEmailModal: false,
       emailAddress: '',
       emailSent: false,
+      consentRgpd: false,
 
       buildingTypes: [
         { id: 'office',     label: 'Bureaux',                   icon: '🏢' },
@@ -872,15 +880,17 @@
 
       async sendEmail() {
         if (!this.emailAddress || !this.emailAddress.includes('@')) return;
+        if (!this.consentRgpd) return;
         try {
           const payload = {
-            email:        this.emailAddress,
-            th116_mwh:    this.results.th116.total,
-            th116_value:  this.results.th116.value,
-            sector:       this.getBuildingTypeLabel(),
-            surface:      this.form.surface,
-            climate_zone: this.form.climateZone,
-            payload:      { form: this.form, results: this.results },
+            email:             this.emailAddress,
+            th116_mwh:         this.results.th116.total,
+            th116_value:       this.results.th116.value,
+            sector:            this.getBuildingTypeLabel(),
+            surface:           this.form.surface,
+            climate_zone:      this.form.climateZone,
+            consentement_rgpd: this.consentRgpd,
+            payload:           { form: this.form, results: this.results },
           };
           await fetch('/cee/lead', {
             method: 'POST',

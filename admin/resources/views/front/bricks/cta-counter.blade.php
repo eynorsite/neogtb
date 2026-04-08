@@ -1,6 +1,6 @@
 {{-- cta-counter : compteur d'usage + CTA "honnête" --}}
 <section style="padding: 56px 0 64px;">
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
 
         @if(!empty($content['compteurs']))
             <x-front.shared.reveal class="text-center" style="margin-bottom: 64px;">

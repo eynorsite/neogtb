@@ -1,8 +1,9 @@
 @extends('front.layouts.app')
-@section('title', $post->meta_title ?? $post->title . ' — NeoGTB')
-@section('description', $post->meta_description ?? $post->excerpt)
 
 @push('head')
+{{-- og:type override pour les articles (le layout émet "website" par défaut) --}}
+<meta property="og:type" content="article" />
+
 {{-- Schema.org Article JSON-LD --}}
 <script type="application/ld+json">
 {
@@ -26,21 +27,10 @@
             "url": "https://neogtb.fr/images/logo-neogtb.webp"
         }
     },
-    "mainEntityOfPage": "https://neogtb.fr/blog/{{ $post->slug }}"
-    @if($post->featured_image)
-    ,"image": "{{ asset('storage/' . $post->featured_image) }}"
-    @endif
+    "mainEntityOfPage": @json(route('front.article', $post->slug)),
+    "image": @json($post->featured_image ? asset('storage/' . $post->featured_image) : url('/images/og-neogtb.png'))
 }
 </script>
-
-{{-- Open Graph --}}
-<meta property="og:type" content="article">
-<meta property="og:title" content="{{ $post->meta_title ?? $post->title }}">
-<meta property="og:description" content="{{ $post->meta_description ?? $post->excerpt }}">
-<meta property="og:url" content="https://neogtb.fr/blog/{{ $post->slug }}">
-@if($post->og_image ?? $post->featured_image)
-<meta property="og:image" content="{{ asset('storage/' . ($post->og_image ?? $post->featured_image)) }}">
-@endif
 @endpush
 
 @section('content')
@@ -101,7 +91,7 @@
             </div>
 
             {{-- Title --}}
-            <h1 class="text-2xl sm:text-3xl lg:text-[2.25rem] font-heading font-extrabold text-dark-900 leading-tight tracking-tight" style="letter-spacing: -0.5px;">
+            <h1 class="text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] font-heading font-extrabold text-dark-900 leading-tight tracking-tight" style="letter-spacing: -0.5px;">
                 {{ $post->title }}
             </h1>
 
@@ -138,8 +128,8 @@
         {{-- Prose content --}}
         <div class="prose prose-lg max-w-none
             prose-headings:font-heading prose-headings:font-bold prose-headings:text-dark-900 prose-headings:tracking-tight
-            prose-h2:text-xl prose-h2:sm:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:leading-tight
-            prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-3
+            prose-h2:text-xl prose-h2:sm:text-2xl prose-h2:md:text-[1.625rem] prose-h2:mt-12 prose-h2:mb-4 prose-h2:leading-tight
+            prose-h3:text-lg prose-h3:md:text-xl prose-h3:mt-8 prose-h3:mb-3
             prose-p:text-dark-600 prose-p:leading-relaxed
             prose-a:text-accent-600 prose-a:underline prose-a:underline-offset-2 prose-a:decoration-accent-300 hover:prose-a:decoration-accent-600
             prose-strong:text-dark-800 prose-strong:font-semibold
@@ -237,7 +227,7 @@
          CTA
          ══════════════════════════════════════════════════════════════ --}}
     <section class="py-16 lg:py-20 bg-white border-t border-dark-100">
-        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-dark-900 tracking-tight leading-tight">
                 {{ $cta['title'] }}
             </h2>

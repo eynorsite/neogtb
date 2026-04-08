@@ -10,13 +10,13 @@
 @section('content')
 
   {{-- Hero --}}
-  <section class="relative overflow-hidden bg-gradient-to-br from-indigo-950 to-indigo-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
-      <span class="inline-block text-[11px] font-semibold uppercase tracking-[0.12em] text-indigo-200 mb-4">Catalogue technique</span>
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary-900 to-primary-800">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-20 text-center relative z-10">
+      <span class="inline-block text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-200 mb-4">Catalogue technique</span>
       <h1 class="text-4xl md:text-5xl font-medium text-white">
         Tables d'adressage Modbus — Catalogue technique
       </h1>
-      <p class="mt-5 text-lg max-w-3xl mx-auto text-indigo-100/90">
+      <p class="mt-5 text-lg max-w-3xl mx-auto text-primary-100/90">
         19 équipements référencés, 7 catégories — données indicatives à vérifier auprès du fabricant
       </p>
     </div>
@@ -24,7 +24,7 @@
 
   {{-- Disclaimer --}}
   <section class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
       <div class="rounded-xl p-5 border border-amber-200 bg-amber-50">
         <p class="text-sm text-amber-900">
           <strong>⚠️ Données indicatives</strong> — Vérifiez toujours la documentation fabricant à jour avant intégration. Les adresses, fonctions et plages de registres peuvent varier selon le firmware, le modèle exact et la version du protocole.
@@ -36,52 +36,52 @@
 
   {{-- Section explicative dépliable --}}
   <section class="py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-xl p-6 border border-slate-200" x-data="{ open: false }">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="bg-white rounded-xl p-6 border border-dark-200" x-data="{ open: false }">
         <button @click="open = !open" class="flex items-center justify-between w-full text-left">
           <div>
-            <p class="text-base font-semibold text-slate-900">Comprendre les 4 types de registres Modbus</p>
-            <p class="text-xs text-slate-500 mt-0.5">Coils, Discrete Inputs, Input Registers, Holding Registers</p>
+            <p class="text-base font-semibold text-dark-900">Comprendre les 4 types de registres Modbus</p>
+            <p class="text-xs text-dark-500 mt-0.5">Coils, Discrete Inputs, Input Registers, Holding Registers</p>
           </div>
-          <svg :class="open && 'rotate-180'" class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div x-show="open" x-collapse>
-          <div class="mt-6 pt-6 border-t border-slate-200 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="rounded-lg p-4 border border-slate-200 bg-slate-50">
+          <div class="mt-6 pt-6 border-t border-dark-200 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">
-                <span class="inline-flex w-8 h-8 items-center justify-center rounded-md bg-indigo-100 text-indigo-700 text-sm font-bold">C</span>
-                <p class="font-semibold text-slate-900 text-sm">Coils</p>
+                <span class="inline-flex w-8 h-8 items-center justify-center rounded-md bg-primary-100 text-primary-700 text-sm font-bold">C</span>
+                <p class="font-semibold text-dark-900 text-sm">Coils</p>
               </div>
-              <p class="text-xs text-slate-500 mb-1">Plage : 0xxxx (00001-09999)</p>
-              <p class="text-xs text-slate-500 mb-2">Fonctions : 01 (lire), 05 / 15 (écrire)</p>
-              <p class="text-xs text-slate-600">Sortie TOR (1 bit) — lecture / écriture. Ex : commande relais, marche/arrêt.</p>
+              <p class="text-xs text-dark-500 mb-1">Plage : 0xxxx (00001-09999)</p>
+              <p class="text-xs text-dark-500 mb-2">Fonctions : 01 (lire), 05 / 15 (écrire)</p>
+              <p class="text-xs text-dark-600">Sortie TOR (1 bit) — lecture / écriture. Ex : commande relais, marche/arrêt.</p>
             </div>
-            <div class="rounded-lg p-4 border border-slate-200 bg-slate-50">
+            <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">
-                <span class="inline-flex w-8 h-8 items-center justify-center rounded-md bg-emerald-100 text-emerald-700 text-sm font-bold">DI</span>
-                <p class="font-semibold text-slate-900 text-sm">Discrete Inputs</p>
+                <span class="inline-flex w-8 h-8 items-center justify-center rounded-md bg-accent-100 text-accent-700 text-sm font-bold">DI</span>
+                <p class="font-semibold text-dark-900 text-sm">Discrete Inputs</p>
               </div>
-              <p class="text-xs text-slate-500 mb-1">Plage : 1xxxx (10001-19999)</p>
-              <p class="text-xs text-slate-500 mb-2">Fonction : 02 (lire)</p>
-              <p class="text-xs text-slate-600">Entrée TOR (1 bit) — lecture seule. Ex : contact d'état, défaut, position.</p>
+              <p class="text-xs text-dark-500 mb-1">Plage : 1xxxx (10001-19999)</p>
+              <p class="text-xs text-dark-500 mb-2">Fonction : 02 (lire)</p>
+              <p class="text-xs text-dark-600">Entrée TOR (1 bit) — lecture seule. Ex : contact d'état, défaut, position.</p>
             </div>
-            <div class="rounded-lg p-4 border border-slate-200 bg-slate-50">
+            <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">
                 <span class="inline-flex w-8 h-8 items-center justify-center rounded-md bg-amber-100 text-amber-700 text-sm font-bold">IR</span>
-                <p class="font-semibold text-slate-900 text-sm">Input Registers</p>
+                <p class="font-semibold text-dark-900 text-sm">Input Registers</p>
               </div>
-              <p class="text-xs text-slate-500 mb-1">Plage : 3xxxx (30001-39999)</p>
-              <p class="text-xs text-slate-500 mb-2">Fonction : 04 (lire)</p>
-              <p class="text-xs text-slate-600">Entrée analogique 16 bits — lecture seule. Ex : mesure capteur, valeur instantanée.</p>
+              <p class="text-xs text-dark-500 mb-1">Plage : 3xxxx (30001-39999)</p>
+              <p class="text-xs text-dark-500 mb-2">Fonction : 04 (lire)</p>
+              <p class="text-xs text-dark-600">Entrée analogique 16 bits — lecture seule. Ex : mesure capteur, valeur instantanée.</p>
             </div>
-            <div class="rounded-lg p-4 border border-slate-200 bg-slate-50">
+            <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">
-                <span class="inline-flex w-8 h-8 items-center justify-center rounded-md bg-rose-100 text-rose-700 text-sm font-bold">HR</span>
-                <p class="font-semibold text-slate-900 text-sm">Holding Registers</p>
+                <span class="inline-flex w-8 h-8 items-center justify-center rounded-md bg-red-100 text-red-700 text-sm font-bold">HR</span>
+                <p class="font-semibold text-dark-900 text-sm">Holding Registers</p>
               </div>
-              <p class="text-xs text-slate-500 mb-1">Plage : 4xxxx (40001-49999)</p>
-              <p class="text-xs text-slate-500 mb-2">Fonctions : 03 (lire), 06 / 16 (écrire)</p>
-              <p class="text-xs text-slate-600">Registre 16 bits — lecture / écriture. Ex : consigne, paramètre, compteur d'énergie.</p>
+              <p class="text-xs text-dark-500 mb-1">Plage : 4xxxx (40001-49999)</p>
+              <p class="text-xs text-dark-500 mb-2">Fonctions : 03 (lire), 06 / 16 (écrire)</p>
+              <p class="text-xs text-dark-600">Registre 16 bits — lecture / écriture. Ex : consigne, paramètre, compteur d'énergie.</p>
             </div>
           </div>
         </div>
@@ -91,30 +91,30 @@
 
   {{-- Catalogue interactif --}}
   <section class="py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" x-data="modbusCatalogue()">
+    <div class="max-w-7xl mx-auto px-6 md:px-10" x-data="modbusCatalogue()">
 
       {{-- Filtres --}}
-      <div class="bg-white rounded-2xl p-6 mb-8 border border-slate-200 sticky top-20 z-30">
+      <div class="bg-white rounded-2xl p-6 mb-8 border border-dark-200 sticky top-24 md:top-[120px] z-30">
         <div class="flex flex-col gap-4">
           <div>
-            <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Recherche</label>
-            <input type="text" x-model="search" placeholder="Nom équipement, fournisseur, catégorie..." class="w-full px-4 py-2.5 rounded-lg text-sm border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500/40" />
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Recherche</label>
+            <input type="text" x-model="search" placeholder="Nom équipement, fournisseur, catégorie..." class="w-full px-4 py-2.5 rounded-lg text-sm border border-dark-200 outline-none focus:ring-2 focus:ring-primary-500/40" />
           </div>
           <div>
-            <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Filtres rapides</label>
+            <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-2">Filtres rapides</label>
             <div class="flex flex-wrap gap-2">
-              <button @click="resetFilters()" class="px-3 py-1.5 rounded-full text-xs font-medium border border-slate-200 hover:bg-slate-50">Tout afficher</button>
-              <button @click="filterCategory='Compteurs'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-slate-200 hover:bg-slate-50">Compteurs d'énergie</button>
-              <button @click="filterCategory='PAC/Froid'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-slate-200 hover:bg-slate-50">PAC / Groupes froid</button>
-              <button @click="filterCategory='Vannes/Pompes'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-slate-200 hover:bg-slate-50">Vannes / Pompes</button>
-              <button @click="filterFournisseur='Schneider'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-slate-200 hover:bg-slate-50">Schneider</button>
-              <button @click="filterFournisseur='Siemens'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-slate-200 hover:bg-slate-50">Siemens</button>
+              <button @click="resetFilters()" class="px-3 py-1.5 rounded-full text-xs font-medium border border-dark-200 hover:bg-dark-50">Tout afficher</button>
+              <button @click="filterCategory='Compteurs'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-dark-200 hover:bg-dark-50">Compteurs d'énergie</button>
+              <button @click="filterCategory='PAC/Froid'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-dark-200 hover:bg-dark-50">PAC / Groupes froid</button>
+              <button @click="filterCategory='Vannes/Pompes'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-dark-200 hover:bg-dark-50">Vannes / Pompes</button>
+              <button @click="filterFournisseur='Schneider'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-dark-200 hover:bg-dark-50">Schneider</button>
+              <button @click="filterFournisseur='Siemens'" class="px-3 py-1.5 rounded-full text-xs font-medium border border-dark-200 hover:bg-dark-50">Siemens</button>
             </div>
           </div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Catégorie</label>
-              <select x-model="filterCategory" class="w-full px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white outline-none">
+              <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Catégorie</label>
+              <select x-model="filterCategory" class="w-full px-3 py-2 rounded-lg text-sm border border-dark-200 bg-white outline-none">
                 <option value="all">Toutes les catégories</option>
                 <template x-for="cat in categories" :key="cat">
                   <option :value="cat" x-text="cat"></option>
@@ -122,8 +122,8 @@
               </select>
             </div>
             <div>
-              <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Fournisseur</label>
-              <select x-model="filterFournisseur" class="w-full px-3 py-2 rounded-lg text-sm border border-slate-200 bg-white outline-none">
+              <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Fournisseur</label>
+              <select x-model="filterFournisseur" class="w-full px-3 py-2 rounded-lg text-sm border border-dark-200 bg-white outline-none">
                 <option value="all">Tous les fournisseurs</option>
                 <template x-for="f in fournisseurs" :key="f">
                   <option :value="f" x-text="f"></option>
@@ -132,7 +132,7 @@
             </div>
           </div>
         </div>
-        <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500">
+        <div class="mt-4 pt-4 border-t border-dark-100 text-xs text-dark-500">
           <span x-text="filteredEquipements().length"></span> équipement(s) affiché(s) sur <span x-text="equipements.length"></span>
         </div>
       </div>
@@ -140,71 +140,71 @@
       {{-- Grid équipements --}}
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         <template x-for="(eq, idx) in filteredEquipements()" :key="idx">
-          <button @click="openModal(eq)" class="text-left bg-white rounded-xl p-5 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
+          <button @click="openModal(eq)" class="text-left bg-white rounded-xl p-5 border border-dark-200 hover:border-primary-300 hover:shadow-md transition-all">
             <div class="flex items-start justify-between mb-3">
-              <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700" x-text="eq.categorie"></span>
-              <span class="text-[11px] text-slate-400" x-text="eq.protocole"></span>
+              <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-50 text-primary-700" x-text="eq.categorie"></span>
+              <span class="text-[11px] text-dark-400" x-text="eq.protocole"></span>
             </div>
-            <p class="font-semibold text-slate-900 text-base" x-text="eq.nom"></p>
-            <p class="text-xs text-slate-500 mt-0.5" x-text="eq.fournisseur"></p>
-            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-[11px] text-slate-500"><span x-text="eq.registres.length"></span> registres</span>
-              <span class="text-[11px] font-semibold text-indigo-600">Voir détails →</span>
+            <p class="font-semibold text-dark-900 text-base" x-text="eq.nom"></p>
+            <p class="text-xs text-dark-500 mt-0.5" x-text="eq.fournisseur"></p>
+            <div class="mt-4 pt-3 border-t border-dark-100 flex items-center justify-between">
+              <span class="text-[11px] text-dark-500"><span x-text="eq.registres.length"></span> registres</span>
+              <span class="text-[11px] font-semibold text-primary-600">Voir détails →</span>
             </div>
           </button>
         </template>
       </div>
 
-      <div x-show="filteredEquipements().length === 0" class="text-center py-12 text-slate-500 text-sm">
+      <div x-show="filteredEquipements().length === 0" class="text-center py-12 text-dark-500 text-sm">
         Aucun équipement ne correspond à vos filtres.
       </div>
 
       {{-- CTA --}}
-      <div class="mt-12 rounded-2xl p-8 text-center bg-gradient-to-br from-indigo-950 to-indigo-900">
+      <div class="mt-12 rounded-2xl p-8 text-center bg-gradient-to-br from-primary-900 to-primary-800">
         <p class="text-white text-xl font-semibold">Équipement non listé ?</p>
-        <p class="text-indigo-100/90 text-sm mt-2 max-w-xl mx-auto">
+        <p class="text-primary-100/90 text-sm mt-2 max-w-xl mx-auto">
           Nous enrichissons régulièrement le catalogue. Indiquez-nous la marque et le modèle qui vous manquent et nous l'ajouterons.
         </p>
-        <a href="/contact?sujet=Modbus" class="inline-flex items-center gap-2 mt-5 px-6 py-3 rounded-lg bg-white text-indigo-900 text-sm font-semibold hover:bg-indigo-50 transition">
+        <a href="/contact?sujet=Modbus" class="inline-flex items-center gap-2 mt-5 px-6 py-3 rounded-lg bg-white text-primary-900 text-sm font-semibold hover:bg-primary-50 transition">
           Demander un ajout
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       {{-- Modal détail --}}
-      <div x-show="modalOpen" x-cloak @keydown.escape.window="closeModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60" @click.self="closeModal()">
+      <div x-show="modalOpen" x-cloak @keydown.escape.window="closeModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark-900/60" @click.self="closeModal()">
         <div x-show="modalOpen" x-transition class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
           <template x-if="selectedEq">
             <div class="flex flex-col h-full overflow-hidden">
-              <div class="px-6 py-5 border-b border-slate-200 flex items-start justify-between">
+              <div class="px-6 py-5 border-b border-dark-200 flex items-start justify-between">
                 <div>
-                  <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700" x-text="selectedEq.categorie"></span>
-                  <p class="mt-2 text-xl font-semibold text-slate-900" x-text="selectedEq.nom"></p>
-                  <p class="text-sm text-slate-500" x-text="selectedEq.fournisseur"></p>
+                  <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-50 text-primary-700" x-text="selectedEq.categorie"></span>
+                  <p class="mt-2 text-xl font-semibold text-dark-900" x-text="selectedEq.nom"></p>
+                  <p class="text-sm text-dark-500" x-text="selectedEq.fournisseur"></p>
                 </div>
-                <button @click="closeModal()" class="text-slate-400 hover:text-slate-700 p-1">
+                <button @click="closeModal()" class="text-dark-400 hover:text-dark-700 p-1">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
               </div>
-              <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 grid grid-cols-3 gap-4 text-xs">
+              <div class="px-6 py-4 bg-dark-50 border-b border-dark-200 grid grid-cols-3 gap-4 text-xs">
                 <div>
-                  <p class="text-slate-400 uppercase tracking-wider font-semibold mb-1">Protocole</p>
-                  <p class="text-slate-900 font-medium" x-text="selectedEq.protocole"></p>
+                  <p class="text-dark-400 uppercase tracking-wider font-semibold mb-1">Protocole</p>
+                  <p class="text-dark-900 font-medium" x-text="selectedEq.protocole"></p>
                 </div>
                 <div>
-                  <p class="text-slate-400 uppercase tracking-wider font-semibold mb-1">Baudrate</p>
-                  <p class="text-slate-900 font-medium" x-text="selectedEq.baudrate"></p>
+                  <p class="text-dark-400 uppercase tracking-wider font-semibold mb-1">Baudrate</p>
+                  <p class="text-dark-900 font-medium" x-text="selectedEq.baudrate"></p>
                 </div>
                 <div>
-                  <p class="text-slate-400 uppercase tracking-wider font-semibold mb-1">Slave ID par défaut</p>
-                  <p class="text-slate-900 font-medium" x-text="selectedEq.slave_id_default"></p>
+                  <p class="text-dark-400 uppercase tracking-wider font-semibold mb-1">Slave ID par défaut</p>
+                  <p class="text-dark-900 font-medium" x-text="selectedEq.slave_id_default"></p>
                 </div>
               </div>
               <div class="flex-1 overflow-auto p-6">
-                <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Registres</p>
+                <p class="text-xs font-semibold uppercase tracking-wider text-dark-500 mb-3">Registres</p>
                 <div class="overflow-x-auto">
                   <table class="w-full text-xs">
-                    <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] tracking-wider">
+                    <thead class="bg-dark-50 text-dark-500 uppercase text-[10px] tracking-wider">
                       <tr>
                         <th class="text-left px-3 py-2 font-semibold">Adresse</th>
                         <th class="text-left px-3 py-2 font-semibold">Fonction</th>
@@ -213,20 +213,20 @@
                         <th class="text-left px-3 py-2 font-semibold">Unité</th>
                       </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100">
+                    <tbody class="divide-y divide-dark-100">
                       <template x-for="(r, i) in selectedEq.registres" :key="i">
-                        <tr class="hover:bg-slate-50">
-                          <td class="px-3 py-2 font-mono text-slate-900" x-text="r.adresse"></td>
-                          <td class="px-3 py-2 font-mono text-slate-600" x-text="r.fonction"></td>
-                          <td class="px-3 py-2 text-slate-600" x-text="r.type"></td>
-                          <td class="px-3 py-2 text-slate-700" x-text="r.description"></td>
-                          <td class="px-3 py-2 text-slate-500" x-text="r.unite"></td>
+                        <tr class="hover:bg-dark-50">
+                          <td class="px-3 py-2 font-mono text-dark-900" x-text="r.adresse"></td>
+                          <td class="px-3 py-2 font-mono text-dark-600" x-text="r.fonction"></td>
+                          <td class="px-3 py-2 text-dark-600" x-text="r.type"></td>
+                          <td class="px-3 py-2 text-dark-700" x-text="r.description"></td>
+                          <td class="px-3 py-2 text-dark-500" x-text="r.unite"></td>
                         </tr>
                       </template>
                     </tbody>
                   </table>
                 </div>
-                <p class="mt-4 text-[11px] text-slate-400 italic">
+                <p class="mt-4 text-[11px] text-dark-400 italic">
                   Données indicatives — vérifiez la documentation officielle du constructeur avant tout paramétrage.
                 </p>
               </div>
@@ -239,21 +239,21 @@
   </section>
 
   {{-- Related pages --}}
-  <section class="py-16 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-6">Pour aller plus loin</p>
+  <section class="py-16 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <p class="text-xs font-semibold uppercase tracking-wider text-dark-500 mb-6">Pour aller plus loin</p>
       <div class="grid md:grid-cols-3 gap-5">
-        <a href="/solutions" class="block bg-white rounded-xl p-6 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
-          <p class="font-semibold text-slate-900">Solutions & Technologies</p>
-          <p class="text-sm text-slate-500 mt-1">Protocoles, capteurs et automates utilisés en GTB.</p>
+        <a href="/solutions" class="block bg-white rounded-xl p-6 border border-dark-200 hover:border-primary-300 hover:shadow-md transition-all">
+          <p class="font-semibold text-dark-900">Solutions & Technologies</p>
+          <p class="text-sm text-dark-500 mt-1">Protocoles, capteurs et automates utilisés en GTB.</p>
         </a>
-        <a href="/comparateur" class="block bg-white rounded-xl p-6 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
-          <p class="font-semibold text-slate-900">Comparateur GTB</p>
-          <p class="text-sm text-slate-500 mt-1">10+ solutions GTB analysées objectivement.</p>
+        <a href="/comparateur" class="block bg-white rounded-xl p-6 border border-dark-200 hover:border-primary-300 hover:shadow-md transition-all">
+          <p class="font-semibold text-dark-900">Comparateur GTB</p>
+          <p class="text-sm text-dark-500 mt-1">10+ solutions GTB analysées objectivement.</p>
         </a>
-        <a href="/audit" class="block bg-white rounded-xl p-6 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
-          <p class="font-semibold text-slate-900">Pré-diagnostic GTB</p>
-          <p class="text-sm text-slate-500 mt-1">Auto-évaluation ISO 52120-1 en quelques minutes.</p>
+        <a href="/audit" class="block bg-white rounded-xl p-6 border border-dark-200 hover:border-primary-300 hover:shadow-md transition-all">
+          <p class="font-semibold text-dark-900">Pré-diagnostic GTB</p>
+          <p class="text-sm text-dark-500 mt-1">Auto-évaluation ISO 52120-1 en quelques minutes.</p>
         </a>
       </div>
     </div>

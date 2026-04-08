@@ -41,7 +41,7 @@
 @section('content')
 
   {{-- Breadcrumbs --}}
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-sm text-dark-400">
+  <nav class="max-w-7xl mx-auto px-6 md:px-10 py-3 text-sm text-dark-400">
     <a href="/" class="hover:text-primary-600 transition-colors">Accueil</a>
     <span class="mx-2">/</span>
     <span class="text-dark-300">Outils</span>
@@ -53,7 +53,7 @@
   <section class="hero-lum hero-emerald">
     <img src="/images/hero-comparateur.png" alt="Comparaison de bâtiments intelligents — GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 text-center relative z-10">
       <span class="eyebrow">Outil indépendant</span>
       <h1 class="mt-5 text-4xl md:text-5xl font-heading font-medium" style="color: var(--color-dark-900);">Comparateur objectif <span class="accent">GTB</span></h1>
       <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: var(--color-dark-500);">
@@ -64,7 +64,7 @@
 
   <!-- Disclaimer -->
   <section class="py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
       <div class="rounded-xl p-5" style="background: #FFF7ED; border: 1px solid #FED7AA;">
         <p style="font-size: 14px; font-weight: 500; color: #9A3412; margin-bottom: 6px;">Avertissement &mdash; Comparateur indépendant</p>
         <p style="font-size: 13px; color: #78350F; line-height: 1.7;">
@@ -76,7 +76,7 @@
 
   <!-- Methodologie -->
   <section class="py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
       <div class="bg-white rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);" x-data="{ open: false }">
         <button @click="open = !open" class="flex items-center justify-between w-full text-left">
           <div>
@@ -106,7 +106,7 @@
 
   <!-- Comparateur -->
   <section class="py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" x-data="comparateur()" x-init="init()">
+    <div class="max-w-7xl mx-auto px-6 md:px-10" x-data="comparateur()" x-init="init()">
 
       <!-- Filtres -->
       <div class="bg-white rounded-2xl p-6 mb-8 sticky top-20 z-40" style="border: 0.5px solid rgba(0,0,0,0.08);">
@@ -160,7 +160,7 @@
       </div>
 
       <!-- Cards des marques -->
-      <div class="grid lg:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 gap-6">
         <template x-for="brand in filteredBrands()" :key="brand.nom">
           <div class="card-hover bg-white rounded-xl overflow-hidden" style="border: 0.5px solid rgba(0,0,0,0.08);">
             <div class="p-6" style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">
@@ -257,8 +257,8 @@
 
   <!-- Tableau comparatif rapide -->
   <section class="py-16 bg-dark-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-heading font-medium text-dark-900 mb-8 text-center">Tableau comparatif rapide</h2>
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <h2 class="text-[28px] font-heading font-medium text-dark-900 mb-8 text-center">Tableau comparatif rapide</h2>
       <div class="overflow-x-auto">
         <table class="w-full bg-white rounded-xl overflow-hidden text-sm" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <thead>
@@ -291,8 +291,8 @@
 
   <!-- Guide de choix -->
   <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-heading font-medium text-dark-900 mb-8 text-center">Comment choisir ?</h2>
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <h2 class="text-[28px] font-heading font-medium text-dark-900 mb-8 text-center">Comment choisir ?</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card-hover p-6 bg-white rounded-xl" style="border: 0.5px solid rgba(0,0,0,0.08);">
           <div class="text-3xl mb-3">&#127970;</div>
@@ -340,7 +340,7 @@
   <section class="relative overflow-hidden" style="padding: 80px 0; background: #F0F2F5; min-height: 360px; border-top: 1px solid var(--color-dark-200);">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="hero-bg-illustration" />
     <div style="position: absolute; inset: 0; background: linear-gradient(to right, #F0F2F5 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 relative z-10" style="display: flex; align-items: center; min-height: 200px;">
       <div style="max-width: 520px;">
         <h2 style="font-size: 28px; font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px;">Besoin d'aide pour choisir ?</h2>
         <p style="font-size: 16px; color: var(--color-dark-500); line-height: 1.7; margin-bottom: 28px;">Notre audit gratuit analyse votre bâtiment et vous recommande les solutions les plus adaptées.</p>
@@ -354,7 +354,7 @@
 
   <!-- Pages associées -->
   <section class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto px-6 md:px-10">
       <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associées</h2>
       <div class="grid md:grid-cols-3 gap-4">
         <a href="/audit" class="block p-5 rounded-xl border border-dark-200 hover:border-primary-300 transition-colors group">

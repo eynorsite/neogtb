@@ -1,5 +1,5 @@
 <section style="padding: 56px 0 64px;">
-    <div class="max-w-[1200px] mx-auto px-6 md:px-10">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
             {{-- Photo + identité --}}

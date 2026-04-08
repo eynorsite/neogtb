@@ -37,7 +37,7 @@
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
         <div class="max-w-2xl">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">FAQ</p>
-            <h1 class="font-heading text-3xl md:text-[40px] font-medium text-dark-900 leading-tight tracking-tight mb-4">
+            <h1 class="font-heading text-4xl md:text-5xl font-medium text-dark-900 leading-tight tracking-tight mb-4">
                 Questions fréquentes
             </h1>
             <p class="text-[17px] text-dark-500 leading-relaxed max-w-lg">

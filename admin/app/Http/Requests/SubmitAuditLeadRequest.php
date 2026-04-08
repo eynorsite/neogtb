@@ -12,6 +12,7 @@ class SubmitAuditLeadRequest extends FormRequest
     {
         return [
             'email' => ['required', 'email:rfc', 'max:100'],
+            'consentement_rgpd' => ['required', 'accepted'],
             'name' => ['nullable', 'string', 'max:100', 'not_regex:/[\r\n]/'],
             'company' => ['nullable', 'string', 'max:100', 'not_regex:/[\r\n]/'],
             'score' => ['nullable', 'integer', 'min:0', 'max:100'],

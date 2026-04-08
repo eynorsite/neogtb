@@ -1,11 +1,11 @@
-<section class="py-24 bg-gradient-to-br from-dark-900 via-primary-900 to-dark-950 text-white relative overflow-hidden">
+<section class="py-14 md:py-24 bg-gradient-to-br from-dark-900 via-primary-900 to-dark-950 text-white relative overflow-hidden">
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
 
     {{-- Decorative blurs --}}
     <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
 
-    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
         @if(!empty($content['titre']))
             <div class="text-center mb-14 animate-fade-in-up">
                 <h2 class="text-3xl font-heading font-extrabold sm:text-4xl">{{ $content['titre'] }}</h2>

@@ -23,7 +23,7 @@
 </section>
 
 <!-- FONDATEUR -->
-<section class="py-20">
+<section class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
@@ -140,7 +140,7 @@
 </section>
 
 <!-- MÉTHODE -->
-<section class="py-20 bg-dark-50 border-t border-b border-dark-200">
+<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-7xl mx-auto px-6 md:px-10">
         <div class="max-w-xl mb-12" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Mon approche</p>
@@ -172,7 +172,7 @@
 </section>
 
 <!-- CTA -->
-<section class="relative overflow-hidden py-20 bg-dark-100 border-t border-dark-200">
+<section class="relative overflow-hidden py-12 md:py-20 bg-dark-100 border-t border-dark-200">
     <img src="/images/hero-gtb-illustration.webp" alt="" aria-hidden="true" width="1200" height="630" loading="lazy" class="absolute right-0 top-0 h-full w-auto object-cover opacity-20" />
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 flex items-center min-h-[200px]">

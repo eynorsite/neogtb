@@ -1,4 +1,4 @@
-<section class="py-20 lg:py-28 relative overflow-hidden">
+<section class="py-12 md:py-20 lg:py-28 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
     <div class="relative z-10 mx-auto max-w-3xl px-4 sm:px-6">
 
@@ -54,7 +54,7 @@
                             <option value="">Selectionnez un sujet</option>
                             <option value="Avis sur un devis recu">Avis sur un devis recu</option>
                             <option value="Aide au choix technologique">Aide au choix technologique</option>
-                            <option value="Question reglementaire">Question reglementaire (BACS, tertiaire)</option>
+                            <option value="Question reglementaire">Question réglementaire (BACS, tertiaire)</option>
                             <option value="Demande d'audit">Demande d'audit personnalise</option>
                             <option value="Partenariat">Partenariat / Collaboration</option>
                             <option value="Autre">Autre</option>
@@ -67,6 +67,19 @@
                     <textarea name="message" required rows="5"
                         class="w-full rounded-xl border border-dark-200 bg-dark-50/50 px-4 py-3.5 text-sm text-dark-900 transition-all duration-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 focus:bg-white focus:outline-none resize-none placeholder:text-dark-400"
                         placeholder="Decrivez votre besoin..."></textarea>
+                </div>
+
+                <div class="rounded-2xl border border-dark-100 bg-dark-50/40 p-5">
+                    <p class="text-xs leading-relaxed text-dark-500">
+                        Vos donnees sont utilisees uniquement pour repondre a votre demande, conservees 3 ans, conformement a notre <a href="/politique-de-confidentialite" class="font-semibold text-primary-600 underline decoration-primary-200 underline-offset-2 hover:text-primary-700 hover:decoration-primary-500 transition-colors">politique de confidentialite</a>.
+                    </p>
+                    <label class="mt-4 flex items-start gap-3 cursor-pointer group/consent">
+                        <input type="checkbox" name="consentement_rgpd" required
+                            class="mt-0.5 h-4 w-4 flex-shrink-0 rounded border-dark-300 text-accent-600 focus:ring-2 focus:ring-accent-500 focus:ring-offset-0 cursor-pointer">
+                        <span class="text-xs leading-relaxed text-dark-600 group-hover/consent:text-dark-800 transition-colors">
+                            J'accepte que mes donnees soient traitees par NeoGTB pour repondre a ma demande (interet legitime, art. 6.1.f RGPD). <span class="text-accent-500">*</span>
+                        </span>
+                    </label>
                 </div>
 
                 <div class="pt-2">
