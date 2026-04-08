@@ -302,19 +302,19 @@
 </section>
 
 <!-- CEE -->
-<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20 bg-dark-50 border-t border-b border-dark-200">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Aides financières</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Certificats d'Économies d'Énergie (CEE)</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Certificats d'Économies d'Énergie (CEE)</h2>
             <p class="text-base text-dark-500 leading-relaxed">Les CEE financent une partie significative de l'installation GTB. Deux fiches standardisées couvrent les travaux de GTB.</p>
         </div>
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-2 gap-4 lg:gap-6">
             @foreach([
                 ['ref' => 'BAT-TH-116', 'subtitle' => 'Système de gestion technique du bâtiment pour le chauffage et le refroidissement', 'desc' => 'Couvre l\'installation d\'un système GTB de classe A ou B (ISO 52120-1) pour le pilotage du CVC. Le montant de la prime dépend de la surface, de la zone climatique et de la classe atteinte.', 'cond' => 'Bâtiment tertiaire existant, installation par un professionnel, passage en classe A ou B vérifié.'],
                 ['ref' => 'BAT-TH-112', 'subtitle' => 'Système de variation électronique de vitesse sur moteur asynchrone', 'desc' => 'Couvre l\'installation de variateurs de vitesse sur les moteurs CVC (pompes, ventilateurs, compresseurs). Complémentaire à la GTB qui envoie les consignes de vitesse.', 'cond' => 'Puissance moteur >= 0,55 kW, variateur certifié, installation sur moteur existant ou neuf.'],
             ] as $cee)
-            <div class="bg-white rounded-xl p-8 border border-dark-200 shadow-sm">
+            <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                 <span class="inline-block text-[13px] font-medium text-orange-800 bg-orange-50 px-3 py-1 rounded-md mb-4">Fiche standardisée</span>
                 <h3 class="text-[22px] font-medium text-dark-900 tracking-tight mb-3">{{ $cee['ref'] }}</h3>
                 <p class="text-sm text-dark-400 mb-4">{{ $cee['subtitle'] }}</p>
@@ -325,7 +325,7 @@
             </div>
             @endforeach
         </div>
-        <div class="bg-accent-50 border border-accent-200 rounded-xl p-6 mt-6">
+        <div class="bg-accent-50 border border-accent-200 rounded-2xl p-5 lg:p-7 mt-6">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Estimation gratuite</p>
             <p class="text-sm text-dark-600 leading-relaxed">Utilisez notre <a href="/generateur-cee" class="text-accent-600 font-medium hover:text-accent-700">générateur CEE</a> pour estimer le montant de vos certificats d'économies d'énergie en 3 minutes, sans intermédiaire.</p>
         </div>
@@ -333,11 +333,11 @@
 </section>
 
 <!-- SYNTHÈSE -->
-<section class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Synthèse</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Comment la GTB répond à toutes ces obligations</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Comment la GTB répond à toutes ces obligations</h2>
             <p class="text-base text-dark-500 leading-relaxed">La GTB est le point de convergence de l'ensemble du cadre réglementaire du bâtiment tertiaire.</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -352,7 +352,7 @@
                 ['title' => 'SRI', 'desc' => 'Au cœur de l\'indicateur d\'intelligence du bâtiment.'],
                 ['title' => 'Taxonomie verte', 'desc' => 'Contribue à l\'alignement des investissements immobiliers.'],
             ] as $item)
-            <div class="bg-white rounded-xl p-6 border border-dark-200 shadow-sm">
+            <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                 <p class="text-[15px] font-medium text-dark-900 mb-1.5">{{ $item['title'] }}</p>
                 <p class="text-[13px] text-dark-500 leading-relaxed">{!! $item['desc'] !!}</p>
             </div>

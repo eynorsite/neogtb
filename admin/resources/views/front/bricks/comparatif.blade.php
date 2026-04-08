@@ -33,7 +33,7 @@
             </div>
 
             {{-- Colonne droite (mise en avant) --}}
-            <div class="rounded-2xl border-2 border-primary-200 bg-gradient-to-br from-primary-50/80 to-white p-8 lg:p-10 shadow-lg relative animate-fade-in-up" style="animation-delay: 200ms">
+            <div class="rounded-2xl border-2 border-primary-200 bg-gradient-to-br from-primary-50/80 to-white p-6 lg:p-10 lg:shadow-lg relative animate-fade-in-up" style="animation-delay: 200ms">
                 <div class="absolute -top-3.5 left-8 bg-gradient-to-r from-accent-500 to-accent-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">Recommande</div>
 
                 <div class="flex items-center gap-3 mb-8">
