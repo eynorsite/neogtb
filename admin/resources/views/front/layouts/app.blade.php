@@ -131,21 +131,24 @@
     @yield('content')
   </main>
 
-  {{-- ===== FOOTER — Premium 4 colonnes ===== --}}
-  <footer style="background: #fff; border-top: 0.5px solid #e2e8f0;">
-    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+  {{-- ===== FOOTER — Premium Modern ===== --}}
+  <footer class="relative overflow-hidden" style="background: linear-gradient(180deg, #fafafa 0%, #fff 100%);">
+    {{-- Top border accent --}}
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dark-200 to-transparent"></div>
+    
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-20 lg:py-24">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
 
         {{-- Brand + Newsletter --}}
         <div class="md:col-span-5">
-          <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-16 w-auto" loading="lazy" decoding="async" />
-          <p class="mt-5 text-[14px] text-dark-500 max-w-md" style="line-height: 1.7;">
+          <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-14 w-auto" loading="lazy" decoding="async" />
+          <p class="mt-6 text-[15px] text-dark-500 max-w-md leading-relaxed">
             Le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France. Aucun lien commercial avec les fabricants.
           </p>
 
           {{-- Newsletter --}}
-          <div class="mt-8">
-            <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-3">Veille GTB mensuelle</p>
+          <div class="mt-10">
+            <p class="text-xs font-semibold uppercase tracking-[0.1em] text-dark-400 mb-4">Veille GTB mensuelle</p>
             <form
               method="POST"
               action="/newsletter"
@@ -165,77 +168,85 @@
               "
             >
               @csrf
-              <div class="flex gap-2" x-show="!nlSent">
-                <input type="email" name="email" placeholder="votre@email.com" required class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid #e2e8f0; background: #f8fafc;" />
-                <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, #2D8B4E, #267a43);">
+              <div class="flex gap-3" x-show="!nlSent">
+                <input type="email" name="email" placeholder="votre@email.com" required class="flex-1 text-[14px] px-5 py-3.5 rounded-xl text-dark-900 placeholder-dark-400 outline-none transition-all duration-300 border border-dark-200 bg-white focus:border-accent-400 focus:ring-4 focus:ring-accent-500/10" />
+                <button type="submit" :disabled="nlSending" class="text-[14px] font-semibold px-6 py-3.5 rounded-xl text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-500/25 bg-gradient-to-r from-accent-500 to-accent-600">
                   <span x-show="!nlSending">S'inscrire</span>
-                  <span x-show="nlSending">...</span>
+                  <span x-show="nlSending" class="flex items-center gap-2">
+                    <svg class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                  </span>
                 </button>
               </div>
-              <div x-show="nlSent" x-cloak class="text-[13px] text-accent-500 font-medium">Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.</div>
-              <p x-show="nlError" x-text="nlError" x-cloak class="text-[12px] text-red-500 mt-1"></p>
-              <label x-show="!nlSent" class="mt-2 flex items-start gap-2 cursor-pointer">
-                <input type="checkbox" required class="mt-0.5 w-3.5 h-3.5 rounded text-accent-500 focus:ring-accent-500/40" />
-                <span class="text-[11px] text-dark-400" style="line-height: 1.5;">J'accepte de recevoir la veille GTB mensuelle. <a href="/politique-de-confidentialite" class="underline hover:text-dark-700">Confidentialité</a></span>
+              <div x-show="nlSent" x-cloak class="flex items-center gap-3 p-4 rounded-xl bg-accent-50 border border-accent-200">
+                <svg class="w-5 h-5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-[14px] text-accent-700 font-medium">Email de confirmation envoyé !</span>
+              </div>
+              <p x-show="nlError" x-text="nlError" x-cloak class="text-[13px] text-red-500 mt-2"></p>
+              <label x-show="!nlSent" class="mt-3 flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" required class="mt-1 w-4 h-4 rounded border-dark-300 text-accent-500 focus:ring-accent-500/40 focus:ring-offset-0" />
+                <span class="text-[13px] text-dark-400 leading-relaxed">J'accepte de recevoir la veille GTB mensuelle. <a href="/politique-de-confidentialite" class="text-dark-600 hover:text-accent-600 underline underline-offset-2 transition-colors">Confidentialité</a></span>
               </label>
             </form>
-            <p class="mt-2 text-[11px] text-dark-400">1 email/mois. Désabonnement en 1 clic.</p>
+            <p class="mt-3 text-xs text-dark-400 flex items-center gap-2">
+              <svg class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              1 email/mois. Désabonnement en 1 clic.
+            </p>
           </div>
 
           {{-- Normes badges --}}
-          <div class="mt-6 flex flex-wrap gap-2">
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">ISO 52120-1</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">Décret BACS</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">RE2020</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">CEE BAT-TH-116</span>
+          <div class="mt-8 flex flex-wrap gap-2">
+            <span class="text-[11px] font-medium px-4 py-1.5 rounded-full text-dark-600 bg-dark-100/60 border border-dark-200/50">ISO 52120-1</span>
+            <span class="text-[11px] font-medium px-4 py-1.5 rounded-full text-dark-600 bg-dark-100/60 border border-dark-200/50">Décret BACS</span>
+            <span class="text-[11px] font-medium px-4 py-1.5 rounded-full text-dark-600 bg-dark-100/60 border border-dark-200/50">RE2020</span>
+            <span class="text-[11px] font-medium px-4 py-1.5 rounded-full text-dark-600 bg-dark-100/60 border border-dark-200/50">CEE BAT-TH-116</span>
           </div>
         </div>
 
         {{-- Navigation --}}
         <div class="md:col-span-2 md:col-start-7">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">Navigation</p>
-          <ul class="space-y-3">
-            <li><a href="/gtb" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">GTB</a></li>
-            <li><a href="/gtc" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">GTC</a></li>
-            <li><a href="/solutions" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Solutions</a></li>
-            <li><a href="/comparateur" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Comparateur</a></li>
-            <li><a href="/reglementation" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Réglementation</a></li>
-            <li><a href="/blog" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Perspectives</a></li>
+          <p class="text-xs font-semibold uppercase tracking-[0.1em] text-dark-400 mb-5">Navigation</p>
+          <ul class="space-y-3.5">
+            <li><a href="/gtb" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">GTB</a></li>
+            <li><a href="/gtc" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">GTC</a></li>
+            <li><a href="/solutions" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Solutions</a></li>
+            <li><a href="/comparateur" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Comparateur</a></li>
+            <li><a href="/reglementation" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Réglementation</a></li>
+            <li><a href="/blog" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Perspectives</a></li>
           </ul>
         </div>
 
         {{-- Outils --}}
         <div class="md:col-span-2">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">Outils</p>
-          <ul class="space-y-3">
-            <li><a href="/audit" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Pré-diagnostic GTB</a></li>
-            <li><a href="/generateur-cee" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Générateur CEE</a></li>
-            <li><a href="/tables-modbus" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Tables Modbus</a></li>
-            <li><a href="/contact" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Contact</a></li>
-            <li><a href="/faq" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">FAQ</a></li>
+          <p class="text-xs font-semibold uppercase tracking-[0.1em] text-dark-400 mb-5">Outils</p>
+          <ul class="space-y-3.5">
+            <li><a href="/audit" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Pré-diagnostic GTB</a></li>
+            <li><a href="/generateur-cee" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Générateur CEE</a></li>
+            <li><a href="/tables-modbus" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Tables Modbus</a></li>
+            <li><a href="/contact" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Contact</a></li>
+            <li><a href="/faq" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">FAQ</a></li>
           </ul>
         </div>
 
         {{-- Légal --}}
         <div class="md:col-span-2">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">Légal</p>
-          <ul class="space-y-3">
-            <li><a href="/mentions-legales" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Mentions légales</a></li>
-            <li><a href="/politique-de-confidentialite" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Confidentialité</a></li>
-            <li><a href="/mes-droits-rgpd" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Vos droits RGPD</a></li>
+          <p class="text-xs font-semibold uppercase tracking-[0.1em] text-dark-400 mb-5">Légal</p>
+          <ul class="space-y-3.5">
+            <li><a href="/mentions-legales" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Mentions légales</a></li>
+            <li><a href="/politique-de-confidentialite" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Confidentialité</a></li>
+            <li><a href="/mes-droits-rgpd" class="text-[15px] text-dark-500 hover:text-accent-600 transition-colors duration-300">Vos droits RGPD</a></li>
           </ul>
         </div>
       </div>
 
       {{-- Bottom bar --}}
-      <div class="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-top: 0.5px solid #e2e8f0;">
-        <p class="text-[13px] text-dark-400">&copy; {{ date('Y') }} NeoGTB. Tous droits réservés.</p>
-        <div class="flex items-center gap-5">
+      <div class="mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-dark-100">
+        <p class="text-[14px] text-dark-400">&copy; {{ date('Y') }} NeoGTB. Tous droits réservés.</p>
+        <div class="flex items-center gap-6">
           {{-- LinkedIn --}}
-          <a href="https://www.linkedin.com/in/ulrich-calmo" target="_blank" rel="noopener noreferrer" class="text-dark-400 hover:text-dark-900 transition-colors duration-200" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/ulrich-calmo" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-10 h-10 rounded-xl bg-dark-100 text-dark-500 hover:bg-accent-50 hover:text-accent-600 transition-all duration-300" aria-label="LinkedIn">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <button onclick="window.dispatchEvent(new CustomEvent('open-cookie-settings'))" class="text-[13px] text-dark-400 hover:text-dark-900 transition-colors duration-200 cursor-pointer">Gérer les cookies</button>
+          <button onclick="window.dispatchEvent(new CustomEvent('open-cookie-settings'))" class="text-[14px] text-dark-400 hover:text-accent-600 transition-colors duration-300 cursor-pointer font-medium">Gérer les cookies</button>
         </div>
       </div>
     </div>
