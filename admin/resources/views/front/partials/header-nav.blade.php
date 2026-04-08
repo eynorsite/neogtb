@@ -59,8 +59,8 @@ $icons = [
   x-init="init()"
   @keydown.escape.window="closeAll()"
   @click.outside="closeExplorer()"
-  :class="scrolled ? 'bg-white/80 backdrop-blur-xl shadow-sm' : 'bg-white/0'"
-  :style="scrolled ? 'border-bottom: 1px solid rgba(0,0,0,0.06)' : ''"
+  :class="scrolled ? 'bg-white/85 backdrop-blur-2xl shadow-[0_1px_3px_rgba(0,0,0,0.04)]' : 'bg-white/0'"
+  :style="scrolled ? 'border-bottom: 1px solid rgba(0,0,0,0.04)' : ''"
 >
   <nav class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10 flex items-center justify-between h-14 lg:h-[120px]">
     {{-- Logo --}}
@@ -88,10 +88,10 @@ $icons = [
         <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="explorerOpen && 'rotate-180'" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['chevron-down'] !!}</svg>
       </button>
 
-      <a href="/blog" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('blog*') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('blog*')) aria-current="page" @endif>Perspectives</a>
-      <a href="/about" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('about') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('about')) aria-current="page" @endif>À propos</a>
-      <a href="/faq" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('faq') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('faq')) aria-current="page" @endif>FAQ</a>
-      <a href="/contact" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('contact') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('contact')) aria-current="page" @endif>Contact</a>
+      <a href="/blog" class="nav-link-premium text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('blog*') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900' }}" @if(request()->is('blog*')) aria-current="page" @endif>Perspectives</a>
+      <a href="/about" class="nav-link-premium text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('about') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900' }}" @if(request()->is('about')) aria-current="page" @endif>À propos</a>
+      <a href="/faq" class="nav-link-premium text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('faq') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900' }}" @if(request()->is('faq')) aria-current="page" @endif>FAQ</a>
+      <a href="/contact" class="nav-link-premium text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('contact') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900' }}" @if(request()->is('contact')) aria-current="page" @endif>Contact</a>
     </div>
 
     {{-- CTA + search + Mobile toggle --}}
@@ -99,9 +99,9 @@ $icons = [
       <button type="button" aria-label="Rechercher" class="hidden lg:inline-flex items-center justify-center w-10 h-10 rounded-lg text-dark-500 hover:text-dark-900 hover:bg-dark-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['magnifying-glass'] !!}</svg>
       </button>
-      <a href="/audit" class="hidden lg:inline-flex btn-primary text-[13px] px-5 py-2.5">
-        Pré-diagnostic gratuit
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      <a href="/audit" class="hidden lg:inline-flex btn-primary text-[13px] px-5 py-2.5 rounded-lg">
+        Diagnostic gratuit
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
       <button @click="openMobile()" class="lg:hidden p-2 rounded-lg hover:bg-dark-50 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Ouvrir le menu" aria-controls="mobile-drawer" :aria-expanded="mobileOpen.toString()">
         <svg class="w-6 h-6 text-dark-700" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">{!! $icons['bars-3'] !!}</svg>
@@ -124,8 +124,8 @@ $icons = [
     x-transition:leave="transition ease-in duration-[120ms]"
     x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0"
-    class="hidden lg:block absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl rounded-b-3xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]"
-    style="border-top: 1px solid rgba(0,0,0,0.06);"
+    class="hidden lg:block absolute left-0 right-0 top-full bg-white/90 backdrop-blur-2xl rounded-b-2xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.12)]"
+    style="border-top: 1px solid rgba(0,0,0,0.04);"
   >
     <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-6 grid grid-cols-3 gap-8 max-h-[calc(100vh-160px)] overflow-y-auto">
       @foreach(['comprendre','conformer','agir'] as $colKey)

@@ -138,7 +138,7 @@
   </main>
 
   {{-- ===== FOOTER — Premium 4 colonnes ===== --}}
-  <footer style="background: #fff; border-top: 0.5px solid #e2e8f0;">
+  <footer style="background: linear-gradient(180deg, #f8fafc 0%, #fff 100%); border-top: 1px solid rgba(226,232,240,0.5);">
     <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
 
@@ -173,8 +173,8 @@
               @csrf
               <div class="flex gap-2" x-show="!nlSent">
                 <label class="sr-only" for="footer-nl-email">Email pour la veille GTB</label>
-                <input type="email" id="footer-nl-email" name="email" placeholder="votre@email.com" required aria-label="Votre adresse email pour la veille GTB mensuelle" class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid #e2e8f0; background: #f8fafc;" />
-                <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, #2D8B4E, #267a43);">
+                <input type="email" id="footer-nl-email" name="email" placeholder="votre@email.com" required aria-label="Votre adresse email pour la veille GTB mensuelle" class="flex-1 text-[14px] px-4 py-3 rounded-xl text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/30 transition-all duration-200" style="border: 1px solid rgba(226,232,240,0.8); background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.03);" />
+                <button type="submit" :disabled="nlSending" class="btn-primary text-[13px] px-5 py-3 rounded-xl">
                   <span x-show="!nlSending">S'inscrire</span>
                   <span x-show="nlSending">...</span>
                 </button>
@@ -191,10 +191,10 @@
 
           {{-- Normes badges --}}
           <div class="mt-6 flex flex-wrap gap-2">
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">ISO 52120-1</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">Décret BACS</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">RE2020</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">CEE BAT-TH-116</span>
+            <span class="text-[10px] font-medium px-3 py-1.5 rounded-full text-dark-500" style="border: 1px solid rgba(226,232,240,0.7); background: rgba(248,250,252,0.5);">ISO 52120-1</span>
+            <span class="text-[10px] font-medium px-3 py-1.5 rounded-full text-dark-500" style="border: 1px solid rgba(226,232,240,0.7); background: rgba(248,250,252,0.5);">Décret BACS</span>
+            <span class="text-[10px] font-medium px-3 py-1.5 rounded-full text-dark-500" style="border: 1px solid rgba(226,232,240,0.7); background: rgba(248,250,252,0.5);">RE2020</span>
+            <span class="text-[10px] font-medium px-3 py-1.5 rounded-full text-dark-500" style="border: 1px solid rgba(226,232,240,0.7); background: rgba(248,250,252,0.5);">CEE BAT-TH-116</span>
           </div>
         </div>
 
@@ -253,8 +253,8 @@
   <div x-data="cookieNotice()" x-cloak>
     <div x-show="showBanner" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
       class="fixed bottom-0 left-0 right-0 z-[60] p-4">
-      <div class="max-w-xl mx-auto bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl" style="border: 1px solid rgba(0,0,0,0.06);">
-        <p class="text-[14px] font-medium text-dark-900 mb-1">Respect de votre vie privée</p>
+      <div class="max-w-xl mx-auto bg-white/92 backdrop-blur-2xl rounded-2xl p-6" style="border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 24px 48px -12px rgba(0,0,0,0.15);">
+        <p class="text-[14px] font-semibold text-dark-900 mb-1">Respect de votre vie privée</p>
         <p class="text-[13px] text-dark-500 mb-4" style="line-height: 1.6;">
           Ce site n'utilise <span class="font-medium text-dark-700">aucun cookie de tracking</span>.
           La mesure d'audience est assurée par <a href="https://plausible.io/data-policy" target="_blank" rel="noopener" class="text-accent-600 hover:text-accent-700 underline">Plausible Analytics</a> (sans cookies, hébergé en UE, exempt de consentement CNIL).
