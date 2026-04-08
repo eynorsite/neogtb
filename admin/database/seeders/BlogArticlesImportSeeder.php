@@ -95,15 +95,15 @@ class BlogArticlesImportSeeder extends Seeder
             $category    = $frontmatter['category'] ?? null;
             $tags        = $frontmatter['tags'] ?? [];
             $featured    = $frontmatter['featured'] ?? false;
-            $image       = $frontmatter['image'] ?? null;
+            // Convention : image = /images/blog/<slug>.webp si frontmatter ne déclare rien
+            $slug        = pathinfo($file, PATHINFO_FILENAME);
+            $image       = $frontmatter['image'] ?? "/images/blog/{$slug}.webp";
 
             if (! $title) {
                 $this->command->warn("Skip {$file} : title manquant.");
                 $skipped++;
                 continue;
             }
-
-            $slug = pathinfo($file, PATHINFO_FILENAME);
 
             // Catégorie
             $categoryModel = null;
