@@ -127,24 +127,24 @@ $icons = [
     class="hidden lg:block absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl rounded-b-3xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]"
     style="border-top: 1px solid rgba(0,0,0,0.06);"
   >
-    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-10 grid grid-cols-4 gap-8">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-6 grid grid-cols-3 gap-8 max-h-[calc(100vh-160px)] overflow-y-auto">
       @foreach(['comprendre','conformer','agir'] as $colKey)
         @php($col = $exploreItems[$colKey])
         <div>
-          <h3 class="text-[11px] font-semibold uppercase tracking-[0.12em] text-dark-400 mb-4 px-3">{{ $col['label'] }}</h3>
-          <ul class="flex flex-col gap-1">
+          <h3 class="text-[10px] font-semibold uppercase tracking-[0.12em] text-dark-400 mb-2 px-2.5">{{ $col['label'] }}</h3>
+          <ul class="flex flex-col gap-0.5">
             @foreach($col['items'] as $it)
               @php($active = request()->is($it['match']))
               <li>
                 <a href="{{ $it['href'] }}"
                   @if($active) aria-current="page" @endif
-                  class="group flex gap-3 px-3 py-3 rounded-xl transition-colors duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500 min-h-[44px] {{ $active ? 'bg-accent-50 border-l-2 border-accent-600' : 'hover:bg-accent-50/60' }}">
+                  class="group flex gap-2.5 px-2.5 py-2 rounded-lg transition-colors duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500 {{ $active ? 'bg-accent-50 border-l-2 border-accent-600' : 'hover:bg-accent-50/60' }}">
                   <span class="shrink-0 mt-0.5 transition-transform duration-200 group-hover:translate-x-[2px]">
-                    <svg class="w-5 h-5 {{ $active ? 'text-accent-600' : 'text-dark-400 group-hover:text-accent-600' }} transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons[$it['icon']] !!}</svg>
+                    <svg class="w-4 h-4 {{ $active ? 'text-accent-600' : 'text-dark-400 group-hover:text-accent-600' }} transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons[$it['icon']] !!}</svg>
                   </span>
                   <span class="flex-1 min-w-0">
-                    <span class="block text-[13px] {{ $active ? 'text-accent-700 font-semibold' : 'text-dark-900 font-medium group-hover:text-accent-700' }} transition-colors">{{ $it['title'] }}</span>
-                    <span class="block text-[12px] text-dark-500 mt-0.5 leading-snug">{{ $it['desc'] }}</span>
+                    <span class="block text-[13px] leading-tight {{ $active ? 'text-accent-700 font-semibold' : 'text-dark-900 font-medium group-hover:text-accent-700' }} transition-colors">{{ $it['title'] }}</span>
+                    <span class="block text-[11px] text-dark-500 mt-0.5 leading-snug">{{ $it['desc'] }}</span>
                   </span>
                 </a>
               </li>
@@ -153,28 +153,8 @@ $icons = [
         </div>
       @endforeach
 
-      <div class="flex flex-col">
-        <h3 class="text-[11px] font-semibold uppercase tracking-[0.12em] text-dark-400 mb-4 px-3">Spotlight</h3>
-        <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-accent-50 to-accent-100 border border-accent-100/60 flex-1 flex flex-col">
-          <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-accent-50 to-accent-100 flex items-center justify-center">
-            @if(file_exists(public_path('images/hero-audit.png')))
-              <img src="/images/hero-audit.png" alt="" width="320" height="200" class="w-full h-full object-cover" loading="lazy" />
-            @else
-              <svg class="w-12 h-12 text-accent-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons['clipboard-document-check'] !!}</svg>
-            @endif
-          </div>
-          <div class="p-5 flex flex-col gap-3">
-            <p class="text-[15px] font-heading font-semibold text-dark-900 leading-snug">Diagnostic GTB en 7 minutes</p>
-            <p class="text-[12px] text-dark-600 leading-relaxed">Obtenez votre score ISO 52120-1 gratuitement et sans engagement.</p>
-            <a href="/audit" class="btn-primary text-[12px] px-4 py-2 inline-flex items-center gap-1.5 self-start">
-              Lancer le diagnostic
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['arrow-right'] !!}</svg>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-4 flex items-center justify-between text-[12px] text-dark-500" style="border-top: 1px solid rgba(0,0,0,0.06);">
+    <div class="max-w-[1280px] mx-auto px-6 md:px-10 py-2.5 flex items-center justify-between text-[11px] text-dark-500" style="border-top: 1px solid rgba(0,0,0,0.06);">
       <div class="flex items-center gap-2">
         <span>Besoin d'aide pour choisir ?</span>
         <a href="/contact" class="text-accent-700 hover:text-accent-800 font-medium inline-flex items-center gap-1">
