@@ -59,7 +59,7 @@ class BlogCta
         if (preg_match('/cee|economies|aides|financement|prime/', $haystack)) {
             return $cee;
         }
-        if (preg_match('/comparatif|comparateur|marques|fabricant|fournisseur/', $haystack)) {
+        if (preg_match('/comparat|marques?|fabricant|fournisseur|protocole|bacnet|knx|modbus|lon|dali/i', $haystack)) {
             return $comparateur;
         }
 

@@ -61,8 +61,10 @@
 
             {{-- Breadcrumbs --}}
             <nav class="flex items-center gap-2 text-sm mb-8" aria-label="Fil d'Ariane">
+                <a href="/" class="text-dark-400 hover:text-accent-500 transition-colors font-normal">Accueil</a>
+                <span class="w-1 h-1 rounded-full bg-dark-300 flex-shrink-0"></span>
                 <a href="/blog" class="text-dark-400 hover:text-accent-500 transition-colors font-normal">
-                    <svg class="w-4 h-4 inline -mt-0.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>Perspectives
+                    Perspectives
                 </a>
                 <span class="w-1 h-1 rounded-full bg-dark-300 flex-shrink-0"></span>
                 @if($post->category)
@@ -81,6 +83,22 @@
                     </span>
                 @endif
             </nav>
+
+            {{-- Hero image --}}
+            @php
+                $img = $post->featured_image ?? null;
+                if ($img && str_starts_with($img, '/')) {
+                    $imgUrl = $img;
+                } elseif ($img) {
+                    $imgUrl = asset('storage/' . $img);
+                } else {
+                    $imgUrl = '/images/blog/default-cover.webp';
+                }
+            @endphp
+            <div class="relative aspect-[16/9] w-full overflow-hidden rounded-2xl mb-12">
+                <img src="{{ $imgUrl }}" alt="{{ $post->title }}" class="w-full h-full object-cover" loading="eager" fetchpriority="high" onerror="this.src='/images/blog/default-cover.webp'">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            </div>
 
             {{-- Title --}}
             <h1 class="text-2xl sm:text-3xl lg:text-[2.25rem] font-heading font-extrabold text-dark-900 leading-tight tracking-tight" style="letter-spacing: -0.5px;">

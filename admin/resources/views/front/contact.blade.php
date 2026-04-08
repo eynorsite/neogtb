@@ -13,22 +13,26 @@
 
 @section('content')
 
-<section class="relative overflow-hidden bg-gradient-to-br from-primary-50 to-white py-20">
-    <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+<x-front.shared.hero
+    image="/images/hero-gtb-illustration.webp"
+    imageAlt="Contacter NeoGTB"
+    eyebrow="Contact"
+    title="Engageons une conversation"
+    highlight="conversation"
+    subtitle="Un échange factuel pour comprendre votre contexte. Sans engagement, sans pitch commercial."
+    :tags="['Réponse sous 24h', 'Échange gratuit']"
+    :cta="['text' => 'Aller au formulaire', 'url' => '#formulaire']"
+    minHeight="480px"
+    overlay="gradient"
+/>
+
+<section class="relative overflow-hidden bg-white py-20" id="formulaire">
     <div class="max-w-7xl mx-auto px-5 md:px-10 relative z-10">
         <div class="grid lg:grid-cols-2 gap-16 lg:gap-20">
 
             <!-- Left: Info -->
             <div class="flex flex-col justify-center">
-                <span class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Contact</span>
-                <h1 class="font-heading text-4xl md:text-[44px] font-medium text-dark-900 leading-tight tracking-tight mt-4">
-                    Engageons une <span class="text-gradient">conversation</span>
-                </h1>
-                <p class="mt-5 text-[15px] text-dark-500 leading-relaxed max-w-[440px]">
-                    Un échange factuel pour comprendre votre contexte. Sans engagement, sans pitch commercial.
-                </p>
-
-                <div class="mt-10 space-y-5">
+                <div class="mt-2 space-y-5">
                     <!-- Email -->
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-dark-50 border border-dark-100">

@@ -19,14 +19,18 @@
     --font-heading: 'Inter Variable', 'Inter', system-ui, sans-serif;
     --font-display: 'Inter Variable', 'Inter', system-ui, sans-serif;
 
-    /* Échelle typo stricte (px) */
+    /* Échelle typo (px) — complète pour couvrir toutes les classes utilisées */
     --text-xs: 12px;
     --text-sm: 14px;
     --text-base: 16px;
     --text-lg: 20px;
+    --text-xl: 24px;
     --text-2xl: 28px;
+    --text-3xl: 32px;
     --text-4xl: 40px;
+    --text-5xl: 48px;
     --text-6xl: 56px;
+    --text-7xl: 72px;
 
     /* Primary — bleu marine institutionnel */
     --color-primary-50:  #e8eef5;
@@ -67,6 +71,17 @@
     --color-dark-900: #0f172a;
     --color-dark-950: #020617;
 
+    /* Couleur secondaire pour KPI, badges, accents chauds — voir docs design */
+    --color-highlight-50:  #FFFBEB;
+    --color-highlight-100: #FEF3C7;
+    --color-highlight-200: #FDE68A;
+    --color-highlight-300: #FCD34D;
+    --color-highlight-400: #FBBF24;
+    --color-highlight-500: #F59E0B;
+    --color-highlight-600: #D97706;
+    --color-highlight-700: #B45309;
+    --color-highlight-800: #92400E;
+    --color-highlight-900: #78350F;
 }
 
 /* ============================================================
@@ -77,12 +92,20 @@
     to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(0, -12px); }
+}
+
 .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-.animate-float      { /* removed: float infinite */ }
+.animate-float      { animation: float 8s ease-in-out infinite; }
 .animate-pulse-glow { /* removed: pulse-glow infinite */ }
 
 @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up {
+        animation: none !important;
+    }
+    .animate-float {
         animation: none !important;
     }
     *, *::before, *::after {

@@ -28,6 +28,20 @@
 <section class="py-16 lg:py-24 bg-dark-50" x-data="{ active: 'all' }">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        {{-- Search bar --}}
+        <div x-data="{ q: '' }" class="mb-6 flex justify-center">
+            <input
+                type="search"
+                x-model="q"
+                @input.debounce.200ms="document.querySelectorAll('[data-post-card]').forEach(el => {
+                    const txt = el.dataset.searchText || '';
+                    el.style.display = txt.includes(q.toLowerCase()) ? '' : 'none';
+                })"
+                placeholder="Rechercher un article..."
+                class="w-full max-w-md px-4 py-3 rounded-xl border border-dark-200 focus:border-accent-500 focus:ring-2 focus:ring-accent-100 outline-none transition"
+            />
+        </div>
+
         {{-- Category filter pills --}}
         <div class="flex flex-wrap gap-2 mb-12 justify-center">
             <button
@@ -58,18 +72,31 @@
             @foreach($posts as $post)
                 <a href="/blog/{{ $post->slug }}"
                    class="group card-hover block bg-white rounded-2xl overflow-hidden border border-dark-100"
+                   data-post-card
+                   data-search-text="{{ \Illuminate\Support\Str::lower($post->title.' '.($post->excerpt ?? '').' '.($post->tags ? $post->tags->pluck('name')->implode(' ') : '')) }}"
                    x-show="active === 'all' || active === '{{ $post->category?->slug }}'"
                    x-transition:enter="transition ease-out duration-200"
                    x-transition:enter-start="opacity-0 scale-95"
                    x-transition:enter-end="opacity-100 scale-100"
                 >
                     {{-- Image --}}
-                    @if($post->featured_image)
+                    @php
+                        $img = $post->featured_image ?? null;
+                        if ($img && str_starts_with($img, '/')) {
+                            $imgUrl = $img;
+                        } elseif ($img) {
+                            $imgUrl = asset('storage/' . $img);
+                        } else {
+                            $imgUrl = null;
+                        }
+                    @endphp
+                    @if($imgUrl)
                         <div class="relative h-48 overflow-hidden">
-                            <img src="{{ asset('storage/' . $post->featured_image) }}"
+                            <img src="{{ $imgUrl }}"
                                  alt="{{ $post->title }}"
                                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                 loading="lazy">
+                                 loading="lazy"
+                                 onerror="this.src='/images/blog/default-cover.webp'">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                     @else
@@ -116,6 +143,15 @@
                         <p class="text-sm text-dark-500 leading-relaxed line-clamp-2 mb-4">
                             {{ $post->excerpt }}
                         </p>
+
+                        {{-- Tags --}}
+                        @if($post->tags && $post->tags->count())
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                @foreach($post->tags->take(3) as $tag)
+                                    <span class="text-xs px-2 py-1 rounded-full bg-accent-50 text-accent-700">{{ $tag->name }}</span>
+                                @endforeach
+                            </div>
+                        @endif
 
                         {{-- Footer: date + arrow --}}
                         <div class="flex items-center justify-between pt-3 border-t border-dark-100">

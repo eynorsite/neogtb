@@ -6,25 +6,17 @@
 @section('content')
 
 <!-- HERO IMAGE -->
-<section class="relative min-h-[480px] flex items-center overflow-hidden">
-    <img src="/images/hero-gtb.webp" alt="Poste de supervision GTB — écrans de contrôle et alertes bâtiment" width="1200" height="630" loading="eager" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-center" />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%);"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 w-full">
-        <div class="max-w-[540px]">
-            <p class="inline-flex items-center gap-2 text-[11px] font-medium text-white/85 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/15 mb-6">Comprendre</p>
-            <h1 class="font-heading text-4xl md:text-5xl font-medium text-white leading-tight tracking-tight mb-5">
-                Qu'est-ce que la <span class="text-green-400">GTB</span> ?
-            </h1>
-            <p class="text-[17px] text-white/70 leading-relaxed max-w-[480px]">
-                La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment — du chauffage à l'éclairage, en passant par la ventilation et le contrôle d'accès.
-            </p>
-            <div class="mt-6 flex gap-2">
-                <span class="text-xs font-medium px-3 py-1 rounded bg-white/10 text-white/80 border border-white/15">Bâtiment intelligent</span>
-                <span class="text-xs font-medium px-3 py-1 rounded bg-white/10 text-white/80 border border-white/15">ISO 52120-1</span>
-            </div>
-        </div>
-    </div>
-</section>
+<x-front.shared.hero
+    image="/images/hero-gtb.webp"
+    imageAlt="Poste de supervision GTB — écrans de contrôle et alertes bâtiment"
+    eyebrow="Comprendre"
+    title="Qu'est-ce que la GTB ?"
+    highlight="GTB"
+    subtitle="La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment — du chauffage à l'éclairage, en passant par la ventilation et le contrôle d'accès."
+    :tags="['ISO 52120-1', 'Pilotage CVC', 'Bâtiment intelligent']"
+    minHeight="480px"
+    overlay="gradient"
+/>
 
 <!-- DEFINITION -->
 <section class="py-20">

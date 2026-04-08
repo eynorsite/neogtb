@@ -11,8 +11,33 @@
             @foreach($content['cartes'] ?? [] as $i => $carte)
                 <x-front.shared.card :href="$carte['lien'] ?? '#'" :delay="$i % 3">
                     @if(!empty($carte['icone']))
-                        <div style="width: 48px; height: 48px; border-radius: 10px; background: var(--color-accent-50); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 22px;">
-                            {{ $carte['icone'] }}
+                        @php $iconKey = $carte['icone']; $isDoc = $iconKey === 'document'; @endphp
+                        <div style="width: 48px; height: 48px; border-radius: 10px; background: {{ $isDoc ? '#FFFBEB' : 'var(--color-accent-50)' }}; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                            @switch($iconKey)
+                                @case('gauge')
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-600)" stroke-width="1.5">
+                                        <path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z" stroke-linecap="round"/>
+                                        <path d="M12 12l3.5-3.5" stroke-linecap="round" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="1.5" fill="var(--color-accent-600)" stroke="none"/>
+                                        <path d="M5.5 16.5h2M16.5 16.5h2M12 5.5v2" stroke-linecap="round" opacity="0.4"/>
+                                    </svg>
+                                    @break
+                                @case('bars')
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-600)" stroke-width="1.5">
+                                        <rect x="3" y="14" width="4" height="7" rx="1" fill="var(--color-accent-200)" stroke="var(--color-accent-600)"/>
+                                        <rect x="10" y="8" width="4" height="13" rx="1" fill="var(--color-accent-100)" stroke="var(--color-accent-600)"/>
+                                        <rect x="17" y="3" width="4" height="18" rx="1" fill="var(--color-accent-50)" stroke="var(--color-accent-600)"/>
+                                    </svg>
+                                    @break
+                                @case('document')
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.5">
+                                        <rect x="4" y="2" width="16" height="20" rx="2" fill="#FEF3C7" stroke="#D97706"/>
+                                        <path d="M8 7h8M8 11h5" stroke-linecap="round" opacity="0.5"/>
+                                        <circle cx="15" cy="16" r="3.5" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+                                        <path d="M15 14.5v1.5h1.5" stroke="#D97706" stroke-linecap="round" stroke-width="1.5"/>
+                                    </svg>
+                                    @break
+                            @endswitch
                         </div>
                     @endif
 
@@ -25,6 +50,24 @@
                     @if(($carte['preview'] ?? null) === 'gauge-en15232')
                         <div style="margin-top: 16px;">
                             <x-front.shared.gauge-en15232 active="B" />
+                        </div>
+                    @elseif(($carte['preview'] ?? null) === 'comparateur-bars')
+                        <div class="comparateur-preview" style="margin-top: 16px;">
+                            <div class="comparateur-row" style="font-size: 12px;">
+                                <span style="color: var(--color-dark-500); font-weight: 500;">Siemens</span>
+                                <div class="comparateur-bar"><div class="comparateur-bar-fill" style="width: 85%;"></div></div>
+                                <span style="color: var(--color-dark-400); font-size: 11px;">8.5</span>
+                            </div>
+                            <div class="comparateur-row" style="font-size: 12px;">
+                                <span style="color: var(--color-dark-500); font-weight: 500;">Schneider</span>
+                                <div class="comparateur-bar"><div class="comparateur-bar-fill" style="width: 78%;"></div></div>
+                                <span style="color: var(--color-dark-400); font-size: 11px;">7.8</span>
+                            </div>
+                            <div class="comparateur-row" style="font-size: 12px;">
+                                <span style="color: var(--color-dark-500); font-weight: 500;">Honeywell</span>
+                                <div class="comparateur-bar"><div class="comparateur-bar-fill" style="width: 72%;"></div></div>
+                                <span style="color: var(--color-dark-400); font-size: 11px;">7.2</span>
+                            </div>
                         </div>
                     @elseif(($carte['preview'] ?? null) === 'estimation-cee' && !empty($carte['preview_data']))
                         <div style="margin-top: 16px; padding: 12px; border-radius: 8px; background: #FFFBEB; border: 1px solid #FDE68A;">

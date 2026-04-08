@@ -27,16 +27,7 @@
 </script>
 @endverbatim
 <style>
-  :root {
-    --color-accent-50: #F0FDFA; --color-accent-100: #CCFBF1; --color-accent-200: #99F6E4;
-    --color-accent-300: #5EEAD4; --color-accent-400: #2DD4BF; --color-accent-500: #14B8A6;
-    --color-accent-600: #0D9488; --color-accent-700: #0F766E; --color-accent-800: #115E59;
-    --color-accent-900: #134E4A;
-    --color-dark-50: #FAFAF9; --color-dark-100: #F5F5F4; --color-dark-200: #E7E5E4;
-    --color-dark-300: #D6D3D1; --color-dark-400: #A8A29E; --color-dark-500: #78716C;
-    --color-dark-600: #57534E; --color-dark-700: #44403C; --color-dark-800: #292524;
-    --color-dark-900: #1C1917; --color-dark-950: #0C0A09;
-  }
+  /* Palette accent/dark héritée de resources/css/app.css (@theme global). Pas de redéfinition locale pour éviter le silo CSS / palette zombie. */
   [x-cloak] { display: none !important; }
 
   /* Hero */

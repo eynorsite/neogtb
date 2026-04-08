@@ -54,15 +54,22 @@
 .comparateur-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #2D8B4E, #4caf64); transition: width 1s cubic-bezier(0.4,0,0.2,1); }
 
 /* Timeline réglementation */
-.timeline-regl { display: flex; flex-direction: column; gap: 0; }
-.timeline-regl-point { display: flex; align-items: flex-start; gap: 16px; padding-bottom: 24px; position: relative; }
-.timeline-regl-point:not(:last-child)::before { content: ''; position: absolute; left: 7px; top: 20px; bottom: 0; width: 2px; background: #e2e8f0; }
-.timeline-regl-dot { width: 16px; height: 16px; border-radius: 50%; background: #e2e8f0; border: 2px solid #fff; box-shadow: 0 0 0 2px #e2e8f0; flex-shrink: 0; margin-top: 2px; }
+.timeline-regl { display: flex; flex-direction: row; gap: 0; justify-content: space-between; align-items: flex-start; position: relative; }
+.timeline-regl::before { content: ''; position: absolute; left: 0; right: 0; top: 28px; height: 2px; background: #e2e8f0; z-index: 0; }
+.timeline-regl-point { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 0 8px; position: relative; z-index: 1; }
+.timeline-regl-dot { width: 16px; height: 16px; border-radius: 50%; background: #e2e8f0; border: 2px solid #fff; box-shadow: 0 0 0 2px #e2e8f0; flex-shrink: 0; }
+.timeline-regl-point.active .timeline-regl-dot,
 .timeline-regl-dot.past { background: #267a43; box-shadow: 0 0 0 2px #267a43; }
 .timeline-regl-dot.current { background: #1B3A5C; box-shadow: 0 0 0 2px #1B3A5C; }
+.timeline-regl-point.future .timeline-regl-dot,
 .timeline-regl-dot.future { background: #fff; }
 .timeline-regl-year { font-size: 11px; font-weight: 700; color: #267a43; text-transform: uppercase; letter-spacing: 0.05em; }
 .timeline-regl-label { font-size: 14px; color: #475569; line-height: 1.5; }
+@media (max-width: 768px) {
+  .timeline-regl { flex-direction: column; align-items: flex-start; }
+  .timeline-regl::before { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
+  .timeline-regl-point { flex-direction: row; align-items: flex-start; text-align: left; gap: 16px; padding: 0 0 24px 0; }
+}
 
 /* Hero background illustration */
 .hero-bg-illustration { position: absolute; right: 0; top: 0; height: 100%; width: 50%; object-fit: cover; object-position: left center; opacity: 0.15; pointer-events: none; }

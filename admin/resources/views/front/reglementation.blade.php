@@ -6,26 +6,17 @@
 @section('content')
 
 <!-- HERO IMAGE -->
-<section class="relative min-h-[480px] flex items-center overflow-hidden">
-    <img src="/images/hero-reglementation.webp" alt="Réglementation GTB — balance juridique, normes énergétiques et bâtiment tertiaire" width="1200" height="630" loading="eager" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-center" />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%);"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 w-full">
-        <div class="max-w-[540px]">
-            <p class="inline-flex items-center gap-2 text-[11px] font-medium text-white/85 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/15 mb-6">Cadre juridique</p>
-            <h1 class="font-heading text-4xl md:text-5xl font-medium text-white leading-tight tracking-tight mb-5">
-                Réglementation <span class="text-green-400">GTB</span> en France
-            </h1>
-            <p class="text-[17px] text-white/70 leading-relaxed max-w-[480px]">
-                Décret BACS, décret tertiaire, RE2020, directive EPBD, norme EN ISO 52120-1 : obligations, échéances et aides. Mis à jour mars 2026.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-2">
-                @foreach(['Décret BACS', 'Décret tertiaire', 'RE2020', 'ISO 52120-1'] as $tag)
-                <span class="text-xs font-medium px-3 py-1 rounded bg-white/10 text-white/80 border border-white/15">{{ $tag }}</span>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
+<x-front.shared.hero
+    image="/images/hero-reglementation.webp"
+    imageAlt="Réglementation GTB — balance juridique, normes énergétiques et bâtiment tertiaire"
+    eyebrow="Cadre juridique"
+    title="Réglementation GTB en France"
+    highlight="GTB"
+    subtitle="Décret BACS, décret tertiaire, RE2020, directive EPBD, norme EN ISO 52120-1 : obligations, échéances et aides. Mis à jour mars 2026."
+    :tags="['Décret BACS', 'Décret tertiaire', 'RE2020', 'ISO 52120-1']"
+    minHeight="480px"
+    overlay="gradient"
+/>
 
 <!-- ALERTE ACTUALITÉ -->
 <section class="px-6 md:px-10">

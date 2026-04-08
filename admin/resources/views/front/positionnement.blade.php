@@ -6,20 +6,19 @@
 @section('content')
 
 <!-- HERO -->
-<section class="relative overflow-hidden bg-gradient-to-br from-dark-50 to-white" style="padding: 64px 0 48px;">
-    <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
-        <div class="max-w-2xl">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Pourquoi nous</p>
-            <h1 class="font-heading text-3xl md:text-[40px] font-medium text-dark-900 leading-tight tracking-tight mb-4">
-                Vous cherchez un conseil GTB qui ne cherche pas à vous vendre quelque chose
-            </h1>
-            <p class="text-[17px] text-dark-500 leading-relaxed max-w-lg">
-                Sur le marché français, celui qui conseille est souvent celui qui vend. NeoGTB est né pour offrir l'alternative : un regard technique, sans conflit d'intérêts.
-            </p>
-        </div>
-    </div>
-</section>
+<x-front.shared.hero
+    image="/images/hero-gtb-illustration.webp"
+    imageAlt="Conseil GTB indépendant — NeoGTB"
+    eyebrow="Pourquoi NeoGTB"
+    title="Vous cherchez un conseil GTB qui ne cherche rien à vous vendre"
+    highlight="vendre"
+    subtitle="Sur le marché français, celui qui conseille est souvent celui qui vend. NeoGTB est né pour offrir l'alternative : un regard technique, sans conflit d'intérêts."
+    :tags="['0 € commission', '0 affiliation', '100 % indépendant']"
+    :cta="['text' => 'Lancer le pré-diagnostic', 'url' => '/audit']"
+    :cta2="['text' => 'Prendre contact', 'url' => '/contact']"
+    minHeight="480px"
+    overlay="gradient"
+/>
 
 <!-- PREUVES EN CHIFFRES -->
 <section class="py-14 border-t border-b border-dark-200 bg-dark-50">

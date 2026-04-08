@@ -221,7 +221,8 @@
 
   {{-- ==================== HERO ==================== --}}
   <section class="cee-hero">
-    <img src="/images/hero-comparateur.png" alt="Bâtiments intelligents — Générateur CEE" class="cee-hero-img" width="1200" height="630" loading="eager" fetchpriority="high" />
+    {{-- Hero image: aucune image dédiée hero-cee/hero-generateur/hero-economie/hero-energie n'existe dans /public/images/. Fallback sur hero-gtb-illustration.webp (image mutualisée, meilleure qualité que hero-comparateur.png et évite le doublon visuel avec /comparateur). TODO: créer un visuel dédié CEE. --}}
+    <img src="/images/hero-gtb-illustration.webp" alt="Illustration GTB — Générateur de dossier CEE" class="cee-hero-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="cee-hero-mesh"></div>
 
     <div class="max-w-[800px] mx-auto px-6 md:px-10 relative z-10 text-center">

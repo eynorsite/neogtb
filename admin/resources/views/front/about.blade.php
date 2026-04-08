@@ -7,7 +7,7 @@
 
 <!-- HERO -->
 <section class="relative overflow-hidden" style="padding: 100px 0 80px; min-height: 420px; background: #edf5f7;">
-    <img src="/images/hero-about.png" alt="Consultant indépendant GTB au centre des bâtiments" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center top;" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-about.png" alt="Consultant indépendant GTB au centre des bâtiments" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.15) 0%, rgba(237,245,247,0.88) 60%, rgba(237,245,247,1) 100%);"></div>
     <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
         <div class="max-w-2xl">

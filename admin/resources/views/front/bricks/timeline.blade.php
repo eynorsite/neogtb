@@ -15,13 +15,18 @@
             @foreach($content['points'] ?? [] as $point)
                 @php
                     $etat = $point['etat'] ?? 'futur';
+                    $pointClass = match($etat) {
+                        'past' => 'past active',
+                        'present' => 'active',
+                        default => 'future',
+                    };
                     $dotClass = match($etat) {
                         'past' => 'past',
                         'present' => 'current',
                         default => 'future',
                     };
                 @endphp
-                <div class="timeline-regl-point">
+                <div class="timeline-regl-point {{ $pointClass }}">
                     <p class="timeline-regl-year">{{ $point['annee'] ?? '' }}</p>
                     <div class="timeline-regl-dot {{ $dotClass }}"></div>
                     <p class="timeline-regl-label">
@@ -35,8 +40,9 @@
         @if(!empty($content['legende']))
             <p style="text-align: center; font-size: 13px; color: var(--color-dark-400); margin-top: 24px;">
                 @foreach($content['legende'] as $i => $leg)
+                    @php $col = ($leg['couleur'] ?? 'accent') === 'energy' ? 'accent' : ($leg['couleur'] ?? 'accent'); @endphp
                     <span style="{{ $i > 0 ? 'margin-left: 16px;' : '' }} display: inline-flex; align-items: center; gap: 6px;">
-                        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-{{ $leg['couleur'] }}-500);"></span>
+                        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-{{ $col }}-500);"></span>
                         {{ $leg['texte'] }}
                     </span>
                 @endforeach
