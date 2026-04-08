@@ -95,9 +95,8 @@
                     $imgUrl = '/images/blog/default-cover.webp';
                 }
             @endphp
-            <div class="relative aspect-[16/9] w-full overflow-hidden rounded-2xl mb-12">
-                <img src="{{ $imgUrl }}" alt="{{ $post->title }}" class="w-full h-full object-cover" loading="eager" fetchpriority="high" onerror="this.src='/images/blog/default-cover.webp'">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="relative aspect-[16/9] w-full overflow-hidden rounded-2xl mb-12 bg-white">
+                <img src="{{ $imgUrl }}" alt="{{ $post->title }}" class="w-full h-full object-contain" loading="eager" fetchpriority="high" onerror="this.src='/images/blog/default-cover.webp'">
             </div>
 
             {{-- Title --}}

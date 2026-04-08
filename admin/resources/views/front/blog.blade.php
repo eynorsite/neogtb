@@ -91,13 +91,12 @@
                         }
                     @endphp
                     @if($imgUrl)
-                        <div class="relative h-48 overflow-hidden">
+                        <div class="relative h-48 overflow-hidden bg-white">
                             <img src="{{ $imgUrl }}"
                                  alt="{{ $post->title }}"
-                                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                 class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                                  loading="lazy"
                                  onerror="this.src='/images/blog/default-cover.webp'">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                     @else
                         <div class="relative h-48 overflow-hidden bg-gradient-to-br from-primary-50 via-primary-100 to-accent-50">
