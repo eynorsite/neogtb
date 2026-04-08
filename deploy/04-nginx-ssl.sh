@@ -4,6 +4,7 @@
 set -euo pipefail
 
 DOMAIN="neogtb.fr"
+ADMIN_DOMAIN="admin.neogtb.fr"
 EMAIL="hello@neogtb.fr"
 NGINX_CONF="/etc/nginx/sites-available/neogtb"
 
@@ -63,6 +64,49 @@ server {
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
 }
+
+# admin.neogtb.fr — back-office Filament (meme Laravel que neogtb.fr)
+server {
+    listen 80;
+    listen [::]:80;
+    server_name admin.neogtb.fr;
+
+    root /var/www/neogtb/current/admin/public;
+    index index.php;
+
+    client_max_body_size 64M;
+
+    gzip on;
+    gzip_types text/plain text/css text/xml application/json application/javascript application/xml+rss text/javascript image/svg+xml;
+    gzip_min_length 1024;
+
+    location ~* \.(webp|jpg|jpeg|png|gif|ico|css|js|woff2?|svg)\$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files \$uri =404;
+    }
+
+    location / {
+        try_files \$uri \$uri/ /index.php?\$query_string;
+    }
+
+    location ~ \.php\$ {
+        fastcgi_pass unix:${PHP_FPM_SOCK};
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
+}
 NGINXCONF
 
 echo "==> [2/5] Activation site + désactivation default"
@@ -79,7 +123,7 @@ echo "==> [4/5] Certificat SSL Let's Encrypt + upgrade Nginx vers HTTPS"
 #   - édite le vhost pour ajouter le bloc 443 ssl + redirection 80→443
 #   - reload Nginx automatiquement
 certbot --nginx \
-    -d "$DOMAIN" -d "www.$DOMAIN" \
+    -d "$DOMAIN" -d "www.$DOMAIN" -d "$ADMIN_DOMAIN" \
     --non-interactive --agree-tos \
     -m "$EMAIL" \
     --redirect
@@ -93,5 +137,5 @@ echo "✅ Déploiement terminé."
 echo ""
 echo "Tests :"
 echo "  curl -I https://neogtb.fr"
-echo "  curl -I https://neogtb.fr/admin"
 echo "  curl -I https://neogtb.fr/sitemap-index.xml"
+echo "  curl -I https://admin.neogtb.fr/admin/login"
