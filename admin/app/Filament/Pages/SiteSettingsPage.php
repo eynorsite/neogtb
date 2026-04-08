@@ -59,6 +59,7 @@ class SiteSettingsPage extends Page
             'reseaux_sociaux' => ['label' => 'Réseaux sociaux', 'emoji' => '🔗'],
             'entreprise' => ['label' => 'Entreprise', 'emoji' => '🏢'],
             'seo' => ['label' => 'SEO', 'emoji' => '🔍'],
+            'blog' => ['label' => 'Blog', 'emoji' => '📰'],
             'analytics' => ['label' => 'Analytics', 'emoji' => '📊'],
             'apparence' => ['label' => 'Apparence', 'emoji' => '🎨'],
             'securite' => ['label' => 'Sécurité', 'emoji' => '🛡️'],
@@ -67,7 +68,7 @@ class SiteSettingsPage extends Page
 
         // Role-based access
         if ($role === 'editeur') {
-            return array_intersect_key($tabs, array_flip(['apparence', 'seo']));
+            return array_intersect_key($tabs, array_flip(['apparence', 'seo', 'blog']));
         }
 
         if ($role === 'admin') {

@@ -87,6 +87,11 @@ class SiteSettingsSeeder extends Seeder
             ['group' => 'apparence', 'key' => 'apparence_bandeau_lien', 'value' => '', 'type' => 'url', 'label' => 'Lien du bandeau', 'is_public' => true, 'order' => 7],
 
             // ============================================
+            // BLOG
+            // ============================================
+            ['group' => 'blog', 'key' => 'blog_default_cover', 'value' => '/images/blog-default-cover.png', 'type' => 'image', 'label' => 'Image par défaut articles', 'description' => 'Affichée sur les cards et hero des articles qui n\'ont pas d\'image cover spécifique. Format recommandé : 1536x1024 ou 1200x630.', 'is_public' => true, 'order' => 1],
+
+            // ============================================
             // SÉCURITÉ
             // ============================================
             ['group' => 'securite', 'key' => 'securite_recaptcha_site_key', 'value' => '', 'type' => 'text', 'label' => 'reCAPTCHA Site Key', 'is_encrypted' => true, 'order' => 1],

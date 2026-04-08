@@ -81,35 +81,25 @@
                    x-transition:enter-start="opacity-0 scale-95"
                    x-transition:enter-end="opacity-100 scale-100"
                 >
-                    {{-- Image --}}
+                    {{-- Image cover : featured_image (Filament Posts) sinon fallback global setting blog_default_cover --}}
                     @php
-                        $img = $post->featured_image ?? null;
+                        $defaultCover = \App\Models\SiteSetting::get('blog_default_cover', '/images/blog-default-cover.png');
+                        $img = $post->featured_image ?: null;
                         if ($img && str_starts_with($img, '/')) {
                             $imgUrl = $img;
                         } elseif ($img) {
                             $imgUrl = asset('storage/' . $img);
                         } else {
-                            $imgUrl = null;
+                            $imgUrl = $defaultCover;
                         }
                     @endphp
-                    @if($imgUrl)
-                        <div class="relative h-48 overflow-hidden bg-white">
-                            <img src="{{ $imgUrl }}"
-                                 alt="{{ $post->title }}"
-                                 class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                                 loading="lazy"
-                                 onerror="this.src='/images/blog/default-cover.webp'">
-                        </div>
-                    @else
-                        <div class="relative h-48 overflow-hidden bg-gradient-to-br from-primary-50 via-primary-100 to-accent-50">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <svg class="w-12 h-12 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
-                                </svg>
-                            </div>
-                            <div class="absolute inset-0" style="background-image: radial-gradient(circle, rgba(27,58,92,0.04) 1px, transparent 1px); background-size: 16px 16px;"></div>
-                        </div>
-                    @endif
+                    <div class="relative h-48 overflow-hidden bg-white">
+                        <img src="{{ $imgUrl }}"
+                             alt="{{ $post->title }}"
+                             class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                             loading="lazy"
+                             onerror="this.src='{{ $defaultCover }}'">
+                    </div>
 
                     {{-- Content --}}
                     <div class="p-6">
