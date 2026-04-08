@@ -46,6 +46,12 @@ $icons = [
 ];
 @endphp
 
+<style>
+@media (prefers-reduced-motion: reduce) {
+  [x-transition], [x-cloak] { transition: none !important; animation: none !important; }
+}
+</style>
+
 <header
   class="fixed top-0 w-full z-50 transition-all duration-200 ease-out"
   id="main-header"
@@ -151,10 +157,14 @@ $icons = [
         <h3 class="text-[11px] font-semibold uppercase tracking-[0.12em] text-dark-400 mb-4 px-3">Spotlight</h3>
         <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-accent-50 to-accent-100 border border-accent-100/60 flex-1 flex flex-col">
           <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-accent-50 to-accent-100 flex items-center justify-center">
-            <img src="/images/hero-audit.png" alt="" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'" />
+            @if(file_exists(public_path('images/hero-audit.png')))
+              <img src="/images/hero-audit.png" alt="" width="320" height="200" class="w-full h-full object-cover" loading="lazy" />
+            @else
+              <svg class="w-12 h-12 text-accent-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons['clipboard-document-check'] !!}</svg>
+            @endif
           </div>
           <div class="p-5 flex flex-col gap-3">
-            <h3 class="text-[15px] font-heading font-semibold text-dark-900 leading-snug">Diagnostic GTB en 7 minutes</h3>
+            <p class="text-[15px] font-heading font-semibold text-dark-900 leading-snug">Diagnostic GTB en 7 minutes</p>
             <p class="text-[12px] text-dark-600 leading-relaxed">Obtenez votre score ISO 52120-1 gratuitement et sans engagement.</p>
             <a href="/audit" class="btn-primary text-[12px] px-4 py-2 inline-flex items-center gap-1.5 self-start">
               Lancer le diagnostic
@@ -188,6 +198,7 @@ $icons = [
     aria-modal="true"
     aria-label="Menu de navigation"
     id="mobile-drawer"
+    @keydown.tab="trapFocus($event)"
     x-init="$watch('mobileOpen', v => document.body.style.overflow = v ? 'hidden' : '')"
   >
     <div
@@ -233,7 +244,7 @@ $icons = [
         @foreach($exploreItems as $colKey => $col)
           @php($openByDefault = $colKey === 'comprendre')
           <div x-data="{ open: {{ $openByDefault ? 'true' : 'false' }} }" class="mb-2 border-b border-dark-100 pb-2">
-            <button type="button" @click="open = !open" :aria-expanded="open.toString()" class="w-full flex items-center justify-between py-3 text-left min-h-[44px]">
+            <button type="button" @click="open = !open" :aria-expanded="open.toString()" class="w-full flex items-center justify-between py-3 text-left min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 rounded-lg">
               <span class="flex items-center gap-2">
                 <span class="text-[11px] font-semibold uppercase tracking-[0.12em] text-dark-500">{{ $col['label'] }}</span>
                 <span class="text-[11px] text-dark-400">({{ count($col['items']) }})</span>
@@ -286,7 +297,10 @@ $icons = [
     const data = h._x_dataStack[0];
     if (data) {
       data.scrolled = window.scrollY > 20;
-      if (window.scrollY > 50 && data.explorerOpen) data.closeExplorer();
+      if (window.scrollY > 50 && data.explorerOpen) {
+        const panel = document.getElementById('explorer-panel');
+        if (!panel || !panel.contains(document.activeElement)) data.closeExplorer();
+      }
     }
   }, { passive: true });
   window.addEventListener('resize', () => {
@@ -338,6 +352,17 @@ $icons = [
         this.mobileOpen = false;
         document.body.style.overflow = '';
         this.$nextTick(() => { if (this.$refs.trigger) this.$refs.trigger.focus(); });
+      },
+      trapFocus(e) {
+        if (!this.mobileOpen) return;
+        const drawer = document.getElementById('mobile-drawer');
+        if (!drawer) return;
+        const focusable = drawer.querySelectorAll('a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       },
       closeAll() {
         if (this.explorerOpen) { this.closeExplorer(); if (this.$refs.trigger) this.$refs.trigger.focus(); }

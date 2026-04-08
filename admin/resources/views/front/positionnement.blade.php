@@ -93,6 +93,7 @@
             </div>
             @endforeach
         </div>
+        @include('front.bricks.cta-mini.cta-text-link-underline', ['beforeText' => 'Envie de confronter ces critères à un cas concret ?', 'linkText' => 'Le pré-diagnostic est un bon test de la méthode', 'href' => '/audit', 'afterText' => '.'])
     </div>
 </section>
 

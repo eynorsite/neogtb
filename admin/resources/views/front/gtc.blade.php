@@ -75,6 +75,7 @@
         <div class="bg-accent-50 border border-accent-200 rounded-xl p-6">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">En résumé</p>
             <p class="text-sm text-dark-600 leading-relaxed">La GTB pilote et optimise un bâtiment de l'intérieur. La GTC supervise un parc depuis un point central. Dans les projets complexes, les deux cohabitent : la GTB assure la régulation locale, la GTC fournit la vision consolidée au gestionnaire.</p>
+            @include('front.bricks.cta-mini.cta-text-link-underline', ['beforeText' => 'Besoin de trancher pour votre parc ?', 'linkText' => 'Voyez notre comparateur indépendant', 'href' => '/comparateur', 'afterText' => '.'])
         </div>
     </div>
 </section>
@@ -133,6 +134,7 @@
         <div class="bg-accent-50 border border-accent-200 rounded-xl p-6 mt-8">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Interopérabilité</p>
             <p class="text-sm text-dark-600 leading-relaxed">Le choix de protocoles ouverts (BACnet, Modbus, OPC-UA) est déterminant pour éviter l'enfermement propriétaire et garantir l'évolutivité du système dans le temps.</p>
+            @include('front.bricks.cta-mini.cta-text-link-underline', ['beforeText' => '', 'linkText' => 'Les 19 équipements Modbus de notre catalogue technique', 'href' => '/tables-modbus', 'afterText' => 'illustrent ces protocoles ouverts.'])
         </div>
     </div>
 </section>

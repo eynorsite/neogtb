@@ -79,6 +79,7 @@
                 </tbody>
             </table>
         </div>
+        @include('front.bricks.cta-mini.cta-inline-mini-card', ['href' => '/audit', 'eyebrow' => 'Auto-évaluation', 'text' => 'Savoir quelle ligne s\'applique à votre bâtiment — 3 minutes, sans inscription.', 'linkText' => 'Pré-diagnostic'])
     </div>
 </section>
 

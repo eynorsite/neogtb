@@ -65,6 +65,9 @@
             </div>
             @endforeach
         </div>
+        <div class="max-w-[760px] mx-auto mt-6">
+            @include('front.bricks.cta-mini.cta-arrow-link', ['href' => '/audit', 'text' => 'Situer votre bâtiment sur cette échelle'])
+        </div>
     </div>
 </section>
 
@@ -189,6 +192,9 @@
                 <p class="text-sm text-dark-500 leading-relaxed">{{ $reg['desc'] }}</p>
             </div>
             @endforeach
+        </div>
+        <div class="max-w-[760px] mx-auto">
+            @include('front.bricks.cta-mini.cta-info-callout', ['eyebrow' => 'Point d\'action', 'text' => 'Échéance BACS à vérifier selon votre puissance CVC. Repérez-vous avec le pré-diagnostic.', 'href' => '/audit', 'linkText' => 'Lancer le pré-diagnostic'])
         </div>
     </div>
 </section>

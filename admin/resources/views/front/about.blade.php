@@ -165,6 +165,9 @@
             </div>
             @endforeach
         </div>
+        <div class="max-w-xl mt-6">
+            @include('front.bricks.cta-mini.cta-text-link-underline', ['beforeText' => 'Cette méthode commence par un état des lieux —', 'linkText' => 'que vous pouvez initier avec le pré-diagnostic en ligne', 'href' => '/audit', 'afterText' => '.'])
+        </div>
     </div>
 </section>
 

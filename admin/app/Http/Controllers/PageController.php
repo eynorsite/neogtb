@@ -32,7 +32,7 @@ class PageController extends Controller
         $posts = Post::where('status', 'published')
             ->with('category')
             ->orderByDesc('published_at')
-            ->paginate(12);
+            ->paginate(20);
 
         $categories = PostCategory::where('is_active', true)
             ->withCount(['posts' => fn ($q) => $q->where('status', 'published')])

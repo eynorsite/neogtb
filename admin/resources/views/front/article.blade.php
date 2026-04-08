@@ -166,6 +166,8 @@
             </div>
         @endif
 
+        @include('front.bricks.cta-mini.cta-side-callout', ['href' => '/audit', 'eyebrow' => 'Pour aller plus loin', 'text' => 'Évaluez votre bâtiment sur ces critères avec notre pré-diagnostic gratuit ISO 52120-1.', 'linkText' => 'Lancer le pré-diagnostic', 'icon' => 'arrow'])
+
         {{-- Share / Copy link --}}
         <div class="mt-8 flex items-center gap-4" x-data="{ copied: false }">
             <span class="text-sm text-dark-400">Partager :</span>

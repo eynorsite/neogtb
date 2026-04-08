@@ -30,6 +30,7 @@
           <strong>⚠️ Données indicatives</strong> — Vérifiez toujours la documentation fabricant à jour avant intégration. Les adresses, fonctions et plages de registres peuvent varier selon le firmware, le modèle exact et la version du protocole.
         </p>
       </div>
+      @include('front.bricks.cta-mini.cta-slim-banner', ['href' => '/comparateur', 'text' => 'Intégrateur ou BE ? Notre comparateur liste les superviseurs compatibles Modbus/BACnet par budget.', 'linkText' => 'Comparer', 'storageKey' => 'tables_modbus_comparateur'])
     </div>
   </section>
 

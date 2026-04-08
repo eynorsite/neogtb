@@ -42,6 +42,8 @@
             />
         </div>
 
+        @include('front.bricks.cta-mini.cta-slim-banner', ['href' => '/reglementation', 'text' => 'Vous cherchez une réponse rapide sur la réglementation BACS ? Consultez la page réglementation.', 'linkText' => 'Voir le guide', 'storageKey' => 'blog_reglementation'])
+
         {{-- Category filter pills --}}
         <div class="flex flex-wrap gap-2 mb-12 justify-center">
             <button

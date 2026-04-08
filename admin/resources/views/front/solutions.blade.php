@@ -53,6 +53,7 @@
             </div>
             @endforeach
         </div>
+        @include('front.bricks.cta-mini.cta-inline-mini-card', ['href' => '/tables-modbus', 'eyebrow' => 'Référence technique', 'text' => 'Adresses, registres, fonctions : notre catalogue Modbus couvre 19 équipements types.', 'linkText' => 'Voir les tables'])
     </div>
 </section>
 
