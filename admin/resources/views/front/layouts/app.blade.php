@@ -51,60 +51,55 @@
   {{-- CSRF token for AJAX --}}
   <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-  {{-- Schema.org Organization --}}
+  {{-- Schema.org @graph : Organization + LocalBusiness + BreadcrumbList --}}
   <script type="application/ld+json">
   {
     "@@context": "https://schema.org",
-    "@@type": "Organization",
-    "@@id": "https://neogtb.fr/#organization",
-    "name": "NeoGTB",
-    "url": "https://neogtb.fr",
-    "logo": "https://neogtb.fr/images/logo-neogtb.webp",
-    "sameAs": [
-      "https://www.linkedin.com/company/neogtb"
-    ]
-  }
-  </script>
-
-  {{-- Schema.org LocalBusiness --}}
-  <script type="application/ld+json">
-  {
-    "@@context": "https://schema.org",
-    "@@type": "LocalBusiness",
-    "@@id": "https://neogtb.fr/#localbusiness",
-    "name": "NeoGTB",
-    "url": "https://neogtb.fr",
-    "image": "https://neogtb.fr/images/og-neogtb.png",
-    "priceRange": "€€",
-    "address": {
-      "@@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "Eysines",
-      "addressRegion": "Bordeaux",
-      "postalCode": "33320",
-      "addressCountry": "FR"
-    },
-    "areaServed": { "@@type": "Country", "name": "France" }
-  }
-  </script>
-
-  {{-- Schema.org BreadcrumbList --}}
-  <script type="application/ld+json">
-  {
-    "@@context": "https://schema.org",
-    "@@type": "BreadcrumbList",
-    "itemListElement": [
+    "@@graph": [
       {
-        "@@type": "ListItem",
-        "position": 1,
-        "name": "Accueil",
-        "item": "{{ url('/') }}"
+        "@@type": "Organization",
+        "@@id": "https://neogtb.fr/#organization",
+        "name": "NeoGTB",
+        "url": "https://neogtb.fr",
+        "logo": "https://neogtb.fr/images/logo-neogtb.webp",
+        "sameAs": [
+          "https://www.linkedin.com/company/neogtb"
+        ]
       },
       {
-        "@@type": "ListItem",
-        "position": 2,
-        "name": @json($seoBreadcrumbName),
-        "item": "{{ $seoUrl }}"
+        "@@type": "LocalBusiness",
+        "@@id": "https://neogtb.fr/#localbusiness",
+        "parentOrganization": { "@@id": "https://neogtb.fr/#organization" },
+        "name": "NeoGTB",
+        "url": "https://neogtb.fr",
+        "image": "https://neogtb.fr/images/og-neogtb.png",
+        "priceRange": "€€",
+        "address": {
+          "@@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "Eysines",
+          "addressRegion": "Bordeaux",
+          "postalCode": "33320",
+          "addressCountry": "FR"
+        },
+        "areaServed": { "@@type": "Country", "name": "France" }
+      },
+      {
+        "@@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": "{{ url('/') }}"
+          },
+          {
+            "@@type": "ListItem",
+            "position": 2,
+            "name": @json($seoBreadcrumbName),
+            "item": "{{ $seoUrl }}"
+          }
+        ]
       }
     ]
   }

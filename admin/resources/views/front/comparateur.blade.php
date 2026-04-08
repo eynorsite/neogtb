@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Comparateur GTB — Schneider, Siemens, Honeywell — NeoGTB')
-@section('description', 'Comparez 10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense. Comparatif indépendant.')
 
 @push('head')
 <style>

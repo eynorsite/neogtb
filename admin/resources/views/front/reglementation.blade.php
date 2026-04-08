@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Réglementation GTB — Décret BACS, Tertiaire, RE2020')
-@section('description', 'Réglementation GTB en France : décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, norme EN ISO 52120-1 (ex-EN 15232). Calendrier et obligations.')
 
 @section('content')
 

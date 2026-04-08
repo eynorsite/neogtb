@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Pré-diagnostic GTB gratuit — Évaluez en 5 min — NeoGTB')
-@section('description', 'Évaluez la conformité GTB de votre bâtiment (décret BACS), estimez vos économies et recevez un rapport PDF avec recommandations ISO 52120-1 (ex-EN 15232).')
 
 @push('head')
 @verbatim
@@ -933,7 +931,7 @@
         this.animatedScore = 0;
         this.step = 4;
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (!window._jsPDFModule) { import('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js').catch(() => {}); }
+        if (!window._jsPDFModule) { import('jspdf').then(m => { window._jsPDFModule = m; }).catch(() => {}); }
         if (!window._neogtbLogo) { const img = new Image(); img.src = '/images/logo-neogtb-pdf.png'; img.onload = () => { window._neogtbLogo = img; }; }
         const target = this.results.score; const self = this; let current = 0;
         const interval = setInterval(() => { current += Math.ceil(target / 25); if (current >= target) { current = target; clearInterval(interval); } self.animatedScore = current; }, 30);
@@ -1014,7 +1012,7 @@
           if (this.emailAddress && this.emailAddress.includes('@')) {
             try { fetch('/audit/lead', { method: 'POST', body: JSON.stringify({ email: this.emailAddress, name: this.userName || null, company: this.userCompany || null, consentement_rgpd: true, score: this.results.score, level_label: this.results.levelLabel, surface: this.form.surface, building_type: this.form.buildingType, savings_euro: this.results.savingsEuro, payload: { form: this.form, results: this.results } }), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || '', 'X-Requested-With': 'XMLHttpRequest' } }).catch(() => {}); } catch(e) {}
           }
-          const jsPDFModule = window.jspdf || await import('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm');
+          const jsPDFModule = window.jspdf || await import('jspdf');
           const { jsPDF } = jsPDFModule;
           const doc = new jsPDF(); const m = 20; const pw = 170; let y = m;
           let logoImg = window._neogtbLogo;

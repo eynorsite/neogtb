@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', $seoTitle ?? 'Politique cookies — NeoGTB')
-@section('description', $seoDescription ?? 'NeoGTB n\'utilise aucun cookie traceur. Analytics Plausible sans cookie, exempt CNIL. Seuls des cookies techniques Laravel.')
 
 @section('content')
 

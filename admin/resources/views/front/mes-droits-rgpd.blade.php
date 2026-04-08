@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Exercer vos droits RGPD')
-@section('description', 'Droits RGPD sur NeoGTB : accès, rectification, suppression, portabilité, opposition. Réponse sous 30 jours.')
 
 @section('content')
 

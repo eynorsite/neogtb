@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Contact — Conseil GTB indépendant')
-@section('description', 'Contactez NeoGTB pour un avis indépendant sur votre projet GTB. Basé à Bordeaux, réponse sous 48h.')
 
 @push('head')
 <script type="application/ld+json">

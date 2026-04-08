@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
+# DEPRECATED — utiliser ../../deploy/deploy-update.sh à la place
+# Ce script ne gère pas les releases atomiques (symlinks current/releases),
+# le queue:restart, le smoke test ou le rollback. Il est conservé pour
+# référence historique mais ne doit plus être exécuté en prod.
+if [ -t 0 ] && [ -t 1 ]; then
+    echo "❌ DEPRECATED — Use deploy/deploy-update.sh" >&2
+    echo "   (depuis la racine du repo : sudo bash deploy/deploy-update.sh)" >&2
+    exit 1
+fi
 # =============================================================================
-# Deploy script — NeoGTB Admin (Laravel + Filament)
+# Deploy script — NeoGTB Admin (Laravel + Filament) [DEPRECATED]
 # -----------------------------------------------------------------------------
 # À exécuter SUR LE VPS, dans /var/www/neogtb-admin (ou ton chemin).
 #

@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', "Qu'est-ce que la GTB ? Définition et niveaux ISO 52120-1")
-@section('description', 'Guide GTB : définition, 4 niveaux ISO 52120-1 (ex-EN 15232), protocoles BACnet/KNX/Modbus, décret BACS et obligations. Mis à jour 2026.')
 
 @section('content')
 

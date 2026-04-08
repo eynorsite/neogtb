@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Mentions légales')
-@section('description', 'Mentions légales de NeoGTB.fr : éditeur, hébergeur, propriété intellectuelle et conditions d\'utilisation.')
 
 @section('content')
 

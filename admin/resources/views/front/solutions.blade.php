@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Solutions GTB : protocoles BACnet, KNX, Modbus')
-@section('description', 'Comparatif indépendant des protocoles GTB (BACnet, KNX, Modbus, LON), capteurs et automates. Guide sans lien commercial.')
 
 @section('content')
 

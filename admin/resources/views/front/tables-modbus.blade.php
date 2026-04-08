@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', "Tables d'adressage Modbus — Catalogue technique GTB — NeoGTB")
-@section('description', "Catalogue technique des registres Modbus pour 19 équipements GTB courants : compteurs, PAC, CTA, chaudières, sondes, vannes, éclairage. Données indicatives à vérifier auprès du fabricant.")
 
 @push('head')
 <style>[x-cloak]{display:none !important;}</style>

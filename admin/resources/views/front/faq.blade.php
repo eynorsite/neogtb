@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'FAQ — Questions fréquentes sur la GTB et NeoGTB')
-@section('description', 'Réponses aux questions les plus fréquentes sur la GTB, le décret BACS, les outils NeoGTB et notre modèle d\'indépendance.')
 
 @push('head')
 @verbatim

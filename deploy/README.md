@@ -2,6 +2,22 @@
 
 **Statut** : scripts prêts à exécuter, pas encore lancés (besoin d'accès SSH au VPS).
 
+## Script canonique : `deploy/deploy-update.sh`
+
+Pour toute mise à jour en prod après le premier déploiement, **un seul script**
+fait foi : `deploy/deploy-update.sh` (releases atomiques, symlink `current`,
+mode maintenance, migrations, queue:restart, smoke test HTTP, rollback auto).
+
+```bash
+sudo bash deploy/deploy-update.sh
+```
+
+Il gère lui-même le `git pull` dans `~/neogtb` (refus si dirty), donc plus
+besoin de pull à la main avant.
+
+> `admin/deploy/deploy.sh` est **DEPRECATED** et refuse de s'exécuter en
+> mode interactif. Conservé pour référence historique seulement.
+
 ## Architecture cible (100% Laravel)
 
 ```

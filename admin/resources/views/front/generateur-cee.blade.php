@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Simulateur CEE GTB — Estimez vos primes — NeoGTB')
-@section('description', "Estimez vos Certificats d'Économies d'Énergie (CEE) pour un projet GTB en 3 minutes. Outil gratuit, sans lien commercial.")
 
 @push('head')
 <style>

@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Politique de confidentialité')
-@section('description', 'Comment NeoGTB collecte, utilise et protège vos données personnelles conformément au RGPD.')
 
 @section('content')
 

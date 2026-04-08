@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Pourquoi NeoGTB — Conseil GTB 100 % indépendant')
-@section('description', 'NeoGTB n\'est lié à aucun fabricant. Zéro commission, zéro affiliation, zéro revente de données. Preuves d\'indépendance.')
 
 @section('content')
 

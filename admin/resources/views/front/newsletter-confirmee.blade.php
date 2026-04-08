@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'Inscription confirmée')
-@section('description', 'Votre inscription à la veille GTB mensuelle NeoGTB est confirmée.')
 
 @section('content')
 

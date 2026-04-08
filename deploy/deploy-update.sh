@@ -141,8 +141,14 @@ sudo -u www-data php artisan route:cache
 sudo -u www-data php artisan view:cache
 sudo -u www-data php artisan event:cache 2>&1 | tail -3 || true
 
-echo "==> [8/9] Swap atomique : current → $RELEASE_DIR"
+echo "==> [8/11] Swap atomique : current → $RELEASE_DIR"
 ln -sfn "$RELEASE_DIR" "$DEPLOY_ROOT/current"
+
+# Fix #2 : queue:restart après le swap pour forcer les workers Supervisor
+# à recharger le code de la nouvelle release (sinon ils continuent d'exécuter
+# l'ancien bytecode jusqu'à ce qu'ils crashent ou soient redémarrés).
+echo "    🔄 queue:restart (workers Supervisor rechargent le code)"
+sudo -u www-data php "$DEPLOY_ROOT/current/admin/artisan" queue:restart 2>&1 | tail -3 || true
 
 # Reload PHP-FPM (détecte la version installée) + Nginx
 PHP_FPM_SERVICE=$(systemctl list-unit-files 'php*-fpm.service' --no-legend 2>/dev/null | awk '{print $1}' | head -1)
@@ -151,7 +157,34 @@ if [ -n "$PHP_FPM_SERVICE" ]; then
 fi
 nginx -t && systemctl reload nginx
 
-echo "==> [9/9] Cleanup anciennes releases (garde les $KEEP_RELEASES dernières)"
+echo "==> [9/11] Sortie du mode maintenance"
+sudo -u www-data php "$DEPLOY_ROOT/current/admin/artisan" up 2>&1 | tail -3 || true
+MAINT_ACTIVE=0
+
+echo "==> [10/11] Smoke test HTTP https://neogtb.fr/"
+SMOKE_CODE=$(curl -sfo /dev/null -w "%{http_code}" -L --max-time 15 https://neogtb.fr/ || echo "000")
+case "$SMOKE_CODE" in
+    200|301|302)
+        echo "    ✅ smoke test OK (HTTP $SMOKE_CODE)"
+        ;;
+    *)
+        echo "    ❌ smoke test KO (HTTP $SMOKE_CODE) → rollback automatique"
+        ROLLBACK_SCRIPT="$(dirname "$(readlink -f "$0")")/rollback.sh"
+        if [ -x "$ROLLBACK_SCRIPT" ]; then
+            bash "$ROLLBACK_SCRIPT" || true
+        else
+            echo "    ⚠  $ROLLBACK_SCRIPT introuvable, rollback manuel nécessaire."
+            if [ -n "$PREVIOUS_RELEASE" ] && [ -d "$PREVIOUS_RELEASE" ]; then
+                ln -sfn "$PREVIOUS_RELEASE" "$DEPLOY_ROOT/current"
+                nginx -t && systemctl reload nginx || true
+            fi
+        fi
+        trap - ERR
+        exit 1
+        ;;
+esac
+
+echo "==> [11/11] Cleanup anciennes releases (garde les $KEEP_RELEASES dernières)"
 # Tri par NOM (les noms sont YYYYMMDD-HHMMSS donc lexicographique == chronologique).
 # Évite le piège `ls -1t` qui trie par mtime — peu fiable car rsync/chown ne
 # touchent pas au mtime du dossier parent → la release qu'on vient de créer
@@ -180,6 +213,7 @@ else
     echo "    (rien à supprimer, $TOTAL releases ≤ $KEEP_RELEASES)"
 fi
 
+trap - ERR
 echo ""
 echo "✅ Déploiement terminé."
 echo "   Release : $RELEASE_DIR"

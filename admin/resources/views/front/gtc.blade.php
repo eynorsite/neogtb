@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', "Qu'est-ce que la GTC ? Différences avec la GTB")
-@section('description', 'Guide GTC : définition, différences avec la GTB, architecture type, protocoles OPC-UA/BACnet/Modbus et supervision multi-sites.')
 
 @section('content')
 

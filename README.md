@@ -1,4 +1,10 @@
-# Astro Starter Kit: Basics
+# NeoGTB
+
+> **Déploiement** : voir [`deploy/README.md`](deploy/README.md). Script canonique = `deploy/deploy-update.sh` (releases atomiques, maintenance, queue:restart, smoke test, rollback). `admin/deploy/deploy.sh` est **DEPRECATED**.
+
+---
+
+## Astro Starter Kit: Basics
 
 ```sh
 npm create astro@latest -- --template basics
