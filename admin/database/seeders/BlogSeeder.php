@@ -12,7 +12,7 @@ class BlogSeeder extends Seeder
     {
         // Catégories
         $categories = [
-            ['name' => 'Guides', 'slug' => 'guides', 'color' => '#2563eb', 'order' => 1],
+            ['name' => 'Guide', 'slug' => 'guide', 'color' => '#2563eb', 'order' => 1],
             ['name' => 'Réglementation', 'slug' => 'reglementation', 'color' => '#dc2626', 'order' => 2],
             ['name' => 'Technologies', 'slug' => 'technologies', 'color' => '#16a34a', 'order' => 3],
             ['name' => 'Tendances', 'slug' => 'tendances', 'color' => '#9333ea', 'order' => 4],

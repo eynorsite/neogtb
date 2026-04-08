@@ -17,6 +17,7 @@
   @php($seoOgImageAbs = \Illuminate\Support\Str::startsWith($seoOgImage, ['http://', 'https://']) ? $seoOgImage : url($seoOgImage))
   @php($seoUrl = $seoUrl ?? url()->current())
   @php($seoBreadcrumbName = $page->title ?? $seoTitle)
+  @php($seoOgType = $seoOgType ?? 'website')
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,7 +34,7 @@
   <link rel="canonical" href="{{ $seoUrl }}" />
 
   {{-- Open Graph --}}
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="{{ $seoOgType }}" />
   <meta property="og:site_name" content="NeoGTB" />
   <meta property="og:title" content="{{ $seoTitle }}" />
   <meta property="og:description" content="{{ $seoDescription }}" />
@@ -176,7 +177,8 @@
             >
               @csrf
               <div class="flex gap-2" x-show="!nlSent">
-                <input type="email" name="email" placeholder="votre@email.com" required class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid #e2e8f0; background: #f8fafc;" />
+                <label class="sr-only" for="footer-nl-email">Email pour la veille GTB</label>
+                <input type="email" id="footer-nl-email" name="email" placeholder="votre@email.com" required aria-label="Votre adresse email pour la veille GTB mensuelle" class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid #e2e8f0; background: #f8fafc;" />
                 <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, #2D8B4E, #267a43);">
                   <span x-show="!nlSending">S'inscrire</span>
                   <span x-show="nlSending">...</span>
@@ -246,7 +248,7 @@
           <a href="https://www.linkedin.com/in/ulrich-calmo" target="_blank" rel="noopener noreferrer" class="text-dark-400 hover:text-dark-900 transition-colors duration-200" aria-label="LinkedIn">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <button onclick="window.dispatchEvent(new CustomEvent('open-cookie-settings'))" class="text-[13px] text-dark-400 hover:text-dark-900 transition-colors duration-200 cursor-pointer">Gérer les cookies</button>
+          <button type="button" x-on:click="$dispatch('open-cookie-settings')" class="text-[13px] text-dark-400 hover:text-dark-900 transition-colors duration-200 cursor-pointer">Gérer les cookies</button>
         </div>
       </div>
     </div>

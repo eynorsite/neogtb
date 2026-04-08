@@ -75,9 +75,11 @@ class PageController extends Controller
 
         $seoUrl = route('front.article', $post->slug);
 
+        $seoOgType = 'article';
+
         return view('front.article', compact(
             'post', 'related', 'settings',
-            'seoTitle', 'seoDescription', 'seoOgImage', 'seoUrl'
+            'seoTitle', 'seoDescription', 'seoOgImage', 'seoUrl', 'seoOgType'
         ));
     }
 

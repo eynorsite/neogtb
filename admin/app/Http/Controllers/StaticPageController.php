@@ -57,7 +57,7 @@ class StaticPageController extends Controller
     public function reglementation()
     {
         return view('front.reglementation', $this->seo(
-            'Réglementation GTB — Décret BACS 2027, Tertiaire, RE2020, EPBD',
+            'Réglementation GTB — Décret BACS, Tertiaire, RE2020',
             'Décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, ISO 52120-1 : calendrier, seuils et obligations GTB pour les bâtiments tertiaires.'
         ));
     }
@@ -73,7 +73,7 @@ class StaticPageController extends Controller
     public function gtb()
     {
         return view('front.gtb', $this->seo(
-            'Qu’est-ce que la GTB ? Définition & 4 niveaux ISO 52120-1 (2026)',
+            'Qu’est-ce que la GTB ? 4 niveaux ISO 52120-1 | NeoGTB',
             'Guide complet GTB 2026 : définition, 4 niveaux ISO 52120-1 (ex-EN 15232), protocoles BACnet/KNX/Modbus, décret BACS et obligations réglementaires.'
         ));
     }
@@ -113,7 +113,7 @@ class StaticPageController extends Controller
     public function mesDroitsRgpd()
     {
         return view('front.mes-droits-rgpd', $this->seo(
-            'Exercer vos droits RGPD — Accès, rectification, suppression | NeoGTB',
+            'Vos droits RGPD — Accès, rectification, suppression | NeoGTB',
             'Exercez vos droits RGPD sur NeoGTB : accès, rectification, suppression, portabilité, opposition et limitation. Réponse garantie sous 30 jours.'
         ));
     }
@@ -137,7 +137,7 @@ class StaticPageController extends Controller
     public function comparateur()
     {
         return view('front.comparateur', $this->seo(
-            'Comparateur GTB indépendant — Schneider, Siemens, Honeywell, Sauter',
+            'Comparateur GTB indépendant — Schneider, Siemens, Honeywell',
             'Comparez 10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense. Comparatif 100 % indépendant, sans commission.'
         ));
     }
@@ -153,7 +153,7 @@ class StaticPageController extends Controller
     public function tablesModbus()
     {
         return view('front.tables-modbus', $this->seo(
-            'Tables Modbus — Catalogue de registres pour 19 équipements GTB',
+            'Tables Modbus — 19 équipements GTB | NeoGTB',
             'Catalogue technique des registres Modbus pour 19 équipements GTB : compteurs, PAC, CTA, chaudières, sondes, vannes, éclairage. Données à vérifier fabricant.'
         ));
     }

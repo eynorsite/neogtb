@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Déploie une nouvelle release NeoGTB depuis le code à jour de ~/neogtb
-# Pré-requis : `git pull` déjà fait dans ~/neogtb
+# Le script fait lui-même le git pull (fix #5).
 # Usage : sudo bash deploy/deploy-update.sh
 set -euo pipefail
 
@@ -39,7 +39,45 @@ if [ ! -d "$SHARED_DIR" ]; then
     exit 1
 fi
 
-echo "==> [1/9] Création release : $RELEASE_DIR"
+# =============================================================================
+# [0/11] Git pull repo source (fix #5)
+# =============================================================================
+# On pull ici pour garantir que la release déployée correspond à HEAD remote.
+# Si l'arbre de travail est dirty → refus (risque de déployer des fichiers
+# non committés). Run as INVOKING_USER (propriétaire du repo), pas root.
+echo "==> [0/11] Git pull $REPO_DIR"
+if [ ! -d "$REPO_DIR/.git" ]; then
+    echo "❌ $REPO_DIR n'est pas un repo git."
+    exit 1
+fi
+GIT_DIRTY=$(sudo -u "$INVOKING_USER" git -C "$REPO_DIR" status --porcelain 2>/dev/null || true)
+if [ -n "$GIT_DIRTY" ]; then
+    echo "❌ Repo $REPO_DIR dirty (fichiers non committés) :"
+    echo "$GIT_DIRTY"
+    echo "   Commit ou stash avant de déployer."
+    exit 1
+fi
+sudo -u "$INVOKING_USER" git -C "$REPO_DIR" fetch origin
+sudo -u "$INVOKING_USER" git -C "$REPO_DIR" pull --ff-only
+GIT_HEAD=$(sudo -u "$INVOKING_USER" git -C "$REPO_DIR" rev-parse --short HEAD)
+echo "    HEAD : $GIT_HEAD"
+
+# =============================================================================
+# Trap ERR : si quoi que ce soit foire après activation maintenance → up auto
+# (fix #3 — évite site bloqué en 503 sur échec mid-pipeline).
+# =============================================================================
+MAINT_ACTIVE=0
+on_error() {
+    local code=$?
+    if [ "$MAINT_ACTIVE" = "1" ]; then
+        echo "❌ Échec déploiement (code $code) — sortie forcée du mode maintenance."
+        sudo -u www-data php "$DEPLOY_ROOT/current/admin/artisan" up 2>/dev/null || true
+    fi
+    exit $code
+}
+trap on_error ERR
+
+echo "==> [1/11] Création release : $RELEASE_DIR"
 mkdir -p "$RELEASE_DIR"
 # Copie le code (sans .git ni node_modules ni vendor pour rester léger)
 rsync -a --delete \
@@ -55,7 +93,7 @@ rsync -a --delete \
 
 cd "$RELEASE_DIR/admin"
 
-echo "==> [2/9] Permissions initiales (avant composer/npm)"
+echo "==> [2/11] Permissions initiales (avant composer/npm)"
 chown -R www-data:www-data "$RELEASE_DIR"
 find "$RELEASE_DIR" -type d -exec chmod 755 {} \;
 find "$RELEASE_DIR" -type f -exec chmod 644 {} \;
@@ -63,26 +101,38 @@ chmod -R 775 "$RELEASE_DIR/admin/bootstrap/cache"
 chmod +x "$RELEASE_DIR/admin/artisan" 2>/dev/null || true
 find "$RELEASE_DIR/deploy" -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
 
-echo "==> [3/9] Composer install (production)"
+echo "==> [3/11] Composer install (production)"
 sudo -u www-data -H COMPOSER_ALLOW_SUPERUSER=0 COMPOSER_HOME=/tmp/composer composer install \
     --no-dev --optimize-autoloader --no-interaction --prefer-dist 2>&1 | tail -5
 
-echo "==> [4/9] NPM install + build Vite"
+echo "==> [4/11] NPM install + build Vite"
 sudo -u www-data -H npm ci --silent 2>&1 | tail -3 || sudo -u www-data -H npm install --silent 2>&1 | tail -3
 sudo -u www-data -H npm run build 2>&1 | tail -3
 
-echo "==> [5/9] Symlinks shared (.env, storage, database SQLite)"
+echo "==> [5/11] Symlinks shared (.env, storage, database SQLite)"
 ln -sf "$SHARED_DIR/.env" "$RELEASE_DIR/admin/.env"
 rm -rf "$RELEASE_DIR/admin/storage"
 ln -sf "$SHARED_DIR/storage" "$RELEASE_DIR/admin/storage"
 ln -sf "$SHARED_DIR/database/database.sqlite" "$RELEASE_DIR/admin/database/database.sqlite"
 chown -h www-data:www-data "$RELEASE_DIR/admin/.env" "$RELEASE_DIR/admin/storage" "$RELEASE_DIR/admin/database/database.sqlite"
 
-echo "==> [6/9] Migrations + storage:link"
+echo "==> [6/11] Mode maintenance + migrations + storage:link"
+# Fix #3 : on bascule la release courante en maintenance AVANT migrate, pour
+# éviter qu'un user tape un endpoint alors que le schéma est en mutation.
+# Le secret permet à l'admin de bypasser via ?secret=… si besoin de débuger.
+if [ -L "$DEPLOY_ROOT/current" ] && [ -f "$DEPLOY_ROOT/current/admin/artisan" ]; then
+    MAINT_SECRET=$(openssl rand -hex 16)
+    echo "    🛠  maintenance ON (secret bypass : $MAINT_SECRET)"
+    sudo -u www-data php "$DEPLOY_ROOT/current/admin/artisan" down \
+        --secret="$MAINT_SECRET" --render="errors::503" || true
+    MAINT_ACTIVE=1
+else
+    echo "    (pas de release courante, skip maintenance)"
+fi
 sudo -u www-data php artisan migrate --force 2>&1 | tail -10
 sudo -u www-data php artisan storage:link 2>&1 | tail -3 || true
 
-echo "==> [7/9] Cache config + routes + views (atomique avant swap)"
+echo "==> [7/11] Cache config + routes + views (atomique avant swap)"
 sudo -u www-data php artisan config:clear
 sudo -u www-data php artisan route:clear
 sudo -u www-data php artisan view:clear

@@ -17,8 +17,16 @@ class SubmitCeeLeadRequest extends FormRequest
             'sector' => ['nullable', 'string', 'max:50'],
             'th116_mwh' => ['nullable', 'numeric', 'min:0', 'max:100000'],
             'th116_value' => ['nullable', 'numeric', 'min:0', 'max:999999'],
-            'consentement_rgpd' => ['accepted'],
+            'consentement_rgpd' => ['required', 'accepted'],
             'payload' => ['nullable', 'array'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'consentement_rgpd.required' => 'Vous devez accepter le traitement de vos données pour recevoir votre estimation CEE.',
+            'consentement_rgpd.accepted' => 'Vous devez accepter le traitement de vos données pour recevoir votre estimation CEE.',
         ];
     }
 }

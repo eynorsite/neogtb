@@ -1,7 +1,5 @@
 @extends('front.layouts.app')
 
-@section('title', 'À propos — Ulrich Calmo, consultant GTB')
-@section('description', 'NeoGTB est fondé par Ulrich Calmo, consultant GTB indépendant basé à Bordeaux. Zéro lien fabricant, zéro commission.')
 
 @section('content')
 

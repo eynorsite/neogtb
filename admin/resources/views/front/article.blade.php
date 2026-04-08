@@ -1,9 +1,6 @@
 @extends('front.layouts.app')
 
 @push('head')
-{{-- og:type override pour les articles (le layout émet "website" par défaut) --}}
-<meta property="og:type" content="article" />
-
 {{-- Schema.org Article JSON-LD --}}
 <script type="application/ld+json">
 {

@@ -538,10 +538,15 @@
             <input type="email" x-model="emailAddress" placeholder="votre@email.com" class="cee-input" style="margin-bottom:12px;">
             <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
 
+            <div style="font-size:10.5px;color:var(--color-dark-400);line-height:1.6;margin-bottom:12px;padding:10px 12px;border-left:2px solid var(--color-dark-200);background:var(--color-dark-50);border-radius:0 6px 6px 0;">
+              <p style="margin:0 0 4px;font-weight:600;color:var(--color-dark-600);">Information RGPD (art. 13)</p>
+              <p style="margin:0;">Responsable : NeoGTB. <strong>Finalité</strong> : envoi de votre estimation CEE personnalisée et suivi conseil. <strong>Base légale</strong> : consentement. <strong>Durée de conservation</strong> : 3 ans à compter du dernier contact. Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité, ainsi que du droit de retirer votre consentement à tout moment, via <a href="/mes-droits-rgpd" style="color:var(--color-accent-600);">/mes-droits-rgpd</a>. Détails : <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">politique de confidentialité</a>.</p>
+            </div>
+
             <label class="flex items-start gap-2 cursor-pointer" style="margin-bottom:16px;">
               <input type="checkbox" x-model="consentRgpd" required class="mt-0.5 rounded border-dark-300 text-accent-600 focus:ring-accent-500" />
               <span class="text-[11px] text-dark-400 leading-relaxed">
-                J'accepte que mon email soit traité par NeoGTB pour recevoir mon estimation CEE et d'éventuelles informations liées à ma demande (consentement, art. 6.1.a RGPD). Données conservées 3 ans puis supprimées. <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">Politique de confidentialité</a> &middot; <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">Exercer vos droits</a>
+                J'accepte que mon email soit traité par NeoGTB pour recevoir mon estimation CEE (consentement, art. 6.1.a RGPD). <span style="color:#dc2626;">*</span>
               </span>
             </label>
 
