@@ -192,3 +192,16 @@
     outline-offset: 2px;
     border-radius: 4px;
 }
+
+.scroll-shadow {
+    background:
+        linear-gradient(90deg, white 30%, transparent) 0 0 / 40px 100% no-repeat,
+        linear-gradient(-90deg, white 30%, transparent) 100% 0 / 40px 100% no-repeat,
+        linear-gradient(90deg, rgba(0,0,0,0.08), transparent) 0 0 / 20px 100% no-repeat,
+        linear-gradient(-90deg, rgba(0,0,0,0.08), transparent) 100% 0 / 20px 100% no-repeat;
+    background-attachment: local, local, scroll, scroll;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [x-transition], [x-cloak] { transition: none !important; animation: none !important; }
+}

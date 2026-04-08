@@ -2,7 +2,7 @@
 @php $fondClass = ($settings['fond'] ?? '') === 'dark-50' ? 'background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);' : ''; @endphp
 
 <section style="padding: 56px 0 64px; {{ $fondClass }}">
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10">
         <div class="flex items-end justify-between mb-12 reveal" x-data x-intersect.once="$el.classList.add('visible')">
             <div>
                 @if(!empty($content['eyebrow']))
@@ -19,7 +19,7 @@
             @endif
         </div>
 
-        <div class="grid md:grid-cols-{{ $settings['colonnes'] ?? 3 }} gap-6">
+        <div class="grid md:grid-cols-{{ $settings['colonnes'] ?? 3 }} gap-4 lg:gap-6">
             @foreach($content['cartes'] ?? [] as $i => $carte)
                 <x-front.shared.card :href="$carte['lien'] ?? '#'" padding="p-6" :delay="$i % 3">
                     @if(!empty($carte['tag']))

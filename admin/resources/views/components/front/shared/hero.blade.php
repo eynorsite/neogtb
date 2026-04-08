@@ -36,48 +36,39 @@
 @endphp
 
 <section
-    class="relative flex items-center overflow-hidden {{ !$image ? 'bg-gradient-to-br from-primary-700 via-primary-600 to-primary-500' : '' }}"
-    style="min-height: {{ $minHeight }};"
+    @class([
+        'relative flex items-end lg:items-center overflow-hidden',
+        'pt-[72px] pb-10 lg:pt-[136px] lg:pb-20',
+        'min-h-[460px] max-h-[72vh] lg:min-h-[520px] lg:max-h-none',
+        $image ? 'bg-dark-900' : 'bg-gradient-to-br from-primary-900 to-primary-700',
+    ])
+    data-hero
 >
     @if($image)
-        <img
-            src="{{ $image }}"
-            alt="{{ $imageAlt }}"
-            width="1200"
-            height="630"
-            loading="eager"
-            fetchpriority="high"
-            class="absolute inset-0 w-full h-full object-cover object-center"
-        />
+        <img src="{{ $image }}" alt="{{ $imageAlt ?? '' }}" width="1600" height="900"
+             loading="eager" fetchpriority="high"
+             class="absolute inset-0 w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/20 lg:bg-gradient-to-r lg:from-black/75 lg:via-black/40 lg:to-transparent"></div>
     @endif
 
-    @if($image && $overlay === 'gradient')
-        <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.1) 100%);"></div>
-    @elseif($overlayClass)
-        <div class="absolute inset-0 {{ $overlayClass }}"></div>
-    @endif
-
-    <div class="max-w-[1200px] w-full mx-auto px-6 md:px-10 relative z-10">
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-[640px]">
-            @if($eyebrow)
-                <p class="inline-flex items-center gap-2 text-[11px] font-medium {{ $eyebrowClasses }} backdrop-blur-sm px-3.5 py-1.5 rounded-full border mb-6 uppercase tracking-wider">
-                    {{ $eyebrow }}
-                </p>
+            @if(!empty($eyebrow))
+                <p class="text-[10px] lg:text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-300 mb-4">{{ $eyebrow }}</p>
             @endif
 
-            <h1 class="font-heading font-medium text-white leading-tight tracking-tight mb-5"
-                style="font-size: clamp(28px, 4.5vw, 48px);">
+            <h1 class="font-heading font-medium text-white text-[30px] lg:text-[44px] leading-[1.15] tracking-tight mb-4 lg:mb-5">
                 {!! $renderedTitle !!}
             </h1>
 
-            @if($subtitle)
-                <p class="text-[15px] md:text-base text-white/65 leading-relaxed max-w-[540px]">
+            @if(!empty($subtitle))
+                <p class="text-[15px] lg:text-base text-white/80 leading-relaxed max-w-[540px] mb-6 lg:mb-8">
                     {!! $subtitle !!}
                 </p>
             @endif
 
             @if(!empty($tags))
-                <div class="mt-6 flex flex-wrap gap-2">
+                <div class="mb-6 flex flex-wrap gap-2">
                     @foreach($tags as $tag)
                         <span class="text-xs font-medium px-3 py-1 rounded border border-white/20 bg-white/10 text-white/85 backdrop-blur-sm">
                             {{ $tag }}
@@ -86,27 +77,19 @@
                 </div>
             @endif
 
-            @if($cta || $cta2)
-                <div class="mt-8 flex flex-wrap items-center gap-4">
-                    @if($cta)
-                        <a href="{{ $cta['url'] ?? '#' }}" class="btn-primary px-6 py-3 text-[15px]">
-                            {{ $cta['text'] ?? 'En savoir plus' }}
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                            </svg>
-                        </a>
-                    @endif
-
-                    @if($cta2)
-                        <a href="{{ $cta2['url'] ?? '#' }}" class="inline-flex items-center gap-2 text-[14px] font-medium text-white/90 hover:text-white transition-colors">
-                            {{ $cta2['text'] ?? 'Découvrir' }}
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                    @endif
-                </div>
-            @endif
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                <a href="{{ $cta['url'] ?? '/audit' }}"
+                   class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-dark-900 font-semibold text-[14px] px-5 py-3.5 rounded-xl min-h-[48px] w-full sm:w-auto transition-colors">
+                    {{ $cta['text'] ?? 'Pré-diagnostic gratuit' }}
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                @if(!empty($cta2))
+                <a href="{{ $cta2['url'] }}" class="inline-flex items-center gap-1.5 text-[14px] font-medium text-white/85 hover:text-white min-h-[44px] px-1">
+                    {{ $cta2['text'] }}
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+                @endif
+            </div>
         </div>
     </div>
 </section>

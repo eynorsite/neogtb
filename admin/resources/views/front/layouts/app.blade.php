@@ -124,7 +124,7 @@
   @include('front.partials.header-nav')
 
   {{-- ===== MAIN CONTENT ===== --}}
-  <main id="main-content" class="pt-24 md:pt-[120px]">
+  <main id="main-content" class="pt-14 lg:pt-[120px] pb-[88px] lg:pb-0">
     {{-- Breadcrumbs --}}
     @hasSection('breadcrumbs')
       <nav aria-label="Fil d'Ariane" class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-3">
@@ -333,5 +333,6 @@
       })();
   </script>
   @endif
+  @include('front.partials.sticky-cta')
 </body>
 </html>

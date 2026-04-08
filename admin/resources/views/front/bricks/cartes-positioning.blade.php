@@ -1,13 +1,13 @@
 {{-- cartes-positioning : 3 cards "outils" avec previews (style accueil) --}}
 <section style="padding: 56px 0 64px;">
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10">
         <x-front.shared.section-header
             :eyebrow="$content['eyebrow'] ?? null"
             :title="$content['titre_section'] ?? ''"
             :intro="$content['sous_titre'] ?? null"
         />
 
-        <div class="grid md:grid-cols-{{ $settings['colonnes'] ?? 3 }} gap-6">
+        <div class="grid md:grid-cols-{{ $settings['colonnes'] ?? 3 }} gap-4 lg:gap-6">
             @foreach($content['cartes'] ?? [] as $i => $carte)
                 <x-front.shared.card :href="$carte['lien'] ?? '#'" :delay="$i % 3">
                     @if(!empty($carte['icone']))

@@ -62,10 +62,10 @@ $icons = [
   :class="scrolled ? 'bg-white/80 backdrop-blur-xl shadow-sm' : 'bg-white/0'"
   :style="scrolled ? 'border-bottom: 1px solid rgba(0,0,0,0.06)' : ''"
 >
-  <nav class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 flex items-center justify-between h-24 md:h-[120px]">
+  <nav class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10 flex items-center justify-between h-14 lg:h-[120px]">
     {{-- Logo --}}
     <a href="/" class="flex items-center">
-      <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-20 md:h-[100px] w-auto" />
+      <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-9 lg:h-[100px] w-auto" />
     </a>
 
     {{-- Desktop Nav --}}
@@ -257,6 +257,12 @@ $icons = [
           <a href="/about" @click="closeMobile()" @if(request()->is('about')) aria-current="page" @endif class="py-3 px-3 text-[15px] min-h-[44px] flex items-center rounded-xl {{ request()->is('about') ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-dark-900 font-medium hover:bg-dark-50' }}">À propos</a>
           <a href="/faq" @click="closeMobile()" @if(request()->is('faq')) aria-current="page" @endif class="py-3 px-3 text-[15px] min-h-[44px] flex items-center rounded-xl {{ request()->is('faq') ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-dark-900 font-medium hover:bg-dark-50' }}">FAQ</a>
           <a href="/contact" @click="closeMobile()" @if(request()->is('contact')) aria-current="page" @endif class="py-3 px-3 text-[15px] min-h-[44px] flex items-center rounded-xl {{ request()->is('contact') ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-dark-900 font-medium hover:bg-dark-50' }}">Contact</a>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-dark-100 space-y-1">
+          <a href="/mentions-legales" @click="closeMobile()" class="block text-[12px] text-dark-400 hover:text-dark-700 py-1.5">Mentions légales</a>
+          <a href="/politique-de-confidentialite" @click="closeMobile()" class="block text-[12px] text-dark-400 hover:text-dark-700 py-1.5">Confidentialité</a>
+          <a href="/mes-droits-rgpd" @click="closeMobile()" class="block text-[12px] text-dark-400 hover:text-dark-700 py-1.5">Mes droits RGPD</a>
         </div>
       </div>
 

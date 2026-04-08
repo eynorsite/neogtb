@@ -1,11 +1,11 @@
 <section style="padding: 56px 0 64px;">
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10">
         <x-front.shared.section-header
             :eyebrow="$content['eyebrow'] ?? null"
             :title="$content['titre'] ?? ''"
         />
 
-        <div class="grid md:grid-cols-{{ $settings['colonnes'] ?? 2 }} gap-6">
+        <div class="grid md:grid-cols-{{ $settings['colonnes'] ?? 2 }} gap-4 lg:gap-6">
             @foreach($content['cas'] ?? [] as $i => $cas)
                 <x-front.shared.card :delay="$i">
                     <div class="flex items-center gap-3 mb-6">

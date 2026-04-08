@@ -2,18 +2,18 @@
 
 <section class="py-14 md:py-24 bg-dark-50/50 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
-    <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
         @if(!empty($content['titre_section']))
             <div class="text-center mb-16 animate-fade-in-up">
-                <h2 class="text-3xl font-heading font-extrabold text-dark-900 sm:text-4xl lg:text-5xl">{{ $content['titre_section'] }}</h2>
+                <h2 class="font-heading font-extrabold text-dark-900 text-[28px] lg:text-[44px]">{{ $content['titre_section'] }}</h2>
                 <div class="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
             </div>
         @endif
 
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-{{ $cols }}">
+        <div class="grid grid-cols-1 gap-5 lg:gap-8 sm:grid-cols-2 lg:grid-cols-{{ $cols }}">
             @foreach($content['cartes'] ?? [] as $i => $carte)
                 <a href="{{ $carte['lien'] ?? '#' }}"
-                   class="group relative rounded-2xl border border-dark-100 bg-white p-8 shadow-sm card-hover-glow block transition-all duration-300 animate-fade-in-up"
+                   class="group relative rounded-2xl border border-dark-100 bg-white p-5 lg:p-7 lg:shadow-sm card-hover-glow block transition-all duration-300 animate-fade-in-up"
                    style="animation-delay: {{ $i * 100 }}ms">
 
                     {{-- Accent bar top --}}

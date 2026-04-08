@@ -17,7 +17,7 @@
 />
 
 <!-- ALERTE ACTUALITÉ -->
-<section class="px-6 md:px-10">
+<section class="px-5 lg:px-10">
     <div class="max-w-7xl mx-auto">
         <div class="bg-accent-50 border border-accent-200 rounded-xl p-5 -mt-8 relative z-10">
             <div class="flex items-start gap-3">
@@ -32,14 +32,40 @@
 </section>
 
 <!-- CALENDRIER -->
-<section class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Vue d'ensemble</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Calendrier des obligations</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Calendrier des obligations</h2>
             <p class="text-base text-dark-500 leading-relaxed">Toutes les échéances réglementaires liées à la GTB, actualisées après le décret de décembre 2025.</p>
         </div>
-        <div class="border border-dark-200 rounded-xl overflow-x-auto">
+        {{-- MOBILE : cards stack --}}
+        <div class="lg:hidden space-y-3">
+            @foreach([
+                ['type' => 'Existant', 'puissance' => '> 290 kW', 'echeance' => '1er janvier 2025', 'statut' => 'En vigueur', 'color' => 'accent'],
+                ['type' => 'Existant', 'puissance' => '70 à 290 kW', 'echeance' => '1er janvier 2030', 'statut' => 'Reporté (était 2027)', 'color' => 'orange'],
+                ['type' => 'Neuf (permis > 21/07/2021)', 'puissance' => '> 290 kW', 'echeance' => 'À la construction', 'statut' => 'Obligatoire', 'color' => 'accent'],
+                ['type' => 'Neuf (permis > 08/04/2024)', 'puissance' => '> 70 kW', 'echeance' => 'À la construction', 'statut' => 'Obligatoire', 'color' => 'accent'],
+            ] as $row)
+            <div class="bg-white border border-dark-100 rounded-2xl p-5">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                    <p class="text-[15px] font-medium text-dark-900">{{ $row['type'] }}</p>
+                    <span class="text-[11px] font-medium px-2.5 py-1 rounded-md border flex-shrink-0 {{ $row['color'] === 'orange' ? 'bg-orange-50 text-orange-800 border-orange-200' : 'bg-accent-50 text-accent-800 border-accent-200' }}">{{ $row['statut'] }}</span>
+                </div>
+                <dl class="space-y-2 text-[13px]">
+                    <div class="flex justify-between gap-3">
+                        <dt class="text-dark-400">Puissance CVC</dt>
+                        <dd class="text-dark-700 font-medium text-right">{{ $row['puissance'] }}</dd>
+                    </div>
+                    <div class="flex justify-between gap-3">
+                        <dt class="text-dark-400">Échéance</dt>
+                        <dd class="text-dark-700 font-medium text-right">{{ $row['echeance'] }}</dd>
+                    </div>
+                </dl>
+            </div>
+            @endforeach
+        </div>
+        <div class="hidden lg:block border border-dark-100 rounded-2xl overflow-x-auto">
             <table class="w-full min-w-[640px] border-collapse text-sm">
                 <thead>
                     <tr class="bg-dark-50">
@@ -82,12 +108,12 @@
 </section>
 
 <!-- DÉCRET BACS -->
-<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20 bg-dark-50 border-t border-b border-dark-200">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
             <div class="lg:col-span-3">
                 <span class="inline-block text-[13px] font-medium text-white bg-accent-600 px-3 py-1 rounded-md mb-4">Obligation principale</span>
-                <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret BACS</h2>
+                <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret BACS</h2>
                 <p class="text-sm text-dark-400 mb-5">Décret n° 2020-887 du 20 juillet 2020 / Modifié par le décret n° 2025-1343 du 26 décembre 2025</p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">Le décret BACS transpose l'article 14 de la <strong class="text-dark-900 font-medium">directive européenne EPBD 2018/844</strong> sur la performance énergétique des bâtiments. Il impose l'installation de systèmes d'automatisation et de contrôle dans les bâtiments tertiaires non résidentiels.</p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">Le système installé doit atteindre <strong class="text-dark-900 font-medium">a minima la classe B</strong> de la norme EN 15232 (NF EN ISO 52120-1). Il doit être capable de :</p>
@@ -98,7 +124,7 @@
                     <li>Communiquer avec les systèmes techniques interconnectés</li>
                     <li>Permettre le pilotage manuel et automatique des installations CVC</li>
                 </ul>
-                <div class="bg-accent-50 border border-accent-200 rounded-xl p-6">
+                <div class="bg-accent-50 border border-accent-200 rounded-2xl p-5 lg:p-7">
                     <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Inspection obligatoire</p>
                     <p class="text-sm text-dark-600 leading-relaxed">Les systèmes BACS doivent faire l'objet d'une <strong>inspection régulière</strong> vérifiant le bon fonctionnement du système d'automatisation et sa conformité à la classe de performance déclarée.</p>
                 </div>
@@ -108,17 +134,17 @@
                     ['label' => 'Bâtiments concernés', 'text' => 'Tous les bâtiments tertiaires non résidentiels : bureaux, commerces, enseignement, santé, hôtellerie, logistique, sport.'],
                     ['label' => 'Seuil de puissance', 'text' => 'Puissance nominale utile cumulée des systèmes CVC (chauffage + climatisation). Somme de tous les générateurs du bâtiment.'],
                 ] as $card)
-                <div class="bg-white rounded-xl p-6 border border-dark-200 shadow-sm">
+                <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                     <p class="text-[11px] font-medium uppercase tracking-widest text-dark-400 mb-2">{{ $card['label'] }}</p>
                     <p class="text-[15px] text-dark-600 leading-relaxed">{{ $card['text'] }}</p>
                 </div>
                 @endforeach
-                <div class="bg-white rounded-xl p-6 border border-dark-200 shadow-sm">
+                <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                     <p class="text-[11px] font-medium uppercase tracking-widest text-dark-400 mb-2">Niveau requis</p>
                     <p class="text-[28px] font-medium text-accent-600 tracking-tight">Classe B</p>
                     <p class="text-[13px] text-dark-400 mt-1">minimum / norme ISO 52120-1</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 border border-dark-200 shadow-sm">
+                <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                     <p class="text-[11px] font-medium uppercase tracking-widest text-dark-400 mb-2">Exemption</p>
                     <p class="text-[15px] text-dark-600 leading-relaxed">Possibilité de dérogation si un audit énergétique démontre un temps de retour sur investissement supérieur à 6 ans.</p>
                 </div>
@@ -128,27 +154,27 @@
 </section>
 
 <!-- DÉCRET TERTIAIRE -->
-<section class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="grid md:grid-cols-2 gap-12">
             <div>
                 <span class="inline-block text-[13px] font-medium text-white bg-dark-600 px-3 py-1 rounded-md mb-4">Objectifs de réduction</span>
-                <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret tertiaire — Éco Énergie Tertiaire</h2>
+                <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret tertiaire — Éco Énergie Tertiaire</h2>
                 <p class="text-sm text-dark-400 mb-5">Décret n° 2019-771 du 23 juillet 2019 / Issu de la loi ELAN</p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">Le décret tertiaire impose aux bâtiments tertiaires de <strong class="text-dark-900 font-medium">plus de 1 000 m²</strong> une réduction progressive de leur consommation d'énergie finale par rapport à une année de référence (postérieure à 2010).</p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">Les données doivent être déclarées annuellement sur la plateforme <strong class="text-dark-900 font-medium">OPERAT</strong> gérée par l'ADEME. La GTB constitue le levier principal pour atteindre ces objectifs de réduction.</p>
-                <div class="bg-accent-50 border border-accent-200 rounded-xl p-6 mt-6">
+                <div class="bg-accent-50 border border-accent-200 rounded-2xl p-5 lg:p-7 mt-6">
                     <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Sanctions</p>
                     <p class="text-sm text-dark-600 leading-relaxed">En cas de non-respect : mise en demeure, publication du nom du contrevenant sur un site public ("name and shame"), et amende jusqu'à <strong>7 500 &euro; par bâtiment</strong> pour les personnes morales.</p>
                 </div>
             </div>
-            <div class="grid grid-cols-1 gap-5">
+            <div class="grid grid-cols-1 gap-3 lg:gap-5">
                 @foreach([
                     ['-40 %', 'Objectif 2030', 'Déclaration OPERAT avant le 30 sept. 2026'],
                     ['-50 %', 'Objectif 2040', null],
                     ['-60 %', 'Objectif 2050', null],
                 ] as $i => $obj)
-                <div class="bg-white rounded-xl p-7 text-center border border-dark-200 shadow-sm">
+                <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                     <p class="text-5xl font-medium {{ $i === 0 ? 'text-accent-600' : 'text-dark-700' }} tracking-tight leading-none">{{ $obj[0] }}</p>
                     <p class="text-sm text-dark-500 mt-2">{{ $obj[1] }}</p>
                     @if($obj[2])
@@ -162,20 +188,20 @@
 </section>
 
 <!-- RE2020 + EPBD -->
-<section class="py-12 md:py-20 bg-dark-50 border-t border-b border-dark-200">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20 bg-dark-50 border-t border-b border-dark-200">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Bâtiments neufs et Europe</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight">Autres réglementations clés</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight">Autres réglementations clés</h2>
         </div>
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-2 gap-4 lg:gap-6">
             @foreach([
                 ['badge' => 'Neuf / Depuis 2022', 'bg' => 'bg-dark-700', 'title' => 'RE2020', 'subtitle' => 'Réglementation Environnementale 2020', 'desc' => 'Applicable aux bâtiments neufs depuis le 1er janvier 2022. Renforce les exigences de performance par rapport à la RT2012 et introduit le calcul de l\'empreinte carbone sur le cycle de vie. Deux indicateurs rendent la GTB quasi indispensable en tertiaire :', 'extra' => '<div class="grid grid-cols-2 gap-4 mt-4"><div class="p-3.5 rounded-lg bg-dark-50 border border-dark-200"><p class="text-xl font-medium text-dark-900">Cep</p><p class="text-xs text-dark-400 mt-1">Consommation d\'énergie primaire</p></div><div class="p-3.5 rounded-lg bg-dark-50 border border-dark-200"><p class="text-xl font-medium text-dark-900">DH</p><p class="text-xs text-dark-400 mt-1">Degrés-heures d\'inconfort</p></div></div>'],
                 ['badge' => 'Europe / Refonte 2024', 'bg' => 'bg-accent-700', 'title' => 'Directive EPBD', 'subtitle' => 'Energy Performance of Buildings Directive / 2018/844 → refonte 2024', 'desc' => 'La directive EPBD est le texte européen fondateur qui impose la GTB. L\'article 14 est l\'origine du décret BACS français. La <strong class="text-dark-900">refonte 2024</strong> renforce les exigences :', 'extra' => '<ul class="text-sm text-dark-500 leading-relaxed pl-5 list-disc mt-4 space-y-2"><li>Objectif bâtiments à émission zéro d\'ici 2050</li><li>Passeport de rénovation pour chaque bâtiment</li><li>Abaissement progressif des seuils BACS</li><li>Obligation de suivi énergétique continu</li></ul>'],
                 ['badge' => 'Loi / 2018', 'bg' => 'bg-dark-600', 'title' => 'Loi ELAN', 'subtitle' => 'Loi n° 2018-1021 du 23 novembre 2018', 'desc' => 'Loi portant évolution du logement, de l\'aménagement et du numérique. L\'article 175 est à l\'origine du <strong class="text-dark-900">décret tertiaire</strong> : obligation de réduction de consommation pour les bâtiments tertiaires de plus de 1 000 m².', 'extra' => null],
                 ['badge' => 'Loi / 2021', 'bg' => 'bg-accent-800', 'title' => 'Loi Climat et Résilience', 'subtitle' => 'Loi n° 2021-1104 du 22 août 2021', 'desc' => 'Renforce les obligations énergétiques : interdiction de location des passoires thermiques (DPE F et G), obligation d\'audit énergétique avant vente, accélération de la rénovation du parc tertiaire. La GTB est un levier de conformité.', 'extra' => null],
             ] as $item)
-            <div class="bg-white rounded-xl p-8 border border-dark-200 shadow-sm">
+            <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                 <span class="inline-block text-[13px] font-medium text-white {{ $item['bg'] }} px-3 py-1 rounded-md mb-4">{{ $item['badge'] }}</span>
                 <h3 class="text-[22px] font-medium text-dark-900 tracking-tight mb-3">{{ $item['title'] }}</h3>
                 <p class="text-sm text-dark-400 mb-4">{{ $item['subtitle'] }}</p>
@@ -190,21 +216,21 @@
 </section>
 
 <!-- NORME EN ISO 52120-1 -->
-<section class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-6 md:px-10">
+<section class="py-10 lg:py-20">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Référentiel technique</p>
-            <h2 class="text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Norme EN ISO 52120-1 (ex-EN 15232)</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Norme EN ISO 52120-1 (ex-EN 15232)</h2>
             <p class="text-base text-dark-500 leading-relaxed">La norme de référence pour évaluer le niveau de performance des systèmes GTB. Le décret BACS impose la classe B minimum.</p>
         </div>
-        <div class="grid md:grid-cols-4 gap-5 mb-12">
+        <div class="grid md:grid-cols-4 gap-3 lg:gap-5 mb-12">
             @foreach([
                 ['badge' => 'Classe D', 'bg' => 'bg-dark-400', 'title' => 'Non performant', 'desc' => 'Aucun système d\'automatisation. Pilotage manuel.', 'sub' => 'Référence basse', 'highlight' => false],
                 ['badge' => 'Classe C', 'bg' => 'bg-dark-500', 'title' => 'Standard', 'desc' => 'Régulation de base, programmation horaire, sans supervision.', 'sub' => 'Minimum neuf', 'highlight' => false],
                 ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives.', 'sub' => 'Exigence décret BACS', 'highlight' => true],
                 ['badge' => 'Classe A', 'bg' => 'bg-dark-800', 'title' => 'Haute performance', 'desc' => 'Régulation pièce par pièce, optimisation multi-lots, IA.', 'sub' => 'Performance maximale', 'highlight' => false],
             ] as $cl)
-            <div class="{{ $cl['highlight'] ? 'bg-white rounded-xl border border-accent-200 shadow-[0_0_0_3px] shadow-accent-50' : 'bg-white rounded-xl border border-dark-200 shadow-sm' }} p-6">
+            <div class="{{ $cl['highlight'] ? 'bg-white rounded-2xl border border-accent-200 shadow-[0_0_0_3px] shadow-accent-50' : 'bg-white rounded-2xl border border-dark-100 lg:shadow-sm' }} p-5 lg:p-7">
                 <span class="inline-block text-[13px] font-medium text-white {{ $cl['bg'] }} px-2.5 py-1 rounded-md mb-3.5">{{ $cl['badge'] }}</span>
                 <h3 class="text-[17px] font-medium text-dark-900 mb-2">{{ $cl['title'] }}</h3>
                 <p class="text-[13px] text-dark-500 leading-relaxed mb-3">{{ $cl['desc'] }}</p>
@@ -215,7 +241,32 @@
 
         <!-- Gains par classe -->
         <h3 class="text-lg font-medium text-dark-900 mb-4">Gains énergétiques estimés par la norme</h3>
-        <div class="border border-dark-200 rounded-xl overflow-x-auto">
+        {{-- MOBILE : cards stack --}}
+        <div class="lg:hidden space-y-3">
+            @foreach([
+                ['passage' => 'D → C', 'cvc' => '5 à 15 %', 'ecl' => '5 à 10 %', 'global' => '~10 %', 'highlight' => false],
+                ['passage' => 'D → B', 'cvc' => '15 à 30 %', 'ecl' => '10 à 25 %', 'global' => '~25 %', 'highlight' => true],
+                ['passage' => 'D → A', 'cvc' => '25 à 45 %', 'ecl' => '20 à 40 %', 'global' => '~35 %', 'highlight' => false],
+            ] as $g)
+            <div class="bg-white border border-dark-100 rounded-2xl p-5">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                    <p class="text-[15px] font-medium {{ $g['highlight'] ? 'text-accent-600' : 'text-dark-900' }}">{{ $g['passage'] }}</p>
+                    <span class="text-[11px] font-medium px-2.5 py-1 rounded-md border bg-accent-50 text-accent-800 border-accent-200 flex-shrink-0">Global {{ $g['global'] }}</span>
+                </div>
+                <dl class="space-y-2 text-[13px]">
+                    <div class="flex justify-between gap-3">
+                        <dt class="text-dark-400">CVC (bureaux)</dt>
+                        <dd class="text-dark-700 font-medium text-right">{{ $g['cvc'] }}</dd>
+                    </div>
+                    <div class="flex justify-between gap-3">
+                        <dt class="text-dark-400">Éclairage</dt>
+                        <dd class="text-dark-700 font-medium text-right">{{ $g['ecl'] }}</dd>
+                    </div>
+                </dl>
+            </div>
+            @endforeach
+        </div>
+        <div class="hidden lg:block border border-dark-100 rounded-2xl overflow-x-auto">
             <table class="w-full min-w-[640px] border-collapse text-sm">
                 <thead>
                     <tr class="bg-dark-50">

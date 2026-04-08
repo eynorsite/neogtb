@@ -1,6 +1,6 @@
 {{-- chiffres : impact bar minimal (style accueil) --}}
 <section style="padding: 20px 0; border-bottom: 1px solid var(--color-dark-200);">
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
             @foreach($content['stats'] ?? [] as $stat)
                 <div style="padding: 8px 0;">
