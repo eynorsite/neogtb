@@ -186,8 +186,250 @@
                     </div>
                 @endif
 
+                {{-- THEME TAB --}}
+                @if($activeTab === 'theme')
+                    <div class="section-title">Presets de thème</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+                        <x-filament::button wire:click="applyPreset('gtb_pro')" wire:confirm="Les couleurs actuelles seront remplacées." color="primary" icon="heroicon-o-swatch" type="button">
+                            GTB Pro
+                        </x-filament::button>
+                        <x-filament::button wire:click="applyPreset('eco_green')" wire:confirm="Les couleurs actuelles seront remplacées." color="success" icon="heroicon-o-swatch" type="button">
+                            Éco Green
+                        </x-filament::button>
+                        <x-filament::button wire:click="applyPreset('tech_blue')" wire:confirm="Les couleurs actuelles seront remplacées." color="info" icon="heroicon-o-swatch" type="button">
+                            Tech Blue
+                        </x-filament::button>
+                    </div>
+
+                    <div class="section-title">Couleurs principales</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+                        @foreach(['theme_primary_color' => 'Couleur primaire', 'theme_secondary_color' => 'Couleur secondaire', 'theme_accent_color' => 'Couleur d\'accent'] as $key => $label)
+                            <div class="field-row">
+                                <label class="field-label-pro">{{ $label }}</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="color" wire:model.defer="settings.{{ $key }}" style="width: 44px; height: 36px; border: 1px solid #E2E8F0; border-radius: 8px; cursor: pointer; padding: 2px;">
+                                    <input type="text" wire:model.defer="settings.{{ $key }}" class="field-input-pro" style="font-family: monospace; font-size: 12px;" placeholder="#000000">
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="section-title">Header & Footer</div>
+                    <div class="grid-2">
+                        @foreach(['theme_header_bg' => 'Header — Fond', 'theme_header_text' => 'Header — Texte', 'theme_footer_bg' => 'Footer — Fond', 'theme_footer_text' => 'Footer — Texte'] as $key => $label)
+                            <div class="field-row">
+                                <label class="field-label-pro">{{ $label }}</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="color" wire:model.defer="settings.{{ $key }}" style="width: 44px; height: 36px; border: 1px solid #E2E8F0; border-radius: 8px; cursor: pointer; padding: 2px;">
+                                    <input type="text" wire:model.defer="settings.{{ $key }}" class="field-input-pro" style="font-family: monospace; font-size: 12px;" placeholder="#000000">
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="section-title">Corps & Hero</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+                        <div class="field-row">
+                            <label class="field-label-pro">Fond du body</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="color" wire:model.defer="settings.theme_body_bg" style="width: 44px; height: 36px; border: 1px solid #E2E8F0; border-radius: 8px; cursor: pointer; padding: 2px;">
+                                <input type="text" wire:model.defer="settings.theme_body_bg" class="field-input-pro" style="font-family: monospace; font-size: 12px;" placeholder="#FFFFFF">
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label-pro">Overlay Hero</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="color" wire:model.defer="settings.theme_hero_overlay" style="width: 44px; height: 36px; border: 1px solid #E2E8F0; border-radius: 8px; cursor: pointer; padding: 2px;">
+                                <input type="text" wire:model.defer="settings.theme_hero_overlay" class="field-input-pro" style="font-family: monospace; font-size: 12px;" placeholder="#0F172A">
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label-pro">Opacité Hero</label>
+                            <input type="number" wire:model.defer="settings.theme_hero_opacity" class="field-input-pro" min="0" max="100" placeholder="60" style="font-family: monospace;">
+                            <div class="field-hint">Valeur entre 0 et 100 %</div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">Boutons CTA</div>
+                    <div class="grid-2">
+                        @foreach(['theme_cta_bg' => 'Fond CTA', 'theme_cta_text' => 'Texte CTA'] as $key => $label)
+                            <div class="field-row">
+                                <label class="field-label-pro">{{ $label }}</label>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="color" wire:model.defer="settings.{{ $key }}" style="width: 44px; height: 36px; border: 1px solid #E2E8F0; border-radius: 8px; cursor: pointer; padding: 2px;">
+                                    <input type="text" wire:model.defer="settings.{{ $key }}" class="field-input-pro" style="font-family: monospace; font-size: 12px;" placeholder="#000000">
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="section-title">Typographie & Forme</div>
+                    <div class="grid-2">
+                        <div class="field-row">
+                            <label class="field-label-pro">Paire de polices</label>
+                            <select wire:model.defer="settings.theme_font_pair" class="field-input-pro">
+                                <option value="">— Sélectionner —</option>
+                                <option value="inter_dm_sans">Inter + DM Sans</option>
+                                <option value="inter_merriweather">Inter + Merriweather</option>
+                                <option value="poppins_lora">Poppins + Lora</option>
+                                <option value="montserrat_roboto">Montserrat + Roboto</option>
+                                <option value="dm_sans_dm_serif">DM Sans + DM Serif</option>
+                                <option value="plus_jakarta_inter">Plus Jakarta + Inter</option>
+                                <option value="outfit_inter">Outfit + Inter</option>
+                                <option value="space_grotesk_inter">Space Grotesk + Inter</option>
+                            </select>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label-pro">Taille de police</label>
+                            <select wire:model.defer="settings.theme_font_size" class="field-input-pro">
+                                <option value="sm">Petit</option>
+                                <option value="md">Moyen</option>
+                                <option value="lg">Grand</option>
+                            </select>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label-pro">Arrondi des bordures</label>
+                            <select wire:model.defer="settings.theme_border_radius" class="field-input-pro">
+                                <option value="none">Aucun</option>
+                                <option value="sm">Léger</option>
+                                <option value="md">Moyen</option>
+                                <option value="lg">Arrondi</option>
+                                <option value="full">Très arrondi</option>
+                            </select>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label-pro">Ombres</label>
+                            <select wire:model.defer="settings.theme_shadow" class="field-input-pro">
+                                <option value="none">Aucune</option>
+                                <option value="sm">Légère</option>
+                                <option value="md">Moyenne</option>
+                                <option value="lg">Forte</option>
+                            </select>
+                        </div>
+                    </div>
+                @endif
+
+                {{-- LEGAL TAB --}}
+                @if($activeTab === 'legal')
+                    <div class="section-title">Mentions légales</div>
+                    <div class="field-row">
+                        <label class="field-label-pro">Contenu des mentions légales</label>
+                        <textarea wire:model.defer="settings.legal_mentions_legales" rows="12" class="field-input-pro" placeholder="Rédigez vos mentions légales ici..."></textarea>
+                    </div>
+
+                    <div class="section-title">Politique de confidentialité</div>
+                    <div class="field-hint" style="margin-bottom: 8px;">La modification crée automatiquement une nouvelle version.</div>
+                    <div class="field-row">
+                        <label class="field-label-pro">Contenu de la politique de confidentialité</label>
+                        <textarea wire:model.defer="settings.legal_politique_confidentialite" rows="12" class="field-input-pro" placeholder="Rédigez votre politique de confidentialité ici..."></textarea>
+                    </div>
+
+                    <div class="section-title">CGU</div>
+                    <div class="field-row">
+                        <label class="field-label-pro">Conditions générales d'utilisation</label>
+                        <textarea wire:model.defer="settings.legal_cgu" rows="12" class="field-input-pro" placeholder="Rédigez vos CGU ici..."></textarea>
+                    </div>
+
+                    <div class="section-title">Politique de cookies</div>
+                    <div class="field-row">
+                        <label class="field-label-pro">Contenu de la politique de cookies</label>
+                        <textarea wire:model.defer="settings.legal_politique_cookies" rows="12" class="field-input-pro" placeholder="Rédigez votre politique de cookies ici..."></textarea>
+                    </div>
+                @endif
+
+                {{-- NAVIGATION TAB --}}
+                @if($activeTab === 'navigation')
+                    <div class="section-title">Style</div>
+                    <div class="grid-2">
+                        <div class="field-row">
+                            <label class="field-label-pro">Style de navigation</label>
+                            <select wire:model.defer="settings.navigation_style" class="field-input-pro">
+                                <option value="sticky">Sticky</option>
+                                <option value="transparent">Transparent</option>
+                                <option value="solid">Solid</option>
+                            </select>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label-pro">Navigation sticky</label>
+                            <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" wire:model.defer="settings.navigation_sticky" value="1"
+                                    style="width: 18px; height: 18px; accent-color: #2D8B4E; cursor: pointer;">
+                                <span style="font-size: 13px; color: #64748B;">Activé</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-title">Bouton CTA header</div>
+                    <div class="grid-2">
+                        <div class="field-row">
+                            <label class="field-label-pro">Afficher le CTA</label>
+                            <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" wire:model.live="settings.navigation_cta_visible" value="1"
+                                    style="width: 18px; height: 18px; accent-color: #2D8B4E; cursor: pointer;">
+                                <span style="font-size: 13px; color: #64748B;">Activé</span>
+                            </label>
+                        </div>
+                        <div></div>
+                        @if(!empty($settings['navigation_cta_visible']))
+                            <div class="field-row">
+                                <label class="field-label-pro">Texte du CTA</label>
+                                <input type="text" wire:model.defer="settings.navigation_cta_text" class="field-input-pro" placeholder="Demander un audit">
+                            </div>
+                            <div class="field-row">
+                                <label class="field-label-pro">URL du CTA</label>
+                                <input type="text" wire:model.defer="settings.navigation_cta_url" class="field-input-pro" placeholder="/audit">
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="section-title">Téléphone</div>
+                    <div class="field-row">
+                        <label class="field-label-pro">Afficher le téléphone</label>
+                        <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" wire:model.defer="settings.navigation_show_phone" value="1"
+                                style="width: 18px; height: 18px; accent-color: #2D8B4E; cursor: pointer;">
+                            <span style="font-size: 13px; color: #64748B;">Activé</span>
+                        </label>
+                        <div class="field-hint">Affiche le numéro de téléphone dans la barre de navigation</div>
+                    </div>
+                @endif
+
+                {{-- EMAIL TAB --}}
+                @if($activeTab === 'email')
+                    <div class="section-title">Expéditeur</div>
+                    <div class="grid-2">
+                        <div class="field-row">
+                            <label class="field-label-pro">Nom de l'expéditeur <span class="required">*</span></label>
+                            <input type="text" wire:model.defer="settings.email_from_name" class="field-input-pro" placeholder="NeoGTB" required>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label-pro">Adresse de l'expéditeur <span class="required">*</span></label>
+                            <input type="email" wire:model.defer="settings.email_from_address" class="field-input-pro" placeholder="contact@neogtb.fr" required>
+                        </div>
+                    </div>
+
+                    <div class="section-title">Notifications admin</div>
+                    <div class="grid-2">
+                        <div class="field-row">
+                            <label class="field-label-pro">Email de notification <span class="required">*</span></label>
+                            <input type="email" wire:model.defer="settings.email_notification_to" class="field-input-pro" placeholder="admin@neogtb.fr" required>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label-pro">Email en copie (CC)</label>
+                            <input type="email" wire:model.defer="settings.email_notification_cc" class="field-input-pro" placeholder="backup@neogtb.fr">
+                        </div>
+                    </div>
+
+                    <div class="section-title">Test</div>
+                    <div style="margin-bottom: 24px;">
+                        <x-filament::button wire:click="sendTestEmail" wire:confirm="Envoyer un email de test à l'adresse de notification ?" color="primary" icon="heroicon-o-paper-airplane" type="button">
+                            Envoyer un email de test
+                        </x-filament::button>
+                    </div>
+                @endif
+
                 {{-- SAVE BUTTON --}}
-                @if($activeTab !== 'maintenance')
+                @if(!in_array($activeTab, ['maintenance']))
                     <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
                         <button type="submit" style="padding: 12px 32px; background: #1B3A5C; color: white; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s;"
                             onmouseover="this.style.background='#142b47'" onmouseout="this.style.background='#1B3A5C'">

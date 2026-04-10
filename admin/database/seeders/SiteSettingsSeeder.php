@@ -92,6 +92,60 @@ class SiteSettingsSeeder extends Seeder
             ['group' => 'blog', 'key' => 'blog_default_cover', 'value' => '/images/blog-default-cover.png', 'type' => 'image', 'label' => 'Image par défaut articles', 'description' => 'Affichée sur les cards et hero des articles qui n\'ont pas d\'image cover spécifique. Format recommandé : 1536x1024 ou 1200x630.', 'is_public' => true, 'order' => 1],
 
             // ============================================
+            // THÈME
+            // ============================================
+            ['group' => 'theme', 'key' => 'theme_primary_color', 'value' => '#1E3A5F', 'type' => 'color', 'label' => 'Couleur primaire', 'is_public' => true, 'order' => 1],
+            ['group' => 'theme', 'key' => 'theme_secondary_color', 'value' => '#2D5F8A', 'type' => 'color', 'label' => 'Couleur secondaire', 'is_public' => true, 'order' => 2],
+            ['group' => 'theme', 'key' => 'theme_accent_color', 'value' => '#F59E0B', 'type' => 'color', 'label' => 'Couleur accent', 'is_public' => true, 'order' => 3],
+            ['group' => 'theme', 'key' => 'theme_header_bg', 'value' => '#0F172A', 'type' => 'color', 'label' => 'Fond header', 'is_public' => true, 'order' => 4],
+            ['group' => 'theme', 'key' => 'theme_header_text', 'value' => '#F8FAFC', 'type' => 'color', 'label' => 'Texte header', 'is_public' => true, 'order' => 5],
+            ['group' => 'theme', 'key' => 'theme_footer_bg', 'value' => '#1E293B', 'type' => 'color', 'label' => 'Fond footer', 'is_public' => true, 'order' => 6],
+            ['group' => 'theme', 'key' => 'theme_footer_text', 'value' => '#CBD5E1', 'type' => 'color', 'label' => 'Texte footer', 'is_public' => true, 'order' => 7],
+            ['group' => 'theme', 'key' => 'theme_body_bg', 'value' => '#FFFFFF', 'type' => 'color', 'label' => 'Fond corps de page', 'is_public' => true, 'order' => 8],
+            ['group' => 'theme', 'key' => 'theme_hero_overlay', 'value' => '#0F172A', 'type' => 'color', 'label' => 'Overlay hero', 'is_public' => true, 'order' => 9],
+            ['group' => 'theme', 'key' => 'theme_hero_opacity', 'value' => '60', 'type' => 'number', 'label' => 'Opacité overlay hero (0-100)', 'is_public' => true, 'order' => 10],
+            ['group' => 'theme', 'key' => 'theme_cta_bg', 'value' => '#F59E0B', 'type' => 'color', 'label' => 'Fond boutons CTA', 'is_public' => true, 'order' => 11],
+            ['group' => 'theme', 'key' => 'theme_cta_text', 'value' => '#0F172A', 'type' => 'color', 'label' => 'Texte boutons CTA', 'is_public' => true, 'order' => 12],
+            ['group' => 'theme', 'key' => 'theme_font_pair', 'value' => 'inter_dm_sans', 'type' => 'select', 'label' => 'Paire de polices', 'is_public' => true, 'order' => 13],
+            ['group' => 'theme', 'key' => 'theme_font_size', 'value' => 'md', 'type' => 'select', 'label' => 'Taille de base', 'is_public' => true, 'order' => 14],
+            ['group' => 'theme', 'key' => 'theme_border_radius', 'value' => 'medium', 'type' => 'select', 'label' => 'Arrondi des coins', 'is_public' => true, 'order' => 15],
+            ['group' => 'theme', 'key' => 'theme_shadow', 'value' => 'subtle', 'type' => 'select', 'label' => 'Style ombres', 'is_public' => true, 'order' => 16],
+
+            // ============================================
+            // LÉGAL
+            // ============================================
+            ['group' => 'legal', 'key' => 'legal_mentions_legales', 'value' => '', 'type' => 'html', 'label' => 'Mentions légales', 'is_public' => true, 'order' => 1],
+            ['group' => 'legal', 'key' => 'legal_politique_confidentialite', 'value' => '', 'type' => 'html', 'label' => 'Politique de confidentialité', 'is_public' => true, 'order' => 2],
+            ['group' => 'legal', 'key' => 'legal_cgu', 'value' => '', 'type' => 'html', 'label' => 'Conditions générales d\'utilisation', 'is_public' => true, 'order' => 3],
+            ['group' => 'legal', 'key' => 'legal_politique_cookies', 'value' => '', 'type' => 'html', 'label' => 'Politique de cookies', 'is_public' => true, 'order' => 4],
+
+            // ============================================
+            // NAVIGATION
+            // ============================================
+            ['group' => 'navigation', 'key' => 'navigation_style', 'value' => 'sticky', 'type' => 'select', 'label' => 'Style navigation', 'is_public' => true, 'order' => 1],
+            ['group' => 'navigation', 'key' => 'navigation_sticky', 'value' => '1', 'type' => 'boolean', 'label' => 'Navigation sticky', 'is_public' => true, 'order' => 2],
+            ['group' => 'navigation', 'key' => 'navigation_cta_visible', 'value' => '1', 'type' => 'boolean', 'label' => 'Afficher CTA navigation', 'is_public' => true, 'order' => 3],
+            ['group' => 'navigation', 'key' => 'navigation_cta_text', 'value' => 'Demander un audit', 'type' => 'text', 'label' => 'Texte bouton CTA', 'is_public' => true, 'order' => 4],
+            ['group' => 'navigation', 'key' => 'navigation_cta_url', 'value' => '/audit', 'type' => 'text', 'label' => 'URL bouton CTA', 'is_public' => true, 'order' => 5],
+            ['group' => 'navigation', 'key' => 'navigation_show_phone', 'value' => '0', 'type' => 'boolean', 'label' => 'Afficher téléphone dans le header', 'is_public' => true, 'order' => 6],
+
+            // ============================================
+            // EMAIL
+            // ============================================
+            ['group' => 'email', 'key' => 'email_from_name', 'value' => 'NeoGTB', 'type' => 'text', 'label' => 'Nom expéditeur', 'is_public' => false, 'order' => 1],
+            ['group' => 'email', 'key' => 'email_from_address', 'value' => 'contact@neogtb.fr', 'type' => 'email', 'label' => 'Email expéditeur', 'is_public' => false, 'order' => 2],
+            ['group' => 'email', 'key' => 'email_notification_to', 'value' => '', 'type' => 'email', 'label' => 'Email notifications admin', 'is_public' => false, 'order' => 3],
+            ['group' => 'email', 'key' => 'email_notification_cc', 'value' => '', 'type' => 'email', 'label' => 'CC notifications (optionnel)', 'is_public' => false, 'order' => 4],
+
+            // ============================================
+            // RGPD
+            // ============================================
+            ['group' => 'rgpd', 'key' => 'rgpd_retention_contacts_days', 'value' => '730', 'type' => 'number', 'label' => 'Rétention messages contact (jours)', 'description' => '2 ans par défaut', 'is_public' => false, 'order' => 1],
+            ['group' => 'rgpd', 'key' => 'rgpd_retention_leads_days', 'value' => '1095', 'type' => 'number', 'label' => 'Rétention leads audit (jours)', 'description' => '3 ans par défaut', 'is_public' => false, 'order' => 2],
+            ['group' => 'rgpd', 'key' => 'rgpd_retention_cookies_days', 'value' => '395', 'type' => 'number', 'label' => 'Rétention consentements cookies (jours)', 'description' => '13 mois (recommandation CNIL)', 'is_public' => false, 'order' => 3],
+            ['group' => 'rgpd', 'key' => 'rgpd_retention_newsletter_days', 'value' => '1095', 'type' => 'number', 'label' => 'Rétention newsletter inactifs (jours)', 'description' => '3 ans sans interaction', 'is_public' => false, 'order' => 4],
+
+            // ============================================
             // SÉCURITÉ
             // ============================================
             ['group' => 'securite', 'key' => 'securite_recaptcha_site_key', 'value' => '', 'type' => 'text', 'label' => 'reCAPTCHA Site Key', 'is_encrypted' => true, 'order' => 1],

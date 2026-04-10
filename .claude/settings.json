@@ -6,9 +6,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "filepath=\"$CLAUDE_FILE_PATH\"; if echo \"$filepath\" | grep -qE '\\.(astro|ts|css)$'; then cd /Users/calmoulrich/Documents/neogtb && npx astro check --silent 2>&1 | tail -5; fi",
-            "description": "Vérification Astro après édition de fichier .astro/.ts/.css",
-            "timeout": 30000
+            "command": "filepath=\"$CLAUDE_FILE_PATH\"; if echo \"$filepath\" | grep -qE '\\.blade\\.php$'; then php -l \"$filepath\" 2>&1 | tail -3; fi",
+            "description": "Vérification syntaxe PHP après édition de fichier Blade",
+            "timeout": 10000
           }
         ]
       }
@@ -20,7 +20,7 @@
           {
             "type": "command",
             "if": "Bash(git commit*)",
-            "command": "cd /Users/calmoulrich/Documents/neogtb && echo '=== Scan pré-commit NeoGTB ===' && (grep -rn 'console.log' --include='*.astro' --include='*.ts' --include='*.js' src/ 2>/dev/null && echo 'WARN: console.log trouvé') || echo 'OK: Pas de console.log' && (grep -rn 'TODO' --include='*.astro' --include='*.ts' src/ 2>/dev/null && echo 'WARN: TODO trouvé') || echo 'OK: Pas de TODO'",
+            "command": "cd /Users/calmoulrich/projets/neogtb && echo '=== Scan pré-commit NeoGTB ===' && (grep -rn 'console.log' --include='*.blade.php' --include='*.js' admin/resources/ 2>/dev/null && echo 'WARN: console.log trouvé') || echo 'OK: Pas de console.log' && (grep -rn 'TODO' --include='*.blade.php' --include='*.php' admin/app/ admin/resources/ 2>/dev/null && echo 'WARN: TODO trouvé') || echo 'OK: Pas de TODO'",
             "description": "Scan console.log, TODO avant commit",
             "timeout": 10000
           }
@@ -31,10 +31,10 @@
       {
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "Revue qualité rapide : vérifie les derniers fichiers modifiés dans ce projet Astro. Signale uniquement les problèmes critiques : erreurs de syntaxe, classes Tailwind incohérentes, balises HTML non fermées, liens cassés évidents. Sois concis, 3 lignes max. Si tout va bien, dis juste 'OK'.",
-            "description": "Revue qualité automatique en fin de tâche",
-            "timeout": 15
+            "type": "command",
+            "command": "cd /Users/calmoulrich/projets/neogtb && BLADES=$(git diff --name-only HEAD~1 -- '*.blade.php' 2>/dev/null | head -5); if [ -z \"$BLADES\" ]; then echo 'OK — aucun .blade.php modifié dans le dernier commit'; else echo \"Blade modifiés: $BLADES\"; for f in $BLADES; do [ -f \"$f\" ] && php -l \"$f\" 2>&1 | grep -v 'No syntax errors'; done; echo 'Revue terminée'; fi",
+            "description": "Vérifie la syntaxe des fichiers Blade modifiés dans le dernier commit",
+            "timeout": 10000
           }
         ]
       }
@@ -44,7 +44,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /Users/calmoulrich/Documents/neogtb && echo '=== NeoGTB — Briefing ===' && echo 'Branche:' $(git branch --show-current 2>/dev/null || echo 'N/A') && echo 'Derniers commits:' && git log --oneline -3 2>/dev/null || echo 'Pas de git' && echo 'Fichiers modifiés:' && git status --short 2>/dev/null | head -10 || echo 'Aucun'",
+            "command": "cd /Users/calmoulrich/projets/neogtb && echo '=== NeoGTB — Briefing ===' && echo 'Branche:' $(git branch --show-current 2>/dev/null || echo 'N/A') && echo 'Derniers commits:' && git log --oneline -3 2>/dev/null || echo 'Pas de git' && echo 'Fichiers modifiés:' && git status --short 2>/dev/null | head -10 || echo 'Aucun'",
             "description": "Briefing projet au démarrage de session",
             "timeout": 5
           }

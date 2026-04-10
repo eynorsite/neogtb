@@ -12,15 +12,18 @@ use App\Models\SitePage;
 use App\Models\SiteSetting;
 use App\Models\PageBrick;
 use App\Observers\AdminAuditObserver;
+use App\Observers\SiteSettingObserver;
+use App\Services\SiteConfigService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        //
+        $this->app->singleton(SiteConfigService::class);
     }
 
     public function boot(): void
@@ -48,6 +51,15 @@ class AppServiceProvider extends ServiceProvider
         foreach ($models as $model) {
             $model::observe(AdminAuditObserver::class);
         }
+
+        // SiteSetting observer (cache invalidation + privacy policy versioning)
+        SiteSetting::observe(SiteSettingObserver::class);
+
+        // Share SiteConfigService with all Blade views
+        View::share('site', app(SiteConfigService::class));
+
+        // Breadcrumb composer for all front views
+        View::composer('front.*', \App\View\Composers\BreadcrumbComposer::class);
 
         // Track admin logins (fills admins.last_login_at / last_login_ip)
         Event::listen(

@@ -1,3 +1,7 @@
+@php
+    $__consent = \App\Helpers\ConsentHelper::get();
+    $__tracking = $site->trackingScripts($__consent);
+@endphp
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,6 +22,14 @@
   @php($seoUrl = $seoUrl ?? url()->current())
   @php($seoBreadcrumbName = $page->title ?? $seoTitle)
   @php($seoOgType = $seoOgType ?? 'website')
+
+  {{-- Google Fonts dynamiques --}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ $site->googleFontsUrl() }}">
+
+  {{-- CSS Variables dynamiques depuis l'admin --}}
+  {!! $site->cssVariables() !!}
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,55 +63,26 @@
   {{-- CSRF token for AJAX --}}
   <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-  {{-- Schema.org @graph : Organization + LocalBusiness + BreadcrumbList --}}
+  {{-- Schema.org Organization (dynamique depuis l'admin) --}}
+  {!! $site->jsonLd() !!}
+
+  {{-- Schema.org BreadcrumbList --}}
   <script type="application/ld+json">
   {
     "@@context": "https://schema.org",
-    "@@graph": [
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@@type": "Organization",
-        "@@id": "https://neogtb.fr/#organization",
-        "name": "NeoGTB",
-        "url": "https://neogtb.fr",
-        "logo": "https://neogtb.fr/images/logo-neogtb.webp",
-        "sameAs": [
-          "https://www.linkedin.com/company/neogtb"
-        ]
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "{{ url('/') }}"
       },
       {
-        "@@type": "LocalBusiness",
-        "@@id": "https://neogtb.fr/#localbusiness",
-        "parentOrganization": { "@@id": "https://neogtb.fr/#organization" },
-        "name": "NeoGTB",
-        "url": "https://neogtb.fr",
-        "image": "https://neogtb.fr/images/og-neogtb.png",
-        "priceRange": "€€",
-        "address": {
-          "@@type": "PostalAddress",
-          "streetAddress": "",
-          "addressLocality": "Eysines",
-          "addressRegion": "Bordeaux",
-          "postalCode": "33320",
-          "addressCountry": "FR"
-        },
-        "areaServed": { "@@type": "Country", "name": "France" }
-      },
-      {
-        "@@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@@type": "ListItem",
-            "position": 1,
-            "name": "Accueil",
-            "item": "{{ url('/') }}"
-          },
-          {
-            "@@type": "ListItem",
-            "position": 2,
-            "name": @json($seoBreadcrumbName),
-            "item": "{{ $seoUrl }}"
-          }
-        ]
+        "@@type": "ListItem",
+        "position": 2,
+        "name": @json($seoBreadcrumbName),
+        "item": "{{ $seoUrl }}"
       }
     ]
   }
@@ -107,18 +90,36 @@
 
   @yield('json_ld')
 
+  {{-- Schema.org contextuel (breadcrumbs, FAQ, Article) --}}
+  @stack('schema')
+
   {{-- Plausible Analytics — hébergé UE, sans cookies, exempt de consentement CNIL --}}
   <script defer data-domain="neogtb.fr" src="https://plausible.io/js/script.js"></script>
 
   {{-- Tailwind v4 + design tokens NeoGTB + Alpine.js (self-hosted) compilés via Vite --}}
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+  {{-- Tracking conditionnel (consentement cookie) --}}
+  {!! $__tracking['head'] !!}
+
   @stack('head')
 </head>
 <body class="min-h-screen bg-white text-dark-900 antialiased" style="font-family: 'Inter', system-ui, sans-serif;">
+  {!! $__tracking['body'] ?? '' !!}
 
   {{-- Skip link --}}
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">Aller au contenu principal</a>
+
+  {{-- ===== Bandeau d'annonce (configurable depuis l'admin) ===== --}}
+  @if($announcement = $site->announcementBar())
+    <div style="background:{{ $announcement['color'] }}" class="text-white text-center py-2 text-sm">
+      @if($announcement['link'])
+        <a href="{{ $announcement['link'] }}" class="underline hover:opacity-80 transition-opacity">{{ $announcement['text'] }}</a>
+      @else
+        {{ $announcement['text'] }}
+      @endif
+    </div>
+  @endif
 
   {{-- ===== NAV — Premium mega-menu ===== --}}
   @include('front.partials.header-nav')

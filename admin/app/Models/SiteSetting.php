@@ -110,9 +110,4 @@ class SiteSetting extends Model
         Cache::forget('site_settings_all');
     }
 
-    protected static function booted(): void
-    {
-        static::saved(fn () => static::clearCache());
-        static::deleted(fn () => static::clearCache());
-    }
 }

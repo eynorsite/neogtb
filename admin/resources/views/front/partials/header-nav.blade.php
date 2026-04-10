@@ -99,10 +99,13 @@ $icons = [
       <button type="button" aria-label="Rechercher" class="hidden lg:inline-flex items-center justify-center w-10 h-10 rounded-lg text-dark-500 hover:text-dark-900 hover:bg-dark-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['magnifying-glass'] !!}</svg>
       </button>
-      <a href="/audit" class="hidden lg:inline-flex btn-primary text-[13px] px-5 py-2.5">
-        Pré-diagnostic gratuit
+      @php($nav = $site->navigation())
+      @if($nav['cta_visible'])
+      <a href="{{ $nav['cta_url'] }}" class="hidden lg:inline-flex btn-primary text-[13px] px-5 py-2.5">
+        {{ $nav['cta_text'] }}
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
       </a>
+      @endif
       <button @click="openMobile()" class="lg:hidden p-2 rounded-lg hover:bg-dark-50 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Ouvrir le menu" aria-controls="mobile-drawer" :aria-expanded="mobileOpen.toString()">
         <svg class="w-6 h-6 text-dark-700" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">{!! $icons['bars-3'] !!}</svg>
       </button>
@@ -266,12 +269,14 @@ $icons = [
         </div>
       </div>
 
+      @if($nav['cta_visible'])
       <div class="bg-white border-t border-dark-100 px-5 pt-4" style="padding-bottom: max(16px, env(safe-area-inset-bottom));">
-        <a href="/audit" @click="closeMobile()" class="btn-primary w-full justify-center text-[14px] py-3">
-          Pré-diagnostic gratuit
+        <a href="{{ $nav['cta_url'] }}" @click="closeMobile()" class="btn-primary w-full justify-center text-[14px] py-3">
+          {{ $nav['cta_text'] }}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
+      @endif
     </aside>
   </div>
 </header>
