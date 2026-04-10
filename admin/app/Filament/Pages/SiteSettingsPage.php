@@ -745,15 +745,112 @@ class SiteSettingsPage extends Page implements HasForms
         return Tab::make('Labels d\'interface')
             ->icon('heroicon-o-tag')
             ->schema([
-                Section::make('Labels UI')
-                    ->description('Clé-valeur pour personnaliser les textes de l\'interface du site public.')
+                Section::make('Formulaires')
+                    ->description('Textes affichés dans les formulaires publics (contact, audit, newsletter).')
+                    ->columns(2)
                     ->schema([
-                        KeyValue::make('ui_labels')
-                            ->label('')
-                            ->keyLabel('Clé')
-                            ->valueLabel('Texte affiché')
-                            ->addActionLabel('Ajouter un label')
-                            ->reorderable(),
+                        TextInput::make('ui_labels.forms.name')->label('Nom')->default('Nom'),
+                        TextInput::make('ui_labels.forms.first_name')->label('Prénom')->default('Prénom'),
+                        TextInput::make('ui_labels.forms.email')->label('Email')->default('Email'),
+                        TextInput::make('ui_labels.forms.phone')->label('Téléphone')->default('Téléphone'),
+                        TextInput::make('ui_labels.forms.company')->label('Entreprise')->default('Entreprise'),
+                        TextInput::make('ui_labels.forms.subject')->label('Sujet')->default('Sujet'),
+                        TextInput::make('ui_labels.forms.submit')->label('Bouton envoyer')->default('Envoyer'),
+                        TextInput::make('ui_labels.forms.cancel')->label('Bouton annuler')->default('Annuler'),
+                        Textarea::make('ui_labels.forms.success_message')->label('Message de succès')->rows(2)->columnSpanFull(),
+                        Textarea::make('ui_labels.forms.error_message')->label('Message d\'erreur')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.forms.required_fields')->label('Champs obligatoires')->columnSpanFull(),
+                    ]),
+
+                Section::make('Formulaire Audit GTB')
+                    ->description('Labels spécifiques au wizard d\'audit.')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.forms.building_type')->label('Type de bâtiment'),
+                        TextInput::make('ui_labels.forms.surface')->label('Surface'),
+                        TextInput::make('ui_labels.forms.building_year')->label('Année de construction'),
+                        TextInput::make('ui_labels.forms.energy_bill')->label('Facture énergétique'),
+                        TextInput::make('ui_labels.forms.gtb_level')->label('Niveau GTB actuel'),
+                    ]),
+
+                Section::make('En-tête')
+                    ->description('Textes du header et de la navigation.')
+                    ->columns(3)
+                    ->schema([
+                        TextInput::make('ui_labels.header.home')->label('Accueil'),
+                        TextInput::make('ui_labels.header.gtb')->label('GTB'),
+                        TextInput::make('ui_labels.header.gtc')->label('GTC'),
+                        TextInput::make('ui_labels.header.solutions')->label('Solutions'),
+                        TextInput::make('ui_labels.header.reglementation')->label('Réglementation'),
+                        TextInput::make('ui_labels.header.blog')->label('Blog'),
+                        TextInput::make('ui_labels.header.contact')->label('Contact'),
+                        TextInput::make('ui_labels.header.audit_cta')->label('CTA Audit'),
+                        TextInput::make('ui_labels.header.breadcrumb_label')->label('Fil d\'Ariane'),
+                    ]),
+
+                Section::make('Pied de page')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.footer.col1_title')->label('Colonne 1'),
+                        TextInput::make('ui_labels.footer.col2_title')->label('Colonne 2'),
+                        TextInput::make('ui_labels.footer.col3_title')->label('Colonne 3'),
+                        TextInput::make('ui_labels.footer.col4_title')->label('Colonne 4'),
+                        TextInput::make('ui_labels.footer.newsletter_placeholder')->label('Placeholder newsletter'),
+                        TextInput::make('ui_labels.footer.newsletter_button')->label('Bouton newsletter'),
+                        TextInput::make('ui_labels.footer.newsletter_subtitle')->label('Sous-titre newsletter'),
+                        TextInput::make('ui_labels.footer.no_tracking')->label('Message no-tracking'),
+                    ]),
+
+                Section::make('Appels à l\'action')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.cta.audit_title')->label('Titre CTA audit'),
+                        TextInput::make('ui_labels.cta.audit_button')->label('Bouton CTA audit'),
+                        Textarea::make('ui_labels.cta.audit_subtitle')->label('Sous-titre CTA audit')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.cta.contact_us')->label('Contactez-nous'),
+                        TextInput::make('ui_labels.cta.learn_more')->label('En savoir plus'),
+                        TextInput::make('ui_labels.cta.download')->label('Télécharger'),
+                        TextInput::make('ui_labels.cta.compare')->label('Comparer'),
+                        TextInput::make('ui_labels.cta.back_to_blog')->label('Retour au blog'),
+                    ]),
+
+                Section::make('Cookies')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.cookie.title')->label('Titre bandeau'),
+                        TextInput::make('ui_labels.cookie.accept')->label('Bouton accepter'),
+                        TextInput::make('ui_labels.cookie.reject')->label('Bouton refuser'),
+                        TextInput::make('ui_labels.cookie.customize')->label('Bouton personnaliser'),
+                        TextInput::make('ui_labels.cookie.save_preferences')->label('Bouton enregistrer'),
+                        Textarea::make('ui_labels.cookie.description')->label('Description')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.cookie.necessary_title')->label('Cookies nécessaires — titre'),
+                        TextInput::make('ui_labels.cookie.necessary_desc')->label('Cookies nécessaires — desc'),
+                        TextInput::make('ui_labels.cookie.analytics_title')->label('Cookies analytics — titre'),
+                        TextInput::make('ui_labels.cookie.analytics_desc')->label('Cookies analytics — desc'),
+                    ]),
+
+                Section::make('Validation')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.validation.required')->label('Champ obligatoire'),
+                        TextInput::make('ui_labels.validation.email_invalid')->label('Email invalide'),
+                        TextInput::make('ui_labels.validation.phone_invalid')->label('Téléphone invalide'),
+                        TextInput::make('ui_labels.validation.min_length')->label('Longueur min'),
+                        TextInput::make('ui_labels.validation.max_length')->label('Longueur max'),
+                    ]),
+
+                Section::make('Pagination & Divers')
+                    ->columns(3)
+                    ->schema([
+                        TextInput::make('ui_labels.pagination.previous')->label('Précédent'),
+                        TextInput::make('ui_labels.pagination.next')->label('Suivant'),
+                        TextInput::make('ui_labels.pagination.results')->label('Résultats'),
+                        TextInput::make('ui_labels.misc.loading')->label('Chargement'),
+                        TextInput::make('ui_labels.misc.no_data')->label('Aucune donnée'),
+                        TextInput::make('ui_labels.misc.back')->label('Retour'),
+                        TextInput::make('ui_labels.misc.close')->label('Fermer'),
+                        TextInput::make('ui_labels.misc.share')->label('Partager'),
+                        TextInput::make('ui_labels.misc.reading_time')->label('Temps de lecture'),
                     ]),
             ]);
     }
@@ -765,15 +862,41 @@ class SiteSettingsPage extends Page implements HasForms
         return Tab::make('Textes légaux')
             ->icon('heroicon-o-scale')
             ->schema([
-                Section::make('Contenus juridiques')
-                    ->description('Les textes sont stockés en JSON. Chaque clé correspond à une page légale.')
+                Section::make('Mentions légales')
+                    ->description('Obligatoires au titre de la LCEN. Éditeur, hébergeur, directeur de publication.')
                     ->schema([
-                        KeyValue::make('legal_texts')
+                        RichEditor::make('legal_texts.mentions_legales')
                             ->label('')
-                            ->keyLabel('Page')
-                            ->valueLabel('Contenu HTML')
-                            ->addActionLabel('Ajouter un texte légal')
-                            ->reorderable(),
+                            ->toolbarButtons(['bold', 'italic', 'underline', 'h2', 'h3', 'bulletList', 'orderedList', 'link'])
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('Politique de confidentialité')
+                    ->description('RGPD Art. 13 & 14. La modification crée automatiquement une nouvelle version.')
+                    ->schema([
+                        RichEditor::make('legal_texts.politique_confidentialite')
+                            ->label('')
+                            ->toolbarButtons(['bold', 'italic', 'underline', 'h2', 'h3', 'bulletList', 'orderedList', 'link'])
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('Conditions Générales d\'Utilisation')
+                    ->schema([
+                        RichEditor::make('legal_texts.cgu')
+                            ->label('')
+                            ->toolbarButtons(['bold', 'italic', 'underline', 'h2', 'h3', 'bulletList', 'orderedList', 'link'])
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('Bandeau cookies')
+                    ->description('Configuration du consentement cookie (RGPD / CNIL).')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('legal_texts.cookie_consent.title')->label('Titre'),
+                        TextInput::make('legal_texts.cookie_consent.accept')->label('Bouton accepter'),
+                        TextInput::make('legal_texts.cookie_consent.reject')->label('Bouton refuser'),
+                        TextInput::make('legal_texts.cookie_consent.customize')->label('Bouton personnaliser'),
+                        Textarea::make('legal_texts.cookie_consent.description')->label('Description')->rows(3)->columnSpanFull(),
                     ]),
             ]);
     }
@@ -782,20 +905,50 @@ class SiteSettingsPage extends Page implements HasForms
 
     protected function statusTab(): Tab
     {
+        $statusRepeater = fn (string $entity, string $label) => Section::make($label)->schema([
+            Repeater::make("status_configs.{$entity}")
+                ->label('')
+                ->schema([
+                    Grid::make(4)->schema([
+                        TextInput::make('key')
+                            ->label('Clé')
+                            ->required()
+                            ->maxLength(30),
+                        TextInput::make('label')
+                            ->label('Label affiché')
+                            ->required()
+                            ->maxLength(50),
+                        Select::make('color')
+                            ->label('Couleur')
+                            ->options([
+                                'gray' => 'Gris',
+                                'info' => 'Bleu info',
+                                'primary' => 'Primaire',
+                                'warning' => 'Orange',
+                                'success' => 'Vert',
+                                'danger' => 'Rouge',
+                            ])
+                            ->required(),
+                        TextInput::make('icon')
+                            ->label('Icône Heroicon')
+                            ->placeholder('heroicon-o-...'),
+                    ]),
+                ])
+                ->collapsible()
+                ->cloneable()
+                ->addActionLabel('Ajouter un statut')
+                ->defaultItems(0),
+        ]);
+
         return Tab::make('Statuts & Workflows')
             ->icon('heroicon-o-arrow-path')
             ->visible(fn () => in_array($this->getRole(), ['superadmin', 'admin']))
             ->schema([
-                Section::make('Configuration des statuts')
-                    ->description('Définit les statuts et couleurs pour les articles, leads, messages et RGPD.')
-                    ->schema([
-                        KeyValue::make('status_configs')
-                            ->label('')
-                            ->keyLabel('Entité.statut')
-                            ->valueLabel('Configuration JSON')
-                            ->addActionLabel('Ajouter un statut')
-                            ->reorderable(),
-                    ]),
+                $statusRepeater('post', 'Articles de blog'),
+                $statusRepeater('audit_lead', 'Leads Audit GTB'),
+                $statusRepeater('cee_lead', 'Leads CEE'),
+                $statusRepeater('contact_message', 'Messages de contact'),
+                $statusRepeater('gdpr_request', 'Demandes RGPD'),
             ]);
     }
 
