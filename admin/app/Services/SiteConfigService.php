@@ -371,6 +371,27 @@ HTML;
     }
 
     // ──────────────────────────────────────────────
+    // Accessibilité & Référent handicap
+    // ──────────────────────────────────────────────
+
+    public function handicapReferent(): ?array
+    {
+        $s = $this->settings();
+        if (blank($s->handicap_referent_name)) return null;
+        return [
+            'name' => $s->handicap_referent_name,
+            'email' => $s->handicap_referent_email,
+            'phone' => $s->handicap_referent_phone,
+        ];
+    }
+
+    public function accessibilityInfo(): ?string
+    {
+        $info = $this->settings()->accessibility_info;
+        return filled($info) ? $info : null;
+    }
+
+    // ──────────────────────────────────────────────
     // Divers
     // ──────────────────────────────────────────────
 
