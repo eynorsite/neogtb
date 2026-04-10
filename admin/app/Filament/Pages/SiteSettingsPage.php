@@ -428,16 +428,7 @@ class SiteSettingsPage extends Page implements HasForms
                     Grid::make(2)->schema([
                         Select::make('font_pair')
                             ->label('Paire de polices')
-                            ->options([
-                                'inter_dm_sans' => 'Inter + DM Sans',
-                                'inter_merriweather' => 'Inter + Merriweather',
-                                'poppins_lora' => 'Poppins + Lora',
-                                'montserrat_roboto' => 'Montserrat + Roboto',
-                                'dm_sans_dm_serif' => 'DM Sans + DM Serif',
-                                'plus_jakarta_inter' => 'Plus Jakarta + Inter',
-                                'outfit_inter' => 'Outfit + Inter',
-                                'space_grotesk_inter' => 'Space Grotesk + Inter',
-                            ]),
+                            ->options(fn () => collect(GeneralSetting::first()?->font_pairs_config ?? [])->pluck('label', 'key')->toArray()),
                         Select::make('font_size_base')
                             ->label('Taille de police')
                             ->options([
