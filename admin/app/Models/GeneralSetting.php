@@ -58,6 +58,13 @@ class GeneralSetting extends Model
             'ui_labels' => 'array',
             'status_configs' => 'array',
             'legal_texts' => 'array',
+            'nav_items' => 'array',
+            'blog_categories_config' => 'array',
+            'gtb_protocols_config' => 'array',
+            'en15232_levels_config' => 'array',
+            'font_pairs_config' => 'array',
+            'client_logos' => 'array',
+            'maintenance_allowed_ips' => 'array',
 
             // Booleans
             'nav_cta_visible' => 'boolean',
@@ -66,6 +73,9 @@ class GeneralSetting extends Model
             'announcement_enabled' => 'boolean',
             'cookie_banner_enabled' => 'boolean',
             'maintenance_enabled' => 'boolean',
+            'stat_buildings_auto' => 'boolean',
+            'stat_clients_auto' => 'boolean',
+            'announcement_dismissable' => 'boolean',
 
             // Integers
             'hero_overlay_opacity' => 'integer',
@@ -108,5 +118,16 @@ class GeneralSetting extends Model
     public function getCopyrightAttribute(): string
     {
         return '© ' . date('Y') . ' ' . $this->company_name;
+    }
+
+    public function getLegalIdentityAttribute(): string
+    {
+        return implode(' | ', array_filter([
+            $this->company_legal_form,
+            $this->company_siret ? 'SIRET ' . $this->company_siret : null,
+            $this->company_tva_number ? 'TVA ' . $this->company_tva_number : null,
+            $this->company_rcs ? 'RCS ' . $this->company_rcs : null,
+            $this->company_capital ? 'Capital ' . $this->company_capital : null,
+        ]));
     }
 }

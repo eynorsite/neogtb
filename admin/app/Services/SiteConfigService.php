@@ -11,49 +11,6 @@ class SiteConfigService
 {
     private const CACHE_TTL = 3600;
 
-    private const FONT_PAIRS = [
-        'inter_dm_sans' => [
-            'url'     => 'Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700',
-            'heading' => "'Inter', sans-serif",
-            'body'    => "'DM Sans', sans-serif",
-        ],
-        'plus_jakarta_inter' => [
-            'url'     => 'Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600',
-            'heading' => "'Plus Jakarta Sans', sans-serif",
-            'body'    => "'Inter', sans-serif",
-        ],
-        'outfit_inter' => [
-            'url'     => 'Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600',
-            'heading' => "'Outfit', sans-serif",
-            'body'    => "'Inter', sans-serif",
-        ],
-        'space_grotesk_inter' => [
-            'url'     => 'Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600',
-            'heading' => "'Space Grotesk', sans-serif",
-            'body'    => "'Inter', sans-serif",
-        ],
-        'inter_merriweather' => [
-            'url'     => 'Inter:wght@400;500;600;700&family=Merriweather:wght@400;700',
-            'heading' => "'Inter', sans-serif",
-            'body'    => "'Merriweather', serif",
-        ],
-        'poppins_lora' => [
-            'url'     => 'Poppins:wght@400;500;600;700&family=Lora:wght@400;700',
-            'heading' => "'Poppins', sans-serif",
-            'body'    => "'Lora', serif",
-        ],
-        'montserrat_roboto' => [
-            'url'     => 'Montserrat:wght@500;600;700&family=Roboto:wght@400;500',
-            'heading' => "'Montserrat', sans-serif",
-            'body'    => "'Roboto', sans-serif",
-        ],
-        'dm_sans_dm_serif' => [
-            'url'     => 'DM+Sans:wght@400;500;700&family=DM+Serif+Display:wght@400',
-            'heading' => "'DM Sans', sans-serif",
-            'body'    => "'DM Serif Display', serif",
-        ],
-    ];
-
     // ──────────────────────────────────────────────
     // Accès aux settings
     // ──────────────────────────────────────────────
@@ -79,23 +36,27 @@ class SiteConfigService
             $fonts = $this->fontPair();
 
             $vars = [
-                '--color-primary'    => $s->primary_color ?? '#0F766E',
-                '--color-secondary'  => $s->secondary_color ?? '#1E293B',
-                '--color-accent'     => $s->accent_color ?? '#F59E0B',
-                '--header-bg'        => $s->header_bg ?? '#FFFFFF',
-                '--header-text'      => $s->header_text ?? '#1E293B',
-                '--footer-bg'        => $s->footer_bg ?? '#1E293B',
-                '--footer-text'      => $s->footer_text ?? '#F8FAFC',
-                '--body-bg'          => $s->body_bg ?? '#FFFFFF',
-                '--hero-overlay'     => $s->hero_overlay_color ?? '#0F766E',
-                '--hero-opacity'     => $s->hero_overlay_opacity ?? '80',
-                '--cta-bg'           => $s->cta_bg ?? '#0F766E',
-                '--cta-text'         => $s->cta_text_color ?? '#FFFFFF',
-                '--font-heading'     => $fonts['heading'],
-                '--font-body'        => $fonts['body'],
-                '--font-size'        => $s->font_size_base ?? '16px',
-                '--border-radius'    => $s->border_radius ?? '8px',
-                '--shadow'           => $s->shadow ?? '0 1px 3px rgba(0,0,0,0.1)',
+                '--color-primary'      => $s->primary_color ?? '#1E3A5F',
+                '--color-secondary'    => $s->secondary_color ?? '#2D5F8A',
+                '--color-accent'       => $s->accent_color ?? '#F59E0B',
+                '--color-header-bg'    => $s->header_bg_color ?? '#0F172A',
+                '--color-header-text'  => $s->header_text_color ?? '#F8FAFC',
+                '--color-footer-bg'    => $s->footer_bg_color ?? '#1E293B',
+                '--color-footer-text'  => $s->footer_text_color ?? '#CBD5E1',
+                '--color-body-bg'      => $s->body_bg_color ?? '#FFFFFF',
+                '--color-hero-overlay' => $s->hero_overlay_color ?? '#0F172A',
+                '--hero-overlay-opacity' => ($s->hero_overlay_opacity ?? 60) / 100,
+                '--color-cta-bg'       => $s->cta_bg_color ?? '#F59E0B',
+                '--color-cta-text'     => $s->cta_text_color ?? '#0F172A',
+                '--font-heading'       => $fonts['heading'],
+                '--font-body'          => $fonts['body'],
+                '--font-size-base'     => match($s->font_size_base ?? 'md') { 'sm' => '14px', 'lg' => '18px', default => '16px' },
+                '--radius'             => match($s->border_radius_style ?? 'medium') {
+                    'none' => '0', 'small' => '4px', 'large' => '12px', 'full' => '9999px', default => '8px'
+                },
+                '--shadow'             => match($s->shadow_style ?? 'subtle') {
+                    'none' => 'none', 'medium' => '0 4px 6px rgba(0,0,0,0.1)', 'strong' => '0 10px 25px rgba(0,0,0,0.15)', default => '0 1px 3px rgba(0,0,0,0.08)'
+                },
             ];
 
             $lines = [];
@@ -117,7 +78,9 @@ class SiteConfigService
     public function googleFontsUrl(): string
     {
         $pair = $this->settings()->font_pair ?? 'inter_dm_sans';
-        $families = self::FONT_PAIRS[$pair]['url'] ?? self::FONT_PAIRS['inter_dm_sans']['url'];
+        $pairs = $this->settings()->font_pairs_config ?? [];
+        $found = collect($pairs)->firstWhere('key', $pair);
+        $families = $found['google_families'] ?? 'Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700';
 
         return "https://fonts.googleapis.com/css2?family={$families}&display=swap";
     }
@@ -125,11 +88,12 @@ class SiteConfigService
     public function fontPair(): array
     {
         $pair = $this->settings()->font_pair ?? 'inter_dm_sans';
-        $config = self::FONT_PAIRS[$pair] ?? self::FONT_PAIRS['inter_dm_sans'];
+        $pairs = $this->settings()->font_pairs_config ?? [];
+        $found = collect($pairs)->firstWhere('key', $pair);
 
         return [
-            'heading' => $config['heading'],
-            'body'    => $config['body'],
+            'heading' => "'" . ($found['heading'] ?? 'Inter') . "', sans-serif",
+            'body'    => "'" . ($found['body'] ?? 'DM Sans') . "', sans-serif",
         ];
     }
 
@@ -142,13 +106,13 @@ class SiteConfigService
         $s = $this->settings();
 
         return [
-            'style'       => $s->nav_style,
-            'sticky'      => $s->nav_sticky,
-            'cta_text'    => $s->nav_cta_text,
-            'cta_url'     => $s->nav_cta_url,
-            'cta_visible' => $s->nav_cta_visible,
-            'show_phone'  => $s->nav_show_phone,
-            'phone'       => $s->company_phone,
+            'style'       => $s->nav_style ?? 'sticky',
+            'cta_text'    => $s->nav_cta_text ?? 'Demander un audit',
+            'cta_url'     => $s->nav_cta_url ?? '/audit',
+            'cta_visible' => (bool) ($s->nav_cta_visible ?? true),
+            'show_phone'  => (bool) ($s->nav_show_phone ?? false),
+            'phone'       => $s->company_phone ?? '',
+            'items'       => collect($s->nav_items ?? [])->where('visible', true)->values()->toArray(),
         ];
     }
 
@@ -329,10 +293,11 @@ HTML;
         }
 
         return [
-            'text'       => $s->announcement_text,
-            'url'        => $s->announcement_url,
-            'bg_color'   => $s->announcement_bg_color ?? '#0F766E',
-            'text_color' => $s->announcement_text_color ?? '#FFFFFF',
+            'text'        => $s->announcement_text,
+            'url'         => $s->announcement_url,
+            'bg_color'    => $s->announcement_bg_color ?? '#0F766E',
+            'text_color'  => $s->announcement_text_color ?? '#FFFFFF',
+            'dismissable' => (bool) ($s->announcement_dismissable ?? true),
         ];
     }
 
@@ -425,10 +390,46 @@ HTML;
     // Cache management
     // ──────────────────────────────────────────────
 
+    // ──────────────────────────────────────────────
+    // Registres (blog, protocoles, EN 15232, homepage)
+    // ──────────────────────────────────────────────
+
+    public function blogCategories(): array
+    {
+        return Cache::remember('blog_categories', self::CACHE_TTL, fn() => $this->settings()->blog_categories_config ?? []);
+    }
+
+    public function gtbProtocols(): array
+    {
+        return Cache::remember('gtb_protocols', self::CACHE_TTL, fn() => $this->settings()->gtb_protocols_config ?? []);
+    }
+
+    public function en15232Levels(): array
+    {
+        return Cache::remember('en15232_levels', self::CACHE_TTL, fn() => $this->settings()->en15232_levels_config ?? []);
+    }
+
+    public function homepageSections(): array
+    {
+        return $this->settings()->homepage_sections ?? [];
+    }
+
+    public function homepageSectionConfig(string $section): array
+    {
+        return $this->settings()->homepage_sections_config[$section] ?? [];
+    }
+
+    // ──────────────────────────────────────────────
+    // Cache management
+    // ──────────────────────────────────────────────
+
     public function clearCache(): void
     {
         Cache::forget('site_css_variables');
         Cache::forget('site_json_ld');
+        Cache::forget('blog_categories');
+        Cache::forget('gtb_protocols');
+        Cache::forget('en15232_levels');
         GeneralSetting::clearCache();
     }
 }

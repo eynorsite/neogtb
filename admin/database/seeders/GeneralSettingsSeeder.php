@@ -31,6 +31,9 @@ class GeneralSettingsSeeder extends Seeder
             'body_bg_color' => '#FFFFFF',
             'hero_overlay_color' => '#0F172A',
             'hero_overlay_opacity' => 60,
+            'hero_style' => 'static',
+            'hero_title_line1' => 'La GTB au service',
+            'hero_title_line2' => 'de la performance énergétique',
             'cta_bg_color' => '#F59E0B',
             'cta_text_color' => '#0F172A',
             'font_pair' => 'inter_dm_sans',
@@ -45,6 +48,15 @@ class GeneralSettingsSeeder extends Seeder
             'nav_show_phone' => false,
             'nav_style' => 'sticky',
             'nav_sticky' => true,
+            'nav_items' => [
+                ['label' => 'Accueil', 'url' => '/', 'type' => 'link', 'visible' => true],
+                ['label' => 'GTB', 'url' => '/gtb', 'type' => 'link', 'visible' => true],
+                ['label' => 'GTC', 'url' => '/gtc', 'type' => 'link', 'visible' => true],
+                ['label' => 'Solutions', 'url' => '/solutions', 'type' => 'link', 'visible' => true],
+                ['label' => 'Réglementation', 'url' => '/reglementation', 'type' => 'link', 'visible' => true],
+                ['label' => 'Blog', 'url' => '/blog', 'type' => 'link', 'visible' => true],
+                ['label' => 'Contact', 'url' => '/contact', 'type' => 'link', 'visible' => true],
+            ],
 
             // SEO
             'seo_title_suffix' => ' \u2014 NeoGTB',
@@ -61,6 +73,7 @@ class GeneralSettingsSeeder extends Seeder
             'announcement_enabled' => false,
             'announcement_bg_color' => '#2563eb',
             'announcement_text_color' => '#ffffff',
+            'announcement_dismissable' => true,
 
             // MAINTENANCE
             'maintenance_enabled' => false,
@@ -85,9 +98,11 @@ class GeneralSettingsSeeder extends Seeder
 
             // STATISTIQUES
             'stat_buildings_audited' => 150,
+            'stat_buildings_auto' => false,
             'stat_avg_savings_percent' => 35,
             'stat_years_experience' => 12,
             'stat_clients_count' => 80,
+            'stat_clients_auto' => false,
 
             // UI LABELS
             'ui_labels' => [
@@ -237,6 +252,39 @@ class GeneralSettingsSeeder extends Seeder
                 'mentions_legales' => '',
                 'politique_confidentialite' => '',
                 'cgu' => '',
+            ],
+
+            // CATALOGUES
+            'blog_categories_config' => [
+                ['slug' => 'guide', 'label' => 'Guides', 'color' => '#3B82F6', 'icon' => 'book-open', 'description' => 'Guides pratiques GTB/GTC'],
+                ['slug' => 'reglementation', 'label' => 'Réglementation', 'color' => '#8B5CF6', 'icon' => 'scale', 'description' => 'Décrets, normes, obligations'],
+                ['slug' => 'technologie', 'label' => 'Technologies', 'color' => '#10B981', 'icon' => 'cpu-chip', 'description' => 'Protocoles, capteurs, automates'],
+                ['slug' => 'retour-experience', 'label' => 'Retours d\'expérience', 'color' => '#F59E0B', 'icon' => 'light-bulb', 'description' => 'Cas concrets et ROI'],
+                ['slug' => 'actualite', 'label' => 'Actualités', 'color' => '#EF4444', 'icon' => 'newspaper', 'description' => 'Nouveautés du secteur'],
+            ],
+
+            'gtb_protocols_config' => [
+                ['slug' => 'bacnet', 'label' => 'BACnet', 'description' => 'Building Automation and Control Networks — protocole standard ISO 16484-5'],
+                ['slug' => 'knx', 'label' => 'KNX', 'description' => 'Standard mondial pour l\'automatisation des bâtiments résidentiels et tertiaires'],
+                ['slug' => 'modbus', 'label' => 'Modbus', 'description' => 'Protocole de communication série utilisé pour les automates programmables'],
+                ['slug' => 'lon', 'label' => 'LON', 'description' => 'Local Operating Network — réseau de contrôle distribué'],
+                ['slug' => 'dali', 'label' => 'DALI', 'description' => 'Digital Addressable Lighting Interface — protocole d\'éclairage'],
+                ['slug' => 'mqtt', 'label' => 'MQTT', 'description' => 'Message Queuing Telemetry Transport — protocole IoT léger'],
+            ],
+
+            'en15232_levels_config' => [
+                ['key' => 'A', 'label' => 'Classe A — Haute performance énergétique', 'description' => 'GTB avec régulation individuelle, optimisation automatique, détection de défauts', 'savings' => '30-40%'],
+                ['key' => 'B', 'label' => 'Classe B — Avancé', 'description' => 'GTB avec régulation automatique par zone, programmation horaire', 'savings' => '20-30%'],
+                ['key' => 'C', 'label' => 'Classe C — Standard', 'description' => 'Régulation basique, pas d\'automatisation avancée', 'savings' => '10-15%'],
+                ['key' => 'D', 'label' => 'Classe D — Non énergie-efficace', 'description' => 'Pas de GTB, régulation manuelle uniquement', 'savings' => '0%'],
+            ],
+
+            'font_pairs_config' => [
+                ['key' => 'inter_dm_sans', 'label' => 'Inter + DM Sans', 'heading' => 'Inter', 'body' => 'DM Sans', 'google_families' => 'Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700'],
+                ['key' => 'inter_merriweather', 'label' => 'Inter + Merriweather', 'heading' => 'Inter', 'body' => 'Merriweather', 'google_families' => 'Inter:wght@400;500;600;700&family=Merriweather:wght@400;700'],
+                ['key' => 'poppins_lora', 'label' => 'Poppins + Lora', 'heading' => 'Poppins', 'body' => 'Lora', 'google_families' => 'Poppins:wght@400;500;600;700&family=Lora:wght@400;700'],
+                ['key' => 'montserrat_roboto', 'label' => 'Montserrat + Roboto', 'heading' => 'Montserrat', 'body' => 'Roboto', 'google_families' => 'Montserrat:wght@500;600;700&family=Roboto:wght@400;500'],
+                ['key' => 'dm_sans_dm_serif', 'label' => 'DM Sans + DM Serif', 'heading' => 'DM Serif Display', 'body' => 'DM Sans', 'google_families' => 'DM+Sans:wght@400;500;700&family=DM+Serif+Display:wght@400'],
             ],
 
             // HOMEPAGE SECTIONS

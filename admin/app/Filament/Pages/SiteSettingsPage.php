@@ -6,6 +6,7 @@ use App\Models\GeneralSetting;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Placeholder;
@@ -73,6 +74,7 @@ class SiteSettingsPage extends Page implements HasForms
                         $this->colorsTab(),
                         $this->typographyTab(),
                         $this->navigationTab(),
+                        $this->homepageTab(),
                         $this->announcementTab(),
                         $this->socialTab(),
                         $this->seoTab(),
@@ -81,6 +83,7 @@ class SiteSettingsPage extends Page implements HasForms
                         $this->labelsTab(),
                         $this->legalTab(),
                         $this->statusTab(),
+                        $this->cataloguesTab(),
                         $this->emailTab(),
                         $this->canAccessSecurity() ? $this->securityTab() : null,
                         $this->rgpdTab(),
@@ -102,6 +105,8 @@ class SiteSettingsPage extends Page implements HasForms
         $settings = GeneralSetting::get()->fresh();
         $settings->update($data);
         GeneralSetting::clearCache();
+
+        app(\App\Services\SiteConfigService::class)->clearCache();
 
         Notification::make()
             ->title('Paramètres enregistrés')
@@ -302,25 +307,37 @@ class SiteSettingsPage extends Page implements HasForms
             ->schema([
                 Section::make('Logos')->schema([
                     Grid::make(3)->schema([
-                        TextInput::make('company_logo')
+                        FileUpload::make('company_logo')
                             ->label('Logo principal')
-                            ->helperText('Chemin vers le logo (ex: logos/neogtb.svg)'),
-                        TextInput::make('company_logo_white')
-                            ->label('Logo blanc')
-                            ->helperText('Version blanche pour fonds sombres'),
-                        TextInput::make('company_logo_icon')
-                            ->label('Icône logo')
-                            ->helperText('Version icône compacte'),
+                            ->image()
+                            ->directory('logos')
+                            ->maxSize(2048),
+                        FileUpload::make('company_logo_white')
+                            ->label('Logo blanc (fond sombre)')
+                            ->image()
+                            ->directory('logos')
+                            ->maxSize(2048),
+                        FileUpload::make('company_logo_icon')
+                            ->label('Logo icône (carré)')
+                            ->image()
+                            ->directory('logos')
+                            ->maxSize(1024),
                     ]),
                 ]),
                 Section::make('Favicon & Open Graph')->schema([
                     Grid::make(2)->schema([
-                        TextInput::make('favicon')
+                        FileUpload::make('favicon')
                             ->label('Favicon')
-                            ->helperText('Chemin vers le favicon'),
-                        TextInput::make('og_default_image')
+                            ->image()
+                            ->directory('logos')
+                            ->maxSize(512)
+                            ->helperText('32x32px recommandé'),
+                        FileUpload::make('og_default_image')
                             ->label('Image Open Graph par défaut')
-                            ->helperText('Image de partage par défaut (1200x630)'),
+                            ->image()
+                            ->directory('og')
+                            ->maxSize(2048)
+                            ->helperText('1200x630px recommandé'),
                     ]),
                 ]),
             ]);
@@ -456,6 +473,35 @@ class SiteSettingsPage extends Page implements HasForms
         return Tab::make('Navigation')
             ->icon('heroicon-o-bars-3')
             ->schema([
+                Section::make('Items du menu')
+                    ->description('Glissez-déposez pour réordonner les éléments du menu principal.')
+                    ->schema([
+                        Repeater::make('nav_items')
+                            ->label('')
+                            ->schema([
+                                Grid::make(4)->schema([
+                                    TextInput::make('label')
+                                        ->label('Libellé')
+                                        ->required()
+                                        ->maxLength(30),
+                                    TextInput::make('url')
+                                        ->label('URL')
+                                        ->required(),
+                                    Select::make('type')
+                                        ->label('Type')
+                                        ->options(['link' => 'Lien simple', 'mega' => 'Mega menu'])
+                                        ->default('link'),
+                                    Toggle::make('visible')
+                                        ->label('Visible')
+                                        ->default(true),
+                                ]),
+                            ])
+                            ->collapsible()
+                            ->cloneable()
+                            ->reorderable()
+                            ->addActionLabel('Ajouter un lien')
+                            ->defaultItems(0),
+                    ]),
                 Section::make('Style de navigation')->schema([
                     Grid::make(2)->schema([
                         Select::make('nav_style')
@@ -487,6 +533,59 @@ class SiteSettingsPage extends Page implements HasForms
                         ->label('Afficher le téléphone dans la navigation')
                         ->helperText('Affiche le numéro de téléphone dans la barre de navigation'),
                 ]),
+            ]);
+    }
+
+    // ─── TAB: PAGE D'ACCUEIL ─────────────────────────────────
+
+    protected function homepageTab(): Tab
+    {
+        return Tab::make('Page d\'accueil')
+            ->icon('heroicon-o-home')
+            ->schema([
+                Section::make('Hero')
+                    ->description('Configuration de la section hero de la page d\'accueil.')
+                    ->columns(2)
+                    ->schema([
+                        Select::make('hero_style')
+                            ->label('Style du hero')
+                            ->options([
+                                'static' => 'Image statique',
+                                'gradient' => 'Dégradé',
+                                'video' => 'Vidéo',
+                            ])
+                            ->default('static'),
+                        FileUpload::make('hero_default_image')
+                            ->label('Image hero')
+                            ->image()
+                            ->directory('hero')
+                            ->columnSpanFull(),
+                        TextInput::make('hero_title_line1')
+                            ->label('Titre ligne 1')
+                            ->maxLength(100),
+                        TextInput::make('hero_title_line2')
+                            ->label('Titre ligne 2')
+                            ->maxLength(100),
+                    ]),
+
+                Section::make('Sections de la page d\'accueil')
+                    ->description('Cochez les sections à afficher et réordonnez-les.')
+                    ->schema([
+                        \Filament\Forms\Components\CheckboxList::make('homepage_sections')
+                            ->label('')
+                            ->options([
+                                'hero' => 'Hero',
+                                'expertises' => 'Expertises GTB',
+                                'chiffres' => 'Chiffres clés',
+                                'comparatif' => 'Comparatif GTB/GTC',
+                                'solutions' => 'Solutions & Technologies',
+                                'temoignages' => 'Témoignages',
+                                'faq' => 'FAQ',
+                                'cta_audit' => 'CTA Audit',
+                                'blog_recent' => 'Articles récents',
+                            ])
+                            ->columns(3),
+                    ]),
             ]);
     }
 
@@ -952,6 +1051,87 @@ class SiteSettingsPage extends Page implements HasForms
             ]);
     }
 
+    // ─── TAB: CATALOGUES ───────────────────────────────────
+
+    protected function cataloguesTab(): Tab
+    {
+        return Tab::make('Catalogues')
+            ->icon('heroicon-o-rectangle-stack')
+            ->visible(fn () => in_array($this->getRole(), ['superadmin', 'admin']))
+            ->schema([
+                Section::make('Catégories blog')
+                    ->schema([
+                        Repeater::make('blog_categories_config')
+                            ->label('')
+                            ->schema([
+                                Grid::make(3)->schema([
+                                    TextInput::make('slug')->required()->maxLength(30),
+                                    TextInput::make('label')->required()->maxLength(50),
+                                    ColorPicker::make('color'),
+                                ]),
+                                Grid::make(2)->schema([
+                                    TextInput::make('icon')->placeholder('book-open'),
+                                    TextInput::make('description')->maxLength(200),
+                                ]),
+                            ])
+                            ->collapsible()
+                            ->cloneable()
+                            ->addActionLabel('Ajouter une catégorie'),
+                    ]),
+
+                Section::make('Protocoles GTB')
+                    ->schema([
+                        Repeater::make('gtb_protocols_config')
+                            ->label('')
+                            ->schema([
+                                Grid::make(2)->schema([
+                                    TextInput::make('slug')->required(),
+                                    TextInput::make('label')->required(),
+                                ]),
+                                Textarea::make('description')->rows(2),
+                            ])
+                            ->collapsible()
+                            ->addActionLabel('Ajouter un protocole'),
+                    ]),
+
+                Section::make('Niveaux EN 15232')
+                    ->description('Classification des niveaux de GTB selon la norme européenne.')
+                    ->schema([
+                        Repeater::make('en15232_levels_config')
+                            ->label('')
+                            ->schema([
+                                Grid::make(3)->schema([
+                                    TextInput::make('key')->label('Classe')->required()->maxLength(1),
+                                    TextInput::make('label')->required(),
+                                    TextInput::make('savings')->label('Économies')->placeholder('30-40%'),
+                                ]),
+                                Textarea::make('description')->rows(2),
+                            ])
+                            ->collapsible()
+                            ->addActionLabel('Ajouter un niveau'),
+                    ]),
+
+                Section::make('Paires de polices')
+                    ->schema([
+                        Repeater::make('font_pairs_config')
+                            ->label('')
+                            ->schema([
+                                Grid::make(3)->schema([
+                                    TextInput::make('key')->required()->maxLength(30),
+                                    TextInput::make('label')->required(),
+                                    TextInput::make('google_families')->label('Google Fonts families'),
+                                ]),
+                                Grid::make(2)->schema([
+                                    TextInput::make('heading')->label('Police titres'),
+                                    TextInput::make('body')->label('Police corps'),
+                                ]),
+                            ])
+                            ->collapsible()
+                            ->addActionLabel('Ajouter une paire'),
+                    ]),
+            ]);
+    }
+
     // ─── TAB: EMAIL ────────────────────────────────────────
 
     protected function emailTab(): Tab
@@ -1098,18 +1278,32 @@ class SiteSettingsPage extends Page implements HasForms
                                 ->label('Bâtiments audités')
                                 ->numeric()
                                 ->suffix('bâtiments'),
+                            Toggle::make('stat_buildings_auto')
+                                ->label('Auto-calcul'),
+                        ]),
+                        Grid::make(2)->schema([
                             TextInput::make('stat_avg_savings_percent')
                                 ->label('Économies moyennes')
                                 ->numeric()
                                 ->suffix('%'),
+                            Toggle::make('stat_savings_auto')
+                                ->label('Auto-calcul'),
+                        ]),
+                        Grid::make(2)->schema([
                             TextInput::make('stat_years_experience')
                                 ->label('Années d\'expérience')
                                 ->numeric()
                                 ->suffix('ans'),
+                            Toggle::make('stat_experience_auto')
+                                ->label('Auto-calcul'),
+                        ]),
+                        Grid::make(2)->schema([
                             TextInput::make('stat_clients_count')
                                 ->label('Nombre de clients')
                                 ->numeric()
                                 ->suffix('clients'),
+                            Toggle::make('stat_clients_auto')
+                                ->label('Auto-calcul'),
                         ]),
                     ]),
             ]);

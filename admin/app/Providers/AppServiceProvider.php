@@ -55,8 +55,11 @@ class AppServiceProvider extends ServiceProvider
         // GeneralSetting observer (privacy policy versioning + service cache)
         GeneralSetting::observe(SiteSettingObserver::class);
 
-        // Share SiteConfigService with all Blade views
-        View::share('site', app(SiteConfigService::class));
+        // Inject $site (SiteConfigService) + $settings (GeneralSetting) into front views
+        View::composer([
+            'front.*',
+            'components.front.*',
+        ], \App\Http\View\Composers\SiteSettingsComposer::class);
 
         // Breadcrumb composer for all front views
         View::composer('front.*', \App\View\Composers\BreadcrumbComposer::class);
