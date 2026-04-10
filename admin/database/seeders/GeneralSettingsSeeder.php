@@ -292,6 +292,240 @@ class GeneralSettingsSeeder extends Seeder
                 'hero', 'expertises', 'chiffres', 'comparatif', 'solutions',
                 'temoignages', 'faq', 'cta_audit', 'blog_recent',
             ],
+
+            // HOMEPAGE SECTIONS CONFIG — contenu par défaut de chaque section
+            'homepage_sections_config' => [
+
+                // ─── HERO ───
+                'hero' => [
+                    'badge' => '🏢 Gestion Technique du Bâtiment',
+                    'titre' => 'Optimisez la performance énergétique de vos bâtiments avec la GTB',
+                    'sous_titre' => 'Découvrez comment la Gestion Technique du Bâtiment réduit vos consommations de 20 à 40 % tout en améliorant le confort des occupants.',
+                    'description' => 'Guides complets, audit gratuit en ligne et comparateurs : NeoGTB vous accompagne dans votre mise en conformité RE2020 et décret tertiaire.',
+                    'cta_texte' => 'Lancer mon audit gratuit',
+                    'cta_lien' => '/audit',
+                    'cta2_texte' => 'Comprendre la GTB',
+                    'cta2_lien' => '/gtb',
+                    'image' => '',
+                    'image_alt' => 'Bâtiment intelligent équipé GTB',
+                ],
+
+                // ─── EXPERTISES (cas d'usage) ───
+                'expertises' => [
+                    'eyebrow' => 'Cas concrets',
+                    'titre' => 'La GTB en action dans vos bâtiments',
+                    'cas' => [
+                        [
+                            'tag' => 'Tertiaire',
+                            'tag_variant' => 'gtb',
+                            'meta' => 'Bureau — 5 000 m²',
+                            'titre' => 'Rénovation GTB d\'un immeuble de bureaux',
+                            'contexte' => 'Un immeuble tertiaire des années 2000 soumis au décret tertiaire, avec une consommation excessive en chauffage et climatisation.',
+                            'approche' => 'Déploiement BACnet avec régulation terminale par zone, programmation horaire et détection d\'occupation.',
+                            'gauge' => [
+                                'label' => 'Niveau EN 15232 atteint',
+                                'active' => 'B',
+                                'progress_from' => 'D',
+                            ],
+                            'metriques' => [
+                                ['valeur' => '-35 %', 'label' => 'Consommation énergétique', 'couleur' => 'energy'],
+                                ['valeur' => '3 ans', 'label' => 'Retour sur investissement', 'couleur' => 'dark'],
+                            ],
+                        ],
+                        [
+                            'tag' => 'Enseignement',
+                            'tag_variant' => 'gtb',
+                            'meta' => 'Lycée — 12 000 m²',
+                            'titre' => 'Pilotage centralisé d\'un établissement scolaire',
+                            'contexte' => 'Un lycée avec des usages intermittents (vacances, week-ends) et une facture énergétique en hausse constante.',
+                            'approche' => 'Supervision GTC centralisée, gestion des intermittences, délestage automatique et suivi temps réel des consommations.',
+                            'gauge' => [
+                                'label' => 'Niveau EN 15232 atteint',
+                                'active' => 'A',
+                                'progress_from' => 'C',
+                            ],
+                            'metriques' => [
+                                ['valeur' => '-42 %', 'label' => 'Économie sur la facture', 'couleur' => 'energy'],
+                                ['valeur' => '18 mois', 'label' => 'Temps de déploiement', 'couleur' => 'dark'],
+                            ],
+                        ],
+                    ],
+                    'cta_texte' => 'Voir tous les cas d\'usage →',
+                    'cta_lien' => '/solutions',
+                ],
+
+                // ─── CHIFFRES CLÉS ───
+                'chiffres' => [
+                    'stats' => [
+                        ['valeur' => '150+', 'label' => 'Bâtiments audités'],
+                        ['valeur' => '35 %', 'label' => 'Économies moyennes constatées'],
+                        ['valeur' => '12 ans', 'label' => 'D\'expertise GTB/GTC'],
+                        ['valeur' => '80+', 'label' => 'Clients accompagnés'],
+                    ],
+                ],
+
+                // ─── COMPARATIF GTB vs GTC ───
+                'comparatif' => [
+                    'titre' => 'Sans GTB vs avec NeoGTB',
+                    'sous_titre' => 'Découvrez l\'impact concret d\'une installation GTB sur la gestion de votre bâtiment.',
+                    'colonne_gauche_titre' => 'Sans GTB',
+                    'lignes_gauche' => [
+                        ['texte' => 'Régulation manuelle des équipements CVC'],
+                        ['texte' => 'Aucune visibilité sur les consommations réelles'],
+                        ['texte' => 'Surconsommation hors heures d\'occupation'],
+                        ['texte' => 'Maintenance curative coûteuse et réactive'],
+                        ['texte' => 'Non-conformité au décret tertiaire'],
+                    ],
+                    'colonne_droite_titre' => 'Avec GTB',
+                    'lignes_droite' => [
+                        ['texte' => 'Régulation automatique par zone et par usage'],
+                        ['texte' => 'Tableaux de bord temps réel des consommations'],
+                        ['texte' => 'Programmation horaire et détection d\'occupation'],
+                        ['texte' => 'Maintenance prédictive et alertes automatiques'],
+                        ['texte' => 'Conformité EN 15232 classe B ou A'],
+                    ],
+                ],
+
+                // ─── SOLUTIONS / PROTOCOLES ───
+                'solutions' => [
+                    'titre_section' => 'Les technologies GTB à votre service',
+                    'cartes' => [
+                        [
+                            'icone' => '🔗',
+                            'titre' => 'BACnet',
+                            'description' => 'Protocole standard ISO pour l\'interopérabilité des systèmes de gestion technique du bâtiment.',
+                            'lien' => '/solutions#bacnet',
+                        ],
+                        [
+                            'icone' => '🏠',
+                            'titre' => 'KNX',
+                            'description' => 'Standard mondial pour l\'automatisation résidentielle et tertiaire — éclairage, stores, CVC.',
+                            'lien' => '/solutions#knx',
+                        ],
+                        [
+                            'icone' => '⚡',
+                            'titre' => 'Modbus',
+                            'description' => 'Protocole série éprouvé pour la communication avec les automates programmables et compteurs.',
+                            'lien' => '/solutions#modbus',
+                        ],
+                        [
+                            'icone' => '💡',
+                            'titre' => 'DALI',
+                            'description' => 'Interface numérique pour le pilotage adressable de l\'éclairage — gradation et scénarios.',
+                            'lien' => '/solutions#dali',
+                        ],
+                        [
+                            'icone' => '📡',
+                            'titre' => 'MQTT / IoT',
+                            'description' => 'Protocole léger pour connecter capteurs et actionneurs IoT à votre supervision GTB.',
+                            'lien' => '/solutions#mqtt',
+                        ],
+                        [
+                            'icone' => '🌐',
+                            'titre' => 'LON',
+                            'description' => 'Réseau de contrôle distribué pour les installations multi-sites et les réseaux de terrain.',
+                            'lien' => '/solutions#lon',
+                        ],
+                    ],
+                ],
+
+                // ─── TÉMOIGNAGES ───
+                'temoignages' => [
+                    'titre' => 'Ils ont optimisé leurs bâtiments',
+                    'avis' => [
+                        [
+                            'nom' => 'Marie Durand',
+                            'poste' => 'Directrice Technique — Groupe Immobilier Nexity',
+                            'texte' => 'Grâce à l\'audit NeoGTB, nous avons identifié 30 % d\'économies potentielles sur notre parc tertiaire. La mise en conformité décret tertiaire est désormais planifiée.',
+                            'note' => 5,
+                        ],
+                        [
+                            'nom' => 'Philippe Martin',
+                            'poste' => 'Responsable Énergie — Conseil Départemental',
+                            'texte' => 'Les guides NeoGTB sur les niveaux EN 15232 nous ont permis de rédiger un cahier des charges précis pour la GTB de nos 45 collèges.',
+                            'note' => 5,
+                        ],
+                        [
+                            'nom' => 'Sophie Leclerc',
+                            'poste' => 'Energy Manager — Centre Hospitalier',
+                            'texte' => 'Le comparateur GTB/GTC de NeoGTB a convaincu notre direction d\'investir dans une supervision centralisée. Résultat : -28 % sur la facture en 18 mois.',
+                            'note' => 5,
+                        ],
+                    ],
+                ],
+
+                // ─── FAQ ───
+                'faq' => [
+                    'titre' => 'Questions fréquentes sur la GTB',
+                    'questions' => [
+                        [
+                            'question' => 'Qu\'est-ce que la GTB (Gestion Technique du Bâtiment) ?',
+                            'reponse' => 'La GTB est un système centralisé qui pilote et optimise automatiquement les équipements techniques d\'un bâtiment : chauffage, ventilation, climatisation, éclairage, contrôle d\'accès. Elle permet de réduire les consommations énergétiques de 20 à 40 %.',
+                        ],
+                        [
+                            'question' => 'Quelle est la différence entre GTB et GTC ?',
+                            'reponse' => 'La GTC (Gestion Technique Centralisée) supervise et surveille les équipements à distance. La GTB va plus loin en ajoutant la régulation automatique, l\'optimisation énergétique et la maintenance prédictive. La GTB inclut la GTC.',
+                        ],
+                        [
+                            'question' => 'Le décret tertiaire impose-t-il une GTB ?',
+                            'reponse' => 'Le décret tertiaire (décret n°2019-771) impose des réductions de consommation de -40 % d\'ici 2030 pour les bâtiments de plus de 1 000 m². La GTB est le levier le plus efficace pour atteindre ces objectifs sans travaux lourds.',
+                        ],
+                        [
+                            'question' => 'Combien coûte une installation GTB ?',
+                            'reponse' => 'Le coût varie selon la taille du bâtiment et le niveau visé (classe A, B ou C selon EN 15232). Comptez entre 15 et 40 €/m² pour une installation neuve. Le retour sur investissement se situe généralement entre 2 et 5 ans grâce aux économies d\'énergie.',
+                        ],
+                        [
+                            'question' => 'Qu\'est-ce que la norme EN 15232 ?',
+                            'reponse' => 'La norme EN 15232 classe les systèmes GTB en 4 niveaux (A à D) selon leur impact sur la performance énergétique. La classe A (haute performance) offre jusqu\'à 40 % d\'économies, tandis que la classe D (pas de GTB) correspond à une gestion manuelle.',
+                        ],
+                        [
+                            'question' => 'L\'audit GTB de NeoGTB est-il vraiment gratuit ?',
+                            'reponse' => 'Oui, notre pré-diagnostic en ligne est 100 % gratuit et sans engagement. En 5 minutes, vous obtenez une estimation de votre niveau GTB actuel, du potentiel d\'économies et des actions prioritaires à mener.',
+                        ],
+                    ],
+                ],
+
+                // ─── CTA AUDIT ───
+                'cta_audit' => [
+                    'titre' => 'Prêt à optimiser votre bâtiment ?',
+                    'sous_titre' => 'Obtenez un diagnostic GTB personnalisé en moins de 5 minutes. Gratuit, sans engagement.',
+                    'bouton_texte' => 'Lancer l\'audit gratuit',
+                    'bouton_lien' => '/audit',
+                    'bouton2_texte' => 'Nous contacter',
+                    'bouton2_lien' => '/contact',
+                ],
+
+                // ─── BLOG RÉCENT ───
+                'blog_recent' => [
+                    'eyebrow' => 'Ressources',
+                    'titre_section' => 'Derniers articles GTB/GTC',
+                    'cta_haut_texte' => 'Voir tous les articles →',
+                    'cta_haut_lien' => '/blog',
+                    'cartes' => [
+                        [
+                            'tag' => 'Guide',
+                            'tag_variant' => 'gtb',
+                            'titre' => 'Qu\'est-ce que la GTB ? Le guide complet 2026',
+                            'duree' => '12 min de lecture',
+                            'lien' => '/blog/guide-complet-gtb-2026',
+                        ],
+                        [
+                            'tag' => 'Réglementation',
+                            'tag_variant' => 'gtb',
+                            'titre' => 'Décret tertiaire : comment la GTB vous met en conformité',
+                            'duree' => '8 min de lecture',
+                            'lien' => '/blog/decret-tertiaire-gtb-conformite',
+                        ],
+                        [
+                            'tag' => 'Technologie',
+                            'tag_variant' => 'gtb',
+                            'titre' => 'BACnet vs KNX vs Modbus : quel protocole choisir ?',
+                            'duree' => '10 min de lecture',
+                            'lien' => '/blog/bacnet-knx-modbus-comparatif',
+                        ],
+                    ],
+                ],
+            ],
         ]);
 
         $this->command?->info('GeneralSettings NeoGTB peupl\u00e9.');
