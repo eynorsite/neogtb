@@ -249,9 +249,240 @@ class GeneralSettingsSeeder extends Seeder
                         ['key' => 'analytics', 'label' => 'Cookies analytiques', 'description' => 'Mesure d\'audience anonymis\u00e9e.'],
                     ],
                 ],
-                'mentions_legales' => '',
-                'politique_confidentialite' => '',
-                'cgu' => '',
+                'mentions_legales' => '<h2>1. Éditeur du site</h2>
+<p>Le site <strong>neogtb.fr</strong> (ci-après « le Site ») est édité par :</p>
+<ul>
+<li><strong>Raison sociale :</strong> NeoGTB</li>
+<li><strong>Forme juridique :</strong> [FORME JURIDIQUE]</li>
+<li><strong>Adresse du siège social :</strong> [ADRESSE COMPLÈTE]</li>
+<li><strong>SIRET :</strong> [NUMÉRO SIRET]</li>
+<li><strong>RCS :</strong> [VILLE ET NUMÉRO RCS]</li>
+<li><strong>Capital social :</strong> [MONTANT] €</li>
+<li><strong>Directeur de la publication :</strong> [NOM DU DIRECTEUR DE PUBLICATION]</li>
+<li><strong>Email :</strong> contact@neogtb.fr</li>
+<li><strong>Téléphone :</strong> [NUMÉRO DE TÉLÉPHONE]</li>
+</ul>
+
+<h2>2. Hébergeur</h2>
+<p>Le Site est hébergé par :</p>
+<ul>
+<li><strong>Nom :</strong> [NOM DE L\'HÉBERGEUR]</li>
+<li><strong>Adresse :</strong> [ADRESSE DE L\'HÉBERGEUR]</li>
+<li><strong>Téléphone :</strong> [TÉLÉPHONE DE L\'HÉBERGEUR]</li>
+<li><strong>Site web :</strong> [URL DE L\'HÉBERGEUR]</li>
+</ul>
+
+<h2>3. Objet du site</h2>
+<p>Le site NeoGTB est un site éducatif et informatif dédié à la Gestion Technique du Bâtiment (GTB) et à la Gestion Technique Centralisée (GTC). Il propose des contenus pédagogiques, des guides pratiques, un outil d\'audit en ligne et des ressources sur la réglementation applicable (décret tertiaire, RE2020, norme EN 15232).</p>
+
+<h2>4. Propriété intellectuelle</h2>
+<p>L\'ensemble du contenu du Site (textes, images, graphismes, logo, icônes, vidéos, logiciels, bases de données, structure) est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+<p>Toute reproduction, représentation, modification, publication, adaptation, totale ou partielle, des éléments du Site, quel que soit le moyen ou le procédé utilisé, est interdite sans l\'autorisation écrite préalable de NeoGTB.</p>
+<p>Les marques, logos et dénominations sociales présents sur le Site sont la propriété de NeoGTB ou de leurs détenteurs respectifs. Toute utilisation non autorisée constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.</p>
+
+<h2>5. Limitation de responsabilité</h2>
+<p>Les informations publiées sur le Site sont fournies à titre indicatif et éducatif. NeoGTB s\'efforce de les maintenir à jour et exactes, mais ne saurait garantir leur exhaustivité ni leur adéquation à une situation particulière.</p>
+<p>NeoGTB ne pourra être tenu responsable des dommages directs ou indirects résultant de l\'utilisation du Site, notamment en cas d\'erreur, d\'omission, d\'indisponibilité des informations ou de la présence de virus.</p>
+<p>Les résultats de l\'outil d\'audit GTB en ligne sont fournis à titre indicatif et ne se substituent pas à un diagnostic professionnel réalisé par un bureau d\'études spécialisé.</p>
+
+<h2>6. Liens hypertextes</h2>
+<p>Le Site peut contenir des liens vers des sites tiers. NeoGTB n\'exerce aucun contrôle sur le contenu de ces sites et décline toute responsabilité quant à leur contenu ou aux éventuels dommages résultant de leur consultation.</p>
+<p>La création de liens hypertextes vers le Site est autorisée sous réserve de ne pas utiliser la technique du framing ou toute autre technique portant atteinte à l\'image de NeoGTB.</p>
+
+<h2>7. Données personnelles</h2>
+<p>Le traitement des données personnelles est décrit dans notre <a href="/politique-de-confidentialite">Politique de confidentialité</a>. Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez de droits détaillés sur la page <a href="/mes-droits-rgpd">Mes droits RGPD</a>.</p>
+
+<h2>8. Cookies</h2>
+<p>L\'utilisation des cookies sur le Site est décrite dans notre <a href="/cookies">Politique de cookies</a>.</p>
+
+<h2>9. Droit applicable et juridiction compétente</h2>
+<p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents, après tentative de résolution amiable.</p>
+
+<h2>10. Crédits</h2>
+<p>Conception et développement : NeoGTB.</p>
+<p>Dernière mise à jour : avril 2026.</p>',
+                'politique_confidentialite' => '<h2>1. Responsable de traitement</h2>
+<p>Le responsable du traitement des données personnelles collectées sur le site <strong>neogtb.fr</strong> est :</p>
+<ul>
+<li><strong>NeoGTB</strong></li>
+<li>Adresse : [ADRESSE COMPLÈTE]</li>
+<li>Email : contact@neogtb.fr</li>
+<li>Téléphone : [NUMÉRO DE TÉLÉPHONE]</li>
+</ul>
+
+<h2>2. Données collectées et finalités</h2>
+<p>Nous collectons les données personnelles suivantes dans le cadre des finalités décrites ci-dessous :</p>
+
+<h3>a) Formulaire de contact</h3>
+<ul>
+<li><strong>Données :</strong> nom, prénom, adresse email, numéro de téléphone (facultatif), entreprise (facultatif), message</li>
+<li><strong>Finalité :</strong> répondre à vos demandes d\'information sur la GTB/GTC</li>
+<li><strong>Base légale :</strong> consentement (article 6.1.a du RGPD)</li>
+</ul>
+
+<h3>b) Outil d\'audit GTB en ligne</h3>
+<ul>
+<li><strong>Données :</strong> nom, prénom, email, téléphone, nom de l\'entreprise, type de bâtiment, surface, année de construction, données énergétiques, niveau GTB actuel</li>
+<li><strong>Finalité :</strong> générer un diagnostic GTB personnalisé et vous transmettre les résultats</li>
+<li><strong>Base légale :</strong> consentement (article 6.1.a du RGPD)</li>
+</ul>
+
+<h3>c) Newsletter</h3>
+<ul>
+<li><strong>Données :</strong> adresse email</li>
+<li><strong>Finalité :</strong> envoi de la veille GTB mensuelle (actualités, guides, réglementation)</li>
+<li><strong>Base légale :</strong> consentement (article 6.1.a du RGPD)</li>
+</ul>
+
+<h3>d) Navigation sur le site</h3>
+<ul>
+<li><strong>Données :</strong> données de navigation anonymisées (pages visitées, durée de visite)</li>
+<li><strong>Finalité :</strong> mesure d\'audience et amélioration du site</li>
+<li><strong>Base légale :</strong> intérêt légitime (article 6.1.f du RGPD)</li>
+</ul>
+
+<h2>3. Durées de conservation</h2>
+<ul>
+<li><strong>Données de contact :</strong> 2 ans à compter du dernier échange</li>
+<li><strong>Données d\'audit (leads) :</strong> 3 ans à compter de la collecte</li>
+<li><strong>Données de newsletter :</strong> 3 ans à compter de la dernière interaction (ouverture, clic)</li>
+<li><strong>Cookies :</strong> 13 mois maximum (voir notre <a href="/cookies">Politique de cookies</a>)</li>
+</ul>
+<p>À l\'expiration de ces délais, vos données sont supprimées ou anonymisées de manière irréversible.</p>
+
+<h2>4. Destinataires des données</h2>
+<p>Vos données personnelles sont traitées uniquement par NeoGTB et ne sont jamais vendues ni cédées à des tiers à des fins commerciales.</p>
+<p>Elles peuvent être transmises aux sous-traitants suivants, dans le strict cadre des finalités décrites :</p>
+<ul>
+<li><strong>Hébergeur :</strong> [NOM DE L\'HÉBERGEUR] — hébergement du site et des données</li>
+<li><strong>Service email :</strong> [NOM DU SERVICE EMAIL] — envoi des emails transactionnels et de la newsletter</li>
+<li><strong>Plausible Analytics :</strong> mesure d\'audience respectueuse de la vie privée, sans cookies, conforme RGPD</li>
+</ul>
+
+<h2>5. Transferts hors UE</h2>
+<p>Nous privilégions des prestataires hébergeant les données au sein de l\'Union Européenne. En cas de transfert hors UE, celui-ci est encadré par des clauses contractuelles types approuvées par la Commission européenne ou par une décision d\'adéquation.</p>
+
+<h2>6. Droits des personnes</h2>
+<p>Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
+<ul>
+<li><strong>Droit d\'accès :</strong> obtenir la confirmation que des données vous concernant sont traitées et en obtenir une copie</li>
+<li><strong>Droit de rectification :</strong> corriger des données inexactes ou incomplètes</li>
+<li><strong>Droit à l\'effacement :</strong> demander la suppression de vos données (« droit à l\'oubli »)</li>
+<li><strong>Droit à la limitation :</strong> demander la suspension du traitement de vos données</li>
+<li><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré et lisible par machine</li>
+<li><strong>Droit d\'opposition :</strong> vous opposer au traitement de vos données pour motif légitime</li>
+<li><strong>Droit de retirer votre consentement :</strong> à tout moment, sans affecter la licéité du traitement antérieur</li>
+</ul>
+<p>Pour exercer vos droits, consultez notre page dédiée <a href="/mes-droits-rgpd">Mes droits RGPD</a> ou contactez-nous à <strong>contact@neogtb.fr</strong>. Nous nous engageons à répondre dans un délai d\'un mois.</p>
+<p>Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a> (Commission Nationale de l\'Informatique et des Libertés).</p>
+
+<h2>7. Cookies</h2>
+<p>Pour en savoir plus sur les cookies utilisés par le Site, veuillez consulter notre <a href="/cookies">Politique de cookies</a>.</p>
+
+<h2>8. Sécurité</h2>
+<p>NeoGTB met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre tout accès non autorisé, perte, altération ou divulgation : chiffrement HTTPS, accès restreints, sauvegardes régulières.</p>
+
+<h2>9. Modification de la politique</h2>
+<p>Nous nous réservons le droit de modifier la présente politique de confidentialité à tout moment. La date de dernière mise à jour est indiquée ci-dessous. Nous vous invitons à la consulter régulièrement.</p>
+<p>Dernière mise à jour : avril 2026.</p>',
+                'cgu' => '<h2>1. Objet</h2>
+<p>Les présentes Conditions Générales d\'Utilisation (ci-après « CGU ») définissent les modalités d\'accès et d\'utilisation du site <strong>neogtb.fr</strong> (ci-après « le Site »), édité par NeoGTB. En accédant au Site, vous acceptez sans réserve les présentes CGU.</p>
+
+<h2>2. Accès au site</h2>
+<p>Le Site est accessible gratuitement à tout utilisateur disposant d\'un accès à Internet. NeoGTB met tout en œuvre pour assurer la disponibilité du Site, mais ne saurait garantir un accès ininterrompu. Le Site peut être temporairement indisponible pour des raisons de maintenance, de mise à jour ou de force majeure.</p>
+
+<h2>3. Services proposés</h2>
+<p>Le Site propose les services suivants :</p>
+<ul>
+<li><strong>Contenus éducatifs :</strong> articles, guides et ressources sur la Gestion Technique du Bâtiment (GTB) et la Gestion Technique Centralisée (GTC)</li>
+<li><strong>Outil d\'audit GTB :</strong> formulaire interactif permettant d\'obtenir un diagnostic indicatif du niveau GTB d\'un bâtiment</li>
+<li><strong>Blog :</strong> articles techniques, actualités réglementaires (décret tertiaire, RE2020, norme EN 15232), retours d\'expérience</li>
+<li><strong>Newsletter :</strong> veille GTB mensuelle par email</li>
+<li><strong>Formulaire de contact :</strong> prise de contact avec l\'équipe NeoGTB</li>
+</ul>
+
+<h2>4. Utilisation du site</h2>
+<p>L\'utilisateur s\'engage à :</p>
+<ul>
+<li>Utiliser le Site conformément à sa destination et aux présentes CGU</li>
+<li>Ne pas tenter de porter atteinte au bon fonctionnement du Site</li>
+<li>Ne pas utiliser de dispositifs automatisés (robots, scripts) pour accéder massivement au contenu</li>
+<li>Fournir des informations exactes lors de l\'utilisation des formulaires</li>
+<li>Ne pas reproduire le contenu du Site sans autorisation préalable</li>
+</ul>
+
+<h2>5. Outil d\'audit GTB</h2>
+<p>L\'outil d\'audit GTB en ligne fournit un <strong>diagnostic indicatif</strong> basé sur les informations déclarées par l\'utilisateur. Les résultats ne constituent en aucun cas un audit professionnel certifié et ne se substituent pas à l\'intervention d\'un bureau d\'études spécialisé en GTB/GTC.</p>
+<p>NeoGTB ne saurait être tenu responsable des décisions prises sur la base des résultats de cet outil.</p>
+
+<h2>6. Propriété intellectuelle</h2>
+<p>L\'ensemble du contenu du Site est protégé par le droit de la propriété intellectuelle. Toute reproduction, même partielle, est soumise à autorisation préalable. Pour toute demande, contactez-nous à <strong>contact@neogtb.fr</strong>.</p>
+
+<h2>7. Données personnelles</h2>
+<p>Le traitement des données personnelles est régi par notre <a href="/politique-de-confidentialite">Politique de confidentialité</a>, conforme au Règlement Général sur la Protection des Données (RGPD).</p>
+
+<h2>8. Newsletter</h2>
+<p>L\'inscription à la newsletter est libre et volontaire. Vous pouvez vous désinscrire à tout moment via le lien de désinscription présent dans chaque email ou en nous contactant à contact@neogtb.fr.</p>
+
+<h2>9. Limitation de responsabilité</h2>
+<p>NeoGTB s\'efforce de fournir des informations fiables et à jour sur la GTB/GTC, la réglementation et les technologies associées. Toutefois, ces informations sont fournies à titre indicatif et NeoGTB ne garantit pas leur exhaustivité ni leur exactitude.</p>
+<p>NeoGTB ne pourra être tenu responsable des dommages directs ou indirects résultant de l\'utilisation du Site ou de l\'impossibilité d\'y accéder.</p>
+
+<h2>10. Liens externes</h2>
+<p>Le Site peut contenir des liens vers des sites tiers (CNIL, ADEME, organismes de normalisation, etc.). NeoGTB n\'est pas responsable du contenu de ces sites et leur inclusion ne vaut pas approbation.</p>
+
+<h2>11. Modification des CGU</h2>
+<p>NeoGTB se réserve le droit de modifier les présentes CGU à tout moment. Les modifications prennent effet dès leur publication sur le Site. L\'utilisation continue du Site après modification vaut acceptation des nouvelles CGU.</p>
+
+<h2>12. Droit applicable</h2>
+<p>Les présentes CGU sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents, après tentative de résolution amiable.</p>
+
+<p>Dernière mise à jour : avril 2026.</p>',
+                'cookies' => '<h2>1. Qu\'est-ce qu\'un cookie ?</h2>
+<p>Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, tablette, smartphone) lors de la visite d\'un site web. Il permet au site de mémoriser des informations relatives à votre navigation (préférences, session, etc.).</p>
+
+<h2>2. Cookies utilisés sur NeoGTB</h2>
+<p>Le site neogtb.fr utilise un nombre très limité de cookies, dans le respect de votre vie privée.</p>
+
+<h3>a) Cookies strictement nécessaires</h3>
+<p>Ces cookies sont indispensables au fonctionnement du site. Ils ne peuvent pas être désactivés.</p>
+<ul>
+<li><strong>Session Laravel</strong> (<code>neogtb_session</code>) : gestion de votre session de navigation. Durée : session (supprimé à la fermeture du navigateur).</li>
+<li><strong>Jeton CSRF</strong> (<code>XSRF-TOKEN</code>) : protection contre les attaques de type Cross-Site Request Forgery. Durée : session.</li>
+<li><strong>Préférence cookies</strong> (<code>cookie_consent</code>) : mémorisation de votre choix concernant les cookies. Durée : 13 mois.</li>
+</ul>
+
+<h3>b) Mesure d\'audience — Plausible Analytics</h3>
+<p>NeoGTB utilise <strong>Plausible Analytics</strong>, une solution de mesure d\'audience respectueuse de la vie privée. Plausible :</p>
+<ul>
+<li><strong>Ne dépose aucun cookie</strong> sur votre terminal</li>
+<li>Ne collecte aucune donnée personnelle identifiante</li>
+<li>Ne réalise aucun suivi inter-sites (cross-site tracking)</li>
+<li>Est hébergé dans l\'Union Européenne</li>
+<li>Est conforme au RGPD sans nécessiter de consentement</li>
+</ul>
+<p>Pour en savoir plus : <a href="https://plausible.io/data-policy" target="_blank" rel="noopener">Politique de données Plausible</a>.</p>
+
+<h3>c) Cookies tiers</h3>
+<p>NeoGTB <strong>n\'utilise aucun cookie de tracking publicitaire</strong> ni de cookie de réseau social. Aucun cookie Google Analytics, Facebook Pixel ou équivalent n\'est déposé sur votre terminal.</p>
+
+<h2>3. Gestion de vos préférences</h2>
+<p>Lors de votre première visite, un bandeau vous permet d\'accepter ou de refuser les cookies non essentiels. Vous pouvez modifier vos préférences à tout moment en cliquant sur le lien « Gérer les cookies » disponible en pied de page du site.</p>
+<p>Vous pouvez également configurer votre navigateur pour bloquer tout ou partie des cookies :</p>
+<ul>
+<li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+<li><a href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+<li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+<li><a href="https://support.microsoft.com/fr-fr/microsoft-edge/supprimer-les-cookies-dans-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+</ul>
+<p><strong>Attention :</strong> la désactivation des cookies strictement nécessaires peut altérer le fonctionnement du site.</p>
+
+<h2>4. Durée de conservation</h2>
+<p>Conformément aux recommandations de la CNIL, les cookies ont une durée de vie maximale de 13 mois. Votre consentement est redemandé à l\'expiration de cette période.</p>
+
+<h2>5. En savoir plus</h2>
+<p>Pour toute question relative aux cookies, vous pouvez nous contacter à <strong>contact@neogtb.fr</strong> ou consulter le site de la <a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs" target="_blank" rel="noopener">CNIL</a>.</p>
+<p>Dernière mise à jour : avril 2026.</p>',
             ],
 
             // CATALOGUES
