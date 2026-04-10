@@ -7,7 +7,7 @@ use App\Models\AuditLead;
 use App\Models\CeeLead;
 use App\Models\CookieConsent;
 use App\Models\NewsletterSubscriber;
-use App\Models\SiteSetting;
+use App\Models\GeneralSetting;
 use Illuminate\Console\Command;
 
 class PurgeExpiredDataCommand extends Command
@@ -35,7 +35,7 @@ class PurgeExpiredDataCommand extends Command
 
     private function getRetentionDays(string $key, string $minKey): int
     {
-        $setting = (int) SiteSetting::get($key, 730);
+        $setting = (int) GeneralSetting::value($key, 730);
         $minimum = config("neogtb.rgpd_min_retention.{$minKey}", 90);
         return max($setting, $minimum);
     }

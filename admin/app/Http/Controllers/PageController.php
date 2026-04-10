@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SubmitAuditLeadRequest;
 use App\Http\Requests\SubmitCeeLeadRequest;
 use App\Http\Requests\SubmitContactMessageRequest;
+use App\Models\GeneralSetting;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\SitePage;
-use App\Models\SiteSetting;
 use App\Services\Contact\ContactSubmissionService;
 use App\Services\Lead\AuditLeadService;
 use App\Services\Lead\CeeLeadService;
@@ -21,10 +21,9 @@ class PageController extends Controller
             ->where('is_published', true)
             ->firstOrFail();
 
-        $settings = SiteSetting::getAllCached();
         $bricks = $page->visibleBricks()->get();
 
-        return view('front.page', compact('page', 'bricks', 'settings'));
+        return view('front.page', compact('page', 'bricks'));
     }
 
     public function blog()
@@ -39,9 +38,7 @@ class PageController extends Controller
             ->orderBy('order')
             ->get();
 
-        $settings = SiteSetting::getAllCached();
-
-        return view('front.blog', compact('posts', 'categories', 'settings'));
+        return view('front.blog', compact('posts', 'categories'));
     }
 
     public function article(string $slug)
@@ -58,8 +55,6 @@ class PageController extends Controller
             ->latest('published_at')
             ->limit(3)
             ->get();
-
-        $settings = SiteSetting::getAllCached();
 
         $seoTitle = $post->meta_title ?: ($post->title . ' — NeoGTB');
         $seoDescription = $post->meta_description ?: $post->excerpt;
@@ -78,7 +73,7 @@ class PageController extends Controller
         $seoOgType = 'article';
 
         return view('front.article', compact(
-            'post', 'related', 'settings',
+            'post', 'related',
             'seoTitle', 'seoDescription', 'seoOgImage', 'seoUrl', 'seoOgType'
         ));
     }

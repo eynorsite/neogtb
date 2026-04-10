@@ -83,7 +83,7 @@
                 >
                     {{-- Image cover : featured_image (Filament Posts) sinon fallback global setting blog_default_cover --}}
                     @php
-                        $defaultCover = \App\Models\SiteSetting::get('blog_default_cover', '/images/blog-default-cover.png');
+                        $defaultCover = $site->get('blog_default_cover', '/images/blog-default-cover.png');
                         $img = $post->featured_image ?: null;
                         if ($img && str_starts_with($img, '/')) {
                             $imgUrl = $img;

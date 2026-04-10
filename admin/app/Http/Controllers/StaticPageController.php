@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\SitePage;
-use App\Models\SiteSetting;
 
 class StaticPageController extends Controller
 {
@@ -11,9 +10,8 @@ class StaticPageController extends Controller
     {
         $page = SitePage::where('slug', 'accueil')->firstOrFail();
         $bricks = $page->visibleBricks()->get();
-        $settings = SiteSetting::getAllCached();
 
-        return view('front.page', compact('page', 'bricks', 'settings'));
+        return view('front.page', compact('page', 'bricks'));
     }
     /**
      * Helper : construit le tableau SEO (title, description, og image, url canonique)
@@ -42,7 +40,7 @@ class StaticPageController extends Controller
     {
         return view('front.faq', $this->seo(
             'FAQ GTB — Questions fréquentes sur le décret BACS & NeoGTB',
-            'Réponses aux questions fréquentes sur la GTB, le décret BACS 2027/2030, le pré-diagnostic ISO 52120-1 et le modèle d’indépendance NeoGTB.'
+            'Réponses aux questions fréquentes sur la GTB, le décret BACS 2027/2030, le pré-diagnostic ISO 52120-1 et le modèle d\'indépendance NeoGTB.'
         ));
     }
 
@@ -66,14 +64,14 @@ class StaticPageController extends Controller
     {
         return view('front.positionnement', $this->seo(
             'Pourquoi NeoGTB — Conseil GTB 100 % indépendant, sans commission',
-            'NeoGTB n’est lié à aucun fabricant : zéro commission, zéro affiliation, zéro revente de données. Découvrez les preuves concrètes de notre indépendance.'
+            'NeoGTB n\'est lié à aucun fabricant : zéro commission, zéro affiliation, zéro revente de données. Découvrez les preuves concrètes de notre indépendance.'
         ));
     }
 
     public function gtb()
     {
         return view('front.gtb', $this->seo(
-            'Qu’est-ce que la GTB ? 4 niveaux ISO 52120-1 | NeoGTB',
+            'Qu\'est-ce que la GTB ? 4 niveaux ISO 52120-1 | NeoGTB',
             'Guide complet GTB 2026 : définition, 4 niveaux ISO 52120-1 (ex-EN 15232), protocoles BACnet/KNX/Modbus, décret BACS et obligations réglementaires.'
         ));
     }
@@ -81,7 +79,7 @@ class StaticPageController extends Controller
     public function gtc()
     {
         return view('front.gtc', $this->seo(
-            'Qu’est-ce que la GTC ? Différences avec la GTB | NeoGTB',
+            'Qu\'est-ce que la GTC ? Différences avec la GTB | NeoGTB',
             'Guide GTC : définition, différences clés avec la GTB, architecture type, protocoles OPC-UA, BACnet, Modbus et supervision multi-sites expliqués simplement.'
         ));
     }
@@ -98,7 +96,7 @@ class StaticPageController extends Controller
     {
         return view('front.mentions-legales', $this->seo(
             'Mentions légales — NeoGTB.fr',
-            'Mentions légales de NeoGTB.fr : éditeur, directeur de publication, hébergeur, propriété intellectuelle et conditions générales d’utilisation du site.'
+            'Mentions légales de NeoGTB.fr : éditeur, directeur de publication, hébergeur, propriété intellectuelle et conditions générales d\'utilisation du site.'
         ));
     }
 
@@ -146,7 +144,7 @@ class StaticPageController extends Controller
     {
         return view('front.generateur-cee', $this->seo(
             'Simulateur CEE GTB — Estimez vos primes BAT-TH-116 | NeoGTB',
-            'Estimez vos Certificats d’Économies d’Énergie (CEE BAT-TH-116) pour un projet GTB en 3 minutes. Outil gratuit, indépendant, sans lien commercial.'
+            'Estimez vos Certificats d\'Économies d\'Énergie (CEE BAT-TH-116) pour un projet GTB en 3 minutes. Outil gratuit, indépendant, sans lien commercial.'
         ));
     }
 
@@ -161,8 +159,8 @@ class StaticPageController extends Controller
     public function cookies()
     {
         return view('front.cookies', $this->seo(
-            'Politique cookies — NeoGTB n’utilise aucun cookie traceur',
-            'NeoGTB n’utilise aucun cookie traceur ni publicitaire. Analytics Plausible sans cookie, exempt CNIL. Seuls des cookies techniques Laravel (session, CSRF).'
+            'Politique cookies — NeoGTB n\'utilise aucun cookie traceur',
+            'NeoGTB n\'utilise aucun cookie traceur ni publicitaire. Analytics Plausible sans cookie, exempt CNIL. Seuls des cookies techniques Laravel (session, CSRF).'
         ));
     }
 }

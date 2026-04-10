@@ -9,7 +9,7 @@ use App\Models\NavigationMenu;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\SitePage;
-use App\Models\SiteSetting;
+use App\Models\GeneralSetting;
 use App\Models\PageBrick;
 use App\Observers\AdminAuditObserver;
 use App\Observers\SiteSettingObserver;
@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         $models = [
             Admin::class,
             SitePage::class,
-            SiteSetting::class,
+            GeneralSetting::class,
             Post::class,
             PostCategory::class,
             ContactMessage::class,
@@ -52,8 +52,8 @@ class AppServiceProvider extends ServiceProvider
             $model::observe(AdminAuditObserver::class);
         }
 
-        // SiteSetting observer (cache invalidation + privacy policy versioning)
-        SiteSetting::observe(SiteSettingObserver::class);
+        // GeneralSetting observer (privacy policy versioning + service cache)
+        GeneralSetting::observe(SiteSettingObserver::class);
 
         // Share SiteConfigService with all Blade views
         View::share('site', app(SiteConfigService::class));

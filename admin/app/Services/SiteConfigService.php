@@ -2,64 +2,100 @@
 
 namespace App\Services;
 
-use App\Models\SiteSetting;
+use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Arr;
 
 class SiteConfigService
 {
-    private const CACHE_PREFIX = 'site_config:';
-    private const CACHE_TTL = 300;
+    private const CACHE_TTL = 3600;
 
     private const FONT_PAIRS = [
-        'inter_dm_sans' => 'Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700',
-        'plus_jakarta_inter' => 'Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600',
-        'outfit_inter' => 'Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600',
-        'space_grotesk_inter' => 'Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600',
-        'inter_merriweather' => 'Inter:wght@400;500;600;700&family=Merriweather:wght@400;700',
-        'poppins_lora' => 'Poppins:wght@400;500;600;700&family=Lora:wght@400;700',
-        'montserrat_roboto' => 'Montserrat:wght@500;600;700&family=Roboto:wght@400;500',
-        'dm_sans_dm_serif' => 'DM+Sans:wght@400;500;700&family=DM+Serif+Display:wght@400',
+        'inter_dm_sans' => [
+            'url'     => 'Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700',
+            'heading' => "'Inter', sans-serif",
+            'body'    => "'DM Sans', sans-serif",
+        ],
+        'plus_jakarta_inter' => [
+            'url'     => 'Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600',
+            'heading' => "'Plus Jakarta Sans', sans-serif",
+            'body'    => "'Inter', sans-serif",
+        ],
+        'outfit_inter' => [
+            'url'     => 'Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600',
+            'heading' => "'Outfit', sans-serif",
+            'body'    => "'Inter', sans-serif",
+        ],
+        'space_grotesk_inter' => [
+            'url'     => 'Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600',
+            'heading' => "'Space Grotesk', sans-serif",
+            'body'    => "'Inter', sans-serif",
+        ],
+        'inter_merriweather' => [
+            'url'     => 'Inter:wght@400;500;600;700&family=Merriweather:wght@400;700',
+            'heading' => "'Inter', sans-serif",
+            'body'    => "'Merriweather', serif",
+        ],
+        'poppins_lora' => [
+            'url'     => 'Poppins:wght@400;500;600;700&family=Lora:wght@400;700',
+            'heading' => "'Poppins', sans-serif",
+            'body'    => "'Lora', serif",
+        ],
+        'montserrat_roboto' => [
+            'url'     => 'Montserrat:wght@500;600;700&family=Roboto:wght@400;500',
+            'heading' => "'Montserrat', sans-serif",
+            'body'    => "'Roboto', sans-serif",
+        ],
+        'dm_sans_dm_serif' => [
+            'url'     => 'DM+Sans:wght@400;500;700&family=DM+Serif+Display:wght@400',
+            'heading' => "'DM Sans', sans-serif",
+            'body'    => "'DM Serif Display', serif",
+        ],
     ];
 
     // ──────────────────────────────────────────────
-    // Delegates
+    // Accès aux settings
     // ──────────────────────────────────────────────
+
+    public function settings(): GeneralSetting
+    {
+        return GeneralSetting::get();
+    }
 
     public function get(string $key, mixed $default = null): mixed
     {
-        return SiteSetting::get($key, $default);
-    }
-
-    public function getGroup(string $group): array
-    {
-        return SiteSetting::getGroup($group);
+        return $this->settings()->{$key} ?? $default;
     }
 
     // ──────────────────────────────────────────────
-    // CSS Variables
+    // Thème & CSS Variables
     // ──────────────────────────────────────────────
 
     public function cssVariables(): HtmlString
     {
-        $css = Cache::remember(self::CACHE_PREFIX . 'css_variables', self::CACHE_TTL, function () {
+        $css = Cache::remember('site_css_variables', self::CACHE_TTL, function () {
+            $s = $this->settings();
+            $fonts = $this->fontPair();
+
             $vars = [
-                '--color-primary'    => SiteSetting::get('theme_primary_color', '#0F766E'),
-                '--color-secondary'  => SiteSetting::get('theme_secondary_color', '#1E293B'),
-                '--color-accent'     => SiteSetting::get('theme_accent_color', '#F59E0B'),
-                '--header-bg'        => SiteSetting::get('theme_header_bg', '#FFFFFF'),
-                '--header-text'      => SiteSetting::get('theme_header_text', '#1E293B'),
-                '--footer-bg'        => SiteSetting::get('theme_footer_bg', '#1E293B'),
-                '--footer-text'      => SiteSetting::get('theme_footer_text', '#F8FAFC'),
-                '--body-bg'          => SiteSetting::get('theme_body_bg', '#FFFFFF'),
-                '--hero-overlay'     => SiteSetting::get('theme_hero_overlay', '#0F766E'),
-                '--hero-opacity'     => SiteSetting::get('theme_hero_opacity', '0.8'),
-                '--cta-bg'           => SiteSetting::get('theme_cta_bg', '#0F766E'),
-                '--cta-text'         => SiteSetting::get('theme_cta_text', '#FFFFFF'),
-                '--font-pair'        => SiteSetting::get('theme_font_pair', 'inter_dm_sans'),
-                '--font-size'        => SiteSetting::get('theme_font_size', '16px'),
-                '--border-radius'    => SiteSetting::get('theme_border_radius', '8px'),
-                '--shadow'           => SiteSetting::get('theme_shadow', '0 1px 3px rgba(0,0,0,0.1)'),
+                '--color-primary'    => $s->primary_color ?? '#0F766E',
+                '--color-secondary'  => $s->secondary_color ?? '#1E293B',
+                '--color-accent'     => $s->accent_color ?? '#F59E0B',
+                '--header-bg'        => $s->header_bg ?? '#FFFFFF',
+                '--header-text'      => $s->header_text ?? '#1E293B',
+                '--footer-bg'        => $s->footer_bg ?? '#1E293B',
+                '--footer-text'      => $s->footer_text ?? '#F8FAFC',
+                '--body-bg'          => $s->body_bg ?? '#FFFFFF',
+                '--hero-overlay'     => $s->hero_overlay_color ?? '#0F766E',
+                '--hero-opacity'     => $s->hero_overlay_opacity ?? '80',
+                '--cta-bg'           => $s->cta_bg ?? '#0F766E',
+                '--cta-text'         => $s->cta_text_color ?? '#FFFFFF',
+                '--font-heading'     => $fonts['heading'],
+                '--font-body'        => $fonts['body'],
+                '--font-size'        => $s->font_size_base ?? '16px',
+                '--border-radius'    => $s->border_radius ?? '8px',
+                '--shadow'           => $s->shadow ?? '0 1px 3px rgba(0,0,0,0.1)',
             ];
 
             $lines = [];
@@ -78,13 +114,23 @@ class SiteConfigService
     // Google Fonts
     // ──────────────────────────────────────────────
 
-    public function googleFontsUrl(): ?string
+    public function googleFontsUrl(): string
     {
-        $pair = SiteSetting::get('theme_font_pair', 'inter_dm_sans');
-
-        $families = self::FONT_PAIRS[$pair] ?? self::FONT_PAIRS['inter_dm_sans'];
+        $pair = $this->settings()->font_pair ?? 'inter_dm_sans';
+        $families = self::FONT_PAIRS[$pair]['url'] ?? self::FONT_PAIRS['inter_dm_sans']['url'];
 
         return "https://fonts.googleapis.com/css2?family={$families}&display=swap";
+    }
+
+    public function fontPair(): array
+    {
+        $pair = $this->settings()->font_pair ?? 'inter_dm_sans';
+        $config = self::FONT_PAIRS[$pair] ?? self::FONT_PAIRS['inter_dm_sans'];
+
+        return [
+            'heading' => $config['heading'],
+            'body'    => $config['body'],
+        ];
     }
 
     // ──────────────────────────────────────────────
@@ -93,42 +139,87 @@ class SiteConfigService
 
     public function navigation(): array
     {
+        $s = $this->settings();
+
         return [
-            'style'       => SiteSetting::get('navigation_style', 'transparent'),
-            'sticky'      => (bool) SiteSetting::get('navigation_sticky', true),
-            'cta_text'    => SiteSetting::get('navigation_cta_text', 'Demander un audit'),
-            'cta_url'     => SiteSetting::get('navigation_cta_url', '/audit'),
-            'cta_visible' => (bool) SiteSetting::get('navigation_cta_visible', true),
-            'show_phone'  => (bool) SiteSetting::get('navigation_show_phone', false),
-            'phone'       => SiteSetting::get('contact_telephone'),
+            'style'       => $s->nav_style,
+            'sticky'      => $s->nav_sticky,
+            'cta_text'    => $s->nav_cta_text,
+            'cta_url'     => $s->nav_cta_url,
+            'cta_visible' => $s->nav_cta_visible,
+            'show_phone'  => $s->nav_show_phone,
+            'phone'       => $s->company_phone,
         ];
     }
 
     // ──────────────────────────────────────────────
-    // Social Links
+    // Réseaux sociaux
     // ──────────────────────────────────────────────
 
     public function socialLinks(): array
     {
-        $keys = [
-            'social_linkedin',
-            'social_facebook',
-            'social_instagram',
-            'social_youtube',
-            'social_twitter_x',
-            'social_tiktok',
-        ];
+        return $this->settings()->social_links;
+    }
 
-        $links = [];
-        foreach ($keys as $key) {
-            $value = SiteSetting::get($key);
-            if (filled($value)) {
-                $name = str_replace('social_', '', $key);
-                $links[$name] = $value;
+    // ──────────────────────────────────────────────
+    // SEO — JSON-LD
+    // ──────────────────────────────────────────────
+
+    public function jsonLd(string $type = 'Organization'): HtmlString
+    {
+        $jsonLd = Cache::remember('site_json_ld', self::CACHE_TTL, function () use ($type) {
+            $s = $this->settings();
+
+            $data = [
+                '@context' => 'https://schema.org',
+                '@type'    => $type,
+                'name'     => $s->company_name ?? 'NeoGTB',
+                'url'      => config('app.url', 'https://neogtb.fr'),
+            ];
+
+            if (filled($s->company_description)) {
+                $data['description'] = $s->company_description;
             }
-        }
 
-        return $links;
+            if (filled($s->company_email)) {
+                $data['email'] = $s->company_email;
+            }
+
+            if (filled($s->company_phone)) {
+                $data['telephone'] = $s->company_phone;
+            }
+
+            // Logo
+            if (filled($s->company_logo)) {
+                $data['logo'] = asset('storage/' . $s->company_logo);
+            }
+
+            // Address
+            if (filled($s->company_address) || filled($s->company_city)) {
+                $data['address'] = [
+                    '@type'           => 'PostalAddress',
+                    'streetAddress'   => $s->company_address,
+                    'addressLocality' => $s->company_city,
+                    'postalCode'      => $s->company_postal_code,
+                    'addressCountry'  => 'FR',
+                ];
+            }
+
+            // Founding year
+            if (filled($s->company_founding_year)) {
+                $data['foundingDate'] = (string) $s->company_founding_year;
+            }
+
+            // Social links
+            $socials = $this->socialLinks();
+            if (! empty($socials)) {
+                $data['sameAs'] = array_values($socials);
+            }
+
+            return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</script>';
+        });
+
+        return new HtmlString($jsonLd);
     }
 
     // ──────────────────────────────────────────────
@@ -139,10 +230,11 @@ class SiteConfigService
     {
         $head = '';
         $body = '';
+        $s = $this->settings();
 
         // Google Tag Manager (head + body)
         if (! empty($consent['analytics'])) {
-            $gtmId = SiteSetting::get('analytics_gtm_id');
+            $gtmId = $s->google_tag_manager_id;
             if (filled($gtmId)) {
                 $gtmId = e($gtmId);
                 $head .= <<<HTML
@@ -163,8 +255,8 @@ HTML;
             }
 
             // GA4 (only if no GTM)
-            if (blank($gtmId)) {
-                $ga4Id = SiteSetting::get('analytics_ga4_id');
+            if (blank($gtmId ?? null)) {
+                $ga4Id = $s->google_analytics_id;
                 if (filled($ga4Id)) {
                     $ga4Id = e($ga4Id);
                     $head .= <<<HTML
@@ -180,7 +272,7 @@ HTML;
 
         // Meta Pixel
         if (! empty($consent['marketing'])) {
-            $pixelId = SiteSetting::get('analytics_pixel_meta');
+            $pixelId = $s->facebook_pixel_id;
             if (filled($pixelId)) {
                 $pixelId = e($pixelId);
                 $head .= <<<HTML
@@ -200,7 +292,7 @@ HTML;
 
         // Hotjar
         if (! empty($consent['analytics'])) {
-            $hotjarId = SiteSetting::get('analytics_hotjar_id');
+            $hotjarId = $s->hotjar_id;
             if (filled($hotjarId)) {
                 $hotjarId = e($hotjarId);
                 $head .= <<<HTML
@@ -221,84 +313,112 @@ HTML;
     }
 
     // ──────────────────────────────────────────────
-    // JSON-LD (Organization)
-    // ──────────────────────────────────────────────
-
-    public function jsonLd(): HtmlString
-    {
-        $jsonLd = Cache::remember(self::CACHE_PREFIX . 'json_ld', self::CACHE_TTL, function () {
-            $data = [
-                '@context' => 'https://schema.org',
-                '@type'    => 'Organization',
-                'name'     => SiteSetting::get('entreprise_nom', 'NeoGTB'),
-                'url'      => config('app.url', 'https://neogtb.fr'),
-            ];
-
-            $description = SiteSetting::get('entreprise_description');
-            if (filled($description)) {
-                $data['description'] = $description;
-            }
-
-            $email = SiteSetting::get('contact_email');
-            if (filled($email)) {
-                $data['email'] = $email;
-            }
-
-            $telephone = SiteSetting::get('contact_telephone');
-            if (filled($telephone)) {
-                $data['telephone'] = $telephone;
-            }
-
-            // Address
-            $adresse = SiteSetting::get('contact_adresse');
-            $ville = SiteSetting::get('contact_ville');
-            $codePostal = SiteSetting::get('contact_code_postal');
-
-            if (filled($adresse) || filled($ville)) {
-                $data['address'] = [
-                    '@type'           => 'PostalAddress',
-                    'streetAddress'   => $adresse,
-                    'addressLocality' => $ville,
-                    'postalCode'      => $codePostal,
-                    'addressCountry'  => 'FR',
-                ];
-            }
-
-            // Social links
-            $socials = $this->socialLinks();
-            if (! empty($socials)) {
-                $data['sameAs'] = array_values($socials);
-            }
-
-            return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</script>';
-        });
-
-        return new HtmlString($jsonLd);
-    }
-
-    // ──────────────────────────────────────────────
-    // Announcement Bar
+    // Annonce
     // ──────────────────────────────────────────────
 
     public function announcementBar(): ?array
     {
-        $active = SiteSetting::get('apparence_bandeau_info', false);
+        $s = $this->settings();
 
-        if (! $active || $active === '0' || $active === 'false') {
+        if (! $s->announcement_enabled) {
             return null;
         }
 
-        $texte = SiteSetting::get('apparence_bandeau_texte');
-
-        if (blank($texte)) {
+        if (blank($s->announcement_text)) {
             return null;
         }
 
         return [
-            'text'  => $texte,
-            'color' => SiteSetting::get('apparence_bandeau_couleur', '#0F766E'),
-            'link'  => SiteSetting::get('apparence_bandeau_lien'),
+            'text'       => $s->announcement_text,
+            'url'        => $s->announcement_url,
+            'bg_color'   => $s->announcement_bg_color ?? '#0F766E',
+            'text_color' => $s->announcement_text_color ?? '#FFFFFF',
         ];
+    }
+
+    // ──────────────────────────────────────────────
+    // Labels d'interface (pattern BIMACAD)
+    // ──────────────────────────────────────────────
+
+    public function label(string $path, string $default = ''): string
+    {
+        return Arr::get($this->settings()->ui_labels ?? [], $path, $default);
+    }
+
+    // ──────────────────────────────────────────────
+    // Statuts (pattern BIMACAD)
+    // ──────────────────────────────────────────────
+
+    public function statusLabel(string $entity, string $key): string
+    {
+        $statuses = $this->settings()->status_configs[$entity] ?? [];
+        $status = collect($statuses)->firstWhere('key', $key);
+
+        return $status['label'] ?? $key;
+    }
+
+    public function statusColor(string $entity, string $key): string
+    {
+        $statuses = $this->settings()->status_configs[$entity] ?? [];
+        $status = collect($statuses)->firstWhere('key', $key);
+
+        return $status['color'] ?? 'gray';
+    }
+
+    public function statusIcon(string $entity, string $key): string
+    {
+        $statuses = $this->settings()->status_configs[$entity] ?? [];
+        $status = collect($statuses)->firstWhere('key', $key);
+
+        return $status['icon'] ?? 'heroicon-o-question-mark-circle';
+    }
+
+    public function statusOptions(string $entity): array
+    {
+        $statuses = $this->settings()->status_configs[$entity] ?? [];
+
+        return collect($statuses)->pluck('label', 'key')->toArray();
+    }
+
+    // ──────────────────────────────────────────────
+    // Textes légaux
+    // ──────────────────────────────────────────────
+
+    public function legalText(string $key): string
+    {
+        return Arr::get($this->settings()->legal_texts ?? [], $key, '');
+    }
+
+    // ──────────────────────────────────────────────
+    // Statistiques
+    // ──────────────────────────────────────────────
+
+    public function stats(): array
+    {
+        $s = $this->settings();
+
+        return [
+            'buildings_audited' => $s->stat_buildings_audited,
+            'avg_savings'       => $s->stat_avg_savings_percent,
+            'years_experience'  => $s->stat_years_experience,
+            'clients_count'     => $s->stat_clients_count,
+        ];
+    }
+
+    // ──────────────────────────────────────────────
+    // Divers
+    // ──────────────────────────────────────────────
+
+    public function openingHours(): array
+    {
+        return $this->settings()->company_opening_hours ?? [];
+    }
+
+    public function companyAge(): ?int
+    {
+        $year = $this->settings()->company_founding_year;
+
+        return $year ? (int) date('Y') - $year : null;
     }
 
     // ──────────────────────────────────────────────
@@ -307,7 +427,8 @@ HTML;
 
     public function clearCache(): void
     {
-        Cache::forget(self::CACHE_PREFIX . 'css_variables');
-        Cache::forget(self::CACHE_PREFIX . 'json_ld');
+        Cache::forget('site_css_variables');
+        Cache::forget('site_json_ld');
+        GeneralSetting::clearCache();
     }
 }

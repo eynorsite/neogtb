@@ -2,42 +2,41 @@
 
 namespace App\Observers;
 
+use App\Models\GeneralSetting;
 use App\Models\PrivacyPolicyVersion;
-use App\Models\SiteSetting;
 use App\Services\SiteConfigService;
 
+/**
+ * Observer sur GeneralSetting.
+ *
+ * Note : le cache model est déjà invalidé via GeneralSetting::booted().
+ * Cet observer gère le versioning de la politique de confidentialité
+ * lorsque le champ legal_texts change, ainsi que l'invalidation du cache service.
+ */
 class SiteSettingObserver
 {
-    /**
-     * Handle the SiteSetting "saved" event.
-     */
-    public function saved(SiteSetting $setting): void
+    public function saved(GeneralSetting $setting): void
     {
-        // 1. Invalider le cache model
-        SiteSetting::clearCache();
-
-        // 2. Invalider le cache service
+        // Invalider le cache service
         app(SiteConfigService::class)->clearCache();
 
-        // 3. Si politique de confidentialité modifiée, créer une nouvelle version
-        if ($setting->key === 'legal_politique_confidentialite' && filled($setting->value)) {
-            $this->createPrivacyPolicyVersion($setting);
+        // Si legal_texts a changé et contient une politique de confidentialité, versionner
+        if ($setting->isDirty('legal_texts')) {
+            $legalTexts = $setting->legal_texts ?? [];
+            $policy = $legalTexts['politique_confidentialite'] ?? null;
+
+            if (filled($policy)) {
+                $this->createPrivacyPolicyVersion($policy);
+            }
         }
     }
 
-    /**
-     * Handle the SiteSetting "deleted" event.
-     */
-    public function deleted(SiteSetting $setting): void
+    public function deleted(GeneralSetting $setting): void
     {
-        SiteSetting::clearCache();
         app(SiteConfigService::class)->clearCache();
     }
 
-    /**
-     * Crée une nouvelle version de politique de confidentialité.
-     */
-    private function createPrivacyPolicyVersion(SiteSetting $setting): void
+    private function createPrivacyPolicyVersion(string $content): void
     {
         // Désactiver les versions précédentes
         PrivacyPolicyVersion::where('is_current', true)->update(['is_current' => false]);
@@ -52,7 +51,7 @@ class SiteSettingObserver
         // Créer la nouvelle version
         PrivacyPolicyVersion::create([
             'version'      => $newVersion,
-            'content'      => $setting->value,
+            'content'      => $content,
             'published_at' => now(),
             'is_current'   => true,
             'created_by'   => auth()->id(),
