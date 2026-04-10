@@ -7,10 +7,10 @@
     <div class="max-w-[680px] mx-auto px-4 sm:px-6">
 
         <div class="text-center mb-12">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">RGPD — Vos droits</p>
-            <h1 class="font-heading font-medium text-dark-900 text-[26px] tracking-tight">Exercer vos droits RGPD</h1>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('legal.rgpd.eyebrow', 'RGPD — Vos droits') }}</p>
+            <h1 class="font-heading font-medium text-dark-900 text-[26px] tracking-tight">{{ $site->label('legal.rgpd.title', 'Exercer vos droits RGPD') }}</h1>
             <p class="mt-4 text-dark-500 max-w-xl mx-auto text-sm leading-relaxed">
-                Conformément au RGPD, vous disposez de droits sur vos données personnelles. Sélectionnez le type de demande ci-dessous.
+                {{ $site->label('legal.rgpd.subtitle', 'Conformément au RGPD, vous disposez de droits sur vos données personnelles. Sélectionnez le type de demande ci-dessous.') }}
             </p>
         </div>
 
@@ -64,8 +64,8 @@
                 <div class="flex gap-3">
                     <svg class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                     <div class="text-sm leading-relaxed">
-                        <p class="font-medium text-accent-800">Vos données sont protégées</p>
-                        <p class="text-accent-700 mt-1">Votre demande sera chiffrée et traitée dans un délai légal de 30 jours. Seul le responsable RGPD de NeoGTB y aura accès.</p>
+                        <p class="font-medium text-accent-800">{{ $site->label('legal.rgpd.security_title', 'Vos données sont protégées') }}</p>
+                        <p class="text-accent-700 mt-1">{{ $site->label('legal.rgpd.security_text', 'Votre demande sera chiffrée et traitée dans un délai légal de 30 jours. Seul le responsable RGPD de NeoGTB y aura accès.') }}</p>
                     </div>
                 </div>
             </div>
@@ -94,8 +94,8 @@
                 <div class="flex gap-3">
                     <svg class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     <div class="text-sm leading-relaxed">
-                        <p class="font-medium text-accent-800">Demande enregistrée</p>
-                        <p class="text-accent-700 mt-1">Nous avons bien reçu votre demande. Vous recevrez une confirmation par email et une réponse dans un délai maximum de 30 jours.</p>
+                        <p class="font-medium text-accent-800">{{ $site->label('legal.rgpd.success_title', 'Demande enregistrée') }}</p>
+                        <p class="text-accent-700 mt-1">{{ $site->label('legal.rgpd.success_text', 'Nous avons bien reçu votre demande. Vous recevrez une confirmation par email et une réponse dans un délai maximum de 30 jours.') }}</p>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
         <!-- Lien retour -->
         <div class="text-center mt-8">
             <a href="/politique-de-confidentialite" class="text-sm text-accent-600 hover:text-accent-700 font-medium">
-                &larr; Consulter notre politique de confidentialité
+                &larr; {{ $site->label('legal.rgpd.back_link', 'Consulter notre politique de confidentialité') }}
             </a>
         </div>
 

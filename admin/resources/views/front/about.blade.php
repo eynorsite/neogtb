@@ -9,12 +9,12 @@
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.15) 0%, rgba(237,245,247,0.88) 60%, rgba(237,245,247,1) 100%);"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
         <div class="max-w-2xl">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">À propos</p>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('about.hero.eyebrow', 'À propos') }}</p>
             <h1 class="font-heading text-[30px] lg:text-[44px] font-medium text-dark-900 leading-tight tracking-tight mb-5">
-                Je suis Ulrich Calmo, et j'ai créé <span class="text-gradient">NeoGTB</span> pour une raison simple
+                {!! $site->label('about.hero.title', 'Je suis Ulrich Calmo, et j\'ai créé <span class="text-gradient">NeoGTB</span> pour une raison simple') !!}
             </h1>
             <p class="text-lg text-dark-500 leading-relaxed max-w-xl">
-                Le marché de la GTB en France manque d'un interlocuteur neutre. Quelqu'un qui ne vend rien, qui connaît le terrain, et qui vous aide à prendre la bonne décision. C'est ce que je fais.
+                {{ $site->label('about.hero.subtitle', 'Le marché de la GTB en France manque d\'un interlocuteur neutre. Quelqu\'un qui ne vend rien, qui connaît le terrain, et qui vous aide à prendre la bonne décision. C\'est ce que je fais.') }}
             </p>
         </div>
     </div>
@@ -29,9 +29,9 @@
             <div class="lg:col-span-2" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
                 <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                     <img src="/images/ulrich-calmo.webp" alt="Ulrich Calmo, créateur de la marque NeoGTB" width="120" height="120" loading="lazy" decoding="async" class="w-[120px] h-[120px] rounded-full object-cover mx-auto mb-5 border-[3px] border-accent-300" />
-                    <p class="text-[22px] font-medium text-dark-900 text-center mb-1">Ulrich Calmo</p>
-                    <p class="text-sm font-medium text-accent-600 text-center mb-1">Fondateur de NeoGTB</p>
-                    <p class="text-xs text-dark-400 text-center mb-5">EYNOR — Eysines, Bordeaux</p>
+                    <p class="text-[22px] font-medium text-dark-900 text-center mb-1">{{ $site->label('about.founder.name', 'Ulrich Calmo') }}</p>
+                    <p class="text-sm font-medium text-accent-600 text-center mb-1">{{ $site->label('about.founder.role', 'Fondateur de NeoGTB') }}</p>
+                    <p class="text-xs text-dark-400 text-center mb-5">{{ $site->label('about.founder.company', 'EYNOR — Eysines, Bordeaux') }}</p>
                     <div class="w-full h-px bg-dark-200 mb-5"></div>
 
                     <p class="text-xs font-semibold uppercase tracking-widest text-dark-400 mb-3">Domaines d'expertise</p>
@@ -83,20 +83,11 @@
 
             <!-- Right: parcours + conviction -->
             <div class="lg:col-span-3" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
-                <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-6">Pourquoi j'ai créé NeoGTB</h2>
+                <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-6">{{ $site->label('about.story.title', 'Pourquoi j\'ai créé NeoGTB') }}</h2>
 
-                <p class="text-base text-dark-500 leading-relaxed mb-4">
-                    En travaillant sur des projets de gestion technique du bâtiment, j'ai constaté un problème récurrent : <strong class="text-dark-900 font-medium">les décideurs n'ont personne vers qui se tourner pour un avis neutre.</strong> Chaque interlocuteur vend sa solution. Les bureaux d'études prescrivent ce qu'ils connaissent. Les installateurs poussent leurs partenariats.
-                </p>
-                <p class="text-base text-dark-500 leading-relaxed mb-4">
-                    J'ai créé NeoGTB pour combler ce vide. Ma mission : <strong class="text-dark-900 font-medium">éduquer le marché français sur la GTB</strong>, fournir des outils d'analyse indépendants, et permettre à chaque professionnel de comprendre, comparer et décider en connaissance de cause.
-                </p>
-                <p class="text-base text-dark-500 leading-relaxed mb-4">
-                    NeoGTB est une marque de ma société <strong class="text-dark-900 font-medium">EYNOR</strong>, basée à Eysines près de Bordeaux. Je travaille seul, et c'est un choix assumé : pas d'actionnaires fabricants, pas de pression commerciale, pas de compromis sur les recommandations.
-                </p>
-                <p class="text-base text-dark-500 leading-relaxed mb-8">
-                    Mon seul engagement, c'est envers vous : vous donner les clés pour décider en toute connaissance de cause, sans qu'un intérêt commercial vienne fausser l'analyse.
-                </p>
+                <div class="text-base text-dark-500 leading-relaxed mb-8 space-y-4">
+                    {!! $site->label('about.story.content', '<p>En travaillant sur des projets de gestion technique du bâtiment, j\'ai constaté un problème récurrent : <strong class="text-dark-900 font-medium">les décideurs n\'ont personne vers qui se tourner pour un avis neutre.</strong> Chaque interlocuteur vend sa solution. Les bureaux d\'études prescrivent ce qu\'ils connaissent. Les installateurs poussent leurs partenariats.</p><p>J\'ai créé NeoGTB pour combler ce vide. Ma mission : <strong class="text-dark-900 font-medium">éduquer le marché français sur la GTB</strong>, fournir des outils d\'analyse indépendants, et permettre à chaque professionnel de comprendre, comparer et décider en connaissance de cause.</p><p>NeoGTB est une marque de ma société <strong class="text-dark-900 font-medium">EYNOR</strong>, basée à Eysines près de Bordeaux. Je travaille seul, et c\'est un choix assumé : pas d\'actionnaires fabricants, pas de pression commerciale, pas de compromis sur les recommandations.</p><p>Mon seul engagement, c\'est envers vous : vous donner les clés pour décider en toute connaissance de cause, sans qu\'un intérêt commercial vienne fausser l\'analyse.</p>') !!}
+                </div>
 
                 <!-- Ce que je fais concretement -->
                 <div class="space-y-3.5 mb-8">
@@ -142,8 +133,8 @@
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-12" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Mon approche</p>
-            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Ma méthode — 4 phases</h2>
-            <p class="text-base text-dark-500 leading-relaxed">Une approche structurée pour accompagner chaque projet GTB, du diagnostic à la mise en œuvre.</p>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">{{ $site->label('about.method.title', 'Ma méthode — 4 phases') }}</h2>
+            <p class="text-base text-dark-500 leading-relaxed">{{ $site->label('about.method.subtitle', 'Une approche structurée pour accompagner chaque projet GTB, du diagnostic à la mise en œuvre.') }}</p>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
@@ -175,10 +166,10 @@
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 flex items-center min-h-[200px]">
         <div class="max-w-lg">
-            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Un projet GTB à clarifier ?</h2>
-            <p class="text-base text-dark-500 leading-relaxed mb-7">Échangeons sur votre situation. Sans engagement, sans pression commerciale.</p>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">{{ $site->label('about.cta.title', 'Un projet GTB à clarifier ?') }}</h2>
+            <p class="text-base text-dark-500 leading-relaxed mb-7">{{ $site->label('about.cta.subtitle', 'Échangeons sur votre situation. Sans engagement, sans pression commerciale.') }}</p>
             <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow">
-                Me contacter directement
+                {{ $site->label('about.cta.button', 'Me contacter directement') }}
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
         </div>

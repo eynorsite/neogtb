@@ -980,6 +980,15 @@ class SiteSettingsPage extends Page implements HasForms
                             ->columnSpanFull(),
                     ]),
 
+                Section::make('Politique cookies')
+                    ->description('Page /cookies — Détail des cookies utilisés sur le site.')
+                    ->schema([
+                        RichEditor::make('legal_texts.cookies')
+                            ->label('')
+                            ->toolbarButtons(['bold', 'italic', 'underline', 'h2', 'h3', 'bulletList', 'orderedList', 'link'])
+                            ->columnSpanFull(),
+                    ]),
+
                 Section::make('Conditions Générales d\'Utilisation')
                     ->schema([
                         RichEditor::make('legal_texts.cgu')

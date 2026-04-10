@@ -48,10 +48,10 @@
 
             {{-- Breadcrumbs --}}
             <nav class="flex items-center gap-2 text-sm mb-8" aria-label="Fil d'Ariane">
-                <a href="/" class="text-dark-400 hover:text-accent-500 transition-colors font-normal">Accueil</a>
+                <a href="/" class="text-dark-400 hover:text-accent-500 transition-colors font-normal">{{ $site->label('nav.home', 'Accueil') }}</a>
                 <span class="w-1 h-1 rounded-full bg-dark-300 flex-shrink-0"></span>
                 <a href="/blog" class="text-dark-400 hover:text-accent-500 transition-colors font-normal">
-                    Perspectives
+                    {{ $site->label('nav.blog', 'Perspectives') }}
                 </a>
                 <span class="w-1 h-1 rounded-full bg-dark-300 flex-shrink-0"></span>
                 @if($post->category)
@@ -100,9 +100,9 @@
                     {{ $post->published_at?->translatedFormat('d F Y') }}
                 </time>
                 <span class="text-dark-300">&middot;</span>
-                <span>{{ $post->reading_time ?? ceil(str_word_count(strip_tags($post->content ?? '')) / 200) }} min de lecture</span>
+                <span>{{ $post->reading_time ?? ceil(str_word_count(strip_tags($post->content ?? '')) / 200) }} {{ $site->label('misc.reading_time', 'min de lecture') }}</span>
                 <span class="text-dark-300">&middot;</span>
-                <span>{{ number_format($post->views_count) }} vues</span>
+                <span>{{ number_format($post->views_count) }} {{ $site->label('misc.views', 'vues') }}</span>
             </div>
 
             {{-- Separator --}}
@@ -158,7 +158,7 @@
 
         {{-- Share / Copy link --}}
         <div class="mt-8 flex items-center gap-4" x-data="{ copied: false }">
-            <span class="text-sm text-dark-400">Partager :</span>
+            <span class="text-sm text-dark-400">{{ $site->label('misc.share', 'Partager') }} :</span>
             <button
                 class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-dark-600 bg-dark-50 border border-dark-200 rounded-lg hover:bg-dark-100 transition-colors cursor-pointer"
                 @click="navigator.clipboard.writeText(window.location.href); copied = true; setTimeout(() => copied = false, 2000)"
@@ -169,7 +169,7 @@
                 <svg x-show="copied" x-cloak class="w-4 h-4 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span x-text="copied ? 'Lien copié !' : 'Copier le lien'"></span>
+                <span x-text="copied ? '{{ $site->label('misc.link_copied', 'Lien copié !') }}' : '{{ $site->label('misc.copy_link', 'Copier le lien') }}'"></span>
             </button>
         </div>
 
@@ -177,7 +177,7 @@
         <hr class="my-8 border-t border-dark-100">
         <a href="/blog" class="inline-flex items-center gap-2 text-sm text-dark-500 hover:text-accent-500 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            Retour aux Perspectives
+            {{ $site->label('cta.back_to_blog', 'Retour aux Perspectives') }}
         </a>
     </div>
 
@@ -188,8 +188,8 @@
         <section class="border-t border-dark-100 bg-dark-50 py-12 lg:py-20">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10">
-                    <span class="text-xs font-semibold tracking-widest uppercase text-dark-400">À lire aussi</span>
-                    <h2 class="mt-2 text-xl sm:text-2xl font-heading font-extrabold text-dark-900">Articles similaires</h2>
+                    <span class="text-xs font-semibold tracking-widest uppercase text-dark-400">{{ $site->label('blog.also_read', 'À lire aussi') }}</span>
+                    <h2 class="mt-2 text-xl sm:text-2xl font-heading font-extrabold text-dark-900">{{ $site->label('blog.related_articles', 'Articles similaires') }}</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     @foreach($related as $rel)
@@ -237,7 +237,7 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
                 <a href="/contact" class="text-sm font-medium text-dark-500 hover:text-primary-600 transition-colors">
-                    Me contacter &rarr;
+                    {{ $site->label('cta.contact_me', 'Me contacter') }} &rarr;
                 </a>
             </div>
         </div>

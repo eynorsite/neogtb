@@ -37,7 +37,7 @@
                     const txt = el.dataset.searchText || '';
                     el.style.display = txt.includes(q.toLowerCase()) ? '' : 'none';
                 })"
-                placeholder="Rechercher un article..."
+                placeholder="{{ $site->label('search.placeholder', 'Rechercher un article...') }}"
                 class="w-full max-w-lg px-4 py-3 rounded-xl border border-dark-200 focus:border-accent-500 focus:ring-2 focus:ring-accent-100 outline-none transition"
             />
         </div>
@@ -53,7 +53,7 @@
                     : 'bg-white text-dark-600 hover:bg-dark-100 border border-dark-200'"
                 @click="active = 'all'"
             >
-                Tous les articles
+                {{ $site->label('blog.all_articles', 'Tous les articles') }}
             </button>
             @foreach($categories as $cat)
                 <button
@@ -121,7 +121,7 @@
                                 </span>
                             @endif
                             @if($post->reading_time)
-                                <span class="text-xs text-dark-400 font-normal">{{ $post->reading_time }} min</span>
+                                <span class="text-xs text-dark-400 font-normal">{{ $post->reading_time }} {{ $site->label('misc.reading_time_unit', 'min') }}</span>
                             @endif
                         </div>
 
@@ -165,7 +165,7 @@
             <svg class="w-12 h-12 text-dark-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
             </svg>
-            <p class="text-dark-400 text-sm">Aucun article dans cette catégorie.</p>
+            <p class="text-dark-400 text-sm">{{ $site->label('blog.no_articles', 'Aucun article dans cette catégorie.') }}</p>
         </div>
 
         {{-- Pagination --}}
@@ -215,18 +215,18 @@
 <section class="py-12 lg:py-20 bg-white">
     <div class="max-w-3xl mx-auto px-5 lg:px-10 text-center">
         <h2 class="text-2xl sm:text-3xl font-heading font-bold text-dark-900 tracking-tight">
-            Un projet GTB à clarifier ?
+            {{ $site->label('blog.cta_title', 'Un projet GTB à clarifier ?') }}
         </h2>
         <p class="mt-4 text-base text-dark-500 leading-relaxed max-w-xl mx-auto">
-            Pré-diagnostic ISO 52120-1 gratuit en ligne, ou échange de 15 minutes pour cadrer votre besoin.
+            {{ $site->label('blog.cta_description', 'Pré-diagnostic ISO 52120-1 gratuit en ligne, ou échange de 15 minutes pour cadrer votre besoin.') }}
         </p>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="/audit" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors btn-glow">
-                Lancer le diagnostic
+                {{ $site->label('cta.start_diagnostic', 'Lancer le diagnostic') }}
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
             <a href="/contact" class="text-sm font-medium text-dark-500 hover:text-primary-600 transition-colors">
-                Me contacter &rarr;
+                {{ $site->label('cta.contact_me', 'Me contacter') }} &rarr;
             </a>
         </div>
     </div>

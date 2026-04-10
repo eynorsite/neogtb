@@ -47,7 +47,7 @@
 
   {{-- Open Graph --}}
   <meta property="og:type" content="{{ $seoOgType }}" />
-  <meta property="og:site_name" content="NeoGTB" />
+  <meta property="og:site_name" content="{{ $settings->company_name ?? 'NeoGTB' }}" />
   <meta property="og:title" content="{{ $seoTitle }}" />
   <meta property="og:description" content="{{ $seoDescription }}" />
   <meta property="og:url" content="{{ $seoUrl }}" />
@@ -108,7 +108,7 @@
   {!! $__tracking['body'] ?? '' !!}
 
   {{-- Skip link --}}
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">Aller au contenu principal</a>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">{{ $site->label('layout.skip_link', 'Aller au contenu principal') }}</a>
 
   {{-- ===== Bandeau d'annonce (configurable depuis l'admin) ===== --}}
   @if($announcement = $site->announcementBar())
@@ -128,7 +128,7 @@
   <main id="main-content" class="pt-14 lg:pt-[120px] pb-[88px] lg:pb-0">
     {{-- Breadcrumbs --}}
     @hasSection('breadcrumbs')
-      <nav aria-label="Fil d'Ariane" class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-3">
+      <nav aria-label="{{ $site->label('layout.breadcrumb_label', "Fil d'Ariane") }}" class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-3">
         <ol style="display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; font-size: 12px; color: #94a3b8;">
           @yield('breadcrumbs')
         </ol>
@@ -147,12 +147,12 @@
         <div class="md:col-span-5">
           <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-16 w-auto" loading="lazy" decoding="async" />
           <p class="mt-5 text-[14px] text-dark-500 max-w-md" style="line-height: 1.7;">
-            Le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France. Aucun lien commercial avec les fabricants.
+            {{ $site->label('footer.brand_description', 'Le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France. Aucun lien commercial avec les fabricants.') }}
           </p>
 
           {{-- Newsletter --}}
           <div class="mt-8">
-            <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-3">Veille GTB mensuelle</p>
+            <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-3">{{ $site->label('footer.newsletter_subtitle', 'Veille GTB mensuelle') }}</p>
             <form
               method="POST"
               action="/newsletter"
@@ -173,21 +173,21 @@
             >
               @csrf
               <div class="flex gap-2" x-show="!nlSent">
-                <label class="sr-only" for="footer-nl-email">Email pour la veille GTB</label>
-                <input type="email" id="footer-nl-email" name="email" placeholder="votre@email.com" required aria-label="Votre adresse email pour la veille GTB mensuelle" class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid #e2e8f0; background: #f8fafc;" />
+                <label class="sr-only" for="footer-nl-email">{{ $site->label('footer.newsletter_sr_label', 'Email pour la veille GTB') }}</label>
+                <input type="email" id="footer-nl-email" name="email" placeholder="{{ $site->label('footer.newsletter_placeholder', 'votre@email.com') }}" required aria-label="{{ $site->label('footer.newsletter_aria', 'Votre adresse email pour la veille GTB mensuelle') }}" class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid #e2e8f0; background: #f8fafc;" />
                 <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, #2D8B4E, #267a43);">
-                  <span x-show="!nlSending">S'inscrire</span>
+                  <span x-show="!nlSending">{{ $site->label('footer.newsletter_button', "S'inscrire") }}</span>
                   <span x-show="nlSending">...</span>
                 </button>
               </div>
-              <div x-show="nlSent" x-cloak class="text-[13px] text-accent-500 font-medium">Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.</div>
+              <div x-show="nlSent" x-cloak class="text-[13px] text-accent-500 font-medium">{{ $site->label('footer.newsletter_success', 'Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.') }}</div>
               <p x-show="nlError" x-text="nlError" x-cloak class="text-[12px] text-red-500 mt-1"></p>
               <label x-show="!nlSent" class="mt-2 flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" required class="mt-0.5 w-3.5 h-3.5 rounded text-accent-500 focus:ring-accent-500/40" />
-                <span class="text-[11px] text-dark-400" style="line-height: 1.5;">J'accepte de recevoir la veille GTB mensuelle. <a href="/politique-de-confidentialite" class="underline hover:text-dark-700">Confidentialité</a></span>
+                <span class="text-[11px] text-dark-400" style="line-height: 1.5;">{!! $site->label('footer.newsletter_consent', 'J\'accepte de recevoir la veille GTB mensuelle. <a href="/politique-de-confidentialite" class="underline hover:text-dark-700">Confidentialité</a>') !!}</span>
               </label>
             </form>
-            <p class="mt-2 text-[11px] text-dark-400">1 email/mois. Désabonnement en 1 clic.</p>
+            <p class="mt-2 text-[11px] text-dark-400">{{ $site->label('footer.newsletter_frequency', '1 email/mois. Désabonnement en 1 clic.') }}</p>
           </div>
 
           {{-- Normes badges --}}
@@ -201,50 +201,50 @@
 
         {{-- Navigation --}}
         <div class="md:col-span-2 md:col-start-7">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">Navigation</p>
+          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">{{ $site->label('footer.col1_title', 'Navigation') }}</p>
           <ul class="space-y-3">
-            <li><a href="/gtb" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">GTB</a></li>
-            <li><a href="/gtc" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">GTC</a></li>
-            <li><a href="/solutions" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Solutions</a></li>
-            <li><a href="/comparateur" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Comparateur</a></li>
-            <li><a href="/reglementation" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Réglementation</a></li>
-            <li><a href="/blog" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Perspectives</a></li>
+            <li><a href="/gtb" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_gtb', 'GTB') }}</a></li>
+            <li><a href="/gtc" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_gtc', 'GTC') }}</a></li>
+            <li><a href="/solutions" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_solutions', 'Solutions') }}</a></li>
+            <li><a href="/comparateur" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_comparateur', 'Comparateur') }}</a></li>
+            <li><a href="/reglementation" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_reglementation', 'Réglementation') }}</a></li>
+            <li><a href="/blog" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_blog', 'Perspectives') }}</a></li>
           </ul>
         </div>
 
         {{-- Outils --}}
         <div class="md:col-span-2">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">Outils</p>
+          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">{{ $site->label('footer.col2_title', 'Outils') }}</p>
           <ul class="space-y-3">
-            <li><a href="/audit" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Pré-diagnostic GTB</a></li>
-            <li><a href="/generateur-cee" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Générateur CEE</a></li>
-            <li><a href="/tables-modbus" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Tables Modbus</a></li>
-            <li><a href="/contact" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Contact</a></li>
-            <li><a href="/faq" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">FAQ</a></li>
+            <li><a href="/audit" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_audit', 'Pré-diagnostic GTB') }}</a></li>
+            <li><a href="/generateur-cee" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_generateur_cee', 'Générateur CEE') }}</a></li>
+            <li><a href="/tables-modbus" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_tables_modbus', 'Tables Modbus') }}</a></li>
+            <li><a href="/contact" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_contact', 'Contact') }}</a></li>
+            <li><a href="/faq" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_faq', 'FAQ') }}</a></li>
           </ul>
         </div>
 
         {{-- Légal --}}
         <div class="md:col-span-2">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">Légal</p>
+          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">{{ $site->label('footer.col3_title', 'Légal') }}</p>
           <ul class="space-y-3">
-            <li><a href="/mentions-legales" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Mentions légales</a></li>
-            <li><a href="/politique-de-confidentialite" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Confidentialité</a></li>
-            <li><a href="/cookies" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Cookies</a></li>
-            <li><a href="/mes-droits-rgpd" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">Vos droits RGPD</a></li>
+            <li><a href="/mentions-legales" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_mentions', 'Mentions légales') }}</a></li>
+            <li><a href="/politique-de-confidentialite" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_confidentialite', 'Confidentialité') }}</a></li>
+            <li><a href="/cookies" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_cookies', 'Cookies') }}</a></li>
+            <li><a href="/mes-droits-rgpd" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_rgpd', 'Vos droits RGPD') }}</a></li>
           </ul>
         </div>
       </div>
 
       {{-- Bottom bar --}}
       <div class="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-top: 0.5px solid #e2e8f0;">
-        <p class="text-[13px] text-dark-400">&copy; {{ date('Y') }} NeoGTB. Tous droits réservés.</p>
+        <p class="text-[13px] text-dark-400">{{ $settings->copyright ?? '&copy; ' . date('Y') . ' NeoGTB. Tous droits réservés.' }}</p>
         <div class="flex items-center gap-5">
           {{-- LinkedIn --}}
           <a href="https://www.linkedin.com/in/ulrich-calmo" target="_blank" rel="noopener noreferrer" class="text-dark-400 hover:text-dark-900 transition-colors duration-200" aria-label="LinkedIn">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <button type="button" x-on:click="$dispatch('open-cookie-settings')" class="text-[13px] text-dark-400 hover:text-dark-900 transition-colors duration-200 cursor-pointer">Gérer les cookies</button>
+          <button type="button" x-on:click="$dispatch('open-cookie-settings')" class="text-[13px] text-dark-400 hover:text-dark-900 transition-colors duration-200 cursor-pointer">{{ $site->label('footer.manage_cookies', 'Gérer les cookies') }}</button>
         </div>
       </div>
     </div>

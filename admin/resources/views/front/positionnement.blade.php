@@ -45,9 +45,9 @@
 <!-- LE PROBLÈME -->
 <section class="py-12 lg:py-24">
     <div class="max-w-[760px] mx-auto px-5 lg:px-10">
-        <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Le problème</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('positionnement.problem.eyebrow', 'Le problème') }}</p>
         <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-5">
-            Pourquoi le conseil GTB classique pose problème
+            {{ $site->label('positionnement.problem.title', 'Pourquoi le conseil GTB classique pose problème') }}
         </h2>
         <div class="space-y-4">
             @foreach([
@@ -67,9 +67,9 @@
 <!-- COMMENT VÉRIFIER -->
 <section class="py-12 lg:py-24 bg-dark-50 border-t border-b border-dark-200">
     <div class="max-w-[760px] mx-auto px-5 lg:px-10">
-        <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Vérifiez vous-même</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('positionnement.verify.eyebrow', 'Vérifiez vous-même') }}</p>
         <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-6">
-            Comment savoir si un conseil GTB est vraiment indépendant
+            {{ $site->label('positionnement.verify.title', 'Comment savoir si un conseil GTB est vraiment indépendant') }}
         </h2>
 
         {{-- MOBILE : 1 card par question --}}
@@ -124,12 +124,12 @@
 <!-- MODÈLE ÉCONOMIQUE -->
 <section class="py-12 lg:py-24">
     <div class="max-w-[760px] mx-auto px-5 lg:px-10">
-        <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Transparence</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('positionnement.model.eyebrow', 'Transparence') }}</p>
         <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">
-            Comment NeoGTB gagne de l'argent
+            {{ $site->label('positionnement.model.title', 'Comment NeoGTB gagne de l\'argent') }}
         </h2>
         <p class="text-[15px] text-dark-500 leading-relaxed mb-7">
-            Un site gratuit qui ne vend rien — vous avez raison de vous demander où est le piège. Il n'y en a pas. Voici le modèle, en clair.
+            {{ $site->label('positionnement.model.subtitle', 'Un site gratuit qui ne vend rien — vous avez raison de vous demander où est le piège. Il n\'y en a pas. Voici le modèle, en clair.') }}
         </p>
 
         <!-- Le modèle -->
@@ -168,7 +168,7 @@
         </div>
 
         <p class="text-[13px] text-dark-400 leading-relaxed mt-5">
-            Vous avez encore un doute ? C'est normal. <a href="/contact" class="text-accent-600 hover:text-accent-700">Posez la question</a>, on y répond.
+            {!! $site->label('positionnement.model.footer', 'Vous avez encore un doute ? C\'est normal. <a href="/contact" class="text-accent-600 hover:text-accent-700">Posez la question</a>, on y répond.') !!}
         </p>
     </div>
 </section>
@@ -179,8 +179,8 @@
     <div class="absolute inset-0 bg-gradient-to-r from-dark-100 via-dark-100/80 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10 flex items-center min-h-[200px]">
         <div class="max-w-lg">
-            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Testez l'approche</h2>
-            <p class="text-base text-dark-500 leading-relaxed mb-7">Pré-diagnostic ISO 52120-1 gratuit, comparateur sans biais, générateur CEE. Aucune inscription requise.</p>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">{{ $site->label('positionnement.cta.title', 'Testez l\'approche') }}</h2>
+            <p class="text-base text-dark-500 leading-relaxed mb-7">{{ $site->label('positionnement.cta.subtitle', 'Pré-diagnostic ISO 52120-1 gratuit, comparateur sans biais, générateur CEE. Aucune inscription requise.') }}</p>
             <div class="flex flex-wrap gap-3">
                 <a href="/audit" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow">
                     Diagnostic gratuit

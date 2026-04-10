@@ -13,19 +13,19 @@
     class="lg:hidden fixed inset-x-0 bottom-0 z-40 bg-white/95 backdrop-blur-xl border-t border-dark-100"
     style="padding-bottom: calc(12px + env(safe-area-inset-bottom));"
     role="complementary"
-    aria-label="Accès rapide au pré-diagnostic"
+    aria-label="{{ $site->label('sticky_cta.aria_label', 'Accès rapide au pré-diagnostic') }}"
 >
     <div class="px-4 pt-3 flex items-center gap-3">
         <div class="flex-1 min-w-0">
-            <p class="text-[10px] font-semibold uppercase tracking-[0.12em] text-accent-600">Gratuit · 5 min</p>
-            <p class="text-[13px] text-dark-700 font-medium truncate">Pré-diagnostic GTB ISO 52120-1</p>
+            <p class="text-[10px] font-semibold uppercase tracking-[0.12em] text-accent-600">{{ $site->label('sticky_cta.badge', 'Gratuit · 5 min') }}</p>
+            <p class="text-[13px] text-dark-700 font-medium truncate">{{ $site->label('sticky_cta.title', 'Pré-diagnostic GTB ISO 52120-1') }}</p>
         </div>
         <a href="/audit"
            class="inline-flex items-center gap-1.5 bg-dark-900 hover:bg-dark-800 text-white text-[13px] font-semibold px-4 py-2.5 rounded-xl min-h-[44px] flex-shrink-0">
-            Lancer
+            {{ $site->label('sticky_cta.button', 'Lancer') }}
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
-        <button @click="dismiss()" aria-label="Masquer"
+        <button @click="dismiss()" aria-label="{{ $site->label('sticky_cta.dismiss', 'Masquer') }}"
                 class="w-9 h-9 flex items-center justify-center text-dark-400 hover:text-dark-700 flex-shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
         </button>

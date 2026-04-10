@@ -34,12 +34,12 @@
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
         <div class="max-w-2xl">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">FAQ</p>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('faq.eyebrow', 'FAQ') }}</p>
             <h1 class="font-heading text-[30px] lg:text-[44px] font-medium text-dark-900 leading-tight tracking-tight mb-4">
-                Questions fréquentes
+                {{ $site->label('faq.title', 'Questions fréquentes') }}
             </h1>
             <p class="text-[17px] text-dark-500 leading-relaxed max-w-lg">
-                Tout ce que vous devez savoir sur NeoGTB, la GTB, le décret BACS et nos outils.
+                {{ $site->label('faq.subtitle', 'Tout ce que vous devez savoir sur NeoGTB, la GTB, le décret BACS et nos outils.') }}
             </p>
         </div>
     </div>
@@ -100,9 +100,9 @@
 
         <!-- CTA -->
         <div class="text-center pt-10">
-            <p class="text-base text-dark-500 mb-4">Vous avez une autre question ?</p>
+            <p class="text-base text-dark-500 mb-4">{{ $site->label('faq.cta_text', 'Vous avez une autre question ?') }}</p>
             <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow">
-                Poser ma question
+                {{ $site->label('faq.cta_button', 'Poser ma question') }}
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
         </div>

@@ -194,11 +194,11 @@
 
   {{-- Breadcrumbs --}}
   <nav class="max-w-7xl mx-auto px-5 lg:px-10 py-3 text-sm text-dark-400">
-    <a href="/" class="hover:text-primary-600 transition-colors">Accueil</a>
+    <a href="/" class="hover:text-primary-600 transition-colors">{{ $site->label('breadcrumb.home', 'Accueil') }}</a>
     <span class="mx-2">/</span>
-    <span class="text-dark-300">Outils</span>
+    <span class="text-dark-300">{{ $site->label('breadcrumb.tools', 'Outils') }}</span>
     <span class="mx-2">/</span>
-    <span class="text-dark-600 font-medium">Pré-diagnostic GTB</span>
+    <span class="text-dark-600 font-medium">{{ $site->label('audit.breadcrumb', 'Pré-diagnostic GTB') }}</span>
   </nav>
 
   <!-- HERO -->
@@ -206,21 +206,21 @@
     <img src="/images/hero-audit.png" alt="Bâtiment intelligent connecté — GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
     <div class="max-w-[800px] mx-auto px-5 lg:px-10 relative z-10 text-center">
-      <p class="diag-eyebrow" style="color: rgba(255,255,255,0.7);">Diagnostic gratuit &middot; Rapport PDF</p>
+      <p class="diag-eyebrow" style="color: rgba(255,255,255,0.7);">{{ $site->label('audit.hero.eyebrow', 'Diagnostic gratuit · Rapport PDF') }}</p>
       <h1 class="mt-5 text-[30px] lg:text-[44px] font-heading font-medium" style="letter-spacing: -0.4px; color: #fff;">
-        Pré-diagnostic <span style="color: #2DD4BF;">GTB</span> de votre bâtiment
+        {!! $site->label('audit.hero.title', 'Pré-diagnostic <span style="color: #2DD4BF;">GTB</span> de votre bâtiment') !!}
       </h1>
       <p class="mt-4 text-lg max-w-2xl mx-auto" style="font-weight: 400; color: rgba(255,255,255,0.65);">
-        Évaluez votre conformité au décret BACS, estimez vos économies d'énergie et recevez un rapport personnalisé avec recommandations ISO 52120-1.
+        {{ $site->label('audit.hero.subtitle', "Évaluez votre conformité au décret BACS, estimez vos économies d'énergie et recevez un rapport personnalisé avec recommandations ISO 52120-1.") }}
       </p>
       <div class="diag-hero-badges">
         <span class="diag-badge">
           <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          ISO 52120-1 &middot; Décret BACS &middot; Données ADEME
+          {{ $site->label('audit.hero.badge1', 'ISO 52120-1 · Décret BACS · Données ADEME') }}
         </span>
         <span class="diag-badge diag-badge-accent">
           <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          100% indépendant &middot; 0 &euro; commission
+          {{ $site->label('audit.hero.badge2', '100% indépendant · 0 € commission') }}
         </span>
       </div>
     </div>
@@ -252,11 +252,11 @@
       <div x-show="step === 1" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
         <div class="diag-card">
           <div class="diag-card-header">
-            <h2>Décrivez votre bâtiment</h2>
-            <p>Ces données permettent d'estimer votre obligation réglementaire et vos références de consommation ADEME.</p>
+            <h2>{{ $site->label('audit.step1_title', 'Décrivez votre bâtiment') }}</h2>
+            <p>{{ $site->label('audit.step1_subtitle', "Ces données permettent d'estimer votre obligation réglementaire et vos références de consommation ADEME.") }}</p>
           </div>
           <div class="diag-card-body">
-            <label class="diag-label">Type de bâtiment</label>
+            <label class="diag-label">{{ $site->label('forms.building_type', 'Type de bâtiment') }}</label>
             <div class="diag-grid-6">
               <template x-for="type in buildingTypes" :key="type.id">
                 <button @click="form.buildingType = type.id" class="diag-choice" :class="{ 'is-selected': form.buildingType === type.id }">
@@ -269,7 +269,7 @@
 
             <div class="diag-field-group">
               <div>
-                <label class="diag-label">Surface utile</label>
+                <label class="diag-label">{{ $site->label('forms.surface', 'Surface utile') }}</label>
                 <div class="diag-input-wrap">
                   <input type="number" x-model.number="form.surface" min="50" max="500000" placeholder="3 000" class="diag-input" :class="{ 'has-error': errors.surface }">
                   <span class="diag-input-suffix">m&sup2;</span>
@@ -277,19 +277,19 @@
                 <p x-show="errors.surface" x-text="errors.surface" class="diag-error"></p>
               </div>
               <div>
-                <label class="diag-label">Année de construction</label>
+                <label class="diag-label">{{ $site->label('forms.building_age', 'Année de construction') }}</label>
                 <select x-model="form.buildingAge" class="diag-input">
-                  <option value="">Sélectionnez</option>
-                  <option value="before1975">Avant 1975</option>
-                  <option value="1975-2000">1975 &mdash; 2000</option>
-                  <option value="2000-2012">2000 &mdash; 2012</option>
-                  <option value="after2012">Après 2012 (RT2012 / RE2020)</option>
+                  <option value="">{{ $site->label('forms.select_placeholder', 'Sélectionnez') }}</option>
+                  <option value="before1975">{{ $site->label('audit.age_before1975', 'Avant 1975') }}</option>
+                  <option value="1975-2000">{{ $site->label('audit.age_1975_2000', '1975 — 2000') }}</option>
+                  <option value="2000-2012">{{ $site->label('audit.age_2000_2012', '2000 — 2012') }}</option>
+                  <option value="after2012">{{ $site->label('audit.age_after2012', 'Après 2012 (RT2012 / RE2020)') }}</option>
                 </select>
                 <p x-show="errors.buildingAge" x-text="errors.buildingAge" class="diag-error"></p>
               </div>
             </div>
 
-            <label class="diag-label">Où se situe votre bâtiment ?</label>
+            <label class="diag-label">{{ $site->label('forms.climate_zone', 'Où se situe votre bâtiment ?') }}</label>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
               <template x-for="z in [{id:'H1', label:'Nord & Est', villes:'Paris, Lille, Strasbourg, Lyon, Dijon...', icon:'&#10052;&#65039;'}, {id:'H2', label:'Ouest & Centre', villes:'Nantes, Bordeaux, Toulouse, Rennes, Limoges...', icon:'&#127780;&#65039;'}, {id:'H3', label:'Mediterranee', villes:'Marseille, Nice, Montpellier, Perpignan...', icon:'&#9728;&#65039;'}, {id:'DOM', label:'Corse & Outre-mer', villes:'Ajaccio, Bastia, Guadeloupe, Martinique, Reunion...', icon:'&#127796;'}]" :key="z.id">
                 <button @click="form.climateZone = z.id" class="diag-zone" :class="{ 'is-selected': form.climateZone === z.id }">
@@ -305,7 +305,7 @@
           <div class="diag-card-footer">
             <div></div>
             <button @click="validateStep1()" class="diag-btn-primary">
-              Continuer
+              {{ $site->label('forms.continue', 'Continuer') }}
               <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
           </div>
@@ -316,8 +316,8 @@
       <div x-show="step === 2" x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-x-8">
         <div class="diag-card">
           <div class="diag-card-header">
-            <h2>Vos lots techniques</h2>
-            <p>Décrivez les équipements et usages de votre bâtiment. Ces informations sont essentielles pour dimensionner votre GTB.</p>
+            <h2>{{ $site->label('audit.step2_title', 'Vos lots techniques') }}</h2>
+            <p>{{ $site->label('audit.step2_subtitle', 'Décrivez les équipements et usages de votre bâtiment. Ces informations sont essentielles pour dimensionner votre GTB.') }}</p>
           </div>
           <div class="diag-card-body">
 
@@ -326,12 +326,12 @@
               <div class="diag-lot-header">
                 <span style="font-size: 22px;">&#128293;</span>
                 <div>
-                  <span class="diag-lot-title">Chauffage</span>
-                  <span class="diag-lot-subtitle">Surface gérée par le système de chauffage</span>
+                  <span class="diag-lot-title">{{ $site->label('audit.lot_heating', 'Chauffage') }}</span>
+                  <span class="diag-lot-subtitle">{{ $site->label('audit.lot_heating_desc', 'Surface gérée par le système de chauffage') }}</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">Surface chauffée</label>
+                <label class="diag-label-sm">{{ $site->label('audit.heated_surface', 'Surface chauffée') }}</label>
                 <div class="diag-input-wrap" style="max-width: 280px;">
                   <input type="number" x-model.number="form.surfaceChauffage" min="0" max="500000" placeholder="2 500" class="diag-input-sm" :class="{ 'has-error': errors.surfaceChauffage }">
                   <span class="diag-input-suffix-sm">m&sup2;</span>
@@ -345,19 +345,19 @@
               <div class="diag-lot-header">
                 <span style="font-size: 22px;">&#128703;</span>
                 <div>
-                  <span class="diag-lot-title">Eau chaude sanitaire (ECS)</span>
-                  <span class="diag-lot-subtitle">Production et distribution d'eau chaude</span>
+                  <span class="diag-lot-title">{{ $site->label('audit.lot_ecs', 'Eau chaude sanitaire (ECS)') }}</span>
+                  <span class="diag-lot-subtitle">{{ $site->label('audit.lot_ecs_desc', "Production et distribution d'eau chaude") }}</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">Votre bâtiment dispose-t-il d'une production ECS ?</label>
+                <label class="diag-label-sm">{{ $site->label('audit.has_ecs_question', "Votre bâtiment dispose-t-il d'une production ECS ?") }}</label>
                 <div style="display: flex; gap: 10px; margin-top: 8px;">
-                  <button @click="form.hasEcs = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasEcs === true }"><span class="diag-choice-label">Oui</span></button>
-                  <button @click="form.hasEcs = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasEcs === false }"><span class="diag-choice-label">Non</span></button>
+                  <button @click="form.hasEcs = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasEcs === true }"><span class="diag-choice-label">{{ $site->label('forms.yes', 'Oui') }}</span></button>
+                  <button @click="form.hasEcs = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasEcs === false }"><span class="diag-choice-label">{{ $site->label('forms.no', 'Non') }}</span></button>
                 </div>
                 <p x-show="errors.hasEcs" x-text="errors.hasEcs" class="diag-error"></p>
                 <div x-show="form.hasEcs === true" x-transition style="margin-top: 12px;">
-                  <label class="diag-label-sm">Surface desservie par l'ECS</label>
+                  <label class="diag-label-sm">{{ $site->label('audit.ecs_surface', "Surface desservie par l'ECS") }}</label>
                   <div class="diag-input-wrap" style="max-width: 280px;">
                     <input type="number" x-model.number="form.surfaceEcs" min="0" max="500000" placeholder="1 500" class="diag-input-sm" :class="{ 'has-error': errors.surfaceEcs }">
                     <span class="diag-input-suffix-sm">m&sup2;</span>
@@ -372,19 +372,19 @@
               <div class="diag-lot-header">
                 <span style="font-size: 22px;">&#10052;&#65039;</span>
                 <div>
-                  <span class="diag-lot-title">Climatisation / Refroidissement</span>
-                  <span class="diag-lot-subtitle">Système de climatisation, groupes froids, CTA</span>
+                  <span class="diag-lot-title">{{ $site->label('audit.lot_cooling', 'Climatisation / Refroidissement') }}</span>
+                  <span class="diag-lot-subtitle">{{ $site->label('audit.lot_cooling_desc', 'Système de climatisation, groupes froids, CTA') }}</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">Votre bâtiment est-il climatisé ?</label>
+                <label class="diag-label-sm">{{ $site->label('audit.has_cooling_question', 'Votre bâtiment est-il climatisé ?') }}</label>
                 <div style="display: flex; gap: 10px; margin-top: 8px;">
-                  <button @click="form.hasClim = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasClim === true }"><span class="diag-choice-label">Oui</span></button>
-                  <button @click="form.hasClim = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasClim === false }"><span class="diag-choice-label">Non</span></button>
+                  <button @click="form.hasClim = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasClim === true }"><span class="diag-choice-label">{{ $site->label('forms.yes', 'Oui') }}</span></button>
+                  <button @click="form.hasClim = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasClim === false }"><span class="diag-choice-label">{{ $site->label('forms.no', 'Non') }}</span></button>
                 </div>
                 <p x-show="errors.hasClim" x-text="errors.hasClim" class="diag-error"></p>
                 <div x-show="form.hasClim === true" x-transition style="margin-top: 12px;">
-                  <label class="diag-label-sm">Surface climatisée</label>
+                  <label class="diag-label-sm">{{ $site->label('audit.cooled_surface', 'Surface climatisée') }}</label>
                   <div class="diag-input-wrap" style="max-width: 280px;">
                     <input type="number" x-model.number="form.surfaceClim" min="0" max="500000" placeholder="2 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceClim }">
                     <span class="diag-input-suffix-sm">m&sup2;</span>
@@ -399,30 +399,30 @@
               <div class="diag-lot-header">
                 <span style="font-size: 22px;">&#128161;</span>
                 <div>
-                  <span class="diag-lot-title">Éclairage</span>
-                  <span class="diag-lot-subtitle">Gestion de l'éclairage intérieur et extérieur</span>
+                  <span class="diag-lot-title">{{ $site->label('audit.lot_lighting', 'Éclairage') }}</span>
+                  <span class="diag-lot-subtitle">{{ $site->label('audit.lot_lighting_desc', "Gestion de l'éclairage intérieur et extérieur") }}</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">L'éclairage est-il géré de manière centralisée ?</label>
+                <label class="diag-label-sm">{{ $site->label('audit.has_lighting_question', "L'éclairage est-il géré de manière centralisée ?") }}</label>
                 <div style="display: flex; gap: 10px; margin-top: 8px;">
-                  <button @click="form.hasEclairage = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasEclairage === true }"><span class="diag-choice-label">Oui</span></button>
-                  <button @click="form.hasEclairage = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasEclairage === false }"><span class="diag-choice-label">Non</span></button>
+                  <button @click="form.hasEclairage = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasEclairage === true }"><span class="diag-choice-label">{{ $site->label('forms.yes', 'Oui') }}</span></button>
+                  <button @click="form.hasEclairage = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasEclairage === false }"><span class="diag-choice-label">{{ $site->label('forms.no', 'Non') }}</span></button>
                 </div>
                 <p x-show="errors.hasEclairage" x-text="errors.hasEclairage" class="diag-error"></p>
                 <div x-show="form.hasEclairage === true" x-transition style="margin-top: 12px;">
-                  <label class="diag-label-sm">Surface éclairée</label>
+                  <label class="diag-label-sm">{{ $site->label('audit.lit_surface', 'Surface éclairée') }}</label>
                   <div class="diag-input-wrap" style="max-width: 280px;">
                     <input type="number" x-model.number="form.surfaceEclairage" min="0" max="500000" placeholder="3 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceEclairage }">
                     <span class="diag-input-suffix-sm">m&sup2;</span>
                   </div>
                   <p x-show="errors.surfaceEclairage" x-text="errors.surfaceEclairage" class="diag-error"></p>
-                  <label class="diag-label-sm" style="margin-top: 12px;">Type de gestion</label>
+                  <label class="diag-label-sm" style="margin-top: 12px;">{{ $site->label('audit.lighting_type', 'Type de gestion') }}</label>
                   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
-                    <button @click="form.eclairage = 'manuel'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'manuel' }"><span class="diag-choice-label">Manuel</span></button>
-                    <button @click="form.eclairage = 'minuterie'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'minuterie' }"><span class="diag-choice-label">Minuteries</span></button>
-                    <button @click="form.eclairage = 'detection'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'detection' }"><span class="diag-choice-label">Détection de présence</span></button>
-                    <button @click="form.eclairage = 'intelligent'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'intelligent' }"><span class="diag-choice-label">Gestion intelligente</span></button>
+                    <button @click="form.eclairage = 'manuel'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'manuel' }"><span class="diag-choice-label">{{ $site->label('audit.lighting_manual', 'Manuel') }}</span></button>
+                    <button @click="form.eclairage = 'minuterie'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'minuterie' }"><span class="diag-choice-label">{{ $site->label('audit.lighting_timer', 'Minuteries') }}</span></button>
+                    <button @click="form.eclairage = 'detection'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'detection' }"><span class="diag-choice-label">{{ $site->label('audit.lighting_presence', 'Détection de présence') }}</span></button>
+                    <button @click="form.eclairage = 'intelligent'" class="diag-choice-sm" :class="{ 'is-selected': form.eclairage === 'intelligent' }"><span class="diag-choice-label">{{ $site->label('audit.lighting_smart', 'Gestion intelligente') }}</span></button>
                   </div>
                   <p x-show="errors.eclairage" x-text="errors.eclairage" class="diag-error"></p>
                 </div>
@@ -434,19 +434,19 @@
               <div class="diag-lot-header">
                 <span style="font-size: 22px;">&#128268;</span>
                 <div>
-                  <span class="diag-lot-title">Auxiliaires</span>
-                  <span class="diag-lot-subtitle">Contacts de porte, domotique, station météo, sous-comptage, stores, ventilation / CTA...</span>
+                  <span class="diag-lot-title">{{ $site->label('audit.lot_auxiliary', 'Auxiliaires') }}</span>
+                  <span class="diag-lot-subtitle">{{ $site->label('audit.lot_auxiliary_desc', 'Contacts de porte, domotique, station météo, sous-comptage, stores, ventilation / CTA...') }}</span>
                 </div>
               </div>
               <div style="margin-top: 12px;">
-                <label class="diag-label-sm">Votre bâtiment dispose-t-il d'équipements auxiliaires ?</label>
+                <label class="diag-label-sm">{{ $site->label('audit.has_auxiliary_question', "Votre bâtiment dispose-t-il d'équipements auxiliaires ?") }}</label>
                 <div style="display: flex; gap: 10px; margin-top: 8px;">
-                  <button @click="form.hasAuxiliaires = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasAuxiliaires === true }"><span class="diag-choice-label">Oui</span></button>
-                  <button @click="form.hasAuxiliaires = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasAuxiliaires === false }"><span class="diag-choice-label">Non</span></button>
+                  <button @click="form.hasAuxiliaires = true" class="diag-choice-sm" :class="{ 'is-selected': form.hasAuxiliaires === true }"><span class="diag-choice-label">{{ $site->label('forms.yes', 'Oui') }}</span></button>
+                  <button @click="form.hasAuxiliaires = false" class="diag-choice-sm" :class="{ 'is-selected': form.hasAuxiliaires === false }"><span class="diag-choice-label">{{ $site->label('forms.no', 'Non') }}</span></button>
                 </div>
                 <p x-show="errors.hasAuxiliaires" x-text="errors.hasAuxiliaires" class="diag-error"></p>
                 <div x-show="form.hasAuxiliaires === true" x-transition style="margin-top: 12px;">
-                  <label class="diag-label-sm">Surface concernée par les auxiliaires</label>
+                  <label class="diag-label-sm">{{ $site->label('audit.auxiliary_surface', 'Surface concernée par les auxiliaires') }}</label>
                   <div class="diag-input-wrap" style="max-width: 280px;">
                     <input type="number" x-model.number="form.surfaceAuxiliaires" min="0" max="500000" placeholder="3 000" class="diag-input-sm" :class="{ 'has-error': errors.surfaceAuxiliaires }">
                     <span class="diag-input-suffix-sm">m&sup2;</span>
@@ -460,10 +460,10 @@
           <div class="diag-card-footer">
             <button @click="step = 1" class="diag-btn-ghost">
               <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-              Précédent
+              {{ $site->label('forms.previous', 'Précédent') }}
             </button>
             <button @click="validateStep2()" class="diag-btn-primary">
-              Continuer
+              {{ $site->label('forms.continue', 'Continuer') }}
               <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
           </div>
@@ -501,11 +501,11 @@
               <span x-text="currentQuestion > 0 ? 'Précédent' : 'Retour'"></span>
             </button>
             <button x-show="currentQuestion < gtbQuestions.length - 1" @click="nextQuestion()" :disabled="form.gtbAnswers[currentQuestion] === undefined" class="diag-btn-primary" :class="{ 'diag-btn-disabled': form.gtbAnswers[currentQuestion] === undefined }">
-              Suivant
+              {{ $site->label('forms.next', 'Suivant') }}
               <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
             <button x-show="currentQuestion === gtbQuestions.length - 1" @click="validateStep3()" :disabled="form.gtbAnswers[currentQuestion] === undefined" class="diag-btn-accent" :class="{ 'diag-btn-disabled': form.gtbAnswers[currentQuestion] === undefined }">
-              Voir mon diagnostic
+              {{ $site->label('audit.see_results', 'Voir mon diagnostic') }}
               <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
             </button>
           </div>
@@ -518,12 +518,12 @@
 
         <div class="diag-results-hero">
           <div class="diag-kpi diag-kpi-animate" :class="'diag-kpi-' + results.levelKey" style="animation: diag-kpi-pop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;">
-            <p class="diag-kpi-label">Score de maturité GTB</p>
+            <p class="diag-kpi-label">{{ $site->label('audit.results.score_label', 'Score de maturité GTB') }}</p>
             <p class="diag-kpi-score" x-text="animatedScore + ' / 100'"></p>
             <p class="diag-kpi-level" x-text="results.levelLabel"></p>
           </div>
           <div class="diag-kpi diag-kpi-savings diag-kpi-animate" style="animation: diag-kpi-pop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;">
-            <p class="diag-kpi-label">Économies potentielles estimées</p>
+            <p class="diag-kpi-label">{{ $site->label('audit.results.savings_label', 'Économies potentielles estimées') }}</p>
             <p class="diag-kpi-score" x-text="formatCurrency(results.savingsEuro) + ' /an'"></p>
             <p class="diag-kpi-level" x-text="'soit ' + results.savingsPercent + '% de vos dépenses énergie'"></p>
           </div>
@@ -537,7 +537,7 @@
                 <svg style="width:22px;height:22px;color:#d97706;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
               </div>
               <div style="flex:1;">
-                <p style="font-size:14px;font-weight:600;color:var(--color-dark-900);margin-bottom:4px;">Primes CEE estimées &mdash; fiches cumulables</p>
+                <p style="font-size:14px;font-weight:600;color:var(--color-dark-900);margin-bottom:4px;">{{ $site->label('audit.results.cee_title', 'Primes CEE estimées — fiches cumulables') }}</p>
                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
                   <template x-for="f in results.cee.fiches" :key="f.fiche">
                     <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;background:rgba(245,158,11,0.1);color:#92400e;">
@@ -551,7 +551,7 @@
                 </div>
                 <p style="font-size:12px;color:var(--color-dark-400);">Volume total cumulé : <span x-text="formatNumber(results.cee.gwh * 1000)"></span> MWh cumac. Cours CEE : 6,50 &euro;/MWh cumac. Estimation indicative.</p>
                 <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:500;color:var(--color-accent-600);text-decoration:none;">
-                  Affiner avec le simulateur CEE complet
+                  {{ $site->label('audit.results.cee_cta', 'Affiner avec le simulateur CEE complet') }}
                   <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
               </div>
@@ -562,7 +562,7 @@
         <!-- Jauge ISO 52120-1 -->
         <div class="diag-card" style="margin-top:20px;">
           <div class="diag-card-body" style="text-align:center;padding:28px;">
-            <p style="font-size:13px;font-weight:600;color:var(--color-dark-500);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Classe ISO 52120-1</p>
+            <p style="font-size:13px;font-weight:600;color:var(--color-dark-500);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">{{ $site->label('audit.results.iso_class', 'Classe ISO 52120-1') }}</p>
             <div class="diag-gauge">
               <template x-for="lvl in [{key:'d', letter:'D', label:'Non performant'}, {key:'c', letter:'C', label:'Standard'}, {key:'b', letter:'B', label:'Avancé'}, {key:'a', letter:'A', label:'Haute perf.'}]" :key="lvl.key">
                 <div class="diag-gauge-bar" :class="'level-' + lvl.key + (results.levelKey === lvl.key ? ' active' : (results.levelKey !== lvl.key ? ' dimmed' : ''))">
@@ -587,7 +587,7 @@
                 <p class="diag-regulatory-title" x-text="results.regulatory.title"></p>
                 <p class="diag-regulatory-text" x-text="results.regulatory.text"></p>
                 <p x-show="results.regulatory.daysLeft > 0" class="diag-regulatory-countdown">
-                  <span x-text="results.regulatory.daysLeft"></span> jours restants avant l'échéance
+                  <span x-text="results.regulatory.daysLeft"></span> {{ $site->label('audit.results.days_left', "jours restants avant l'échéance") }}
                 </p>
               </div>
             </div>
@@ -596,19 +596,19 @@
 
         <!-- Benchmark ADEME -->
         <div class="diag-card" style="margin-top:20px;">
-          <div class="diag-card-header"><h2>Benchmark énergétique</h2><p>Positionnement de votre bâtiment par rapport aux références ADEME.</p></div>
+          <div class="diag-card-header"><h2>{{ $site->label('audit.results.benchmark_title', 'Benchmark énergétique') }}</h2><p>{{ $site->label('audit.results.benchmark_subtitle', 'Positionnement de votre bâtiment par rapport aux références ADEME.') }}</p></div>
           <div class="diag-card-body">
             <div class="diag-benchmark">
               <div class="diag-benchmark-bar-wrap">
-                <div class="diag-benchmark-zone diag-benchmark-good" :style="'width:' + results.benchmark.goodPercent + '%'"><span>Performant</span></div>
-                <div class="diag-benchmark-zone diag-benchmark-avg" :style="'width:' + results.benchmark.avgPercent + '%'"><span>Moyen</span></div>
-                <div class="diag-benchmark-zone diag-benchmark-bad" :style="'width:' + results.benchmark.badPercent + '%'"><span>Énergivore</span></div>
+                <div class="diag-benchmark-zone diag-benchmark-good" :style="'width:' + results.benchmark.goodPercent + '%'"><span>{{ $site->label('audit.results.benchmark_good', 'Performant') }}</span></div>
+                <div class="diag-benchmark-zone diag-benchmark-avg" :style="'width:' + results.benchmark.avgPercent + '%'"><span>{{ $site->label('audit.results.benchmark_avg', 'Moyen') }}</span></div>
+                <div class="diag-benchmark-zone diag-benchmark-bad" :style="'width:' + results.benchmark.badPercent + '%'"><span>{{ $site->label('audit.results.benchmark_bad', 'Énergivore') }}</span></div>
               </div>
               <div class="diag-benchmark-marker" :style="'left:' + results.benchmark.position + '%'">
                 <div class="diag-benchmark-marker-dot"></div>
                 <div class="diag-benchmark-marker-label">
                   <span x-text="formatNumber(results.benchmark.kwhM2) + ' kWh/m\u00B2/an'"></span>
-                  <span style="font-weight:400;color:var(--color-dark-400);font-size:11px;">Votre bâtiment</span>
+                  <span style="font-weight:400;color:var(--color-dark-400);font-size:11px;">{{ $site->label('audit.results.your_building', 'Votre bâtiment') }}</span>
                 </div>
               </div>
             </div>
@@ -617,13 +617,13 @@
               <div><span class="diag-benchmark-dot" style="background:#f59e0b;"></span><span x-text="'Réf. moyen : ' + results.benchmark.refAvg + ' kWh/m\u00B2/an'"></span></div>
               <div><span class="diag-benchmark-dot" style="background:#ef4444;"></span><span x-text="'Réf. énergivore : ' + results.benchmark.refBad + ' kWh/m\u00B2/an'"></span></div>
             </div>
-            <p style="font-size:11px;color:var(--color-dark-400);margin-top:12px;">Sources : OID/ADEME Baromètre 2022, OPERAT 2021, Arrêté valeurs absolues décret tertiaire (24/11/2020). Économies : NF EN ISO 52120-1:2022.</p>
+            <p style="font-size:11px;color:var(--color-dark-400);margin-top:12px;">{{ $site->label('audit.results.benchmark_sources', 'Sources : OID/ADEME Baromètre 2022, OPERAT 2021, Arrêté valeurs absolues décret tertiaire (24/11/2020). Économies : NF EN ISO 52120-1:2022.') }}</p>
           </div>
         </div>
 
         <!-- Récap énergies -->
         <div class="diag-card" style="margin-top:20px;">
-          <div class="diag-card-header"><h2>Récapitulatif de vos consommations</h2></div>
+          <div class="diag-card-header"><h2>{{ $site->label('audit.results.energy_title', 'Récapitulatif de vos consommations') }}</h2></div>
           <div class="diag-card-body" style="padding-top:0;">
             <template x-for="(e, i) in results.energySummary" :key="i">
               <div class="diag-energy-row">
@@ -638,7 +638,7 @@
               </div>
             </template>
             <div class="diag-energy-total">
-              <span>Total</span>
+              <span>{{ $site->label('audit.results.total', 'Total') }}</span>
               <span x-text="formatNumber(results.totalConso) + ' kWh — ' + formatCurrency(results.totalFacture) + ' /an'"></span>
             </div>
           </div>
@@ -646,7 +646,7 @@
 
         <!-- Recommandations -->
         <div class="diag-card" style="margin-top:20px;">
-          <div class="diag-card-header"><h2>Recommandations personnalisées</h2></div>
+          <div class="diag-card-header"><h2>{{ $site->label('audit.results.reco_title', 'Recommandations personnalisées') }}</h2></div>
           <div class="diag-card-body" style="padding-top:0;">
             <template x-for="(rec, i) in results.recommendations" :key="i">
               <div class="diag-rec-row">
@@ -661,34 +661,34 @@
 
         <!-- Offre premium -->
         <div class="diag-premium-card">
-          <div class="diag-premium-badge">Aller plus loin</div>
-          <h3 class="diag-premium-title">Ce diagnostic est une estimation basée sur vos déclarations</h3>
-          <p class="diag-premium-desc">Pour une analyse précise avec mesures terrain, un expert indépendant peut auditer votre bâtiment et identifier les gisements d'économies réels.</p>
+          <div class="diag-premium-badge">{{ $site->label('audit.premium.badge', 'Aller plus loin') }}</div>
+          <h3 class="diag-premium-title">{{ $site->label('audit.premium.title', 'Ce diagnostic est une estimation basée sur vos déclarations') }}</h3>
+          <p class="diag-premium-desc">{{ $site->label('audit.premium.desc', "Pour une analyse précise avec mesures terrain, un expert indépendant peut auditer votre bâtiment et identifier les gisements d'économies réels.") }}</p>
           <div class="diag-premium-grid">
             <div class="diag-premium-col">
-              <p class="diag-premium-col-title">Diagnostic en ligne</p>
-              <p class="diag-premium-col-subtitle">Ce que vous venez de faire</p>
+              <p class="diag-premium-col-title">{{ $site->label('audit.premium.online_title', 'Diagnostic en ligne') }}</p>
+              <p class="diag-premium-col-subtitle">{{ $site->label('audit.premium.online_subtitle', 'Ce que vous venez de faire') }}</p>
               <ul class="diag-premium-list">
-                <li>Score ISO 52120-1 estimé</li>
-                <li>Benchmark ADEME indicatif</li>
-                <li>Recommandations génériques</li>
-                <li>Rapport PDF basique</li>
+                <li>{{ $site->label('audit.premium.online_1', 'Score ISO 52120-1 estimé') }}</li>
+                <li>{{ $site->label('audit.premium.online_2', 'Benchmark ADEME indicatif') }}</li>
+                <li>{{ $site->label('audit.premium.online_3', 'Recommandations génériques') }}</li>
+                <li>{{ $site->label('audit.premium.online_4', 'Rapport PDF basique') }}</li>
               </ul>
-              <p class="diag-premium-price">Gratuit</p>
+              <p class="diag-premium-price">{{ $site->label('audit.premium.online_price', 'Gratuit') }}</p>
             </div>
             <div class="diag-premium-col diag-premium-col-highlight">
-              <p class="diag-premium-col-title">Audit sur site</p>
-              <p class="diag-premium-col-subtitle">Par un expert indépendant NeoGTB</p>
+              <p class="diag-premium-col-title">{{ $site->label('audit.premium.onsite_title', 'Audit sur site') }}</p>
+              <p class="diag-premium-col-subtitle">{{ $site->label('audit.premium.onsite_subtitle', 'Par un expert indépendant NeoGTB') }}</p>
               <ul class="diag-premium-list">
-                <li>Mesures terrain instrumentées</li>
-                <li>Classification ISO 52120-1 certifiée</li>
-                <li>Plan d'actions chiffré et priorisé</li>
-                <li>Rapport 20+ pages avec ROI</li>
-                <li>Conformité décret BACS vérifiée</li>
-                <li>Dossier CEE pré-constitué</li>
+                <li>{{ $site->label('audit.premium.onsite_1', 'Mesures terrain instrumentées') }}</li>
+                <li>{{ $site->label('audit.premium.onsite_2', 'Classification ISO 52120-1 certifiée') }}</li>
+                <li>{{ $site->label('audit.premium.onsite_3', "Plan d'actions chiffré et priorisé") }}</li>
+                <li>{{ $site->label('audit.premium.onsite_4', 'Rapport 20+ pages avec ROI') }}</li>
+                <li>{{ $site->label('audit.premium.onsite_5', 'Conformité décret BACS vérifiée') }}</li>
+                <li>{{ $site->label('audit.premium.onsite_6', 'Dossier CEE pré-constitué') }}</li>
               </ul>
               <a href="/contact" class="diag-btn-accent" style="width:100%;justify-content:center;text-decoration:none;">
-                Demander un audit sur site
+                {{ $site->label('audit.premium.onsite_cta', 'Demander un audit sur site') }}
               </a>
             </div>
           </div>
@@ -698,8 +698,8 @@
         <div class="diag-disclaimer">
           <svg style="width:18px;height:18px;color:#b45309;flex-shrink:0;margin-top:2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
           <div>
-            <p style="font-weight:600;color:#92400e;font-size:13px;margin-bottom:4px;">Estimation indicative</p>
-            <p style="font-size:13px;color:#78350f;line-height:1.6;">Ce résultat est basé sur vos déclarations et des données statistiques (OID/ADEME 2022, OPERAT 2021, NF EN ISO 52120-1:2022). Il ne constitue pas un document réglementaire. NeoGTB est indépendant et ne perçoit aucune commission.</p>
+            <p style="font-weight:600;color:#92400e;font-size:13px;margin-bottom:4px;">{{ $site->label('audit.disclaimer.title', 'Estimation indicative') }}</p>
+            <p style="font-size:13px;color:#78350f;line-height:1.6;">{{ $site->label('audit.disclaimer.text', "Ce résultat est basé sur vos déclarations et des données statistiques (OID/ADEME 2022, OPERAT 2021, NF EN ISO 52120-1:2022). Il ne constitue pas un document réglementaire. NeoGTB est indépendant et ne perçoit aucune commission.") }}</p>
           </div>
         </div>
 
@@ -707,54 +707,54 @@
         <div class="diag-actions">
           <button @click="showEmailGate()" class="diag-btn-primary" style="flex:1;">
             <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Télécharger le rapport PDF
+            {{ $site->label('audit.actions.download_pdf', 'Télécharger le rapport PDF') }}
           </button>
-          <a href="/contact" class="diag-btn-accent" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">Être contacté par un expert</a>
+          <a href="/contact" class="diag-btn-accent" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">{{ $site->label('audit.actions.contact_expert', 'Être contacté par un expert') }}</a>
           <a :href="'/comparateur?surface=' + form.surface + '&type=' + form.buildingType" class="diag-btn-ghost" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">
             <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            Comparer les solutions GTB
+            {{ $site->label('audit.actions.compare', 'Comparer les solutions GTB') }}
           </a>
           <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" class="diag-btn-ghost" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">
             <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-            Estimer mes aides CEE
+            {{ $site->label('audit.actions.estimate_cee', 'Estimer mes aides CEE') }}
           </a>
           <button @click="resetDiag()" class="diag-btn-ghost" style="flex:1;">
             <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            Nouveau diagnostic
+            {{ $site->label('audit.actions.new_diag', 'Nouveau diagnostic') }}
           </button>
         </div>
 
         <!-- Modal email gate -->
         <div x-show="showEmailModal" x-transition.opacity @keydown.escape.window="showEmailModal = false" class="diag-modal-overlay" role="presentation">
           <div @click.outside="showEmailModal = false" class="diag-modal" role="dialog" aria-modal="true">
-            <h3 style="font-size:18px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">Recevoir votre rapport PDF</h3>
-            <p style="font-size:13px;color:var(--color-dark-400);margin-bottom:16px;">Entrez votre email pour télécharger votre diagnostic complet.</p>
-            <input type="email" x-model="emailAddress" placeholder="votre@email.com" class="diag-input" style="margin-bottom:8px;">
-            <input type="text" x-model="userName" placeholder="Votre nom (optionnel)" class="diag-input" style="margin-bottom:8px;">
-            <input type="text" x-model="userCompany" placeholder="Entreprise (optionnel)" class="diag-input" style="margin-bottom:12px;">
+            <h3 style="font-size:18px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">{{ $site->label('audit.modal.title', 'Recevoir votre rapport PDF') }}</h3>
+            <p style="font-size:13px;color:var(--color-dark-400);margin-bottom:16px;">{{ $site->label('audit.modal.subtitle', 'Entrez votre email pour télécharger votre diagnostic complet.') }}</p>
+            <input type="email" x-model="emailAddress" placeholder="{{ $site->label('audit.modal.email_placeholder', 'votre@email.com') }}" class="diag-input" style="margin-bottom:8px;">
+            <input type="text" x-model="userName" placeholder="{{ $site->label('audit.modal.name_placeholder', 'Votre nom (optionnel)') }}" class="diag-input" style="margin-bottom:8px;">
+            <input type="text" x-model="userCompany" placeholder="{{ $site->label('audit.modal.company_placeholder', 'Entreprise (optionnel)') }}" class="diag-input" style="margin-bottom:12px;">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
             <label style="display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--color-dark-200);border-radius:10px;background:var(--color-dark-50);margin-bottom:12px;cursor:pointer;" :style="consentError ? 'border-color:#dc2626;background:#fef2f2;' : ''">
               <input type="checkbox" x-model="consentRgpd" @change="consentError = false" style="margin-top:3px;width:16px;height:16px;accent-color:var(--color-accent-600);flex-shrink:0;" aria-required="true">
               <span style="font-size:12px;color:var(--color-dark-700);line-height:1.55;">
-                J'accepte que NeoGTB utilise mon email pour m'envoyer mon rapport d'audit personnalisé et, le cas échéant, un suivi conseil. <span style="color:#dc2626;">*</span>
+                {{ $site->label('audit.modal.consent_text', "J'accepte que NeoGTB utilise mon email pour m'envoyer mon rapport d'audit personnalisé et, le cas échéant, un suivi conseil.") }} <span style="color:#dc2626;">*</span>
               </span>
             </label>
-            <p x-show="consentError" x-transition style="font-size:11px;color:#dc2626;margin:-6px 0 10px;">Merci de cocher cette case pour recevoir votre rapport.</p>
+            <p x-show="consentError" x-transition style="font-size:11px;color:#dc2626;margin:-6px 0 10px;">{{ $site->label('audit.modal.consent_error', 'Merci de cocher cette case pour recevoir votre rapport.') }}</p>
 
             <div style="font-size:10.5px;color:var(--color-dark-400);line-height:1.6;margin-bottom:16px;padding:10px 12px;border-left:2px solid var(--color-dark-200);background:var(--color-dark-50);border-radius:0 6px 6px 0;">
-              <p style="margin:0 0 4px;font-weight:600;color:var(--color-dark-600);">Information RGPD (art. 13)</p>
-              <p style="margin:0;">Responsable : NeoGTB. <strong>Finalité</strong> : envoi du rapport d'audit GTB personnalisé et suivi conseil. <strong>Base légale</strong> : consentement. <strong>Durée de conservation</strong> : 3 ans à compter du dernier contact. Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité, ainsi que du droit de retirer votre consentement à tout moment, via <a href="/mes-droits-rgpd" style="color:var(--color-accent-600);">/mes-droits-rgpd</a>. Détails : <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">politique de confidentialité</a>.</p>
+              <p style="margin:0 0 4px;font-weight:600;color:var(--color-dark-600);">{{ $site->label('audit.modal.rgpd_title', 'Information RGPD (art. 13)') }}</p>
+              <p style="margin:0;">{!! $site->label('audit.modal.rgpd_text', 'Responsable : NeoGTB. <strong>Finalité</strong> : envoi du rapport d\'audit GTB personnalisé et suivi conseil. <strong>Base légale</strong> : consentement. <strong>Durée de conservation</strong> : 3 ans à compter du dernier contact. Vous disposez d\'un droit d\'accès, de rectification, d\'effacement, de limitation, d\'opposition et de portabilité, ainsi que du droit de retirer votre consentement à tout moment, via <a href="/mes-droits-rgpd" style="color:var(--color-accent-600);">/mes-droits-rgpd</a>. Détails : <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">politique de confidentialité</a>.') !!}</p>
             </div>
 
             <div style="display:flex;gap:12px;">
-              <button @click="showEmailModal = false" class="diag-btn-ghost" style="flex:1;">Annuler</button>
+              <button @click="showEmailModal = false" class="diag-btn-ghost" style="flex:1;">{{ $site->label('forms.cancel', 'Annuler') }}</button>
               <button @click="downloadPDF()" class="diag-btn-accent" style="flex:1;" :disabled="!consentRgpd || !emailAddress" :style="(!consentRgpd || !emailAddress) ? 'opacity:0.5;cursor:not-allowed;' : ''">
                 <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                Télécharger
+                {{ $site->label('audit.modal.download_btn', 'Télécharger') }}
               </button>
             </div>
-            <p x-show="emailSent" style="margin-top:12px;font-size:13px;color:var(--color-accent-600);font-weight:500;text-align:center;">PDF téléchargé !</p>
+            <p x-show="emailSent" style="margin-top:12px;font-size:13px;color:var(--color-accent-600);font-weight:500;text-align:center;">{{ $site->label('audit.modal.success', 'PDF téléchargé !') }}</p>
           </div>
         </div>
 
@@ -768,7 +768,7 @@
     <div style="max-width:600px;margin:0 auto;padding:0 24px;text-align:center;">
       <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:100px;background:white;border:1px solid var(--color-dark-200);">
         <svg style="width:18px;height:18px;color:var(--color-accent-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">Outil indépendant &mdash; NeoGTB ne perçoit aucune commission</span>
+        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">{{ $site->label('audit.trust_badge', 'Outil indépendant — NeoGTB ne perçoit aucune commission') }}</span>
       </div>
     </div>
   </section>
@@ -776,19 +776,19 @@
   <!-- Pages associées -->
   <section class="py-10 lg:py-20 bg-white">
     <div class="max-w-4xl mx-auto px-5 lg:px-10">
-      <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">Pages associées</h2>
+      <h2 class="text-lg font-heading font-medium text-dark-800 mb-6">{{ $site->label('audit.related.title', 'Pages associées') }}</h2>
       <div class="grid md:grid-cols-3 gap-4">
         <a href="/comparateur" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
-          <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Comparateur GTB</p>
-          <p class="text-sm text-dark-400 mt-1">Comparez les solutions après votre diagnostic.</p>
+          <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">{{ $site->label('audit.related.comparateur', 'Comparateur GTB') }}</p>
+          <p class="text-sm text-dark-400 mt-1">{{ $site->label('audit.related.comparateur_desc', 'Comparez les solutions après votre diagnostic.') }}</p>
         </a>
         <a href="/generateur-cee" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
-          <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Simulateur CEE</p>
-          <p class="text-sm text-dark-400 mt-1">Estimez vos primes pour financer votre projet GTB.</p>
+          <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">{{ $site->label('audit.related.cee', 'Simulateur CEE') }}</p>
+          <p class="text-sm text-dark-400 mt-1">{{ $site->label('audit.related.cee_desc', 'Estimez vos primes pour financer votre projet GTB.') }}</p>
         </a>
         <a href="/reglementation" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
-          <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Réglementation GTB</p>
-          <p class="text-sm text-dark-400 mt-1">Décret BACS, calendrier des obligations.</p>
+          <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">{{ $site->label('audit.related.reglementation', 'Réglementation GTB') }}</p>
+          <p class="text-sm text-dark-400 mt-1">{{ $site->label('audit.related.reglementation_desc', 'Décret BACS, calendrier des obligations.') }}</p>
         </a>
       </div>
     </div>
