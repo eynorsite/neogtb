@@ -129,7 +129,7 @@
     {{-- Breadcrumbs --}}
     @hasSection('breadcrumbs')
       <nav aria-label="{{ $site->label('layout.breadcrumb_label', "Fil d'Ariane") }}" class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-3">
-        <ol style="display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; font-size: 12px; color: #94a3b8;">
+        <ol style="display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; font-size: 12px; color: var(--color-dark-400);">
           @yield('breadcrumbs')
         </ol>
       </nav>
@@ -139,7 +139,7 @@
   </main>
 
   {{-- ===== FOOTER — Premium 4 colonnes ===== --}}
-  <footer style="background: #fff; border-top: 0.5px solid #e2e8f0;">
+  <footer style="background: var(--color-body-bg, white); border-top: 0.5px solid var(--color-dark-200);">
     <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
 
@@ -174,8 +174,8 @@
               @csrf
               <div class="flex gap-2" x-show="!nlSent">
                 <label class="sr-only" for="footer-nl-email">{{ $site->label('footer.newsletter_sr_label', 'Email pour la veille GTB') }}</label>
-                <input type="email" id="footer-nl-email" name="email" placeholder="{{ $site->label('footer.newsletter_placeholder', 'votre@email.com') }}" required aria-label="{{ $site->label('footer.newsletter_aria', 'Votre adresse email pour la veille GTB mensuelle') }}" class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid #e2e8f0; background: #f8fafc;" />
-                <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, #2D8B4E, #267a43);">
+                <input type="email" id="footer-nl-email" name="email" placeholder="{{ $site->label('footer.newsletter_placeholder', 'votre@email.com') }}" required aria-label="{{ $site->label('footer.newsletter_aria', 'Votre adresse email pour la veille GTB mensuelle') }}" class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid var(--color-dark-200); background: var(--color-dark-50);" />
+                <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));">
                   <span x-show="!nlSending">{{ $site->label('footer.newsletter_button', "S'inscrire") }}</span>
                   <span x-show="nlSending">...</span>
                 </button>
@@ -192,10 +192,10 @@
 
           {{-- Normes badges --}}
           <div class="mt-6 flex flex-wrap gap-2">
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">ISO 52120-1</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">Décret BACS</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">RE2020</span>
-            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid #e2e8f0;">CEE BAT-TH-116</span>
+            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">ISO 52120-1</span>
+            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">Décret BACS</span>
+            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">RE2020</span>
+            <span class="text-[10px] font-medium px-3 py-1 rounded-full text-dark-500" style="border: 0.5px solid var(--color-dark-200);">CEE BAT-TH-116</span>
           </div>
         </div>
 
@@ -237,7 +237,7 @@
       </div>
 
       {{-- Bottom bar --}}
-      <div class="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-top: 0.5px solid #e2e8f0;">
+      <div class="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-top: 0.5px solid var(--color-dark-200);">
         <p class="text-[13px] text-dark-400">{{ $settings->copyright ?? '&copy; ' . date('Y') . ' NeoGTB. Tous droits réservés.' }}</p>
         <div class="flex items-center gap-5">
           {{-- LinkedIn --}}
