@@ -89,6 +89,7 @@ class SiteSettingsPage extends Page implements HasForms
                         $this->canAccessSecurity() ? $this->securityTab() : null,
                         $this->rgpdTab(),
                         $this->statsTab(),
+                        $this->pagesTab(),
                     ])),
             ])
             ->statePath('data');
@@ -1308,5 +1309,93 @@ class SiteSettingsPage extends Page implements HasForms
                         ]),
                     ]),
             ]);
+    }
+
+    // ─── TAB: PAGES SPÉCIFIQUES ────────────────────────────
+
+    protected function pagesTab(): Tab
+    {
+        $pages = [
+            ['key' => 'gtb',             'label' => 'Page GTB'],
+            ['key' => 'gtc',             'label' => 'Page GTC'],
+            ['key' => 'solutions',       'label' => 'Page Solutions'],
+            ['key' => 'reglementation',  'label' => 'Page Réglementation'],
+            ['key' => 'audit',           'label' => 'Page Audit'],
+            ['key' => 'contact',         'label' => 'Page Contact'],
+            ['key' => 'about',           'label' => 'Page À propos'],
+            ['key' => 'faq',             'label' => 'Page FAQ'],
+            ['key' => 'comparateur',     'label' => 'Page Comparateur'],
+        ];
+
+        $sections = [];
+        foreach ($pages as $page) {
+            $prefix = $page['key'] . '_page_config';
+            $sections[] = Section::make($page['label'])
+                ->collapsed()
+                ->icon('heroicon-o-document-text')
+                ->schema([
+                    Section::make('Hero')->schema([
+                        TextInput::make("{$prefix}.hero_title")
+                            ->label('Titre du Hero')
+                            ->maxLength(255),
+                        Textarea::make("{$prefix}.hero_subtitle")
+                            ->label('Sous-titre du Hero')
+                            ->rows(2),
+                        FileUpload::make("{$prefix}.hero_image")
+                            ->label('Image du Hero')
+                            ->image()
+                            ->directory("pages/{$page['key']}")
+                            ->maxSize(2048),
+                    ])->collapsible(),
+                    Section::make('SEO')->schema([
+                        TextInput::make("{$prefix}.meta_title")
+                            ->label('Meta Title')
+                            ->maxLength(70)
+                            ->helperText('60-70 caractères recommandés'),
+                        Textarea::make("{$prefix}.meta_description")
+                            ->label('Meta Description')
+                            ->rows(2)
+                            ->maxLength(160)
+                            ->helperText('150-160 caractères recommandés'),
+                    ])->collapsible()->collapsed(),
+                    Section::make('Sections de contenu')->schema([
+                        Repeater::make("{$prefix}.sections")
+                            ->label('Blocs de contenu')
+                            ->schema([
+                                TextInput::make('title')
+                                    ->label('Titre de la section')
+                                    ->required(),
+                                Textarea::make('content')
+                                    ->label('Contenu')
+                                    ->rows(3),
+                                FileUpload::make('image')
+                                    ->label('Image')
+                                    ->image()
+                                    ->directory("pages/{$page['key']}/sections")
+                                    ->maxSize(2048),
+                                TextInput::make('cta_text')
+                                    ->label('Texte du CTA'),
+                                TextInput::make('cta_url')
+                                    ->label('Lien du CTA')
+                                    ->url(),
+                            ])
+                            ->collapsible()
+                            ->collapsed()
+                            ->defaultItems(0)
+                            ->addActionLabel('Ajouter une section'),
+                    ])->collapsible()->collapsed(),
+                    Section::make('Données structurées')->schema([
+                        KeyValue::make("{$prefix}.custom_data")
+                            ->label('Données personnalisées (clé → valeur)')
+                            ->addActionLabel('Ajouter un champ')
+                            ->keyLabel('Clé')
+                            ->valueLabel('Valeur'),
+                    ])->collapsible()->collapsed(),
+                ]);
+        }
+
+        return Tab::make('Pages')
+            ->icon('heroicon-o-rectangle-stack')
+            ->schema($sections);
     }
 }
