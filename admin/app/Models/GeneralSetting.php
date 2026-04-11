@@ -70,6 +70,7 @@ class GeneralSetting extends Model
             'nav_cta_visible' => 'boolean',
             'nav_show_phone' => 'boolean',
             'nav_sticky' => 'boolean',
+            'nav_show_search' => 'boolean',
             'announcement_enabled' => 'boolean',
             'cookie_banner_enabled' => 'boolean',
             'maintenance_enabled' => 'boolean',
