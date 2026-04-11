@@ -20,6 +20,7 @@ class SubmitAuditLeadRequestTest extends TestCase
     {
         $v = $this->validate([
             'email' => 'lead@example.com',
+            'consentement_rgpd' => true,
             'score' => 150,
         ]);
         $this->assertTrue($v->fails());
@@ -31,8 +32,37 @@ class SubmitAuditLeadRequestTest extends TestCase
     {
         $v = $this->validate([
             'email' => 'lead@example.com',
+            'consentement_rgpd' => true,
             'score' => 75,
         ]);
         $this->assertFalse($v->fails());
+    }
+
+    #[Test]
+    public function test_building_type_is_validated_and_accepted(): void
+    {
+        $v = $this->validate([
+            'email' => 'lead@example.com',
+            'consentement_rgpd' => true,
+            'building_type' => 'bureau',
+            'surface' => 1200,
+            'score' => 62,
+            'level_label' => 'Niveau B',
+            'savings_euro' => 5400,
+            'payload' => ['form' => ['x' => 1]],
+        ]);
+        $this->assertFalse($v->fails(), 'Les champs diagnostic (building_type, surface, score, level_label, savings_euro, payload) doivent etre valides.');
+    }
+
+    #[Test]
+    public function test_honeypot_blocks_bot_submission(): void
+    {
+        $v = $this->validate([
+            'email' => 'bot@example.com',
+            'consentement_rgpd' => true,
+            '_gotcha' => 'spammed',
+        ]);
+        $this->assertTrue($v->fails());
+        $this->assertArrayHasKey('_gotcha', $v->errors()->toArray());
     }
 }

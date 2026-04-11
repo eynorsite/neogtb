@@ -732,7 +732,8 @@
             <input type="email" x-model="emailAddress" placeholder="{{ $site->label('audit.modal.email_placeholder', 'votre@email.com') }}" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userName" placeholder="{{ $site->label('audit.modal.name_placeholder', 'Votre nom (optionnel)') }}" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userCompany" placeholder="{{ $site->label('audit.modal.company_placeholder', 'Entreprise (optionnel)') }}" class="diag-input" style="margin-bottom:12px;">
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            {{-- Honeypot anti-bot (champ leurre, ne pas remplir) --}}
+            <input type="text" x-model="honeypot" name="_gotcha" style="display:none!important;position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
 
             <label style="display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--color-dark-200);border-radius:10px;background:var(--color-dark-50);margin-bottom:12px;cursor:pointer;" :style="consentError ? 'border-color:#dc2626;background:#fef2f2;' : ''">
               <input type="checkbox" x-model="consentRgpd" @change="consentError = false" style="margin-top:3px;width:16px;height:16px;accent-color:var(--color-accent-600);flex-shrink:0;" aria-required="true">
@@ -810,6 +811,7 @@
       emailAddress: '',
       userName: '',
       userCompany: '',
+      honeypot: '',
       emailSent: false,
       consentRgpd: false,
       consentError: false,
@@ -1015,7 +1017,7 @@
         if (!this.consentRgpd) { this.consentError = true; return; }
         try {
           if (this.emailAddress && this.emailAddress.includes('@')) {
-            try { fetch('/audit/lead', { method: 'POST', body: JSON.stringify({ email: this.emailAddress, name: this.userName || null, company: this.userCompany || null, consentement_rgpd: true, score: this.results.score, level_label: this.results.levelLabel, surface: this.form.surface, building_type: this.form.buildingType, savings_euro: this.results.savingsEuro, payload: { form: this.form, results: this.results } }), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || '', 'X-Requested-With': 'XMLHttpRequest' } }).catch(() => {}); } catch(e) {}
+            try { fetch('/audit/lead', { method: 'POST', body: JSON.stringify({ _gotcha: this.honeypot || '', email: this.emailAddress, name: this.userName || null, company: this.userCompany || null, consentement_rgpd: true, score: this.results.score, level_label: this.results.levelLabel, surface: this.form.surface, building_type: this.form.buildingType, savings_euro: this.results.savingsEuro, payload: { form: this.form, results: this.results } }), headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content || '', 'X-Requested-With': 'XMLHttpRequest' } }).catch(() => {}); } catch(e) {}
           }
           const jsPDFModule = window.jspdf || await import('jspdf');
           const { jsPDF } = jsPDFModule;
