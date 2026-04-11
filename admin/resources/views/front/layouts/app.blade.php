@@ -103,6 +103,9 @@
   {!! $__tracking['head'] !!}
 
   @stack('head')
+
+  {{-- Custom code admin (Avancé > Code personnalisé head) --}}
+  {!! $settings->custom_head_code ?? '' !!}
 </head>
 <body class="min-h-screen bg-white text-dark-900 antialiased" style="font-family: 'Inter', system-ui, sans-serif;">
   {!! $__tracking['body'] ?? '' !!}
@@ -350,5 +353,8 @@
   </script>
   @endif
   @include('front.partials.sticky-cta')
+
+  {{-- Custom code admin (Avancé > Code personnalisé body) --}}
+  {!! $settings->custom_body_code ?? '' !!}
 </body>
 </html>
