@@ -10,17 +10,17 @@ class GeneralSettingsSeeder extends Seeder
     public function run(): void
     {
         GeneralSetting::updateOrCreate(['id' => 1], [
-            // IDENTIT\u00c9
+            // IDENTITÉ
             'company_name' => 'NeoGTB',
-            'company_tagline' => 'Ma\u00eetrisez la Gestion Technique de vos B\u00e2timents',
+            'company_tagline' => 'Maîtrisez la Gestion Technique de vos Bâtiments',
             'company_email' => 'contact@neogtb.fr',
             'company_website' => 'https://neogtb.fr',
             'company_country' => 'France',
             'company_founding_year' => 2026,
-            'company_description' => 'NeoGTB - Tout savoir sur la Gestion Technique du B\u00e2timent (GTB) et la Gestion Technique Centralis\u00e9e (GTC). Guides, audits gratuits et comparateurs.',
-            'company_opening_hours' => ['lun_ven' => '09:00 - 18:00', 'sam' => 'Ferm\u00e9', 'dim' => 'Ferm\u00e9'],
+            'company_description' => 'NeoGTB - Tout savoir sur la Gestion Technique du Bâtiment (GTB) et la Gestion Technique Centralisée (GTC). Guides, audits gratuits et comparateurs.',
+            'company_opening_hours' => ['lun_ven' => '09:00 - 18:00', 'sam' => 'Fermé', 'dim' => 'Fermé'],
 
-            // TH\u00c8ME
+            // THÈME
             'primary_color' => '#1E3A5F',
             'secondary_color' => '#2D5F8A',
             'accent_color' => '#F59E0B',
@@ -59,15 +59,15 @@ class GeneralSettingsSeeder extends Seeder
             ],
 
             // SEO
-            'seo_title_suffix' => ' \u2014 NeoGTB',
-            'seo_default_description' => 'NeoGTB - Tout savoir sur la Gestion Technique du B\u00e2timent (GTB) et la Gestion Technique Centralis\u00e9e (GTC). Guides, audits gratuits et comparateurs.',
+            'seo_title_suffix' => ' — NeoGTB',
+            'seo_default_description' => 'NeoGTB - Tout savoir sur la Gestion Technique du Bâtiment (GTB) et la Gestion Technique Centralisée (GTC). Guides, audits gratuits et comparateurs.',
             'seo_robots' => 'index, follow',
             'seo_schema_type' => 'Organization',
             'seo_canonical_url' => 'https://neogtb.fr',
 
             // TRACKING
             'cookie_banner_enabled' => true,
-            'cookie_banner_text' => 'Ce site utilise des cookies pour am\u00e9liorer votre exp\u00e9rience. En continuant, vous acceptez notre politique de cookies.',
+            'cookie_banner_text' => 'Ce site utilise des cookies pour améliorer votre expérience. En continuant, vous acceptez notre politique de cookies.',
 
             // ANNONCE
             'announcement_enabled' => false,
@@ -77,7 +77,7 @@ class GeneralSettingsSeeder extends Seeder
 
             // MAINTENANCE
             'maintenance_enabled' => false,
-            'maintenance_message' => 'Le site est actuellement en maintenance. Nous serons bient\u00f4t de retour.',
+            'maintenance_message' => 'Le site est actuellement en maintenance. Nous serons bientôt de retour.',
 
             // EMAIL
             'email_from_name' => 'NeoGTB',
@@ -89,7 +89,7 @@ class GeneralSettingsSeeder extends Seeder
             'rgpd_retention_cookies_days' => 395,
             'rgpd_retention_newsletter_days' => 1095,
 
-            // S\u00c9CURIT\u00c9
+            // SÉCURITÉ
             'smtp_port' => 587,
             'smtp_encryption' => 'tls',
 
@@ -108,21 +108,21 @@ class GeneralSettingsSeeder extends Seeder
             'ui_labels' => [
                 'forms' => [
                     'name' => 'Nom',
-                    'first_name' => 'Pr\u00e9nom',
+                    'first_name' => 'Prénom',
                     'email' => 'Email',
-                    'phone' => 'T\u00e9l\u00e9phone',
+                    'phone' => 'Téléphone',
                     'company' => 'Entreprise',
                     'message' => 'Message',
                     'subject' => 'Sujet',
                     'submit' => 'Envoyer',
                     'cancel' => 'Annuler',
-                    'required_fields' => 'Les champs marqu\u00e9s d\'un * sont obligatoires',
-                    'success_message' => 'Votre message a bien \u00e9t\u00e9 envoy\u00e9',
-                    'error_message' => 'Une erreur est survenue, veuillez r\u00e9essayer',
-                    'building_type' => 'Type de b\u00e2timent',
-                    'surface' => 'Surface (m\u00b2)',
-                    'building_year' => 'Ann\u00e9e de construction',
-                    'energy_bill' => 'Facture \u00e9nerg\u00e9tique annuelle (\u20ac)',
+                    'required_fields' => 'Les champs marqués d\'un * sont obligatoires',
+                    'success_message' => 'Votre message a bien été envoyé',
+                    'error_message' => 'Une erreur est survenue, veuillez réessayer',
+                    'building_type' => 'Type de bâtiment',
+                    'surface' => 'Surface (m²)',
+                    'building_year' => 'Année de construction',
+                    'energy_bill' => 'Facture énergétique annuelle (€)',
                     'gtb_level' => 'Niveau GTB actuel',
                 ],
                 'header' => [
@@ -130,7 +130,7 @@ class GeneralSettingsSeeder extends Seeder
                     'gtb' => 'GTB',
                     'gtc' => 'GTC',
                     'solutions' => 'Solutions',
-                    'reglementation' => 'R\u00e9glementation',
+                    'reglementation' => 'Réglementation',
                     'blog' => 'Blog',
                     'contact' => 'Contact',
                     'audit_cta' => 'Audit gratuit',
@@ -139,37 +139,37 @@ class GeneralSettingsSeeder extends Seeder
                 'footer' => [
                     'col1_title' => 'Comprendre',
                     'col2_title' => 'Outils',
-                    'col3_title' => 'L\u00e9gal',
+                    'col3_title' => 'Légal',
                     'col4_title' => 'Newsletter',
                     'newsletter_placeholder' => 'Votre email',
                     'newsletter_button' => 'S\'abonner',
                     'newsletter_subtitle' => 'Veille GTB mensuelle',
-                    'copyright_prefix' => '\u00a9',
+                    'copyright_prefix' => '©',
                     'no_tracking' => 'Ce site n\'utilise aucun cookie de tracking.',
                 ],
                 'cta' => [
-                    'audit_title' => 'Pr\u00eat \u00e0 optimiser votre b\u00e2timent ?',
-                    'audit_subtitle' => 'Obtenez un diagnostic GTB personnalis\u00e9 en moins de 5 minutes.',
+                    'audit_title' => 'Prêt à optimiser votre bâtiment ?',
+                    'audit_subtitle' => 'Obtenez un diagnostic GTB personnalisé en moins de 5 minutes.',
                     'audit_button' => 'Lancer l\'audit gratuit',
                     'contact_us' => 'Contactez-nous',
                     'learn_more' => 'En savoir plus',
-                    'download' => 'T\u00e9l\u00e9charger',
+                    'download' => 'Télécharger',
                     'compare' => 'Comparer',
                     'back_to_blog' => 'Retour au blog',
                 ],
                 'search' => [
                     'placeholder' => 'Rechercher un article...',
-                    'no_results' => 'Aucun r\u00e9sultat trouv\u00e9',
+                    'no_results' => 'Aucun résultat trouvé',
                     'loading' => 'Chargement...',
                 ],
                 'cookie' => [
                     'title' => 'Gestion des cookies',
-                    'description' => 'Nous utilisons des cookies pour am\u00e9liorer votre exp\u00e9rience de navigation et analyser notre trafic.',
+                    'description' => 'Nous utilisons des cookies pour améliorer votre expérience de navigation et analyser notre trafic.',
                     'accept' => 'Tout accepter',
                     'reject' => 'Tout refuser',
                     'customize' => 'Personnaliser',
-                    'save_preferences' => 'Enregistrer mes pr\u00e9f\u00e9rences',
-                    'necessary_title' => 'Cookies n\u00e9cessaires',
+                    'save_preferences' => 'Enregistrer mes préférences',
+                    'necessary_title' => 'Cookies nécessaires',
                     'necessary_desc' => 'Indispensables au fonctionnement du site.',
                     'analytics_title' => 'Cookies analytiques',
                     'analytics_desc' => 'Nous permettent de mesurer l\'audience du site.',
@@ -177,28 +177,28 @@ class GeneralSettingsSeeder extends Seeder
                 'validation' => [
                     'required' => 'Ce champ est obligatoire',
                     'email_invalid' => 'L\'adresse email n\'est pas valide',
-                    'phone_invalid' => 'Le num\u00e9ro de t\u00e9l\u00e9phone n\'est pas valide',
-                    'min_length' => 'Ce champ doit contenir au moins :min caract\u00e8res',
-                    'max_length' => 'Ce champ ne doit pas d\u00e9passer :max caract\u00e8res',
+                    'phone_invalid' => 'Le numéro de téléphone n\'est pas valide',
+                    'min_length' => 'Ce champ doit contenir au moins :min caractères',
+                    'max_length' => 'Ce champ ne doit pas dépasser :max caractères',
                 ],
                 'pagination' => [
-                    'previous' => 'Pr\u00e9c\u00e9dent',
+                    'previous' => 'Précédent',
                     'next' => 'Suivant',
                     'showing' => 'Affichage de',
-                    'to' => '\u00e0',
+                    'to' => 'à',
                     'of' => 'sur',
-                    'results' => 'r\u00e9sultats',
+                    'results' => 'résultats',
                 ],
                 'misc' => [
                     'loading' => 'Chargement...',
-                    'no_data' => 'Aucune donn\u00e9e disponible',
+                    'no_data' => 'Aucune donnée disponible',
                     'back' => 'Retour',
                     'close' => 'Fermer',
                     'share' => 'Partager',
                     'print' => 'Imprimer',
                     'reading_time' => 'min de lecture',
-                    'published_on' => 'Publi\u00e9 le',
-                    'updated_on' => 'Mis \u00e0 jour le',
+                    'published_on' => 'Publié le',
+                    'updated_on' => 'Mis à jour le',
                 ],
                 'faq' => [
                     'eyebrow' => 'Questions fréquentes',
@@ -282,47 +282,47 @@ class GeneralSettingsSeeder extends Seeder
             'status_configs' => [
                 'post' => [
                     ['key' => 'draft', 'label' => 'Brouillon', 'color' => 'gray', 'icon' => 'heroicon-o-pencil'],
-                    ['key' => 'published', 'label' => 'Publi\u00e9', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
-                    ['key' => 'archived', 'label' => 'Archiv\u00e9', 'color' => 'warning', 'icon' => 'heroicon-o-archive-box'],
+                    ['key' => 'published', 'label' => 'Publié', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
+                    ['key' => 'archived', 'label' => 'Archivé', 'color' => 'warning', 'icon' => 'heroicon-o-archive-box'],
                 ],
                 'audit_lead' => [
                     ['key' => 'new', 'label' => 'Nouveau', 'color' => 'info', 'icon' => 'heroicon-o-sparkles'],
-                    ['key' => 'contacted', 'label' => 'Contact\u00e9', 'color' => 'primary', 'icon' => 'heroicon-o-phone'],
-                    ['key' => 'qualified', 'label' => 'Qualifi\u00e9', 'color' => 'warning', 'icon' => 'heroicon-o-star'],
+                    ['key' => 'contacted', 'label' => 'Contacté', 'color' => 'primary', 'icon' => 'heroicon-o-phone'],
+                    ['key' => 'qualified', 'label' => 'Qualifié', 'color' => 'warning', 'icon' => 'heroicon-o-star'],
                     ['key' => 'converted', 'label' => 'Converti', 'color' => 'success', 'icon' => 'heroicon-o-check-badge'],
                     ['key' => 'lost', 'label' => 'Perdu', 'color' => 'danger', 'icon' => 'heroicon-o-x-circle'],
                 ],
                 'cee_lead' => [
                     ['key' => 'new', 'label' => 'Nouveau', 'color' => 'info', 'icon' => 'heroicon-o-sparkles'],
                     ['key' => 'processing', 'label' => 'En traitement', 'color' => 'warning', 'icon' => 'heroicon-o-clock'],
-                    ['key' => 'sent', 'label' => 'Dossier envoy\u00e9', 'color' => 'primary', 'icon' => 'heroicon-o-paper-airplane'],
-                    ['key' => 'signed', 'label' => 'Sign\u00e9', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
+                    ['key' => 'sent', 'label' => 'Dossier envoyé', 'color' => 'primary', 'icon' => 'heroicon-o-paper-airplane'],
+                    ['key' => 'signed', 'label' => 'Signé', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
                 ],
                 'contact_message' => [
                     ['key' => 'new', 'label' => 'Nouveau', 'color' => 'info', 'icon' => 'heroicon-o-envelope'],
                     ['key' => 'read', 'label' => 'Lu', 'color' => 'gray', 'icon' => 'heroicon-o-envelope-open'],
-                    ['key' => 'replied', 'label' => 'R\u00e9pondu', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
-                    ['key' => 'archived', 'label' => 'Archiv\u00e9', 'color' => 'warning', 'icon' => 'heroicon-o-archive-box'],
+                    ['key' => 'replied', 'label' => 'Répondu', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
+                    ['key' => 'archived', 'label' => 'Archivé', 'color' => 'warning', 'icon' => 'heroicon-o-archive-box'],
                 ],
                 'gdpr_request' => [
                     ['key' => 'pending', 'label' => 'En attente', 'color' => 'warning', 'icon' => 'heroicon-o-clock'],
                     ['key' => 'processing', 'label' => 'En traitement', 'color' => 'info', 'icon' => 'heroicon-o-cog-6-tooth'],
-                    ['key' => 'completed', 'label' => 'Trait\u00e9e', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
-                    ['key' => 'rejected', 'label' => 'Refus\u00e9e', 'color' => 'danger', 'icon' => 'heroicon-o-x-circle'],
+                    ['key' => 'completed', 'label' => 'Traitée', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
+                    ['key' => 'rejected', 'label' => 'Refusée', 'color' => 'danger', 'icon' => 'heroicon-o-x-circle'],
                 ],
             ],
 
-            // TEXTES L\u00c9GAUX
+            // TEXTES LÉGAUX
             'legal_texts' => [
                 'cookie_consent' => [
                     'title' => 'Gestion des cookies',
-                    'description' => 'Nous utilisons des cookies pour am\u00e9liorer votre exp\u00e9rience.',
+                    'description' => 'Nous utilisons des cookies pour améliorer votre expérience.',
                     'accept' => 'Tout accepter',
                     'reject' => 'Tout refuser',
                     'customize' => 'Personnaliser',
                     'categories' => [
-                        ['key' => 'necessary', 'label' => 'Cookies n\u00e9cessaires', 'description' => 'Indispensables au fonctionnement du site.', 'required' => true],
-                        ['key' => 'analytics', 'label' => 'Cookies analytiques', 'description' => 'Mesure d\'audience anonymis\u00e9e.'],
+                        ['key' => 'necessary', 'label' => 'Cookies nécessaires', 'description' => 'Indispensables au fonctionnement du site.', 'required' => true],
+                        ['key' => 'analytics', 'label' => 'Cookies analytiques', 'description' => 'Mesure d\'audience anonymisée.'],
                     ],
                 ],
                 'mentions_legales' => '<h2>1. Éditeur du site</h2>
@@ -892,6 +892,6 @@ class GeneralSettingsSeeder extends Seeder
             ],
         ]);
 
-        $this->command?->info('GeneralSettings NeoGTB peupl\u00e9.');
+        $this->command?->info('GeneralSettings NeoGTB peuplé.');
     }
 }
