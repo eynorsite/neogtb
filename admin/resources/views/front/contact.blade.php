@@ -38,12 +38,18 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                             </svg>
                         </div>
+                        @php
+                            $contactEmail = $settings->company_email ?? 'contact@neogtb.fr';
+                            $contactPhone = $settings->company_phone ?? null;
+                            $contactPhoneTel = $contactPhone ? preg_replace('/[^0-9+]/', '', $contactPhone) : null;
+                        @endphp
                         <div>
                             <p class="text-[13px] text-dark-400">{{ $site->label('contact.info_email', 'Email') }}</p>
-                            <a href="mailto:hello@neogtb.fr" class="text-[15px] font-medium text-dark-900 hover:text-accent-600 transition-colors">hello@neogtb.fr</a>
+                            <a href="mailto:{{ $contactEmail }}" class="text-[15px] font-medium text-dark-900 hover:text-accent-600 transition-colors">{{ $contactEmail }}</a>
                         </div>
                     </div>
 
+                    @if($contactPhone)
                     <!-- Telephone -->
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-dark-50 border border-dark-100">
@@ -53,9 +59,10 @@
                         </div>
                         <div>
                             <p class="text-[13px] text-dark-400">{{ $site->label('contact.info_phone', 'Téléphone') }}</p>
-                            <a href="tel:+33650143252" class="text-[15px] font-medium text-dark-900 hover:text-accent-600 transition-colors">06 50 14 32 52</a>
+                            <a href="tel:{{ $contactPhoneTel }}" class="text-[15px] font-medium text-dark-900 hover:text-accent-600 transition-colors">{{ $contactPhone }}</a>
                         </div>
                     </div>
+                    @endif
 
                     <!-- Response time -->
                     <div class="flex items-center gap-4">
@@ -111,6 +118,9 @@
                                     class="w-full px-4 py-2.5 text-[16px] lg:text-sm text-dark-900 bg-white rounded-lg border border-dark-200 outline-none transition-all focus:border-accent-500 focus:ring-2 focus:ring-accent-50 placeholder:text-dark-300" />
                             </div>
 
+                            {{-- Honeypot anti-bot (champ leurre, ne pas remplir) --}}
+                            <input type="text" name="_gotcha" style="display:none!important;position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
                             <div>
                                 <label for="company" class="block text-[13px] font-medium text-dark-700 mb-1.5">
                                     {{ $site->label('forms.company', 'Entreprise') }} <span class="text-dark-300 font-normal">({{ $site->label('forms.optional', 'optionnel') }})</span>
@@ -154,7 +164,7 @@
                             </div>
 
                             <label class="flex items-start gap-2 cursor-pointer">
-                                <input type="checkbox" required class="mt-0.5 rounded border-dark-300 text-accent-600 focus:ring-accent-500" />
+                                <input type="checkbox" name="consentement_rgpd" value="1" required class="mt-0.5 rounded border-dark-300 text-accent-600 focus:ring-accent-500" />
                                 <span class="text-[11px] text-dark-400 leading-relaxed">
                                     {{ $site->label('forms.rgpd_consent', "J'accepte que mes données soient traitées par NeoGTB pour répondre à ma demande (intérêt légitime, art. 6.1.f RGPD). Conservées 3 ans.") }} <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">{{ $site->label('forms.privacy_link', 'Politique de confidentialité') }}</a> &middot; <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">{{ $site->label('forms.rights_link', 'Exercer vos droits') }}</a>
                                 </span>

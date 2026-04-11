@@ -312,16 +312,22 @@ class SiteSettingsPage extends Page implements HasForms
                         FileUpload::make('company_logo')
                             ->label('Logo principal')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('logos')
                             ->maxSize(2048),
                         FileUpload::make('company_logo_white')
                             ->label('Logo blanc (fond sombre)')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('logos')
                             ->maxSize(2048),
                         FileUpload::make('company_logo_icon')
                             ->label('Logo icône (carré)')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('logos')
                             ->maxSize(1024),
                     ]),
@@ -331,12 +337,16 @@ class SiteSettingsPage extends Page implements HasForms
                         FileUpload::make('favicon')
                             ->label('Favicon')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('logos')
                             ->maxSize(512)
                             ->helperText('32x32px recommandé'),
                         FileUpload::make('og_default_image')
                             ->label('Image Open Graph par défaut')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('og')
                             ->maxSize(2048)
                             ->helperText('1200x630px recommandé'),
@@ -551,6 +561,8 @@ class SiteSettingsPage extends Page implements HasForms
                         FileUpload::make('hero_default_image')
                             ->label('Image hero')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('hero')
                             ->columnSpanFull(),
                         TextInput::make('hero_title_line1')
@@ -944,6 +956,29 @@ class SiteSettingsPage extends Page implements HasForms
                         TextInput::make('ui_labels.misc.share')->label('Partager'),
                         TextInput::make('ui_labels.misc.reading_time')->label('Temps de lecture'),
                     ]),
+
+                Section::make('Page FAQ')
+                    ->description('Textes du hero et du CTA de la page /faq. Les questions/réponses se gèrent dans l\'onglet « Pages ».')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.faq.eyebrow')
+                            ->label('Eyebrow (petit texte au-dessus du titre)')
+                            ->default('Questions fréquentes'),
+                        TextInput::make('ui_labels.faq.title')
+                            ->label('Titre H1')
+                            ->default('Vos questions sur la GTB/GTC'),
+                        Textarea::make('ui_labels.faq.subtitle')
+                            ->label('Sous-titre')
+                            ->rows(2)
+                            ->columnSpanFull()
+                            ->default('Tout ce que vous devez savoir sur la Gestion Technique du Bâtiment et la conformité réglementaire'),
+                        TextInput::make('ui_labels.faq.cta_text')
+                            ->label('Texte du CTA final')
+                            ->default('Vous ne trouvez pas votre réponse ?'),
+                        TextInput::make('ui_labels.faq.cta_button')
+                            ->label('Bouton du CTA final')
+                            ->default('Contactez un expert'),
+                    ]),
             ]);
     }
 
@@ -1082,17 +1117,38 @@ class SiteSettingsPage extends Page implements HasForms
                     ]),
 
                 Section::make('Protocoles GTB')
+                    ->description('Liste des protocoles de communication GTB affichés sur la page Solutions.')
                     ->schema([
                         Repeater::make('gtb_protocols_config')
                             ->label('')
                             ->schema([
                                 Grid::make(2)->schema([
-                                    TextInput::make('slug')->required(),
-                                    TextInput::make('label')->required(),
+                                    TextInput::make('slug')->required()->placeholder('bacnet'),
+                                    TextInput::make('label')->required()->placeholder('BACnet'),
                                 ]),
-                                Textarea::make('description')->rows(2),
+                                Grid::make(3)->schema([
+                                    TextInput::make('standard')->placeholder('ISO 16484-5'),
+                                    Select::make('category')
+                                        ->options([
+                                            'terrain' => 'Terrain (bus)',
+                                            'IP'      => 'IP (Ethernet)',
+                                            'sans-fil' => 'Sans-fil',
+                                        ])
+                                        ->native(false),
+                                    TextInput::make('icon')->placeholder('🌐 ou heroicon-o-globe-alt'),
+                                ]),
+                                Textarea::make('description')
+                                    ->rows(4)
+                                    ->helperText('HTML autorisé (balises <strong>, <em>)'),
+                                KeyValue::make('tags')
+                                    ->label('Tags (liste)')
+                                    ->helperText('Clé = position (1, 2, 3), Valeur = tag affiché')
+                                    ->keyLabel('#')
+                                    ->valueLabel('Tag'),
                             ])
                             ->collapsible()
+                            ->cloneable()
+                            ->itemLabel(fn (array $state): ?string => $state['label'] ?? null)
                             ->addActionLabel('Ajouter un protocole'),
                     ]),
 
@@ -1330,68 +1386,116 @@ class SiteSettingsPage extends Page implements HasForms
         $sections = [];
         foreach ($pages as $page) {
             $prefix = $page['key'] . '_page_config';
-            $sections[] = Section::make($page['label'])
-                ->collapsed()
-                ->icon('heroicon-o-document-text')
-                ->schema([
-                    Section::make('Hero')->schema([
-                        TextInput::make("{$prefix}.hero_title")
-                            ->label('Titre du Hero')
-                            ->maxLength(255),
-                        Textarea::make("{$prefix}.hero_subtitle")
-                            ->label('Sous-titre du Hero')
-                            ->rows(2),
-                        FileUpload::make("{$prefix}.hero_image")
-                            ->label('Image du Hero')
-                            ->image()
-                            ->directory("pages/{$page['key']}")
-                            ->maxSize(2048),
-                    ])->collapsible(),
-                    Section::make('SEO')->schema([
-                        TextInput::make("{$prefix}.meta_title")
-                            ->label('Meta Title')
-                            ->maxLength(70)
-                            ->helperText('60-70 caractères recommandés'),
-                        Textarea::make("{$prefix}.meta_description")
-                            ->label('Meta Description')
-                            ->rows(2)
-                            ->maxLength(160)
-                            ->helperText('150-160 caractères recommandés'),
-                    ])->collapsible()->collapsed(),
-                    Section::make('Sections de contenu')->schema([
+
+            $pageSchema = [
+                Section::make('Hero')->schema([
+                    TextInput::make("{$prefix}.hero_title")
+                        ->label('Titre du Hero')
+                        ->maxLength(255),
+                    Textarea::make("{$prefix}.hero_subtitle")
+                        ->label('Sous-titre du Hero')
+                        ->rows(2),
+                    FileUpload::make("{$prefix}.hero_image")
+                        ->label('Image du Hero')
+                        ->image()
+                        ->disk('public')
+                        ->visibility('public')
+                        ->directory("pages/{$page['key']}/hero")
+                        ->maxSize(2048),
+                ])->collapsible(),
+                Section::make('SEO')->schema([
+                    TextInput::make("{$prefix}.meta_title")
+                        ->label('Meta Title')
+                        ->maxLength(70)
+                        ->helperText('60-70 caractères recommandés'),
+                    Textarea::make("{$prefix}.meta_description")
+                        ->label('Meta Description')
+                        ->rows(2)
+                        ->maxLength(160)
+                        ->helperText('150-160 caractères recommandés'),
+                ])->collapsible()->collapsed(),
+            ];
+
+            if ($page['key'] === 'faq') {
+                // Repeater spécialisé : catégories → questions / réponses
+                $pageSchema[] = Section::make('Catégories de questions')
+                    ->description('Organisez les questions/réponses par thématique. Chaque catégorie peut contenir autant de Q/R que nécessaire. Le HTML est autorisé dans les réponses (liens, gras, etc.).')
+                    ->schema([
                         Repeater::make("{$prefix}.sections")
-                            ->label('Blocs de contenu')
+                            ->label('Catégories FAQ')
                             ->schema([
-                                TextInput::make('title')
-                                    ->label('Titre de la section')
+                                TextInput::make('label')
+                                    ->label('Nom de la catégorie')
+                                    ->placeholder('Ex. : À propos de NeoGTB')
                                     ->required(),
-                                Textarea::make('content')
-                                    ->label('Contenu')
-                                    ->rows(3),
-                                FileUpload::make('image')
-                                    ->label('Image')
-                                    ->image()
-                                    ->directory("pages/{$page['key']}/sections")
-                                    ->maxSize(2048),
-                                TextInput::make('cta_text')
-                                    ->label('Texte du CTA'),
-                                TextInput::make('cta_url')
-                                    ->label('Lien du CTA')
-                                    ->url(),
+                                Repeater::make('items')
+                                    ->label('Questions / Réponses')
+                                    ->schema([
+                                        TextInput::make('question')
+                                            ->label('Question')
+                                            ->required()
+                                            ->columnSpanFull(),
+                                        Textarea::make('answer')
+                                            ->label('Réponse (HTML autorisé)')
+                                            ->rows(4)
+                                            ->required()
+                                            ->columnSpanFull(),
+                                    ])
+                                    ->collapsible()
+                                    ->collapsed()
+                                    ->itemLabel(fn (array $state): ?string => $state['question'] ?? null)
+                                    ->defaultItems(0)
+                                    ->addActionLabel('Ajouter une question'),
                             ])
                             ->collapsible()
                             ->collapsed()
+                            ->itemLabel(fn (array $state): ?string => $state['label'] ?? null)
                             ->defaultItems(0)
-                            ->addActionLabel('Ajouter une section'),
-                    ])->collapsible()->collapsed(),
-                    Section::make('Données structurées')->schema([
-                        KeyValue::make("{$prefix}.custom_data")
-                            ->label('Données personnalisées (clé → valeur)')
-                            ->addActionLabel('Ajouter un champ')
-                            ->keyLabel('Clé')
-                            ->valueLabel('Valeur'),
-                    ])->collapsible()->collapsed(),
-                ]);
+                            ->addActionLabel('Ajouter une catégorie'),
+                    ])->collapsible();
+            } else {
+                $pageSchema[] = Section::make('Sections de contenu')->schema([
+                    Repeater::make("{$prefix}.sections")
+                        ->label('Blocs de contenu')
+                        ->schema([
+                            TextInput::make('title')
+                                ->label('Titre de la section')
+                                ->required(),
+                            Textarea::make('content')
+                                ->label('Contenu')
+                                ->rows(3),
+                            FileUpload::make('image')
+                                ->label('Image')
+                                ->image()
+                                ->disk('public')
+                                ->visibility('public')
+                                ->directory("pages/{$page['key']}/sections")
+                                ->maxSize(2048),
+                            TextInput::make('cta_text')
+                                ->label('Texte du CTA'),
+                            TextInput::make('cta_url')
+                                ->label('Lien du CTA')
+                                ->url(),
+                        ])
+                        ->collapsible()
+                        ->collapsed()
+                        ->defaultItems(0)
+                        ->addActionLabel('Ajouter une section'),
+                ])->collapsible()->collapsed();
+            }
+
+            $pageSchema[] = Section::make('Données structurées')->schema([
+                KeyValue::make("{$prefix}.custom_data")
+                    ->label('Données personnalisées (clé → valeur)')
+                    ->addActionLabel('Ajouter un champ')
+                    ->keyLabel('Clé')
+                    ->valueLabel('Valeur'),
+            ])->collapsible()->collapsed();
+
+            $sections[] = Section::make($page['label'])
+                ->collapsed()
+                ->icon('heroicon-o-document-text')
+                ->schema($pageSchema);
         }
 
         return Tab::make('Pages')

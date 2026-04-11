@@ -25,7 +25,7 @@ class NewsletterController extends Controller
 
         abort_if($subscriber === null, 404);
 
-        return view('front.newsletter-confirmed');
+        return view('front.newsletter-confirmee');
     }
 
     public function unsubscribe(Request $request, NewsletterSubscriptionService $service): JsonResponse

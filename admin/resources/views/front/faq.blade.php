@@ -34,12 +34,12 @@
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
         <div class="max-w-2xl">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('faq.eyebrow', 'FAQ') }}</p>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('faq.eyebrow', 'Questions fréquentes') }}</p>
             <h1 class="font-heading text-[30px] lg:text-[44px] font-medium text-dark-900 leading-tight tracking-tight mb-4">
-                {{ $site->label('faq.title', 'Questions fréquentes') }}
+                {{ $site->label('faq.title', 'Vos questions sur la GTB/GTC') }}
             </h1>
             <p class="text-[17px] text-dark-500 leading-relaxed max-w-lg">
-                {{ $site->label('faq.subtitle', 'Tout ce que vous devez savoir sur NeoGTB, la GTB, le décret BACS et nos outils.') }}
+                {{ $site->label('faq.subtitle', 'Tout ce que vous devez savoir sur la Gestion Technique du Bâtiment et la conformité réglementaire') }}
             </p>
         </div>
     </div>
@@ -50,59 +50,39 @@
     <div class="max-w-[720px] mx-auto px-5 lg:px-10">
 
         @php
-        $sections = [
-            [
-                'label' => 'À propos de NeoGTB',
-                'items' => [
-                    ['q' => "Qu'est-ce que NeoGTB ?", 'a' => "NeoGTB est un service de conseil indépendant spécialisé dans la Gestion Technique du Bâtiment (GTB). Créé par Ulrich Calmo via la société EYNOR, NeoGTB propose des outils gratuits (diagnostic, comparateur, générateur CEE) et des prestations de conseil payantes (audits sur site, cahiers des charges, AMO GTB). NeoGTB ne vend aucun équipement et n'a aucun lien commercial avec les fabricants."],
-                    ['q' => "Comment NeoGTB gagne-t-il de l'argent ?", 'a' => "NeoGTB vend du conseil, pas du matériel. Les revenus proviennent exclusivement de prestations de conseil technique : audits approfondis sur site, rédaction de cahiers des charges neutres, et assistance à maîtrise d'ouvrage GTB. Les outils en ligne (diagnostic, comparateur, générateur CEE) sont gratuits et le resteront. Aucune commission n'est perçue sur les ventes de matériel ou les prescriptions."],
-                    ['q' => "Pourquoi les outils sont-ils gratuits ?", 'a' => "Les outils gratuits servent à éduquer le marché et à démontrer l'approche NeoGTB. Pas de piège : pas d'inscription obligatoire, pas de relance commerciale, pas de revente de données. Si après avoir utilisé les outils vous souhaitez aller plus loin avec un audit sur site, vous pouvez me contacter — mais il n'y a aucune obligation."],
-                    ['q' => "Êtes-vous vraiment indépendant ?", 'a' => "Oui. EYNOR, la société derrière NeoGTB, n'a aucun actionnaire fabricant, aucun partenariat commercial rémunéré, aucun lien d'affiliation. Les critères de comparaison sont publics et vérifiables sur le site. Si je recommande BACnet plutôt que LON pour votre projet, c'est une décision technique, pas commerciale. Vous pouvez consulter ma <a href='/positionnement' class='text-accent-600 hover:text-accent-700'>charte d'indépendance</a>."],
-                ],
-            ],
-            [
-                'label' => 'GTB & Réglementation',
-                'items' => [
-                    ['q' => "Qu'est-ce que la GTB ?", 'a' => "La Gestion Technique du Bâtiment (GTB) est un système centralisé qui pilote et supervise les équipements techniques d'un bâtiment : chauffage, ventilation, climatisation (CVC), éclairage, stores, contrôle d'accès, comptage énergie. L'objectif : optimiser la consommation énergétique, améliorer le confort et faciliter la maintenance. Pour un guide complet, consultez notre page <a href='/gtb' class='text-accent-600 hover:text-accent-700'>Qu'est-ce que la GTB ?</a>"],
-                    ['q' => "Mon bâtiment est-il concerné par le décret BACS ?", 'a' => "Si votre bâtiment est tertiaire (bureaux, commerces, enseignement, santé...) et que sa puissance CVC dépasse 290 kW, vous devez avoir un système BACS de classe B minimum depuis le 1er janvier 2025. Pour les bâtiments entre 70 et 290 kW, l'échéance est fixée à 2030. Pour les bâtiments neufs avec permis postérieur au 21/07/2021, c'est obligatoire dès la construction. <a href='/audit' class='text-accent-600 hover:text-accent-700'>Faites le diagnostic gratuit</a> pour savoir où vous en êtes."],
-                    ['q' => "Que signifient les classes A, B, C, D de la norme ISO 52120-1 (ex-EN 15232) ?", 'a' => "La norme ISO 52120-1 (ex-EN 15232) classe les systèmes de gestion technique en 4 niveaux. <strong>Classe D</strong> : aucune automatisation, pas performant. <strong>Classe C</strong> : automatisation standard, le minimum. <strong>Classe B</strong> : automatisation avancée avec supervision centralisée — c'est le niveau requis par le décret BACS. <strong>Classe A</strong> : haute performance, avec optimisation énergétique et gestion prédictive. Notre <a href='/audit' class='text-accent-600 hover:text-accent-700'>diagnostic gratuit</a> vous situe sur cette échelle."],
-                    ['q' => "Quel protocole choisir : BACnet, KNX ou Modbus ?", 'a' => "Il n'y a pas de réponse universelle — ça dépend de votre contexte. <strong>BACnet</strong> est le standard international de la GTB, privilégié pour les grands bâtiments tertiaires et l'interopérabilité multi-marques. <strong>KNX</strong> excelle pour l'éclairage et les stores, avec 500+ fabricants certifiés. <strong>Modbus</strong> est simple et dominant pour le comptage énergie. Notre <a href='/comparateur' class='text-accent-600 hover:text-accent-700'>comparateur</a> vous aide à y voir clair sans biais commercial."],
-                ],
-            ],
-            [
-                'label' => 'Outils & Prestations',
-                'items' => [
-                    ['q' => "Combien coûte un audit GTB avec NeoGTB ?", 'a' => "Le diagnostic en ligne est gratuit, sans inscription. Pour un audit approfondi sur site avec rapport détaillé, les tarifs dépendent de la surface, du nombre de sites et de la complexité de l'installation. <a href='/contact' class='text-accent-600 hover:text-accent-700'>Contactez-moi</a> avec votre contexte pour obtenir un devis. Comptez un premier échange gratuit de 15 minutes pour cadrer votre besoin."],
-                    ['q' => "Le diagnostic en ligne est-il fiable ?", 'a' => "Le diagnostic en ligne est un outil d'orientation basé sur la norme ISO 52120-1. Il donne une estimation de votre niveau de maturité GTB (classe A à D) et des recommandations générales. Pour un diagnostic certifié avec mesures sur site, un audit approfondi est nécessaire. L'outil en ligne est un excellent point de départ pour savoir si vous avez besoin d'aller plus loin."],
-                    ['q' => "Dans quelle zone géographique intervenez-vous ?", 'a' => "Les outils en ligne sont accessibles partout. Pour les prestations sur site (audits, AMO), j'interviens principalement en Nouvelle-Aquitaine et sur l'ensemble du territoire français selon la mission. Les échanges préliminaires et le conseil à distance se font sans contrainte géographique."],
-                ],
-            ],
-        ];
+        // Les catégories Q/R sont administrables depuis Filament (onglet Pages → Page FAQ)
+        $faqPageConfig = $site->get('faq_page_config', []);
+        $faqSections = data_get($faqPageConfig, 'sections', []);
         @endphp
 
-        @foreach($sections as $section)
+        @foreach($faqSections as $section)
+        @php $items = $section['items'] ?? []; @endphp
+        @if(!empty($items))
         <div class="mb-12">
+            @if(!empty($section['label']))
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-6">{{ $section['label'] }}</p>
+            @endif
 
-            @foreach($section['items'] as $index => $item)
+            @foreach($items as $index => $item)
             <div x-data="{ open: false }" class="border-t border-dark-200 @if($loop->last) border-b @endif">
                 <button @click="open = !open" class="w-full flex items-center justify-between py-5 min-h-[56px] text-left bg-transparent border-none cursor-pointer">
-                    <span class="text-[15px] font-medium text-dark-900 pr-4">{{ $item['q'] }}</span>
+                    <span class="text-[15px] font-medium text-dark-900 pr-4">{{ $item['question'] ?? '' }}</span>
                     <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-400 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
-                    <p class="text-sm text-dark-500 leading-relaxed pb-5">{!! $item['a'] !!}</p>
+                    <p class="text-sm text-dark-500 leading-relaxed pb-5">{!! $item['answer'] ?? '' !!}</p>
                 </div>
             </div>
             @endforeach
         </div>
+        @endif
         @endforeach
 
         <!-- CTA -->
         <div class="text-center pt-10">
-            <p class="text-base text-dark-500 mb-4">{{ $site->label('faq.cta_text', 'Vous avez une autre question ?') }}</p>
+            <p class="text-base text-dark-500 mb-4">{{ $site->label('faq.cta_text', 'Vous ne trouvez pas votre réponse ?') }}</p>
             <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors btn-glow">
-                {{ $site->label('faq.cta_button', 'Poser ma question') }}
+                {{ $site->label('faq.cta_button', 'Contactez un expert') }}
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
         </div>

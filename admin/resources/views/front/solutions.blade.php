@@ -24,29 +24,29 @@
             <p class="mt-3 text-sm text-dark-500 max-w-xl leading-relaxed">Le protocole est le langage commun entre équipements. Le choix du protocole conditionne l'interopérabilité, la maintenabilité et la pérennité de l'installation.</p>
         </div>
         <div class="grid md:grid-cols-2 gap-3 lg:gap-5">
-            @php
-            $protocols = [
-                ['tag' => 'ISO 16484-5', 'name' => 'BACnet', 'desc' => 'Standard international de la GTB, maintenu par l\'ASHRAE. Deux déclinaisons principales : <strong class="font-medium text-dark-700">BACnet IP</strong> pour les réseaux Ethernet et <strong class="font-medium text-dark-700">BACnet MS/TP</strong> pour les bus RS-485 en terrain. Le protocole définit un modèle objet unifié qui permet l\'interopérabilité entre équipements de marques différentes sans passerelle propriétaire.', 'tags' => ['Interopérabilité multi-marques', 'IP / MS/TP', 'ASHRAE 135']],
-                ['tag' => 'EN 50090 / ISO/IEC 14543', 'name' => 'KNX', 'desc' => 'Standard européen pour l\'automatisation du bâtiment. Le médium principal est le <strong class="font-medium text-dark-700">bus filaire TP</strong> (twisted pair). Plus de 500 fabricants certifiés par l\'Association KNX. Particulièrement adapté à l\'éclairage, la gestion des stores et le CVC en résidentiel et petit tertiaire.', 'tags' => ['500+ fabricants', 'Bus TP', 'Éclairage / Stores / CVC']],
-                ['tag' => 'RTU / TCP', 'name' => 'Modbus', 'desc' => 'Protocole industriel créé par Modicon en 1979, devenu un standard de fait. Simple et robuste, existe en <strong class="font-medium text-dark-700">Modbus RTU</strong> sur RS-485 et <strong class="font-medium text-dark-700">Modbus TCP</strong> sur Ethernet. Architecture maître-esclave. Dominant pour le comptage énergie.', 'tags' => ['Industriel / 1979', 'RS-485 / Ethernet', 'Comptage énergie']],
-                ['tag' => 'EN 14908', 'name' => 'LON', 'desc' => 'Local Operating Network, conçu par Echelon. Architecture <strong class="font-medium text-dark-700">peer-to-peer</strong> : chaque noeud embarque sa propre intelligence. Historiquement très utilisé en GTB tertiaire. En déclin face à BACnet IP, mais encore présent dans le parc existant.', 'tags' => ['Peer-to-peer', 'Parc existant', 'Migration BACnet']],
-                ['tag' => 'IEC 62386', 'name' => 'DALI / DALI-2', 'desc' => 'Standard international dédié au <strong class="font-medium text-dark-700">pilotage de l\'éclairage</strong>. DALI-2 apporte l\'interopérabilité certifiée entre ballasts, capteurs de présence et luxmètres. Jusqu\'à 64 appareils par ligne, adressage individuel, gradation fine.', 'tags' => ['Éclairage dédié', '64 appareils/ligne', 'Gradation fine']],
-                ['tag' => 'IoT / Cloud', 'name' => 'MQTT & API REST', 'desc' => 'Protocoles issus du monde IT, de plus en plus présents en GTB pour <strong class="font-medium text-dark-700">l\'interopérabilité cloud</strong>, les jumeaux numériques et l\'hypervision multi-sites. MQTT est léger et adapté aux capteurs IoT. Les API REST permettent l\'intégration avec les plateformes de GMAO, ERP et analytics.', 'tags' => ['Publish/Subscribe', 'Cloud natif', 'Jumeaux numériques']],
-                ['tag' => 'ISO/IEC 14543-3-10', 'name' => 'EnOcean', 'desc' => 'Technologie <strong class="font-medium text-dark-700">sans fil et sans pile</strong> basée sur la récupération d\'énergie (piézoélectrique, solaire, thermique). Idéale pour la <strong class="font-medium text-dark-700">rénovation</strong> où le câblage est impossible ou coûteux.', 'tags' => ['Sans fil / Sans pile', 'Rénovation', 'Energy harvesting']],
-            ];
-            @endphp
+            @php $protocols = $site->gtbProtocols(); @endphp
             @foreach($protocols as $proto)
             <div class="rounded-2xl p-5 lg:p-7 border border-dark-100 card-hover bg-white">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="text-xs font-medium px-2 py-0.5 rounded bg-primary-50 text-primary-700 border border-primary-100">{{ $proto['tag'] }}</span>
+                    @if(!empty($proto['icon']))
+                        <span class="text-xl leading-none" aria-hidden="true">{{ $proto['icon'] }}</span>
+                    @endif
+                    @if(!empty($proto['standard']))
+                        <span class="text-xs font-medium px-2 py-0.5 rounded bg-primary-50 text-primary-700 border border-primary-100">{{ $proto['standard'] }}</span>
+                    @endif
+                    @if(!empty($proto['category']))
+                        <span class="text-[11px] font-medium px-2 py-0.5 rounded bg-accent-50 text-accent-700 border border-accent-100 uppercase tracking-wider">{{ $proto['category'] }}</span>
+                    @endif
                 </div>
-                <h3 class="text-lg font-medium text-dark-900 tracking-tight">{{ $proto['name'] }}</h3>
-                <p class="mt-2 text-sm text-dark-500 leading-relaxed">{!! $proto['desc'] !!}</p>
+                <h3 class="text-lg font-medium text-dark-900 tracking-tight">{{ $proto['label'] ?? $proto['name'] ?? '' }}</h3>
+                <p class="mt-2 text-sm text-dark-500 leading-relaxed">{!! $proto['description'] ?? '' !!}</p>
+                @if(!empty($proto['tags']) && is_array($proto['tags']))
                 <div class="mt-4 flex flex-wrap gap-2">
                     @foreach($proto['tags'] as $t)
                     <span class="text-xs font-medium px-2 py-0.5 rounded bg-dark-50 text-dark-600 border border-dark-100">{{ $t }}</span>
                     @endforeach
                 </div>
+                @endif
             </div>
             @endforeach
         </div>

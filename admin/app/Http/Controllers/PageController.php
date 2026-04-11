@@ -12,6 +12,8 @@ use App\Models\SitePage;
 use App\Services\Contact\ContactSubmissionService;
 use App\Services\Lead\AuditLeadService;
 use App\Services\Lead\CeeLeadService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
@@ -78,10 +80,24 @@ class PageController extends Controller
         ));
     }
 
-    public function sendContact(SubmitContactMessageRequest $request, ContactSubmissionService $service)
+    public function sendContact(Request $request, ContactSubmissionService $service)
     {
+        // Honeypot anti-bot : si le champ leurre est rempli, on simule un succes
+        // sans creer de message ni declencher la validation.
+        if (filled($request->input('_gotcha'))) {
+            return back()->with('contact_success', true);
+        }
+
+        $rules = (new SubmitContactMessageRequest())->rules();
+        $messages = (new SubmitContactMessageRequest())->messages();
+
+        $validated = Validator::make($request->all(), $rules, $messages)->validate();
+
+        // On retire le consentement RGPD (deja valide, inutile en BDD)
+        unset($validated['consentement_rgpd']);
+
         $service->submit(
-            $request->validated(),
+            $validated,
             hash('sha256', $request->ip()),
             $request->userAgent()
         );

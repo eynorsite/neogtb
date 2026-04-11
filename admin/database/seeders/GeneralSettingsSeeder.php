@@ -200,6 +200,82 @@ class GeneralSettingsSeeder extends Seeder
                     'published_on' => 'Publi\u00e9 le',
                     'updated_on' => 'Mis \u00e0 jour le',
                 ],
+                'faq' => [
+                    'eyebrow' => 'Questions fréquentes',
+                    'title' => 'Vos questions sur la GTB/GTC',
+                    'subtitle' => 'Tout ce que vous devez savoir sur la Gestion Technique du Bâtiment et la conformité réglementaire',
+                    'cta_text' => 'Vous ne trouvez pas votre réponse ?',
+                    'cta_button' => 'Contactez un expert',
+                ],
+            ],
+
+            // FAQ PAGE CONFIG — contenu administrable de la page /faq
+            'faq_page_config' => [
+                'hero_title' => 'Questions fréquentes',
+                'hero_subtitle' => 'Tout ce que vous devez savoir sur NeoGTB, la GTB, le décret BACS et nos outils.',
+                'meta_title' => 'FAQ NeoGTB — Questions fréquentes sur la GTB',
+                'meta_description' => 'Réponses aux questions sur NeoGTB, la GTB, le décret BACS, la norme ISO 52120-1 et nos outils et prestations.',
+                'sections' => [
+                    [
+                        'label' => 'À propos de NeoGTB',
+                        'items' => [
+                            [
+                                'question' => "Qu'est-ce que NeoGTB ?",
+                                'answer' => "NeoGTB est un service de conseil indépendant spécialisé dans la Gestion Technique du Bâtiment (GTB). Créé par Ulrich Calmo via la société EYNOR, NeoGTB propose des outils gratuits (diagnostic, comparateur, générateur CEE) et des prestations de conseil payantes (audits sur site, cahiers des charges, AMO GTB). NeoGTB ne vend aucun équipement et n'a aucun lien commercial avec les fabricants.",
+                            ],
+                            [
+                                'question' => "Comment NeoGTB gagne-t-il de l'argent ?",
+                                'answer' => "NeoGTB vend du conseil, pas du matériel. Les revenus proviennent exclusivement de prestations de conseil technique : audits approfondis sur site, rédaction de cahiers des charges neutres, et assistance à maîtrise d'ouvrage GTB. Les outils en ligne (diagnostic, comparateur, générateur CEE) sont gratuits et le resteront. Aucune commission n'est perçue sur les ventes de matériel ou les prescriptions.",
+                            ],
+                            [
+                                'question' => "Pourquoi les outils sont-ils gratuits ?",
+                                'answer' => "Les outils gratuits servent à éduquer le marché et à démontrer l'approche NeoGTB. Pas de piège : pas d'inscription obligatoire, pas de relance commerciale, pas de revente de données. Si après avoir utilisé les outils vous souhaitez aller plus loin avec un audit sur site, vous pouvez me contacter — mais il n'y a aucune obligation.",
+                            ],
+                            [
+                                'question' => "Êtes-vous vraiment indépendant ?",
+                                'answer' => "Oui. EYNOR, la société derrière NeoGTB, n'a aucun actionnaire fabricant, aucun partenariat commercial rémunéré, aucun lien d'affiliation. Les critères de comparaison sont publics et vérifiables sur le site. Si je recommande BACnet plutôt que LON pour votre projet, c'est une décision technique, pas commerciale. Vous pouvez consulter ma <a href='/positionnement' class='text-accent-600 hover:text-accent-700'>charte d'indépendance</a>.",
+                            ],
+                        ],
+                    ],
+                    [
+                        'label' => 'GTB & Réglementation',
+                        'items' => [
+                            [
+                                'question' => "Qu'est-ce que la GTB ?",
+                                'answer' => "La Gestion Technique du Bâtiment (GTB) est un système centralisé qui pilote et supervise les équipements techniques d'un bâtiment : chauffage, ventilation, climatisation (CVC), éclairage, stores, contrôle d'accès, comptage énergie. L'objectif : optimiser la consommation énergétique, améliorer le confort et faciliter la maintenance. Pour un guide complet, consultez notre page <a href='/gtb' class='text-accent-600 hover:text-accent-700'>Qu'est-ce que la GTB ?</a>",
+                            ],
+                            [
+                                'question' => "Mon bâtiment est-il concerné par le décret BACS ?",
+                                'answer' => "Si votre bâtiment est tertiaire (bureaux, commerces, enseignement, santé...) et que sa puissance CVC dépasse 290 kW, vous devez avoir un système BACS de classe B minimum depuis le 1er janvier 2025. Pour les bâtiments entre 70 et 290 kW, l'échéance est fixée à 2030. Pour les bâtiments neufs avec permis postérieur au 21/07/2021, c'est obligatoire dès la construction. <a href='/audit' class='text-accent-600 hover:text-accent-700'>Faites le diagnostic gratuit</a> pour savoir où vous en êtes.",
+                            ],
+                            [
+                                'question' => "Que signifient les classes A, B, C, D de la norme ISO 52120-1 (ex-EN 15232) ?",
+                                'answer' => "La norme ISO 52120-1 (ex-EN 15232) classe les systèmes de gestion technique en 4 niveaux. <strong>Classe D</strong> : aucune automatisation, pas performant. <strong>Classe C</strong> : automatisation standard, le minimum. <strong>Classe B</strong> : automatisation avancée avec supervision centralisée — c'est le niveau requis par le décret BACS. <strong>Classe A</strong> : haute performance, avec optimisation énergétique et gestion prédictive. Notre <a href='/audit' class='text-accent-600 hover:text-accent-700'>diagnostic gratuit</a> vous situe sur cette échelle.",
+                            ],
+                            [
+                                'question' => "Quel protocole choisir : BACnet, KNX ou Modbus ?",
+                                'answer' => "Il n'y a pas de réponse universelle — ça dépend de votre contexte. <strong>BACnet</strong> est le standard international de la GTB, privilégié pour les grands bâtiments tertiaires et l'interopérabilité multi-marques. <strong>KNX</strong> excelle pour l'éclairage et les stores, avec 500+ fabricants certifiés. <strong>Modbus</strong> est simple et dominant pour le comptage énergie. Notre <a href='/comparateur' class='text-accent-600 hover:text-accent-700'>comparateur</a> vous aide à y voir clair sans biais commercial.",
+                            ],
+                        ],
+                    ],
+                    [
+                        'label' => 'Outils & Prestations',
+                        'items' => [
+                            [
+                                'question' => "Combien coûte un audit GTB avec NeoGTB ?",
+                                'answer' => "Le diagnostic en ligne est gratuit, sans inscription. Pour un audit approfondi sur site avec rapport détaillé, les tarifs dépendent de la surface, du nombre de sites et de la complexité de l'installation. <a href='/contact' class='text-accent-600 hover:text-accent-700'>Contactez-moi</a> avec votre contexte pour obtenir un devis. Comptez un premier échange gratuit de 15 minutes pour cadrer votre besoin.",
+                            ],
+                            [
+                                'question' => "Le diagnostic en ligne est-il fiable ?",
+                                'answer' => "Le diagnostic en ligne est un outil d'orientation basé sur la norme ISO 52120-1. Il donne une estimation de votre niveau de maturité GTB (classe A à D) et des recommandations générales. Pour un diagnostic certifié avec mesures sur site, un audit approfondi est nécessaire. L'outil en ligne est un excellent point de départ pour savoir si vous avez besoin d'aller plus loin.",
+                            ],
+                            [
+                                'question' => "Dans quelle zone géographique intervenez-vous ?",
+                                'answer' => "Les outils en ligne sont accessibles partout. Pour les prestations sur site (audits, AMO), j'interviens principalement en Nouvelle-Aquitaine et sur l'ensemble du territoire français selon la mission. Les échanges préliminaires et le conseil à distance se font sans contrainte géographique.",
+                            ],
+                        ],
+                    ],
+                ],
             ],
 
             // STATUS CONFIGS
@@ -495,12 +571,69 @@ class GeneralSettingsSeeder extends Seeder
             ],
 
             'gtb_protocols_config' => [
-                ['slug' => 'bacnet', 'label' => 'BACnet', 'description' => 'Building Automation and Control Networks — protocole standard ISO 16484-5'],
-                ['slug' => 'knx', 'label' => 'KNX', 'description' => 'Standard mondial pour l\'automatisation des bâtiments résidentiels et tertiaires'],
-                ['slug' => 'modbus', 'label' => 'Modbus', 'description' => 'Protocole de communication série utilisé pour les automates programmables'],
-                ['slug' => 'lon', 'label' => 'LON', 'description' => 'Local Operating Network — réseau de contrôle distribué'],
-                ['slug' => 'dali', 'label' => 'DALI', 'description' => 'Digital Addressable Lighting Interface — protocole d\'éclairage'],
-                ['slug' => 'mqtt', 'label' => 'MQTT', 'description' => 'Message Queuing Telemetry Transport — protocole IoT léger'],
+                [
+                    'slug' => 'bacnet',
+                    'label' => 'BACnet',
+                    'standard' => 'ISO 16484-5',
+                    'category' => 'IP',
+                    'icon' => '🌐',
+                    'description' => 'Standard international de la GTB, maintenu par l\'ASHRAE. Deux déclinaisons principales : <strong class="font-medium text-dark-700">BACnet IP</strong> pour les réseaux Ethernet et <strong class="font-medium text-dark-700">BACnet MS/TP</strong> pour les bus RS-485 en terrain. Le protocole définit un modèle objet unifié qui permet l\'interopérabilité entre équipements de marques différentes sans passerelle propriétaire.',
+                    'tags' => ['Interopérabilité multi-marques', 'IP / MS/TP', 'ASHRAE 135'],
+                ],
+                [
+                    'slug' => 'knx',
+                    'label' => 'KNX',
+                    'standard' => 'EN 50090 / ISO/IEC 14543',
+                    'category' => 'terrain',
+                    'icon' => '🔌',
+                    'description' => 'Standard européen pour l\'automatisation du bâtiment. Le médium principal est le <strong class="font-medium text-dark-700">bus filaire TP</strong> (twisted pair). Plus de 500 fabricants certifiés par l\'Association KNX. Particulièrement adapté à l\'éclairage, la gestion des stores et le CVC en résidentiel et petit tertiaire.',
+                    'tags' => ['500+ fabricants', 'Bus TP', 'Éclairage / Stores / CVC'],
+                ],
+                [
+                    'slug' => 'modbus',
+                    'label' => 'Modbus',
+                    'standard' => 'RTU / TCP',
+                    'category' => 'terrain',
+                    'icon' => '⚙️',
+                    'description' => 'Protocole industriel créé par Modicon en 1979, devenu un standard de fait. Simple et robuste, existe en <strong class="font-medium text-dark-700">Modbus RTU</strong> sur RS-485 et <strong class="font-medium text-dark-700">Modbus TCP</strong> sur Ethernet. Architecture maître-esclave. Dominant pour le comptage énergie.',
+                    'tags' => ['Industriel / 1979', 'RS-485 / Ethernet', 'Comptage énergie'],
+                ],
+                [
+                    'slug' => 'lon',
+                    'label' => 'LON',
+                    'standard' => 'EN 14908',
+                    'category' => 'terrain',
+                    'icon' => '🔗',
+                    'description' => 'Local Operating Network, conçu par Echelon. Architecture <strong class="font-medium text-dark-700">peer-to-peer</strong> : chaque noeud embarque sa propre intelligence. Historiquement très utilisé en GTB tertiaire. En déclin face à BACnet IP, mais encore présent dans le parc existant.',
+                    'tags' => ['Peer-to-peer', 'Parc existant', 'Migration BACnet'],
+                ],
+                [
+                    'slug' => 'dali',
+                    'label' => 'DALI / DALI-2',
+                    'standard' => 'IEC 62386',
+                    'category' => 'terrain',
+                    'icon' => '💡',
+                    'description' => 'Standard international dédié au <strong class="font-medium text-dark-700">pilotage de l\'éclairage</strong>. DALI-2 apporte l\'interopérabilité certifiée entre ballasts, capteurs de présence et luxmètres. Jusqu\'à 64 appareils par ligne, adressage individuel, gradation fine.',
+                    'tags' => ['Éclairage dédié', '64 appareils/ligne', 'Gradation fine'],
+                ],
+                [
+                    'slug' => 'mqtt',
+                    'label' => 'MQTT & API REST',
+                    'standard' => 'IoT / Cloud',
+                    'category' => 'IP',
+                    'icon' => '☁️',
+                    'description' => 'Protocoles issus du monde IT, de plus en plus présents en GTB pour <strong class="font-medium text-dark-700">l\'interopérabilité cloud</strong>, les jumeaux numériques et l\'hypervision multi-sites. MQTT est léger et adapté aux capteurs IoT. Les API REST permettent l\'intégration avec les plateformes de GMAO, ERP et analytics.',
+                    'tags' => ['Publish/Subscribe', 'Cloud natif', 'Jumeaux numériques'],
+                ],
+                [
+                    'slug' => 'enocean',
+                    'label' => 'EnOcean',
+                    'standard' => 'ISO/IEC 14543-3-10',
+                    'category' => 'sans-fil',
+                    'icon' => '📡',
+                    'description' => 'Technologie <strong class="font-medium text-dark-700">sans fil et sans pile</strong> basée sur la récupération d\'énergie (piézoélectrique, solaire, thermique). Idéale pour la <strong class="font-medium text-dark-700">rénovation</strong> où le câblage est impossible ou coûteux.',
+                    'tags' => ['Sans fil / Sans pile', 'Rénovation', 'Energy harvesting'],
+                ],
             ],
 
             'en15232_levels_config' => [

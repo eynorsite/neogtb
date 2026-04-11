@@ -2,9 +2,11 @@
 
 namespace App\Observers;
 
+use App\Models\Admin;
 use App\Models\GeneralSetting;
 use App\Models\PrivacyPolicyVersion;
 use App\Services\SiteConfigService;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Observer sur GeneralSetting.
@@ -38,6 +40,15 @@ class SiteSettingObserver
 
     private function createPrivacyPolicyVersion(string $content): void
     {
+        // Résoudre l'auteur : auth web > premier admin (CLI/seeder) > skip propre
+        $authorId = $this->resolveAuthorId();
+
+        if ($authorId === null) {
+            Log::info('[SiteSettingObserver] Versioning politique de confidentialité ignoré : aucun admin disponible (installation vierge).');
+
+            return;
+        }
+
         // Désactiver les versions précédentes
         PrivacyPolicyVersion::where('is_current', true)->update(['is_current' => false]);
 
@@ -54,7 +65,24 @@ class SiteSettingObserver
             'content'      => $content,
             'published_at' => now(),
             'is_current'   => true,
-            'created_by'   => auth()->id(),
+            'created_by'   => $authorId,
         ]);
+    }
+
+    /**
+     * Détermine l'auteur de la version à créer.
+     *
+     * Gère 3 contextes :
+     *   1. Web authentifié     → ID de l'admin connecté
+     *   2. CLI avec admins     → ID du premier admin existant (seeder, artisan)
+     *   3. Installation vierge → null (le caller doit skipper la création)
+     */
+    private function resolveAuthorId(): ?int
+    {
+        if ($id = auth()->id()) {
+            return (int) $id;
+        }
+
+        return Admin::query()->orderBy('id')->value('id');
     }
 }
