@@ -113,29 +113,56 @@
   {{-- Skip link --}}
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">{{ $site->label('layout.skip_link', 'Aller au contenu principal') }}</a>
 
-  {{-- ===== Bandeau d'annonce (configurable depuis l'admin) ===== --}}
+  {{-- ===== Bandeau d'annonce (configurable depuis l'admin, dismissable via localStorage) ===== --}}
   @if($announcement = $site->announcementBar())
     <div
+      x-data="{
+        dismissed: false,
+        storageKey: 'neogtb_announcement_dismissed',
+        init() {
+          const stored = localStorage.getItem(this.storageKey);
+          if (stored) {
+            try {
+              const data = JSON.parse(stored);
+              if (data.text === @js($announcement['text'])) {
+                this.dismissed = true;
+              } else {
+                localStorage.removeItem(this.storageKey);
+              }
+            } catch (e) { localStorage.removeItem(this.storageKey); }
+          }
+        },
+        dismiss() {
+          this.dismissed = true;
+          localStorage.setItem(this.storageKey, JSON.stringify({ text: @js($announcement['text']), at: Date.now() }));
+        }
+      }"
+      x-show="!dismissed"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100 max-h-12"
+      x-transition:leave-end="opacity-0 max-h-0"
+      x-cloak
       style="background:{{ $announcement['bg_color'] }}; color:{{ $announcement['text_color'] }}"
-      class="text-center py-2 text-sm"
-      @if($announcement['dismissable'])
-        x-data="{ dismissed: false }"
-        x-show="!dismissed"
-        x-transition
-      @endif
+      class="relative text-center py-2 text-sm overflow-hidden"
     >
-      <div class="flex items-center justify-center gap-2 px-4">
+      <div class="flex items-center justify-center gap-2 px-8">
         @if($announcement['url'])
           <a href="{{ $announcement['url'] }}" class="underline hover:opacity-80 transition-opacity">{{ $announcement['text'] }}</a>
         @else
           <span>{{ $announcement['text'] }}</span>
         @endif
-        @if($announcement['dismissable'])
-          <button @click="dismissed = true" class="ml-2 opacity-70 hover:opacity-100 transition-opacity" aria-label="Fermer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-          </button>
-        @endif
       </div>
+      @if($announcement['dismissable'] ?? false)
+        <button
+          @click="dismiss()"
+          class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full opacity-70 hover:opacity-100 hover:bg-white/10 transition-all duration-200"
+          aria-label="Fermer le bandeau"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      @endif
     </div>
   @endif
 
