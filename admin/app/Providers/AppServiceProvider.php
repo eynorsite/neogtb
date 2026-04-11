@@ -26,6 +26,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(SiteConfigService::class);
         $this->app->singleton(HomepageSectionsService::class);
+
+        // Bump memory for admin pages with large forms (SiteSettings labels: 256+ fields)
+        if (request()->is('admin*')) {
+            ini_set('memory_limit', '512M');
+        }
     }
 
     public function boot(): void
