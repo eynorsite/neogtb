@@ -13,6 +13,7 @@ use App\Models\GeneralSetting;
 use App\Models\PageBrick;
 use App\Observers\AdminAuditObserver;
 use App\Observers\SiteSettingObserver;
+use App\Services\HomepageSectionsService;
 use App\Services\SiteConfigService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Event;
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(SiteConfigService::class);
+        $this->app->singleton(HomepageSectionsService::class);
     }
 
     public function boot(): void
