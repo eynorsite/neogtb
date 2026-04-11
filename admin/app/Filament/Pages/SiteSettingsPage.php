@@ -70,26 +70,40 @@ class SiteSettingsPage extends Page implements HasForms
                 Tabs::make('Settings')
                     ->persistTabInQueryString()
                     ->tabs(array_filter([
+                        // ─── GROUPE 1 : IDENTITÉ & MARQUE ──────────────
                         $this->generalTab(),
                         $this->siteIdentityTab(),
+
+                        // ─── GROUPE 2 : APPARENCE & THÈME ──────────────
                         $this->colorsTab(),
                         $this->typographyTab(),
-                        $this->navigationTab(),
-                        $this->homepageTab(),
                         $this->announcementTab(),
-                        $this->socialTab(),
+
+                        // ─── GROUPE 3 : NAVIGATION ─────────────────────
+                        $this->navigationTab(),
+
+                        // ─── GROUPE 4 : PAGE D'ACCUEIL & CONTENU ───────
+                        $this->homepageTab(),
+
+                        // ─── GROUPE 5 : SEO & TRACKING ─────────────────
                         $this->seoTab(),
                         $this->trackingTab(),
-                        $this->advancedTab(),
+
+                        // ─── GROUPE 6 : TEXTES & LABELS (CRUCIAL) ──────
                         $this->labelsTab(),
                         $this->legalTab(),
+
+                        // ─── GROUPE 7 : COMMUNICATION ──────────────────
+                        $this->socialTab(),
+                        $this->emailTab(),
+
+                        // ─── GROUPE 8 : SYSTÈME ────────────────────────
+                        $this->advancedTab(),
                         $this->statusTab(),
                         $this->cataloguesTab(),
-                        $this->emailTab(),
                         $this->canAccessSecurity() ? $this->securityTab() : null,
                         $this->rgpdTab(),
                         $this->statsTab(),
-                        $this->pagesTab(),
                     ])),
             ])
             ->statePath('data');
@@ -844,96 +858,142 @@ class SiteSettingsPage extends Page implements HasForms
 
     // ─── TAB: LABELS D'INTERFACE ───────────────────────────
 
+    /**
+     * Helper: génère un TextInput ou Textarea selon la longueur probable du texte.
+     */
+    protected function labelField(string $path, string $label, bool $long = false, int $rows = 2, bool $full = false)
+    {
+        $field = $long
+            ? Textarea::make($path)->label($label)->rows($rows)
+            : TextInput::make($path)->label($label);
+
+        if ($full || $long) {
+            $field->columnSpanFull();
+        }
+
+        return $field;
+    }
+
     protected function labelsTab(): Tab
     {
         return Tab::make('Labels d\'interface')
             ->icon('heroicon-o-tag')
             ->schema([
-                Section::make('Formulaires')
-                    ->description('Textes affichés dans les formulaires publics (contact, audit, newsletter).')
-                    ->columns(2)
-                    ->schema([
-                        TextInput::make('ui_labels.forms.name')->label('Nom')->default('Nom'),
-                        TextInput::make('ui_labels.forms.first_name')->label('Prénom')->default('Prénom'),
-                        TextInput::make('ui_labels.forms.email')->label('Email')->default('Email'),
-                        TextInput::make('ui_labels.forms.phone')->label('Téléphone')->default('Téléphone'),
-                        TextInput::make('ui_labels.forms.company')->label('Entreprise')->default('Entreprise'),
-                        TextInput::make('ui_labels.forms.subject')->label('Sujet')->default('Sujet'),
-                        TextInput::make('ui_labels.forms.submit')->label('Bouton envoyer')->default('Envoyer'),
-                        TextInput::make('ui_labels.forms.cancel')->label('Bouton annuler')->default('Annuler'),
-                        Textarea::make('ui_labels.forms.success_message')->label('Message de succès')->rows(2)->columnSpanFull(),
-                        Textarea::make('ui_labels.forms.error_message')->label('Message d\'erreur')->rows(2)->columnSpanFull(),
-                        TextInput::make('ui_labels.forms.required_fields')->label('Champs obligatoires')->columnSpanFull(),
-                    ]),
-
-                Section::make('Formulaire Audit GTB')
-                    ->description('Labels spécifiques au wizard d\'audit.')
-                    ->columns(2)
-                    ->schema([
-                        TextInput::make('ui_labels.forms.building_type')->label('Type de bâtiment'),
-                        TextInput::make('ui_labels.forms.surface')->label('Surface'),
-                        TextInput::make('ui_labels.forms.building_year')->label('Année de construction'),
-                        TextInput::make('ui_labels.forms.energy_bill')->label('Facture énergétique'),
-                        TextInput::make('ui_labels.forms.gtb_level')->label('Niveau GTB actuel'),
-                    ]),
-
-                Section::make('En-tête')
-                    ->description('Textes du header et de la navigation.')
+                // ─── NAVIGATION (header + menu mobile) ──────────
+                Section::make('Navigation (header)')
+                    ->description('Libellés du menu principal et des éléments de navigation.')
+                    ->collapsible()
                     ->columns(3)
                     ->schema([
-                        TextInput::make('ui_labels.header.home')->label('Accueil'),
-                        TextInput::make('ui_labels.header.gtb')->label('GTB'),
-                        TextInput::make('ui_labels.header.gtc')->label('GTC'),
-                        TextInput::make('ui_labels.header.solutions')->label('Solutions'),
-                        TextInput::make('ui_labels.header.reglementation')->label('Réglementation'),
-                        TextInput::make('ui_labels.header.blog')->label('Blog'),
-                        TextInput::make('ui_labels.header.contact')->label('Contact'),
-                        TextInput::make('ui_labels.header.audit_cta')->label('CTA Audit'),
-                        TextInput::make('ui_labels.header.breadcrumb_label')->label('Fil d\'Ariane'),
+                        TextInput::make('ui_labels.nav.home')->label('Accueil'),
+                        TextInput::make('ui_labels.nav.blog')->label('Blog / Perspectives'),
+                        TextInput::make('ui_labels.nav.explorer')->label('Explorer'),
+                        TextInput::make('ui_labels.nav.about')->label('À propos'),
+                        TextInput::make('ui_labels.nav.faq')->label('FAQ'),
+                        TextInput::make('ui_labels.nav.contact')->label('Contact'),
+                        TextInput::make('ui_labels.nav.search')->label('Rechercher (bouton)'),
+                        TextInput::make('ui_labels.nav.search_placeholder')->label('Rechercher (placeholder)'),
+                        TextInput::make('ui_labels.nav.open_menu')->label('Ouvrir le menu (a11y)'),
+                        TextInput::make('ui_labels.nav.close_menu')->label('Fermer le menu (a11y)'),
+                        TextInput::make('ui_labels.nav.help_prompt')->label('Besoin d\'aide'),
+                        TextInput::make('ui_labels.nav.help_cta')->label('CTA aide (expert)'),
+                        TextInput::make('ui_labels.nav.mobile_rgpd')->label('Lien RGPD mobile'),
                     ]),
 
+                // ─── LAYOUT & BREADCRUMB ───────────────────────
+                Section::make('Layout & fil d\'Ariane')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.layout.skip_link')->label('Skip link (accessibilité)'),
+                        TextInput::make('ui_labels.layout.breadcrumb_label')->label('Label du fil d\'Ariane'),
+                        TextInput::make('ui_labels.breadcrumb.home')->label('Breadcrumb — Accueil'),
+                        TextInput::make('ui_labels.breadcrumb.tools')->label('Breadcrumb — Outils'),
+                    ]),
+
+                // ─── PIED DE PAGE ──────────────────────────────
                 Section::make('Pied de page')
+                    ->description('Colonnes, newsletter et liens du footer.')
+                    ->collapsible()
+                    ->collapsed()
                     ->columns(2)
                     ->schema([
-                        TextInput::make('ui_labels.footer.col1_title')->label('Colonne 1'),
-                        TextInput::make('ui_labels.footer.col2_title')->label('Colonne 2'),
-                        TextInput::make('ui_labels.footer.col3_title')->label('Colonne 3'),
-                        TextInput::make('ui_labels.footer.col4_title')->label('Colonne 4'),
-                        TextInput::make('ui_labels.footer.newsletter_placeholder')->label('Placeholder newsletter'),
-                        TextInput::make('ui_labels.footer.newsletter_button')->label('Bouton newsletter'),
-                        TextInput::make('ui_labels.footer.newsletter_subtitle')->label('Sous-titre newsletter'),
-                        TextInput::make('ui_labels.footer.no_tracking')->label('Message no-tracking'),
+                        Textarea::make('ui_labels.footer.brand_description')->label('Description de marque')->rows(3)->columnSpanFull(),
+                        TextInput::make('ui_labels.footer.col1_title')->label('Colonne 1 — Titre'),
+                        TextInput::make('ui_labels.footer.col2_title')->label('Colonne 2 — Titre'),
+                        TextInput::make('ui_labels.footer.col3_title')->label('Colonne 3 — Titre'),
+                        TextInput::make('ui_labels.footer.newsletter_subtitle')->label('Newsletter — sous-titre'),
+                        TextInput::make('ui_labels.footer.newsletter_placeholder')->label('Newsletter — placeholder'),
+                        TextInput::make('ui_labels.footer.newsletter_button')->label('Newsletter — bouton'),
+                        TextInput::make('ui_labels.footer.newsletter_sr_label')->label('Newsletter — label a11y'),
+                        TextInput::make('ui_labels.footer.newsletter_aria')->label('Newsletter — aria'),
+                        Textarea::make('ui_labels.footer.newsletter_success')->label('Newsletter — succès')->rows(2)->columnSpanFull(),
+                        Textarea::make('ui_labels.footer.newsletter_consent')->label('Newsletter — consentement')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.footer.newsletter_frequency')->label('Newsletter — fréquence'),
+                        TextInput::make('ui_labels.footer.nav_gtb')->label('Lien GTB'),
+                        TextInput::make('ui_labels.footer.nav_gtc')->label('Lien GTC'),
+                        TextInput::make('ui_labels.footer.nav_solutions')->label('Lien Solutions'),
+                        TextInput::make('ui_labels.footer.nav_comparateur')->label('Lien Comparateur'),
+                        TextInput::make('ui_labels.footer.nav_reglementation')->label('Lien Réglementation'),
+                        TextInput::make('ui_labels.footer.nav_blog')->label('Lien Blog'),
+                        TextInput::make('ui_labels.footer.nav_audit')->label('Lien Audit / Pré-diagnostic'),
+                        TextInput::make('ui_labels.footer.nav_generateur_cee')->label('Lien Générateur CEE'),
+                        TextInput::make('ui_labels.footer.nav_tables_modbus')->label('Lien Tables Modbus'),
+                        TextInput::make('ui_labels.footer.nav_contact')->label('Lien Contact'),
+                        TextInput::make('ui_labels.footer.nav_faq')->label('Lien FAQ'),
+                        TextInput::make('ui_labels.footer.nav_mentions')->label('Lien Mentions légales'),
+                        TextInput::make('ui_labels.footer.nav_confidentialite')->label('Lien Confidentialité'),
+                        TextInput::make('ui_labels.footer.nav_cookies')->label('Lien Cookies'),
+                        TextInput::make('ui_labels.footer.nav_rgpd')->label('Lien RGPD'),
+                        TextInput::make('ui_labels.footer.manage_cookies')->label('Bouton "Gérer les cookies"'),
                     ]),
 
-                Section::make('Appels à l\'action')
+                // ─── FORMULAIRES ───────────────────────────────
+                Section::make('Formulaires')
+                    ->description('Libellés communs aux formulaires (contact, newsletter, audit).')
+                    ->collapsible()
+                    ->collapsed()
                     ->columns(2)
                     ->schema([
-                        TextInput::make('ui_labels.cta.audit_title')->label('Titre CTA audit'),
-                        TextInput::make('ui_labels.cta.audit_button')->label('Bouton CTA audit'),
-                        Textarea::make('ui_labels.cta.audit_subtitle')->label('Sous-titre CTA audit')->rows(2)->columnSpanFull(),
-                        TextInput::make('ui_labels.cta.contact_us')->label('Contactez-nous'),
-                        TextInput::make('ui_labels.cta.learn_more')->label('En savoir plus'),
-                        TextInput::make('ui_labels.cta.download')->label('Télécharger'),
-                        TextInput::make('ui_labels.cta.compare')->label('Comparer'),
-                        TextInput::make('ui_labels.cta.back_to_blog')->label('Retour au blog'),
+                        TextInput::make('ui_labels.forms.name')->label('Nom'),
+                        TextInput::make('ui_labels.forms.name_placeholder')->label('Nom — placeholder'),
+                        TextInput::make('ui_labels.forms.email')->label('Email'),
+                        TextInput::make('ui_labels.forms.email_placeholder')->label('Email — placeholder'),
+                        TextInput::make('ui_labels.forms.company')->label('Entreprise'),
+                        TextInput::make('ui_labels.forms.company_placeholder')->label('Entreprise — placeholder'),
+                        TextInput::make('ui_labels.forms.optional')->label('Mention optionnelle'),
+                        TextInput::make('ui_labels.forms.subject')->label('Sujet'),
+                        TextInput::make('ui_labels.forms.subject_placeholder')->label('Sujet — placeholder'),
+                        TextInput::make('ui_labels.forms.subject_quote')->label('Sujet — devis'),
+                        TextInput::make('ui_labels.forms.subject_tech')->label('Sujet — technique'),
+                        TextInput::make('ui_labels.forms.subject_regulation')->label('Sujet — réglementaire'),
+                        TextInput::make('ui_labels.forms.subject_audit')->label('Sujet — audit'),
+                        TextInput::make('ui_labels.forms.subject_other')->label('Sujet — autre'),
+                        TextInput::make('ui_labels.forms.message')->label('Message'),
+                        TextInput::make('ui_labels.forms.message_placeholder')->label('Message — placeholder'),
+                        TextInput::make('ui_labels.forms.submit')->label('Bouton envoyer'),
+                        TextInput::make('ui_labels.forms.sending')->label('Bouton — en cours'),
+                        TextInput::make('ui_labels.forms.cancel')->label('Bouton annuler'),
+                        TextInput::make('ui_labels.forms.continue')->label('Bouton continuer'),
+                        TextInput::make('ui_labels.forms.previous')->label('Bouton précédent'),
+                        TextInput::make('ui_labels.forms.next')->label('Bouton suivant'),
+                        TextInput::make('ui_labels.forms.yes')->label('Oui'),
+                        TextInput::make('ui_labels.forms.no')->label('Non'),
+                        TextInput::make('ui_labels.forms.building_type')->label('Type de bâtiment'),
+                        TextInput::make('ui_labels.forms.surface')->label('Surface utile'),
+                        TextInput::make('ui_labels.forms.building_age')->label('Année de construction'),
+                        TextInput::make('ui_labels.forms.climate_zone')->label('Zone climatique'),
+                        TextInput::make('ui_labels.forms.select_placeholder')->label('Sélecteur — placeholder'),
+                        Textarea::make('ui_labels.forms.rgpd_consent')->label('Consentement RGPD')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.forms.privacy_link')->label('Lien "Politique"'),
+                        TextInput::make('ui_labels.forms.rights_link')->label('Lien "Exercer vos droits"'),
                     ]),
 
-                Section::make('Cookies')
-                    ->columns(2)
-                    ->schema([
-                        TextInput::make('ui_labels.cookie.title')->label('Titre bandeau'),
-                        TextInput::make('ui_labels.cookie.accept')->label('Bouton accepter'),
-                        TextInput::make('ui_labels.cookie.reject')->label('Bouton refuser'),
-                        TextInput::make('ui_labels.cookie.customize')->label('Bouton personnaliser'),
-                        TextInput::make('ui_labels.cookie.save_preferences')->label('Bouton enregistrer'),
-                        Textarea::make('ui_labels.cookie.description')->label('Description')->rows(2)->columnSpanFull(),
-                        TextInput::make('ui_labels.cookie.necessary_title')->label('Cookies nécessaires — titre'),
-                        TextInput::make('ui_labels.cookie.necessary_desc')->label('Cookies nécessaires — desc'),
-                        TextInput::make('ui_labels.cookie.analytics_title')->label('Cookies analytics — titre'),
-                        TextInput::make('ui_labels.cookie.analytics_desc')->label('Cookies analytics — desc'),
-                    ]),
-
-                Section::make('Validation')
+                // ─── VALIDATION ────────────────────────────────
+                Section::make('Messages de validation')
+                    ->collapsible()
+                    ->collapsed()
                     ->columns(2)
                     ->schema([
                         TextInput::make('ui_labels.validation.required')->label('Champ obligatoire'),
@@ -943,41 +1003,319 @@ class SiteSettingsPage extends Page implements HasForms
                         TextInput::make('ui_labels.validation.max_length')->label('Longueur max'),
                     ]),
 
-                Section::make('Pagination & Divers')
+                // ─── CTA GLOBAUX ───────────────────────────────
+                Section::make('Appels à l\'action (CTA globaux)')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.cta.start_diagnostic')->label('Lancer le diagnostic'),
+                        TextInput::make('ui_labels.cta.contact_me')->label('Me contacter'),
+                        TextInput::make('ui_labels.cta.back_to_blog')->label('Retour au blog'),
+                    ]),
+
+                // ─── STICKY CTA ────────────────────────────────
+                Section::make('Sticky CTA (bouton flottant)')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.sticky_cta.aria_label')->label('Aria label'),
+                        TextInput::make('ui_labels.sticky_cta.badge')->label('Badge'),
+                        TextInput::make('ui_labels.sticky_cta.title')->label('Titre'),
+                        TextInput::make('ui_labels.sticky_cta.button')->label('Bouton'),
+                        TextInput::make('ui_labels.sticky_cta.dismiss')->label('Fermer'),
+                    ]),
+
+                // ─── COOKIES BANDEAU ───────────────────────────
+                Section::make('Bandeau cookies')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.cookie.title')->label('Titre'),
+                        Textarea::make('ui_labels.cookie.description')->label('Description')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.cookie.accept')->label('Bouton accepter'),
+                        TextInput::make('ui_labels.cookie.reject')->label('Bouton refuser'),
+                        TextInput::make('ui_labels.cookie.customize')->label('Bouton personnaliser'),
+                        TextInput::make('ui_labels.cookie.save_preferences')->label('Bouton enregistrer'),
+                        TextInput::make('ui_labels.cookie.necessary_title')->label('Cookies nécessaires — titre'),
+                        TextInput::make('ui_labels.cookie.necessary_desc')->label('Cookies nécessaires — desc'),
+                        TextInput::make('ui_labels.cookie.analytics_title')->label('Cookies analytics — titre'),
+                        TextInput::make('ui_labels.cookie.analytics_desc')->label('Cookies analytics — desc'),
+                    ]),
+
+                // ─── PAGINATION & DIVERS ───────────────────────
+                Section::make('Pagination & divers')
+                    ->collapsible()
+                    ->collapsed()
                     ->columns(3)
                     ->schema([
                         TextInput::make('ui_labels.pagination.previous')->label('Précédent'),
                         TextInput::make('ui_labels.pagination.next')->label('Suivant'),
+                        TextInput::make('ui_labels.pagination.showing')->label('Affichage de'),
+                        TextInput::make('ui_labels.pagination.to')->label('à'),
+                        TextInput::make('ui_labels.pagination.of')->label('sur'),
                         TextInput::make('ui_labels.pagination.results')->label('Résultats'),
-                        TextInput::make('ui_labels.misc.loading')->label('Chargement'),
-                        TextInput::make('ui_labels.misc.no_data')->label('Aucune donnée'),
-                        TextInput::make('ui_labels.misc.back')->label('Retour'),
-                        TextInput::make('ui_labels.misc.close')->label('Fermer'),
-                        TextInput::make('ui_labels.misc.share')->label('Partager'),
+                        TextInput::make('ui_labels.misc.reading_time_unit')->label('Unité temps (min)'),
                         TextInput::make('ui_labels.misc.reading_time')->label('Temps de lecture'),
+                        TextInput::make('ui_labels.misc.views')->label('Vues'),
+                        TextInput::make('ui_labels.misc.share')->label('Partager'),
+                        TextInput::make('ui_labels.misc.link_copied')->label('Lien copié'),
+                        TextInput::make('ui_labels.misc.copy_link')->label('Copier le lien'),
+                        TextInput::make('ui_labels.search.placeholder')->label('Recherche blog — placeholder'),
                     ]),
 
-                Section::make('Page FAQ')
-                    ->description('Textes du hero et du CTA de la page /faq. Les questions/réponses se gèrent dans l\'onglet « Pages ».')
+                // ─── PAGE CONTACT ──────────────────────────────
+                Section::make('Page Contact')
+                    ->collapsible()
+                    ->collapsed()
                     ->columns(2)
                     ->schema([
-                        TextInput::make('ui_labels.faq.eyebrow')
-                            ->label('Eyebrow (petit texte au-dessus du titre)')
-                            ->default('Questions fréquentes'),
-                        TextInput::make('ui_labels.faq.title')
-                            ->label('Titre H1')
-                            ->default('Vos questions sur la GTB/GTC'),
-                        Textarea::make('ui_labels.faq.subtitle')
-                            ->label('Sous-titre')
-                            ->rows(2)
-                            ->columnSpanFull()
-                            ->default('Tout ce que vous devez savoir sur la Gestion Technique du Bâtiment et la conformité réglementaire'),
-                        TextInput::make('ui_labels.faq.cta_text')
-                            ->label('Texte du CTA final')
-                            ->default('Vous ne trouvez pas votre réponse ?'),
-                        TextInput::make('ui_labels.faq.cta_button')
-                            ->label('Bouton du CTA final')
-                            ->default('Contactez un expert'),
+                        TextInput::make('ui_labels.contact.info_email')->label('Bloc — Email'),
+                        TextInput::make('ui_labels.contact.info_phone')->label('Bloc — Téléphone'),
+                        TextInput::make('ui_labels.contact.info_response_time')->label('Bloc — Temps de réponse'),
+                        TextInput::make('ui_labels.contact.response_time_value')->label('Valeur du temps de réponse'),
+                        TextInput::make('ui_labels.contact.trust_badge')->label('Badge de confiance')->columnSpanFull(),
+                        TextInput::make('ui_labels.contact.success_title')->label('Succès — titre'),
+                        Textarea::make('ui_labels.contact.success_message')->label('Succès — message')->rows(2)->columnSpanFull(),
+                    ]),
+
+                // ─── PAGE FAQ ──────────────────────────────────
+                Section::make('Page FAQ')
+                    ->description('Textes du hero et du CTA de la page /faq (les Q/R se gèrent dans Mon Site → Pages).')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.faq.eyebrow')->label('Eyebrow'),
+                        TextInput::make('ui_labels.faq.title')->label('Titre H1'),
+                        Textarea::make('ui_labels.faq.subtitle')->label('Sous-titre')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.faq.cta_text')->label('Texte CTA final'),
+                        TextInput::make('ui_labels.faq.cta_button')->label('Bouton CTA final'),
+                    ]),
+
+                // ─── PAGE BLOG ─────────────────────────────────
+                Section::make('Page Blog / Perspectives')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.blog.all_articles')->label('Lien "Tous les articles"'),
+                        TextInput::make('ui_labels.blog.no_articles')->label('Aucun article'),
+                        TextInput::make('ui_labels.blog.cta_title')->label('CTA — titre'),
+                        Textarea::make('ui_labels.blog.cta_description')->label('CTA — description')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.blog.also_read')->label('À lire aussi'),
+                        TextInput::make('ui_labels.blog.related_articles')->label('Articles similaires'),
+                    ]),
+
+                // ─── PAGE ABOUT ────────────────────────────────
+                Section::make('Page À propos')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.about.hero.eyebrow')->label('Hero — eyebrow'),
+                        Textarea::make('ui_labels.about.hero.title')->label('Hero — titre (HTML autorisé)')->rows(2)->columnSpanFull(),
+                        Textarea::make('ui_labels.about.hero.subtitle')->label('Hero — sous-titre')->rows(3)->columnSpanFull(),
+                        TextInput::make('ui_labels.about.founder.name')->label('Fondateur — nom'),
+                        TextInput::make('ui_labels.about.founder.role')->label('Fondateur — rôle'),
+                        TextInput::make('ui_labels.about.founder.company')->label('Fondateur — société'),
+                        TextInput::make('ui_labels.about.story.title')->label('Story — titre')->columnSpanFull(),
+                        RichEditor::make('ui_labels.about.story.content')
+                            ->label('Story — contenu (HTML riche)')
+                            ->toolbarButtons(['bold', 'italic', 'h2', 'h3', 'bulletList', 'orderedList', 'link'])
+                            ->columnSpanFull(),
+                        TextInput::make('ui_labels.about.method.title')->label('Méthode — titre'),
+                        Textarea::make('ui_labels.about.method.subtitle')->label('Méthode — sous-titre')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.about.cta.title')->label('CTA — titre'),
+                        Textarea::make('ui_labels.about.cta.subtitle')->label('CTA — sous-titre')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.about.cta.button')->label('CTA — bouton'),
+                    ]),
+
+                // ─── PAGE POSITIONNEMENT ───────────────────────
+                Section::make('Page Positionnement / Indépendance')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.positionnement.problem.eyebrow')->label('Problème — eyebrow'),
+                        TextInput::make('ui_labels.positionnement.problem.title')->label('Problème — titre')->columnSpanFull(),
+                        TextInput::make('ui_labels.positionnement.verify.eyebrow')->label('Vérification — eyebrow'),
+                        TextInput::make('ui_labels.positionnement.verify.title')->label('Vérification — titre')->columnSpanFull(),
+                        TextInput::make('ui_labels.positionnement.model.eyebrow')->label('Modèle — eyebrow'),
+                        TextInput::make('ui_labels.positionnement.model.title')->label('Modèle — titre'),
+                        Textarea::make('ui_labels.positionnement.model.subtitle')->label('Modèle — sous-titre')->rows(2)->columnSpanFull(),
+                        Textarea::make('ui_labels.positionnement.model.footer')->label('Modèle — footer (HTML)')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.positionnement.cta.title')->label('CTA — titre'),
+                        Textarea::make('ui_labels.positionnement.cta.subtitle')->label('CTA — sous-titre')->rows(2)->columnSpanFull(),
+                    ]),
+
+                // ─── PAGE AUDIT — HERO & ÉTAPES ────────────────
+                Section::make('Page Audit — Hero & étapes')
+                    ->description('Labels du wizard de pré-diagnostic GTB (/audit).')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.audit.breadcrumb')->label('Fil d\'Ariane'),
+                        TextInput::make('ui_labels.audit.hero.eyebrow')->label('Hero — eyebrow'),
+                        Textarea::make('ui_labels.audit.hero.title')->label('Hero — titre (HTML)')->rows(2)->columnSpanFull(),
+                        Textarea::make('ui_labels.audit.hero.subtitle')->label('Hero — sous-titre')->rows(3)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.hero.badge1')->label('Hero — badge 1'),
+                        TextInput::make('ui_labels.audit.hero.badge2')->label('Hero — badge 2'),
+                        TextInput::make('ui_labels.audit.trust_badge')->label('Badge de confiance')->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.step1_title')->label('Étape 1 — titre'),
+                        Textarea::make('ui_labels.audit.step1_subtitle')->label('Étape 1 — sous-titre')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.age_before1975')->label('Âge — avant 1975'),
+                        TextInput::make('ui_labels.audit.age_1975_2000')->label('Âge — 1975/2000'),
+                        TextInput::make('ui_labels.audit.age_2000_2012')->label('Âge — 2000/2012'),
+                        TextInput::make('ui_labels.audit.age_after2012')->label('Âge — après 2012'),
+                        TextInput::make('ui_labels.audit.step2_title')->label('Étape 2 — titre'),
+                        Textarea::make('ui_labels.audit.step2_subtitle')->label('Étape 2 — sous-titre')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.see_results')->label('Bouton "voir mes résultats"'),
+                    ]),
+
+                // ─── PAGE AUDIT — LOTS TECHNIQUES ──────────────
+                Section::make('Page Audit — Lots techniques')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.audit.lot_heating')->label('Chauffage'),
+                        Textarea::make('ui_labels.audit.lot_heating_desc')->label('Chauffage — desc')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.heated_surface')->label('Surface chauffée'),
+                        TextInput::make('ui_labels.audit.lot_ecs')->label('ECS'),
+                        Textarea::make('ui_labels.audit.lot_ecs_desc')->label('ECS — desc')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.has_ecs_question')->label('ECS — question'),
+                        TextInput::make('ui_labels.audit.ecs_surface')->label('ECS — surface'),
+                        TextInput::make('ui_labels.audit.lot_cooling')->label('Climatisation'),
+                        Textarea::make('ui_labels.audit.lot_cooling_desc')->label('Climatisation — desc')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.has_cooling_question')->label('Climatisation — question'),
+                        TextInput::make('ui_labels.audit.cooled_surface')->label('Surface climatisée'),
+                        TextInput::make('ui_labels.audit.lot_lighting')->label('Éclairage'),
+                        Textarea::make('ui_labels.audit.lot_lighting_desc')->label('Éclairage — desc')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.has_lighting_question')->label('Éclairage — question'),
+                        TextInput::make('ui_labels.audit.lit_surface')->label('Surface éclairée'),
+                        TextInput::make('ui_labels.audit.lighting_type')->label('Type de gestion'),
+                        TextInput::make('ui_labels.audit.lighting_manual')->label('Manuel'),
+                        TextInput::make('ui_labels.audit.lighting_timer')->label('Minuteries'),
+                        TextInput::make('ui_labels.audit.lighting_presence')->label('Détection présence'),
+                        TextInput::make('ui_labels.audit.lighting_smart')->label('Gestion intelligente'),
+                        TextInput::make('ui_labels.audit.lot_auxiliary')->label('Auxiliaires'),
+                        Textarea::make('ui_labels.audit.lot_auxiliary_desc')->label('Auxiliaires — desc')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.has_auxiliary_question')->label('Auxiliaires — question'),
+                        TextInput::make('ui_labels.audit.auxiliary_surface')->label('Surface auxiliaires'),
+                    ]),
+
+                // ─── PAGE AUDIT — RÉSULTATS ────────────────────
+                Section::make('Page Audit — Résultats')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.audit.results.score_label')->label('Score — label'),
+                        TextInput::make('ui_labels.audit.results.savings_label')->label('Économies — label'),
+                        TextInput::make('ui_labels.audit.results.cee_title')->label('CEE — titre'),
+                        TextInput::make('ui_labels.audit.results.cee_cta')->label('CEE — CTA'),
+                        TextInput::make('ui_labels.audit.results.iso_class')->label('Classe ISO'),
+                        TextInput::make('ui_labels.audit.results.days_left')->label('Jours restants'),
+                        TextInput::make('ui_labels.audit.results.benchmark_title')->label('Benchmark — titre'),
+                        Textarea::make('ui_labels.audit.results.benchmark_subtitle')->label('Benchmark — sous-titre')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.results.benchmark_good')->label('Performant'),
+                        TextInput::make('ui_labels.audit.results.benchmark_avg')->label('Moyen'),
+                        TextInput::make('ui_labels.audit.results.benchmark_bad')->label('Énergivore'),
+                        TextInput::make('ui_labels.audit.results.your_building')->label('Votre bâtiment'),
+                        Textarea::make('ui_labels.audit.results.benchmark_sources')->label('Sources benchmark')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.results.energy_title')->label('Conso — titre'),
+                        TextInput::make('ui_labels.audit.results.total')->label('Total'),
+                        TextInput::make('ui_labels.audit.results.reco_title')->label('Recommandations — titre'),
+                    ]),
+
+                // ─── PAGE AUDIT — PREMIUM & MODAL ──────────────
+                Section::make('Page Audit — Premium & modal PDF')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.audit.premium.badge')->label('Badge'),
+                        TextInput::make('ui_labels.audit.premium.title')->label('Titre')->columnSpanFull(),
+                        Textarea::make('ui_labels.audit.premium.desc')->label('Description')->rows(3)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.premium.online_title')->label('En ligne — titre'),
+                        TextInput::make('ui_labels.audit.premium.online_subtitle')->label('En ligne — sous-titre'),
+                        TextInput::make('ui_labels.audit.premium.online_1')->label('En ligne — point 1'),
+                        TextInput::make('ui_labels.audit.premium.online_2')->label('En ligne — point 2'),
+                        TextInput::make('ui_labels.audit.premium.online_3')->label('En ligne — point 3'),
+                        TextInput::make('ui_labels.audit.premium.online_4')->label('En ligne — point 4'),
+                        TextInput::make('ui_labels.audit.premium.online_price')->label('En ligne — prix'),
+                        TextInput::make('ui_labels.audit.premium.onsite_title')->label('Sur site — titre'),
+                        TextInput::make('ui_labels.audit.premium.onsite_subtitle')->label('Sur site — sous-titre'),
+                        TextInput::make('ui_labels.audit.premium.onsite_1')->label('Sur site — point 1'),
+                        TextInput::make('ui_labels.audit.premium.onsite_2')->label('Sur site — point 2'),
+                        TextInput::make('ui_labels.audit.premium.onsite_3')->label('Sur site — point 3'),
+                        TextInput::make('ui_labels.audit.premium.onsite_4')->label('Sur site — point 4'),
+                        TextInput::make('ui_labels.audit.premium.onsite_5')->label('Sur site — point 5'),
+                        TextInput::make('ui_labels.audit.premium.onsite_6')->label('Sur site — point 6'),
+                        TextInput::make('ui_labels.audit.premium.onsite_cta')->label('Sur site — CTA'),
+                        TextInput::make('ui_labels.audit.disclaimer.title')->label('Disclaimer — titre'),
+                        Textarea::make('ui_labels.audit.disclaimer.text')->label('Disclaimer — texte')->rows(3)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.actions.download_pdf')->label('Action — téléchargement PDF'),
+                        TextInput::make('ui_labels.audit.actions.contact_expert')->label('Action — contacter expert'),
+                        TextInput::make('ui_labels.audit.actions.compare')->label('Action — comparer'),
+                        TextInput::make('ui_labels.audit.actions.estimate_cee')->label('Action — estimer CEE'),
+                        TextInput::make('ui_labels.audit.actions.new_diag')->label('Action — nouveau diagnostic'),
+                        TextInput::make('ui_labels.audit.modal.title')->label('Modal — titre'),
+                        Textarea::make('ui_labels.audit.modal.subtitle')->label('Modal — sous-titre')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.modal.email_placeholder')->label('Modal — email placeholder'),
+                        TextInput::make('ui_labels.audit.modal.name_placeholder')->label('Modal — nom placeholder'),
+                        TextInput::make('ui_labels.audit.modal.company_placeholder')->label('Modal — société placeholder'),
+                        Textarea::make('ui_labels.audit.modal.consent_text')->label('Modal — texte consentement')->rows(3)->columnSpanFull(),
+                        Textarea::make('ui_labels.audit.modal.consent_error')->label('Modal — erreur consentement')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.modal.rgpd_title')->label('Modal — RGPD titre'),
+                        Textarea::make('ui_labels.audit.modal.rgpd_text')->label('Modal — RGPD texte (HTML)')->rows(4)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.modal.download_btn')->label('Modal — bouton télécharger'),
+                        TextInput::make('ui_labels.audit.modal.success')->label('Modal — succès'),
+                        TextInput::make('ui_labels.audit.related.title')->label('Pages associées — titre'),
+                        TextInput::make('ui_labels.audit.related.comparateur')->label('Lien comparateur'),
+                        Textarea::make('ui_labels.audit.related.comparateur_desc')->label('Comparateur — desc')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.related.cee')->label('Lien CEE'),
+                        Textarea::make('ui_labels.audit.related.cee_desc')->label('CEE — desc')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.audit.related.reglementation')->label('Lien réglementation'),
+                        Textarea::make('ui_labels.audit.related.reglementation_desc')->label('Réglementation — desc')->rows(2)->columnSpanFull(),
+                    ]),
+
+                // ─── NEWSLETTER CONFIRMÉE ──────────────────────
+                Section::make('Newsletter — page confirmée')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.newsletter.confirmed.title')->label('Titre'),
+                        Textarea::make('ui_labels.newsletter.confirmed.text')->label('Texte')->rows(3)->columnSpanFull(),
+                        TextInput::make('ui_labels.newsletter.confirmed.cta')->label('CTA'),
+                    ]),
+
+                // ─── PAGES LÉGALES (hero) ──────────────────────
+                Section::make('Pages légales — hero')
+                    ->description('Eyebrow et titre des pages légales (le contenu est dans « Textes légaux »).')
+                    ->collapsible()
+                    ->collapsed()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('ui_labels.legal.mentions_legales.eyebrow')->label('Mentions légales — eyebrow'),
+                        TextInput::make('ui_labels.legal.mentions_legales.title')->label('Mentions légales — titre'),
+                        TextInput::make('ui_labels.legal.cookies.eyebrow')->label('Cookies — eyebrow'),
+                        TextInput::make('ui_labels.legal.cookies.title')->label('Cookies — titre'),
+                        TextInput::make('ui_labels.legal.politique_confidentialite.eyebrow')->label('Politique — eyebrow'),
+                        TextInput::make('ui_labels.legal.politique_confidentialite.title')->label('Politique — titre'),
+                        TextInput::make('ui_labels.legal.rgpd.eyebrow')->label('RGPD — eyebrow'),
+                        TextInput::make('ui_labels.legal.rgpd.title')->label('RGPD — titre'),
+                        Textarea::make('ui_labels.legal.rgpd.subtitle')->label('RGPD — sous-titre')->rows(2)->columnSpanFull(),
+                        TextInput::make('ui_labels.legal.rgpd.security_title')->label('RGPD — sécurité titre'),
+                        Textarea::make('ui_labels.legal.rgpd.security_text')->label('RGPD — sécurité texte')->rows(3)->columnSpanFull(),
+                        TextInput::make('ui_labels.legal.rgpd.success_title')->label('RGPD — succès titre'),
+                        Textarea::make('ui_labels.legal.rgpd.success_text')->label('RGPD — succès texte')->rows(3)->columnSpanFull(),
+                        TextInput::make('ui_labels.legal.rgpd.back_link')->label('RGPD — lien retour'),
                     ]),
             ]);
     }
@@ -1367,139 +1705,4 @@ class SiteSettingsPage extends Page implements HasForms
             ]);
     }
 
-    // ─── TAB: PAGES SPÉCIFIQUES ────────────────────────────
-
-    protected function pagesTab(): Tab
-    {
-        $pages = [
-            ['key' => 'gtb',             'label' => 'Page GTB'],
-            ['key' => 'gtc',             'label' => 'Page GTC'],
-            ['key' => 'solutions',       'label' => 'Page Solutions'],
-            ['key' => 'reglementation',  'label' => 'Page Réglementation'],
-            ['key' => 'audit',           'label' => 'Page Audit'],
-            ['key' => 'contact',         'label' => 'Page Contact'],
-            ['key' => 'about',           'label' => 'Page À propos'],
-            ['key' => 'faq',             'label' => 'Page FAQ'],
-            ['key' => 'comparateur',     'label' => 'Page Comparateur'],
-        ];
-
-        $sections = [];
-        foreach ($pages as $page) {
-            $prefix = $page['key'] . '_page_config';
-
-            $pageSchema = [
-                Section::make('Hero')->schema([
-                    TextInput::make("{$prefix}.hero_title")
-                        ->label('Titre du Hero')
-                        ->maxLength(255),
-                    Textarea::make("{$prefix}.hero_subtitle")
-                        ->label('Sous-titre du Hero')
-                        ->rows(2),
-                    FileUpload::make("{$prefix}.hero_image")
-                        ->label('Image du Hero')
-                        ->image()
-                        ->disk('public')
-                        ->visibility('public')
-                        ->directory("pages/{$page['key']}/hero")
-                        ->maxSize(2048),
-                ])->collapsible(),
-                Section::make('SEO')->schema([
-                    TextInput::make("{$prefix}.meta_title")
-                        ->label('Meta Title')
-                        ->maxLength(70)
-                        ->helperText('60-70 caractères recommandés'),
-                    Textarea::make("{$prefix}.meta_description")
-                        ->label('Meta Description')
-                        ->rows(2)
-                        ->maxLength(160)
-                        ->helperText('150-160 caractères recommandés'),
-                ])->collapsible()->collapsed(),
-            ];
-
-            if ($page['key'] === 'faq') {
-                // Repeater spécialisé : catégories → questions / réponses
-                $pageSchema[] = Section::make('Catégories de questions')
-                    ->description('Organisez les questions/réponses par thématique. Chaque catégorie peut contenir autant de Q/R que nécessaire. Le HTML est autorisé dans les réponses (liens, gras, etc.).')
-                    ->schema([
-                        Repeater::make("{$prefix}.sections")
-                            ->label('Catégories FAQ')
-                            ->schema([
-                                TextInput::make('label')
-                                    ->label('Nom de la catégorie')
-                                    ->placeholder('Ex. : À propos de NeoGTB')
-                                    ->required(),
-                                Repeater::make('items')
-                                    ->label('Questions / Réponses')
-                                    ->schema([
-                                        TextInput::make('question')
-                                            ->label('Question')
-                                            ->required()
-                                            ->columnSpanFull(),
-                                        Textarea::make('answer')
-                                            ->label('Réponse (HTML autorisé)')
-                                            ->rows(4)
-                                            ->required()
-                                            ->columnSpanFull(),
-                                    ])
-                                    ->collapsible()
-                                    ->collapsed()
-                                    ->itemLabel(fn (array $state): ?string => $state['question'] ?? null)
-                                    ->defaultItems(0)
-                                    ->addActionLabel('Ajouter une question'),
-                            ])
-                            ->collapsible()
-                            ->collapsed()
-                            ->itemLabel(fn (array $state): ?string => $state['label'] ?? null)
-                            ->defaultItems(0)
-                            ->addActionLabel('Ajouter une catégorie'),
-                    ])->collapsible();
-            } else {
-                $pageSchema[] = Section::make('Sections de contenu')->schema([
-                    Repeater::make("{$prefix}.sections")
-                        ->label('Blocs de contenu')
-                        ->schema([
-                            TextInput::make('title')
-                                ->label('Titre de la section')
-                                ->required(),
-                            Textarea::make('content')
-                                ->label('Contenu')
-                                ->rows(3),
-                            FileUpload::make('image')
-                                ->label('Image')
-                                ->image()
-                                ->disk('public')
-                                ->visibility('public')
-                                ->directory("pages/{$page['key']}/sections")
-                                ->maxSize(2048),
-                            TextInput::make('cta_text')
-                                ->label('Texte du CTA'),
-                            TextInput::make('cta_url')
-                                ->label('Lien du CTA')
-                                ->url(),
-                        ])
-                        ->collapsible()
-                        ->collapsed()
-                        ->defaultItems(0)
-                        ->addActionLabel('Ajouter une section'),
-                ])->collapsible()->collapsed();
-            }
-
-            $pageSchema[] = Section::make('Données structurées')->schema([
-                KeyValue::make("{$prefix}.custom_data")
-                    ->label('Données personnalisées (clé → valeur)')
-                    ->addActionLabel('Ajouter un champ')
-                    ->keyLabel('Clé')
-                    ->valueLabel('Valeur'),
-            ])->collapsible()->collapsed();
-
-            $sections[] = Section::make($page['label'])
-                ->collapsed()
-                ->icon('heroicon-o-document-text')
-                ->schema($pageSchema);
-        }
-
-        return Tab::make('Pages')
-            ->icon('heroicon-o-rectangle-stack')
-            ->schema($sections);
-    }
 }
