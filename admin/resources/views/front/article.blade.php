@@ -11,9 +11,9 @@
     "datePublished": "{{ $post->published_at?->toIso8601String() }}",
     "dateModified": "{{ $post->updated_at?->toIso8601String() }}",
     "author": {
-        "@@type": "Organization",
-        "name": "NeoGTB",
-        "url": "https://neogtb.fr"
+        "@@type": "Person",
+        "name": "Ulrich Calmo",
+        "url": "https://neogtb.fr/about"
     },
     "publisher": {
         "@@type": "Organization",

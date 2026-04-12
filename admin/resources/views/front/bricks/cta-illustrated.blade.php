@@ -6,7 +6,7 @@
 
 <section class="relative overflow-hidden" style="padding: 56px 0 64px; background: {{ $bg }}; min-height: 420px; border-top: 1px solid var(--color-dark-200);">
     @if($imgUrl)
-        <img src="{{ $imgUrl }}" alt="" width="1200" height="630" class="hero-bg-illustration" loading="lazy" />
+        <img src="{{ $imgUrl }}" alt="" aria-hidden="true" width="1200" height="630" class="hero-bg-illustration" loading="lazy" />
         <div style="position: absolute; inset: 0; background: linear-gradient(to right, {{ $bg }} 30%, rgba(240,242,245,0.3) 70%); pointer-events: none;"></div>
     @endif
 

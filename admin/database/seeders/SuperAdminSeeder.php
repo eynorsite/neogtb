@@ -16,7 +16,7 @@ class SuperAdminSeeder extends Seeder
         $admin = Admin::firstOrCreate(
             ['email' => 'admin@neogtb.fr'],
             [
-                'name' => 'Super Admin',
+                'name' => 'Ulrich Calmo',
                 'password' => Hash::make($password, ['rounds' => 12]),
                 'role' => 'superadmin',
                 'is_active' => true,

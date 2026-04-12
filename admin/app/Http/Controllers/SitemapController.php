@@ -36,6 +36,7 @@ class SitemapController extends Controller
             ['/mentions-legales',              'yearly',  '0.3'],
             ['/politique-de-confidentialite',  'yearly',  '0.3'],
             ['/mes-droits-rgpd',               'yearly',  '0.3'],
+            ['/cookies',                       'yearly',  '0.3'],
         ];
 
         $urls = [];

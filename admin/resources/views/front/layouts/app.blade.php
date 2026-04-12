@@ -35,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Ulrich Calmo — NeoGTB" />
   <meta name="theme-color" content="#0F172A" />
-  @hasSection('noindex')<meta name="robots" content="noindex, nofollow" />@endif
+  @hasSection('noindex')<meta name="robots" content="noindex, nofollow" />@else<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />@endif
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
 
@@ -52,6 +52,8 @@
   <meta property="og:description" content="{{ $seoDescription }}" />
   <meta property="og:url" content="{{ $seoUrl }}" />
   <meta property="og:image" content="{{ $seoOgImageAbs }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="fr_FR" />
 
   {{-- Twitter Card --}}

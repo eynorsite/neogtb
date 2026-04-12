@@ -17,7 +17,7 @@
                 <div class="flex-1">
                     <div class="relative">
                         <div class="absolute -inset-4 bg-gradient-to-br from-primary-100 to-accent-100 rounded-3xl opacity-50 blur-xl"></div>
-                        <img src="{{ asset('storage/' . $content['image']) }}" alt="" class="relative rounded-2xl shadow-xl ring-1 ring-dark-100">
+                        <img src="{{ asset('storage/' . $content['image']) }}" alt="{{ $content['titre'] ?? 'Illustration NeoGTB' }}" class="relative rounded-2xl shadow-xl ring-1 ring-dark-100">
                     </div>
                 </div>
             </div>
