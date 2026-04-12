@@ -13,9 +13,10 @@
 @endphp
 
 <section data-hero class="{{ $hauteur }} min-h-[460px] max-h-[72vh] lg:min-h-[520px] lg:max-h-none pt-[72px] pb-10 lg:pt-[136px] lg:pb-20 relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-dark-950 via-primary-900 to-dark-900">
-    <div class="absolute top-20 left-10 w-72 h-72 bg-accent-500/20 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0a1628]/95 via-[#0a1628]/85 to-[#0a1628]/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/30 to-[#0a1628]/50"></div>
+    <div class="absolute bottom-0 left-1/4 h-64 w-96 rounded-full bg-accent-500/20 blur-[120px] animate-glow-pulse"></div>
+    <div class="absolute top-20 right-10 w-72 h-72 bg-primary-500/15 rounded-full blur-3xl animate-glow-pulse" style="animation-delay: -1.5s;"></div>
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
 
     @if(!empty($content['image']))
@@ -27,25 +28,25 @@
 
     <div class="relative z-10 mx-auto max-w-4xl px-5 lg:px-10 {{ $align }}">
         @if(!empty($content['badge']))
-            <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-accent-500/20 border border-accent-500/30 px-4 py-1.5 text-sm font-medium text-accent-300 backdrop-blur-sm animate-fade-in-up">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-500/10 px-4 py-1.5 text-sm font-medium text-accent-400 backdrop-blur-sm animate-fade-in-up">
                 {{ $content['badge'] }}
             </div>
         @endif
 
         @if(!empty($content['titre']))
-            <h1 class="text-[30px] lg:text-[44px] font-heading font-extrabold leading-tight text-white animate-fade-in-up" style="animation-delay: 0.1s;">
+            <h1 class="font-display text-3xl md:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white animate-fade-in-up" style="animation-delay: 0.1s;">
                 {!! preg_replace('/\b(GTB|GTC|NeoGTB)\b/', '<span class="text-gradient">$1</span>', e($content['titre'])) !!}
             </h1>
         @endif
 
         @if(!empty($content['sous_titre']))
-            <p class="mt-6 text-lg text-dark-300 sm:text-xl animate-fade-in-up" style="animation-delay: 0.2s;">
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl animate-fade-in-up" style="animation-delay: 0.2s;">
                 {{ $content['sous_titre'] }}
             </p>
         @endif
 
         @if(!empty($content['description']))
-            <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-dark-400 animate-fade-in-up" style="animation-delay: 0.3s;">
+            <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/50 animate-fade-in-up" style="animation-delay: 0.3s;">
                 {{ $content['description'] }}
             </p>
         @endif
@@ -54,16 +55,15 @@
             <div class="mt-10 flex flex-wrap gap-4 {{ ($settings['alignement'] ?? 'center') === 'center' ? 'justify-center' : '' }} animate-fade-in-up" style="animation-delay: 0.4s;">
                 @if(!empty($content['cta_texte']))
                     <a href="{{ $content['cta_lien'] ?? '#' }}"
-                       class="inline-flex items-center gap-2 rounded-xl bg-accent-500 px-8 py-4 text-base font-bold text-dark-900 shadow-lg transition hover:bg-accent-600 btn-glow">
+                       class="inline-flex items-center gap-2 rounded-lg bg-accent-500 px-8 py-4 text-base font-semibold text-dark-950 shadow-lg shadow-accent-500/25 transition-all duration-300 hover:bg-accent-600 hover:scale-105 hover:shadow-xl hover:shadow-accent-500/40">
                         {{ $content['cta_texte'] }}
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
                 @endif
                 @if(!empty($content['cta2_texte']))
                     <a href="{{ $content['cta2_lien'] ?? '#' }}"
-                       class="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 bg-white/10 px-8 py-4 text-base font-bold text-white shadow-lg backdrop-blur-sm transition hover:bg-white/20">
+                       class="inline-flex items-center gap-2 rounded-lg border border-white/30 px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-white/10">
                         {{ $content['cta2_texte'] }}
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
                 @endif
             </div>

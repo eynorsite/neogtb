@@ -1,24 +1,24 @@
 <section class="py-12 lg:py-24 bg-dark-50/50 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
-        @if(!empty($content['titre']))
-            <div class="text-center mb-16 animate-fade-in-up">
-                <h2 class="text-[28px] lg:text-[44px] font-heading font-extrabold text-dark-900">{{ $content['titre'] }}</h2>
-                <div class="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
+        @if(!empty($content['eyebrow']) || !empty($content['titre']))
+            <div class="mx-auto max-w-2xl text-center mb-12 animate-fade-in-up">
+                @if(!empty($content['eyebrow']))
+                    <p class="text-sm font-semibold uppercase tracking-wider text-accent-600">{{ $content['eyebrow'] }}</p>
+                @endif
+                @if(!empty($content['titre']))
+                    <h2 class="font-display mt-2 text-3xl font-bold md:text-4xl text-dark-900">{{ $content['titre'] }}</h2>
+                @endif
             </div>
         @endif
 
         <div class="grid grid-cols-1 gap-5 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
             @foreach($content['avis'] ?? [] as $i => $avis)
-                <div class="relative rounded-2xl bg-white p-5 lg:p-7 lg:shadow-sm border border-dark-100 card-hover animate-fade-in-up"
+                <div class="glass-card rounded-2xl p-6 lg:p-8 animate-fade-in-up"
                      style="animation-delay: {{ $i * 100 }}ms">
 
                     {{-- Guillemet decoratif --}}
-                    <div class="absolute -top-4 left-8">
-                        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-primary-600 shadow-md">
-                            <svg class="h-4 w-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg>
-                        </div>
-                    </div>
+                    <svg class="mb-4 h-8 w-8 text-accent-500/30" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg>
 
                     @if(!empty($avis['note']))
                         <div class="mb-4 flex gap-1 mt-2">
@@ -30,9 +30,9 @@
                         </div>
                     @endif
 
-                    <p class="text-sm leading-relaxed text-dark-600 italic mb-6">"{{ $avis['texte'] ?? '' }}"</p>
+                    <blockquote class="text-base leading-relaxed text-dark-700/80 mb-6">"{{ $avis['texte'] ?? '' }}"</blockquote>
 
-                    <div class="flex items-center gap-3 border-t border-dark-100 pt-5">
+                    <div class="flex items-center gap-3 mt-6">
                         {{-- Avatar initiales --}}
                         <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-primary-700 text-white text-sm font-bold shadow-sm">
                             {{ strtoupper(substr($avis['nom'] ?? 'A', 0, 1)) }}{{ strtoupper(substr(explode(' ', $avis['nom'] ?? '')[1] ?? '', 0, 1)) }}

@@ -1,46 +1,71 @@
-<section style="padding: 56px 0 64px; background: var(--color-dark-50); border-top: 1px solid var(--color-dark-200); border-bottom: 1px solid var(--color-dark-200);">
+<section class="py-12 lg:py-24">
     <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10">
-        <x-front.shared.section-header
-            :eyebrow="$content['eyebrow'] ?? null"
-            :title="$content['titre'] ?? ''"
-            :intro="$content['sous_titre'] ?? null"
-        />
+        @if(!empty($content['eyebrow']) || !empty($content['titre']))
+            <div class="mx-auto max-w-2xl text-center mb-12 animate-fade-in-up">
+                @if(!empty($content['eyebrow']))
+                    <p class="text-sm font-semibold uppercase tracking-wider text-accent-600">{{ $content['eyebrow'] }}</p>
+                @endif
+                @if(!empty($content['titre']))
+                    <h2 class="font-display mt-2 text-3xl font-bold md:text-4xl text-dark-900">{{ $content['titre'] }}</h2>
+                @endif
+                @if(!empty($content['sous_titre']))
+                    <p class="mt-4 text-dark-500">{{ $content['sous_titre'] }}</p>
+                @endif
+            </div>
+        @endif
 
-        @php
-            $methodIcons = [
-                'search' => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round"/></svg>',
-                'bars'   => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h4v12H3zM10 3h4v15h-4zM17 9h4v9h-4z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-                'check'  => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-                'bolt'   => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-            ];
-        @endphp
-        <div class="method-flow reveal" x-data x-intersect.once="$el.classList.add('visible')"
-             style="background: white; border-radius: 12px; border: 1px solid var(--color-dark-200); overflow: hidden; display: flex; position: relative;">
-            <div class="method-flow-connector" style="position: absolute; top: 44px; left: 12.5%; right: 12.5%;"></div>
+        <div class="grid grid-cols-1 md:grid-cols-{{ count($content['etapes'] ?? []) }} gap-6">
             @foreach($content['etapes'] ?? [] as $i => $etape)
                 @php $isActive = ($etape['active'] ?? false); @endphp
-                <div class="method-flow-step {{ $isActive ? 'active-step' : '' }}"
-                     style="flex: 1; padding: 28px 16px; {{ !$loop->last ? 'border-right: 1px solid var(--color-dark-200);' : '' }} {{ $isActive ? 'background: var(--color-accent-50);' : '' }}">
-                    <div class="method-flow-node">
-                        @if(!empty($etape['icone']) && isset($methodIcons[$etape['icone']]))
-                            {!! $methodIcons[$etape['icone']] !!}
-                        @else
-                            {{ $etape['numero'] ?? ($i + 1) }}
+                <div class="glass-card relative rounded-2xl p-6 pt-8 {{ $isActive ? 'ring-2 ring-accent-500/30 shadow-lg shadow-accent-500/10' : '' }} transition-all duration-300 animate-fade-in-up"
+                     style="animation-delay: {{ $i * 100 }}ms">
+
+                    @if($isActive)
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent-500 px-4 py-1 text-xs font-semibold text-white shadow-lg shadow-accent-500/30 z-10">
+                            Recommandé
+                        </div>
+                    @endif
+
+                    <div class="flex flex-col items-center text-center">
+                        <div class="mb-4 relative">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center text-white font-bold text-lg font-display"
+                                 style="box-shadow: 0 0 20px rgba(45, 139, 78, 0.3);">
+                                {{ $etape['numero'] ?? ($i + 1) }}
+                            </div>
+                        </div>
+                        <h3 class="font-display font-semibold text-dark-900 mb-2">{{ $etape['titre'] ?? '' }}</h3>
+                        <p class="text-sm text-dark-500">{{ $etape['description'] ?? '' }}</p>
+
+                        @if(!empty($etape['features']))
+                            <ul class="mt-4 space-y-2 text-left w-full">
+                                @foreach($etape['features'] ?? [] as $feature)
+                                    <li class="flex items-center gap-2 text-sm text-dark-700/80">
+                                        <svg class="h-4 w-4 text-accent-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                        {{ $feature }}
+                                    </li>
+                                @endforeach
+                            </ul>
                         @endif
                     </div>
-                    <h3 style="font-size: 14px; font-weight: 500; color: var(--color-dark-900); margin-bottom: 6px;">{{ $etape['titre'] ?? '' }}</h3>
-                    <p style="font-size: 12px; color: var(--color-dark-500); line-height: 1.5;">{{ $etape['description'] ?? '' }}</p>
+
+                    @if(!empty($etape['cta_texte']))
+                        <a href="{{ $etape['cta_lien'] ?? '#' }}"
+                           class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-lg {{ $isActive ? 'bg-accent-500 text-white shadow-lg shadow-accent-500/20' : 'border border-dark-200 text-dark-700 hover:border-accent-500/30' }} px-4 py-2.5 text-sm font-semibold transition-all duration-300">
+                            {{ $etape['cta_texte'] }}
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    @endif
                 </div>
             @endforeach
         </div>
 
         @if(!empty($content['cta_texte']))
-            <x-front.shared.reveal class="text-center" style="margin-top: 32px;">
+            <div class="text-center mt-8 animate-fade-in-up">
                 <a href="{{ $content['cta_lien'] ?? '#' }}"
-                   style="font-size: 14px; font-weight: 500; color: var(--color-accent-600); text-decoration: none; border-bottom: 1px solid var(--color-accent-200);">
+                   class="text-sm font-medium text-accent-600 hover:text-accent-700 transition-colors border-b border-accent-200 hover:border-accent-600">
                     {{ $content['cta_texte'] }}
                 </a>
-            </x-front.shared.reveal>
+            </div>
         @endif
     </div>
 </section>

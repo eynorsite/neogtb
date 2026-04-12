@@ -11,7 +11,7 @@
 
 <{{ $tag }}
     @if($href) href="{{ $href }}" style="text-decoration: none;" @endif
-    {{ $attributes->merge(['class' => "card block $padding reveal $delayClass"]) }}
+    {{ $attributes->merge(['class' => "glass-card block $padding reveal $delayClass"]) }}
     x-data
     x-intersect.once="$el.classList.add('visible')"
 >

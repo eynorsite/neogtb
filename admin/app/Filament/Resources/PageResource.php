@@ -4,9 +4,7 @@
  * PageResource — édite les SitePage (slug, hero_*, meta_*, og_*)
  * et la liste de leurs PageBrick via un Repeater (relationship 'bricks').
  *
- * Pour l'édition fine du contenu d'un brick (schema dynamique selon le type
- * via BrickRegistry::get($type)->schema()), un éditeur dédié existe :
- * App\Filament\Pages\BrickEditorPage (route /admin/pages/{id}/bricks),
+ * L'édition du contenu se fait via PageContentsPage (style BIMACAD)
  * accessible depuis l'action "Modifier le contenu" dans la table.
  *
  * Le Repeater "Contenu (blocs)" présent ici permet une gestion rapide :
@@ -262,7 +260,7 @@ class PageResource extends Resource
                     ->label('Modifier le contenu')
                     ->icon('heroicon-o-pencil-square')
                     ->color('success')
-                    ->url(fn ($record) => url('/admin/pages/' . $record->id . '/bricks')),
+                    ->url(fn ($record) => url('/admin/page-contents-page')),
                 \Filament\Actions\EditAction::make()
                     ->label('Réglages de la page'),
                 \Filament\Actions\Action::make('viewOnSite')

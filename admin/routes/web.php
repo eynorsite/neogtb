@@ -63,7 +63,4 @@ Route::middleware(['web'])->prefix('admin/api/bricks')->group(function () {
 // Dynamic pages catch-all (from database)
 Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show'])->where('slug', '^(?!admin|livewire).*$');
 
-// Brick editor standalone route (outside Filament panels wrapper)
-Route::get('/admin/pages/{pageId}/bricks-editor', \App\Livewire\BrickEditor::class)
-    ->middleware(['web', 'auth:admin'])
-    ->name('brick-editor');
+// Ancien brick editor supprimé — remplacé par PageContentsPage Filament (/admin/page-contents-page)

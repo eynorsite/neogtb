@@ -63,8 +63,8 @@
 .timeline-regl-dot.current { background: #1B3A5C; box-shadow: 0 0 0 2px #1B3A5C; }
 .timeline-regl-point.future .timeline-regl-dot,
 .timeline-regl-dot.future { background: #fff; }
-.timeline-regl-year { font-size: 11px; font-weight: 700; color: #267a43; text-transform: uppercase; letter-spacing: 0.05em; }
-.timeline-regl-label { font-size: 14px; color: #475569; line-height: 1.5; }
+.timeline-regl-year { font-size: 14px; font-weight: 700; color: #267a43; text-transform: uppercase; letter-spacing: 0.05em; }
+.timeline-regl-label { font-size: 15px; color: #475569; line-height: 1.5; }
 @media (max-width: 768px) {
   .timeline-regl { flex-direction: column; align-items: flex-start; }
   .timeline-regl::before { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }

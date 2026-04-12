@@ -3,19 +3,17 @@
 **Projet** : Site web éducatif et informatif sur la GTB/GTC
 **Domaines** : neogtb.fr / neogtb.com
 **Objectif** : Eduquer sur la Gestion Technique du Bâtiment et proposer des audits
-**Stack** : Astro + Tailwind CSS 4 + Alpine.js
+**Stack** : React (Lovable) + Tailwind CSS 4 + Laravel admin
 **Date de création** : 9 mars 2026
 
 ---
 
 ## Stack Technique
 
-- **Framework** : Astro (SSG - Static Site Generation)
-- **CSS** : Tailwind CSS 4
-- **JS** : Alpine.js (interactivité légère)
-- **Build** : Vite (intégré à Astro)
+- **Front** : React (Lovable) + Tailwind CSS 4
+- **Admin** : Laravel + Filament
+- **Build** : Vite
 - **Hébergement** : Vercel ou Netlify (gratuit)
-- **Contenu** : Markdown / MDX (articles blog)
 - **Formulaires** : Formspree ou Resend (emails)
 
 ---
@@ -50,7 +48,7 @@ NeoGTB
 ### Phase 0 : Initialisation ✅
 - [x] Choix du nom : NeoGTB
 - [x] Réservation domaines : neogtb.fr + neogtb.com
-- [x] Choix stack : Astro + Tailwind CSS 4 + Alpine.js
+- [x] Choix stack : React (Lovable) + Tailwind CSS 4 + Laravel admin
 - [x] Initialisation projet
 - [x] Installation Tailwind CSS 4
 - [x] Initialisation Git
@@ -72,7 +70,7 @@ NeoGTB
 - [ ] Page "Contact" (formulaire)
 
 ### Phase 3 : Blog & Contenu
-- [ ] Système de blog (collection Astro + Markdown)
+- [ ] Système de blog
 - [ ] Page liste des articles
 - [ ] Page détail article
 - [ ] Catégories et tags
@@ -105,17 +103,16 @@ NeoGTB
 
 ## Conventions de Code
 
-### Astro
-- **Pages** : `src/pages/` (routing automatique)
-- **Layouts** : `src/layouts/`
+### React (Lovable)
+- **Pages** : `src/pages/`
 - **Composants** : `src/components/` (PascalCase)
-- **Contenu** : `src/content/` (Markdown/MDX)
-- **Styles** : `src/styles/`
+- **Briques** : `src/components/bricks/` (architecture modulaire)
+- **Hooks** : `src/hooks/`
+- **Styles** : Tailwind CSS 4
 
 ### Tailwind CSS
 - Mobile-first
 - Ordre : Layout → Spacing → Typography → Visual
-- Composants Astro réutilisables
 
 ### Git
 - Branches : `main` (prod), `feature/nom`, `fix/nom`
@@ -153,6 +150,6 @@ Ce projet est **100% indépendant**. Ne JAMAIS :
 
 Les 4 projets dans ~/projets/ sont totalement séparés :
 - `site-eynor/` → Site web EYNOR (Laravel + Filament + PostgreSQL)
-- `neogtb/` → **CE PROJET** (Astro + Laravel admin)
+- `neogtb/` → **CE PROJET** (React Lovable + Laravel admin)
 - `tools-habelec/` → Outils habilitation (Laravel + Livewire)
 - `nfc18510-app/` → App NFC 18-510 (React + Vite)
