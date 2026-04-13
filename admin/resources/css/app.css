@@ -201,6 +201,12 @@
 }
 .glass-card:hover {
     box-shadow: 0 8px 32px -8px rgba(45, 139, 78, 0.12);
+    border-color: rgba(45, 139, 78, 0.15);
+    transform: translateY(-2px);
+}
+.glass-card:hover .card-cta-btn {
+    background: var(--color-accent-700);
+    box-shadow: 0 4px 12px rgba(45, 139, 78, 0.25);
 }
 
 [x-cloak] { display: none !important; }
