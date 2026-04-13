@@ -23,7 +23,7 @@ class PageController extends Controller
             ->where('is_published', true)
             ->firstOrFail();
 
-        $bricks = $page->visibleBricks()->get();
+        $bricks = \App\Services\ContentBrickAdapter::buildBricks($slug);
 
         return view('front.page', compact('page', 'bricks'));
     }

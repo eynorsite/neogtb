@@ -2,10 +2,9 @@
 
 namespace App\Filament\Pages;
 
-use App\Models\PageBrick;
-use App\Models\SitePage;
+use App\Models\PageContent;
 use Filament\Actions\Action;
-use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -36,42 +35,56 @@ class PageContentsPage extends Page implements HasForms
 
     public ?array $data = [];
 
+    /**
+     * Page order for tab sorting.
+     */
+    private array $pageOrder = [
+        'accueil' => 1,
+        'gtb' => 2,
+        'gtc' => 3,
+        'solutions' => 4,
+        'reglementation' => 5,
+        'audit' => 6,
+        'contact' => 7,
+        'about' => 8,
+        'comparateur' => 9,
+        'blog' => 10,
+        'generateur-cee' => 11,
+        'positionnement' => 12,
+        'mentions-legales' => 20,
+        'politique-de-confidentialite' => 21,
+        'mes-droits-rgpd' => 22,
+    ];
+
+    private array $pageIcons = [
+        'accueil' => 'heroicon-o-home',
+        'gtb' => 'heroicon-o-cpu-chip',
+        'gtc' => 'heroicon-o-computer-desktop',
+        'solutions' => 'heroicon-o-wrench-screwdriver',
+        'reglementation' => 'heroicon-o-scale',
+        'audit' => 'heroicon-o-clipboard-document-check',
+        'contact' => 'heroicon-o-envelope',
+        'about' => 'heroicon-o-user-group',
+        'comparateur' => 'heroicon-o-arrows-right-left',
+        'mentions-legales' => 'heroicon-o-document-text',
+        'politique-de-confidentialite' => 'heroicon-o-shield-check',
+        'mes-droits-rgpd' => 'heroicon-o-shield-exclamation',
+        'generateur-cee' => 'heroicon-o-calculator',
+        'positionnement' => 'heroicon-o-map-pin',
+        'blog' => 'heroicon-o-newspaper',
+    ];
+
     public function mount(): void
     {
         $formData = [];
 
-        $pages = SitePage::with(['bricks' => fn ($q) => $q->orderBy('order')])->get();
+        $contents = PageContent::where('key', 'not like', '\_%')->get();
 
-        foreach ($pages as $page) {
-            foreach ($page->bricks as $brick) {
-                $this->flattenToForm($formData, $brick->id, 'content', $brick->content ?? []);
-                $this->flattenToForm($formData, $brick->id, 'settings', $brick->settings ?? []);
-            }
+        foreach ($contents as $pc) {
+            $formData["pc_{$pc->id}"] = $pc->value;
         }
 
         $this->form->fill($formData);
-    }
-
-    /**
-     * Flatten nested arrays into dot-notation form keys: brick_{id}__content__key
-     */
-    private function flattenToForm(array &$formData, int $brickId, string $group, array $data, string $prefix = ''): void
-    {
-        foreach ($data as $key => $value) {
-            $formKey = "brick_{$brickId}__{$group}__{$prefix}{$key}";
-
-            if (is_array($value) && $this->isAssoc($value)) {
-                $this->flattenToForm($formData, $brickId, $group, $value, $prefix . $key . '__');
-            } else {
-                $formData[$formKey] = $value;
-            }
-        }
-    }
-
-    private function isAssoc(array $arr): bool
-    {
-        if (empty($arr)) return false;
-        return array_keys($arr) !== range(0, count($arr) - 1);
     }
 
     public function form(Schema $form): Schema
@@ -88,168 +101,173 @@ class PageContentsPage extends Page implements HasForms
 
     private function buildTabs(): array
     {
-        $pages = SitePage::with(['bricks' => fn ($q) => $q->orderBy('order')])
-            ->orderBy('order')
-            ->get();
-
-        $pageIcons = [
-            'accueil' => 'heroicon-o-home',
-            'gtb' => 'heroicon-o-cpu-chip',
-            'gtc' => 'heroicon-o-computer-desktop',
-            'solutions' => 'heroicon-o-wrench-screwdriver',
-            'reglementation' => 'heroicon-o-scale',
-            'audit' => 'heroicon-o-clipboard-document-check',
-            'contact' => 'heroicon-o-envelope',
-            'about' => 'heroicon-o-user-group',
-            'faq' => 'heroicon-o-question-mark-circle',
-            'comparateur' => 'heroicon-o-arrows-right-left',
-            'blog' => 'heroicon-o-newspaper',
-        ];
+        $pages = PageContent::select('page')
+            ->distinct()
+            ->pluck('page')
+            ->sort(function ($a, $b) {
+                $orderA = $this->pageOrder[$a] ?? 99;
+                $orderB = $this->pageOrder[$b] ?? 99;
+                return $orderA <=> $orderB;
+            })
+            ->values();
 
         $tabs = [];
 
         foreach ($pages as $page) {
-            $bricks = $page->bricks;
-            if ($bricks->isEmpty()) continue;
+            // Count sections for badge
+            $sectionCount = PageContent::where('page', $page)
+                ->select('section')
+                ->distinct()
+                ->count();
 
-            $sections = [];
-
-            foreach ($bricks as $brick) {
-                $fields = $this->buildFieldsForBrick($brick);
-                $label = ($brick->brick_name ?: $brick->brick_type) . ($brick->is_visible ? '' : ' (masqué)');
-
-                $sections[] = Section::make($label)
-                    ->schema($fields)
-                    ->columns(2)
-                    ->collapsible()
-                    ->collapsed(true);
-            }
-
-            $tabs[] = Tab::make($page->name ?: $page->slug)
-                ->icon($pageIcons[$page->slug] ?? 'heroicon-o-document')
-                ->badge(count($bricks))
-                ->schema($sections);
+            $tabs[] = Tab::make(ucfirst($page))
+                ->icon($this->pageIcons[$page] ?? 'heroicon-o-document')
+                ->badge($sectionCount . ' sections')
+                ->schema($this->buildSectionsForPage($page));
         }
 
         return $tabs;
     }
 
-    /**
-     * Build simple TextInput/Textarea fields for each brick content key.
-     * Arrays (like repeaters) are shown as JSON for now.
-     */
-    private function buildFieldsForBrick(PageBrick $brick): array
+    private function buildSectionsForPage(string $page): array
     {
-        $fields = [];
-        $content = $brick->content ?? [];
-        $settings = $brick->settings ?? [];
+        // Get brick names for section labels
+        $brickNames = PageContent::where('page', $page)
+            ->where('key', '_brick_name')
+            ->pluck('value', 'section');
 
-        // Content fields
-        foreach ($content as $key => $value) {
-            $formKey = "brick_{$brick->id}__content__{$key}";
-            $label = $this->humanLabel($key);
+        $brickTypes = PageContent::where('page', $page)
+            ->where('key', '_brick_type')
+            ->pluck('value', 'section');
 
-            if (is_array($value)) {
-                // Arrays (cartes, stats, questions, etc.) → Textarea with JSON
-                $fields[] = Textarea::make($formKey)
-                    ->label($label)
-                    ->rows(4)
-                    ->helperText('Format JSON — tableau de données')
-                    ->formatStateUsing(fn ($state) => is_array($state) ? json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) : $state)
-                    ->dehydrateStateUsing(fn ($state) => is_string($state) ? json_decode($state, true) : $state)
-                    ->columnSpanFull();
-            } elseif (is_bool($value)) {
-                $fields[] = Toggle::make($formKey)
-                    ->label($label);
-            } elseif (mb_strlen((string) $value) > 120) {
-                $fields[] = Textarea::make($formKey)
-                    ->label($label)
-                    ->rows(3)
-                    ->columnSpanFull();
-            } else {
-                $fields[] = TextInput::make($formKey)
-                    ->label($label);
+        // Get all sections in order
+        $sections = PageContent::where('page', $page)
+            ->select('section')
+            ->distinct()
+            ->orderBy('section')
+            ->pluck('section');
+
+        $result = [];
+
+        foreach ($sections as $sectionKey) {
+            $fields = $this->buildFieldsForSection($page, $sectionKey);
+
+            if (empty($fields)) {
+                continue;
             }
+
+            // Build section label
+            $brickName = $brickNames[$sectionKey] ?? null;
+            $brickType = $brickTypes[$sectionKey] ?? null;
+            $sectionLabel = $brickName ?: ($brickType ?: $sectionKey);
+
+            $result[] = Section::make($sectionLabel)
+                ->schema($fields)
+                ->columns(2)
+                ->collapsible()
+                ->collapsed(true);
         }
 
-        // Settings fields
-        if (!empty($settings)) {
-            foreach ($settings as $key => $value) {
-                $formKey = "brick_{$brick->id}__settings__{$key}";
-                $label = '⚙️ ' . $this->humanLabel($key);
-
-                if (is_array($value)) {
-                    $fields[] = Textarea::make($formKey)
-                        ->label($label)
-                        ->rows(2)
-                        ->formatStateUsing(fn ($state) => is_array($state) ? json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) : $state)
-                        ->dehydrateStateUsing(fn ($state) => is_string($state) ? json_decode($state, true) : $state)
-                        ->columnSpanFull();
-                } elseif (is_bool($value)) {
-                    $fields[] = Toggle::make($formKey)
-                        ->label($label);
-                } else {
-                    $fields[] = TextInput::make($formKey)
-                        ->label($label);
-                }
-            }
-        }
-
-        return $fields;
+        return $result;
     }
 
-    private function humanLabel(string $key): string
+    private function buildFieldsForSection(string $page, string $sectionKey): array
     {
-        return ucfirst(str_replace(['_', '-'], ' ', $key));
+        $contents = PageContent::where('page', $page)
+            ->where('section', $sectionKey)
+            ->where('key', 'not like', '\_%')
+            ->orderBy('id')
+            ->get();
+
+        // Separate settings from regular fields
+        $regularFields = [];
+        $settingFields = [];
+
+        foreach ($contents as $pc) {
+            $field = $this->buildField($pc);
+
+            if ($field === null) {
+                continue;
+            }
+
+            if (str_starts_with($pc->key, 'setting_')) {
+                $settingFields[] = $field;
+            } else {
+                $regularFields[] = $field;
+            }
+        }
+
+        // Add settings in a sub-section if any
+        if (! empty($settingFields)) {
+            $regularFields[] = Section::make('Paramètres')
+                ->schema($settingFields)
+                ->columns(2)
+                ->collapsible()
+                ->collapsed(true)
+                ->icon('heroicon-o-cog-6-tooth');
+        }
+
+        return $regularFields;
+    }
+
+    private function buildField(PageContent $pc): mixed
+    {
+        $formKey = "pc_{$pc->id}";
+        $label = $pc->label ?: ucfirst(str_replace(['_', '-'], ' ', $pc->key));
+
+        return match ($pc->type) {
+            'textarea' => Textarea::make($formKey)
+                ->label($label)
+                ->rows(3)
+                ->columnSpanFull(),
+
+            'boolean' => Toggle::make($formKey)
+                ->label($label)
+                ->formatStateUsing(fn ($state) => filter_var($state, FILTER_VALIDATE_BOOLEAN))
+                ->dehydrateStateUsing(fn ($state) => $state ? '1' : '0'),
+
+            'image' => TextInput::make($formKey)
+                ->label($label)
+                ->helperText('Chemin de l\'image')
+                ->columnSpanFull(),
+
+            'color' => ColorPicker::make($formKey)
+                ->label($label),
+
+            default => TextInput::make($formKey)
+                ->label($label),
+        };
     }
 
     public function save(): void
     {
         $data = $this->form->getState();
-
-        // Group by brick ID
-        $brickUpdates = [];
+        $pagesUpdated = [];
 
         foreach ($data as $formKey => $value) {
-            if (!preg_match('/^brick_(\d+)__(content|settings)__(.+)$/', $formKey, $matches)) {
+            if (! str_starts_with($formKey, 'pc_')) {
                 continue;
             }
 
-            $brickId = (int) $matches[1];
-            $group = $matches[2];
-            $field = $matches[3];
+            $id = (int) substr($formKey, 3);
 
-            $brickUpdates[$brickId][$group][$field] = $value;
+            PageContent::where('id', $id)->update(['value' => $value]);
+
+            // Track pages for cache invalidation
+            $pc = PageContent::find($id);
+            if ($pc) {
+                $pagesUpdated[$pc->page] = true;
+            }
         }
 
-        $admin = auth()->guard('admin')->user();
-
-        foreach ($brickUpdates as $brickId => $updates) {
-            $brick = PageBrick::find($brickId);
-            if (!$brick) continue;
-
-            if (isset($updates['content'])) {
-                $content = $brick->content ?? [];
-                foreach ($updates['content'] as $key => $val) {
-                    $content[$key] = $val;
-                }
-                $brick->content = $content;
-            }
-
-            if (isset($updates['settings'])) {
-                $settings = $brick->settings ?? [];
-                foreach ($updates['settings'] as $key => $val) {
-                    $settings[$key] = $val;
-                }
-                $brick->settings = $settings;
-            }
-
-            $brick->updated_by = $admin?->id;
-            $brick->save();
+        // Invalidate cache for updated pages
+        foreach (array_keys($pagesUpdated) as $page) {
+            PageContent::clearCache($page);
         }
 
         Notification::make()
             ->title('Contenu enregistré')
+            ->body(count($pagesUpdated) . ' page(s) mise(s) à jour')
             ->success()
             ->send();
     }

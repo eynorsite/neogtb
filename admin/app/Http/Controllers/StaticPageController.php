@@ -9,7 +9,7 @@ class StaticPageController extends Controller
     public function accueil()
     {
         $page = SitePage::where('slug', 'accueil')->firstOrFail();
-        $bricks = $page->visibleBricks()->get();
+        $bricks = \App\Services\ContentBrickAdapter::buildBricks('accueil');
 
         return view('front.page', compact('page', 'bricks'));
     }
