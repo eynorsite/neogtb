@@ -207,6 +207,247 @@ class SiteSettingsPage extends Page implements HasForms
         Notification::make()->title('Application optimisée')->success()->send();
     }
 
+    // ─── BACKUP BDD ────────────────────────────────────────
+
+    public function backupDatabase()
+    {
+        $dbPath = config('database.connections.sqlite.database');
+
+        if (! $dbPath || ! is_file($dbPath)) {
+            Notification::make()->title('BDD introuvable')->body('Seul SQLite est pris en charge.')->danger()->send();
+
+            return null;
+        }
+
+        $filename = 'neogtb-backup-' . now()->format('Ymd-His') . '.sqlite.gz';
+        $tmpPath = storage_path('app/' . $filename);
+
+        $in = fopen($dbPath, 'rb');
+        $out = gzopen($tmpPath, 'wb9');
+        if (! $in || ! $out) {
+            Notification::make()->title('Erreur backup')->body('Lecture/écriture impossible.')->danger()->send();
+
+            return null;
+        }
+        while (! feof($in)) {
+            gzwrite($out, fread($in, 8192));
+        }
+        fclose($in);
+        gzclose($out);
+
+        return response()->download($tmpPath, $filename, [
+            'Content-Type' => 'application/gzip',
+        ])->deleteFileAfterSend();
+    }
+
+    // ─── TEST LIENS NAVIGATION ─────────────────────────────
+
+    public function testNavigationLinks(): void
+    {
+        $items = \App\Models\NavigationItem::where('is_active', true)
+            ->whereNotNull('url')
+            ->where('url', '!=', '')
+            ->get(['id', 'label', 'url']);
+
+        if ($items->isEmpty()) {
+            Notification::make()->title('Aucun lien à tester')->warning()->send();
+
+            return;
+        }
+
+        $base = rtrim(config('app.url'), '/');
+        $results = [];
+        $ok = 0;
+        $ko = 0;
+
+        foreach ($items as $item) {
+            $url = $item->url;
+            if (! str_starts_with($url, 'http')) {
+                $url = $base . '/' . ltrim($url, '/');
+            }
+
+            try {
+                $response = \Illuminate\Support\Facades\Http::timeout(3)
+                    ->connectTimeout(2)
+                    ->withUserAgent('NeoGTB-Admin-LinkChecker')
+                    ->head($url);
+                $status = $response->status();
+                if ($status >= 200 && $status < 400) {
+                    $ok++;
+                    $results[] = "✅ <code>$status</code> — " . e($item->label) . ' (' . e($url) . ')';
+                } else {
+                    $ko++;
+                    $results[] = "❌ <code>$status</code> — " . e($item->label) . ' (' . e($url) . ')';
+                }
+            } catch (\Throwable $e) {
+                $ko++;
+                $results[] = '⏱ <em>timeout</em> — ' . e($item->label) . ' (' . e($url) . ')';
+            }
+        }
+
+        $body = '<div style="font-size:12px;line-height:1.6;">' . implode('<br>', $results) . '</div>';
+
+        Notification::make()
+            ->title("Liens testés : $ok OK / $ko KO")
+            ->body(new \Illuminate\Support\HtmlString($body))
+            ->{$ko === 0 ? 'success' : 'warning'}()
+            ->persistent()
+            ->send();
+    }
+
+    // ─── PURGE SESSIONS EXPIRÉES ───────────────────────────
+
+    public function purgeExpiredSessions(): void
+    {
+        $lifetime = (int) config('session.lifetime', 120);
+        $cutoff = now()->subMinutes($lifetime)->timestamp;
+
+        $deleted = \Illuminate\Support\Facades\DB::table('sessions')
+            ->where('last_activity', '<', $cutoff)
+            ->delete();
+
+        Notification::make()
+            ->title('Sessions purgées')
+            ->body("$deleted sessions expirées supprimées (seuil : $lifetime min).")
+            ->success()
+            ->send();
+    }
+
+    // ─── QUEUE RESTART ─────────────────────────────────────
+
+    public function restartQueue(): void
+    {
+        Artisan::call('queue:restart');
+
+        Notification::make()
+            ->title('Queue redémarrée')
+            ->body('Les workers Supervisor vont recharger le code à leur prochain job.')
+            ->success()
+            ->send();
+    }
+
+    // ─── LOGOUT OTHER SESSIONS ─────────────────────────────
+
+    public function logoutOtherSessions(): void
+    {
+        $admin = auth()->guard('admin')->user();
+        if (! $admin) {
+            return;
+        }
+
+        $currentId = session()->getId();
+        $deleted = \Illuminate\Support\Facades\DB::table('sessions')
+            ->where('user_id', $admin->id)
+            ->where('id', '!=', $currentId)
+            ->delete();
+
+        Notification::make()
+            ->title('Autres sessions déconnectées')
+            ->body("$deleted session(s) fermée(s) sur les autres appareils.")
+            ->success()
+            ->send();
+    }
+
+    // ─── DONNÉES POUR AFFICHAGE ────────────────────────────
+
+    protected function getSystemStats(): array
+    {
+        $dbPath = config('database.connections.sqlite.database');
+        $dbSize = is_file($dbPath) ? filesize($dbPath) : 0;
+
+        $storagePath = storage_path('app');
+        $storageSize = 0;
+        if (is_dir($storagePath)) {
+            $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($storagePath, \FilesystemIterator::SKIP_DOTS));
+            foreach ($it as $file) {
+                if ($file->isFile()) {
+                    $storageSize += $file->getSize();
+                }
+            }
+        }
+
+        return [
+            'db_size' => $dbSize,
+            'storage_size' => $storageSize,
+            'admin_count' => \App\Models\Admin::count(),
+            'active_sessions' => \Illuminate\Support\Facades\DB::table('sessions')->count(),
+            'auth_sessions' => \Illuminate\Support\Facades\DB::table('sessions')->whereNotNull('user_id')->count(),
+            'posts_count' => \App\Models\Post::count(),
+            'messages_count' => \App\Models\ContactMessage::count(),
+            'leads_count' => \App\Models\AuditLead::count(),
+        ];
+    }
+
+    protected function getRecentErrorLogs(int $lines = 50): string
+    {
+        $logFile = storage_path('logs/laravel.log');
+        if (! is_file($logFile)) {
+            return 'Fichier log introuvable.';
+        }
+
+        $size = filesize($logFile);
+        if ($size === 0) {
+            return 'Aucun log pour le moment.';
+        }
+
+        // Lit les N dernières lignes de façon efficace
+        $handle = fopen($logFile, 'r');
+        $chunk = 8192;
+        $readSize = min($size, 64 * 1024); // max 64 KB en fin de fichier
+        fseek($handle, -$readSize, SEEK_END);
+        $content = fread($handle, $readSize);
+        fclose($handle);
+
+        $allLines = preg_split('/\r?\n/', $content);
+        $tail = array_slice($allLines, -$lines);
+
+        return implode("\n", $tail);
+    }
+
+    /**
+     * @return array<int, object>
+     */
+    protected function getActiveSessionsForAdmin(): array
+    {
+        $admin = auth()->guard('admin')->user();
+        if (! $admin) {
+            return [];
+        }
+
+        return \Illuminate\Support\Facades\DB::table('sessions')
+            ->where('user_id', $admin->id)
+            ->orderByDesc('last_activity')
+            ->limit(20)
+            ->get(['id', 'ip_address', 'user_agent', 'last_activity'])
+            ->toArray();
+    }
+
+    /**
+     * @return array<int, \App\Models\Admin>
+     */
+    protected function getAdminsLoginJournal(): \Illuminate\Support\Collection
+    {
+        return \App\Models\Admin::select(['id', 'name', 'email', 'role', 'last_login_at', 'last_login_ip', 'is_active'])
+            ->orderByDesc('last_login_at')
+            ->limit(15)
+            ->get();
+    }
+
+    protected function formatBytes(int $bytes): string
+    {
+        if ($bytes < 1024) {
+            return "$bytes o";
+        }
+        if ($bytes < 1048576) {
+            return round($bytes / 1024, 1) . ' Ko';
+        }
+        if ($bytes < 1073741824) {
+            return round($bytes / 1048576, 1) . ' Mo';
+        }
+
+        return round($bytes / 1073741824, 2) . ' Go';
+    }
+
     // ─── ROLE HELPERS ──────────────────────────────────────
 
     protected function getRole(): string
@@ -819,42 +1060,195 @@ class SiteSettingsPage extends Page implements HasForms
                             ->rows(5)
                             ->helperText('Scripts avant la fermeture de </body>'),
                     ]),
-                Section::make('Gestion du cache')->schema([
-                    Actions::make([
-                        Action::make('clear_cache')
-                            ->label('Vider tout le cache')
-                            ->icon('heroicon-o-trash')
-                            ->color('danger')
-                            ->requiresConfirmation()
-                            ->action(fn () => $this->clearAllCache()),
-                        Action::make('optimize_app')
-                            ->label('Optimiser')
-                            ->icon('heroicon-o-bolt')
-                            ->color('success')
-                            ->action(fn () => $this->optimize()),
+                Section::make('Maintenance & diagnostics')
+                    ->description('Outils de cache, tests, backup, redémarrage de la queue.')
+                    ->schema([
+                        Actions::make([
+                            Action::make('clear_cache')
+                                ->label('Vider le cache')
+                                ->icon('heroicon-o-trash')
+                                ->color('danger')
+                                ->requiresConfirmation()
+                                ->action(fn () => $this->clearAllCache()),
+                            Action::make('optimize_app')
+                                ->label('Optimiser')
+                                ->icon('heroicon-o-bolt')
+                                ->color('success')
+                                ->action(fn () => $this->optimize()),
+                            Action::make('backup_db')
+                                ->label('Sauvegarder la BDD')
+                                ->icon('heroicon-o-arrow-down-tray')
+                                ->color('primary')
+                                ->action(fn () => $this->backupDatabase()),
+                            Action::make('test_email')
+                                ->label('Envoyer un email de test')
+                                ->icon('heroicon-o-envelope')
+                                ->color('info')
+                                ->requiresConfirmation()
+                                ->modalDescription(fn () => 'Envoi à l\'adresse de notification : ' . ($this->data['email_notification_to'] ?? '— (champ vide, Communication → Email)'))
+                                ->action(fn () => $this->sendTestEmail()),
+                            Action::make('test_links')
+                                ->label('Tester les liens du menu')
+                                ->icon('heroicon-o-link')
+                                ->color('gray')
+                                ->action(fn () => $this->testNavigationLinks()),
+                            Action::make('purge_sessions')
+                                ->label('Purger sessions expirées')
+                                ->icon('heroicon-o-finger-print')
+                                ->color('warning')
+                                ->requiresConfirmation()
+                                ->action(fn () => $this->purgeExpiredSessions()),
+                            Action::make('restart_queue')
+                                ->label('Redémarrer la queue')
+                                ->icon('heroicon-o-arrow-path')
+                                ->color('gray')
+                                ->requiresConfirmation()
+                                ->modalDescription('Les workers Supervisor rechargent le code à leur prochain job.')
+                                ->action(fn () => $this->restartQueue()),
+                        ]),
                     ]),
-                ]),
-                Section::make('Santé du système')->schema([
-                    Placeholder::make('system_health')
-                        ->label('')
-                        ->content(function () {
-                            $debug = config('app.debug');
-                            $env = config('app.env');
 
-                            return new \Illuminate\Support\HtmlString(
-                                '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'
-                                . '<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#FAFBFC;border-radius:10px;border:1px solid #F1F5F9;">'
-                                . '<span>' . (! $debug ? '✅' : '❌') . '</span><span style="font-size:13px;">APP_DEBUG = ' . ($debug ? 'true' : 'false') . '</span></div>'
-                                . '<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#FAFBFC;border-radius:10px;border:1px solid #F1F5F9;">'
-                                . '<span>' . ($env === 'production' ? '✅' : '⚠️') . '</span><span style="font-size:13px;">Env : ' . e($env) . '</span></div>'
-                                . '<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#FAFBFC;border-radius:10px;border:1px solid #F1F5F9;">'
-                                . '<span>✅</span><span style="font-size:13px;">PHP ' . phpversion() . '</span></div>'
-                                . '<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#FAFBFC;border-radius:10px;border:1px solid #F1F5F9;">'
-                                . '<span>✅</span><span style="font-size:13px;">Laravel ' . app()->version() . '</span></div>'
-                                . '</div>'
-                            );
-                        }),
-                ]),
+                Section::make('Santé du système')
+                    ->description('État de l\'environnement et indicateurs de volume.')
+                    ->schema([
+                        Placeholder::make('system_health')
+                            ->label('')
+                            ->content(function () {
+                                $debug = config('app.debug');
+                                $env = config('app.env');
+                                $stats = $this->getSystemStats();
+
+                                $card = fn (string $icon, string $label, string $value) => '<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#FAFBFC;border-radius:10px;border:1px solid #F1F5F9;">'
+                                    . '<span style="font-size:16px;">' . $icon . '</span>'
+                                    . '<div style="flex:1;"><div style="font-size:11px;color:#6B7280;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;">' . $label . '</div>'
+                                    . '<div style="font-size:13px;color:#111827;font-weight:600;margin-top:2px;">' . $value . '</div></div>'
+                                    . '</div>';
+
+                                $items = [
+                                    $card(! $debug ? '✅' : '❌', 'APP_DEBUG', $debug ? 'true (⚠ prod)' : 'false'),
+                                    $card($env === 'production' ? '✅' : '⚠️', 'Environnement', e($env)),
+                                    $card('🐘', 'PHP', phpversion()),
+                                    $card('🦴', 'Laravel', app()->version()),
+                                    $card('💾', 'Taille BDD', $this->formatBytes($stats['db_size'])),
+                                    $card('📁', 'Poids storage/', $this->formatBytes($stats['storage_size'])),
+                                    $card('👥', 'Admins', (string) $stats['admin_count']),
+                                    $card('🍪', 'Sessions (total / authent.)', $stats['active_sessions'] . ' / ' . $stats['auth_sessions']),
+                                    $card('📝', 'Articles', (string) $stats['posts_count']),
+                                    $card('✉️', 'Messages contact', (string) $stats['messages_count']),
+                                    $card('🏢', 'Demandes d\'audit', (string) $stats['leads_count']),
+                                ];
+
+                                return new \Illuminate\Support\HtmlString(
+                                    '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">'
+                                    . implode('', $items)
+                                    . '</div>'
+                                );
+                            }),
+                    ]),
+
+                Section::make('Sessions actives')
+                    ->description('Tes connexions en cours. Tu peux fermer les autres appareils.')
+                    ->collapsible()
+                    ->collapsed()
+                    ->schema([
+                        Actions::make([
+                            Action::make('logout_others')
+                                ->label('Déconnecter les autres appareils')
+                                ->icon('heroicon-o-power')
+                                ->color('warning')
+                                ->requiresConfirmation()
+                                ->action(fn () => $this->logoutOtherSessions()),
+                        ]),
+                        Placeholder::make('active_sessions_list')
+                            ->label('')
+                            ->content(function () {
+                                $sessions = $this->getActiveSessionsForAdmin();
+                                if (empty($sessions)) {
+                                    return new \Illuminate\Support\HtmlString('<div style="padding:16px;color:#6B7280;font-size:13px;">Aucune session active enregistrée.</div>');
+                                }
+
+                                $currentId = session()->getId();
+                                $rows = [];
+                                foreach ($sessions as $s) {
+                                    $isCurrent = $s->id === $currentId;
+                                    $ua = mb_strimwidth($s->user_agent ?? '—', 0, 80, '…');
+                                    $when = \Carbon\Carbon::createFromTimestamp($s->last_activity)->diffForHumans();
+                                    $rows[] = '<tr style="border-bottom:1px solid #F1F5F9;">'
+                                        . '<td style="padding:8px;font-size:12px;">' . ($isCurrent ? '🟢 <b>actuel</b>' : '⚪') . '</td>'
+                                        . '<td style="padding:8px;font-size:12px;font-family:monospace;">' . e($s->ip_address ?? '—') . '</td>'
+                                        . '<td style="padding:8px;font-size:12px;color:#6B7280;">' . e($ua) . '</td>'
+                                        . '<td style="padding:8px;font-size:12px;">' . e($when) . '</td>'
+                                        . '</tr>';
+                                }
+
+                                return new \Illuminate\Support\HtmlString(
+                                    '<table style="width:100%;border-collapse:collapse;font-size:13px;">'
+                                    . '<thead><tr style="border-bottom:2px solid #E5E7EB;text-align:left;">'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">État</th>'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">IP</th>'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">User-Agent</th>'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Activité</th>'
+                                    . '</tr></thead><tbody>' . implode('', $rows) . '</tbody></table>'
+                                );
+                            }),
+                    ]),
+
+                Section::make('Dernières connexions admin')
+                    ->description('Qui s\'est connecté récemment et depuis quelle IP.')
+                    ->collapsible()
+                    ->collapsed()
+                    ->schema([
+                        Placeholder::make('admin_login_journal')
+                            ->label('')
+                            ->content(function () {
+                                $admins = $this->getAdminsLoginJournal();
+                                if ($admins->isEmpty()) {
+                                    return new \Illuminate\Support\HtmlString('<div style="padding:16px;color:#6B7280;">Aucun admin.</div>');
+                                }
+
+                                $rows = [];
+                                foreach ($admins as $a) {
+                                    $when = $a->last_login_at ? $a->last_login_at->diffForHumans() : '<em style="color:#9CA3AF;">jamais</em>';
+                                    $statusIcon = $a->is_active ? '🟢' : '⚫';
+                                    $rows[] = '<tr style="border-bottom:1px solid #F1F5F9;">'
+                                        . '<td style="padding:8px;font-size:12px;">' . $statusIcon . ' ' . e($a->name) . '</td>'
+                                        . '<td style="padding:8px;font-size:12px;font-family:monospace;">' . e($a->email) . '</td>'
+                                        . '<td style="padding:8px;font-size:12px;"><span style="padding:2px 8px;background:#EDE9FE;color:#6C3AED;border-radius:6px;font-weight:600;">' . e($a->role) . '</span></td>'
+                                        . '<td style="padding:8px;font-size:12px;">' . $when . '</td>'
+                                        . '<td style="padding:8px;font-size:12px;font-family:monospace;color:#6B7280;">' . e($a->last_login_ip ?? '—') . '</td>'
+                                        . '</tr>';
+                                }
+
+                                return new \Illuminate\Support\HtmlString(
+                                    '<table style="width:100%;border-collapse:collapse;font-size:13px;">'
+                                    . '<thead><tr style="border-bottom:2px solid #E5E7EB;text-align:left;">'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Nom</th>'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Email</th>'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Rôle</th>'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Dernière connexion</th>'
+                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">IP</th>'
+                                    . '</tr></thead><tbody>' . implode('', $rows) . '</tbody></table>'
+                                );
+                            }),
+                    ]),
+
+                Section::make('Logs récents')
+                    ->description('50 dernières lignes de storage/logs/laravel.log.')
+                    ->collapsible()
+                    ->collapsed()
+                    ->schema([
+                        Placeholder::make('recent_logs')
+                            ->label('')
+                            ->content(function () {
+                                $logs = $this->getRecentErrorLogs(50);
+
+                                return new \Illuminate\Support\HtmlString(
+                                    '<pre style="background:#0F172A;color:#E2E8F0;padding:16px;border-radius:10px;font-size:11px;line-height:1.5;max-height:400px;overflow:auto;white-space:pre-wrap;word-break:break-all;">'
+                                    . e($logs)
+                                    . '</pre>'
+                                );
+                            }),
+                    ]),
             ]);
     }
 
