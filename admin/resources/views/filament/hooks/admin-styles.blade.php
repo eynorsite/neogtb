@@ -557,8 +557,10 @@
     /* --- Section headers --- */
     .section-header {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: space-between;
+        gap: 0.5rem 1rem;
+        flex-wrap: wrap;
         margin-bottom: 1.25rem;
     }
 
@@ -567,12 +569,24 @@
         font-weight: 700;
         color: var(--neo-text);
         letter-spacing: -0.3px;
+        margin: 0;
+    }
+
+    .section-subtitle {
+        font-size: 0.8125rem;
+        color: var(--neo-text-secondary);
+        margin: 0;
+        font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+        .section-header { flex-direction: column; align-items: flex-start; }
     }
 
     /* --- Quick Actions --- */
     .quick-actions {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
         margin-bottom: 2rem;
     }
@@ -595,15 +609,37 @@
         opacity: 0;
     }
 
-    .quick-action:nth-child(1) { animation-delay: 0.25s; }
-    .quick-action:nth-child(2) { animation-delay: 0.3s; }
-    .quick-action:nth-child(3) { animation-delay: 0.35s; }
-    .quick-action:nth-child(4) { animation-delay: 0.4s; }
+    .quick-action:nth-child(1) { animation-delay: 0.20s; }
+    .quick-action:nth-child(2) { animation-delay: 0.24s; }
+    .quick-action:nth-child(3) { animation-delay: 0.28s; }
+    .quick-action:nth-child(4) { animation-delay: 0.32s; }
+    .quick-action:nth-child(5) { animation-delay: 0.36s; }
+    .quick-action:nth-child(6) { animation-delay: 0.40s; }
+    .quick-action:nth-child(7) { animation-delay: 0.44s; }
+    .quick-action:nth-child(8) { animation-delay: 0.48s; }
+    .quick-action:nth-child(9) { animation-delay: 0.52s; }
 
     .quick-action:hover {
         transform: translateY(-3px);
         box-shadow: var(--neo-shadow);
         border-color: var(--neo-primary);
+    }
+
+    .quick-action:focus-visible {
+        outline: 2px solid var(--neo-primary);
+        outline-offset: 2px;
+        border-color: var(--neo-primary);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .quick-action,
+        .kpi-card,
+        .dash-card {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        .quick-action:hover { transform: none; }
     }
 
     .quick-action-icon {
@@ -613,12 +649,17 @@
         flex-shrink: 0;
     }
 
-    .quick-action-icon svg { width: 20px; height: 20px; color: white; }
+    .quick-action-icon > svg { width: 20px; height: 20px; color: white; }
 
-    .quick-action:nth-child(1) .quick-action-icon { background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
-    .quick-action:nth-child(2) .quick-action-icon { background: linear-gradient(135deg, #3B82F6, #60A5FA); }
-    .quick-action:nth-child(3) .quick-action-icon { background: linear-gradient(135deg, #06B6D4, #22D3EE); }
-    .quick-action:nth-child(4) .quick-action-icon { background: linear-gradient(135deg, #10B981, #34D399); }
+    .quick-action[data-color="violet"] .quick-action-icon { background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
+    .quick-action[data-color="blue"]   .quick-action-icon { background: linear-gradient(135deg, #3B82F6, #60A5FA); }
+    .quick-action[data-color="cyan"]   .quick-action-icon { background: linear-gradient(135deg, #06B6D4, #22D3EE); }
+    .quick-action[data-color="green"]  .quick-action-icon { background: linear-gradient(135deg, #10B981, #34D399); }
+    .quick-action[data-color="amber"]  .quick-action-icon { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+    .quick-action[data-color="indigo"] .quick-action-icon { background: linear-gradient(135deg, #6366F1, #818CF8); }
+    .quick-action[data-color="pink"]   .quick-action-icon { background: linear-gradient(135deg, #EC4899, #F472B6); }
+    .quick-action[data-color="slate"]  .quick-action-icon { background: linear-gradient(135deg, #475569, #64748B); }
+    .quick-action[data-color="teal"]   .quick-action-icon { background: linear-gradient(135deg, #14B8A6, #2DD4BF); }
 
     .quick-action-title {
         font-size: 0.875rem;
@@ -629,7 +670,7 @@
 
     .quick-action-desc {
         font-size: 0.6875rem;
-        color: var(--neo-text-muted);
+        color: var(--neo-text-secondary);
         margin: 0.125rem 0 0;
     }
 

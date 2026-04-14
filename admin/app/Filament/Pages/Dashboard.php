@@ -3,11 +3,14 @@
 namespace App\Filament\Pages;
 
 use App\Models\AdminActivityLog;
+use App\Models\AuditLead;
+use App\Models\CeeLead;
 use App\Models\ContactMessage;
 use App\Models\GdprRequest;
 use App\Models\Post;
 use App\Models\SitePage;
 use Filament\Pages\Dashboard as BaseDashboard;
+use Illuminate\Support\Facades\Cache;
 
 class Dashboard extends BaseDashboard
 {
@@ -66,6 +69,21 @@ class Dashboard extends BaseDashboard
     public function getActivePages(): int
     {
         return SitePage::where('is_published', true)->count();
+    }
+
+    public function getNewLeads(): int
+    {
+        return Cache::remember('dashboard:new_leads', 60, fn () =>
+            AuditLead::where('status', 'new')->count()
+            + CeeLead::where('status', 'new')->count()
+        );
+    }
+
+    public function getTotalMessages(): int
+    {
+        return Cache::remember('dashboard:total_messages', 60, fn () =>
+            ContactMessage::count()
+        );
     }
 
     public function getRecentMessages(): \Illuminate\Support\Collection

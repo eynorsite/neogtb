@@ -319,6 +319,7 @@ class SiteSettingsPage extends Page implements HasForms
     protected function siteIdentityTab(): Tab
     {
         return Tab::make('Identité visuelle')
+            ->id('identite-visuelle')
             ->icon('heroicon-o-photo')
             ->schema([
                 Section::make('Logos')->schema([
@@ -691,6 +692,7 @@ class SiteSettingsPage extends Page implements HasForms
     protected function seoTab(): Tab
     {
         return Tab::make('SEO')
+            ->id('seo')
             ->icon('heroicon-o-magnifying-glass')
             ->schema([
                 Section::make('Paramètres SEO')->schema([
@@ -876,7 +878,8 @@ class SiteSettingsPage extends Page implements HasForms
 
     protected function labelsTab(): Tab
     {
-        return Tab::make('Labels d\'interface')
+        return Tab::make('Textes du site')
+            ->id('textes-du-site')
             ->icon('heroicon-o-tag')
             ->schema([
                 // ─── NAVIGATION (header + menu mobile) ──────────
@@ -1297,7 +1300,7 @@ class SiteSettingsPage extends Page implements HasForms
 
                 // ─── PAGES LÉGALES (hero) ──────────────────────
                 Section::make('Pages légales — hero')
-                    ->description('Eyebrow et titre des pages légales (le contenu est dans « Textes légaux »).')
+                    ->description('Eyebrow et titre des pages légales (le contenu est dans « Mentions & RGPD »).')
                     ->collapsible()
                     ->collapsed()
                     ->columns(2)
@@ -1324,7 +1327,8 @@ class SiteSettingsPage extends Page implements HasForms
 
     protected function legalTab(): Tab
     {
-        return Tab::make('Textes légaux')
+        return Tab::make('Mentions & RGPD')
+            ->id('mentions-rgpd')
             ->icon('heroicon-o-scale')
             ->schema([
                 Section::make('Mentions légales')

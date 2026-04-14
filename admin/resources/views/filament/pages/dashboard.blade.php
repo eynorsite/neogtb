@@ -97,36 +97,88 @@
     </div>
 
     {{-- QUICK ACTIONS --}}
+    @php
+        $settingsUrl = fn ($tabId = null) => \App\Filament\Pages\SiteSettingsPage::getUrl() . ($tabId ? '?tab=' . urlencode($tabId) : '');
+        $newLeads = $this->getNewLeads();
+    @endphp
     <div class="section-header">
-        <h2 class="section-title">Actions rapides</h2>
+        <h2 class="section-title">Que voulez-vous faire ?</h2>
+        <p class="section-subtitle">Raccourcis vers les réglages les plus fréquents</p>
     </div>
     <div class="quick-actions">
-        <a href="{{ \App\Filament\Resources\PostResource::getUrl('create') }}" class="quick-action">
-            <div class="quick-action-icon"><x-heroicon-o-pencil-square class="w-5 h-5" /></div>
+        <a href="{{ \App\Filament\Resources\ContactMessageResource::getUrl() }}" class="quick-action" data-color="amber">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-chat-bubble-left-right class="w-5 h-5" /></div>
+            <div>
+                <p class="quick-action-title">Messages reçus</p>
+                <p class="quick-action-desc">
+                    @if($unread > 0)
+                        {{ $unread }} message{{ $unread > 1 ? 's' : '' }} non lu{{ $unread > 1 ? 's' : '' }}
+                    @else
+                        Formulaire de contact
+                    @endif
+                </p>
+            </div>
+        </a>
+        <a href="{{ \App\Filament\Resources\AuditLeadResource::getUrl() }}" class="quick-action" data-color="teal">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-chart-bar class="w-5 h-5" /></div>
+            <div>
+                <p class="quick-action-title">Demandes d'audit</p>
+                <p class="quick-action-desc">
+                    @if($newLeads > 0)
+                        {{ $newLeads }} demande{{ $newLeads > 1 ? 's' : '' }} non traitée{{ $newLeads > 1 ? 's' : '' }} (audit + CEE)
+                    @else
+                        Diagnostics GTB et CEE
+                    @endif
+                </p>
+            </div>
+        </a>
+        <a href="{{ \App\Filament\Resources\PostResource::getUrl('create') }}" class="quick-action" data-color="green">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-newspaper class="w-5 h-5" /></div>
             <div>
                 <p class="quick-action-title">Nouvel article</p>
-                <p class="quick-action-desc">Rediger et publier un post</p>
+                <p class="quick-action-desc">Rédiger et publier un article</p>
             </div>
         </a>
-        <a href="{{ url('/admin/pages') }}" class="quick-action">
-            <div class="quick-action-icon"><x-heroicon-o-document-text class="w-5 h-5" /></div>
+        <a href="{{ url('/admin/pages') }}" class="quick-action" data-color="cyan">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-document-text class="w-5 h-5" /></div>
             <div>
-                <p class="quick-action-title">Modifier une page</p>
-                <p class="quick-action-desc">Editer le contenu du site</p>
+                <p class="quick-action-title">Pages du site</p>
+                <p class="quick-action-desc">GTB, GTC, Solutions, À propos, FAQ…</p>
             </div>
         </a>
-        <a href="{{ \App\Filament\Resources\ContactMessageResource::getUrl() }}" class="quick-action">
-            <div class="quick-action-icon"><x-heroicon-o-chat-bubble-left-right class="w-5 h-5" /></div>
+        <a href="{{ url('/admin/homepage') }}" class="quick-action" data-color="blue">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-home class="w-5 h-5" /></div>
             <div>
-                <p class="quick-action-title">Voir les messages</p>
-                <p class="quick-action-desc">{{ $unread }} message{{ $unread > 1 ? 's' : '' }} non lu{{ $unread > 1 ? 's' : '' }}</p>
+                <p class="quick-action-title">Page d'accueil</p>
+                <p class="quick-action-desc">Sections hero, chiffres, CTA, témoignages</p>
             </div>
         </a>
-        <a href="https://neogtb.fr" target="_blank" class="quick-action">
-            <div class="quick-action-icon"><x-heroicon-o-globe-alt class="w-5 h-5" /></div>
+        <a href="{{ $settingsUrl('textes-du-site') }}" class="quick-action" data-color="violet">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-pencil-square class="w-5 h-5" /></div>
             <div>
-                <p class="quick-action-title">Voir le site</p>
-                <p class="quick-action-desc">neogtb.fr</p>
+                <p class="quick-action-title">Éditer un texte</p>
+                <p class="quick-action-desc">Boutons, formulaires, footer, menus…</p>
+            </div>
+        </a>
+        <a href="{{ $settingsUrl('identite-visuelle') }}" class="quick-action" data-color="pink">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-swatch class="w-5 h-5" /></div>
+            <div>
+                <p class="quick-action-title">Logo et couleurs</p>
+                <p class="quick-action-desc">Identité visuelle, favicon, image de partage</p>
+            </div>
+        </a>
+        <a href="{{ $settingsUrl('seo') }}" class="quick-action" data-color="indigo">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-magnifying-glass class="w-5 h-5" /></div>
+            <div>
+                <p class="quick-action-title">SEO et référencement</p>
+                <p class="quick-action-desc">Meta description, title, Schema.org, Google</p>
+            </div>
+        </a>
+        <a href="{{ $settingsUrl('mentions-rgpd') }}" class="quick-action" data-color="slate">
+            <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-scale class="w-5 h-5" /></div>
+            <div>
+                <p class="quick-action-title">Mentions légales et RGPD</p>
+                <p class="quick-action-desc">Confidentialité, cookies, CGU</p>
             </div>
         </a>
     </div>
@@ -246,7 +298,7 @@
                         <div class="stat-block-label">Articles blog</div>
                     </div>
                     <div class="stat-block" style="background: #ECFEFF;">
-                        <div class="stat-block-value" style="color: #06B6D4;">{{ \App\Models\ContactMessage::count() }}</div>
+                        <div class="stat-block-value" style="color: #06B6D4;">{{ $this->getTotalMessages() }}</div>
                         <div class="stat-block-label">Messages total</div>
                     </div>
                     <div class="stat-block" style="background: #FEF2F2;">

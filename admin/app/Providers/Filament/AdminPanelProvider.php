@@ -2,11 +2,14 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\GlobalSearch\LabelsGlobalSearchProvider;
 use App\Http\Middleware\EnsureAdminIsActive;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use App\Models\GeneralSetting;
+use Filament\Actions\Action;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -40,6 +43,24 @@ class AdminPanelProvider extends PanelProvider
             ->darkMode(false)
             ->maxContentWidth('full')
             ->renderHook('panels::styles.after', fn () => view('filament.hooks.admin-styles'))
+            ->renderHook(
+                \Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
+                fn () => \Livewire\Livewire::mount(\Filament\Livewire\GlobalSearch::class),
+            )
+            ->globalSearch(LabelsGlobalSearchProvider::class)
+            ->globalSearchKeyBindings(['mod+k'])
+            ->globalSearchFieldKeyBindingSuffix()
+            ->globalSearchDebounce('250ms')
+            ->userMenuItems([
+                Action::make('view-public-site')
+                    ->label('Voir le site public')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->url(
+                        fn () => GeneralSetting::get()->company_website
+                            ?: config('app.url'),
+                        shouldOpenInNewTab: true
+                    ),
+            ])
             ->colors([
                 'primary' => [
                     50 => '#F5F3FF',
