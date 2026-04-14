@@ -207,6 +207,111 @@ class SiteSettingsPage extends Page implements HasForms
         Notification::make()->title('Application optimisée')->success()->send();
     }
 
+    // ─── DEFAULTS ──────────────────────────────────────────
+
+    /**
+     * Paires de polices par défaut (fallback si font_pairs_config vide).
+     *
+     * @return array<int, array{key: string, label: string, heading: string, body: string, google_families: string}>
+     */
+    public static function defaultFontPairs(): array
+    {
+        return [
+            ['key' => 'inter_dm_sans', 'label' => 'Inter + DM Sans', 'heading' => 'Inter', 'body' => 'DM Sans', 'google_families' => 'Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700'],
+            ['key' => 'inter_merriweather', 'label' => 'Inter + Merriweather', 'heading' => 'Inter', 'body' => 'Merriweather', 'google_families' => 'Inter:wght@400;500;600;700&family=Merriweather:wght@400;700'],
+            ['key' => 'poppins_lora', 'label' => 'Poppins + Lora', 'heading' => 'Poppins', 'body' => 'Lora', 'google_families' => 'Poppins:wght@400;500;600;700&family=Lora:wght@400;700'],
+            ['key' => 'montserrat_roboto', 'label' => 'Montserrat + Roboto', 'heading' => 'Montserrat', 'body' => 'Roboto', 'google_families' => 'Montserrat:wght@500;600;700&family=Roboto:wght@400;500'],
+            ['key' => 'dm_sans_dm_serif', 'label' => 'DM Sans + DM Serif', 'heading' => 'DM Serif Display', 'body' => 'DM Sans', 'google_families' => 'DM+Sans:wght@400;500;700&family=DM+Serif+Display:wght@400'],
+        ];
+    }
+
+    /**
+     * Statuts par défaut (fallback si status_configs vide).
+     *
+     * @return array<string, array<int, array<string, string>>>
+     */
+    public static function defaultStatusConfigs(): array
+    {
+        return [
+            'post' => [
+                ['key' => 'draft', 'label' => 'Brouillon', 'color' => 'gray', 'icon' => 'heroicon-o-pencil'],
+                ['key' => 'published', 'label' => 'Publié', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
+                ['key' => 'archived', 'label' => 'Archivé', 'color' => 'warning', 'icon' => 'heroicon-o-archive-box'],
+            ],
+            'audit_lead' => [
+                ['key' => 'new', 'label' => 'Nouveau', 'color' => 'info', 'icon' => 'heroicon-o-sparkles'],
+                ['key' => 'contacted', 'label' => 'Contacté', 'color' => 'primary', 'icon' => 'heroicon-o-phone'],
+                ['key' => 'qualified', 'label' => 'Qualifié', 'color' => 'warning', 'icon' => 'heroicon-o-star'],
+                ['key' => 'converted', 'label' => 'Converti', 'color' => 'success', 'icon' => 'heroicon-o-check-badge'],
+                ['key' => 'lost', 'label' => 'Perdu', 'color' => 'danger', 'icon' => 'heroicon-o-x-circle'],
+            ],
+            'cee_lead' => [
+                ['key' => 'new', 'label' => 'Nouveau', 'color' => 'info', 'icon' => 'heroicon-o-sparkles'],
+                ['key' => 'processing', 'label' => 'En traitement', 'color' => 'warning', 'icon' => 'heroicon-o-clock'],
+                ['key' => 'sent', 'label' => 'Dossier envoyé', 'color' => 'primary', 'icon' => 'heroicon-o-paper-airplane'],
+                ['key' => 'signed', 'label' => 'Signé', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
+            ],
+            'contact_message' => [
+                ['key' => 'new', 'label' => 'Nouveau', 'color' => 'info', 'icon' => 'heroicon-o-envelope'],
+                ['key' => 'read', 'label' => 'Lu', 'color' => 'gray', 'icon' => 'heroicon-o-eye'],
+                ['key' => 'replied', 'label' => 'Répondu', 'color' => 'success', 'icon' => 'heroicon-o-check-circle'],
+                ['key' => 'archived', 'label' => 'Archivé', 'color' => 'warning', 'icon' => 'heroicon-o-archive-box'],
+            ],
+        ];
+    }
+
+    /**
+     * Sections d'accueil par défaut (fallback si homepage_sections vide).
+     *
+     * @return array<int, string>
+     */
+    public static function defaultHomepageSections(): array
+    {
+        return ['hero', 'expertises', 'chiffres', 'comparatif', 'solutions', 'temoignages', 'faq', 'cta_audit', 'blog_recent'];
+    }
+
+    // ─── RE-SEED DEFAULTS ──────────────────────────────────
+
+    public function reseedDefaults(): void
+    {
+        $settings = GeneralSetting::get()->fresh();
+        $applied = [];
+
+        $defaults = [
+            'font_pairs_config' => static::defaultFontPairs(),
+            'status_configs' => static::defaultStatusConfigs(),
+            'homepage_sections' => static::defaultHomepageSections(),
+        ];
+
+        foreach ($defaults as $field => $value) {
+            $current = $settings->{$field};
+            if (empty($current)) {
+                $settings->{$field} = $value;
+                $applied[] = $field;
+            }
+        }
+
+        if (empty($applied)) {
+            Notification::make()
+                ->title('Rien à restaurer')
+                ->body('Toutes les configurations critiques ont déjà des valeurs.')
+                ->info()
+                ->send();
+
+            return;
+        }
+
+        $settings->save();
+        GeneralSetting::clearCache();
+        app(\App\Services\SiteConfigService::class)->clearCache();
+
+        Notification::make()
+            ->title('Configurations restaurées')
+            ->body('Champs remplis : ' . implode(', ', $applied) . '. Rafraîchis la page pour voir les nouvelles options.')
+            ->success()
+            ->send();
+    }
+
     // ─── BACKUP BDD ────────────────────────────────────────
 
     public function backupDatabase()
@@ -695,7 +800,14 @@ class SiteSettingsPage extends Page implements HasForms
                     Grid::make(2)->schema([
                         Select::make('font_pair')
                             ->label('Paire de polices')
-                            ->options(fn () => collect(GeneralSetting::first()?->font_pairs_config ?? [])->pluck('label', 'key')->toArray()),
+                            ->options(function () {
+                                $pairs = GeneralSetting::first()?->font_pairs_config ?? [];
+                                if (empty($pairs)) {
+                                    $pairs = static::defaultFontPairs();
+                                }
+
+                                return collect($pairs)->pluck('label', 'key')->toArray();
+                            }),
                         Select::make('font_size_base')
                             ->label('Taille de police')
                             ->options([
@@ -1105,6 +1217,13 @@ class SiteSettingsPage extends Page implements HasForms
                                 ->requiresConfirmation()
                                 ->modalDescription('Les workers Supervisor rechargent le code à leur prochain job.')
                                 ->action(fn () => $this->restartQueue()),
+                            Action::make('reseed_defaults')
+                                ->label('Restaurer configs par défaut')
+                                ->icon('heroicon-o-arrow-uturn-left')
+                                ->color('warning')
+                                ->requiresConfirmation()
+                                ->modalDescription('Repeuple les champs critiques vides (polices, statuts, sections accueil). N\'écrase jamais de valeur existante.')
+                                ->action(fn () => $this->reseedDefaults()),
                         ]),
                     ]),
 
