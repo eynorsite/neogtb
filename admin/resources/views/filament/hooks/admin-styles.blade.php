@@ -909,4 +909,119 @@
         font-size: 0.8125rem;
         font-weight: 500;
     }
+
+    /* ============================================
+       GLOBAL SEARCH — deep-link highlight
+       ============================================ */
+    .neo-search-target {
+        animation: neo-target-pulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) 1;
+        border-radius: 12px;
+    }
+
+    @keyframes neo-target-pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(108,58,237,0); }
+        10% { box-shadow: 0 0 0 4px rgba(108,58,237,0.45), 0 0 30px rgba(108,58,237,0.3); }
+        70% { box-shadow: 0 0 0 4px rgba(108,58,237,0.2); }
+    }
 </style>
+
+<script>
+(function () {
+    const FIELD_PARAM = 'field';
+    const HIGHLIGHT_CLASS = 'neo-search-target';
+
+    function findFieldElement(statePath) {
+        if (!statePath) return null;
+
+        const selectors = [
+            `[wire\\:model="data.${statePath}"]`,
+            `[wire\\:model\\.defer="data.${statePath}"]`,
+            `[wire\\:model\\.live="data.${statePath}"]`,
+            `[wire\\:model\\.blur="data.${statePath}"]`,
+            `[wire\\:model\\.lazy="data.${statePath}"]`,
+            `[id="data.${statePath}"]`,
+            `[name="data.${statePath}"]`,
+        ];
+
+        for (const sel of selectors) {
+            const el = document.querySelector(sel);
+            if (el) return el;
+        }
+
+        return null;
+    }
+
+    function openCollapsedAncestors(el) {
+        let node = el.closest('.fi-section');
+        while (node) {
+            if (node.matches('.fi-section') && node.hasAttribute('x-data')) {
+                // Alpine-driven collapsible — dispatch click on header if collapsed
+                const header = node.querySelector(':scope > .fi-section-header');
+                const wrapper = node;
+                try {
+                    const alpine = window.Alpine?.$data ? window.Alpine.$data(wrapper) : null;
+                    if (alpine && alpine.isCollapsed === true) {
+                        alpine.isCollapsed = false;
+                    } else if (header) {
+                        const toggleBtn = header.querySelector('.fi-section-header-toggle, button');
+                        if (toggleBtn && wrapper.classList.contains('fi-collapsed')) {
+                            toggleBtn.click();
+                        }
+                    }
+                } catch (_) {
+                    if (header) {
+                        const toggleBtn = header.querySelector('.fi-section-header-toggle, button');
+                        if (toggleBtn) toggleBtn.click();
+                    }
+                }
+            }
+            node = node.parentElement?.closest('.fi-section');
+        }
+    }
+
+    function scrollAndHighlight(statePath) {
+        const el = findFieldElement(statePath);
+        if (!el) return false;
+
+        const wrapper = el.closest('.fi-fo-field-wrp') || el.closest('label')?.parentElement || el;
+
+        openCollapsedAncestors(el);
+
+        setTimeout(() => {
+            wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            wrapper.classList.remove(HIGHLIGHT_CLASS);
+            void wrapper.offsetWidth;
+            wrapper.classList.add(HIGHLIGHT_CLASS);
+
+            try {
+                if (typeof el.focus === 'function') el.focus({ preventScroll: true });
+            } catch (_) {}
+
+            setTimeout(() => wrapper.classList.remove(HIGHLIGHT_CLASS), 2500);
+        }, 200);
+
+        return true;
+    }
+
+    function handleDeepLink() {
+        const url = new URL(window.location.href);
+        const field = url.searchParams.get(FIELD_PARAM);
+        if (!field || !field.startsWith('ui_labels.')) return;
+
+        let attempts = 0;
+        const maxAttempts = 20;
+        const tick = () => {
+            if (scrollAndHighlight(field)) {
+                url.searchParams.delete(FIELD_PARAM);
+                window.history.replaceState({}, '', url.toString());
+                return;
+            }
+            if (++attempts < maxAttempts) setTimeout(tick, 150);
+        };
+        tick();
+    }
+
+    document.addEventListener('DOMContentLoaded', handleDeepLink);
+    document.addEventListener('livewire:navigated', handleDeepLink);
+})();
+</script>

@@ -45,7 +45,7 @@ class AdminPanelProvider extends PanelProvider
             ->renderHook('panels::styles.after', fn () => view('filament.hooks.admin-styles'))
             ->renderHook(
                 \Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
-                fn () => \Livewire\Livewire::mount(\Filament\Livewire\GlobalSearch::class),
+                fn () => view('filament.hooks.global-search'),
             )
             ->globalSearch(LabelsGlobalSearchProvider::class)
             ->globalSearchKeyBindings(['mod+k'])
