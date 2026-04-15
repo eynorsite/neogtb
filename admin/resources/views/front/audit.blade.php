@@ -227,7 +227,7 @@
   </section>
 
   <!-- FORMULAIRE (Alpine.js identique à Astro) -->
-  <section class="diag-section" x-data="diagWizard()" x-cloak>
+  <section class="diag-section" x-data="diagWizard()" x-cloak x-ref="wizardTop">
     <div class="max-w-[720px] mx-auto px-5 md:px-8">
 
       <!-- Barre de progression -->
@@ -897,6 +897,13 @@
       formatNumber(n) { if (!n) return '0'; return new Intl.NumberFormat('fr-FR').format(Math.round(n)); },
       formatCurrency(n) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n || 0); },
 
+      scrollToWizard() {
+        const el = this.$refs.wizardTop;
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.scrollY - 90;
+        if (window.scrollY > top + 20) { window.scrollTo({ top, behavior: 'smooth' }); }
+      },
+
       selectAnswer(qi, value) {
         this.form.gtbAnswers[qi] = value;
         if (qi < this.gtbQuestions.length - 1) { setTimeout(() => { this.nextQuestion(); }, 800); }
@@ -912,7 +919,7 @@
         if (!this.form.surface || this.form.surface < 50) this.errors.surface = 'Surface minimale : 50 m\u00b2';
         if (!this.form.climateZone) this.errors.climateZone = 'S\u00e9lectionnez une zone';
         if (!this.form.buildingAge) this.errors.buildingAge = 'S\u00e9lectionnez une p\u00e9riode';
-        if (Object.keys(this.errors).length === 0) { this.step = 2; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        if (Object.keys(this.errors).length === 0) { this.step = 2; this.scrollToWizard(); }
       },
 
       validateStep2() {
@@ -927,7 +934,7 @@
         if (this.form.hasEclairage === true && !this.form.eclairage) this.errors.eclairage = 'S\u00e9lectionnez un type de gestion.';
         if (this.form.hasAuxiliaires === null) this.errors.hasAuxiliaires = 'R\u00e9pondez \u00e0 cette question.';
         if (this.form.hasAuxiliaires === true && (!this.form.surfaceAuxiliaires || this.form.surfaceAuxiliaires < 1)) this.errors.surfaceAuxiliaires = 'Renseignez la surface concern\u00e9e.';
-        if (Object.keys(this.errors).length === 0) { this.step = 3; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        if (Object.keys(this.errors).length === 0) { this.step = 3; this.scrollToWizard(); }
       },
 
       validateStep3() {
@@ -937,7 +944,7 @@
         this.calculateResults();
         this.animatedScore = 0;
         this.step = 4;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.scrollToWizard();
         if (!window._jsPDFModule) { import('jspdf').then(m => { window._jsPDFModule = m; }).catch(() => {}); }
         if (!window._neogtbLogo) { const img = new Image(); img.src = '/images/logo-neogtb-pdf.png'; img.onload = () => { window._neogtbLogo = img; }; }
         const target = this.results.score; const self = this; let current = 0;
@@ -1068,7 +1075,7 @@
         this.step = 1; this.currentQuestion = 0; this.animatedScore = 0;
         this.form = { buildingType: '', surface: null, surfaceChauffage: null, buildingAge: '', climateZone: '', hasEcs: null, surfaceEcs: null, hasClim: null, surfaceClim: null, hasEclairage: null, eclairage: '', surfaceEclairage: null, hasAuxiliaires: null, surfaceAuxiliaires: null, gtbAnswers: {} };
         this.results = { score: 0, levelKey: 'd', levelLabel: '', levelDescription: '', savingsEuro: 0, savingsPercent: 0, totalConso: 0, totalFacture: 0, energySummary: [], benchmark: { kwhM2: 0, position: 50, refGood: 0, refAvg: 0, refBad: 0, goodPercent: 33, avgPercent: 34, badPercent: 33 }, regulatory: { show: false, severity: 'ok', title: '', text: '', daysLeft: 0 }, cee: { gwh: 0, valueLow: 0, valueHigh: 0, eligible: false, fiches: [] }, recommendations: [] };
-        this.errors = {}; window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.errors = {}; this.scrollToWizard();
       },
     }));
   });
