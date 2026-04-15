@@ -17,6 +17,19 @@ use Illuminate\Support\Facades\Log;
  */
 class SiteSettingObserver
 {
+    public function saving(GeneralSetting $setting): void
+    {
+        // Filament peut sauver un TextInput vide en null dans les colonnes JSON.
+        // Arr::get() retourne alors ce null au lieu du default, et casse la
+        // signature ': string' de SiteConfigService::label() → TypeError → 500.
+        // On normalise null → '' à l'enregistrement pour garantir l'invariant.
+        foreach (['ui_labels', 'legal_texts'] as $column) {
+            if ($setting->isDirty($column) && is_array($setting->{$column})) {
+                $setting->{$column} = $this->normalizeNullsToStrings($setting->{$column});
+            }
+        }
+    }
+
     public function saved(GeneralSetting $setting): void
     {
         // Invalider le cache service
@@ -31,6 +44,24 @@ class SiteSettingObserver
                 $this->createPrivacyPolicyVersion($policy);
             }
         }
+    }
+
+    /**
+     * Recurse dans un array nested et remplace toute valeur null par ''.
+     * Laisse les sous-arrays tranquilles (ils peuvent legitimment contenir
+     * des structures complexes dont on ne veut pas toucher).
+     */
+    private function normalizeNullsToStrings(array $data): array
+    {
+        foreach ($data as $key => $value) {
+            if ($value === null) {
+                $data[$key] = '';
+            } elseif (is_array($value)) {
+                $data[$key] = $this->normalizeNullsToStrings($value);
+            }
+        }
+
+        return $data;
     }
 
     public function deleted(GeneralSetting $setting): void
