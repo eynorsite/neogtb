@@ -18,10 +18,22 @@
             @endif
         </div>
 
+        @php
+            $brickDefaultCover = $site->blogDefaultCover();
+        @endphp
         <div class="grid md:grid-cols-{{ $settings['colonnes'] ?? 3 }} gap-6">
             @foreach($content['cartes'] ?? [] as $i => $carte)
+                @php
+                    $carteImg = $site->resolveImagePath($carte['image'] ?? null) ?: $brickDefaultCover;
+                @endphp
                 <a href="{{ $carte['lien'] ?? '#' }}" class="group glass-card overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-accent-500/5 block animate-fade-in-up" style="animation-delay: {{ $i * 100 }}ms">
-                    <div class="aspect-video bg-gradient-to-br from-accent-500/10 to-accent-500/5"></div>
+                    <div class="aspect-video overflow-hidden bg-gradient-to-br from-accent-500/10 to-accent-500/5">
+                        <img src="{{ $carteImg }}"
+                             alt="{{ $carte['titre'] ?? '' }}"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                             loading="lazy"
+                             onerror="this.src='{{ $brickDefaultCover }}'">
+                    </div>
                     <div class="p-5">
                         @if(!empty($carte['tag']))
                             <span class="inline-flex mb-3 text-xs font-semibold uppercase tracking-wide rounded-full px-3 py-1 bg-accent-500/10 text-accent-600 border-0">{{ $carte['tag'] }}</span>
