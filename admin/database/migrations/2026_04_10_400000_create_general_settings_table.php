@@ -144,7 +144,7 @@ return new class extends Migration
 
             // ─── EMAIL ───
             $table->string('email_from_name')->default('NeoGTB');
-            $table->string('email_from_address')->default('contact@neogtb.fr');
+            $table->string('email_from_address')->default('hello@neogtb.fr');
             $table->string('email_notification_to')->nullable();
             $table->string('email_notification_cc')->nullable();
 

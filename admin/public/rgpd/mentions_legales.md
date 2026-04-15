@@ -17,7 +17,7 @@
 | **RCS** | Bordeaux |
 | **N° TVA intracommunautaire** | FR [À COMPLÉTER] 989 322 144 |
 | **Gérant** | Ulrich CALMO |
-| **Email** | contact@neogtb.fr |
+| **Email** | hello@neogtb.fr |
 | **Téléphone** | [À COMPLÉTER] |
 
 **Marque commerciale** : NeoGTB
@@ -28,7 +28,7 @@
 ## 2. Directeur de la publication
 
 Ulrich CALMO, en qualité de Gérant de la société EYNOR.
-Contact : contact@neogtb.fr
+Contact : hello@neogtb.fr
 
 ---
 

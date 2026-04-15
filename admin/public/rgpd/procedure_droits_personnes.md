@@ -16,9 +16,9 @@ Les demandes d'exercice de droits peuvent arriver par :
 | **Email RGPD** | rgpd@neogtb.fr |
 | **Formulaire en ligne** | neogtb.fr/mes-droits-rgpd |
 | **Courrier postal** | EYNOR — NeoGTB, [À COMPLÉTER], 33320 Eysines |
-| **Email général** | contact@neogtb.fr (si le demandeur utilise cette adresse) |
+| **Email général** | hello@neogtb.fr (si le demandeur utilise cette adresse) |
 
-Toute demande reçue sur contact@neogtb.fr et relevant du RGPD doit être transférée immédiatement vers rgpd@neogtb.fr.
+Toute demande reçue sur hello@neogtb.fr et relevant du RGPD doit être transférée immédiatement vers rgpd@neogtb.fr.
 
 ---
 

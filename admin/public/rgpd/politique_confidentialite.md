@@ -20,7 +20,7 @@ RCS Bordeaux
 **Gérant et Directeur de la publication** : Ulrich CALMO
 
 **Contact RGPD** : rgpd@neogtb.fr
-**Contact général** : contact@neogtb.fr
+**Contact général** : hello@neogtb.fr
 
 ---
 

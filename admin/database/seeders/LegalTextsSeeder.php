@@ -51,7 +51,7 @@ class LegalTextsSeeder extends Seeder
   <li><strong>SIREN :</strong> 989 322 144</li>
   <li><strong>RCS :</strong> Bordeaux 989 322 144</li>
   <li><strong>Directeur de la publication :</strong> Ulrich Calmo</li>
-  <li><strong>Email commercial :</strong> <a href="mailto:contact@neogtb.fr">contact@neogtb.fr</a></li>
+  <li><strong>Email commercial :</strong> <a href="mailto:hello@neogtb.fr">hello@neogtb.fr</a></li>
   <li><strong>Contact EYNOR :</strong> <a href="mailto:hello@eynor.fr">hello@eynor.fr</a></li>
 </ul>
 
@@ -249,7 +249,7 @@ HTML;
 <p>Les présentes CGU sont soumises au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
 
 <h2>10. Contact</h2>
-<p>Pour toute question relative aux présentes CGU : <a href="mailto:contact@neogtb.fr">contact@neogtb.fr</a> ou <a href="mailto:hello@eynor.fr">hello@eynor.fr</a>.</p>
+<p>Pour toute question relative aux présentes CGU : <a href="mailto:hello@neogtb.fr">hello@neogtb.fr</a> ou <a href="mailto:hello@eynor.fr">hello@eynor.fr</a>.</p>
 
 <p><em>Dernière mise à jour : 15 avril 2026.</em></p>
 HTML;

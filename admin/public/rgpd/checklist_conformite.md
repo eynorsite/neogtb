@@ -7,7 +7,7 @@
 
 ## Priorité CRITIQUE — À faire immédiatement
 
-- [ ] **Créer l'adresse email rgpd@neogtb.fr** — Obligatoire pour recevoir les demandes d'exercice de droits. Peut être une redirection vers contact@neogtb.fr dans un premier temps.
+- [ ] **Créer l'adresse email rgpd@neogtb.fr** — Obligatoire pour recevoir les demandes d'exercice de droits. Peut être une redirection vers hello@neogtb.fr dans un premier temps.
 - [ ] **Rendre le formulaire RGPD fonctionnel** — Le formulaire /mes-droits-rgpd simule un envoi sans transmettre la demande. Connecter au backend Laravel ou ajouter un fallback `mailto:rgpd@neogtb.fr`.
 - [ ] **Ajouter la mention RGPD sur le formulaire de contact** — Texte informatif sous le bouton d'envoi : finalité, base légale, durée, lien vers la politique de confidentialité.
 - [ ] **Ajouter le consentement opt-in sur la newsletter** — Case à cocher obligatoire avant inscription. Exigence légale (art. L34-5 CPCE + RGPD).

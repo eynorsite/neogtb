@@ -143,13 +143,13 @@ class AllPagesBricksSeeder extends Seeder
 
             ['type' => 'texte', 'name' => 'Formulaire info', 'content' => [
                 'titre' => 'Envoyez-nous un message',
-                'contenu' => '<p>Remplissez le formulaire ci-dessous ou contactez-nous directement par email à <strong>contact@neogtb.fr</strong>.</p><p>Nous nous engageons à répondre sous <strong>48 heures ouvrées</strong>. NéoGTB est un tiers de confiance indépendant : aucune démarche commerciale suite à votre contact.</p>',
+                'contenu' => '<p>Remplissez le formulaire ci-dessous ou contactez-nous directement par email à <strong>hello@neogtb.fr</strong>.</p><p>Nous nous engageons à répondre sous <strong>48 heures ouvrées</strong>. NéoGTB est un tiers de confiance indépendant : aucune démarche commerciale suite à votre contact.</p>',
             ], 'settings' => ['position_image' => 'none', 'couleur_fond' => '#ffffff']],
 
             ['type' => 'cartes', 'name' => 'Infos contact', 'content' => [
                 'titre_section' => '',
                 'cartes' => [
-                    ['icone' => '📧', 'titre' => 'Email', 'description' => 'contact@neogtb.fr', 'lien' => 'mailto:contact@neogtb.fr'],
+                    ['icone' => '📧', 'titre' => 'Email', 'description' => 'hello@neogtb.fr', 'lien' => 'mailto:hello@neogtb.fr'],
                     ['icone' => '📍', 'titre' => 'Localisation', 'description' => 'France — 100% digital', 'lien' => ''],
                     ['icone' => '⏱️', 'titre' => 'Temps de réponse', 'description' => 'Sous 48h ouvrées', 'lien' => ''],
                 ],

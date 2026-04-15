@@ -39,7 +39,7 @@
                             </svg>
                         </div>
                         @php
-                            $contactEmail = $settings->company_email ?? 'contact@neogtb.fr';
+                            $contactEmail = $settings->company_email ?? 'hello@neogtb.fr';
                             $contactPhone = $settings->company_phone ?? null;
                             $contactPhoneTel = $contactPhone ? preg_replace('/[^0-9+]/', '', $contactPhone) : null;
                         @endphp

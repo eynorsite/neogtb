@@ -251,13 +251,13 @@ class EnrichPagesBricksSeeder extends Seeder
 
             ['type' => 'texte', 'name' => 'Formulaire info', 'content' => [
                 'titre' => 'Envoyez-nous un message',
-                'contenu' => '<p>Contactez-nous directement par email à <strong>contact@neogtb.fr</strong> ou utilisez le formulaire de notre site.</p><p>Nous nous engageons à répondre sous <strong>48 heures ouvrées</strong>. NéoGTB est un tiers de confiance indépendant : aucune démarche commerciale suite à votre contact.</p>',
+                'contenu' => '<p>Contactez-nous directement par email à <strong>hello@neogtb.fr</strong> ou utilisez le formulaire de notre site.</p><p>Nous nous engageons à répondre sous <strong>48 heures ouvrées</strong>. NéoGTB est un tiers de confiance indépendant : aucune démarche commerciale suite à votre contact.</p>',
             ], 'settings' => ['position_image' => 'none', 'couleur_fond' => '#ffffff']],
 
             ['type' => 'cartes', 'name' => 'Coordonnées', 'content' => [
                 'titre_section' => '',
                 'cartes' => [
-                    ['icone' => '📧', 'titre' => 'Email', 'description' => 'contact@neogtb.fr', 'lien' => 'mailto:contact@neogtb.fr'],
+                    ['icone' => '📧', 'titre' => 'Email', 'description' => 'hello@neogtb.fr', 'lien' => 'mailto:hello@neogtb.fr'],
                     ['icone' => '📍', 'titre' => 'Localisation', 'description' => 'Eysines, Bordeaux — France', 'lien' => ''],
                     ['icone' => '🏢', 'titre' => 'Entreprise', 'description' => 'EYNOR', 'lien' => ''],
                     ['icone' => '⏱️', 'titre' => 'Temps de réponse', 'description' => 'Sous 48h ouvrées, sans démarche commerciale', 'lien' => ''],

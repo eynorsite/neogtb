@@ -10,15 +10,31 @@ class GeneralSettingsSeeder extends Seeder
     public function run(): void
     {
         GeneralSetting::updateOrCreate(['id' => 1], [
-            // IDENTITÉ
+            // IDENTITÉ — NeoGTB est une marque commerciale de la SARL EYNOR
             'company_name' => 'NeoGTB',
             'company_tagline' => 'Maîtrisez la Gestion Technique de vos Bâtiments',
-            'company_email' => 'contact@neogtb.fr',
+            'company_email' => 'hello@neogtb.fr',
+            'company_phone' => '+33650143252',
             'company_website' => 'https://neogtb.fr',
-            'company_country' => 'France',
-            'company_founding_year' => 2026,
             'company_description' => 'NeoGTB - Tout savoir sur la Gestion Technique du Bâtiment (GTB) et la Gestion Technique Centralisée (GTC). Guides, audits gratuits et comparateurs.',
             'company_opening_hours' => ['lun_ven' => '09:00 - 18:00', 'sam' => 'Fermé', 'dim' => 'Fermé'],
+
+            // ADRESSE SIÈGE (EYNOR)
+            'company_address' => '11 Rue Aimé Césaire',
+            'company_postal_code' => '33320',
+            'company_city' => 'Eysines',
+            'company_country' => 'France',
+
+            // IDENTITÉ JURIDIQUE (entité exploitante : EYNOR SARL)
+            'company_legal_form' => 'SARL EYNOR',
+            'company_siren' => '989322144',
+            'company_siret' => '98932214400019',
+            'company_ape' => '71.20B',
+            'company_capital' => '500 €',
+            'company_founding_year' => 2025,
+
+            // RÉSEAUX SOCIAUX (marque EYNOR Group)
+            'social_linkedin' => 'https://www.linkedin.com/company/eynor-group',
 
             // THÈME
             'primary_color' => '#1E3A5F',
@@ -81,7 +97,7 @@ class GeneralSettingsSeeder extends Seeder
 
             // EMAIL
             'email_from_name' => 'NeoGTB',
-            'email_from_address' => 'contact@neogtb.fr',
+            'email_from_address' => 'hello@neogtb.fr',
 
             // RGPD
             'rgpd_retention_contacts_days' => 730,
@@ -587,7 +603,7 @@ class GeneralSettingsSeeder extends Seeder
 <li><strong>RCS :</strong> [VILLE ET NUMÉRO RCS]</li>
 <li><strong>Capital social :</strong> [MONTANT] €</li>
 <li><strong>Directeur de la publication :</strong> [NOM DU DIRECTEUR DE PUBLICATION]</li>
-<li><strong>Email :</strong> contact@neogtb.fr</li>
+<li><strong>Email :</strong> hello@neogtb.fr</li>
 <li><strong>Téléphone :</strong> [NUMÉRO DE TÉLÉPHONE]</li>
 </ul>
 
@@ -634,7 +650,7 @@ class GeneralSettingsSeeder extends Seeder
 <ul>
 <li><strong>NeoGTB</strong></li>
 <li>Adresse : [ADRESSE COMPLÈTE]</li>
-<li>Email : contact@neogtb.fr</li>
+<li>Email : hello@neogtb.fr</li>
 <li>Téléphone : [NUMÉRO DE TÉLÉPHONE]</li>
 </ul>
 
@@ -701,7 +717,7 @@ class GeneralSettingsSeeder extends Seeder
 <li><strong>Droit d\'opposition :</strong> vous opposer au traitement de vos données pour motif légitime</li>
 <li><strong>Droit de retirer votre consentement :</strong> à tout moment, sans affecter la licéité du traitement antérieur</li>
 </ul>
-<p>Pour exercer vos droits, consultez notre page dédiée <a href="/mes-droits-rgpd">Mes droits RGPD</a> ou contactez-nous à <strong>contact@neogtb.fr</strong>. Nous nous engageons à répondre dans un délai d\'un mois.</p>
+<p>Pour exercer vos droits, consultez notre page dédiée <a href="/mes-droits-rgpd">Mes droits RGPD</a> ou contactez-nous à <strong>hello@neogtb.fr</strong>. Nous nous engageons à répondre dans un délai d\'un mois.</p>
 <p>Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a> (Commission Nationale de l\'Informatique et des Libertés).</p>
 
 <h2>7. Cookies</h2>
@@ -744,13 +760,13 @@ class GeneralSettingsSeeder extends Seeder
 <p>NeoGTB ne saurait être tenu responsable des décisions prises sur la base des résultats de cet outil.</p>
 
 <h2>6. Propriété intellectuelle</h2>
-<p>L\'ensemble du contenu du Site est protégé par le droit de la propriété intellectuelle. Toute reproduction, même partielle, est soumise à autorisation préalable. Pour toute demande, contactez-nous à <strong>contact@neogtb.fr</strong>.</p>
+<p>L\'ensemble du contenu du Site est protégé par le droit de la propriété intellectuelle. Toute reproduction, même partielle, est soumise à autorisation préalable. Pour toute demande, contactez-nous à <strong>hello@neogtb.fr</strong>.</p>
 
 <h2>7. Données personnelles</h2>
 <p>Le traitement des données personnelles est régi par notre <a href="/politique-de-confidentialite">Politique de confidentialité</a>, conforme au Règlement Général sur la Protection des Données (RGPD).</p>
 
 <h2>8. Newsletter</h2>
-<p>L\'inscription à la newsletter est libre et volontaire. Vous pouvez vous désinscrire à tout moment via le lien de désinscription présent dans chaque email ou en nous contactant à contact@neogtb.fr.</p>
+<p>L\'inscription à la newsletter est libre et volontaire. Vous pouvez vous désinscrire à tout moment via le lien de désinscription présent dans chaque email ou en nous contactant à hello@neogtb.fr.</p>
 
 <h2>9. Limitation de responsabilité</h2>
 <p>NeoGTB s\'efforce de fournir des informations fiables et à jour sur la GTB/GTC, la réglementation et les technologies associées. Toutefois, ces informations sont fournies à titre indicatif et NeoGTB ne garantit pas leur exhaustivité ni leur exactitude.</p>
@@ -809,7 +825,7 @@ class GeneralSettingsSeeder extends Seeder
 <p>Conformément aux recommandations de la CNIL, les cookies ont une durée de vie maximale de 13 mois. Votre consentement est redemandé à l\'expiration de cette période.</p>
 
 <h2>5. En savoir plus</h2>
-<p>Pour toute question relative aux cookies, vous pouvez nous contacter à <strong>contact@neogtb.fr</strong> ou consulter le site de la <a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs" target="_blank" rel="noopener">CNIL</a>.</p>
+<p>Pour toute question relative aux cookies, vous pouvez nous contacter à <strong>hello@neogtb.fr</strong> ou consulter le site de la <a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs" target="_blank" rel="noopener">CNIL</a>.</p>
 <p>Dernière mise à jour : avril 2026.</p>',
             ],
 
