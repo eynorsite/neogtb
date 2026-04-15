@@ -27,6 +27,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(SiteConfigService::class);
         $this->app->singleton(HomepageSectionsService::class);
 
+        // Force password-reset notification to bypass the queue (QUEUE_CONNECTION=database
+        // would otherwise leave the email stuck in the jobs table until a worker runs)
+        $this->app->bind(
+            \Filament\Auth\Notifications\ResetPassword::class,
+            \App\Notifications\ResetPasswordNotification::class
+        );
+
         // Bump memory for admin pages with large forms (SiteSettings labels: 256+ fields)
         if (request()->is('admin*')) {
             ini_set('memory_limit', '512M');
