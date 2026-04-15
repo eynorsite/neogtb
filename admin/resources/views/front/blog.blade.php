@@ -81,17 +81,10 @@
                    x-transition:enter-start="opacity-0 scale-95"
                    x-transition:enter-end="opacity-100 scale-100"
                 >
-                    {{-- Image cover : featured_image (Filament Posts) sinon fallback global setting blog_default_cover --}}
+                    {{-- Image cover : featured_image (Post) sinon fallback general_settings.blog_default_cover --}}
                     @php
-                        $defaultCover = $site->get('blog_default_cover', '/images/blog-default-cover.png');
-                        $img = $post->featured_image ?: null;
-                        if ($img && str_starts_with($img, '/')) {
-                            $imgUrl = $img;
-                        } elseif ($img) {
-                            $imgUrl = asset('storage/' . $img);
-                        } else {
-                            $imgUrl = $defaultCover;
-                        }
+                        $defaultCover = $site->blogDefaultCover();
+                        $imgUrl = $site->resolveImagePath($post->featured_image) ?: $defaultCover;
                     @endphp
                     <div class="relative h-48 overflow-hidden bg-white">
                         <img src="{{ $imgUrl }}"

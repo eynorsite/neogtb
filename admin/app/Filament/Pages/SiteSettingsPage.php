@@ -713,6 +713,18 @@ class SiteSettingsPage extends Page implements HasForms
                             ->helperText('1200x630px recommandé'),
                     ]),
                 ]),
+                Section::make('Image par défaut des articles')
+                    ->description('Image affichée automatiquement sur chaque article (liste et page détail) lorsqu\'aucune image spécifique n\'est définie sur l\'article.')
+                    ->schema([
+                        FileUpload::make('blog_default_cover')
+                            ->label('Image blog par défaut')
+                            ->image()
+                            ->disk('public')
+                            ->visibility('public')
+                            ->directory('blog-covers')
+                            ->maxSize(2048)
+                            ->helperText('Format recommandé : 1200x630px. S\'applique à tous les articles sans image propre.'),
+                    ]),
             ]);
     }
 

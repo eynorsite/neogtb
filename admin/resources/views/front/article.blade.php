@@ -71,17 +71,10 @@
                 @endif
             </nav>
 
-            {{-- Hero image : featured_image (Filament Posts) sinon fallback global setting blog_default_cover --}}
+            {{-- Hero image : featured_image (Post) sinon fallback general_settings.blog_default_cover --}}
             @php
-                $defaultCover = $site->get('blog_default_cover', '/images/blog-default-cover.png');
-                $img = $post->featured_image ?: null;
-                if ($img && str_starts_with($img, '/')) {
-                    $imgUrl = $img;
-                } elseif ($img) {
-                    $imgUrl = asset('storage/' . $img);
-                } else {
-                    $imgUrl = $defaultCover;
-                }
+                $defaultCover = $site->blogDefaultCover();
+                $imgUrl = $site->resolveImagePath($post->featured_image) ?: $defaultCover;
             @endphp
             <div class="relative aspect-[16/9] w-full overflow-hidden rounded-2xl mb-12 bg-white">
                 <img src="{{ $imgUrl }}" alt="{{ $post->title }}" class="w-full h-full object-contain" loading="eager" fetchpriority="high" onerror="this.src='{{ $defaultCover }}'">

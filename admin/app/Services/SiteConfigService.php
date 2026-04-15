@@ -311,6 +311,41 @@ HTML;
     }
 
     // ──────────────────────────────────────────────
+    // Images : résolution cover article (BDD -> URL publique)
+    // ──────────────────────────────────────────────
+
+    /**
+     * Résout un chemin d'image stocké en BDD en URL publique exploitable.
+     * Gère à la fois :
+     *   - les chemins absolus (commençant par / ou http) — utilisés tels quels
+     *   - les chemins de Filament FileUpload (ex: "blog-covers/abc.webp") — préfixés par asset('storage/')
+     *   - null / vide → null (le caller décide du fallback)
+     */
+    public function resolveImagePath(?string $value): ?string
+    {
+        if (blank($value)) {
+            return null;
+        }
+        if (str_starts_with($value, '/') || str_starts_with($value, 'http')) {
+            return $value;
+        }
+
+        return asset('storage/' . ltrim($value, '/'));
+    }
+
+    /**
+     * Renvoie l'URL publique de la cover blog par défaut (fallback universel).
+     * Lit general_settings.blog_default_cover, avec fallback hardcodé sur
+     * /images/blog-default-cover.png si la BDD est vide.
+     */
+    public function blogDefaultCover(): string
+    {
+        $value = $this->settings()->blog_default_cover;
+
+        return $this->resolveImagePath($value) ?: '/images/blog-default-cover.png';
+    }
+
+    // ──────────────────────────────────────────────
     // Statuts (pattern BIMACAD)
     // ──────────────────────────────────────────────
 
