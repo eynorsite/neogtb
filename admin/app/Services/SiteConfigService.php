@@ -307,7 +307,7 @@ HTML;
 
     public function label(string $path, string $default = ''): string
     {
-        return Arr::get($this->settings()->ui_labels ?? [], $path, $default);
+        return (string) (Arr::get($this->settings()->ui_labels ?? [], $path, $default) ?? $default);
     }
 
     // ──────────────────────────────────────────────
