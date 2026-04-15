@@ -40,6 +40,9 @@ class SitemapController extends Controller
         ];
 
         $urls = [];
+        // Track les paths déjà ajoutés (statiques) pour dé-dupliquer la boucle SitePage,
+        // qui peut contenir les mêmes slugs côté BDD (accueil, gtb, gtc, contact, etc.).
+        $addedPaths = [];
 
         foreach ($staticRoutes as [$path, $changefreq, $priority]) {
             $urls[] = [
@@ -48,22 +51,32 @@ class SitemapController extends Controller
                 'changefreq' => $changefreq,
                 'priority'   => $priority,
             ];
+            $addedPaths[$path] = true;
         }
 
         // Dynamic CMS pages
         SitePage::query()
             ->where('is_published', true)
             ->get(['slug', 'updated_at'])
-            ->each(function (SitePage $page) use (&$urls, $base, $now) {
+            ->each(function (SitePage $page) use (&$urls, &$addedPaths, $base, $now) {
                 if (blank($page->slug)) {
                     return;
                 }
+                // Skip 'accueil' : déjà couvert par la route racine '/'
+                if ($page->slug === 'accueil') {
+                    return;
+                }
+                $path = '/' . ltrim($page->slug, '/');
+                if (isset($addedPaths[$path])) {
+                    return;
+                }
                 $urls[] = [
-                    'loc'        => $base . '/' . ltrim($page->slug, '/'),
+                    'loc'        => $base . $path,
                     'lastmod'    => optional($page->updated_at)->toAtomString() ?: $now,
                     'changefreq' => 'weekly',
                     'priority'   => '0.7',
                 ];
+                $addedPaths[$path] = true;
             });
 
         // Blog posts
