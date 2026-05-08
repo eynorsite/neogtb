@@ -49,6 +49,22 @@ Route::middleware('throttle:5,1')->group(function () {
 });
 Route::get('/newsletter/confirm/{token}', [\App\Http\Controllers\NewsletterController::class, 'confirm'])->name('newsletter.confirm');
 
+// Chatbot API routes
+Route::prefix('api/chatbot')->group(function () {
+    Route::get('/bootstrap', [\App\Http\Controllers\ChatbotController::class, 'bootstrap'])
+        ->middleware('throttle:60,1')
+        ->name('chatbot.bootstrap');
+    Route::post('/consent', [\App\Http\Controllers\ChatbotController::class, 'consent'])
+        ->middleware('throttle:30,1')
+        ->name('chatbot.consent');
+    Route::post('/stream', [\App\Http\Controllers\ChatbotController::class, 'stream'])
+        ->middleware('throttle:30,1')
+        ->name('chatbot.stream');
+    Route::post('/lead', [\App\Http\Controllers\ChatbotController::class, 'captureLead'])
+        ->middleware('throttle:5,1')
+        ->name('chatbot.lead');
+});
+
 // Brick editor preview routes
 Route::middleware(['web'])->prefix('admin/api/bricks')->group(function () {
     Route::get('/preview/{pageId}', [\App\Http\Controllers\BrickPreviewController::class, 'previewPage'])

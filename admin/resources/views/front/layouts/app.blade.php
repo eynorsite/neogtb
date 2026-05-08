@@ -405,6 +405,7 @@
   </script>
   @endif
   @include('front.partials.sticky-cta')
+  @include('front.partials.chatbot-widget')
 
   {{-- Custom code admin (Avancé > Code personnalisé body) --}}
   {!! $settings->custom_body_code ?? '' !!}

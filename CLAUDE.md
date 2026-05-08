@@ -99,6 +99,19 @@ NeoGTB
 - [ ] Analytics (GA4 ou Plausible)
 - [ ] Tests multi-navigateurs
 
+### Phase 7 : Chatbot IA (livré 2026-05-08)
+Voir `docs/CHATBOT_LIVRAISON_2026-05-08.md` et `admin/CHATBOT.md` pour la doc complète.
+
+- [x] Backend Laravel (5 tables, ChatbotService streaming, 4 endpoints API)
+- [x] Admin Filament (Settings, Knowledge, FAQ, Conversations, Stats)
+- [x] Widget public Alpine.js (streaming SSE, consentement RGPD, capture lead)
+- [x] Seeder initial (8 snippets décret BACS + 5 FAQ)
+- [x] Documentation utilisateur (CHATBOT.md, 215 lignes)
+- [ ] Configurer la clé `ANTHROPIC_API_KEY` dans `.env` (local + VPS)
+- [ ] Activer le toggle dans `/admin/chatbot-settings-page` après tests
+- [ ] Phase 2 RAG vectoriel (sqlite-vec) si > 50 snippets
+- [ ] Commande artisan `chatbot:purge` pour purge auto >30 j
+
 ---
 
 ## Conventions de Code
