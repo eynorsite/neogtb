@@ -45,72 +45,13 @@ NeoGTB
 
 ## Roadmap
 
-### Phase 0 : Initialisation ✅
-- [x] Choix du nom : NeoGTB
-- [x] Réservation domaines : neogtb.fr + neogtb.com
-- [x] Choix stack : React (Lovable) + Tailwind CSS 4 + Laravel admin
-- [x] Initialisation projet
-- [x] Installation Tailwind CSS 4
-- [x] Initialisation Git
+Voir [ROADMAP.md](ROADMAP.md) pour la roadmap complète et à jour.
 
-### Phase 1 : Fondations & Design System
-- [ ] Définir la palette de couleurs (thème bâtiment intelligent / tech)
-- [ ] Configurer Tailwind (couleurs, fonts, spacing)
-- [ ] Créer le layout principal (header, nav, footer)
-- [ ] Navigation responsive avec menu mobile
-- [ ] Composants de base (boutons, cards, badges)
-- [ ] Favicon et branding NeoGTB
-
-### Phase 2 : Pages Principales
-- [ ] Page d'accueil (hero, sections éducatives, CTA)
-- [ ] Page "Qu'est-ce que la GTB ?"
-- [ ] Page "Qu'est-ce que la GTC ?"
-- [ ] Page "Solutions & Technologies"
-- [ ] Page "A Propos"
-- [ ] Page "Contact" (formulaire)
-
-### Phase 3 : Blog & Contenu
-- [ ] Système de blog
-- [ ] Page liste des articles
-- [ ] Page détail article
-- [ ] Catégories et tags
-- [ ] 5-10 articles initiaux GTB/GTC
-- [ ] SEO optimisé (meta, Open Graph, Schema.org)
-
-### Phase 4 : Outil d'Audit
-- [ ] Formulaire d'audit interactif (Alpine.js)
-- [ ] Questions par étapes (wizard multi-step)
-- [ ] Génération de rapport/score
-- [ ] Envoi par email des résultats
-- [ ] PDF téléchargeable (optionnel)
-
-### Phase 5 : SEO & Performance
-- [ ] Meta tags dynamiques
-- [ ] Sitemap XML automatique
-- [ ] Schema.org (Organization, Article, FAQPage)
-- [ ] Open Graph / Twitter Cards
-- [ ] Optimisation images (WebP, lazy loading)
-- [ ] Score Lighthouse 95+
-
-### Phase 6 : Déploiement
-- [ ] Configuration Vercel/Netlify
-- [ ] Pointer DNS neogtb.fr + neogtb.com
-- [ ] SSL automatique
-- [ ] Analytics (GA4 ou Plausible)
-- [ ] Tests multi-navigateurs
-
-### Phase 7 : Chatbot IA (livré 2026-05-08)
-Voir `docs/CHATBOT_LIVRAISON_2026-05-08.md` et `admin/CHATBOT.md` pour la doc complète.
-
-- [x] Backend Laravel (5 tables, ChatbotService streaming, 4 endpoints API)
-- [x] Admin Filament (Settings, Knowledge, FAQ, Conversations, Stats)
-- [x] Widget public Alpine.js (streaming SSE, consentement RGPD, capture lead)
-- [x] Seeder initial (8 snippets décret BACS + 5 FAQ)
-- [x] Documentation utilisateur (CHATBOT.md, 215 lignes)
-- [ ] Configurer la clé `ANTHROPIC_API_KEY` dans `.env` (local + VPS)
-- [ ] Activer le toggle dans `/admin/chatbot-settings-page` après tests
-- [ ] Phase 2 RAG vectoriel (sqlite-vec) si > 50 snippets
-- [ ] Commande artisan `chatbot:purge` pour purge auto >30 j
+État actuel (résumé) :
+- ✅ Phases 0-6 livrées : site en prod sur https://neogtb.fr depuis 2026-04-07
+- ✅ Phase 7 Chatbot IA livré 2026-05-08 (à activer avec clé API Anthropic)
+- 🟡 Phase 8 Optimisation chatbot (RAG, A/B test) — prévue après mise en service
+- 🟡 Phase 9 Croissance & conversion (analytics, pages sectorielles, lead magnets)
 
 ---
 
