@@ -180,7 +180,7 @@
                   <p class="mt-2 text-xl font-semibold text-dark-900" x-text="selectedEq.nom"></p>
                   <p class="text-sm text-dark-500" x-text="selectedEq.fournisseur"></p>
                 </div>
-                <button @click="closeModal()" class="text-dark-400 hover:text-dark-700 p-1">
+                <button @click="closeModal()" aria-label="Fermer" class="text-dark-400 hover:text-dark-700 p-1">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
               </div>
