@@ -31,7 +31,7 @@ class PageController extends Controller
     public function blog()
     {
         $posts = Post::where('status', 'published')
-            ->with('category')
+            ->with(['category', 'tags'])
             ->orderByDesc('published_at')
             ->paginate(20);
 
@@ -55,6 +55,7 @@ class PageController extends Controller
             ->where('id', '!=', $post->id)
             ->where('category_id', $post->category_id)
             ->latest('published_at')
+            ->with('category')
             ->limit(3)
             ->get();
 
