@@ -222,9 +222,15 @@
               <div class="flex gap-2" x-show="!nlSent">
                 <label class="sr-only" for="footer-nl-email">{{ $site->label('footer.newsletter_sr_label', 'Email pour la veille GTB') }}</label>
                 <input type="email" id="footer-nl-email" name="email" placeholder="{{ $site->label('footer.newsletter_placeholder', 'votre@email.com') }}" required aria-label="{{ $site->label('footer.newsletter_aria', 'Votre adresse email pour la veille GTB mensuelle') }}" class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid var(--color-dark-200); background: var(--color-dark-50);" />
-                <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));">
+                <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20 disabled:opacity-70 disabled:cursor-not-allowed" style="background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));">
                   <span x-show="!nlSending">{{ $site->label('footer.newsletter_button', "S'inscrire") }}</span>
-                  <span x-show="nlSending">...</span>
+                  <span x-show="nlSending" class="flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" />
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    En cours...
+                  </span>
                 </button>
               </div>
               <div x-show="nlSent" x-cloak class="text-[13px] text-accent-500 font-medium">{{ $site->label('footer.newsletter_success', 'Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.') }}</div>
