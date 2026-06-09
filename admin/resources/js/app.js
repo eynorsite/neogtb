@@ -55,5 +55,32 @@ Alpine.data('ctaDismiss', () => ({
     },
 }));
 
+// Compteur animé déclenché par x-intersect (brick chiffres) — cible et suffixe
+// passés via data-target / data-suffix (build CSP : pas de bloc ni setInterval en directive).
+Alpine.data('statCounter', () => ({
+    count: 0,
+    suffix: '',
+    started: false,
+    init() {
+        this.suffix = this.$el.dataset.suffix || '';
+    },
+    start() {
+        if (this.started) return;
+        this.started = true;
+        const target = parseInt(this.$el.dataset.target, 10) || 0;
+        const step = target / (2000 / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                this.count = target;
+                clearInterval(timer);
+            } else {
+                this.count = Math.floor(current);
+            }
+        }, 16);
+    },
+}));
+
 window.Alpine = Alpine;
 Alpine.start();

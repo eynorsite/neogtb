@@ -24,20 +24,10 @@
                 @endphp
                 <div class="text-center animate-fade-in-up" style="animation-delay: {{ $i * 100 }}ms"
                      @if($isNumeric)
-                     x-data="{ count: 0, target: {{ $target }}, suffix: '{{ addslashes($suffix) }}', started: false }"
-                     x-intersect.once="
-                        if (!started) {
-                            started = true;
-                            let duration = 2000;
-                            let step = target / (duration / 16);
-                            let current = 0;
-                            let timer = setInterval(() => {
-                                current += step;
-                                if (current >= target) { count = target; clearInterval(timer); }
-                                else { count = Math.floor(current); }
-                            }, 16);
-                        }
-                     "
+                     x-data="statCounter"
+                     data-target="{{ $target }}"
+                     data-suffix="{{ $suffix }}"
+                     x-intersect.once="start()"
                      @endif
                 >
                     @if($isNumeric)
