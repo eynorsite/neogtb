@@ -36,7 +36,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Ulrich Calmo — NeoGTB" />
+  <meta name="author" content="Ulrich Calmo - NeoGTB" />
   <meta name="theme-color" content="#0F172A" />
   @hasSection('noindex')<meta name="robots" content="noindex, nofollow" />@else<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />@endif
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -98,7 +98,7 @@
   {{-- Schema.org contextuel (breadcrumbs, FAQ, Article) --}}
   @stack('schema')
 
-  {{-- Plausible Analytics — hébergé UE, sans cookies, exempt de consentement CNIL --}}
+  {{-- Plausible Analytics, hébergé UE, sans cookies, exempt de consentement CNIL --}}
   <script defer data-domain="neogtb.fr" src="https://plausible.io/js/script.js"></script>
 
   {{-- Tailwind v4 + design tokens NeoGTB + Alpine.js (self-hosted) compilés via Vite --}}
@@ -152,7 +152,7 @@
     </div>
   @endif
 
-  {{-- ===== NAV — Premium mega-menu ===== --}}
+  {{-- ===== NAV, Premium mega-menu ===== --}}
   @include('front.partials.header-nav')
 
   {{-- ===== MAIN CONTENT ===== --}}
@@ -169,7 +169,7 @@
     @yield('content')
   </main>
 
-  {{-- ===== FOOTER — Premium 4 colonnes ===== --}}
+  {{-- ===== FOOTER, Premium 4 colonnes ===== --}}
   <footer style="background: var(--color-body-bg, white); border-top: 0.5px solid var(--color-dark-200);">
     <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-16">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
@@ -304,7 +304,7 @@
     </div>
   </footer>
 
-  {{-- ===== Bandeau d'information cookies (purement informatif — Plausible cookieless, exempt CNIL) ===== --}}
+  {{-- ===== Bandeau d'information cookies (purement informatif, Plausible cookieless, exempt CNIL) ===== --}}
   <div x-data="cookieNotice" x-cloak>
     <div x-show="showBanner" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
       class="fixed bottom-0 left-0 right-0 z-[60] p-4">
@@ -339,7 +339,7 @@
       }, { passive: true });
     })();
 
-    // Bandeau d'information cookies (purement informatif — aucun cookie de tracking, Plausible exempt CNIL)
+    // Bandeau d'information cookies (purement informatif, aucun cookie de tracking, Plausible exempt CNIL)
     document.addEventListener('alpine:init', () => {
       Alpine.data('cookieNotice', () => ({
         showBanner: false,

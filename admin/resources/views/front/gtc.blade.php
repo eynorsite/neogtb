@@ -6,7 +6,7 @@
 <!-- HERO IMAGE -->
 <x-front.shared.hero
     image="/images/hero-gtc.webp"
-    imageAlt="Bâtiment tertiaire intelligent — supervision GTC centralisée"
+    imageAlt="Bâtiment tertiaire intelligent, supervision GTC centralisée"
     eyebrow="Comprendre"
     title="Qu'est-ce que la GTC ?"
     highlight="GTC"
@@ -30,7 +30,7 @@
         </p>
         <div class="bg-accent-50 border border-accent-200 rounded-xl p-6">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Point clé</p>
-            <p class="text-sm text-dark-600 leading-relaxed">La GTC centralise la supervision de plusieurs sites ou de plusieurs lots techniques sur une plateforme unique. Elle remonte l'information, détecte les anomalies et permet un pilotage à distance, mais ne porte pas la régulation fine des équipements — c'est le rôle de la GTB ou des automates de terrain.</p>
+            <p class="text-sm text-dark-600 leading-relaxed">La GTC centralise la supervision de plusieurs sites ou de plusieurs lots techniques sur une plateforme unique. Elle remonte l'information, détecte les anomalies et permet un pilotage à distance, mais ne porte pas la régulation fine des équipements, c'est le rôle de la GTB ou des automates de terrain.</p>
         </div>
     </div>
 </section>

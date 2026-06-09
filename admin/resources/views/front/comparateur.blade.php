@@ -51,7 +51,7 @@
 
   <!-- Hero -->
   <section class="hero-lum hero-emerald" data-hero>
-    <img src="/images/hero-comparateur.png" alt="Comparaison de bâtiments intelligents — GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-comparateur.png" alt="Comparaison de bâtiments intelligents, GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 text-center relative z-10">
       <span class="eyebrow">Outil indépendant</span>

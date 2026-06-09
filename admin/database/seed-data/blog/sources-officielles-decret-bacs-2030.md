@@ -10,7 +10,7 @@ featured: false
 
 ## Pourquoi un article sur les sources ?
 
-Dans un contexte réglementaire en mouvement — report du BACS, mise à jour du décret tertiaire, évolution des fiches CEE — il est essentiel de s'appuyer sur des **sources vérifiées et à jour**. Cet article compile et commente les références officielles indispensables.
+Dans un contexte réglementaire en mouvement, report du BACS, mise à jour du décret tertiaire, évolution des fiches CEE, il est essentiel de s'appuyer sur des **sources vérifiées et à jour**. Cet article compile et commente les références officielles indispensables.
 
 ## Les textes réglementaires fondateurs
 

@@ -1,4 +1,4 @@
-{{-- Chatbot widget NeoGTB — chargé côté serveur uniquement si activé --}}
+{{-- Chatbot widget NeoGTB, chargé côté serveur uniquement si activé --}}
 @php
     $chatbotEnabled = \App\Models\ChatbotSetting::current()->enabled;
 @endphp
@@ -172,7 +172,7 @@
             </form>
         </template>
 
-        {{-- Capture lead — apparaît après 1 user + 1 assistant --}}
+        {{-- Capture lead, apparaît après 1 user + 1 assistant --}}
         <template x-if="(consentGiven || !requireConsent) && messages.length >= 2 && !leadDismissed && !leadSubmitted">
             <div class="border-t border-gray-200 bg-gray-50 px-3 py-2.5">
                 {{-- Bouton subtil pour ouvrir le formulaire --}}

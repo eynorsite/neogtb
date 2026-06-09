@@ -1,6 +1,6 @@
 @extends('front.layouts.app')
 
-@section('title', 'Page introuvable — Erreur 404')
+@section('title', 'Page introuvable, Erreur 404')
 @section('description', "La page que vous cherchez n'existe pas ou a été déplacée. Retrouvez nos ressources GTB : audit, blog, guides et contact.")
 @section('noindex', true)
 
@@ -47,7 +47,7 @@
             </h2>
             <p class="mt-4 text-[16px] md:text-[17px] leading-relaxed text-dark-500">
                 La page que vous cherchez n'existe pas ou a été déplacée.
-                Pas d'inquiétude — voici quelques points de repère pour retrouver votre chemin.
+                Pas d'inquiétude, voici quelques points de repère pour retrouver votre chemin.
             </p>
         </div>
 

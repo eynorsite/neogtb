@@ -10,7 +10,7 @@ featured: false
 
 > « Le report nous arrange pour les autres sites, mais nous sommes vraiment contents d'avoir anticipé sur celui-ci. Les résultats sont là. »
 >
-> — Directeur Technique, foncière de bureaux (portefeuille 12 immeubles)
+> Directeur Technique, foncière de bureaux (portefeuille 12 immeubles)
 
 ## Le contexte : un immeuble de bureaux de 220 kW en région parisienne
 
@@ -48,7 +48,7 @@ Les chiffres parlent d'eux-mêmes :
 Au-delà des chiffres, l'équipe technique souligne d'autres bénéfices :
 
 - Réduction significative des **appels locataires** pour des problèmes de confort thermique
-- **Renouvellement du bail** signé avec succès — la performance GTB citée explicitement dans les annexes environnementales
+- **Renouvellement du bail** signé avec succès, la performance GTB citée explicitement dans les annexes environnementales
 - Données OPERAT 2025 **renseignées automatiquement**, sans mobilisation supplémentaire du service technique
 
 ## Le message pour les autres gestionnaires

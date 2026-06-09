@@ -70,7 +70,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | RGPD — Rétention minimale (jours)
+    | RGPD, Rétention minimale (jours)
     |--------------------------------------------------------------------------
     | Plancher en dur : la valeur admin ne peut pas descendre en dessous.
     */

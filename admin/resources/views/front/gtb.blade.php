@@ -6,11 +6,11 @@
 <!-- HERO IMAGE -->
 <x-front.shared.hero
     image="/images/hero-gtb.webp"
-    imageAlt="Poste de supervision GTB — écrans de contrôle et alertes bâtiment"
+    imageAlt="Poste de supervision GTB, écrans de contrôle et alertes bâtiment"
     eyebrow="Comprendre"
     title="Qu'est-ce que la GTB ?"
     highlight="GTB"
-    subtitle="La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment — du chauffage à l'éclairage, en passant par la ventilation et le contrôle d'accès."
+    subtitle="La Gestion Technique du Bâtiment (GTB) désigne le système centralisé qui supervise, pilote et optimise l'ensemble des équipements techniques d'un bâtiment, du chauffage à l'éclairage, en passant par la ventilation et le contrôle d'accès."
     minHeight="480px"
     overlay="gradient"
 />
@@ -151,7 +151,7 @@
             <h3 class="text-xs font-medium uppercase tracking-widest text-dark-400 mb-4">Protocoles sans fil</h3>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach([
-                    ['name' => 'EnOcean', 'tag' => 'ISO/IEC 14543-3-10', 'desc' => 'Sans batterie — alimenté par l\'énergie ambiante. Idéal pour la rénovation sans câblage.'],
+                    ['name' => 'EnOcean', 'tag' => 'ISO/IEC 14543-3-10', 'desc' => 'Sans batterie, alimenté par l\'énergie ambiante. Idéal pour la rénovation sans câblage.'],
                     ['name' => 'ZigBee 3.0', 'tag' => 'IEEE 802.15.4', 'desc' => 'Réseau mesh basse consommation, auto-réparant. Très utilisé pour l\'éclairage commercial.'],
                     ['name' => 'Thread / Matter', 'tag' => 'CSA', 'desc' => 'Mesh IPv6 basse consommation. Standard d\'interopérabilité Apple, Google, Amazon, Samsung.'],
                     ['name' => 'LoRaWAN', 'tag' => 'LoRa Alliance', 'desc' => 'Longue portée (km), très basse consommation. Capteurs distribués, campus, bâtiments distants.'],
@@ -217,9 +217,9 @@
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
-                ['href' => '/gtc', 'title' => 'GTC : quelle différence avec la GTB ?', 'desc' => 'Supervision centralisée vs automatisation — comprendre les nuances.'],
+                ['href' => '/gtc', 'title' => 'GTC : quelle différence avec la GTB ?', 'desc' => 'Supervision centralisée vs automatisation, comprendre les nuances.'],
                 ['href' => '/solutions', 'title' => 'Solutions & Technologies GTB', 'desc' => 'Protocoles BACnet, KNX, Modbus, capteurs et automates.'],
-                ['href' => '/reglementation', 'title' => 'Réglementation GTB en France', 'desc' => 'Décret BACS, décret tertiaire, RE2020 — calendrier et obligations.'],
+                ['href' => '/reglementation', 'title' => 'Réglementation GTB en France', 'desc' => 'Décret BACS, décret tertiaire, RE2020, calendrier et obligations.'],
             ] as $link)
             <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-2xl p-5 lg:p-7 border border-dark-100 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>

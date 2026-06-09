@@ -7,7 +7,7 @@
     <div class="max-w-[680px] mx-auto px-4 sm:px-6">
 
         <div class="text-center mb-12">
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('legal.rgpd.eyebrow', 'RGPD — Vos droits') }}</p>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">{{ $site->label('legal.rgpd.eyebrow', 'RGPD, Vos droits') }}</p>
             <h1 class="font-heading font-medium text-dark-900 text-[26px] tracking-tight">{{ $site->label('legal.rgpd.title', 'Exercer vos droits RGPD') }}</h1>
             <p class="mt-4 text-dark-500 max-w-xl mx-auto text-sm leading-relaxed">
                 {{ $site->label('legal.rgpd.subtitle', 'Conformément au RGPD, vous disposez de droits sur vos données personnelles. Sélectionnez le type de demande ci-dessous.') }}
@@ -21,11 +21,11 @@
                 <label class="block text-sm font-medium text-dark-700 mb-3">Type de demande</label>
                 <div class="space-y-2">
                     @foreach([
-                        ['value' => 'access', 'title' => 'Accéder à mes données', 'desc' => "Droit d'accès — Obtenir une copie de toutes vos données"],
-                        ['value' => 'rectification', 'title' => 'Corriger mes données', 'desc' => 'Droit de rectification — Corriger des informations inexactes'],
-                        ['value' => 'deletion', 'title' => 'Supprimer mes données', 'desc' => "Droit à l'oubli — Effacer définitivement vos données"],
-                        ['value' => 'portability', 'title' => 'Exporter mes données', 'desc' => 'Droit à la portabilité — Recevoir vos données en format structuré'],
-                        ['value' => 'opposition', 'title' => "M'opposer au traitement", 'desc' => "Droit d'opposition — Cesser le traitement de vos données"],
+                        ['value' => 'access', 'title' => 'Accéder à mes données', 'desc' => "Droit d'accès, Obtenir une copie de toutes vos données"],
+                        ['value' => 'rectification', 'title' => 'Corriger mes données', 'desc' => 'Droit de rectification, Corriger des informations inexactes'],
+                        ['value' => 'deletion', 'title' => 'Supprimer mes données', 'desc' => "Droit à l'oubli, Effacer définitivement vos données"],
+                        ['value' => 'portability', 'title' => 'Exporter mes données', 'desc' => 'Droit à la portabilité, Recevoir vos données en format structuré'],
+                        ['value' => 'opposition', 'title' => "M'opposer au traitement", 'desc' => "Droit d'opposition, Cesser le traitement de vos données"],
                     ] as $option)
                     <label class="flex items-start gap-3 p-3 rounded-lg cursor-pointer transition-all border border-dark-100 hover:bg-dark-50"
                         :class="form.type === '{{ $option['value'] }}' ? 'border-accent-500 bg-accent-50' : ''">
@@ -134,9 +134,9 @@
                         },
                     });
                     if (res.ok) { this.submitted = true; }
-                    else { window.location.href = 'mailto:rgpd@neogtb.fr?subject=Demande RGPD — ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message); }
+                    else { window.location.href = 'mailto:rgpd@neogtb.fr?subject=Demande RGPD, ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message); }
                 } catch (e) {
-                    window.location.href = 'mailto:rgpd@neogtb.fr?subject=Demande RGPD — ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message);
+                    window.location.href = 'mailto:rgpd@neogtb.fr?subject=Demande RGPD, ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message);
                 }
             },
         }));

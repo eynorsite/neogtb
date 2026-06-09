@@ -203,7 +203,7 @@
 
   <!-- HERO -->
   <section class="hero-lum" data-hero>
-    <img src="/images/hero-audit.png" alt="Bâtiment intelligent connecté — GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-audit.png" alt="Bâtiment intelligent connecté, GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
     <div class="max-w-[800px] mx-auto px-5 lg:px-10 relative z-10 text-center">
       <p class="diag-eyebrow" style="color: rgba(255,255,255,0.7);">{{ $site->label('audit.hero.eyebrow', 'Diagnostic gratuit · Rapport PDF') }}</p>
@@ -281,8 +281,8 @@
                 <select x-model="form.buildingAge" class="diag-input">
                   <option value="">{{ $site->label('forms.select_placeholder', 'Sélectionnez') }}</option>
                   <option value="before1975">{{ $site->label('audit.age_before1975', 'Avant 1975') }}</option>
-                  <option value="1975-2000">{{ $site->label('audit.age_1975_2000', '1975 — 2000') }}</option>
-                  <option value="2000-2012">{{ $site->label('audit.age_2000_2012', '2000 — 2012') }}</option>
+                  <option value="1975-2000">{{ $site->label('audit.age_1975_2000', '1975-2000') }}</option>
+                  <option value="2000-2012">{{ $site->label('audit.age_2000_2012', '2000-2012') }}</option>
                   <option value="after2012">{{ $site->label('audit.age_after2012', 'Après 2012 (RT2012 / RE2020)') }}</option>
                 </select>
                 <p x-show="errors.buildingAge" x-text="errors.buildingAge" class="diag-error"></p>
@@ -537,7 +537,7 @@
                 <svg style="width:22px;height:22px;color:#d97706;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
               </div>
               <div style="flex:1;">
-                <p style="font-size:14px;font-weight:600;color:var(--color-dark-900);margin-bottom:4px;">{{ $site->label('audit.results.cee_title', 'Primes CEE estimées — fiches cumulables') }}</p>
+                <p style="font-size:14px;font-weight:600;color:var(--color-dark-900);margin-bottom:4px;">{{ $site->label('audit.results.cee_title', 'Primes CEE estimées, fiches cumulables') }}</p>
                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
                   <template x-for="f in results.cee.fiches" :key="f.fiche">
                     <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;background:rgba(245,158,11,0.1);color:#92400e;">
@@ -547,7 +547,7 @@
                   </template>
                 </div>
                 <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;">
-                  <span style="font-size:28px;font-weight:600;color:#d97706;" x-text="formatCurrency(results.cee.valueLow) + ' — ' + formatCurrency(results.cee.valueHigh)"></span>
+                  <span style="font-size:28px;font-weight:600;color:#d97706;" x-text="formatCurrency(results.cee.valueLow) + ' à ' + formatCurrency(results.cee.valueHigh)"></span>
                 </div>
                 <p style="font-size:12px;color:var(--color-dark-400);">Volume total cumulé : <span x-text="formatNumber(results.cee.gwh * 1000)"></span> MWh cumac. Cours CEE : 6,50 &euro;/MWh cumac. Estimation indicative.</p>
                 <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:500;color:var(--color-accent-600);text-decoration:none;">
@@ -639,7 +639,7 @@
             </template>
             <div class="diag-energy-total">
               <span>{{ $site->label('audit.results.total', 'Total') }}</span>
-              <span x-text="formatNumber(results.totalConso) + ' kWh — ' + formatCurrency(results.totalFacture) + ' /an'"></span>
+              <span x-text="formatNumber(results.totalConso) + ' kWh, ' + formatCurrency(results.totalFacture) + ' /an'"></span>
             </div>
           </div>
         </div>
@@ -769,7 +769,7 @@
     <div style="max-width:600px;margin:0 auto;padding:0 24px;text-align:center;">
       <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:100px;background:white;border:1px solid var(--color-dark-200);">
         <svg style="width:18px;height:18px;color:var(--color-accent-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">{{ $site->label('audit.trust_badge', 'Outil indépendant — NeoGTB ne perçoit aucune commission') }}</span>
+        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">{{ $site->label('audit.trust_badge', 'Outil indépendant - NeoGTB ne perçoit aucune commission') }}</span>
       </div>
     </div>
   </section>

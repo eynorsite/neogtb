@@ -6,7 +6,7 @@
 <!-- HERO -->
 <x-front.shared.hero
     image="/images/hero-gtb-illustration.webp"
-    imageAlt="Conseil GTB indépendant — NeoGTB"
+    imageAlt="Conseil GTB indépendant - NeoGTB"
     eyebrow="Pourquoi NeoGTB"
     title="Vous cherchez un conseil GTB qui ne cherche rien à vous vendre"
     highlight="vendre"
@@ -129,7 +129,7 @@
             {{ $site->label('positionnement.model.title', 'Comment NeoGTB gagne de l\'argent') }}
         </h2>
         <p class="text-[15px] text-dark-500 leading-relaxed mb-7">
-            {{ $site->label('positionnement.model.subtitle', 'Un site gratuit qui ne vend rien — vous avez raison de vous demander où est le piège. Il n\'y en a pas. Voici le modèle, en clair.') }}
+            {{ $site->label('positionnement.model.subtitle', 'Un site gratuit qui ne vend rien, vous avez raison de vous demander où est le piège. Il n\'y en a pas. Voici le modèle, en clair.') }}
         </p>
 
         <!-- Le modèle -->

@@ -12,10 +12,10 @@
     <div class="max-w-7xl mx-auto px-5 lg:px-10 py-10 lg:py-20 text-center relative z-10">
       <span class="inline-block text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-200 mb-4">Catalogue technique</span>
       <h1 class="text-[30px] lg:text-[44px] font-medium text-white">
-        Tables d'adressage Modbus — Catalogue technique
+        Tables d'adressage Modbus, Catalogue technique
       </h1>
       <p class="mt-5 text-lg max-w-3xl mx-auto text-primary-100/90">
-        19 équipements référencés, 7 catégories — données indicatives à vérifier auprès du fabricant
+        19 équipements référencés, 7 catégories, données indicatives à vérifier auprès du fabricant
       </p>
     </div>
   </section>
@@ -25,7 +25,7 @@
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
       <div class="rounded-2xl p-5 border border-amber-200 bg-amber-50">
         <p class="text-sm text-amber-900">
-          <strong>⚠️ Données indicatives</strong> — Vérifiez toujours la documentation fabricant à jour avant intégration. Les adresses, fonctions et plages de registres peuvent varier selon le firmware, le modèle exact et la version du protocole.
+          <strong>⚠️ Données indicatives</strong>, Vérifiez toujours la documentation fabricant à jour avant intégration. Les adresses, fonctions et plages de registres peuvent varier selon le firmware, le modèle exact et la version du protocole.
         </p>
       </div>
       @include('front.bricks.cta-mini.cta-slim-banner', ['href' => '/comparateur', 'text' => 'Intégrateur ou BE ? Notre comparateur liste les superviseurs compatibles Modbus/BACnet par budget.', 'linkText' => 'Comparer', 'storageKey' => 'tables_modbus_comparateur'])
@@ -52,7 +52,7 @@
               </div>
               <p class="text-xs text-dark-500 mb-1">Plage : 0xxxx (00001-09999)</p>
               <p class="text-xs text-dark-500 mb-2">Fonctions : 01 (lire), 05 / 15 (écrire)</p>
-              <p class="text-xs text-dark-600">Sortie TOR (1 bit) — lecture / écriture. Ex : commande relais, marche/arrêt.</p>
+              <p class="text-xs text-dark-600">Sortie TOR (1 bit), lecture / écriture. Ex : commande relais, marche/arrêt.</p>
             </div>
             <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">
@@ -61,7 +61,7 @@
               </div>
               <p class="text-xs text-dark-500 mb-1">Plage : 1xxxx (10001-19999)</p>
               <p class="text-xs text-dark-500 mb-2">Fonction : 02 (lire)</p>
-              <p class="text-xs text-dark-600">Entrée TOR (1 bit) — lecture seule. Ex : contact d'état, défaut, position.</p>
+              <p class="text-xs text-dark-600">Entrée TOR (1 bit), lecture seule. Ex : contact d'état, défaut, position.</p>
             </div>
             <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">
@@ -70,7 +70,7 @@
               </div>
               <p class="text-xs text-dark-500 mb-1">Plage : 3xxxx (30001-39999)</p>
               <p class="text-xs text-dark-500 mb-2">Fonction : 04 (lire)</p>
-              <p class="text-xs text-dark-600">Entrée analogique 16 bits — lecture seule. Ex : mesure capteur, valeur instantanée.</p>
+              <p class="text-xs text-dark-600">Entrée analogique 16 bits, lecture seule. Ex : mesure capteur, valeur instantanée.</p>
             </div>
             <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">
@@ -79,7 +79,7 @@
               </div>
               <p class="text-xs text-dark-500 mb-1">Plage : 4xxxx (40001-49999)</p>
               <p class="text-xs text-dark-500 mb-2">Fonctions : 03 (lire), 06 / 16 (écrire)</p>
-              <p class="text-xs text-dark-600">Registre 16 bits — lecture / écriture. Ex : consigne, paramètre, compteur d'énergie.</p>
+              <p class="text-xs text-dark-600">Registre 16 bits, lecture / écriture. Ex : consigne, paramètre, compteur d'énergie.</p>
             </div>
           </div>
         </div>
@@ -229,7 +229,7 @@
                   </table>
                 </div>
                 <p class="mt-4 text-[11px] text-dark-400 italic">
-                  Données indicatives — vérifiez la documentation officielle du constructeur avant tout paramétrage.
+                  Données indicatives, vérifiez la documentation officielle du constructeur avant tout paramétrage.
                 </p>
               </div>
             </div>

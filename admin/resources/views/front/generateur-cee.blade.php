@@ -226,7 +226,7 @@
   {{-- ==================== HERO ==================== --}}
   <section class="cee-hero" data-hero>
     {{-- Hero image: aucune image dédiée hero-cee/hero-generateur/hero-economie/hero-energie n'existe dans /public/images/. Fallback sur hero-gtb-illustration.webp (image mutualisée, meilleure qualité que hero-comparateur.png et évite le doublon visuel avec /comparateur). TODO: créer un visuel dédié CEE. --}}
-    <img src="/images/hero-gtb-illustration.webp" alt="Illustration GTB — Générateur de dossier CEE" class="cee-hero-img" width="1200" height="630" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-gtb-illustration.webp" alt="Illustration GTB, Générateur de dossier CEE" class="cee-hero-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="cee-hero-mesh"></div>
 
     <div class="max-w-[800px] mx-auto px-5 lg:px-10 relative z-10 text-center">
@@ -236,7 +236,7 @@
       </h1>
       <p class="cee-hero-desc">
         Estimez vos Certificats d'Économies d'Énergie en 3 minutes.<br class="hidden md:block">
-        Calcul basé sur les fiches standardisées — résultat objectif, sans engagement.
+        Calcul basé sur les fiches standardisées, résultat objectif, sans engagement.
       </p>
       <div class="cee-hero-badges">
         <span class="cee-badge">
@@ -374,7 +374,7 @@
             {{-- BAT-TH-116 --}}
             <div class="cee-fiche-toggle is-active" x-show="form.buildingType !== 'sport'">
               <div style="margin-bottom:20px;">
-                <p style="font-size:15px;font-weight:600;color:var(--color-dark-900);">BAT-TH-116 — Système de GTB pour le chauffage, l'ECS, le refroidissement/climatisation, l'éclairage et les auxiliaires</p>
+                <p style="font-size:15px;font-weight:600;color:var(--color-dark-900);">BAT-TH-116, Système de GTB pour le chauffage, l'ECS, le refroidissement/climatisation, l'éclairage et les auxiliaires</p>
                 <p style="font-size:13px;color:var(--color-dark-500);line-height:1.5;">Installation ou amélioration d'un système de gestion technique du bâtiment (durée de vie : 15 ans)</p>
               </div>
 
@@ -444,21 +444,21 @@
 
         {{-- Avertissement barèmes --}}
         <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:12px 16px;margin-bottom:16px;">
-          <p style="font-size:12px;color:#78350F;line-height:1.5;">Barèmes CEE basés sur les fiches BAT-TH-116 en vigueur. <strong>Dernière mise à jour : avril 2026.</strong> Les montants et conditions d'éligibilité évoluent régulièrement — vérifiez auprès de votre obligé avant engagement.</p>
+          <p style="font-size:12px;color:#78350F;line-height:1.5;">Barèmes CEE basés sur les fiches BAT-TH-116 en vigueur. <strong>Dernière mise à jour : avril 2026.</strong> Les montants et conditions d'éligibilité évoluent régulièrement, vérifiez auprès de votre obligé avant engagement.</p>
         </div>
 
         {{-- BAT-TH-116 Résultats --}}
         <div x-show="results.th116.total > 0">
           <div class="cee-results-hero">
             <div class="cee-kpi cee-kpi-primary">
-              <p class="cee-kpi-label">BAT-TH-116 — Volume CEE</p>
+              <p class="cee-kpi-label">BAT-TH-116, Volume CEE</p>
               <p class="cee-kpi-value" x-text="formatMwh(results.th116.total)"></p>
               <p class="cee-kpi-sub">cumac · Classe <span x-text="form.gtbClass"></span> · Durée de vie 15 ans</p>
             </div>
             <div class="cee-kpi cee-kpi-accent">
               <p class="cee-kpi-label">Valeur financière estimée</p>
               <p class="cee-kpi-value" x-text="formatCurrency(results.th116.value)"></p>
-              <p class="cee-kpi-sub" x-text="formatCurrency(results.th116.value * 0.75) + ' — ' + formatCurrency(results.th116.value * 1.25)"></p>
+              <p class="cee-kpi-sub" x-text="formatCurrency(results.th116.value * 0.75) + ' à ' + formatCurrency(results.th116.value * 1.25)"></p>
             </div>
           </div>
 
@@ -571,7 +571,7 @@
     <div style="max-width:600px;margin:0 auto;padding:0 24px;text-align:center;">
       <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:100px;background:white;border:1px solid var(--color-dark-200);">
         <svg style="width:18px;height:18px;color:var(--color-accent-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">Outil indépendant — NeoGTB ne perçoit aucune commission sur les CEE</span>
+        <span style="font-size:13px;font-weight:500;color:var(--color-dark-700);">Outil indépendant - NeoGTB ne perçoit aucune commission sur les CEE</span>
       </div>
     </div>
   </section>
@@ -587,7 +587,7 @@
         </a>
         <a href="{{ route('front.reglementation') }}" style="display:block;padding:20px;border-radius:12px;border:1px solid var(--color-dark-200);text-decoration:none;transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--color-accent-500)';this.style.background='rgba(13,148,136,0.02)'" onmouseout="this.style.borderColor='var(--color-dark-200)';this.style.background='white'">
           <p style="font-size:14px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">Réglementation GTB</p>
-          <p style="font-size:13px;color:var(--color-dark-500);line-height:1.5;">Décret BACS, CEE BAT-TH-116 — tout le cadre légal.</p>
+          <p style="font-size:13px;color:var(--color-dark-500);line-height:1.5;">Décret BACS, CEE BAT-TH-116, tout le cadre légal.</p>
         </a>
         <a href="{{ route('front.comparateur') }}" style="display:block;padding:20px;border-radius:12px;border:1px solid var(--color-dark-200);text-decoration:none;transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--color-accent-500)';this.style.background='rgba(13,148,136,0.02)'" onmouseout="this.style.borderColor='var(--color-dark-200)';this.style.background='white'">
           <p style="font-size:14px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">Comparateur de solutions</p>
@@ -627,8 +627,8 @@
       ],
 
       // ══════════════════════════════════════════════
-      // BAT-TH-116 — Tableaux officiels (kWh cumac / m²)
-      // NF EN ISO 52120-1 : 2022 — v. A62.6
+      // BAT-TH-116, Tableaux officiels (kWh cumac / m²)
+      // NF EN ISO 52120-1 : 2022, v. A62.6
       // ══════════════════════════════════════════════
       th116: {
         A: {
@@ -825,7 +825,7 @@
           doc.roundedRect(m, y, 80, 30, 4, 4, 'F');
           doc.setDrawColor(13, 148, 136); doc.setLineWidth(0.3);
           doc.roundedRect(m, y, 80, 30, 4, 4, 'S');
-          doc.setFontSize(7); doc.setTextColor(13, 148, 136); doc.text('BAT-TH-116 — CLASSE ' + this.form.gtbClass, m + 5, y + 8);
+          doc.setFontSize(7); doc.setTextColor(13, 148, 136); doc.text('BAT-TH-116, CLASSE ' + this.form.gtbClass, m + 5, y + 8);
           doc.setFontSize(16); doc.setTextColor(15, 23, 42);
           doc.text(this.formatMwh(this.results.th116.total), m + 5, y + 20);
           doc.setFontSize(8); doc.setTextColor(100, 116, 139); doc.text('cumac · 15 ans', m + 5, y + 26);
@@ -877,7 +877,7 @@
         doc.setFillColor(27, 58, 92);
         doc.rect(0, 282, 210, 15, 'F');
         doc.setFontSize(7); doc.setTextColor(180, 200, 220);
-        doc.text('NeoGTB — neogtb.fr — Conseil indépendant en GTB — EYNOR EURL, Eysines (33)', 105, 289, { align: 'center' });
+        doc.text('NeoGTB, neogtb.fr, Conseil indépendant en GTB, EYNOR EURL, Eysines (33)', 105, 289, { align: 'center' });
         doc.setTextColor(140, 170, 200);
         doc.text('Ce document ne constitue pas un engagement contractuel.', 105, 293, { align: 'center' });
 

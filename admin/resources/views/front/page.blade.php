@@ -1,6 +1,6 @@
 @extends('front.layouts.app')
 
-@section('title', ($page->meta_title ?? $page->name) . ' — NeoGTB')
+@section('title', ($page->meta_title ?? $page->name) . ' - NeoGTB')
 @section('description', $page->meta_description ?? '')
 
 @section('content')

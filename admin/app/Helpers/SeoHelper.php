@@ -24,7 +24,7 @@ class SeoHelper
     public static function metaForPost(object $post): array
     {
         return [
-            'title'       => $post->meta_title ?: $post->title . ' — NeoGTB',
+            'title'       => $post->meta_title ?: $post->title . ' - NeoGTB',
             'description' => $post->meta_description ?: Str::limit(strip_tags($post->excerpt ?? $post->content), 160),
             'og_title'    => $post->meta_title ?: $post->title,
             'og_description' => $post->meta_description ?: Str::limit(strip_tags($post->excerpt ?? $post->content), 160),

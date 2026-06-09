@@ -6,7 +6,7 @@
 <!-- HERO IMAGE -->
 <x-front.shared.hero
     image="/images/hero-solutions.webp"
-    imageAlt="Technologies GTB — capteurs IoT, protocoles et supervision connectée"
+    imageAlt="Technologies GTB, capteurs IoT, protocoles et supervision connectée"
     eyebrow="Technologies"
     title="Solutions & technologies GTB"
     highlight="GTB"
@@ -64,7 +64,7 @@
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
             @foreach([
-                ['num' => 'Lot 01', 'title' => 'CVC — Chauffage, ventilation, climatisation', 'desc' => 'Régulation des centrales de traitement d\'air, chaudières, groupes froids, ventilo-convecteurs. Le lot CVC représente en moyenne 50 à 60 % de la consommation énergétique d\'un bâtiment tertiaire.'],
+                ['num' => 'Lot 01', 'title' => 'CVC, Chauffage, ventilation, climatisation', 'desc' => 'Régulation des centrales de traitement d\'air, chaudières, groupes froids, ventilo-convecteurs. Le lot CVC représente en moyenne 50 à 60 % de la consommation énergétique d\'un bâtiment tertiaire.'],
                 ['num' => 'Lot 02', 'title' => 'Éclairage', 'desc' => 'Gestion des circuits d\'éclairage par zones, horloges, détection de présence et mesure de luminosité. Pilotage DALI ou 0-10V. Gradation automatique selon l\'apport de lumière naturelle.'],
                 ['num' => 'Lot 03', 'title' => 'Stores et BSO', 'desc' => 'Brise-soleil orientables, stores intérieurs et extérieurs. Pilotage selon l\'ensoleillement, la température intérieure et les scénarios d\'occupation.'],
                 ['num' => 'Lot 04', 'title' => 'Contrôle d\'accès', 'desc' => 'Gestion des lecteurs de badges, interphones, portiques et issues de secours. Intégration avec la GTB pour adapter la régulation CVC et éclairage en fonction de l\'occupation réelle.'],
@@ -161,7 +161,7 @@
             @foreach([
                 ['href' => '/gtb', 'title' => "Qu'est-ce que la GTB ?", 'desc' => 'Définition complète, niveaux ISO 52120-1 et obligations réglementaires.'],
                 ['href' => '/comparateur', 'title' => 'Comparateur GTB indépendant', 'desc' => 'Comparez objectivement les marques du marché sans biais commercial.'],
-                ['href' => '/reglementation', 'title' => 'Réglementation GTB', 'desc' => 'Décret BACS, décret tertiaire, RE2020 — tout le cadre légal.'],
+                ['href' => '/reglementation', 'title' => 'Réglementation GTB', 'desc' => 'Décret BACS, décret tertiaire, RE2020, tout le cadre légal.'],
             ] as $link)
             <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-2xl p-5 lg:p-7 border border-dark-100 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>

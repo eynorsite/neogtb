@@ -58,7 +58,7 @@ class PageController extends Controller
             ->limit(3)
             ->get();
 
-        $seoTitle = $post->meta_title ?: ($post->title . ' — NeoGTB');
+        $seoTitle = $post->meta_title ?: ($post->title . ' - NeoGTB');
         $seoDescription = $post->meta_description ?: $post->excerpt;
 
         $ogImageRaw = $post->og_image ?: $post->featured_image;

@@ -10,7 +10,7 @@ featured: false
 
 Les protocoles de communication sont le **langage** que parlent les équipements d'un bâtiment intelligent.
 
-BACnet — Le standard international
+BACnet, Le standard international
 ----------------------------------
 
 **BACnet** (Building Automation and Control Networks) est LE protocole de référence pour la GTB.
@@ -20,7 +20,7 @@ BACnet — Le standard international
 - **Avantages** : standard ouvert, interopérabilité, riche en fonctionnalités, évolutif (BACnet/SC)
 - **Cas d'usage** : grands bâtiments tertiaires, projets multi-lots
 
-KNX — Le standard européen
+KNX, Le standard européen
 --------------------------
 
 **KNX** est le protocole dominant en Europe pour l'automatisation résidentielle et tertiaire.
@@ -30,7 +30,7 @@ KNX — Le standard européen
 - **Avantages** : très fiable, installation simple (bus 2 fils), 500+ fabricants certifiés
 - **Cas d'usage** : éclairage, stores, CVC résidentiel, bâtiments tertiaires moyens
 
-Modbus — Le vétéran robuste
+Modbus, Le vétéran robuste
 ---------------------------
 
 **Modbus** est le protocole industriel le plus répandu au monde.
@@ -40,7 +40,7 @@ Modbus — Le vétéran robuste
 - **Avantages** : extrêmement simple, très robuste, compatible partout, gratuit
 - **Cas d'usage** : compteurs d'énergie, variateurs de vitesse, automates industriels
 
-LON — L'intelligence distribuée
+LON, L'intelligence distribuée
 -------------------------------
 
 **LonWorks** est un protocole où chaque nœud possède sa propre intelligence.

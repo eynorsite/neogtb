@@ -1,5 +1,5 @@
 @extends('front.layouts.app')
-@section('title', 'Perspectives — Analyses & veille technique GTB | NeoGTB')
+@section('title', 'Perspectives, Analyses & veille technique GTB | NeoGTB')
 @section('description', 'Analyses, veille technique et guides pratiques sur la Gestion Technique du Bâtiment (GTB) : décret BACS, protocoles, tendances smart building.')
 
 @section('content')
@@ -8,7 +8,7 @@
      HERO
      ══════════════════════════════════════════════════════════════ --}}
 <section class="relative overflow-hidden pt-24 pb-20" style="background: #edf5f7;">
-    <img src="/images/hero-blog.png" alt="Veille technique GTB — bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-blog.png" alt="Veille technique GTB, bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-5 lg:px-10 text-center">

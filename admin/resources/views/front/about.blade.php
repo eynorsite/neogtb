@@ -31,7 +31,7 @@
                     <img src="/images/ulrich-calmo.webp" alt="Ulrich Calmo, créateur de la marque NeoGTB" width="120" height="120" loading="lazy" decoding="async" class="w-[120px] h-[120px] rounded-full object-cover mx-auto mb-5 border-[3px] border-accent-300" />
                     <p class="text-[22px] font-medium text-dark-900 text-center mb-1">{{ $site->label('about.founder.name', 'Ulrich Calmo') }}</p>
                     <p class="text-sm font-medium text-accent-600 text-center mb-1">{{ $site->label('about.founder.role', 'Fondateur de NeoGTB') }}</p>
-                    <p class="text-xs text-dark-400 text-center mb-5">{{ $site->label('about.founder.company', 'EYNOR — Eysines, Bordeaux') }}</p>
+                    <p class="text-xs text-dark-400 text-center mb-5">{{ $site->label('about.founder.company', 'EYNOR, Eysines, Bordeaux') }}</p>
                     <div class="w-full h-px bg-dark-200 mb-5"></div>
 
                     <p class="text-xs font-semibold uppercase tracking-widest text-dark-400 mb-3">Domaines d'expertise</p>
@@ -93,7 +93,7 @@
                 <div class="space-y-3.5 mb-8">
                     <div class="flex items-start gap-3">
                         <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0 mt-2.5"></div>
-                        <p class="text-[15px] text-dark-600 leading-relaxed"><strong class="font-medium text-dark-900">Je fais du conseil payant, les outils sont gratuits.</strong> Mon revenu vient exclusivement de prestations de conseil — audits sur site, cahiers des charges neutres, AMO GTB.</p>
+                        <p class="text-[15px] text-dark-600 leading-relaxed"><strong class="font-medium text-dark-900">Je fais du conseil payant, les outils sont gratuits.</strong> Mon revenu vient exclusivement de prestations de conseil, audits sur site, cahiers des charges neutres, AMO GTB.</p>
                     </div>
                     <div class="flex items-start gap-3">
                         <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0 mt-2.5"></div>
@@ -133,7 +133,7 @@
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-12" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Mon approche</p>
-            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">{{ $site->label('about.method.title', 'Ma méthode — 4 phases') }}</h2>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">{{ $site->label('about.method.title', 'Ma méthode, 4 phases') }}</h2>
             <p class="text-base text-dark-500 leading-relaxed">{{ $site->label('about.method.subtitle', 'Une approche structurée pour accompagner chaque projet GTB, du diagnostic à la mise en œuvre.') }}</p>
         </div>
 
@@ -155,7 +155,7 @@
             @endforeach
         </div>
         <div class="max-w-xl mt-6">
-            @include('front.bricks.cta-mini.cta-text-link-underline', ['beforeText' => 'Cette méthode commence par un état des lieux —', 'linkText' => 'que vous pouvez initier avec le pré-diagnostic en ligne', 'href' => '/audit', 'afterText' => '.'])
+            @include('front.bricks.cta-mini.cta-text-link-underline', ['beforeText' => 'Cette méthode commence par un état des lieux, ', 'linkText' => 'que vous pouvez initier avec le pré-diagnostic en ligne', 'href' => '/audit', 'afterText' => '.'])
         </div>
     </div>
 </section>

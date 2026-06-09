@@ -10,7 +10,7 @@ featured: false
 
 ## Au-delà de la conformité : la GTB comme fondation du bâtiment intelligent
 
-Le décret BACS impose un plancher technique — la classe B de la norme NF EN ISO 52120-1. Mais pour les décideurs qui regardent au-delà de 2030, la GTB n'est pas une fin en soi. C'est la **fondation technique** sur laquelle se construira le bâtiment intelligent de la prochaine décennie.
+Le décret BACS impose un plancher technique, la classe B de la norme NF EN ISO 52120-1. Mais pour les décideurs qui regardent au-delà de 2030, la GTB n'est pas une fin en soi. C'est la **fondation technique** sur laquelle se construira le bâtiment intelligent de la prochaine décennie.
 
 ## Les 5 tendances qui transformeront la GTB d'ici 2035
 
@@ -73,4 +73,4 @@ En investissant dans une GTB aujourd'hui, vous posez les fondations pour ces év
 - **Exiger des API ouvertes** pour l'interconnexion avec d'autres systèmes (ERP, plateforme ESG, jumeau numérique)
 - **Dimensionner l'infrastructure réseau** pour supporter les volumes de données croissants
 
-> **Vision à long terme** : Le bâtiment tertiaire de 2035 sera un organisme intelligent, connecté et résilient. La GTB en est le système nerveux. Investir aujourd'hui dans une infrastructure de qualité, c'est s'assurer que votre bâtiment sera prêt pour les défis — et les opportunités — de la prochaine décennie.
+> **Vision à long terme** : Le bâtiment tertiaire de 2035 sera un organisme intelligent, connecté et résilient. La GTB en est le système nerveux. Investir aujourd'hui dans une infrastructure de qualité, c'est s'assurer que votre bâtiment sera prêt pour les défis, et les opportunités, de la prochaine décennie.

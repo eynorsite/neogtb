@@ -1,6 +1,6 @@
 ---
 title: "Comment vérifier si votre bâtiment est concerné par le décret BACS 2030 ?"
-description: "En 4 étapes simples, identifiez votre situation réglementaire, trouvez votre puissance CVC et sachez exactement ce que vous devez faire — sans jargon technique inutile."
+description: "En 4 étapes simples, identifiez votre situation réglementaire, trouvez votre puissance CVC et sachez exactement ce que vous devez faire, sans jargon technique inutile."
 date: "2026-01-21"
 author: "NeoGTB"
 category: "Guide"
@@ -46,7 +46,7 @@ Additionnez toutes les puissances des générateurs. Un bâtiment avec deux chau
 
 ### Bâtiment loué à un tiers
 
-L'obligation pèse sur le **propriétaire** ou sur le gestionnaire mandaté. En cas de bail commercial, les responsabilités entre bailleur et preneur doivent être clarifiées contractuellement — notamment pour les travaux sur les équipements CVC.
+L'obligation pèse sur le **propriétaire** ou sur le gestionnaire mandaté. En cas de bail commercial, les responsabilités entre bailleur et preneur doivent être clarifiées contractuellement, notamment pour les travaux sur les équipements CVC.
 
 ### Rénovation récente avec remplacement partiel des équipements
 

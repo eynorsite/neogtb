@@ -76,7 +76,7 @@ class SiteConfigService
     // ──────────────────────────────────────────────
 
     /**
-     * Paires de polices auto-hébergées (bundlées via Vite/@fontsource — voir resources/css/app.css).
+     * Paires de polices auto-hébergées (bundlées via Vite/@fontsource, voir resources/css/app.css).
      * Pour celles-ci, aucune connexion vers fonts.googleapis.com n'est émise (conformité RGPD).
      */
     private const SELF_HOSTED_FONT_PAIRS = ['inter_dm_sans'];
@@ -85,7 +85,7 @@ class SiteConfigService
     {
         $pair = $this->settings()->font_pair ?? 'inter_dm_sans';
 
-        // Polices auto-hébergées : pas de chargement externe (RGPD — pas de transfert d'IP vers Google).
+        // Polices auto-hébergées : pas de chargement externe (RGPD, pas de transfert d'IP vers Google).
         if (in_array($pair, self::SELF_HOSTED_FONT_PAIRS, true)) {
             return '';
         }
@@ -138,7 +138,7 @@ class SiteConfigService
     }
 
     // ──────────────────────────────────────────────
-    // SEO — JSON-LD
+    // SEO, JSON-LD
     // ──────────────────────────────────────────────
 
     public function jsonLd(string $type = 'Organization'): HtmlString
@@ -191,6 +191,22 @@ class SiteConfigService
             if (! empty($socials)) {
                 $data['sameAs'] = array_values($socials);
             }
+
+            // knowsAbout, domaines d'expertise (signal d'entité pour le GEO).
+            // Sujets réels du site (cf. navigation, footer, CLAUDE.md), pas des claims.
+            $data['knowsAbout'] = [
+                'Gestion Technique du Bâtiment (GTB)',
+                'Gestion Technique Centralisée (GTC)',
+                'Protocole BACnet',
+                'Protocole KNX',
+                'Protocole Modbus',
+                'Protocole LON',
+                'Norme ISO 52120-1',
+                'Norme EN 15232',
+                'Décret BACS',
+                'Décret tertiaire',
+                'Efficacité énergétique des bâtiments tertiaires',
+            ];
 
             return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</script>';
         });
@@ -329,8 +345,8 @@ HTML;
     /**
      * Résout un chemin d'image stocké en BDD en URL publique exploitable.
      * Gère à la fois :
-     *   - les chemins absolus (commençant par / ou http) — utilisés tels quels
-     *   - les chemins de Filament FileUpload (ex: "blog-covers/abc.webp") — préfixés par asset('storage/')
+     *   - les chemins absolus (commençant par / ou http), utilisés tels quels
+     *   - les chemins de Filament FileUpload (ex: "blog-covers/abc.webp"), préfixés par asset('storage/')
      *   - null / vide → null (le caller décide du fallback)
      */
     public function resolveImagePath(?string $value): ?string

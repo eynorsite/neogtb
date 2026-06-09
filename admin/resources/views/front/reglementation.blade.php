@@ -6,7 +6,7 @@
 <!-- HERO IMAGE -->
 <x-front.shared.hero
     image="/images/hero-reglementation.webp"
-    imageAlt="Réglementation GTB — balance juridique, normes énergétiques et bâtiment tertiaire"
+    imageAlt="Réglementation GTB, balance juridique, normes énergétiques et bâtiment tertiaire"
     eyebrow="Cadre juridique"
     title="Réglementation GTB en France"
     highlight="GTB"
@@ -23,7 +23,7 @@
             <div class="flex items-start gap-3">
                 <div class="w-2 h-2 rounded-full bg-accent-500 mt-1.5 flex-shrink-0"></div>
                 <div>
-                    <p class="text-sm font-medium text-dark-900 mb-1">Mise à jour — Décret n° 2025-1343 du 26 décembre 2025</p>
+                    <p class="text-sm font-medium text-dark-900 mb-1">Mise à jour, Décret n° 2025-1343 du 26 décembre 2025</p>
                     <p class="text-sm text-dark-600 leading-relaxed">L'obligation GTB/BACS pour les bâtiments tertiaires existants de <strong>70 à 290 kW</strong> est <strong>reportée au 1er janvier 2030</strong> (initialement 2027). L'échéance >290 kW reste en vigueur depuis le 1er janvier 2025.</p>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 </tbody>
             </table>
         </div>
-        @include('front.bricks.cta-mini.cta-inline-mini-card', ['href' => '/audit', 'eyebrow' => 'Auto-évaluation', 'text' => 'Savoir quelle ligne s\'applique à votre bâtiment — 3 minutes, sans inscription.', 'linkText' => 'Pré-diagnostic'])
+        @include('front.bricks.cta-mini.cta-inline-mini-card', ['href' => '/audit', 'eyebrow' => 'Auto-évaluation', 'text' => 'Savoir quelle ligne s\'applique à votre bâtiment, 3 minutes, sans inscription.', 'linkText' => 'Pré-diagnostic'])
     </div>
 </section>
 
@@ -159,7 +159,7 @@
         <div class="grid md:grid-cols-2 gap-12">
             <div>
                 <span class="inline-block text-[13px] font-medium text-white bg-dark-600 px-3 py-1 rounded-md mb-4">Objectifs de réduction</span>
-                <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret tertiaire — Éco Énergie Tertiaire</h2>
+                <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret tertiaire, Éco Énergie Tertiaire</h2>
                 <p class="text-sm text-dark-400 mb-5">Décret n° 2019-771 du 23 juillet 2019 / Issu de la loi ELAN</p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">Le décret tertiaire impose aux bâtiments tertiaires de <strong class="text-dark-900 font-medium">plus de 1 000 m²</strong> une réduction progressive de leur consommation d'énergie finale par rapport à une année de référence (postérieure à 2010).</p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">Les données doivent être déclarées annuellement sur la plateforme <strong class="text-dark-900 font-medium">OPERAT</strong> gérée par l'ADEME. La GTB constitue le levier principal pour atteindre ces objectifs de réduction.</p>
