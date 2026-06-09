@@ -1,4 +1,115 @@
+# NeoGTB — robots.txt
+# Un groupe User-agent spécifique n'hérite PAS du groupe `*` : les mêmes
+# Disallow/Allow sont donc ré-émis à l'identique dans chaque groupe de bot IA
+# (sinon ces bots contourneraient les Disallow de /admin, /rgpd, etc.).
+
 User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+# --- Bots IA (GEO / Generative Engine Optimization) ----------------------
+# On autorise explicitement les crawlers des moteurs de réponse IA pour
+# maximiser les chances d'être cité (ChatGPT/SearchGPT, Perplexity, AI
+# Overviews / Gemini, Claude), tout en leur appliquant les MÊMES règles que `*`.
+# NB : Google-Extended ne pilote QUE Gemini / AI Overviews, pas l'indexation
+# Search classique (Googlebot) — ne pas le bloquer = condition des AI Overviews.
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /livewire/
+Disallow: /storage/
+Disallow: /rgpd/
+Disallow: /*?preview=1
+
+User-agent: Applebot-Extended
 Allow: /
 Disallow: /admin/
 Disallow: /admin
