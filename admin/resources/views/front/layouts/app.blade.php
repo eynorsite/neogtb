@@ -23,10 +23,13 @@
   @php($seoBreadcrumbName = $page->title ?? $seoTitle)
   @php($seoOgType = $seoOgType ?? 'website')
 
-  {{-- Google Fonts dynamiques --}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="{{ $site->googleFontsUrl() }}">
+  {{-- Polices : auto-hébergées par défaut (Inter + DM Sans via Vite/@fontsource, voir app.css).
+       Le chargement Google Fonts n'est émis que si l'admin choisit une paire non auto-hébergée. --}}
+  @if($googleFontsUrl = $site->googleFontsUrl())
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ $googleFontsUrl }}">
+  @endif
 
   {{-- CSS Variables dynamiques depuis l'admin --}}
   {!! $site->cssVariables() !!}

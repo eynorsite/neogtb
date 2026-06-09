@@ -794,6 +794,7 @@ class GeneralSettingsSeeder extends Seeder
 <li><strong>Session Laravel</strong> (<code>neogtb_session</code>) : gestion de votre session de navigation. Durée : session (supprimé à la fermeture du navigateur).</li>
 <li><strong>Jeton CSRF</strong> (<code>XSRF-TOKEN</code>) : protection contre les attaques de type Cross-Site Request Forgery. Durée : session.</li>
 <li><strong>Préférence cookies</strong> (<code>cookie_consent</code>) : mémorisation de votre choix concernant les cookies. Durée : 13 mois.</li>
+<li><strong>Bandeau d\'information</strong> (<code>neogtb_notice_dismissed</code>) : mémorisation de la fermeture du bandeau d\'information. Durée : 13 mois.</li>
 </ul>
 
 <h3>b) Mesure d\'audience — Plausible Analytics</h3>

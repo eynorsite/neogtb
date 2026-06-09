@@ -175,6 +175,7 @@ HTML;
   <li><strong>XSRF-TOKEN</strong> — Protection contre les attaques CSRF — Session.</li>
   <li><strong>neogtb_session</strong> — Gestion de la session utilisateur — Session.</li>
   <li><strong>cookie_consent</strong> — Mémorisation de votre choix de consentement — 13 mois.</li>
+  <li><strong>neogtb_notice_dismissed</strong> — Mémorisation de la fermeture du bandeau d'information — 13 mois.</li>
 </ul>
 
 <h3>2.2 Cookies de mesure d'audience (avec consentement)</h3>

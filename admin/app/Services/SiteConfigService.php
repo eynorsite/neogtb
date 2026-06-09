@@ -75,9 +75,21 @@ class SiteConfigService
     // Google Fonts
     // ──────────────────────────────────────────────
 
+    /**
+     * Paires de polices auto-hébergées (bundlées via Vite/@fontsource — voir resources/css/app.css).
+     * Pour celles-ci, aucune connexion vers fonts.googleapis.com n'est émise (conformité RGPD).
+     */
+    private const SELF_HOSTED_FONT_PAIRS = ['inter_dm_sans'];
+
     public function googleFontsUrl(): string
     {
         $pair = $this->settings()->font_pair ?? 'inter_dm_sans';
+
+        // Polices auto-hébergées : pas de chargement externe (RGPD — pas de transfert d'IP vers Google).
+        if (in_array($pair, self::SELF_HOSTED_FONT_PAIRS, true)) {
+            return '';
+        }
+
         $pairs = $this->settings()->font_pairs_config ?? [];
         $found = collect($pairs)->firstWhere('key', $pair);
         $families = $found['google_families'] ?? 'Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700';

@@ -1,5 +1,3 @@
-import './bootstrap';
-
 // Alpine.js + plugins (self-hosted, plus de unpkg)
 import Alpine from 'alpinejs';
 import intersect from '@alpinejs/intersect';

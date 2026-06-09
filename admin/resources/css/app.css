@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
-/* Self-hosted fonts (woff2) — supprime la dépendance Google Fonts */
+/* Self-hosted fonts (woff2) — supprime la dépendance Google Fonts (conformité RGPD) */
 @import '@fontsource-variable/inter/index.css';
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+@import '@fontsource-variable/dm-sans/index.css';
 
 /* Composants partagés du front (extraits de accueil.blade.php — phase 2) */
 @import './front/home-components.css';
