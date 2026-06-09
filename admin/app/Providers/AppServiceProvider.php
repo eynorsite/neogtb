@@ -16,8 +16,10 @@ use App\Observers\SiteSettingObserver;
 use App\Services\HomepageSectionsService;
 use App\Services\SiteConfigService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -44,6 +46,11 @@ class AppServiceProvider extends ServiceProvider
     {
         // Force Carbon locale to French
         Carbon::setLocale('fr');
+
+        // @cspNonce → émet nonce="<nonce>" pour les <script> inline du front (CSP par nonce,
+        // voir App\Http\Middleware\FrontCspHeader qui appelle Vite::useCspNonce() avant le rendu).
+        // Vide hors requête front (nonce non généré) — les vues admin n'utilisent pas cette directive.
+        Blade::directive('cspNonce', fn () => "<?php \$__n = \Illuminate\Support\Facades\Vite::cspNonce(); echo \$__n ? 'nonce=\"'.e(\$__n).'\"' : ''; ?>");
 
         // Audit observer on all admin-managed models
         $models = [

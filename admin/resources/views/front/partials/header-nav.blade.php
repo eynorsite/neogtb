@@ -279,7 +279,7 @@ $icons = [
   </div>
 </header>
 
-<script>
+<script @cspNonce>
   window.addEventListener('scroll', () => {
     const h = document.getElementById('main-header');
     if (!h || !h._x_dataStack) return;

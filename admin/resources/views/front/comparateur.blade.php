@@ -380,7 +380,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script @cspNonce>
   document.addEventListener('alpine:init', () => {
     Alpine.data('comparateur', () => ({
       filterCategory: 'all', filterProtocol: 'all', filterBuilding: 'all', filterBudget: 'all', sortBy: 'note',

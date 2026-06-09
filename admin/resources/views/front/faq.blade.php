@@ -3,7 +3,7 @@
 
 @push('head')
 @verbatim
-<script type="application/ld+json">
+<script type="application/ld+json" @cspNonce>
 {
     "@context": "https://schema.org",
     "@type": "FAQPage",

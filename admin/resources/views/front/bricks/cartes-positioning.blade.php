@@ -110,9 +110,8 @@
                 <p style="font-size: 15px; color: var(--color-dark-500); margin-bottom: 16px;">{{ $content['cta_inline_texte'] }}</p>
                 @if(!empty($content['cta_inline_lien_texte']))
                     <a href="{{ $content['cta_inline_lien'] ?? '#' }}"
-                       style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--color-accent-600); text-decoration: none; padding: 8px 0; border-bottom: 2px solid var(--color-accent-200); transition: border-color 0.25s ease;"
-                       onmouseover="this.style.borderColor='var(--color-accent-500)'"
-                       onmouseout="this.style.borderColor='var(--color-accent-200)'">
+                       class="border-b-2 border-accent-200 hover:border-accent-500 transition-colors"
+                       style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--color-accent-600); text-decoration: none; padding: 8px 0;">
                         {{ $content['cta_inline_lien_texte'] }}
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                     </a>

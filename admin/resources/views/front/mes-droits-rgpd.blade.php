@@ -115,7 +115,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script @cspNonce>
     document.addEventListener('alpine:init', () => {
         Alpine.data('rgpdForm', () => ({
             form: { type: '', email: '', name: '', message: '' },

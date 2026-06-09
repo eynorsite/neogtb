@@ -264,7 +264,7 @@
     </div>
 </div>
 
-<script>
+<script @cspNonce>
     document.addEventListener('alpine:init', () => {
         Alpine.data('neogtbChatbot', () => ({
             open: false,

@@ -218,7 +218,7 @@ class SiteConfigService
     // Tracking Scripts
     // ──────────────────────────────────────────────
 
-    public function trackingScripts(array $consent = []): array
+    public function trackingScripts(array $consent = [], ?string $nonce = null): array
     {
         $head = '';
         $body = '';
@@ -298,10 +298,63 @@ HTML;
             }
         }
 
+        // Nonce CSP : injecté sur chaque <script> inline généré ci-dessus, sinon ils
+        // sont bloqués par la CSP stricte du front (script-src sans 'unsafe-inline').
+        // Les scripts enfants chargés dynamiquement (gtm.js, fbevents.js, hotjar) sont
+        // couverts par les host-sources ajoutées via cspTrackerSources(). <noscript>/<iframe>
+        // ne sont pas concernés (str_replace sans effet sur $body).
+        if (filled($nonce)) {
+            $attr = ' nonce="' . e($nonce) . '"';
+            $head = str_replace('<script', '<script' . $attr, $head);
+            $body = str_replace('<script', '<script' . $attr, $body);
+        }
+
         return [
             'head' => new HtmlString($head),
             'body' => new HtmlString($body),
         ];
+    }
+
+    /**
+     * Domaines à ajouter à la CSP front pour les trackers tiers ACTIVÉS (ID configuré).
+     * Source unique partagée avec trackingScripts() — consommée par FrontCspHeader.
+     * Renvoie ['script' => [...], 'connect' => [...], 'img' => [...], 'frame' => [...]].
+     */
+    public function cspTrackerSources(): array
+    {
+        $s = $this->settings();
+        $script = $connect = $img = $frame = [];
+
+        // GTM ou GA4 (gtag servi par googletagmanager.com, collecte par google-analytics.com)
+        if (filled($s->google_tag_manager_id) || filled($s->google_analytics_id)) {
+            $script[]  = 'https://www.googletagmanager.com';
+            $connect[] = 'https://www.googletagmanager.com';
+            $connect[] = 'https://www.google-analytics.com';
+            $connect[] = 'https://region1.google-analytics.com';
+            $img[]     = 'https://www.googletagmanager.com';
+            $img[]     = 'https://www.google-analytics.com';
+            if (filled($s->google_tag_manager_id)) {
+                $frame[] = 'https://www.googletagmanager.com'; // iframe noscript GTM
+            }
+        }
+
+        // Meta Pixel
+        if (filled($s->facebook_pixel_id)) {
+            $script[]  = 'https://connect.facebook.net';
+            $connect[] = 'https://www.facebook.com';
+            $img[]     = 'https://www.facebook.com';
+        }
+
+        // Hotjar
+        if (filled($s->hotjar_id)) {
+            $script[]  = 'https://static.hotjar.com';
+            $script[]  = 'https://script.hotjar.com';
+            $connect[] = 'https://*.hotjar.com';
+            $connect[] = 'wss://*.hotjar.com';
+            $img[]     = 'https://*.hotjar.com';
+        }
+
+        return compact('script', 'connect', 'img', 'frame');
     }
 
     // ──────────────────────────────────────────────

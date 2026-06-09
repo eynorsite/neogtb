@@ -82,5 +82,18 @@ Alpine.data('statCounter', () => ({
     },
 }));
 
+// Fallback d'image (remplace onerror inline, interdit par la CSP par nonce).
+// Écoute en phase capture car l'événement « error » d'une <img> ne bulle pas.
+document.addEventListener('error', (e) => {
+    const img = e.target;
+    if (img instanceof HTMLImageElement && img.dataset.imgFallback) {
+        const fallback = img.dataset.imgFallback;
+        if (img.src !== fallback && !img.dataset.imgFallbackDone) {
+            img.dataset.imgFallbackDone = '1'; // évite la boucle si le fallback échoue aussi
+            img.src = fallback;
+        }
+    }
+}, true);
+
 window.Alpine = Alpine;
 Alpine.start();

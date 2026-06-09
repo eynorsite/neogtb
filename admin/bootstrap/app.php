@@ -18,7 +18,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $schedule->job(new \App\Jobs\EscalateOverdueGdprRequestsJob())->dailyAt('09:00');
     })
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // CSP du site public par nonce. S'exécute aussi sur l'admin (groupe web partagé
+        // par Filament) mais le middleware no-op sur admin.* / /admin / /livewire,
+        // qui gardent leur CSP nginx avec 'unsafe-eval'.
+        $middleware->appendToGroup('web', \App\Http\Middleware\FrontCspHeader::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
