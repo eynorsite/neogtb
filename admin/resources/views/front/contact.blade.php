@@ -163,12 +163,9 @@
                                 </button>
                             </div>
 
-                            <label class="flex items-start gap-2 cursor-pointer">
-                                <input type="checkbox" name="consentement_rgpd" value="1" required class="mt-0.5 rounded border-dark-300 text-accent-600 focus:ring-accent-500" />
-                                <span class="text-[11px] text-dark-400 leading-relaxed">
-                                    {{ $site->label('forms.rgpd_consent', "J'accepte que mes données soient traitées par NeoGTB pour répondre à ma demande (intérêt légitime, art. 6.1.f RGPD). Conservées 3 ans.") }} <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">{{ $site->label('forms.privacy_link', 'Politique de confidentialité') }}</a> &middot; <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">{{ $site->label('forms.rights_link', 'Exercer vos droits') }}</a>
-                                </span>
-                            </label>
+                            <p class="text-[11px] text-dark-400 leading-relaxed">
+                                {{ $site->label('forms.rgpd_notice', "Vos données sont traitées par NeoGTB pour répondre à votre demande (intérêt légitime, art. 6.1.f RGPD) et conservées 3 ans.") }} <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">{{ $site->label('forms.privacy_link', 'Politique de confidentialité') }}</a> &middot; <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">{{ $site->label('forms.rights_link', 'Exercer vos droits') }}</a>
+                            </p>
 
                         </div>
                     </form>
