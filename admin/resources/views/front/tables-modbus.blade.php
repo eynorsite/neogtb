@@ -264,7 +264,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script @cspNonce>
   function modbusCatalogue() {
     return {
       search: '',

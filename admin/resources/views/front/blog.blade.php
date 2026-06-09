@@ -91,7 +91,7 @@
                              alt="{{ $post->title }}"
                              class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                              loading="lazy"
-                             onerror="this.src='{{ $defaultCover }}'">
+                             data-img-fallback="{{ $defaultCover }}">
                     </div>
 
                     {{-- Content --}}

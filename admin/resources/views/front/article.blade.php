@@ -40,7 +40,7 @@
         $articleSchema['wordCount'] = $__wordCount;
     }
 @endphp
-<script type="application/ld+json">
+<script type="application/ld+json" @cspNonce>
 {!! json_encode($articleSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}
 </script>
 @endpush
@@ -92,7 +92,7 @@
                 $imgUrl = $site->resolveImagePath($post->featured_image) ?: $defaultCover;
             @endphp
             <div class="relative aspect-[16/9] w-full overflow-hidden rounded-2xl mb-12 bg-white">
-                <img src="{{ $imgUrl }}" alt="{{ $post->title }}" class="w-full h-full object-contain" loading="eager" fetchpriority="high" onerror="this.src='{{ $defaultCover }}'">
+                <img src="{{ $imgUrl }}" alt="{{ $post->title }}" class="w-full h-full object-contain" loading="eager" fetchpriority="high" data-img-fallback="{{ $defaultCover }}">
             </div>
 
             {{-- Title --}}

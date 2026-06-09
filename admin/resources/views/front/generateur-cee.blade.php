@@ -581,15 +581,15 @@
     <div style="max-width:720px;margin:0 auto;padding:0 24px;">
       <p style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-dark-400);margin-bottom:24px;">Pages liées</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-        <a href="{{ route('front.audit') }}" style="display:block;padding:20px;border-radius:12px;border:1px solid var(--color-dark-200);text-decoration:none;transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--color-accent-500)';this.style.background='rgba(13,148,136,0.02)'" onmouseout="this.style.borderColor='var(--color-dark-200)';this.style.background='white'">
+        <a href="{{ route('front.audit') }}" class="block p-5 rounded-xl border border-dark-200 no-underline transition-colors hover:border-accent-500 hover:bg-accent-500/[0.02]">
           <p style="font-size:14px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">Audit GTB gratuit</p>
           <p style="font-size:13px;color:var(--color-dark-500);line-height:1.5;">Évaluez la maturité GTB de votre bâtiment en 5 minutes.</p>
         </a>
-        <a href="{{ route('front.reglementation') }}" style="display:block;padding:20px;border-radius:12px;border:1px solid var(--color-dark-200);text-decoration:none;transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--color-accent-500)';this.style.background='rgba(13,148,136,0.02)'" onmouseout="this.style.borderColor='var(--color-dark-200)';this.style.background='white'">
+        <a href="{{ route('front.reglementation') }}" class="block p-5 rounded-xl border border-dark-200 no-underline transition-colors hover:border-accent-500 hover:bg-accent-500/[0.02]">
           <p style="font-size:14px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">Réglementation GTB</p>
           <p style="font-size:13px;color:var(--color-dark-500);line-height:1.5;">Décret BACS, CEE BAT-TH-116, tout le cadre légal.</p>
         </a>
-        <a href="{{ route('front.comparateur') }}" style="display:block;padding:20px;border-radius:12px;border:1px solid var(--color-dark-200);text-decoration:none;transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='var(--color-accent-500)';this.style.background='rgba(13,148,136,0.02)'" onmouseout="this.style.borderColor='var(--color-dark-200)';this.style.background='white'">
+        <a href="{{ route('front.comparateur') }}" class="block p-5 rounded-xl border border-dark-200 no-underline transition-colors hover:border-accent-500 hover:bg-accent-500/[0.02]">
           <p style="font-size:14px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">Comparateur de solutions</p>
           <p style="font-size:13px;color:var(--color-dark-500);line-height:1.5;">Comparez les marques GTB pour votre projet.</p>
         </a>
@@ -600,7 +600,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script @cspNonce>
   document.addEventListener('alpine:init', () => {
     Alpine.data('ceeGenerator', () => ({
       step: 1,

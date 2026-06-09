@@ -32,7 +32,7 @@
                              alt="{{ $carte['titre'] ?? '' }}"
                              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                              loading="lazy"
-                             onerror="this.src='{{ $brickDefaultCover }}'">
+                             data-img-fallback="{{ $brickDefaultCover }}">
                     </div>
                     <div class="p-5">
                         @if(!empty($carte['tag']))

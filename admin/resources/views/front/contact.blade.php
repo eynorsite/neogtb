@@ -2,7 +2,7 @@
 
 
 @push('head')
-<script type="application/ld+json">
+<script type="application/ld+json" @cspNonce>
 @verbatim
 {"@context":"https://schema.org","@type":"ContactPage","name":"Contact NeoGTB","url":"https://neogtb.fr/contact"}
 @endverbatim

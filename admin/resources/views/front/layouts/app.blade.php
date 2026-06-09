@@ -1,6 +1,6 @@
 @php
     $__consent = \App\Helpers\ConsentHelper::get();
-    $__tracking = $site->trackingScripts($__consent);
+    $__tracking = $site->trackingScripts($__consent, \Illuminate\Support\Facades\Vite::cspNonce());
 @endphp
 <!DOCTYPE html>
 <html lang="fr">
@@ -72,7 +72,7 @@
   {!! $site->jsonLd() !!}
 
   {{-- Schema.org BreadcrumbList --}}
-  <script type="application/ld+json">
+  <script type="application/ld+json" @cspNonce>
   {
     "@@context": "https://schema.org",
     "@@type": "BreadcrumbList",
@@ -322,7 +322,7 @@
     </div>
   </div>
 
-  <script>
+  <script @cspNonce>
     // Nav hide on scroll down, show on scroll up
     (function() {
       let lastY = 0;
@@ -375,7 +375,7 @@
 
   {{-- Brick editor preview bridge (only when loaded in iframe with ?preview=1) --}}
   @if(request()->query('preview') == '1')
-  <script>
+  <script @cspNonce>
       (function() {
           if (window.parent === window) return;
           window.addEventListener('message', function(event) {

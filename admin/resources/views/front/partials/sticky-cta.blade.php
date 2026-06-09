@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<script>
+<script @cspNonce>
 function stickyCta() {
     return {
         show: false,

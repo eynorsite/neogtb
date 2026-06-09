@@ -27,7 +27,7 @@
         }, $cfg['faq']),
     ];
 @endphp
-<script type="application/ld+json">
+<script type="application/ld+json" @cspNonce>
 {!! json_encode($faqLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}
 </script>
 @endif

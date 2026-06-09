@@ -3,7 +3,7 @@
 
 @push('head')
 @verbatim
-<script type="application/ld+json">
+<script type="application/ld+json" @cspNonce>
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -798,7 +798,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script @cspNonce>
   document.addEventListener('alpine:init', () => {
     Alpine.data('diagWizard', () => ({
       step: 1,
