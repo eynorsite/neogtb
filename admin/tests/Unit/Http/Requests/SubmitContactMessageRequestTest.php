@@ -22,6 +22,7 @@ class SubmitContactMessageRequestTest extends TestCase
             'email' => 'jean@example.com',
             'subject' => 'Bonjour',
             'message' => 'Ceci est un message de test suffisamment long.',
+            'consentement_rgpd' => true,
         ], $overrides);
     }
 

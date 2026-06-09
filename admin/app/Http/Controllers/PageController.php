@@ -30,8 +30,9 @@ class PageController extends Controller
 
     public function blog()
     {
+        // ⚡ Bolt: Added 'tags' to eager loading to prevent N+1 queries when iterating over tags in blog view
         $posts = Post::where('status', 'published')
-            ->with('category')
+            ->with(['category', 'tags'])
             ->orderByDesc('published_at')
             ->paginate(20);
 
@@ -51,7 +52,9 @@ class PageController extends Controller
             ->firstOrFail();
 
         $post->increment('views_count');
+        // ⚡ Bolt: Added 'category' eager loading to prevent N+1 queries when accessing category in related articles view
         $related = Post::where('status', 'published')
+            ->with('category')
             ->where('id', '!=', $post->id)
             ->where('category_id', $post->category_id)
             ->latest('published_at')
