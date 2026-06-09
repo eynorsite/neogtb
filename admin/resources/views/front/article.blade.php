@@ -1,32 +1,47 @@
 @extends('front.layouts.app')
 
 @push('head')
-{{-- Schema.org Article JSON-LD --}}
+{{-- Schema.org Article JSON-LD (construit en PHP pour des champs conditionnels valides) --}}
+@php
+    $articleSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Article',
+        'headline' => $post->title,
+        'description' => $post->excerpt ?? $post->meta_description,
+        'datePublished' => $post->published_at?->toIso8601String(),
+        'dateModified' => $post->updated_at?->toIso8601String(),
+        'inLanguage' => 'fr-FR',
+        'author' => [
+            '@type' => 'Person',
+            'name' => $post->author?->name ?? 'Ulrich Calmo',
+            'url' => url('/about'),
+        ],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => 'NeoGTB',
+            'url' => url('/'),
+            'logo' => [
+                '@type' => 'ImageObject',
+                'url' => url('/images/logo-neogtb.webp'),
+            ],
+        ],
+        'mainEntityOfPage' => route('front.article', $post->slug),
+        'image' => $post->featured_image ? asset('storage/' . $post->featured_image) : url('/images/og-neogtb.png'),
+    ];
+
+    if (filled($post->category?->name)) {
+        $articleSchema['articleSection'] = $post->category->name;
+    }
+    if ($post->tags?->isNotEmpty()) {
+        $articleSchema['keywords'] = $post->tags->pluck('name')->implode(', ');
+    }
+    $__wordCount = str_word_count(strip_tags($post->content ?? ''));
+    if ($__wordCount > 0) {
+        $articleSchema['wordCount'] = $__wordCount;
+    }
+@endphp
 <script type="application/ld+json">
-{
-    "@@context": "https://schema.org",
-    "@@type": "Article",
-    "headline": @json($post->title),
-    "description": @json($post->excerpt ?? $post->meta_description),
-    "datePublished": "{{ $post->published_at?->toIso8601String() }}",
-    "dateModified": "{{ $post->updated_at?->toIso8601String() }}",
-    "author": {
-        "@@type": "Person",
-        "name": "Ulrich Calmo",
-        "url": "https://neogtb.fr/about"
-    },
-    "publisher": {
-        "@@type": "Organization",
-        "name": "NeoGTB",
-        "url": "https://neogtb.fr",
-        "logo": {
-            "@@type": "ImageObject",
-            "url": "https://neogtb.fr/images/logo-neogtb.webp"
-        }
-    },
-    "mainEntityOfPage": @json(route('front.article', $post->slug)),
-    "image": @json($post->featured_image ? asset('storage/' . $post->featured_image) : url('/images/og-neogtb.png'))
-}
+{!! json_encode($articleSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}
 </script>
 @endpush
 
