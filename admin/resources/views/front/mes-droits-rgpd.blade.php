@@ -14,7 +14,7 @@
             </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm" x-data="rgpdForm()">
+        <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm" x-data="rgpdForm">
 
             <!-- Type de demande -->
             <div class="mb-8">

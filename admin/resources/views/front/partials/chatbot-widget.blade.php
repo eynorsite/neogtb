@@ -6,7 +6,7 @@
 @if($chatbotEnabled)
 <div
     id="neogtb-chatbot"
-    x-data="neogtbChatbot()"
+    x-data="neogtbChatbot"
     x-init="boot()"
     x-cloak
     class="fixed z-[9999]"
@@ -16,9 +16,9 @@
     <button
         type="button"
         x-show="!open"
-        x-on:click="open = true; $nextTick(() => $refs.input?.focus())"
+        x-on:click="openChat()"
         class="group flex items-center gap-2 rounded-full px-4 py-3 text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-        :style="`background-color: ${color}; --tw-ring-color: ${color}`"
+        :style="'background-color: ' + color + '; --tw-ring-color: ' + color"
         aria-label="Ouvrir l'assistant NeoGTB"
     >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -41,7 +41,7 @@
         aria-label="Assistant NeoGTB"
     >
         {{-- Header --}}
-        <div class="flex items-center justify-between px-4 py-3 text-white" :style="`background-color: ${color}`">
+        <div class="flex items-center justify-between px-4 py-3 text-white" :style="'background-color: ' + color">
             <div class="flex items-center gap-2">
                 <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -70,7 +70,7 @@
                             type="button"
                             x-on:click="acceptConsent()"
                             class="w-full px-4 py-2 rounded-lg text-white font-medium text-sm hover:opacity-90"
-                            :style="`background-color: ${color}`"
+                            :style="'background-color: ' + color"
                         >
                             J'accepte et je continue
                         </button>
@@ -87,7 +87,7 @@
             <div class="flex-1 overflow-y-auto p-4 space-y-3" x-ref="messagesEl">
                 {{-- Welcome --}}
                 <div class="flex gap-2">
-                    <div class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold" :style="`background-color: ${color}`">N</div>
+                    <div class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold" :style="'background-color: ' + color">N</div>
                     <div class="bg-gray-100 rounded-lg px-3 py-2 text-sm text-gray-800 max-w-[85%]" x-text="welcomeMessage"></div>
                 </div>
 
@@ -111,7 +111,7 @@
                         <div
                             class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold"
                             :class="msg.role === 'user' ? 'bg-gray-200 text-gray-600' : 'text-white'"
-                            :style="msg.role === 'user' ? '' : `background-color: ${color}`"
+                            :style="msg.role === 'user' ? '' : 'background-color: ' + color"
                             x-text="msg.role === 'user' ? 'V' : 'N'"
                         ></div>
                         <div
@@ -125,7 +125,7 @@
                 {{-- Indicateur de frappe --}}
                 <template x-if="isStreaming && (messages.length === 0 || messages[messages.length-1].role === 'user')">
                     <div class="flex gap-2">
-                        <div class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold" :style="`background-color: ${color}`">N</div>
+                        <div class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold" :style="'background-color: ' + color">N</div>
                         <div class="bg-gray-100 rounded-lg px-3 py-2 text-sm text-gray-500">
                             <span class="inline-flex gap-1">
                                 <span class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
@@ -162,7 +162,7 @@
                     type="submit"
                     :disabled="!inputText.trim() || isStreaming"
                     class="p-2 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
-                    :style="`background-color: ${color}`"
+                    :style="'background-color: ' + color"
                     aria-label="Envoyer"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -182,7 +182,7 @@
                             type="button"
                             x-on:click="showLeadForm()"
                             class="flex items-center gap-1.5 text-xs font-medium hover:underline focus:outline-none"
-                            :style="`color: ${color}`"
+                            :style="'color: ' + color"
                             aria-label="Demander à être rappelé par email"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -235,7 +235,7 @@
                                 type="submit"
                                 :disabled="leadSubmitting || !leadEmail.trim()"
                                 class="rounded-lg px-3 py-1.5 text-xs font-medium text-white transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-                                :style="`background-color: ${color}`"
+                                :style="'background-color: ' + color"
                                 aria-label="Envoyer mon email pour être rappelé"
                             >
                                 <span x-show="!leadSubmitting">Laisser mon email</span>
@@ -291,6 +291,12 @@
             leadDismissed: false,
             leadSubmitting: false,
             leadError: '',
+
+            // Ouvre le panneau et focus l'input (build CSP : pas de fonction fléchée en directive)
+            openChat() {
+                this.open = true;
+                this.$nextTick(() => this.$refs.input?.focus());
+            },
 
             async boot() {
                 try {

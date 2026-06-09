@@ -106,7 +106,7 @@
 
   <!-- Comparateur -->
   <section class="py-10 lg:py-20">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10" x-data="comparateur()" x-init="init()">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10" x-data="comparateur">
 
       <!-- Filtres -->
       <div class="bg-white rounded-2xl p-5 lg:p-7 mb-8 lg:sticky lg:top-20 z-40" style="border: 0.5px solid rgba(0,0,0,0.08);">

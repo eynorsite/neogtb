@@ -8,6 +8,10 @@
 /storage/logs/*.log
 /bootstrap/cache/*
 
+# Artefacts locaux (macOS, captures Playwright MCP)
+.DS_Store
+/.playwright-mcp/
+
 # Astro — gardé en local uniquement
 /src/
 /api/

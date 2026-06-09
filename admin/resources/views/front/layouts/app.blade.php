@@ -121,27 +121,8 @@
   {{-- ===== Bandeau d'annonce (configurable depuis l'admin, dismissable via localStorage) ===== --}}
   @if($announcement = $site->announcementBar())
     <div
-      x-data="{
-        dismissed: false,
-        storageKey: 'neogtb_announcement_dismissed',
-        init() {
-          const stored = localStorage.getItem(this.storageKey);
-          if (stored) {
-            try {
-              const data = JSON.parse(stored);
-              if (data.text === @js($announcement['text'])) {
-                this.dismissed = true;
-              } else {
-                localStorage.removeItem(this.storageKey);
-              }
-            } catch (e) { localStorage.removeItem(this.storageKey); }
-          }
-        },
-        dismiss() {
-          this.dismissed = true;
-          localStorage.setItem(this.storageKey, JSON.stringify({ text: @js($announcement['text']), at: Date.now() }));
-        }
-      }"
+      x-data="announcementBar"
+      data-announcement-text="{{ $announcement['text'] }}"
       x-show="!dismissed"
       x-transition:leave="transition ease-in duration-200"
       x-transition:leave-start="opacity-100 max-h-12"
@@ -324,7 +305,7 @@
   </footer>
 
   {{-- ===== Bandeau d'information cookies (purement informatif — Plausible cookieless, exempt CNIL) ===== --}}
-  <div x-data="cookieNotice()" x-cloak>
+  <div x-data="cookieNotice" x-cloak>
     <div x-show="showBanner" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
       class="fixed bottom-0 left-0 right-0 z-[60] p-4">
       <div class="max-w-xl mx-auto bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl" style="border: 1px solid rgba(0,0,0,0.06);">

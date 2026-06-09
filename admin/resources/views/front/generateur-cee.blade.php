@@ -256,15 +256,14 @@
 
   {{-- ==================== FORMULAIRE 3 ÉTAPES ==================== --}}
   <section class="cee-section"
-    x-data="ceeGenerator()"
-    x-init="init()"
+    x-data="ceeGenerator"
     x-cloak>
     <div class="max-w-[720px] mx-auto px-5 md:px-8">
 
       {{-- Barre de progression --}}
       <div class="cee-progress-wrap">
         <div class="cee-progress-bar">
-          <div class="cee-progress-fill" :style="`width: ${(step / 3) * 100}%`"></div>
+          <div class="cee-progress-fill" :style="'width: ' + ((step / 3) * 100) + '%'"></div>
         </div>
         <div class="cee-progress-steps">
           <template x-for="(s, i) in [{label: 'Bâtiment', icon: '🏢'}, {label: 'Équipements', icon: '⚙️'}, {label: 'Résultats', icon: '📊'}]" :key="i">

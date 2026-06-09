@@ -89,7 +89,7 @@
 
   {{-- Catalogue interactif --}}
   <section class="py-8">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10" x-data="modbusCatalogue()">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10" x-data="modbusCatalogue">
 
       {{-- Filtres --}}
       <div class="bg-white rounded-2xl p-5 lg:p-7 mb-8 border border-dark-100 lg:sticky lg:top-[120px] z-30">
@@ -429,5 +429,6 @@
       closeModal() { this.modalOpen=false; this.selectedEq=null; document.body.style.overflow=''; }
     };
   }
+  document.addEventListener('alpine:init', () => Alpine.data('modbusCatalogue', modbusCatalogue));
 </script>
 @endpush

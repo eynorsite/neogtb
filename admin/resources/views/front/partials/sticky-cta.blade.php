@@ -1,7 +1,6 @@
 @unless(request()->is('audit') || request()->is('admin*') || request()->is('contact'))
 <div
-    x-data="stickyCta()"
-    x-init="init()"
+    x-data="stickyCta"
     x-show="show"
     x-cloak
     x-transition:enter="transition ease-out duration-300"
@@ -61,5 +60,6 @@ function stickyCta() {
         }
     }
 }
+document.addEventListener('alpine:init', () => Alpine.data('stickyCta', stickyCta));
 </script>
 @endunless

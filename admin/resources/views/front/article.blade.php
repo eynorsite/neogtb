@@ -150,11 +150,11 @@
         @include('front.bricks.cta-mini.cta-side-callout', ['href' => '/audit', 'eyebrow' => 'Pour aller plus loin', 'text' => 'Évaluez votre bâtiment sur ces critères avec notre pré-diagnostic gratuit ISO 52120-1.', 'linkText' => 'Lancer le pré-diagnostic', 'icon' => 'arrow'])
 
         {{-- Share / Copy link --}}
-        <div class="mt-8 flex items-center gap-4" x-data="{ copied: false }">
+        <div class="mt-8 flex items-center gap-4" x-data="copyLink">
             <span class="text-sm text-dark-400">{{ $site->label('misc.share', 'Partager') }} :</span>
             <button
                 class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-dark-600 bg-dark-50 border border-dark-200 rounded-lg hover:bg-dark-100 transition-colors cursor-pointer"
-                @click="navigator.clipboard.writeText(window.location.href); copied = true; setTimeout(() => copied = false, 2000)"
+                @click="copy()"
             >
                 <svg x-show="!copied" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>

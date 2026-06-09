@@ -55,8 +55,7 @@ $icons = [
 <header
   class="fixed top-0 w-full z-50 transition-all duration-200 ease-out"
   id="main-header"
-  x-data="neogtbNav()"
-  x-init="init()"
+  x-data="neogtbNav"
   @keydown.escape.window="closeAll()"
   @click.outside="closeExplorer()"
   :class="scrolled ? 'bg-white/80 backdrop-blur-xl shadow-sm' : 'bg-white/0'"
@@ -182,7 +181,6 @@ $icons = [
     aria-label="Menu de navigation"
     id="mobile-drawer"
     @keydown.tab="trapFocus($event)"
-    x-init="$watch('mobileOpen', v => document.body.style.overflow = v ? 'hidden' : '')"
   >
     <div
       x-show="mobileOpen"
@@ -312,6 +310,8 @@ $icons = [
       init() {
         this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         this.scrolled = window.scrollY > 20;
+        // Déplacé depuis x-init du drawer (build CSP : pas d'accès global ni fonction fléchée en directive)
+        this.$watch('mobileOpen', v => { document.body.style.overflow = v ? 'hidden' : ''; });
       },
       toggleExplorer() { this.explorerOpen = !this.explorerOpen; },
       closeExplorer() { this.explorerOpen = false; },
@@ -361,4 +361,5 @@ $icons = [
       },
     }
   }
+  document.addEventListener('alpine:init', () => Alpine.data('neogtbNav', neogtbNav));
 </script>

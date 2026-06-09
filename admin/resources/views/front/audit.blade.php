@@ -227,13 +227,13 @@
   </section>
 
   <!-- FORMULAIRE (Alpine.js identique à Astro) -->
-  <section class="diag-section" x-data="diagWizard()" x-cloak x-ref="wizardTop">
+  <section class="diag-section" x-data="diagWizard" x-cloak x-ref="wizardTop">
     <div class="max-w-[720px] mx-auto px-5 md:px-8">
 
       <!-- Barre de progression -->
       <div class="diag-progress-wrap">
         <div class="diag-progress-bar">
-          <div class="diag-progress-fill" :style="`width: ${(step / totalSteps) * 100}%`"></div>
+          <div class="diag-progress-fill" :style="'width: ' + ((step / totalSteps) * 100) + '%'"></div>
         </div>
         <div class="diag-progress-steps">
           <template x-for="(s, i) in stepLabels" :key="i">
