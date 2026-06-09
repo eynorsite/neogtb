@@ -71,15 +71,8 @@
 
                 <div class="rounded-2xl border border-dark-100 bg-dark-50/40 p-5">
                     <p class="text-xs leading-relaxed text-dark-500">
-                        Vos donnees sont utilisees uniquement pour repondre a votre demande, conservees 3 ans, conformement a notre <a href="/politique-de-confidentialite" class="font-semibold text-primary-600 underline decoration-primary-200 underline-offset-2 hover:text-primary-700 hover:decoration-primary-500 transition-colors">politique de confidentialite</a>.
+                        Vos donnees sont traitees par NeoGTB pour repondre a votre demande (interet legitime, art. 6.1.f RGPD), conservees 3 ans, conformement a notre <a href="/politique-de-confidentialite" class="font-semibold text-primary-600 underline decoration-primary-200 underline-offset-2 hover:text-primary-700 hover:decoration-primary-500 transition-colors">politique de confidentialite</a>.
                     </p>
-                    <label class="mt-4 flex items-start gap-3 cursor-pointer group/consent">
-                        <input type="checkbox" name="consentement_rgpd" required
-                            class="mt-0.5 h-4 w-4 flex-shrink-0 rounded border-dark-300 text-accent-600 focus:ring-2 focus:ring-accent-500 focus:ring-offset-0 cursor-pointer">
-                        <span class="text-xs leading-relaxed text-dark-600 group-hover/consent:text-dark-800 transition-colors">
-                            J'accepte que mes donnees soient traitees par NeoGTB pour repondre a ma demande (interet legitime, art. 6.1.f RGPD). <span class="text-accent-500">*</span>
-                        </span>
-                    </label>
                 </div>
 
                 <div class="pt-2">

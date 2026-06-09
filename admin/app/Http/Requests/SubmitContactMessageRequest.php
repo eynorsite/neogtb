@@ -17,15 +17,14 @@ class SubmitContactMessageRequest extends FormRequest
             'subject' => ['required', 'string', 'max:200', 'not_regex:/[\r\n]/'],
             'message' => ['required', 'string', 'min:10', 'max:5000'],
             'source_page' => ['nullable', 'string', 'max:200'],
-            'consentement_rgpd' => ['required', 'accepted'],
+            // Base légale = intérêt légitime (art. 6.1.f) : pas de consentement à recueillir,
+            // une mention informative suffit côté formulaire (cf. contact.blade.php).
+            'consentement_rgpd' => ['nullable', 'accepted'],
         ];
     }
 
     public function messages(): array
     {
-        return [
-            'consentement_rgpd.required' => 'Vous devez accepter le traitement de vos données pour envoyer votre message.',
-            'consentement_rgpd.accepted' => 'Vous devez accepter le traitement de vos donnees pour envoyer votre message.',
-        ];
+        return [];
     }
 }
