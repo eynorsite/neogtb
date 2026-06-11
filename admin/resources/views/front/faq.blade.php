@@ -2,8 +2,8 @@
 
 
 @push('head')
-@verbatim
 <script type="application/ld+json" @cspNonce>
+@verbatim
 {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -21,8 +21,8 @@
         {"@type":"Question","name":"Dans quelle zone géographique intervenez-vous ?","acceptedAnswer":{"@type":"Answer","text":"Les outils en ligne sont accessibles partout. Pour les prestations sur site, j'interviens principalement en Nouvelle-Aquitaine et sur l'ensemble du territoire français selon la mission."}}
     ]
 }
-</script>
 @endverbatim
+</script>
 @endpush
 
 @section('content')

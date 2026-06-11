@@ -2,8 +2,8 @@
 
 
 @push('head')
-@verbatim
 <script type="application/ld+json" @cspNonce>
+@verbatim
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -22,8 +22,8 @@
     { "@type": "HowToStep", "position": 9, "name": "Recevez vos résultats", "text": "Obtenez instantanément votre classe GTB estimée (A/B/C/D), un benchmark énergétique, un récapitulatif et des recommandations personnalisées au format PDF." }
   ]
 }
-</script>
 @endverbatim
+</script>
 <style>
   /* Palette accent/dark héritée de resources/css/app.css (@theme global). Pas de redéfinition locale pour éviter le silo CSS / palette zombie. */
   [x-cloak] { display: none !important; }
