@@ -349,7 +349,7 @@
                 this.isStreaming = true;
                 this.scrollToBottom();
 
-                let assistantMsg = null;
+                let assistantIdx = -1;
 
                 try {
                     const res = await fetch('/api/chatbot/stream', {
@@ -393,11 +393,14 @@
                             try {
                                 const event = JSON.parse(block.slice(6));
                                 if (event.type === 'delta' && event.text) {
-                                    if (!assistantMsg) {
-                                        assistantMsg = { role: 'assistant', content: '' };
-                                        this.messages.push(assistantMsg);
+                                    if (assistantIdx === -1) {
+                                        this.messages.push({ role: 'assistant', content: '' });
+                                        assistantIdx = this.messages.length - 1;
                                     }
-                                    assistantMsg.content += event.text;
+                                    // Muter via le tableau réactif (proxy Alpine), pas une
+                                    // référence brute détachée : sinon le re-render ne se
+                                    // déclenche pas et l'UI fige sur le premier delta.
+                                    this.messages[assistantIdx].content += event.text;
                                     this.scrollToBottom();
                                 }
                             } catch (e) {
