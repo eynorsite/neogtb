@@ -15,9 +15,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Bricks\BrickRegistry;
+use App\Filament\Pages\PageContentsPage;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\SitePage;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -166,6 +168,9 @@ class PageResource extends Resource
 
                         Tabs\Tab::make('Contenu (blocs)')
                             ->icon('heroicon-o-squares-2x2')
+                            // Masqué pour les pages à Blade figée : leur contenu n'est pas
+                            // rendu depuis la base, éditer des blocs ici n'aurait aucun effet.
+                            ->visible(fn (?SitePage $record) => ! ($record?->isStaticallyRendered() ?? false))
                             ->schema([
                                 Repeater::make('bricks')
                                     ->label('Blocs de la page')
@@ -224,6 +229,16 @@ class PageResource extends Resource
                                     ])
                                     ->columnSpanFull(),
                             ]),
+
+                        Tabs\Tab::make('Contenu')
+                            ->icon('heroicon-o-lock-closed')
+                            // Affiché à la place de « Contenu (blocs) » pour les pages figées.
+                            ->visible(fn (?SitePage $record) => (bool) ($record?->isStaticallyRendered() ?? false))
+                            ->schema([
+                                Placeholder::make('contenu_gere_en_code')
+                                    ->label('')
+                                    ->content('Le contenu de cette page est intégré directement dans le code du site (mise en page sur-mesure). Vous pouvez modifier son référencement Google dans l\'onglet dédié, mais pas son contenu depuis ici.'),
+                            ]),
                     ])->columnSpanFull(),
             ]);
     }
@@ -260,7 +275,9 @@ class PageResource extends Resource
                     ->label('Modifier le contenu')
                     ->icon('heroicon-o-pencil-square')
                     ->color('success')
-                    ->url(fn ($record) => url('/admin/page-contents-page')),
+                    // Caché pour les pages figées : leur contenu n'est pas éditable depuis l'admin.
+                    ->visible(fn (SitePage $record) => ! $record->isStaticallyRendered())
+                    ->url(fn () => PageContentsPage::getUrl()),
                 \Filament\Actions\EditAction::make()
                     ->label('Réglages de la page'),
                 \Filament\Actions\Action::make('viewOnSite')
