@@ -63,9 +63,9 @@
 
             {{-- Breadcrumbs --}}
             <nav class="flex items-center gap-2 text-sm mb-8" aria-label="Fil d'Ariane">
-                <a href="/" class="text-dark-400 hover:text-accent-500 transition-colors font-normal">{{ $site->label('nav.home', 'Accueil') }}</a>
+                <a href="/" class="text-dark-500 hover:text-accent-500 transition-colors font-normal">{{ $site->label('nav.home', 'Accueil') }}</a>
                 <span class="w-1 h-1 rounded-full bg-dark-300 flex-shrink-0"></span>
-                <a href="/blog" class="text-dark-400 hover:text-accent-500 transition-colors font-normal">
+                <a href="/blog" class="text-dark-500 hover:text-accent-500 transition-colors font-normal">
                     {{ $site->label('nav.blog', 'Perspectives') }}
                 </a>
                 <span class="w-1 h-1 rounded-full bg-dark-300 flex-shrink-0"></span>
@@ -101,7 +101,7 @@
             </h1>
 
             {{-- Byline --}}
-            <div class="flex items-center flex-wrap gap-x-3 gap-y-1 mt-5 text-sm text-dark-400">
+            <div class="flex items-center flex-wrap gap-x-3 gap-y-1 mt-5 text-sm text-dark-500">
                 <span class="font-medium text-dark-700">{{ $post->author?->name ?? 'NeoGTB' }}</span>
                 <span class="text-dark-300">&middot;</span>
                 <time datetime="{{ $post->published_at?->toDateString() }}">
@@ -166,7 +166,7 @@
 
         {{-- Share / Copy link --}}
         <div class="mt-8 flex items-center gap-4" x-data="copyLink">
-            <span class="text-sm text-dark-400">{{ $site->label('misc.share', 'Partager') }} :</span>
+            <span class="text-sm text-dark-500">{{ $site->label('misc.share', 'Partager') }} :</span>
             <button
                 class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-dark-600 bg-dark-50 border border-dark-200 rounded-lg hover:bg-dark-100 transition-colors cursor-pointer"
                 @click="copy()"
@@ -196,7 +196,7 @@
         <section class="border-t border-dark-100 bg-dark-50 py-12 lg:py-20">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10">
-                    <span class="text-xs font-semibold tracking-widest uppercase text-dark-400">{{ $site->label('blog.also_read', 'À lire aussi') }}</span>
+                    <span class="text-xs font-semibold tracking-widest uppercase text-dark-500">{{ $site->label('blog.also_read', 'À lire aussi') }}</span>
                     <h2 class="mt-2 text-xl sm:text-2xl font-heading font-extrabold text-dark-900">{{ $site->label('blog.related_articles', 'Articles similaires') }}</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -213,7 +213,7 @@
                             <p class="text-sm text-dark-500 line-clamp-2 leading-relaxed mb-3">
                                 {{ $rel->excerpt }}
                             </p>
-                            <div class="flex items-center justify-between text-xs text-dark-400">
+                            <div class="flex items-center justify-between text-xs text-dark-500">
                                 <time datetime="{{ $rel->published_at?->toDateString() }}">
                                     {{ $rel->published_at?->translatedFormat('d F Y') }}
                                 </time>

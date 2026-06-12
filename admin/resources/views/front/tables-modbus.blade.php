@@ -41,7 +41,7 @@
             <p class="text-base font-semibold text-dark-900">Comprendre les 4 types de registres Modbus</p>
             <p class="text-xs text-dark-500 mt-0.5">Coils, Discrete Inputs, Input Registers, Holding Registers</p>
           </div>
-          <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div x-show="open" x-collapse>
           <div class="mt-6 pt-6 border-t border-dark-200 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -141,7 +141,7 @@
           <button @click="openModal(eq)" class="text-left bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 hover:border-primary-300 lg:hover:shadow-md transition-all">
             <div class="flex items-start justify-between mb-3">
               <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-50 text-primary-700" x-text="eq.categorie"></span>
-              <span class="text-[11px] text-dark-400" x-text="eq.protocole"></span>
+              <span class="text-[11px] text-dark-500" x-text="eq.protocole"></span>
             </div>
             <p class="font-semibold text-dark-900 text-base" x-text="eq.nom"></p>
             <p class="text-xs text-dark-500 mt-0.5" x-text="eq.fournisseur"></p>
@@ -180,27 +180,27 @@
                   <p class="mt-2 text-xl font-semibold text-dark-900" x-text="selectedEq.nom"></p>
                   <p class="text-sm text-dark-500" x-text="selectedEq.fournisseur"></p>
                 </div>
-                <button @click="closeModal()" class="text-dark-400 hover:text-dark-700 p-1">
+                <button @click="closeModal()" class="text-dark-500 hover:text-dark-700 p-1">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
               </div>
               <div class="px-6 py-4 bg-dark-50 border-b border-dark-200 grid grid-cols-3 gap-4 text-xs">
                 <div>
-                  <p class="text-dark-400 uppercase tracking-wider font-semibold mb-1">Protocole</p>
+                  <p class="text-dark-500 uppercase tracking-wider font-semibold mb-1">Protocole</p>
                   <p class="text-dark-900 font-medium" x-text="selectedEq.protocole"></p>
                 </div>
                 <div>
-                  <p class="text-dark-400 uppercase tracking-wider font-semibold mb-1">Baudrate</p>
+                  <p class="text-dark-500 uppercase tracking-wider font-semibold mb-1">Baudrate</p>
                   <p class="text-dark-900 font-medium" x-text="selectedEq.baudrate"></p>
                 </div>
                 <div>
-                  <p class="text-dark-400 uppercase tracking-wider font-semibold mb-1">Slave ID par défaut</p>
+                  <p class="text-dark-500 uppercase tracking-wider font-semibold mb-1">Slave ID par défaut</p>
                   <p class="text-dark-900 font-medium" x-text="selectedEq.slave_id_default"></p>
                 </div>
               </div>
               <div class="flex-1 overflow-auto p-6">
                 <p class="text-xs font-semibold uppercase tracking-wider text-dark-500 mb-3">Registres</p>
-                <div class="lg:hidden flex items-center gap-2 text-[12px] text-dark-400 mb-2">
+                <div class="lg:hidden flex items-center gap-2 text-[12px] text-dark-500 mb-2">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7l4-4m0 0l4 4m-4-4v18"/></svg>
                   Faites glisser horizontalement
                 </div>
@@ -228,7 +228,7 @@
                     </tbody>
                   </table>
                 </div>
-                <p class="mt-4 text-[11px] text-dark-400 italic">
+                <p class="mt-4 text-[11px] text-dark-500 italic">
                   Données indicatives, vérifiez la documentation officielle du constructeur avant tout paramétrage.
                 </p>
               </div>

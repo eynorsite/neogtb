@@ -183,7 +183,7 @@
 
           {{-- Newsletter --}}
           <div class="mt-8">
-            <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-3">{{ $site->label('footer.newsletter_subtitle', 'Veille GTB mensuelle') }}</p>
+            <p class="text-[11px] font-medium uppercase tracking-wider text-dark-500 mb-3">{{ $site->label('footer.newsletter_subtitle', 'Veille GTB mensuelle') }}</p>
             <form
               method="POST"
               action="/newsletter"
@@ -215,10 +215,10 @@
               <p x-show="nlError" x-text="nlError" x-cloak class="text-[12px] text-red-500 mt-1"></p>
               <label x-show="!nlSent" class="mt-2 flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" required class="mt-0.5 w-3.5 h-3.5 rounded text-accent-500 focus:ring-accent-500/40" />
-                <span class="text-[11px] text-dark-400" style="line-height: 1.5;">{!! $site->label('footer.newsletter_consent', 'J\'accepte de recevoir la veille GTB mensuelle. <a href="/politique-de-confidentialite" class="underline hover:text-dark-700">Confidentialité</a>') !!}</span>
+                <span class="text-[11px] text-dark-500" style="line-height: 1.5;">{!! $site->label('footer.newsletter_consent', 'J\'accepte de recevoir la veille GTB mensuelle. <a href="/politique-de-confidentialite" class="underline hover:text-dark-700">Confidentialité</a>') !!}</span>
               </label>
             </form>
-            <p class="mt-2 text-[11px] text-dark-400">{{ $site->label('footer.newsletter_frequency', '1 email/mois. Désabonnement en 1 clic.') }}</p>
+            <p class="mt-2 text-[11px] text-dark-500">{{ $site->label('footer.newsletter_frequency', '1 email/mois. Désabonnement en 1 clic.') }}</p>
           </div>
 
           {{-- Normes badges --}}
@@ -232,7 +232,7 @@
 
         {{-- Navigation --}}
         <div class="md:col-span-2 md:col-start-7">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">{{ $site->label('footer.col1_title', 'Navigation') }}</p>
+          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-500 mb-4">{{ $site->label('footer.col1_title', 'Navigation') }}</p>
           <ul class="space-y-3">
             <li><a href="/gtb" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_gtb', 'GTB') }}</a></li>
             <li><a href="/gtc" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_gtc', 'GTC') }}</a></li>
@@ -245,7 +245,7 @@
 
         {{-- Outils --}}
         <div class="md:col-span-2">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">{{ $site->label('footer.col2_title', 'Outils') }}</p>
+          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-500 mb-4">{{ $site->label('footer.col2_title', 'Outils') }}</p>
           <ul class="space-y-3">
             <li><a href="/audit" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_audit', 'Pré-diagnostic GTB') }}</a></li>
             <li><a href="/generateur-cee" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_generateur_cee', 'Générateur CEE') }}</a></li>
@@ -257,7 +257,7 @@
 
         {{-- Légal --}}
         <div class="md:col-span-2">
-          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-400 mb-4">{{ $site->label('footer.col3_title', 'Légal') }}</p>
+          <p class="text-[11px] font-medium uppercase tracking-wider text-dark-500 mb-4">{{ $site->label('footer.col3_title', 'Légal') }}</p>
           <ul class="space-y-3">
             <li><a href="/mentions-legales" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_mentions', 'Mentions légales') }}</a></li>
             <li><a href="/politique-de-confidentialite" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_confidentialite', 'Confidentialité') }}</a></li>
@@ -269,11 +269,11 @@
 
       {{-- Bottom bar --}}
       <div class="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-top: 0.5px solid var(--color-dark-200);">
-        <p class="text-[13px] text-dark-400">{{ $settings->copyright ?? '&copy; ' . date('Y') . ' NeoGTB. Tous droits réservés.' }}</p>
+        <p class="text-[13px] text-dark-500">{{ $settings->copyright ?? '&copy; ' . date('Y') . ' NeoGTB. Tous droits réservés.' }}</p>
         <div class="flex items-center gap-5">
           {{-- Réseaux sociaux dynamiques --}}
           @foreach($site->socialLinks() as $network => $url)
-            <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="text-dark-400 hover:text-dark-900 transition-colors duration-200" aria-label="{{ ucfirst(str_replace('_', ' ', $network)) }}">
+            <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="text-dark-500 hover:text-dark-900 transition-colors duration-200" aria-label="{{ ucfirst(str_replace('_', ' ', $network)) }}">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 @switch($network)
                   @case('linkedin')
@@ -298,7 +298,7 @@
               </svg>
             </a>
           @endforeach
-          <button type="button" x-on:click="$dispatch('open-cookie-settings')" class="text-[13px] text-dark-400 hover:text-dark-900 transition-colors duration-200 cursor-pointer">{{ $site->label('footer.manage_cookies', 'Gérer les cookies') }}</button>
+          <button type="button" x-on:click="$dispatch('open-cookie-settings')" class="text-[13px] text-dark-500 hover:text-dark-900 transition-colors duration-200 cursor-pointer">{{ $site->label('footer.manage_cookies', 'Gérer les cookies') }}</button>
         </div>
       </div>
     </div>

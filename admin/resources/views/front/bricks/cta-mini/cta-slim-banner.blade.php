@@ -5,7 +5,7 @@
     {{ $linkText }}
     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
   </a>
-  <button @click="dismiss()" aria-label="Fermer" class="text-dark-400 hover:text-dark-700 transition-colors">
+  <button @click="dismiss()" aria-label="Fermer" class="text-dark-500 hover:text-dark-700 transition-colors">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
 </div>

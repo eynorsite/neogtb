@@ -20,14 +20,14 @@
             <div class="glass-card rounded-2xl p-5 lg:p-10 animate-fade-in-up" style="animation-delay: 100ms">
                 <div class="flex items-center gap-3 mb-8">
                     <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-dark-100">
-                        <svg class="h-5 w-5 text-dark-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        <svg class="h-5 w-5 text-dark-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </div>
                     <h3 class="text-xl font-heading font-bold text-dark-500">{{ $content['colonne_gauche_titre'] ?? 'Avant' }}</h3>
                 </div>
                 <ul class="space-y-5">
                     @foreach($content['lignes_gauche'] ?? [] as $ligne)
                         <li class="flex items-start gap-3">
-                            <span class="mt-1 flex-shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-dark-100 text-dark-400 text-xs">&#10005;</span>
+                            <span class="mt-1 flex-shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-dark-100 text-dark-500 text-xs">&#10005;</span>
                             <span class="text-dark-600 text-sm leading-relaxed">{{ $ligne['texte'] ?? '' }}</span>
                         </li>
                     @endforeach

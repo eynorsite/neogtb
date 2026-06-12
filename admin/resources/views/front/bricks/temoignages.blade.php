@@ -40,7 +40,7 @@
                         <div>
                             <div class="font-heading font-bold text-dark-900 text-sm">{{ $avis['nom'] ?? '' }}</div>
                             @if(!empty($avis['poste']))
-                                <div class="text-xs text-dark-400">{{ $avis['poste'] }}</div>
+                                <div class="text-xs text-dark-500">{{ $avis['poste'] }}</div>
                             @endif
                         </div>
                     </div>

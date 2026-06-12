@@ -44,7 +44,7 @@
                         @if(!empty($carte['excerpt']))
                             <p class="mt-2 text-sm text-dark-500 line-clamp-2">{{ $carte['excerpt'] }}</p>
                         @endif
-                        <div class="mt-4 flex items-center gap-4 text-xs text-dark-400">
+                        <div class="mt-4 flex items-center gap-4 text-xs text-dark-500">
                             @if(!empty($carte['date']))
                                 <span class="flex items-center gap-1">
                                     <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke-width="2"/></svg>

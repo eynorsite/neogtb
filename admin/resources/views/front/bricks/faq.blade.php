@@ -21,7 +21,7 @@
                             class="flex w-full cursor-pointer items-center justify-between py-4 text-left transition-colors duration-200 hover:text-accent-600">
                         <span class="text-base font-display font-semibold text-dark-900 pr-4">{{ $q['question'] ?? '' }}</span>
                         <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full transition-colors duration-200"
-                              :class="open === {{ $i }} ? 'bg-primary-100 text-primary-600' : 'bg-dark-100 text-dark-400'">
+                              :class="open === {{ $i }} ? 'bg-primary-100 text-primary-600' : 'bg-dark-100 text-dark-500'">
                             <svg class="h-4 w-4 transition-transform duration-300"
                                  :class="open === {{ $i }} ? 'rotate-180' : ''"
                                  fill="none" stroke="currentColor" viewBox="0 0 24 24">

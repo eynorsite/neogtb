@@ -105,7 +105,7 @@
 
         <!-- Terrain -->
         <div class="mb-10">
-            <h3 class="text-xs font-medium uppercase tracking-widest text-dark-400 mb-4">Protocoles terrain (capteurs / actionneurs)</h3>
+            <h3 class="text-xs font-medium uppercase tracking-widest text-dark-500 mb-4">Protocoles terrain (capteurs / actionneurs)</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 @foreach([
                     ['name' => 'BACnet MS/TP', 'tag' => 'ISO 16484-5', 'desc' => 'BACnet sur bus RS-485 série. Protocole terrain de référence pour connecter automates, boîtes VAV et capteurs.'],
@@ -126,7 +126,7 @@
 
         <!-- Reseau / IP -->
         <div class="mb-10">
-            <h3 class="text-xs font-medium uppercase tracking-widest text-dark-400 mb-4">Protocoles réseau et IP</h3>
+            <h3 class="text-xs font-medium uppercase tracking-widest text-dark-500 mb-4">Protocoles réseau et IP</h3>
             <div class="grid md:grid-cols-2 gap-4">
                 @foreach([
                     ['name' => 'BACnet/IP', 'tag' => 'ISO 16484-5', 'desc' => 'BACnet sur UDP/IP. Protocole backbone de référence pour la supervision GTB moderne.'],
@@ -148,7 +148,7 @@
 
         <!-- Sans fil -->
         <div>
-            <h3 class="text-xs font-medium uppercase tracking-widest text-dark-400 mb-4">Protocoles sans fil</h3>
+            <h3 class="text-xs font-medium uppercase tracking-widest text-dark-500 mb-4">Protocoles sans fil</h3>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach([
                     ['name' => 'EnOcean', 'tag' => 'ISO/IEC 14543-3-10', 'desc' => 'Sans batterie, alimenté par l\'énergie ambiante. Idéal pour la rénovation sans câblage.'],

@@ -79,7 +79,7 @@
                 <caption class="sr-only">Tableau comparatif {{ $cfg['a_label'] }} contre {{ $cfg['b_label'] }} : périmètre, fonction et caractéristiques.</caption>
                 <thead>
                     <tr class="border-b border-dark-200">
-                        <th scope="col" class="text-[13px] font-medium uppercase tracking-wider text-dark-400 px-5 py-4 w-1/4"></th>
+                        <th scope="col" class="text-[13px] font-medium uppercase tracking-wider text-dark-500 px-5 py-4 w-1/4"></th>
                         <th scope="col" class="text-[15px] font-medium text-dark-900 px-5 py-4">
                             <span class="inline-block text-[12px] font-medium text-white bg-dark-600 px-2.5 py-1 rounded-md">{{ $cfg['a_label'] }}</span>
                         </th>
@@ -146,7 +146,7 @@
         <div x-data="{ open: false }" class="border-t border-dark-200 @if($loop->last) border-b @endif">
             <button type="button" @click="open = !open" :aria-expanded="open ? 'true' : 'false'" aria-controls="cmp-faq-{{ $index }}" class="w-full flex items-center justify-between py-5 min-h-[56px] text-left bg-transparent border-none cursor-pointer">
                 <span class="text-[15px] font-medium text-dark-900 pr-4">{{ $item['question'] }}</span>
-                <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-400 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-500 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div id="cmp-faq-{{ $index }}" x-show="open" x-collapse x-cloak>
                 <p class="text-sm text-dark-500 leading-relaxed pb-5">{{ $item['answer'] }}</p>
@@ -198,7 +198,7 @@
 <!-- MENTION DE FIABILITÉ -->
 <section class="pb-12 bg-white">
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
-        <p class="text-[12px] text-dark-400 leading-relaxed border-t border-dark-100 pt-6">
+        <p class="text-[12px] text-dark-500 leading-relaxed border-t border-dark-100 pt-6">
             Informations à jour (mars 2026), à vérifier sur Légifrance et auprès d'un professionnel.
         </p>
     </div>

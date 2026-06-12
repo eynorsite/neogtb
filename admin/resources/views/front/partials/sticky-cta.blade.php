@@ -25,7 +25,7 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
         <button @click="dismiss()" aria-label="{{ $site->label('sticky_cta.dismiss', 'Masquer') }}"
-                class="w-9 h-9 flex items-center justify-center text-dark-400 hover:text-dark-700 flex-shrink-0">
+                class="w-9 h-9 flex items-center justify-center text-dark-500 hover:text-dark-700 flex-shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
         </button>
     </div>

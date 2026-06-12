@@ -133,7 +133,7 @@ $icons = [
       @foreach(['comprendre','conformer','agir'] as $colKey)
         @php($col = $exploreItems[$colKey])
         <div>
-          <h3 class="text-[10px] font-semibold uppercase tracking-[0.12em] text-dark-400 mb-2 px-2.5">{{ $col['label'] }}</h3>
+          <h3 class="text-[10px] font-semibold uppercase tracking-[0.12em] text-dark-500 mb-2 px-2.5">{{ $col['label'] }}</h3>
           <ul class="flex flex-col gap-0.5">
             @foreach($col['items'] as $it)
               @php($active = request()->is($it['match']))
@@ -142,7 +142,7 @@ $icons = [
                   @if($active) aria-current="page" @endif
                   class="group flex gap-2.5 px-2.5 py-2 rounded-lg transition-colors duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500 {{ $active ? 'bg-accent-50 border-l-2 border-accent-600' : 'hover:bg-accent-50/60' }}">
                   <span class="shrink-0 mt-0.5 transition-transform duration-200 group-hover:translate-x-[2px]">
-                    <svg class="w-4 h-4 {{ $active ? 'text-accent-600' : 'text-dark-400 group-hover:text-accent-600' }} transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons[$it['icon']] !!}</svg>
+                    <svg class="w-4 h-4 {{ $active ? 'text-accent-600' : 'text-dark-500 group-hover:text-accent-600' }} transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons[$it['icon']] !!}</svg>
                   </span>
                   <span class="flex-1 min-w-0">
                     <span class="block text-[13px] leading-tight {{ $active ? 'text-accent-700 font-semibold' : 'text-dark-900 font-medium group-hover:text-accent-700' }} transition-colors">{{ $it['title'] }}</span>
@@ -164,7 +164,7 @@ $icons = [
           <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['arrow-right'] !!}</svg>
         </a>
       </div>
-      <div class="flex items-center gap-2 text-dark-400">
+      <div class="flex items-center gap-2 text-dark-500">
         <kbd class="px-2 py-1 bg-dark-50 rounded-md text-[11px] font-mono text-dark-600 border border-dark-100">⌘K</kbd>
         <span>{{ $site->label('nav.search', 'Rechercher') }}</span>
       </div>
@@ -216,7 +216,7 @@ $icons = [
 
       <div class="flex-1 overflow-y-auto px-5 py-4">
         <div class="relative mb-5">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-dark-400">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-dark-500">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['magnifying-glass'] !!}</svg>
           </span>
           <input type="search" placeholder="{{ $site->label('nav.search_placeholder', 'Rechercher…') }}" aria-label="{{ $site->label('nav.search', 'Rechercher') }}" class="w-full pl-10 pr-3 py-3 text-[14px] bg-dark-50 border border-dark-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-500 focus:bg-white" />
@@ -228,9 +228,9 @@ $icons = [
             <button type="button" @click="open = !open" :aria-expanded="open.toString()" class="w-full flex items-center justify-between py-3 text-left min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 rounded-lg">
               <span class="flex items-center gap-2">
                 <span class="text-[11px] font-semibold uppercase tracking-[0.12em] text-dark-500">{{ $col['label'] }}</span>
-                <span class="text-[11px] text-dark-400">({{ count($col['items']) }})</span>
+                <span class="text-[11px] text-dark-500">({{ count($col['items']) }})</span>
               </span>
-              <svg class="w-4 h-4 text-dark-400 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['chevron-down'] !!}</svg>
+              <svg class="w-4 h-4 text-dark-500 transition-transform duration-200" :class="open && 'rotate-180'" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['chevron-down'] !!}</svg>
             </button>
             <div x-show="open" x-collapse>
               <ul class="flex flex-col gap-1 pb-2">
@@ -240,7 +240,7 @@ $icons = [
                     <a href="{{ $it['href'] }}" @click="closeMobile()"
                       @if($active) aria-current="page" @endif
                       class="flex gap-3 px-3 py-3 rounded-xl min-h-[44px] {{ $active ? 'bg-accent-50' : 'hover:bg-dark-50' }}">
-                      <svg class="w-5 h-5 shrink-0 mt-0.5 {{ $active ? 'text-accent-600' : 'text-dark-400' }}" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons[$it['icon']] !!}</svg>
+                      <svg class="w-5 h-5 shrink-0 mt-0.5 {{ $active ? 'text-accent-600' : 'text-dark-500' }}" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">{!! $icons[$it['icon']] !!}</svg>
                       <span class="flex-1 min-w-0">
                         <span class="block text-[14px] {{ $active ? 'text-accent-700 font-semibold' : 'text-dark-900 font-medium' }}">{{ $it['title'] }}</span>
                         <span class="block text-[12px] text-dark-500 mt-0.5 truncate">{{ $it['desc'] }}</span>
@@ -261,9 +261,9 @@ $icons = [
         </div>
 
         <div class="mt-6 pt-6 border-t border-dark-100 space-y-1">
-          <a href="/mentions-legales" @click="closeMobile()" class="block text-[12px] text-dark-400 hover:text-dark-700 py-1.5">{{ $site->label('footer.nav_mentions', 'Mentions légales') }}</a>
-          <a href="/politique-de-confidentialite" @click="closeMobile()" class="block text-[12px] text-dark-400 hover:text-dark-700 py-1.5">{{ $site->label('footer.nav_confidentialite', 'Confidentialité') }}</a>
-          <a href="/mes-droits-rgpd" @click="closeMobile()" class="block text-[12px] text-dark-400 hover:text-dark-700 py-1.5">{{ $site->label('nav.mobile_rgpd', 'Mes droits RGPD') }}</a>
+          <a href="/mentions-legales" @click="closeMobile()" class="block text-[12px] text-dark-500 hover:text-dark-700 py-1.5">{{ $site->label('footer.nav_mentions', 'Mentions légales') }}</a>
+          <a href="/politique-de-confidentialite" @click="closeMobile()" class="block text-[12px] text-dark-500 hover:text-dark-700 py-1.5">{{ $site->label('footer.nav_confidentialite', 'Confidentialité') }}</a>
+          <a href="/mes-droits-rgpd" @click="closeMobile()" class="block text-[12px] text-dark-500 hover:text-dark-700 py-1.5">{{ $site->label('nav.mobile_rgpd', 'Mes droits RGPD') }}</a>
         </div>
       </div>
 

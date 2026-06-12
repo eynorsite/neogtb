@@ -24,19 +24,19 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 text-center">
             <div>
                 <p class="text-4xl font-medium text-dark-900 tracking-tight">0 &euro;</p>
-                <p class="text-[13px] text-dark-400 mt-1.5 leading-snug">commission fabricant<br>depuis la création</p>
+                <p class="text-[13px] text-dark-500 mt-1.5 leading-snug">commission fabricant<br>depuis la création</p>
             </div>
             <div>
                 <p class="text-4xl font-medium text-dark-900 tracking-tight">0</p>
-                <p class="text-[13px] text-dark-400 mt-1.5 leading-snug">lien d'affiliation<br>sur le site</p>
+                <p class="text-[13px] text-dark-500 mt-1.5 leading-snug">lien d'affiliation<br>sur le site</p>
             </div>
             <div>
                 <p class="text-4xl font-medium text-dark-900 tracking-tight">10+</p>
-                <p class="text-[13px] text-dark-400 mt-1.5 leading-snug">fabricants évalués<br>sur critères identiques</p>
+                <p class="text-[13px] text-dark-500 mt-1.5 leading-snug">fabricants évalués<br>sur critères identiques</p>
             </div>
             <div>
                 <p class="text-4xl font-medium text-accent-600 tracking-tight">100 %</p>
-                <p class="text-[13px] text-dark-400 mt-1.5 leading-snug">du revenu vient<br>du conseil, pas de la vente</p>
+                <p class="text-[13px] text-dark-500 mt-1.5 leading-snug">du revenu vient<br>du conseil, pas de la vente</p>
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@
                 <p class="text-[14px] font-medium text-dark-900 mb-4">{!! $row['q'] !!}</p>
                 <div class="space-y-3">
                     <div>
-                        <p class="text-[10px] uppercase tracking-[0.12em] text-dark-400 font-semibold mb-1">Intégrateur classique</p>
+                        <p class="text-[10px] uppercase tracking-[0.12em] text-dark-500 font-semibold mb-1">Intégrateur classique</p>
                         <p class="text-[13px] text-dark-600 leading-relaxed">{{ $row['classic'] }}</p>
                     </div>
                     <div class="pt-3 border-t border-dark-100">
@@ -99,8 +99,8 @@
         <div class="hidden lg:block border border-dark-100 rounded-2xl overflow-x-auto">
          <div class="min-w-[560px]">
             <div class="grid grid-cols-3 bg-dark-100 border-b border-dark-200">
-                <p class="text-xs font-medium text-dark-400 p-3">Question à poser</p>
-                <p class="text-xs font-medium text-dark-400 p-3 text-center">Intégrateur classique</p>
+                <p class="text-xs font-medium text-dark-500 p-3">Question à poser</p>
+                <p class="text-xs font-medium text-dark-500 p-3 text-center">Intégrateur classique</p>
                 <p class="text-xs font-medium text-accent-600 p-3 text-center">NeoGTB</p>
             </div>
             @foreach([
@@ -111,7 +111,7 @@
             ] as $row)
             <div class="grid grid-cols-3 border-b border-dark-100 last:border-b-0">
                 <p class="text-sm text-dark-600 p-3">{!! $row['q'] !!}</p>
-                <p class="text-sm text-dark-400 p-3 text-center">{{ $row['classic'] }}</p>
+                <p class="text-sm text-dark-500 p-3 text-center">{{ $row['classic'] }}</p>
                 <p class="text-sm text-accent-600 font-medium p-3 text-center">{!! $row['neo'] !!}</p>
             </div>
             @endforeach
@@ -134,7 +134,7 @@
 
         <!-- Le modèle -->
         <div class="bg-dark-50 border border-dark-100 rounded-2xl p-5 lg:p-7 mb-6">
-            <p class="text-xs font-medium text-dark-400 uppercase tracking-widest mb-4">Le modèle</p>
+            <p class="text-xs font-medium text-dark-500 uppercase tracking-widest mb-4">Le modèle</p>
             <div class="space-y-4">
                 @foreach([
                     '<strong class="font-medium text-dark-900">NeoGTB vend du conseil, pas du matériel.</strong> Audits sur site, cahiers des charges neutres, assistance à maîtrise d\'ouvrage GTB. C\'est une activité de conseil technique facturée, comme un bureau d\'études.',
@@ -151,7 +151,7 @@
 
         <!-- Ce que NeoGTB ne fait PAS -->
         <div class="border border-dark-100 rounded-2xl p-5 lg:p-7">
-            <p class="text-xs font-medium text-dark-400 uppercase tracking-widest mb-4">Ce que NeoGTB ne fait pas</p>
+            <p class="text-xs font-medium text-dark-500 uppercase tracking-widest mb-4">Ce que NeoGTB ne fait pas</p>
             <div class="space-y-3">
                 @foreach([
                     'Revendre vos données de diagnostic à des tiers',
@@ -167,7 +167,7 @@
             </div>
         </div>
 
-        <p class="text-[13px] text-dark-400 leading-relaxed mt-5">
+        <p class="text-[13px] text-dark-500 leading-relaxed mt-5">
             {!! $site->label('positionnement.model.footer', 'Vous avez encore un doute ? C\'est normal. <a href="/contact" class="text-accent-600 hover:text-accent-700">Posez la question</a>, on y répond.') !!}
         </p>
     </div>

@@ -72,7 +72,7 @@
                 ['num' => 'Lot 06', 'title' => 'Sécurité incendie', 'desc' => 'Report des alarmes SSI vers le superviseur GTB. Commandes de désenfumage, coupures CVC sur détection. Le SSI conserve sa propre autonomie conformément aux normes NF S 61-932.'],
             ] as $lot)
             <div class="rounded-2xl bg-white p-5 lg:p-7 border border-dark-100 card-hover">
-                <p class="text-[11px] font-medium text-dark-400 uppercase tracking-wider mb-2">{{ $lot['num'] }}</p>
+                <p class="text-[11px] font-medium text-dark-500 uppercase tracking-wider mb-2">{{ $lot['num'] }}</p>
                 <h3 class="text-base font-medium text-dark-900 tracking-tight">{{ $lot['title'] }}</h3>
                 <p class="mt-2 text-sm text-dark-500 leading-relaxed">{{ $lot['desc'] }}</p>
             </div>

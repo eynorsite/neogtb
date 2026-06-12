@@ -12,7 +12,7 @@
         @if($content = $site->legalText('cookies'))
             <div class="prose prose-sm prose-dark max-w-none mt-8">{!! $content !!}</div>
         @else
-            <p class="text-sm text-dark-400 mt-8">Contenu en cours de rédaction.</p>
+            <p class="text-sm text-dark-500 mt-8">Contenu en cours de rédaction.</p>
         @endif
 
     </div>
