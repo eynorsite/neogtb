@@ -18,7 +18,7 @@
     title="Engageons une conversation"
     highlight="conversation"
     subtitle="Un échange factuel pour comprendre votre contexte. Sans engagement, sans pitch commercial."
-    :tags="['Réponse sous 24h', 'Échange gratuit']"
+    :tags="['Réponse sous 48h', 'Échange gratuit']"
     :cta="['text' => 'Aller au formulaire', 'url' => '#formulaire']"
     minHeight="480px"
     overlay="gradient"
@@ -34,7 +34,7 @@
                     <!-- Email -->
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-dark-50 border border-dark-100">
-                            <svg class="w-[18px] h-[18px] text-dark-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <svg class="w-[18px] h-[18px] text-dark-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                             </svg>
                         </div>
@@ -44,7 +44,7 @@
                             $contactPhoneTel = $contactPhone ? preg_replace('/[^0-9+]/', '', $contactPhone) : null;
                         @endphp
                         <div>
-                            <p class="text-[13px] text-dark-400">{{ $site->label('contact.info_email', 'Email') }}</p>
+                            <p class="text-[13px] text-dark-500">{{ $site->label('contact.info_email', 'Email') }}</p>
                             <a href="mailto:{{ $contactEmail }}" class="text-[15px] font-medium text-dark-900 hover:text-accent-600 transition-colors">{{ $contactEmail }}</a>
                         </div>
                     </div>
@@ -53,12 +53,12 @@
                     <!-- Telephone -->
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-dark-50 border border-dark-100">
-                            <svg class="w-[18px] h-[18px] text-dark-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <svg class="w-[18px] h-[18px] text-dark-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                             </svg>
                         </div>
                         <div>
-                            <p class="text-[13px] text-dark-400">{{ $site->label('contact.info_phone', 'Téléphone') }}</p>
+                            <p class="text-[13px] text-dark-500">{{ $site->label('contact.info_phone', 'Téléphone') }}</p>
                             <a href="tel:{{ $contactPhoneTel }}" class="text-[15px] font-medium text-dark-900 hover:text-accent-600 transition-colors">{{ $contactPhone }}</a>
                         </div>
                     </div>
@@ -67,12 +67,12 @@
                     <!-- Response time -->
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-dark-50 border border-dark-100">
-                            <svg class="w-[18px] h-[18px] text-dark-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <svg class="w-[18px] h-[18px] text-dark-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
-                            <p class="text-[13px] text-dark-400">{{ $site->label('contact.info_response_time', 'Temps de réponse') }}</p>
+                            <p class="text-[13px] text-dark-500">{{ $site->label('contact.info_response_time', 'Temps de réponse') }}</p>
                             <p class="text-[15px] font-medium text-dark-900">{{ $site->label('contact.response_time_value', 'Sous 48h') }}</p>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                     <svg class="w-4 h-4 text-dark-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                     </svg>
-                    <p class="text-xs text-dark-400">{{ $site->label('contact.trust_badge', 'Tiers de confiance indépendant, aucun démarchage') }}</p>
+                    <p class="text-xs text-dark-500">{{ $site->label('contact.trust_badge', 'Tiers de confiance indépendant, aucun démarchage') }}</p>
                 </div>
             </div>
 
@@ -163,7 +163,7 @@
                                 </button>
                             </div>
 
-                            <p class="text-[11px] text-dark-400 leading-relaxed">
+                            <p class="text-[11px] text-dark-500 leading-relaxed">
                                 {{ $site->label('forms.rgpd_notice', "Vos données sont traitées par NeoGTB pour répondre à votre demande (intérêt légitime, art. 6.1.f RGPD) et conservées 3 ans.") }} <a href="/politique-de-confidentialite" class="underline hover:text-dark-600">{{ $site->label('forms.privacy_link', 'Politique de confidentialité') }}</a> &middot; <a href="/mes-droits-rgpd" class="underline hover:text-dark-600">{{ $site->label('forms.rights_link', 'Exercer vos droits') }}</a>
                             </p>
 

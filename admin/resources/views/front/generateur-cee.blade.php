@@ -225,7 +225,7 @@
 
   {{-- ==================== HERO ==================== --}}
   <section class="cee-hero" data-hero>
-    {{-- Hero image: aucune image dédiée hero-cee/hero-generateur/hero-economie/hero-energie n'existe dans /public/images/. Fallback sur hero-gtb-illustration.webp (image mutualisée, meilleure qualité que hero-comparateur.png et évite le doublon visuel avec /comparateur). TODO: créer un visuel dédié CEE. --}}
+    {{-- Hero image: aucune image dédiée hero-cee/hero-generateur/hero-economie/hero-energie n'existe dans /public/images/. Fallback sur hero-gtb-illustration.webp (image mutualisée pour éviter le doublon visuel avec /comparateur). TODO: créer un visuel dédié CEE. --}}
     <img src="/images/hero-gtb-illustration.webp" alt="Illustration GTB, Générateur de dossier CEE" class="cee-hero-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="cee-hero-mesh"></div>
 
@@ -548,7 +548,7 @@
 
             <label class="flex items-start gap-2 cursor-pointer" style="margin-bottom:16px;">
               <input type="checkbox" x-model="consentRgpd" required class="mt-0.5 rounded border-dark-300 text-accent-600 focus:ring-accent-500" />
-              <span class="text-[11px] text-dark-400 leading-relaxed">
+              <span class="text-[11px] text-dark-500 leading-relaxed">
                 J'accepte que mon email soit traité par NeoGTB pour recevoir mon estimation CEE (consentement, art. 6.1.a RGPD). <span style="color:#dc2626;">*</span>
               </span>
             </label>
