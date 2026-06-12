@@ -32,7 +32,7 @@
                         <input type="radio" name="type" value="{{ $option['value'] }}" x-model="form.type" class="mt-1">
                         <div>
                             <span class="font-medium text-dark-800 text-sm">{{ $option['title'] }}</span>
-                            <span class="block text-xs text-dark-400 mt-0.5">{{ $option['desc'] }}</span>
+                            <span class="block text-xs text-dark-500 mt-0.5">{{ $option['desc'] }}</span>
                         </div>
                     </label>
                     @endforeach
@@ -52,7 +52,7 @@
                         class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 border border-dark-200 focus:ring-2 focus:ring-accent-500 focus:outline-none focus:border-accent-500">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-dark-700 mb-1">Précisions <span class="text-dark-400 font-normal">(optionnel)</span></label>
+                    <label class="block text-sm font-medium text-dark-700 mb-1">Précisions <span class="text-dark-500 font-normal">(optionnel)</span></label>
                     <textarea x-model="form.message" rows="4" placeholder="Décrivez votre demande si nécessaire..."
                         class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 border border-dark-200 focus:ring-2 focus:ring-accent-500 focus:outline-none focus:border-accent-500 resize-y"></textarea>
                 </div>
@@ -134,9 +134,9 @@
                         },
                     });
                     if (res.ok) { this.submitted = true; }
-                    else { window.location.href = 'mailto:rgpd@neogtb.fr?subject=Demande RGPD, ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message); }
+                    else { window.location.href = 'mailto:hello@eynor.fr?subject=Demande RGPD, ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message); }
                 } catch (e) {
-                    window.location.href = 'mailto:rgpd@neogtb.fr?subject=Demande RGPD, ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message);
+                    window.location.href = 'mailto:hello@eynor.fr?subject=Demande RGPD, ' + encodeURIComponent(this.form.type) + '&body=' + encodeURIComponent('Nom: ' + this.form.name + '\nEmail: ' + this.form.email + '\nType: ' + this.form.type + '\n\n' + this.form.message);
                 }
             },
         }));

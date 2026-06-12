@@ -23,6 +23,6 @@ class EscalateOverdueGdprRequestsJob implements ShouldQueue
 
         if ($overdue->isEmpty()) return;
 
-        Mail::to('rgpd@neogtb.fr')->queue(new OverdueGdprNotificationMail($overdue));
+        Mail::to('hello@eynor.fr')->queue(new OverdueGdprNotificationMail($overdue));
     }
 }

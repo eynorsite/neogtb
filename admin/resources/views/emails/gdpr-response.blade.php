@@ -18,5 +18,5 @@ Cordialement,
 Exercer mes droits
 </x-mail::button>
 
-<small>EYNOR (NeoGTB), Rue Aimé Césaire, 33320 Eysines, rgpd@neogtb.fr</small>
+<small>EYNOR (NeoGTB), Rue Aimé Césaire, 33320 Eysines, hello@eynor.fr</small>
 </x-mail::message>
