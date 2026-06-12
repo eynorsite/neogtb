@@ -8,7 +8,7 @@
      HERO
      ══════════════════════════════════════════════════════════════ --}}
 <section class="relative overflow-hidden pt-24 pb-20" style="background: #edf5f7;">
-    <img src="/images/hero-blog.png" alt="Veille technique GTB, bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-blog.webp" alt="Veille technique GTB, bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-5 lg:px-10 text-center">
@@ -114,7 +114,7 @@
                                 </span>
                             @endif
                             @if($post->reading_time)
-                                <span class="text-xs text-dark-400 font-normal">{{ $post->reading_time }} {{ $site->label('misc.reading_time_unit', 'min') }}</span>
+                                <span class="text-xs text-dark-500 font-normal">{{ $post->reading_time }} {{ $site->label('misc.reading_time_unit', 'min') }}</span>
                             @endif
                         </div>
 
@@ -139,7 +139,7 @@
 
                         {{-- Footer: date + arrow --}}
                         <div class="flex items-center justify-between pt-3 border-t border-dark-100">
-                            <time class="text-xs text-dark-400" datetime="{{ $post->published_at?->toDateString() }}">
+                            <time class="text-xs text-dark-500" datetime="{{ $post->published_at?->toDateString() }}">
                                 {{ $post->published_at?->translatedFormat('d F Y') }}
                             </time>
                             <span class="text-primary-500 transition-transform duration-200 group-hover:translate-x-1">
@@ -158,7 +158,7 @@
             <svg class="w-12 h-12 text-dark-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
             </svg>
-            <p class="text-dark-400 text-sm">{{ $site->label('blog.no_articles', 'Aucun article dans cette catégorie.') }}</p>
+            <p class="text-dark-500 text-sm">{{ $site->label('blog.no_articles', 'Aucun article dans cette catégorie.') }}</p>
         </div>
 
         {{-- Pagination --}}

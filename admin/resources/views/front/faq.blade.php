@@ -30,7 +30,7 @@
 <!-- HERO -->
 <section class="relative overflow-hidden" style="padding: 64px 0 48px; background: #edf5f7;">
     <!-- TODO: créer hero-faq.webp dédié, image partagée temporairement avec /blog -->
-    <img src="/images/hero-blog.png" alt="FAQ GTB, bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-blog.webp" alt="FAQ GTB, bâtiment intelligent" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.3) 0%, rgba(237,245,247,0.92) 100%);"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
         <div class="max-w-2xl">
@@ -67,7 +67,7 @@
             <div x-data="{ open: false }" class="border-t border-dark-200 @if($loop->last) border-b @endif">
                 <button @click="open = !open" class="w-full flex items-center justify-between py-5 min-h-[56px] text-left bg-transparent border-none cursor-pointer">
                     <span class="text-[15px] font-medium text-dark-900 pr-4">{{ $item['question'] ?? '' }}</span>
-                    <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-400 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-500 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <p class="text-sm text-dark-500 leading-relaxed pb-5">{!! $item['answer'] ?? '' !!}</p>

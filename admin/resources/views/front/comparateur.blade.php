@@ -41,7 +41,7 @@
 @section('content')
 
   {{-- Breadcrumbs --}}
-  <nav class="max-w-7xl mx-auto px-5 lg:px-10 py-3 text-sm text-dark-400">
+  <nav class="max-w-7xl mx-auto px-5 lg:px-10 py-3 text-sm text-dark-500">
     <a href="/" class="hover:text-primary-600 transition-colors">Accueil</a>
     <span class="mx-2">/</span>
     <span class="text-dark-300">Outils</span>
@@ -51,7 +51,7 @@
 
   <!-- Hero -->
   <section class="hero-lum hero-emerald" data-hero>
-    <img src="/images/hero-comparateur.png" alt="Comparaison de bâtiments intelligents, GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-comparateur.webp" alt="Comparaison de bâtiments intelligents, GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 text-center relative z-10">
       <span class="eyebrow">Outil indépendant</span>
@@ -83,7 +83,7 @@
             <p style="font-size: 16px; font-weight: 500; color: #111;">Méthodologie de notation</p>
             <p style="font-size: 13px; color: #6b7280; margin-top: 2px;">6 critères, pondération égale, sources documentaires constructeurs</p>
           </div>
-          <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div x-show="open" x-collapse>
           <div class="mt-6 pt-6" style="border-top: 0.5px solid rgba(0,0,0,0.08);">
@@ -156,7 +156,7 @@
             <button @click="resetFilters()" class="px-4 py-2 text-sm text-dark-500 rounded-lg hover:text-dark-700" style="border: 0.5px solid rgba(0,0,0,0.08);">Réinitialiser</button>
           </div>
         </div>
-        <div class="mt-3 text-sm text-dark-400" style="font-weight: 400;"><span x-text="filteredBrands().length"></span> marque(s) affichée(s)</div>
+        <div class="mt-3 text-sm text-dark-500" style="font-weight: 400;"><span x-text="filteredBrands().length"></span> marque(s) affichée(s)</div>
       </div>
 
       <!-- Cards des marques -->
@@ -170,19 +170,19 @@
                     <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-medium text-sm" :style="'background-color:' + brand.couleur"><span x-text="brand.sigle"></span></div>
                     <div>
                       <h3 class="text-xl font-heading font-medium text-dark-900" x-text="brand.nom"></h3>
-                      <p class="text-sm text-dark-400" style="font-weight: 400;" x-text="brand.pays + ' \u2014 ' + brand.categorie_label"></p>
+                      <p class="text-sm text-dark-500" style="font-weight: 400;" x-text="brand.pays + ' \u2014 ' + brand.categorie_label"></p>
                     </div>
                   </div>
                 </div>
                 <div class="text-right">
                   <div class="text-2xl font-heading font-medium" :class="brand.note >= 8 ? 'text-accent-600' : brand.note >= 6 ? 'text-primary-600' : 'text-orange-500'" x-text="brand.note + '/10'"></div>
-                  <p class="text-xs text-dark-400" style="font-weight: 400;">Note globale</p>
+                  <p class="text-xs text-dark-500" style="font-weight: 400;">Note globale</p>
                 </div>
               </div>
               <p class="mt-3 text-sm text-dark-600" style="font-weight: 400;" x-text="brand.description"></p>
             </div>
             <div class="px-6 py-3 bg-dark-50" style="border-bottom: 0.5px solid rgba(0,0,0,0.08);">
-              <span class="text-xs font-medium text-dark-400 uppercase tracking-wider">Produit phare :</span>
+              <span class="text-xs font-medium text-dark-500 uppercase tracking-wider">Produit phare :</span>
               <span class="text-sm font-medium text-dark-800 ml-1" x-text="brand.produit_phare"></span>
             </div>
             <div class="p-6 space-y-3">
@@ -230,7 +230,7 @@
               </div>
             </div>
             <div class="px-6 pb-4">
-              <h4 class="text-xs font-medium text-dark-400 uppercase tracking-wider mb-2">Idéal pour</h4>
+              <h4 class="text-xs font-medium text-dark-500 uppercase tracking-wider mb-2">Idéal pour</h4>
               <div class="flex flex-wrap gap-1.5">
                 <template x-for="usage in brand.ideal_pour" :key="usage">
                   <span class="px-2 py-1 bg-dark-100 text-dark-600 text-xs rounded-full" style="font-weight: 400;" x-text="usage"></span>
@@ -239,7 +239,7 @@
             </div>
             <div class="px-6 pb-6 flex items-center justify-between">
               <div>
-                <span class="text-xs text-dark-400" style="font-weight: 400;">Budget indicatif :</span>
+                <span class="text-xs text-dark-500" style="font-weight: 400;">Budget indicatif :</span>
                 <span class="ml-1 text-sm font-medium" :class="brand.budget === 'bas' ? 'text-accent-600' : brand.budget === 'moyen' ? 'text-primary-600' : 'text-orange-600'" x-text="brand.budget_label"></span>
               </div>
               <a :href="brand.site" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-primary-600 hover:text-primary-700">Site officiel &rarr;</a>
@@ -249,7 +249,7 @@
       </div>
 
       <div x-show="filteredBrands().length === 0" class="text-center py-16">
-        <p class="text-dark-400 text-lg" style="font-weight: 400;">Aucune marque ne correspond à vos filtres.</p>
+        <p class="text-dark-500 text-lg" style="font-weight: 400;">Aucune marque ne correspond à vos filtres.</p>
         <button @click="resetFilters()" class="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">Réinitialiser les filtres</button>
       </div>
     </div>
@@ -259,7 +259,7 @@
   <section class="py-12 lg:py-24 bg-dark-50">
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
       <h2 class="text-[22px] lg:text-[28px] font-heading font-medium text-dark-900 mb-6 lg:mb-8 text-center">Tableau comparatif rapide</h2>
-      <div class="lg:hidden flex items-center gap-2 text-[12px] text-dark-400 mb-2">
+      <div class="lg:hidden flex items-center gap-2 text-[12px] text-dark-500 mb-2">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7l4-4m0 0l4 4m-4-4v18"/></svg>
         Faites glisser horizontalement
       </div>
@@ -363,15 +363,15 @@
       <div class="grid md:grid-cols-3 gap-4">
         <a href="/audit" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Audit GTB gratuit</p>
-          <p class="text-sm text-dark-400 mt-1">Diagnostiquez d'abord votre bâtiment avant de comparer.</p>
+          <p class="text-sm text-dark-500 mt-1">Diagnostiquez d'abord votre bâtiment avant de comparer.</p>
         </a>
         <a href="/solutions" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Solutions & Technologies</p>
-          <p class="text-sm text-dark-400 mt-1">Protocoles, capteurs et architecture GTB en détail.</p>
+          <p class="text-sm text-dark-500 mt-1">Protocoles, capteurs et architecture GTB en détail.</p>
         </a>
         <a href="/gtb" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">Qu'est-ce que la GTB ?</p>
-          <p class="text-sm text-dark-400 mt-1">Les bases pour comprendre la Gestion Technique du Bâtiment.</p>
+          <p class="text-sm text-dark-500 mt-1">Les bases pour comprendre la Gestion Technique du Bâtiment.</p>
         </a>
       </div>
     </div>

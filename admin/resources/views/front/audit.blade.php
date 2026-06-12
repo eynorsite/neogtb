@@ -193,7 +193,7 @@
 @section('content')
 
   {{-- Breadcrumbs --}}
-  <nav class="max-w-7xl mx-auto px-5 lg:px-10 py-3 text-sm text-dark-400">
+  <nav class="max-w-7xl mx-auto px-5 lg:px-10 py-3 text-sm text-dark-500">
     <a href="/" class="hover:text-primary-600 transition-colors">{{ $site->label('breadcrumb.home', 'Accueil') }}</a>
     <span class="mx-2">/</span>
     <span class="text-dark-300">{{ $site->label('breadcrumb.tools', 'Outils') }}</span>
@@ -203,7 +203,7 @@
 
   <!-- HERO -->
   <section class="hero-lum" data-hero>
-    <img src="/images/hero-audit.png" alt="Bâtiment intelligent connecté, GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-audit.webp" alt="Bâtiment intelligent connecté, GTB" class="hero-lum-img" width="1200" height="630" loading="eager" fetchpriority="high" />
     <div class="hero-lum-mesh"></div>
     <div class="max-w-[800px] mx-auto px-5 lg:px-10 relative z-10 text-center">
       <p class="diag-eyebrow" style="color: rgba(255,255,255,0.7);">{{ $site->label('audit.hero.eyebrow', 'Diagnostic gratuit · Rapport PDF') }}</p>
@@ -781,15 +781,15 @@
       <div class="grid md:grid-cols-3 gap-4">
         <a href="/comparateur" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">{{ $site->label('audit.related.comparateur', 'Comparateur GTB') }}</p>
-          <p class="text-sm text-dark-400 mt-1">{{ $site->label('audit.related.comparateur_desc', 'Comparez les solutions après votre diagnostic.') }}</p>
+          <p class="text-sm text-dark-500 mt-1">{{ $site->label('audit.related.comparateur_desc', 'Comparez les solutions après votre diagnostic.') }}</p>
         </a>
         <a href="/generateur-cee" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">{{ $site->label('audit.related.cee', 'Simulateur CEE') }}</p>
-          <p class="text-sm text-dark-400 mt-1">{{ $site->label('audit.related.cee_desc', 'Estimez vos primes pour financer votre projet GTB.') }}</p>
+          <p class="text-sm text-dark-500 mt-1">{{ $site->label('audit.related.cee_desc', 'Estimez vos primes pour financer votre projet GTB.') }}</p>
         </a>
         <a href="/reglementation" class="block p-5 rounded-2xl border border-dark-100 hover:border-primary-300 transition-colors group">
           <p class="font-medium text-dark-900 group-hover:text-primary-600 transition-colors">{{ $site->label('audit.related.reglementation', 'Réglementation GTB') }}</p>
-          <p class="text-sm text-dark-400 mt-1">{{ $site->label('audit.related.reglementation_desc', 'Décret BACS, calendrier des obligations.') }}</p>
+          <p class="text-sm text-dark-500 mt-1">{{ $site->label('audit.related.reglementation_desc', 'Décret BACS, calendrier des obligations.') }}</p>
         </a>
       </div>
     </div>

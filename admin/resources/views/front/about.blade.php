@@ -5,7 +5,7 @@
 
 <!-- HERO -->
 <section class="relative overflow-hidden" style="padding: 100px 0 80px; min-height: 420px; background: #edf5f7;">
-    <img src="/images/hero-about.png" alt="Consultant indépendant GTB au centre des bâtiments" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
+    <img src="/images/hero-about.webp" alt="Consultant indépendant GTB au centre des bâtiments" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(237,245,247,0.15) 0%, rgba(237,245,247,0.88) 60%, rgba(237,245,247,1) 100%);"></div>
     <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
         <div class="max-w-2xl">
@@ -31,10 +31,10 @@
                     <img src="/images/ulrich-calmo.webp" alt="Ulrich Calmo, créateur de la marque NeoGTB" width="120" height="120" loading="lazy" decoding="async" class="w-[120px] h-[120px] rounded-full object-cover mx-auto mb-5 border-[3px] border-accent-300" />
                     <p class="text-[22px] font-medium text-dark-900 text-center mb-1">{{ $site->label('about.founder.name', 'Ulrich Calmo') }}</p>
                     <p class="text-sm font-medium text-accent-600 text-center mb-1">{{ $site->label('about.founder.role', 'Fondateur de NeoGTB') }}</p>
-                    <p class="text-xs text-dark-400 text-center mb-5">{{ $site->label('about.founder.company', 'EYNOR, Eysines, Bordeaux') }}</p>
+                    <p class="text-xs text-dark-500 text-center mb-5">{{ $site->label('about.founder.company', 'EYNOR, Eysines, Bordeaux') }}</p>
                     <div class="w-full h-px bg-dark-200 mb-5"></div>
 
-                    <p class="text-xs font-semibold uppercase tracking-widest text-dark-400 mb-3">Domaines d'expertise</p>
+                    <p class="text-xs font-semibold uppercase tracking-widest text-dark-500 mb-3">Domaines d'expertise</p>
                     <ul class="space-y-2.5">
                         <li class="flex items-center gap-3">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent-500 flex-shrink-0"></div>
@@ -64,19 +64,19 @@
                 <div class="grid grid-cols-2 gap-4 mt-6">
                     <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">10+</p>
-                        <p class="text-xs text-dark-400 mt-1">technologies analysées</p>
+                        <p class="text-xs text-dark-500 mt-1">technologies analysées</p>
                     </div>
                     <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">41</p>
-                        <p class="text-xs text-dark-400 mt-1">protocoles référencés</p>
+                        <p class="text-xs text-dark-500 mt-1">protocoles référencés</p>
                     </div>
                     <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-accent-600 tracking-tight">0 &euro;</p>
-                        <p class="text-xs text-dark-400 mt-1">commission fabricant</p>
+                        <p class="text-xs text-dark-500 mt-1">commission fabricant</p>
                     </div>
                     <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-dark-900 tracking-tight">100 %</p>
-                        <p class="text-xs text-dark-400 mt-1">indépendant</p>
+                        <p class="text-xs text-dark-500 mt-1">indépendant</p>
                     </div>
                 </div>
             </div>
