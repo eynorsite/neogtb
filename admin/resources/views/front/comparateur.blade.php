@@ -113,7 +113,7 @@
         <div class="flex flex-wrap items-center gap-4">
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Catégorie</label>
-            <select x-model="filterCategory" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
+            <select x-model="filterCategory" aria-label="Filtrer par catégorie" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
               <option value="all">Toutes</option>
               <option value="leader">Leaders mondiaux</option>
               <option value="europeen">Européens</option>
@@ -123,7 +123,7 @@
           </div>
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Protocole</label>
-            <select x-model="filterProtocol" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
+            <select x-model="filterProtocol" aria-label="Filtrer par protocole" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
               <option value="all">Tous</option>
               <option value="BACnet">BACnet</option><option value="KNX">KNX</option><option value="Modbus">Modbus</option>
               <option value="LON">LON</option><option value="LoRaWAN">LoRaWAN</option><option value="DALI">DALI</option>
@@ -132,7 +132,7 @@
           </div>
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Type de bâtiment</label>
-            <select x-model="filterBuilding" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
+            <select x-model="filterBuilding" aria-label="Filtrer par type de bâtiment" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
               <option value="all">Tous</option>
               <option value="petit">Petit (&lt; 2 000 m&sup2;)</option>
               <option value="moyen">Moyen (2 000 - 10 000 m&sup2;)</option>
@@ -141,13 +141,13 @@
           </div>
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Budget</label>
-            <select x-model="filterBudget" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
+            <select x-model="filterBudget" aria-label="Filtrer par budget" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
               <option value="all">Tous</option><option value="bas">Accessible</option><option value="moyen">Moyen</option><option value="eleve">Élevé</option>
             </select>
           </div>
           <div>
             <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Trier par</label>
-            <select x-model="sortBy" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
+            <select x-model="sortBy" aria-label="Trier les solutions" class="px-3 py-2 rounded-lg text-sm bg-white outline-none" style="border: 0.5px solid rgba(0,0,0,0.08); border-radius: 8px;">
               <option value="nom">Nom</option><option value="note">Note globale</option><option value="prix">Prix (croissant)</option><option value="facilite">Facilité d'installation</option>
             </select>
           </div>

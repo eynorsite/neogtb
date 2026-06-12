@@ -112,7 +112,7 @@
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Catégorie</label>
-              <select x-model="filterCategory" class="w-full px-3 py-2 rounded-lg text-sm border border-dark-200 bg-white outline-none">
+              <select x-model="filterCategory" aria-label="Filtrer par catégorie" class="w-full px-3 py-2 rounded-lg text-sm border border-dark-200 bg-white outline-none">
                 <option value="all">Toutes les catégories</option>
                 <template x-for="cat in categories" :key="cat">
                   <option :value="cat" x-text="cat"></option>
@@ -121,7 +121,7 @@
             </div>
             <div>
               <label class="block text-xs font-medium text-dark-500 uppercase tracking-wider mb-1">Fournisseur</label>
-              <select x-model="filterFournisseur" class="w-full px-3 py-2 rounded-lg text-sm border border-dark-200 bg-white outline-none">
+              <select x-model="filterFournisseur" aria-label="Filtrer par fournisseur" class="w-full px-3 py-2 rounded-lg text-sm border border-dark-200 bg-white outline-none">
                 <option value="all">Tous les fournisseurs</option>
                 <template x-for="f in fournisseurs" :key="f">
                   <option :value="f" x-text="f"></option>

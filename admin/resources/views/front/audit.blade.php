@@ -27,6 +27,9 @@
 <style>
   /* Palette accent/dark héritée de resources/css/app.css (@theme global). Pas de redéfinition locale pour éviter le silo CSS / palette zombie. */
   [x-cloak] { display: none !important; }
+  /* Le wizard réserve sa hauteur pendant le cloak Alpine (sinon la section surgit à l'hydratation -> CLS). */
+  .diag-section[x-cloak] { display: block !important; max-height: 600px; overflow: hidden; }
+  .diag-section[x-cloak] * { visibility: hidden !important; }
 
   /* Hero */
   .hero-lum { position: relative; overflow: hidden; padding: 56px 0 32px; background: #0a1628; }
@@ -54,10 +57,10 @@
   .diag-progress-fill { height: 100%; background: var(--color-accent-600); border-radius: 100px; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
   .diag-progress-steps { display: flex; justify-content: center; gap: 48px; }
   .diag-step-item { display: flex; align-items: center; gap: 10px; }
-  .diag-step-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: white; color: var(--color-dark-400); border: 1.5px solid var(--color-dark-200); transition: all 0.3s; }
+  .diag-step-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: white; color: var(--color-dark-500); border: 1.5px solid var(--color-dark-200); transition: all 0.3s; }
   .diag-step-item.is-active .diag-step-dot { background: var(--color-dark-900); color: white; border-color: var(--color-dark-900); }
   .diag-step-item.is-done .diag-step-dot { background: var(--color-accent-600); color: white; border-color: var(--color-accent-600); }
-  .diag-step-label { font-size: 13px; font-weight: 500; color: var(--color-dark-400); transition: color 0.2s; }
+  .diag-step-label { font-size: 13px; font-weight: 500; color: var(--color-dark-500); transition: color 0.2s; }
   .diag-step-item.is-active .diag-step-label { color: var(--color-dark-900); }
   .diag-step-item.is-done .diag-step-label { color: var(--color-accent-700); }
   @media (max-width: 640px) { .diag-progress-steps { gap: 16px; } .diag-step-label { display: none; } }
@@ -79,8 +82,8 @@
   .diag-input-sm:focus { border-color: var(--color-accent-500); outline: none; box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
   .diag-input-sm.has-error { border-color: #ef4444; }
   .diag-input-wrap { position: relative; }
-  .diag-input-suffix { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--color-dark-400); font-weight: 500; pointer-events: none; }
-  .diag-input-suffix-sm { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--color-dark-400); font-weight: 500; pointer-events: none; }
+  .diag-input-suffix { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--color-dark-500); font-weight: 500; pointer-events: none; }
+  .diag-input-suffix-sm { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--color-dark-500); font-weight: 500; pointer-events: none; }
   .diag-error { font-size: 12px; color: #ef4444; margin-top: 6px; }
   .diag-grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
   .diag-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -95,14 +98,14 @@
   .diag-zone:hover { border-color: var(--color-dark-300); }
   .diag-zone.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
   .diag-zone-id { font-size: 14px; font-weight: 600; color: var(--color-dark-900); }
-  .diag-zone-desc { font-size: 11px; color: var(--color-dark-400); text-align: center; line-height: 1.4; }
-  .diag-zone-tag { font-size: 10px; font-weight: 500; color: var(--color-dark-400); background: var(--color-dark-100); padding: 2px 8px; border-radius: 100px; margin-top: 4px; letter-spacing: 0.02em; }
+  .diag-zone-desc { font-size: 11px; color: var(--color-dark-500); text-align: center; line-height: 1.4; }
+  .diag-zone-tag { font-size: 10px; font-weight: 500; color: var(--color-dark-600); background: var(--color-dark-100); padding: 2px 8px; border-radius: 100px; margin-top: 4px; letter-spacing: 0.02em; }
   .diag-zone.is-selected .diag-zone-tag { background: rgba(13, 148, 136, 0.1); color: var(--color-accent-700); }
   .diag-lot-block { border: 1.5px solid var(--color-dark-200); border-radius: 14px; padding: 20px; margin-bottom: 16px; background: white; transition: border-color 0.15s; }
   .diag-lot-block:hover { border-color: var(--color-dark-300); }
   .diag-lot-header { display: flex; align-items: center; gap: 12px; }
   .diag-lot-title { font-size: 15px; font-weight: 600; color: var(--color-dark-800); display: block; }
-  .diag-lot-subtitle { font-size: 12px; color: var(--color-dark-400); display: block; margin-top: 2px; }
+  .diag-lot-subtitle { font-size: 12px; color: var(--color-dark-500); display: block; margin-top: 2px; }
   .diag-choice-sm { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--color-dark-200); background: white; transition: all 0.15s; font-family: inherit; font-size: 13px; }
   .diag-choice-sm:hover { border-color: var(--color-dark-300); }
   .diag-choice-sm.is-selected { border-color: var(--color-accent-600); background: rgba(13, 148, 136, 0.04); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
@@ -174,7 +177,7 @@
   .diag-premium-col { background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--color-dark-200); }
   .diag-premium-col-highlight { border-color: var(--color-accent-500); box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.08); }
   .diag-premium-col-title { font-size: 16px; font-weight: 600; color: var(--color-dark-900); margin-bottom: 2px; }
-  .diag-premium-col-subtitle { font-size: 12px; color: var(--color-dark-400); margin-bottom: 16px; }
+  .diag-premium-col-subtitle { font-size: 12px; color: var(--color-dark-500); margin-bottom: 16px; }
   .diag-premium-list { list-style: none; padding: 0; margin: 0 0 20px; font-size: 13px; color: var(--color-dark-600); line-height: 2; }
   .diag-premium-list li::before { content: '\2713 '; color: var(--color-accent-500); font-weight: 700; }
   .diag-premium-price { font-size: 20px; font-weight: 600; color: var(--color-dark-900); }
@@ -196,7 +199,7 @@
   <nav class="max-w-7xl mx-auto px-5 lg:px-10 py-3 text-sm text-dark-500">
     <a href="/" class="hover:text-primary-600 transition-colors">{{ $site->label('breadcrumb.home', 'Accueil') }}</a>
     <span class="mx-2">/</span>
-    <span class="text-dark-300">{{ $site->label('breadcrumb.tools', 'Outils') }}</span>
+    <span class="text-dark-500">{{ $site->label('breadcrumb.tools', 'Outils') }}</span>
     <span class="mx-2">/</span>
     <span class="text-dark-600 font-medium">{{ $site->label('audit.breadcrumb', 'Pré-diagnostic GTB') }}</span>
   </nav>
@@ -277,8 +280,8 @@
                 <p x-show="errors.surface" x-text="errors.surface" class="diag-error"></p>
               </div>
               <div>
-                <label class="diag-label">{{ $site->label('forms.building_age', 'Année de construction') }}</label>
-                <select x-model="form.buildingAge" class="diag-input">
+                <label class="diag-label" for="buildingAge">{{ $site->label('forms.building_age', 'Année de construction') }}</label>
+                <select id="buildingAge" x-model="form.buildingAge" class="diag-input">
                   <option value="">{{ $site->label('forms.select_placeholder', 'Sélectionnez') }}</option>
                   <option value="before1975">{{ $site->label('audit.age_before1975', 'Avant 1975') }}</option>
                   <option value="1975-2000">{{ $site->label('audit.age_1975_2000', '1975-2000') }}</option>
@@ -549,7 +552,7 @@
                 <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;">
                   <span style="font-size:28px;font-weight:600;color:#d97706;" x-text="formatCurrency(results.cee.valueLow) + ' à ' + formatCurrency(results.cee.valueHigh)"></span>
                 </div>
-                <p style="font-size:12px;color:var(--color-dark-400);">Volume total cumulé : <span x-text="formatNumber(results.cee.gwh * 1000)"></span> MWh cumac. Cours CEE : 6,50 &euro;/MWh cumac. Estimation indicative.</p>
+                <p style="font-size:12px;color: var(--color-dark-500);">Volume total cumulé : <span x-text="formatNumber(results.cee.gwh * 1000)"></span> MWh cumac. Cours CEE : 6,50 &euro;/MWh cumac. Estimation indicative.</p>
                 <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:500;color:var(--color-accent-600);text-decoration:none;">
                   {{ $site->label('audit.results.cee_cta', 'Affiner avec le simulateur CEE complet') }}
                   <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -608,7 +611,7 @@
                 <div class="diag-benchmark-marker-dot"></div>
                 <div class="diag-benchmark-marker-label">
                   <span x-text="formatNumber(results.benchmark.kwhM2) + ' kWh/m\u00B2/an'"></span>
-                  <span style="font-weight:400;color:var(--color-dark-400);font-size:11px;">{{ $site->label('audit.results.your_building', 'Votre bâtiment') }}</span>
+                  <span style="font-weight:400;color: var(--color-dark-500);font-size:11px;">{{ $site->label('audit.results.your_building', 'Votre bâtiment') }}</span>
                 </div>
               </div>
             </div>
@@ -617,7 +620,7 @@
               <div><span class="diag-benchmark-dot" style="background:#f59e0b;"></span><span x-text="'Réf. moyen : ' + results.benchmark.refAvg + ' kWh/m\u00B2/an'"></span></div>
               <div><span class="diag-benchmark-dot" style="background:#ef4444;"></span><span x-text="'Réf. énergivore : ' + results.benchmark.refBad + ' kWh/m\u00B2/an'"></span></div>
             </div>
-            <p style="font-size:11px;color:var(--color-dark-400);margin-top:12px;">{{ $site->label('audit.results.benchmark_sources', 'Sources : OID/ADEME Baromètre 2022, OPERAT 2021, Arrêté valeurs absolues décret tertiaire (24/11/2020). Économies : NF EN ISO 52120-1:2022.') }}</p>
+            <p style="font-size:11px;color: var(--color-dark-500);margin-top:12px;">{{ $site->label('audit.results.benchmark_sources', 'Sources : OID/ADEME Baromètre 2022, OPERAT 2021, Arrêté valeurs absolues décret tertiaire (24/11/2020). Économies : NF EN ISO 52120-1:2022.') }}</p>
           </div>
         </div>
 
@@ -631,7 +634,7 @@
                   <span style="font-size:20px;" x-text="e.icon"></span>
                   <div>
                     <p style="font-size:14px;font-weight:500;color:var(--color-dark-800);" x-text="e.label"></p>
-                    <p style="font-size:12px;color:var(--color-dark-400);" x-text="formatNumber(e.conso) + ' kWh/an'"></p>
+                    <p style="font-size:12px;color: var(--color-dark-500);" x-text="formatNumber(e.conso) + ' kWh/an'"></p>
                   </div>
                 </div>
                 <p style="font-size:14px;font-weight:600;color:var(--color-accent-600);" x-text="formatCurrency(e.facture) + ' /an'"></p>
@@ -728,7 +731,7 @@
         <div x-show="showEmailModal" x-transition.opacity @keydown.escape.window="showEmailModal = false" class="diag-modal-overlay" role="presentation">
           <div @click.outside="showEmailModal = false" class="diag-modal" role="dialog" aria-modal="true">
             <h3 style="font-size:18px;font-weight:500;color:var(--color-dark-900);margin-bottom:4px;">{{ $site->label('audit.modal.title', 'Recevoir votre rapport PDF') }}</h3>
-            <p style="font-size:13px;color:var(--color-dark-400);margin-bottom:16px;">{{ $site->label('audit.modal.subtitle', 'Entrez votre email pour télécharger votre diagnostic complet.') }}</p>
+            <p style="font-size:13px;color: var(--color-dark-500);margin-bottom:16px;">{{ $site->label('audit.modal.subtitle', 'Entrez votre email pour télécharger votre diagnostic complet.') }}</p>
             <input type="email" x-model="emailAddress" placeholder="{{ $site->label('audit.modal.email_placeholder', 'votre@email.com') }}" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userName" placeholder="{{ $site->label('audit.modal.name_placeholder', 'Votre nom (optionnel)') }}" class="diag-input" style="margin-bottom:8px;">
             <input type="text" x-model="userCompany" placeholder="{{ $site->label('audit.modal.company_placeholder', 'Entreprise (optionnel)') }}" class="diag-input" style="margin-bottom:12px;">
@@ -743,7 +746,7 @@
             </label>
             <p x-show="consentError" x-transition style="font-size:11px;color:#dc2626;margin:-6px 0 10px;">{{ $site->label('audit.modal.consent_error', 'Merci de cocher cette case pour recevoir votre rapport.') }}</p>
 
-            <div style="font-size:10.5px;color:var(--color-dark-400);line-height:1.6;margin-bottom:16px;padding:10px 12px;border-left:2px solid var(--color-dark-200);background:var(--color-dark-50);border-radius:0 6px 6px 0;">
+            <div style="font-size:10.5px;color: var(--color-dark-500);line-height:1.6;margin-bottom:16px;padding:10px 12px;border-left:2px solid var(--color-dark-200);background:var(--color-dark-50);border-radius:0 6px 6px 0;">
               <p style="margin:0 0 4px;font-weight:600;color:var(--color-dark-600);">{{ $site->label('audit.modal.rgpd_title', 'Information RGPD (art. 13)') }}</p>
               <p style="margin:0;">{!! $site->label('audit.modal.rgpd_text', 'Responsable : NeoGTB. <strong>Finalité</strong> : envoi du rapport d\'audit GTB personnalisé et suivi conseil. <strong>Base légale</strong> : consentement. <strong>Durée de conservation</strong> : 3 ans à compter du dernier contact. Vous disposez d\'un droit d\'accès, de rectification, d\'effacement, de limitation, d\'opposition et de portabilité, ainsi que du droit de retirer votre consentement à tout moment, via <a href="/mes-droits-rgpd" style="color:var(--color-accent-600);">/mes-droits-rgpd</a>. Détails : <a href="/politique-de-confidentialite" style="color:var(--color-accent-600);">politique de confidentialité</a>.') !!}</p>
             </div>

@@ -316,7 +316,7 @@
           Pour en savoir plus, consultez notre <a href="/politique-de-confidentialite" class="text-accent-600 hover:text-accent-700 underline">politique de confidentialité</a>.
         </p>
         <div class="flex items-center justify-end">
-          <button @click="dismiss()" class="btn-primary text-[13px] px-4 py-2">J'ai compris</button>
+          <button @click="dismiss()" class="btn-primary text-[13px] px-5 py-2.5 min-h-[44px]">J'ai compris</button>
         </div>
       </div>
     </div>

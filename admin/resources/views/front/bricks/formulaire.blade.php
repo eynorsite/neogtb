@@ -48,7 +48,7 @@
                     </div>
                     <div class="group">
                         <label class="mb-2 block text-sm font-heading font-bold text-dark-700">Sujet <span class="text-accent-500">*</span></label>
-                        <select name="subject" required
+                        <select name="subject" required aria-label="Sujet de votre message"
                             class="w-full rounded-xl border border-dark-200 bg-dark-50/50 px-4 py-3.5 text-sm text-dark-900 transition-all duration-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 focus:bg-white focus:outline-none appearance-none"
                             style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%236b7280%22 stroke-width=%222%22><path d=%22M6 9l6 6 6-6%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
                             <option value="">Sélectionnez un sujet</option>
