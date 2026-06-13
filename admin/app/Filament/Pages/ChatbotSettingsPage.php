@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\ChatbotSetting;
 use App\Services\ChatbotService;
+use Filament\Actions\Action;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
@@ -14,7 +15,6 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Filament\Actions\Action;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
@@ -39,11 +39,13 @@ class ChatbotSettingsPage extends Page implements HasForms
     public ?array $data = [];
 
     public ?string $testMessage = null;
+
     public ?array $testResult = null;
 
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
@@ -74,7 +76,7 @@ class ChatbotSettingsPage extends Page implements HasForms
                                     Select::make('model')
                                         ->label('Modèle')
                                         ->options([
-                                            'claude-haiku-4-5'  => 'Haiku 4.5 (rapide, ~0,001€/réponse)',
+                                            'claude-haiku-4-5' => 'Haiku 4.5 (rapide, ~0,001€/réponse)',
                                             'claude-sonnet-4-6' => 'Sonnet 4.6 (qualité, ~0,005€/réponse)',
                                         ])
                                         ->default('claude-haiku-4-5')
@@ -125,7 +127,7 @@ class ChatbotSettingsPage extends Page implements HasForms
                                         ->label('Position')
                                         ->options([
                                             'bottom-right' => 'Bas droite',
-                                            'bottom-left'  => 'Bas gauche',
+                                            'bottom-left' => 'Bas gauche',
                                         ])
                                         ->default('bottom-right'),
                                     ColorPicker::make('widget_color')
@@ -162,8 +164,8 @@ class ChatbotSettingsPage extends Page implements HasForms
                                         ->label('Ton du bot')
                                         ->options([
                                             'vouvoiement_chaleureux' => 'Vouvoiement chaleureux (recommandé)',
-                                            'tutoiement'             => 'Tutoiement décontracté',
-                                            'formel'                 => 'Formel / institutionnel',
+                                            'tutoiement' => 'Tutoiement décontracté',
+                                            'formel' => 'Formel / institutionnel',
                                         ])
                                         ->default('vouvoiement_chaleureux'),
                                 ]),
@@ -187,8 +189,8 @@ class ChatbotSettingsPage extends Page implements HasForms
                                         ->label('Action de fallback')
                                         ->options([
                                             'contact_form' => 'Rediriger vers /contact',
-                                            'audit_form'   => 'Rediriger vers /audit',
-                                            'custom_url'   => 'URL personnalisée',
+                                            'audit_form' => 'Rediriger vers /audit',
+                                            'custom_url' => 'URL personnalisée',
                                         ])
                                         ->default('contact_form'),
                                     TextInput::make('fallback_url')
@@ -253,6 +255,7 @@ class ChatbotSettingsPage extends Page implements HasForms
     {
         if (empty($this->testMessage)) {
             $this->testResult = ['error' => 'Saisis une question pour tester.'];
+
             return;
         }
 

@@ -16,6 +16,7 @@ class BrickMigrationSeeder extends Seeder
             // Skip if already has bricks
             if ($page->bricks()->count() > 0) {
                 $this->command->info("Page '{$page->name}' already has bricks, skipping.");
+
                 continue;
             }
 

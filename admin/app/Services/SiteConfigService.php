@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Models\GeneralSetting;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\HtmlString;
-use Illuminate\Support\Arr;
 
 class SiteConfigService
 {
@@ -36,25 +36,27 @@ class SiteConfigService
             $fonts = $this->fontPair();
 
             $vars = [
-                '--color-primary'      => $s->primary_color ?? '#1E3A5F',
-                '--color-secondary'    => $s->secondary_color ?? '#2D5F8A',
-                '--color-accent'       => $s->accent_color ?? '#F59E0B',
-                '--color-header-bg'    => $s->header_bg_color ?? '#0F172A',
-                '--color-header-text'  => $s->header_text_color ?? '#F8FAFC',
-                '--color-footer-bg'    => $s->footer_bg_color ?? '#1E293B',
-                '--color-footer-text'  => $s->footer_text_color ?? '#CBD5E1',
-                '--color-body-bg'      => $s->body_bg_color ?? '#FFFFFF',
+                '--color-primary' => $s->primary_color ?? '#1E3A5F',
+                '--color-secondary' => $s->secondary_color ?? '#2D5F8A',
+                '--color-accent' => $s->accent_color ?? '#F59E0B',
+                '--color-header-bg' => $s->header_bg_color ?? '#0F172A',
+                '--color-header-text' => $s->header_text_color ?? '#F8FAFC',
+                '--color-footer-bg' => $s->footer_bg_color ?? '#1E293B',
+                '--color-footer-text' => $s->footer_text_color ?? '#CBD5E1',
+                '--color-body-bg' => $s->body_bg_color ?? '#FFFFFF',
                 '--color-hero-overlay' => $s->hero_overlay_color ?? '#0F172A',
                 '--hero-overlay-opacity' => ($s->hero_overlay_opacity ?? 60) / 100,
-                '--color-cta-bg'       => $s->cta_bg_color ?? '#F59E0B',
-                '--color-cta-text'     => $s->cta_text_color ?? '#0F172A',
-                '--font-heading'       => $fonts['heading'],
-                '--font-body'          => $fonts['body'],
-                '--font-size-base'     => match($s->font_size_base ?? 'md') { 'sm' => '14px', 'lg' => '18px', default => '16px' },
-                '--radius'             => match($s->border_radius_style ?? 'medium') {
+                '--color-cta-bg' => $s->cta_bg_color ?? '#F59E0B',
+                '--color-cta-text' => $s->cta_text_color ?? '#0F172A',
+                '--font-heading' => $fonts['heading'],
+                '--font-body' => $fonts['body'],
+                '--font-size-base' => match ($s->font_size_base ?? 'md') {
+                    'sm' => '14px', 'lg' => '18px', default => '16px'
+                },
+                '--radius' => match ($s->border_radius_style ?? 'medium') {
                     'none' => '0', 'small' => '4px', 'large' => '12px', 'full' => '9999px', default => '8px'
                 },
-                '--shadow'             => match($s->shadow_style ?? 'subtle') {
+                '--shadow' => match ($s->shadow_style ?? 'subtle') {
                     'none' => 'none', 'medium' => '0 4px 6px rgba(0,0,0,0.1)', 'strong' => '0 10px 25px rgba(0,0,0,0.15)', default => '0 1px 3px rgba(0,0,0,0.08)'
                 },
             ];
@@ -65,7 +67,7 @@ class SiteConfigService
                 $lines[] = "    {$prop}: {$value};";
             }
 
-            return "<style>:root {\n" . implode("\n", $lines) . "\n}</style>";
+            return "<style>:root {\n".implode("\n", $lines)."\n}</style>";
         });
 
         return new HtmlString($css);
@@ -104,8 +106,8 @@ class SiteConfigService
         $found = collect($pairs)->firstWhere('key', $pair);
 
         return [
-            'heading' => "'" . ($found['heading'] ?? 'Inter') . "', sans-serif",
-            'body'    => "'" . ($found['body'] ?? 'DM Sans') . "', sans-serif",
+            'heading' => "'".($found['heading'] ?? 'Inter')."', sans-serif",
+            'body' => "'".($found['body'] ?? 'DM Sans')."', sans-serif",
         ];
     }
 
@@ -118,13 +120,13 @@ class SiteConfigService
         $s = $this->settings();
 
         return [
-            'style'       => $s->nav_style ?? 'sticky',
-            'cta_text'    => $s->nav_cta_text ?? 'Demander un audit',
-            'cta_url'     => $s->nav_cta_url ?? '/audit',
+            'style' => $s->nav_style ?? 'sticky',
+            'cta_text' => $s->nav_cta_text ?? 'Demander un audit',
+            'cta_url' => $s->nav_cta_url ?? '/audit',
             'cta_visible' => (bool) ($s->nav_cta_visible ?? true),
-            'show_phone'  => (bool) ($s->nav_show_phone ?? false),
-            'phone'       => $s->company_phone ?? '',
-            'items'       => collect($s->nav_items ?? [])->where('visible', true)->values()->toArray(),
+            'show_phone' => (bool) ($s->nav_show_phone ?? false),
+            'phone' => $s->company_phone ?? '',
+            'items' => collect($s->nav_items ?? [])->where('visible', true)->values()->toArray(),
         ];
     }
 
@@ -148,9 +150,9 @@ class SiteConfigService
 
             $data = [
                 '@context' => 'https://schema.org',
-                '@type'    => $type,
-                'name'     => $s->company_name ?? 'NeoGTB',
-                'url'      => config('app.url', 'https://neogtb.fr'),
+                '@type' => $type,
+                'name' => $s->company_name ?? 'NeoGTB',
+                'url' => config('app.url', 'https://neogtb.fr'),
             ];
 
             if (filled($s->company_description)) {
@@ -167,17 +169,17 @@ class SiteConfigService
 
             // Logo
             if (filled($s->company_logo)) {
-                $data['logo'] = asset('storage/' . $s->company_logo);
+                $data['logo'] = asset('storage/'.$s->company_logo);
             }
 
             // Address
             if (filled($s->company_address) || filled($s->company_city)) {
                 $data['address'] = [
-                    '@type'           => 'PostalAddress',
-                    'streetAddress'   => $s->company_address,
+                    '@type' => 'PostalAddress',
+                    'streetAddress' => $s->company_address,
                     'addressLocality' => $s->company_city,
-                    'postalCode'      => $s->company_postal_code,
-                    'addressCountry'  => 'FR',
+                    'postalCode' => $s->company_postal_code,
+                    'addressCountry' => 'FR',
                 ];
             }
 
@@ -208,7 +210,7 @@ class SiteConfigService
                 'Efficacité énergétique des bâtiments tertiaires',
             ];
 
-            return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</script>';
+            return '<script type="application/ld+json">'.json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT).'</script>';
         });
 
         return new HtmlString($jsonLd);
@@ -304,9 +306,9 @@ HTML;
         // couverts par les host-sources ajoutées via cspTrackerSources(). <noscript>/<iframe>
         // ne sont pas concernés (str_replace sans effet sur $body).
         if (filled($nonce)) {
-            $attr = ' nonce="' . e($nonce) . '"';
-            $head = str_replace('<script', '<script' . $attr, $head);
-            $body = str_replace('<script', '<script' . $attr, $body);
+            $attr = ' nonce="'.e($nonce).'"';
+            $head = str_replace('<script', '<script'.$attr, $head);
+            $body = str_replace('<script', '<script'.$attr, $body);
         }
 
         return [
@@ -327,12 +329,12 @@ HTML;
 
         // GTM ou GA4 (gtag servi par googletagmanager.com, collecte par google-analytics.com)
         if (filled($s->google_tag_manager_id) || filled($s->google_analytics_id)) {
-            $script[]  = 'https://www.googletagmanager.com';
+            $script[] = 'https://www.googletagmanager.com';
             $connect[] = 'https://www.googletagmanager.com';
             $connect[] = 'https://www.google-analytics.com';
             $connect[] = 'https://region1.google-analytics.com';
-            $img[]     = 'https://www.googletagmanager.com';
-            $img[]     = 'https://www.google-analytics.com';
+            $img[] = 'https://www.googletagmanager.com';
+            $img[] = 'https://www.google-analytics.com';
             if (filled($s->google_tag_manager_id)) {
                 $frame[] = 'https://www.googletagmanager.com'; // iframe noscript GTM
             }
@@ -340,18 +342,18 @@ HTML;
 
         // Meta Pixel
         if (filled($s->facebook_pixel_id)) {
-            $script[]  = 'https://connect.facebook.net';
+            $script[] = 'https://connect.facebook.net';
             $connect[] = 'https://www.facebook.com';
-            $img[]     = 'https://www.facebook.com';
+            $img[] = 'https://www.facebook.com';
         }
 
         // Hotjar
         if (filled($s->hotjar_id)) {
-            $script[]  = 'https://static.hotjar.com';
-            $script[]  = 'https://script.hotjar.com';
+            $script[] = 'https://static.hotjar.com';
+            $script[] = 'https://script.hotjar.com';
             $connect[] = 'https://*.hotjar.com';
             $connect[] = 'wss://*.hotjar.com';
-            $img[]     = 'https://*.hotjar.com';
+            $img[] = 'https://*.hotjar.com';
         }
 
         return compact('script', 'connect', 'img', 'frame');
@@ -374,10 +376,10 @@ HTML;
         }
 
         return [
-            'text'        => $s->announcement_text,
-            'url'         => $s->announcement_url,
-            'bg_color'    => $s->announcement_bg_color ?? '#0F766E',
-            'text_color'  => $s->announcement_text_color ?? '#FFFFFF',
+            'text' => $s->announcement_text,
+            'url' => $s->announcement_url,
+            'bg_color' => $s->announcement_bg_color ?? '#0F766E',
+            'text_color' => $s->announcement_text_color ?? '#FFFFFF',
             'dismissable' => (bool) ($s->announcement_dismissable ?? true),
         ];
     }
@@ -411,7 +413,7 @@ HTML;
             return $value;
         }
 
-        return asset('storage/' . ltrim($value, '/'));
+        return asset('storage/'.ltrim($value, '/'));
     }
 
     /**
@@ -480,9 +482,9 @@ HTML;
 
         return [
             'buildings_audited' => $s->stat_buildings_audited,
-            'avg_savings'       => $s->stat_avg_savings_percent,
-            'years_experience'  => $s->stat_years_experience,
-            'clients_count'     => $s->stat_clients_count,
+            'avg_savings' => $s->stat_avg_savings_percent,
+            'years_experience' => $s->stat_years_experience,
+            'clients_count' => $s->stat_clients_count,
         ];
     }
 
@@ -493,7 +495,10 @@ HTML;
     public function handicapReferent(): ?array
     {
         $s = $this->settings();
-        if (blank($s->handicap_referent_name)) return null;
+        if (blank($s->handicap_referent_name)) {
+            return null;
+        }
+
         return [
             'name' => $s->handicap_referent_name,
             'email' => $s->handicap_referent_email,
@@ -504,6 +509,7 @@ HTML;
     public function accessibilityInfo(): ?string
     {
         $info = $this->settings()->accessibility_info;
+
         return filled($info) ? $info : null;
     }
 
@@ -533,17 +539,17 @@ HTML;
 
     public function blogCategories(): array
     {
-        return Cache::remember('blog_categories', self::CACHE_TTL, fn() => $this->settings()->blog_categories_config ?? []);
+        return Cache::remember('blog_categories', self::CACHE_TTL, fn () => $this->settings()->blog_categories_config ?? []);
     }
 
     public function gtbProtocols(): array
     {
-        return Cache::remember('gtb_protocols', self::CACHE_TTL, fn() => $this->settings()->gtb_protocols_config ?? []);
+        return Cache::remember('gtb_protocols', self::CACHE_TTL, fn () => $this->settings()->gtb_protocols_config ?? []);
     }
 
     public function en15232Levels(): array
     {
-        return Cache::remember('en15232_levels', self::CACHE_TTL, fn() => $this->settings()->en15232_levels_config ?? []);
+        return Cache::remember('en15232_levels', self::CACHE_TTL, fn () => $this->settings()->en15232_levels_config ?? []);
     }
 
     public function homepageSections(): array

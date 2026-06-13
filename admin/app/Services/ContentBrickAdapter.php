@@ -47,7 +47,9 @@ class ContentBrickAdapter
         $bricks = [];
         foreach ($sectionsOrder as $section) {
             $section = trim($section);
-            if ($section === '_meta' || !isset($pageData[$section])) continue;
+            if ($section === '_meta' || ! isset($pageData[$section])) {
+                continue;
+            }
 
             $flatData = $pageData[$section];
             $brickType = $flatData['_brick_type'] ?? self::guessBrickType($section);
@@ -83,7 +85,9 @@ class ContentBrickAdapter
             if (str_ends_with($key, '_count')) {
                 $prefix = substr($key, 0, -6); // Remove '_count'
                 // Exclure les préfixes contenant un segment numérique (= sous-tableau imbriqué)
-                if (preg_match('/_\d+_/', $prefix . '_')) continue;
+                if (preg_match('/_\d+_/', $prefix.'_')) {
+                    continue;
+                }
                 $arrayPrefixes[$prefix] = (int) $value;
             }
         }
@@ -100,7 +104,7 @@ class ContentBrickAdapter
                     $items[] = $item;
                 }
             }
-            $pluralKey = self::$pluralMap[$prefix] ?? $prefix . 's';
+            $pluralKey = self::$pluralMap[$prefix] ?? $prefix.'s';
             $content[$pluralKey] = $items;
 
             // Marquer les clés comme traitées
@@ -116,9 +120,15 @@ class ContentBrickAdapter
 
         // Ajouter les scalaires (clés non traitées, non settings, non meta)
         foreach ($flat as $key => $value) {
-            if (in_array($key, $processedKeys)) continue;
-            if (str_starts_with($key, 'setting_')) continue;
-            if (str_starts_with($key, '_')) continue;
+            if (in_array($key, $processedKeys)) {
+                continue;
+            }
+            if (str_starts_with($key, 'setting_')) {
+                continue;
+            }
+            if (str_starts_with($key, '_')) {
+                continue;
+            }
             $content[$key] = $value;
         }
 
@@ -185,14 +195,14 @@ class ContentBrickAdapter
                     }
                 }
 
-                if (is_array($nestedSubFields) && !empty($nestedSubFields)) {
+                if (is_array($nestedSubFields) && ! empty($nestedSubFields)) {
                     $items[] = $nestedSubFields;
                 } elseif (is_string($nestedSubFields)) {
                     $items[] = $nestedSubFields;
                 }
             }
 
-            $pluralKey = self::$pluralMap[$nestedPrefix] ?? $nestedPrefix . 's';
+            $pluralKey = self::$pluralMap[$nestedPrefix] ?? $nestedPrefix.'s';
             $subFields[$pluralKey] = $items;
             $processedRemainders[] = "{$nestedPrefix}_count";
         }
@@ -201,7 +211,9 @@ class ContentBrickAdapter
         $subObjectFields = [];
         $simpleFields = [];
         foreach ($rawSubFields as $remainder => $value) {
-            if (in_array($remainder, $processedRemainders)) continue;
+            if (in_array($remainder, $processedRemainders)) {
+                continue;
+            }
 
             // Vérifier si c'est un sous-objet (contient _ et le premier segment n'est pas un index numérique)
             if (str_contains($remainder, '_')) {
@@ -213,8 +225,12 @@ class ContentBrickAdapter
                 // Un sous-objet a au moins 2 clés avec le même préfixe
                 $samePrefix = 0;
                 foreach ($rawSubFields as $r => $v) {
-                    if (in_array($r, $processedRemainders)) continue;
-                    if (str_starts_with($r, $subObjName . '_')) $samePrefix++;
+                    if (in_array($r, $processedRemainders)) {
+                        continue;
+                    }
+                    if (str_starts_with($r, $subObjName.'_')) {
+                        $samePrefix++;
+                    }
                 }
 
                 if ($samePrefix >= 2) {
@@ -252,6 +268,7 @@ class ContentBrickAdapter
                 $settings[$settingKey] = $value;
             }
         }
+
         return $settings;
     }
 
@@ -262,6 +279,7 @@ class ContentBrickAdapter
     private static function guessBrickType(string $section): string
     {
         $parts = explode('--', $section);
+
         return $parts[0];
     }
 }

@@ -245,8 +245,9 @@ class AllPagesBricksSeeder extends Seeder
     private function seedPage(string $slug, array $bricks): void
     {
         $page = SitePage::where('slug', $slug)->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->warn("Page '{$slug}' not found, skipping");
+
             return;
         }
 

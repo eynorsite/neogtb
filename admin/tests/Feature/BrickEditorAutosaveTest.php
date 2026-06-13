@@ -31,11 +31,12 @@ class BrickEditorAutosaveTest extends TestCase
     private function bootEditor(int $pageId): BrickEditorPage
     {
         try {
-            $editor = new BrickEditorPage();
+            $editor = new BrickEditorPage;
             $editor->mount($pageId);
+
             return $editor;
         } catch (\Throwable $e) {
-            $this->markTestSkipped('Impossible d\'instancier BrickEditorPage hors contexte Livewire : ' . $e->getMessage());
+            $this->markTestSkipped('Impossible d\'instancier BrickEditorPage hors contexte Livewire : '.$e->getMessage());
         }
     }
 
@@ -45,7 +46,7 @@ class BrickEditorAutosaveTest extends TestCase
             $admin = Admin::factory()->create();
             $this->actingAs($admin, 'admin');
         } catch (\Throwable $e) {
-            $this->markTestSkipped('Admin factory/guard indisponible : ' . $e->getMessage());
+            $this->markTestSkipped('Admin factory/guard indisponible : '.$e->getMessage());
         }
     }
 
@@ -68,7 +69,7 @@ class BrickEditorAutosaveTest extends TestCase
                 'settings' => $brick->settings ?? [],
             ]);
         } catch (\Throwable $e) {
-            $this->markTestSkipped('autoSaveBrick a levé une exception : ' . $e->getMessage());
+            $this->markTestSkipped('autoSaveBrick a levé une exception : '.$e->getMessage());
         }
 
         $fresh = $brick->fresh();
@@ -96,7 +97,7 @@ class BrickEditorAutosaveTest extends TestCase
                 'expected_version' => 1,
             ]);
         } catch (\Throwable $e) {
-            $this->markTestSkipped('autoSaveBrick a levé une exception : ' . $e->getMessage());
+            $this->markTestSkipped('autoSaveBrick a levé une exception : '.$e->getMessage());
         }
 
         $fresh = $brick->fresh();
@@ -115,7 +116,7 @@ class BrickEditorAutosaveTest extends TestCase
         try {
             $editor->autoSaveBrick(999999, ['content' => ['x' => 'y']]);
         } catch (\Throwable $e) {
-            $this->fail('autoSaveBrick devrait gérer un ID invalide silencieusement : ' . $e->getMessage());
+            $this->fail('autoSaveBrick devrait gérer un ID invalide silencieusement : '.$e->getMessage());
         }
 
         $this->assertTrue(true);
@@ -136,7 +137,7 @@ class BrickEditorAutosaveTest extends TestCase
         try {
             $editor->selectBrick(0); // selects $b1
         } catch (\Throwable $e) {
-            $this->markTestSkipped('selectBrick a échoué : ' . $e->getMessage());
+            $this->markTestSkipped('selectBrick a échoué : '.$e->getMessage());
         }
 
         $this->assertSame($b1->id, $editor->selectedBrickId);
@@ -145,7 +146,7 @@ class BrickEditorAutosaveTest extends TestCase
         try {
             $editor->reorderBricks([$b2->id, $b3->id, $b1->id]);
         } catch (\Throwable $e) {
-            $this->markTestSkipped('reorderBricks a échoué : ' . $e->getMessage());
+            $this->markTestSkipped('reorderBricks a échoué : '.$e->getMessage());
         }
 
         // selectedBrickId reste immuable

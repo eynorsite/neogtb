@@ -135,6 +135,7 @@ class PageContentsPage extends Page implements HasForms
             ->sort(function ($a, $b) {
                 $orderA = $this->pageOrder[$a] ?? 99;
                 $orderB = $this->pageOrder[$b] ?? 99;
+
                 return $orderA <=> $orderB;
             })
             ->values();
@@ -150,7 +151,7 @@ class PageContentsPage extends Page implements HasForms
 
             $tabs[] = Tab::make(ucfirst($page))
                 ->icon($this->pageIcons[$page] ?? 'heroicon-o-document')
-                ->badge($sectionCount . ' sections')
+                ->badge($sectionCount.' sections')
                 ->schema($this->buildSectionsForPage($page));
         }
 
@@ -334,7 +335,7 @@ class PageContentsPage extends Page implements HasForms
 
         Notification::make()
             ->title('Contenu enregistré')
-            ->body(count($changedPages) . ' page(s) mise(s) à jour')
+            ->body(count($changedPages).' page(s) mise(s) à jour')
             ->success()
             ->send();
     }
@@ -350,9 +351,9 @@ class PageContentsPage extends Page implements HasForms
             ->toArray();
 
         ContentRevision::create([
-            'batch_id'   => $batchId,
-            'page'       => $page,
-            'snapshot'   => $snapshot,
+            'batch_id' => $batchId,
+            'page' => $page,
+            'snapshot' => $snapshot,
             'created_by' => auth()->guard('admin')->id(),
         ]);
     }
@@ -445,11 +446,11 @@ class PageContentsPage extends Page implements HasForms
 
         $payload = [
             'exported_at' => now()->toIso8601String(),
-            'count'       => $rows->count(),
-            'contents'    => $rows->toArray(),
+            'count' => $rows->count(),
+            'contents' => $rows->toArray(),
         ];
 
-        $filename = 'neogtb-contenu-' . now()->format('Ymd-His') . '.json';
+        $filename = 'neogtb-contenu-'.now()->format('Ymd-His').'.json';
 
         return response()->streamDownload(function () use ($payload) {
             echo json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

@@ -24,6 +24,7 @@ class PageContent extends Model
     public static function getValue(string $page, string $section, string $key, mixed $default = null): mixed
     {
         $data = static::getPageData($page);
+
         return $data[$section][$key] ?? $default;
     }
 

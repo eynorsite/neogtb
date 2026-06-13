@@ -3,7 +3,6 @@
 namespace App\Filament\Pages;
 
 use App\Models\ChatbotConversation;
-use App\Models\ChatbotMessage;
 use App\Models\ChatbotSetting;
 use Filament\Pages\Page;
 use Illuminate\Support\Carbon;
@@ -26,6 +25,7 @@ class ChatbotStatsPage extends Page
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 

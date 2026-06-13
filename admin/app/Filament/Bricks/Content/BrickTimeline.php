@@ -129,6 +129,6 @@ class BrickTimeline extends BaseBrick
         $count = is_array($content['points'] ?? null) ? count($content['points']) : 0;
 
         return "<div class=\"font-bold text-base\">{$titre}</div>"
-            . "<div class=\"text-sm text-gray-500\">{$count} jalon(s)</div>";
+            ."<div class=\"text-sm text-gray-500\">{$count} jalon(s)</div>";
     }
 }

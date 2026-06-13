@@ -5,8 +5,8 @@ namespace App\Filament\Bricks\Content;
 use App\Filament\Bricks\BaseBrick;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 
 class BrickCtaCounter extends BaseBrick
 {
@@ -125,6 +125,6 @@ class BrickCtaCounter extends BaseBrick
         $bouton = $content['bouton_texte'] ?? 'Bouton';
 
         return "<div class=\"font-semibold\">{$titre}</div>"
-            . "<div class=\"text-xs text-primary-600\">[{$bouton}]</div>";
+            ."<div class=\"text-xs text-primary-600\">[{$bouton}]</div>";
     }
 }

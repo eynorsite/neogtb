@@ -4,6 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ChatbotKnowledgeResource\Pages;
 use App\Models\ChatbotKnowledgeSnippet;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -25,6 +29,7 @@ class ChatbotKnowledgeResource extends Resource
     protected static ?string $navigationLabel = 'Base de connaissances';
 
     protected static ?string $modelLabel = 'Snippet';
+
     protected static ?string $pluralModelLabel = 'Snippets';
 
     protected static ?int $navigationSort = 20;
@@ -32,6 +37,7 @@ class ChatbotKnowledgeResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
@@ -104,12 +110,12 @@ class ChatbotKnowledgeResource extends Resource
             ])
             ->defaultSort('priority', 'desc')
             ->recordActions([
-                \Filament\Actions\EditAction::make(),
-                \Filament\Actions\DeleteAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
-                \Filament\Actions\BulkActionGroup::make([
-                    \Filament\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -117,9 +123,9 @@ class ChatbotKnowledgeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListChatbotKnowledge::route('/'),
+            'index' => Pages\ListChatbotKnowledge::route('/'),
             'create' => Pages\CreateChatbotKnowledge::route('/create'),
-            'edit'   => Pages\EditChatbotKnowledge::route('/{record}/edit'),
+            'edit' => Pages\EditChatbotKnowledge::route('/{record}/edit'),
         ];
     }
 }

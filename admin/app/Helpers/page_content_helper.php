@@ -2,7 +2,7 @@
 
 use App\Models\PageContent;
 
-if (!function_exists('page_content')) {
+if (! function_exists('page_content')) {
     /**
      * Récupère une valeur de contenu de page.
      * Usage : page_content('accueil', 'hero', 'titre', 'Fallback')
@@ -20,7 +20,7 @@ if (!function_exists('page_content')) {
     }
 }
 
-if (!function_exists('clean_html')) {
+if (! function_exists('clean_html')) {
     /**
      * Nettoie le HTML pour prévenir XSS.
      */

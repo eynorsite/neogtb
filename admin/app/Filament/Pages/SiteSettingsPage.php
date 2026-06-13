@@ -2,7 +2,16 @@
 
 namespace App\Filament\Pages;
 
+use App\Models\Admin;
+use App\Models\AuditLead;
+use App\Models\ContactMessage;
 use App\Models\GeneralSetting;
+use App\Models\NavigationItem;
+use App\Models\Post;
+use App\Services\SiteConfigService;
+use Carbon\Carbon;
+use Filament\Actions\Action;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\KeyValue;
@@ -15,18 +24,21 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Filament\Actions\Action;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 class SiteSettingsPage extends Page implements HasForms
 {
@@ -122,7 +134,7 @@ class SiteSettingsPage extends Page implements HasForms
         $settings->update($data);
         GeneralSetting::clearCache();
 
-        app(\App\Services\SiteConfigService::class)->clearCache();
+        app(SiteConfigService::class)->clearCache();
 
         Notification::make()
             ->title('Paramètres enregistrés')
@@ -303,11 +315,11 @@ class SiteSettingsPage extends Page implements HasForms
 
         $settings->save();
         GeneralSetting::clearCache();
-        app(\App\Services\SiteConfigService::class)->clearCache();
+        app(SiteConfigService::class)->clearCache();
 
         Notification::make()
             ->title('Configurations restaurées')
-            ->body('Champs remplis : ' . implode(', ', $applied) . '. Rafraîchis la page pour voir les nouvelles options.')
+            ->body('Champs remplis : '.implode(', ', $applied).'. Rafraîchis la page pour voir les nouvelles options.')
             ->success()
             ->send();
     }
@@ -324,8 +336,8 @@ class SiteSettingsPage extends Page implements HasForms
             return null;
         }
 
-        $filename = 'neogtb-backup-' . now()->format('Ymd-His') . '.sqlite.gz';
-        $tmpPath = storage_path('app/' . $filename);
+        $filename = 'neogtb-backup-'.now()->format('Ymd-His').'.sqlite.gz';
+        $tmpPath = storage_path('app/'.$filename);
 
         $in = fopen($dbPath, 'rb');
         $out = gzopen($tmpPath, 'wb9');
@@ -349,7 +361,7 @@ class SiteSettingsPage extends Page implements HasForms
 
     public function testNavigationLinks(): void
     {
-        $items = \App\Models\NavigationItem::where('is_active', true)
+        $items = NavigationItem::where('is_active', true)
             ->whereNotNull('url')
             ->where('url', '!=', '')
             ->get(['id', 'label', 'url']);
@@ -368,33 +380,33 @@ class SiteSettingsPage extends Page implements HasForms
         foreach ($items as $item) {
             $url = $item->url;
             if (! str_starts_with($url, 'http')) {
-                $url = $base . '/' . ltrim($url, '/');
+                $url = $base.'/'.ltrim($url, '/');
             }
 
             try {
-                $response = \Illuminate\Support\Facades\Http::timeout(3)
+                $response = Http::timeout(3)
                     ->connectTimeout(2)
                     ->withUserAgent('NeoGTB-Admin-LinkChecker')
                     ->head($url);
                 $status = $response->status();
                 if ($status >= 200 && $status < 400) {
                     $ok++;
-                    $results[] = "✅ <code>$status</code> — " . e($item->label) . ' (' . e($url) . ')';
+                    $results[] = "✅ <code>$status</code> — ".e($item->label).' ('.e($url).')';
                 } else {
                     $ko++;
-                    $results[] = "❌ <code>$status</code> — " . e($item->label) . ' (' . e($url) . ')';
+                    $results[] = "❌ <code>$status</code> — ".e($item->label).' ('.e($url).')';
                 }
             } catch (\Throwable $e) {
                 $ko++;
-                $results[] = '⏱ <em>timeout</em> — ' . e($item->label) . ' (' . e($url) . ')';
+                $results[] = '⏱ <em>timeout</em> — '.e($item->label).' ('.e($url).')';
             }
         }
 
-        $body = '<div style="font-size:12px;line-height:1.6;">' . implode('<br>', $results) . '</div>';
+        $body = '<div style="font-size:12px;line-height:1.6;">'.implode('<br>', $results).'</div>';
 
         Notification::make()
             ->title("Liens testés : $ok OK / $ko KO")
-            ->body(new \Illuminate\Support\HtmlString($body))
+            ->body(new HtmlString($body))
             ->{$ko === 0 ? 'success' : 'warning'}()
             ->persistent()
             ->send();
@@ -407,7 +419,7 @@ class SiteSettingsPage extends Page implements HasForms
         $lifetime = (int) config('session.lifetime', 120);
         $cutoff = now()->subMinutes($lifetime)->timestamp;
 
-        $deleted = \Illuminate\Support\Facades\DB::table('sessions')
+        $deleted = DB::table('sessions')
             ->where('last_activity', '<', $cutoff)
             ->delete();
 
@@ -441,7 +453,7 @@ class SiteSettingsPage extends Page implements HasForms
         }
 
         $currentId = session()->getId();
-        $deleted = \Illuminate\Support\Facades\DB::table('sessions')
+        $deleted = DB::table('sessions')
             ->where('user_id', $admin->id)
             ->where('id', '!=', $currentId)
             ->delete();
@@ -474,12 +486,12 @@ class SiteSettingsPage extends Page implements HasForms
         return [
             'db_size' => $dbSize,
             'storage_size' => $storageSize,
-            'admin_count' => \App\Models\Admin::count(),
-            'active_sessions' => \Illuminate\Support\Facades\DB::table('sessions')->count(),
-            'auth_sessions' => \Illuminate\Support\Facades\DB::table('sessions')->whereNotNull('user_id')->count(),
-            'posts_count' => \App\Models\Post::count(),
-            'messages_count' => \App\Models\ContactMessage::count(),
-            'leads_count' => \App\Models\AuditLead::count(),
+            'admin_count' => Admin::count(),
+            'active_sessions' => DB::table('sessions')->count(),
+            'auth_sessions' => DB::table('sessions')->whereNotNull('user_id')->count(),
+            'posts_count' => Post::count(),
+            'messages_count' => ContactMessage::count(),
+            'leads_count' => AuditLead::count(),
         ];
     }
 
@@ -519,7 +531,7 @@ class SiteSettingsPage extends Page implements HasForms
             return [];
         }
 
-        return \Illuminate\Support\Facades\DB::table('sessions')
+        return DB::table('sessions')
             ->where('user_id', $admin->id)
             ->orderByDesc('last_activity')
             ->limit(20)
@@ -528,11 +540,11 @@ class SiteSettingsPage extends Page implements HasForms
     }
 
     /**
-     * @return array<int, \App\Models\Admin>
+     * @return array<int, Admin>
      */
-    protected function getAdminsLoginJournal(): \Illuminate\Support\Collection
+    protected function getAdminsLoginJournal(): Collection
     {
-        return \App\Models\Admin::select(['id', 'name', 'email', 'role', 'last_login_at', 'last_login_ip', 'is_active'])
+        return Admin::select(['id', 'name', 'email', 'role', 'last_login_at', 'last_login_ip', 'is_active'])
             ->orderByDesc('last_login_at')
             ->limit(15)
             ->get();
@@ -544,13 +556,13 @@ class SiteSettingsPage extends Page implements HasForms
             return "$bytes o";
         }
         if ($bytes < 1048576) {
-            return round($bytes / 1024, 1) . ' Ko';
+            return round($bytes / 1024, 1).' Ko';
         }
         if ($bytes < 1073741824) {
-            return round($bytes / 1048576, 1) . ' Mo';
+            return round($bytes / 1048576, 1).' Mo';
         }
 
-        return round($bytes / 1073741824, 2) . ' Go';
+        return round($bytes / 1073741824, 2).' Go';
     }
 
     // ─── ROLE HELPERS ──────────────────────────────────────
@@ -956,7 +968,7 @@ class SiteSettingsPage extends Page implements HasForms
                 Section::make('Sections de la page d\'accueil')
                     ->description('Cochez les sections à afficher et réordonnez-les.')
                     ->schema([
-                        \Filament\Forms\Components\CheckboxList::make('homepage_sections')
+                        CheckboxList::make('homepage_sections')
                             ->label('')
                             ->options([
                                 'hero' => 'Hero',
@@ -1102,14 +1114,14 @@ class SiteSettingsPage extends Page implements HasForms
                     Placeholder::make('google_preview')
                         ->label('')
                         ->content(function ($get) {
-                            $title = 'NeoGTB' . ($get('seo_title_suffix') ?? '');
+                            $title = 'NeoGTB'.($get('seo_title_suffix') ?? '');
                             $desc = $get('seo_default_description') ?? 'Description...';
 
-                            return new \Illuminate\Support\HtmlString(
+                            return new HtmlString(
                                 '<div style="padding:16px;border:1px solid #E2E8F0;border-radius:12px;background:white;">
                                     <div style="font-size:12px;color:#94A3B8;">neogtb.fr</div>
-                                    <div style="font-size:18px;color:#1a0dab;margin-top:4px;">' . e($title) . '</div>
-                                    <div style="font-size:13px;color:#4d5156;margin-top:4px;line-height:1.5;">' . e(\Illuminate\Support\Str::limit($desc, 160)) . '</div>
+                                    <div style="font-size:18px;color:#1a0dab;margin-top:4px;">'.e($title).'</div>
+                                    <div style="font-size:13px;color:#4d5156;margin-top:4px;line-height:1.5;">'.e(Str::limit($desc, 160)).'</div>
                                 </div>'
                             );
                         }),
@@ -1209,7 +1221,7 @@ class SiteSettingsPage extends Page implements HasForms
                                 ->icon('heroicon-o-envelope')
                                 ->color('info')
                                 ->requiresConfirmation()
-                                ->modalDescription(fn () => 'Envoi à l\'adresse de notification : ' . ($this->data['email_notification_to'] ?? '— (champ vide, Communication → Email)'))
+                                ->modalDescription(fn () => 'Envoi à l\'adresse de notification : '.($this->data['email_notification_to'] ?? '— (champ vide, Communication → Email)'))
                                 ->action(fn () => $this->sendTestEmail()),
                             Action::make('test_links')
                                 ->label('Tester les liens du menu')
@@ -1250,10 +1262,10 @@ class SiteSettingsPage extends Page implements HasForms
                                 $stats = $this->getSystemStats();
 
                                 $card = fn (string $icon, string $label, string $value) => '<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#FAFBFC;border-radius:10px;border:1px solid #F1F5F9;">'
-                                    . '<span style="font-size:16px;">' . $icon . '</span>'
-                                    . '<div style="flex:1;"><div style="font-size:11px;color:#6B7280;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;">' . $label . '</div>'
-                                    . '<div style="font-size:13px;color:#111827;font-weight:600;margin-top:2px;">' . $value . '</div></div>'
-                                    . '</div>';
+                                    .'<span style="font-size:16px;">'.$icon.'</span>'
+                                    .'<div style="flex:1;"><div style="font-size:11px;color:#6B7280;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;">'.$label.'</div>'
+                                    .'<div style="font-size:13px;color:#111827;font-weight:600;margin-top:2px;">'.$value.'</div></div>'
+                                    .'</div>';
 
                                 $items = [
                                     $card(! $debug ? '✅' : '❌', 'APP_DEBUG', $debug ? 'true (⚠ prod)' : 'false'),
@@ -1263,16 +1275,16 @@ class SiteSettingsPage extends Page implements HasForms
                                     $card('💾', 'Taille BDD', $this->formatBytes($stats['db_size'])),
                                     $card('📁', 'Poids storage/', $this->formatBytes($stats['storage_size'])),
                                     $card('👥', 'Admins', (string) $stats['admin_count']),
-                                    $card('🍪', 'Sessions (total / authent.)', $stats['active_sessions'] . ' / ' . $stats['auth_sessions']),
+                                    $card('🍪', 'Sessions (total / authent.)', $stats['active_sessions'].' / '.$stats['auth_sessions']),
                                     $card('📝', 'Articles', (string) $stats['posts_count']),
                                     $card('✉️', 'Messages contact', (string) $stats['messages_count']),
                                     $card('🏢', 'Demandes d\'audit', (string) $stats['leads_count']),
                                 ];
 
-                                return new \Illuminate\Support\HtmlString(
+                                return new HtmlString(
                                     '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">'
-                                    . implode('', $items)
-                                    . '</div>'
+                                    .implode('', $items)
+                                    .'</div>'
                                 );
                             }),
                     ]),
@@ -1295,7 +1307,7 @@ class SiteSettingsPage extends Page implements HasForms
                             ->content(function () {
                                 $sessions = $this->getActiveSessionsForAdmin();
                                 if (empty($sessions)) {
-                                    return new \Illuminate\Support\HtmlString('<div style="padding:16px;color:#6B7280;font-size:13px;">Aucune session active enregistrée.</div>');
+                                    return new HtmlString('<div style="padding:16px;color:#6B7280;font-size:13px;">Aucune session active enregistrée.</div>');
                                 }
 
                                 $currentId = session()->getId();
@@ -1303,23 +1315,23 @@ class SiteSettingsPage extends Page implements HasForms
                                 foreach ($sessions as $s) {
                                     $isCurrent = $s->id === $currentId;
                                     $ua = mb_strimwidth($s->user_agent ?? '—', 0, 80, '…');
-                                    $when = \Carbon\Carbon::createFromTimestamp($s->last_activity)->diffForHumans();
+                                    $when = Carbon::createFromTimestamp($s->last_activity)->diffForHumans();
                                     $rows[] = '<tr style="border-bottom:1px solid #F1F5F9;">'
-                                        . '<td style="padding:8px;font-size:12px;">' . ($isCurrent ? '🟢 <b>actuel</b>' : '⚪') . '</td>'
-                                        . '<td style="padding:8px;font-size:12px;font-family:monospace;">' . e($s->ip_address ?? '—') . '</td>'
-                                        . '<td style="padding:8px;font-size:12px;color:#6B7280;">' . e($ua) . '</td>'
-                                        . '<td style="padding:8px;font-size:12px;">' . e($when) . '</td>'
-                                        . '</tr>';
+                                        .'<td style="padding:8px;font-size:12px;">'.($isCurrent ? '🟢 <b>actuel</b>' : '⚪').'</td>'
+                                        .'<td style="padding:8px;font-size:12px;font-family:monospace;">'.e($s->ip_address ?? '—').'</td>'
+                                        .'<td style="padding:8px;font-size:12px;color:#6B7280;">'.e($ua).'</td>'
+                                        .'<td style="padding:8px;font-size:12px;">'.e($when).'</td>'
+                                        .'</tr>';
                                 }
 
-                                return new \Illuminate\Support\HtmlString(
+                                return new HtmlString(
                                     '<table style="width:100%;border-collapse:collapse;font-size:13px;">'
-                                    . '<thead><tr style="border-bottom:2px solid #E5E7EB;text-align:left;">'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">État</th>'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">IP</th>'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">User-Agent</th>'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Activité</th>'
-                                    . '</tr></thead><tbody>' . implode('', $rows) . '</tbody></table>'
+                                    .'<thead><tr style="border-bottom:2px solid #E5E7EB;text-align:left;">'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">État</th>'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">IP</th>'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">User-Agent</th>'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Activité</th>'
+                                    .'</tr></thead><tbody>'.implode('', $rows).'</tbody></table>'
                                 );
                             }),
                     ]),
@@ -1334,7 +1346,7 @@ class SiteSettingsPage extends Page implements HasForms
                             ->content(function () {
                                 $admins = $this->getAdminsLoginJournal();
                                 if ($admins->isEmpty()) {
-                                    return new \Illuminate\Support\HtmlString('<div style="padding:16px;color:#6B7280;">Aucun admin.</div>');
+                                    return new HtmlString('<div style="padding:16px;color:#6B7280;">Aucun admin.</div>');
                                 }
 
                                 $rows = [];
@@ -1342,23 +1354,23 @@ class SiteSettingsPage extends Page implements HasForms
                                     $when = $a->last_login_at ? $a->last_login_at->diffForHumans() : '<em style="color:#9CA3AF;">jamais</em>';
                                     $statusIcon = $a->is_active ? '🟢' : '⚫';
                                     $rows[] = '<tr style="border-bottom:1px solid #F1F5F9;">'
-                                        . '<td style="padding:8px;font-size:12px;">' . $statusIcon . ' ' . e($a->name) . '</td>'
-                                        . '<td style="padding:8px;font-size:12px;font-family:monospace;">' . e($a->email) . '</td>'
-                                        . '<td style="padding:8px;font-size:12px;"><span style="padding:2px 8px;background:#EDE9FE;color:#6C3AED;border-radius:6px;font-weight:600;">' . e($a->role) . '</span></td>'
-                                        . '<td style="padding:8px;font-size:12px;">' . $when . '</td>'
-                                        . '<td style="padding:8px;font-size:12px;font-family:monospace;color:#6B7280;">' . e($a->last_login_ip ?? '—') . '</td>'
-                                        . '</tr>';
+                                        .'<td style="padding:8px;font-size:12px;">'.$statusIcon.' '.e($a->name).'</td>'
+                                        .'<td style="padding:8px;font-size:12px;font-family:monospace;">'.e($a->email).'</td>'
+                                        .'<td style="padding:8px;font-size:12px;"><span style="padding:2px 8px;background:#EDE9FE;color:#6C3AED;border-radius:6px;font-weight:600;">'.e($a->role).'</span></td>'
+                                        .'<td style="padding:8px;font-size:12px;">'.$when.'</td>'
+                                        .'<td style="padding:8px;font-size:12px;font-family:monospace;color:#6B7280;">'.e($a->last_login_ip ?? '—').'</td>'
+                                        .'</tr>';
                                 }
 
-                                return new \Illuminate\Support\HtmlString(
+                                return new HtmlString(
                                     '<table style="width:100%;border-collapse:collapse;font-size:13px;">'
-                                    . '<thead><tr style="border-bottom:2px solid #E5E7EB;text-align:left;">'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Nom</th>'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Email</th>'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Rôle</th>'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Dernière connexion</th>'
-                                    . '<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">IP</th>'
-                                    . '</tr></thead><tbody>' . implode('', $rows) . '</tbody></table>'
+                                    .'<thead><tr style="border-bottom:2px solid #E5E7EB;text-align:left;">'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Nom</th>'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Email</th>'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Rôle</th>'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">Dernière connexion</th>'
+                                    .'<th style="padding:8px;font-size:11px;text-transform:uppercase;color:#6B7280;">IP</th>'
+                                    .'</tr></thead><tbody>'.implode('', $rows).'</tbody></table>'
                                 );
                             }),
                     ]),
@@ -1373,10 +1385,10 @@ class SiteSettingsPage extends Page implements HasForms
                             ->content(function () {
                                 $logs = $this->getRecentErrorLogs(50);
 
-                                return new \Illuminate\Support\HtmlString(
+                                return new HtmlString(
                                     '<pre style="background:#0F172A;color:#E2E8F0;padding:16px;border-radius:10px;font-size:11px;line-height:1.5;max-height:400px;overflow:auto;white-space:pre-wrap;word-break:break-all;">'
-                                    . e($logs)
-                                    . '</pre>'
+                                    .e($logs)
+                                    .'</pre>'
                                 );
                             }),
                     ]),
@@ -1998,7 +2010,7 @@ class SiteSettingsPage extends Page implements HasForms
                                     Select::make('category')
                                         ->options([
                                             'terrain' => 'Terrain (bus)',
-                                            'IP'      => 'IP (Ethernet)',
+                                            'IP' => 'IP (Ethernet)',
                                             'sans-fil' => 'Sans-fil',
                                         ])
                                         ->native(false),
@@ -2164,25 +2176,25 @@ class SiteSettingsPage extends Page implements HasForms
                                 ->numeric()
                                 ->suffix('jours')
                                 ->minValue($mins['contacts'] ?? 90)
-                                ->helperText('Minimum : ' . ($mins['contacts'] ?? 90) . ' jours'),
+                                ->helperText('Minimum : '.($mins['contacts'] ?? 90).' jours'),
                             TextInput::make('rgpd_retention_leads_days')
                                 ->label('Leads')
                                 ->numeric()
                                 ->suffix('jours')
                                 ->minValue($mins['leads'] ?? 90)
-                                ->helperText('Minimum : ' . ($mins['leads'] ?? 90) . ' jours'),
+                                ->helperText('Minimum : '.($mins['leads'] ?? 90).' jours'),
                             TextInput::make('rgpd_retention_cookies_days')
                                 ->label('Cookies')
                                 ->numeric()
                                 ->suffix('jours')
                                 ->minValue($mins['cookies'] ?? 30)
-                                ->helperText('Minimum : ' . ($mins['cookies'] ?? 30) . ' jours'),
+                                ->helperText('Minimum : '.($mins['cookies'] ?? 30).' jours'),
                             TextInput::make('rgpd_retention_newsletter_days')
                                 ->label('Newsletter')
                                 ->numeric()
                                 ->suffix('jours')
                                 ->minValue($mins['newsletter'] ?? 90)
-                                ->helperText('Minimum : ' . ($mins['newsletter'] ?? 90) . ' jours'),
+                                ->helperText('Minimum : '.($mins['newsletter'] ?? 90).' jours'),
                         ]),
                     ]),
             ]);
@@ -2233,5 +2245,4 @@ class SiteSettingsPage extends Page implements HasForms
                     ]),
             ]);
     }
-
 }

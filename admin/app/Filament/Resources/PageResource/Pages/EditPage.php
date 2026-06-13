@@ -24,7 +24,7 @@ class EditPage extends EditRecord
                 ->label('Voir sur le site')
                 ->icon('heroicon-o-eye')
                 ->color('gray')
-                ->url(fn () => '/' . $this->record->slug)
+                ->url(fn () => '/'.$this->record->slug)
                 ->openUrlInNewTab(),
             Actions\DeleteAction::make(),
         ];

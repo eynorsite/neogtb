@@ -29,10 +29,11 @@ return new class extends Migration
             DB::table('post_categories')
                 ->where('id', $guidesPlural->id)
                 ->update([
-                    'name'       => 'Guide',
-                    'slug'       => 'guide',
+                    'name' => 'Guide',
+                    'slug' => 'guide',
                     'updated_at' => now(),
                 ]);
+
             return;
         }
 

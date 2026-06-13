@@ -22,19 +22,19 @@ class LegalTextsSeeder extends Seeder
         $setting = GeneralSetting::get();
         $legalTexts = $setting->legal_texts ?? [];
 
-        $legalTexts['mentions_legales']         = $this->mentionsLegales();
+        $legalTexts['mentions_legales'] = $this->mentionsLegales();
         $legalTexts['politique_confidentialite'] = $this->politiqueConfidentialite();
-        $legalTexts['cookies']                  = $this->cookies();
-        $legalTexts['cgu']                      = $this->cgu();
+        $legalTexts['cookies'] = $this->cookies();
+        $legalTexts['cgu'] = $this->cgu();
 
         $setting->legal_texts = $legalTexts;
         $setting->save();
 
         $this->command->info('Legal texts mis à jour :');
-        $this->command->line('  - mentions_legales : ' . strlen($legalTexts['mentions_legales']) . ' chars');
-        $this->command->line('  - politique_confidentialite : ' . strlen($legalTexts['politique_confidentialite']) . ' chars');
-        $this->command->line('  - cookies : ' . strlen($legalTexts['cookies']) . ' chars');
-        $this->command->line('  - cgu : ' . strlen($legalTexts['cgu']) . ' chars');
+        $this->command->line('  - mentions_legales : '.strlen($legalTexts['mentions_legales']).' chars');
+        $this->command->line('  - politique_confidentialite : '.strlen($legalTexts['politique_confidentialite']).' chars');
+        $this->command->line('  - cookies : '.strlen($legalTexts['cookies']).' chars');
+        $this->command->line('  - cgu : '.strlen($legalTexts['cgu']).' chars');
     }
 
     private function mentionsLegales(): string

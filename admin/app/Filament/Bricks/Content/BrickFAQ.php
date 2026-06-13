@@ -9,11 +9,30 @@ use Filament\Forms\Components\TextInput;
 
 class BrickFAQ extends BaseBrick
 {
-    public function type(): string { return 'faq'; }
-    public function name(): string { return 'FAQ'; }
-    public function icon(): string { return '❓'; }
-    public function description(): string { return 'Questions/réponses en accordéon'; }
-    public function category(): string { return 'Contenu'; }
+    public function type(): string
+    {
+        return 'faq';
+    }
+
+    public function name(): string
+    {
+        return 'FAQ';
+    }
+
+    public function icon(): string
+    {
+        return '❓';
+    }
+
+    public function description(): string
+    {
+        return 'Questions/réponses en accordéon';
+    }
+
+    public function category(): string
+    {
+        return 'Contenu';
+    }
 
     public function defaultContent(): array
     {
@@ -38,7 +57,8 @@ class BrickFAQ extends BaseBrick
     public function preview(array $content): string
     {
         $nb = count($content['questions'] ?? []);
-        return "<div class=\"font-semibold\">" . ($content['titre'] ?? 'FAQ') . "</div>"
-            . "<div class=\"text-sm text-gray-500\">{$nb} question(s)</div>";
+
+        return '<div class="font-semibold">'.($content['titre'] ?? 'FAQ').'</div>'
+            ."<div class=\"text-sm text-gray-500\">{$nb} question(s)</div>";
     }
 }

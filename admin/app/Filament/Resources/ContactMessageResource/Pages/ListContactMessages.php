@@ -4,6 +4,7 @@ namespace App\Filament\Resources\ContactMessageResource\Pages;
 
 use App\Filament\Resources\ContactMessageResource;
 use App\Models\ContactMessage;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
 
 class ListContactMessages extends ListRecords
@@ -13,7 +14,7 @@ class ListContactMessages extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            \Filament\Actions\Action::make('export')
+            Action::make('export')
                 ->label('Exporter CSV')
                 ->icon('heroicon-o-arrow-down-tray')
                 ->color('gray')
@@ -23,9 +24,12 @@ class ListContactMessages extends ListRecords
                     foreach ($messages as $m) {
                         $csv .= "\"{$m->name}\";\"{$m->email}\";\"{$m->subject}\";\"{$m->status}\";\"{$m->created_at->format('d/m/Y H:i')}\"\n";
                     }
-                    $path = storage_path('app/exports/messages-' . now()->format('Y-m-d') . '.csv');
-                    if (!is_dir(dirname($path))) mkdir(dirname($path), 0755, true);
-                    file_put_contents($path, "\xEF\xBB\xBF" . $csv);
+                    $path = storage_path('app/exports/messages-'.now()->format('Y-m-d').'.csv');
+                    if (! is_dir(dirname($path))) {
+                        mkdir(dirname($path), 0755, true);
+                    }
+                    file_put_contents($path, "\xEF\xBB\xBF".$csv);
+
                     return response()->download($path)->deleteFileAfterSend();
                 }),
         ];

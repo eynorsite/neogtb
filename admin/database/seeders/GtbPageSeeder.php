@@ -57,9 +57,9 @@ class GtbPageSeeder extends Seeder
             'content' => [
                 'titre' => 'Définition et rôle de la GTB',
                 'contenu' => "<p>La <strong>Gestion Technique du Bâtiment</strong>, couramment abrégée GTB et connue en anglais sous le terme <em>Building Management System (BMS)</em>, est un système informatique qui centralise la supervision et le pilotage de tous les lots techniques d'un bâtiment.</p>"
-                    . "<p>Elle collecte en temps réel les données issues de capteurs (température, hygrométrie, luminosité, présence, qualité de l'air, comptage énergétique) et transmet des commandes aux actionneurs pour maintenir les conditions de confort tout en réduisant la consommation d'énergie.</p>"
-                    . "<p>Contrairement à une simple régulation locale, la GTB offre une <strong>vision globale du bâtiment</strong>. C'est cette capacité d'interopérabilité entre systèmes qui distingue une GTB d'un simple automate de régulation.</p>"
-                    . "<p><strong>Point clé :</strong> Depuis le décret BACS (2020), la mise en place d'un système d'automatisation est <strong>obligatoire</strong> pour les bâtiments tertiaires dont la puissance CVC dépasse 290 kW (2025), puis 70 kW (2030).</p>",
+                    ."<p>Elle collecte en temps réel les données issues de capteurs (température, hygrométrie, luminosité, présence, qualité de l'air, comptage énergétique) et transmet des commandes aux actionneurs pour maintenir les conditions de confort tout en réduisant la consommation d'énergie.</p>"
+                    ."<p>Contrairement à une simple régulation locale, la GTB offre une <strong>vision globale du bâtiment</strong>. C'est cette capacité d'interopérabilité entre systèmes qui distingue une GTB d'un simple automate de régulation.</p>"
+                    ."<p><strong>Point clé :</strong> Depuis le décret BACS (2020), la mise en place d'un système d'automatisation est <strong>obligatoire</strong> pour les bâtiments tertiaires dont la puissance CVC dépasse 290 kW (2025), puis 70 kW (2030).</p>",
             ],
             'settings' => ['largeur' => 'narrow'],
         ]);
@@ -77,9 +77,9 @@ class GtbPageSeeder extends Seeder
                 'sous_titre' => 'La norme EN ISO 52120-1 (ex-EN 15232) définit quatre classes de performance pour les systèmes de gestion technique du bâtiment.',
                 'cartes' => [
                     ['badge' => 'Classe D', 'titre' => 'Non performant', 'description' => "Aucun système d'automatisation. Pilotage manuel, sans régulation ni programmation. Référence basse à dépasser."],
-                    ['badge' => 'Classe C', 'titre' => 'Standard', 'description' => "Régulation de base et programmation horaire. Régulateurs individuels sans supervision centralisée. Niveau minimal pour les bâtiments neufs."],
-                    ['badge' => 'Classe B', 'titre' => 'Avancé', 'description' => "GTB centralisée, suivi énergétique, détection de dérives. Communication BACnet/KNX/Modbus. Exigence du décret BACS.", 'highlight' => true],
-                    ['badge' => 'Classe A', 'titre' => 'Haute performance', 'description' => "Régulation pièce par pièce, optimisation multi-lots, analyse avancée, détection automatique des défauts, ajustement prédictif."],
+                    ['badge' => 'Classe C', 'titre' => 'Standard', 'description' => 'Régulation de base et programmation horaire. Régulateurs individuels sans supervision centralisée. Niveau minimal pour les bâtiments neufs.'],
+                    ['badge' => 'Classe B', 'titre' => 'Avancé', 'description' => 'GTB centralisée, suivi énergétique, détection de dérives. Communication BACnet/KNX/Modbus. Exigence du décret BACS.', 'highlight' => true],
+                    ['badge' => 'Classe A', 'titre' => 'Haute performance', 'description' => 'Régulation pièce par pièce, optimisation multi-lots, analyse avancée, détection automatique des défauts, ajustement prédictif.'],
                 ],
             ],
             'settings' => ['colonnes' => 4, 'fond' => 'dark-50'],

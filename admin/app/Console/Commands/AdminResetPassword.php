@@ -43,6 +43,7 @@ class AdminResetPassword extends Command
             $this->line('Admins existants :');
             Admin::query()->orderBy('id')->get(['id', 'email', 'role', 'is_active'])
                 ->each(fn ($a) => $this->line("  #{$a->id}  {$a->email}  ({$a->role}, ".($a->is_active ? 'active' : 'inactive').')'));
+
             return self::FAILURE;
         }
 
@@ -54,9 +55,10 @@ class AdminResetPassword extends Command
             $generated = false;
         } else {
             $password = $this->secret('Nouveau mot de passe (min. 12 caractères)');
-            $confirm  = $this->secret('Confirmer le mot de passe');
+            $confirm = $this->secret('Confirmer le mot de passe');
             if ($password !== $confirm) {
                 $this->error('Les mots de passe ne correspondent pas.');
+
                 return self::FAILURE;
             }
             $generated = false;
@@ -73,6 +75,7 @@ class AdminResetPassword extends Command
                     $this->error($msg);
                 }
             }
+
             return self::FAILURE;
         }
 

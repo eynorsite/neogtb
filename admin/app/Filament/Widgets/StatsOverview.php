@@ -2,6 +2,9 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\ContactMessageResource;
+use App\Filament\Resources\GdprRequestResource;
+use App\Filament\Resources\PostResource;
 use App\Models\ContactMessage;
 use App\Models\GdprRequest;
 use App\Models\Post;
@@ -12,6 +15,7 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 class StatsOverview extends BaseWidget
 {
     protected static ?int $sort = 1;
+
     protected static bool $isDiscovered = false;
 
     protected function getStats(): array
@@ -27,19 +31,19 @@ class StatsOverview extends BaseWidget
                 ->description('Nouveaux messages de contact')
                 ->icon('heroicon-o-envelope')
                 ->color($unread > 0 ? 'danger' : 'success')
-                ->url(\App\Filament\Resources\ContactMessageResource::getUrl()),
+                ->url(ContactMessageResource::getUrl()),
 
             Stat::make('Demandes RGPD', $pendingGdpr)
                 ->description($overdueGdpr > 0 ? "{$overdueGdpr} en retard (> 30j)" : 'Aucun retard')
                 ->icon('heroicon-o-shield-check')
                 ->color($overdueGdpr > 0 ? 'danger' : ($pendingGdpr > 0 ? 'warning' : 'success'))
-                ->url(\App\Filament\Resources\GdprRequestResource::getUrl()),
+                ->url(GdprRequestResource::getUrl()),
 
             Stat::make('Articles publiés', Post::where('status', 'published')->count())
                 ->description('Articles sur le blog')
                 ->icon('heroicon-o-newspaper')
                 ->color('success')
-                ->url(\App\Filament\Resources\PostResource::getUrl()),
+                ->url(PostResource::getUrl()),
 
             Stat::make('Pages actives', SitePage::where('is_published', true)->count())
                 ->description('Pages du site')

@@ -3,7 +3,6 @@
 namespace Tests\Unit\Policies;
 
 use App\Models\Admin;
-use App\Models\GdprRequest;
 use App\Policies\GdprRequestPolicy;
 use Database\Factories\GdprRequestFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,7 +15,7 @@ class GdprRequestPolicyTest extends TestCase
 
     private function policy(): GdprRequestPolicy
     {
-        return new GdprRequestPolicy();
+        return new GdprRequestPolicy;
     }
 
     #[Test]

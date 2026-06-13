@@ -4,7 +4,6 @@ namespace App\Filament\Bricks\Content;
 
 use App\Filament\Bricks\BaseBrick;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -126,6 +125,6 @@ class BrickHero extends BaseBrick
         $sousTitre = $content['sous_titre'] ?? '';
 
         return "<div class=\"font-bold text-base\">{$titre}</div>"
-            . ($sousTitre ? "<div class=\"text-sm text-gray-500\">{$sousTitre}</div>" : '');
+            .($sousTitre ? "<div class=\"text-sm text-gray-500\">{$sousTitre}</div>" : '');
     }
 }

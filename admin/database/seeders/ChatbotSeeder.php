@@ -105,7 +105,7 @@ class ChatbotSeeder extends Seeder
             ],
             [
                 'question' => 'Combien coûte un accompagnement NeoGTB ?',
-                'answer' => "Le pré-diagnostic en ligne est gratuit. Pour un accompagnement personnalisé, le tarif dépend de la taille du bâtiment et du périmètre. Nous fournissons toujours un devis détaillé avant tout engagement. Demandez un devis sans engagement via /contact.",
+                'answer' => 'Le pré-diagnostic en ligne est gratuit. Pour un accompagnement personnalisé, le tarif dépend de la taille du bâtiment et du périmètre. Nous fournissons toujours un devis détaillé avant tout engagement. Demandez un devis sans engagement via /contact.',
                 'category' => 'Services',
                 'show_as_suggestion' => false,
                 'sort_order' => 5,
@@ -126,6 +126,6 @@ class ChatbotSeeder extends Seeder
             );
         }
 
-        $this->command?->info('Chatbot : settings + ' . count($snippets) . ' snippets + ' . count($faqs) . ' FAQ initialisés.');
+        $this->command?->info('Chatbot : settings + '.count($snippets).' snippets + '.count($faqs).' FAQ initialisés.');
     }
 }

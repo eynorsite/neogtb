@@ -13,24 +13,24 @@ class PageContentSeeder extends Seeder
      * Mapping des clés de tableaux vers leur préfixe singulier.
      */
     private const ARRAY_PREFIX_MAP = [
-        'stats'            => 'stat',
-        'cartes'           => 'carte',
-        'questions'        => 'question',
-        'etapes'           => 'etape',
-        'avis'             => 'avis',
-        'points'           => 'point',
-        'legende'          => 'legende',
-        'compteurs'        => 'compteur',
-        'cas'              => 'cas',
-        'lignes_gauche'    => 'ligne_gauche',
-        'lignes_droite'    => 'ligne_droite',
-        'identite'         => 'identite',
+        'stats' => 'stat',
+        'cartes' => 'carte',
+        'questions' => 'question',
+        'etapes' => 'etape',
+        'avis' => 'avis',
+        'points' => 'point',
+        'legende' => 'legende',
+        'compteurs' => 'compteur',
+        'cas' => 'cas',
+        'lignes_gauche' => 'ligne_gauche',
+        'lignes_droite' => 'ligne_droite',
+        'identite' => 'identite',
         'modele_economique' => 'modele_eco',
-        'logos'            => 'logo',
-        'tags'             => 'tag',
-        'colonnes'         => 'colonne',
-        'lignes'           => 'ligne',
-        'metriques'        => 'metrique',
+        'logos' => 'logo',
+        'tags' => 'tag',
+        'colonnes' => 'colonne',
+        'lignes' => 'ligne',
+        'metriques' => 'metrique',
     ];
 
     /**
@@ -47,6 +47,7 @@ class PageContentSeeder extends Seeder
 
         if ($pages->isEmpty()) {
             $this->command->warn('Aucune page trouvée dans site_pages.');
+
             return;
         }
 
@@ -77,7 +78,7 @@ class PageContentSeeder extends Seeder
                 $baseSection = $section;
                 $suffix = 2;
                 while (in_array($section, $sectionSlugs)) {
-                    $section = $baseSection . '--' . $suffix;
+                    $section = $baseSection.'--'.$suffix;
                     $suffix++;
                 }
                 $sectionSlugs[] = $section;
@@ -99,13 +100,13 @@ class PageContentSeeder extends Seeder
             $sectionsOrder = implode(',', $sectionSlugs);
             $this->upsert($slug, '_meta', 'sections_order', $sectionsOrder, 'text', 'Ordre des sections');
 
-            $this->command->info("  [{$slug}] {$this->stats[$slug]} entrées — " . count($sectionSlugs) . ' sections');
+            $this->command->info("  [{$slug}] {$this->stats[$slug]} entrées — ".count($sectionSlugs).' sections');
         }
 
         // Stats finales
         $this->command->newLine();
         $total = array_sum($this->stats);
-        $this->command->info("=== Terminé : {$total} entrées au total sur " . count($this->stats) . ' pages ===');
+        $this->command->info("=== Terminé : {$total} entrées au total sur ".count($this->stats).' pages ===');
         $this->command->newLine();
 
         foreach ($this->stats as $pageSlug => $count) {
@@ -124,7 +125,8 @@ class PageContentSeeder extends Seeder
 
         // Le type apparaît plusieurs fois → suffixe avec le slug du nom
         $nameSlug = Str::slug($name);
-        return $type . '--' . $nameSlug;
+
+        return $type.'--'.$nameSlug;
     }
 
     /**
@@ -140,12 +142,14 @@ class PageContentSeeder extends Seeder
             // Tableau indexé → utiliser le mapping de préfixe
             if (is_array($value) && $this->isIndexedArray($value)) {
                 $this->flattenIndexedArray($page, $section, $key, $value);
+
                 continue;
             }
 
             // Objet associatif (ex: gauge, preview_data) → aplatir en sous-clés
             if (is_array($value)) {
                 $this->flattenAssociativeArray($page, $section, $key, $value);
+
                 continue;
             }
 
@@ -168,10 +172,10 @@ class PageContentSeeder extends Seeder
         $this->upsert(
             $page,
             $section,
-            $prefix . '_count',
+            $prefix.'_count',
             (string) $count,
             'text',
-            $this->generateLabel($prefix . '_count')
+            $this->generateLabel($prefix.'_count')
         );
 
         foreach ($items as $index => $item) {
@@ -187,6 +191,7 @@ class PageContentSeeder extends Seeder
                     // Sous-tableaux dans un item (ex: cas.metriques, cas.gauge, cartes.tags, cartes.liste, cartes.preview_data)
                     if (is_array($fieldValue) && $this->isIndexedArray($fieldValue)) {
                         $this->flattenNestedIndexedArray($page, $section, $prefix, $n, $field, $fieldValue);
+
                         continue;
                     }
 
@@ -201,6 +206,7 @@ class PageContentSeeder extends Seeder
                             $label = $this->generateLabel($fullKey);
                             $this->upsert($page, $section, $fullKey, (string) $subVal, $type, $label);
                         }
+
                         continue;
                     }
 
@@ -245,6 +251,7 @@ class PageContentSeeder extends Seeder
                         // Cas très imbriqué — sérialiser en JSON
                         $fullKey = "{$parentPrefix}_{$parentN}_{$subPrefix}_{$n}_{$subField}";
                         $this->upsert($page, $section, $fullKey, json_encode($subValue, JSON_UNESCAPED_UNICODE), 'textarea', $this->generateLabel($fullKey));
+
                         continue;
                     }
                     $fullKey = "{$parentPrefix}_{$parentN}_{$subPrefix}_{$n}_{$subField}";
@@ -283,6 +290,7 @@ class PageContentSeeder extends Seeder
                 } else {
                     $this->flattenAssociativeArray($page, $section, $fullKey, $subValue);
                 }
+
                 continue;
             }
 
@@ -313,6 +321,7 @@ class PageContentSeeder extends Seeder
             if (is_array($value)) {
                 // Setting complexe → sérialiser en JSON
                 $this->upsert($page, $section, $fullKey, json_encode($value, JSON_UNESCAPED_UNICODE), 'textarea', $this->generateLabel($fullKey));
+
                 continue;
             }
 
@@ -370,8 +379,8 @@ class PageContentSeeder extends Seeder
         $metaLabels = [
             '_brick_type' => 'Type de brique',
             '_brick_name' => 'Nom de la brique',
-            '_visible'    => 'Visible',
-            '_order'      => 'Ordre',
+            '_visible' => 'Visible',
+            '_order' => 'Ordre',
         ];
 
         if (isset($metaLabels[$key])) {
@@ -381,13 +390,15 @@ class PageContentSeeder extends Seeder
         // Settings
         if (str_starts_with($key, 'setting_')) {
             $rest = substr($key, 8);
-            return '⚙️ ' . Str::ucfirst(str_replace('_', ' ', $rest));
+
+            return '⚙️ '.Str::ucfirst(str_replace('_', ' ', $rest));
         }
 
         // CTA
         if (preg_match('/^cta(\d?)_(.+)$/', $key, $m)) {
             $num = $m[1] ? " {$m[1]}" : '';
             $field = Str::ucfirst(str_replace('_', ' ', $m[2]));
+
             return "CTA{$num} — {$field}";
         }
 
@@ -395,6 +406,7 @@ class PageContentSeeder extends Seeder
         if (preg_match('/^bouton(\d?)_(.+)$/', $key, $m)) {
             $num = $m[1] ? " {$m[1]}" : '';
             $field = Str::ucfirst(str_replace('_', ' ', $m[2]));
+
             return "Bouton{$num} — {$field}";
         }
 
@@ -403,6 +415,7 @@ class PageContentSeeder extends Seeder
             $prefix = Str::ucfirst(str_replace('_', ' ', $m[1]));
             $num = $m[2];
             $field = Str::ucfirst(str_replace('_', ' ', $m[3]));
+
             return "{$prefix} {$num} — {$field}";
         }
 
@@ -410,12 +423,14 @@ class PageContentSeeder extends Seeder
         if (preg_match('/^(.+?)_(\d+)$/', $key, $m)) {
             $prefix = Str::ucfirst(str_replace('_', ' ', $m[1]));
             $num = $m[2];
+
             return "{$prefix} {$num}";
         }
 
         // Compteur : prefix_count → "Prefix (nombre)"
         if (preg_match('/^(.+?)_count$/', $key, $m)) {
             $prefix = Str::ucfirst(str_replace('_', ' ', $m[1]));
+
             return "{$prefix} (nombre)";
         }
 
@@ -431,6 +446,7 @@ class PageContentSeeder extends Seeder
         if (empty($arr)) {
             return false;
         }
+
         return array_keys($arr) === range(0, count($arr) - 1);
     }
 
@@ -441,13 +457,13 @@ class PageContentSeeder extends Seeder
     {
         PageContent::updateOrCreate(
             [
-                'page'    => $page,
+                'page' => $page,
                 'section' => $section,
-                'key'     => $key,
+                'key' => $key,
             ],
             [
                 'value' => $value,
-                'type'  => $type,
+                'type' => $type,
                 'label' => $label,
             ]
         );

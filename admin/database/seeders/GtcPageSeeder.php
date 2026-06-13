@@ -57,9 +57,9 @@ class GtcPageSeeder extends Seeder
             'content' => [
                 'titre' => 'Définition et rôle de la GTC',
                 'contenu' => "<p>La <strong>Gestion Technique Centralisée (GTC)</strong> désigne un système informatique dédié à la supervision des lots techniques d'un patrimoine immobilier. Elle collecte en temps réel les données remontées par les capteurs et automates et les restitue sur des synoptiques graphiques accessibles depuis un poste central ou un navigateur web.</p>"
-                    . "<p>Contrairement à un simple tableau de bord, la GTC offre une <strong>couche de supervision active</strong> : déclenchement d'alarmes en cas de dérive, historisation des mesures pour analyse de tendance, et possibilité d'envoyer des commandes simples aux équipements distants.</p>"
-                    . "<p>Dans le monde anglo-saxon, elle est souvent assimilée à un système de type <strong>SCADA</strong> (Supervisory Control And Data Acquisition) appliqué au bâtiment.</p>"
-                    . "<p><strong>Point clé :</strong> La GTC centralise la supervision de plusieurs sites ou de plusieurs lots techniques sur une plateforme unique. Elle remonte l'information, détecte les anomalies et permet un pilotage à distance, mais ne porte pas la régulation fine des équipements — c'est le rôle de la GTB.</p>",
+                    ."<p>Contrairement à un simple tableau de bord, la GTC offre une <strong>couche de supervision active</strong> : déclenchement d'alarmes en cas de dérive, historisation des mesures pour analyse de tendance, et possibilité d'envoyer des commandes simples aux équipements distants.</p>"
+                    .'<p>Dans le monde anglo-saxon, elle est souvent assimilée à un système de type <strong>SCADA</strong> (Supervisory Control And Data Acquisition) appliqué au bâtiment.</p>'
+                    ."<p><strong>Point clé :</strong> La GTC centralise la supervision de plusieurs sites ou de plusieurs lots techniques sur une plateforme unique. Elle remonte l'information, détecte les anomalies et permet un pilotage à distance, mais ne porte pas la régulation fine des équipements — c'est le rôle de la GTB.</p>",
             ],
             'settings' => ['largeur' => 'narrow'],
         ]);

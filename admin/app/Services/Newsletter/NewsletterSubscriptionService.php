@@ -25,7 +25,7 @@ class NewsletterSubscriptionService
         try {
             Mail::to($email)->queue(new NewsletterConfirmationMail($subscriber));
         } catch (\Throwable $e) {
-            Log::error('Newsletter mail failed: ' . $e->getMessage());
+            Log::error('Newsletter mail failed: '.$e->getMessage());
         }
 
         return $subscriber;
@@ -34,7 +34,7 @@ class NewsletterSubscriptionService
     public function confirm(string $token): ?NewsletterSubscriber
     {
         $subscriber = NewsletterSubscriber::where('confirmation_token', $token)->first();
-        if (!$subscriber || $subscriber->is_confirmed) {
+        if (! $subscriber || $subscriber->is_confirmed) {
             return $subscriber;
         }
 

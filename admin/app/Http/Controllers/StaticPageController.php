@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SitePage;
+use App\Services\ContentBrickAdapter;
 
 class StaticPageController extends Controller
 {
@@ -16,71 +17,71 @@ class StaticPageController extends Controller
      */
     public const DEFAULT_SEO = [
         'about' => [
-            'title'       => "À propos, Ulrich Calmo, consultant GTB indépendant | NeoGTB",
-            'description' => "Ulrich Calmo, fondateur de NeoGTB, consultant GTB indépendant basé à Bordeaux. Zéro lien fabricant, zéro commission, zéro revente de données.",
+            'title' => 'À propos, Ulrich Calmo, consultant GTB indépendant | NeoGTB',
+            'description' => 'Ulrich Calmo, fondateur de NeoGTB, consultant GTB indépendant basé à Bordeaux. Zéro lien fabricant, zéro commission, zéro revente de données.',
         ],
         'faq' => [
-            'title'       => "FAQ GTB, Questions fréquentes sur le décret BACS & NeoGTB",
+            'title' => 'FAQ GTB, Questions fréquentes sur le décret BACS & NeoGTB',
             'description' => "Réponses aux questions fréquentes sur la GTB, le décret BACS 2027/2030, le pré-diagnostic ISO 52120-1 et le modèle d'indépendance NeoGTB.",
         ],
         'contact' => [
-            'title'       => "Contact, Avis GTB indépendant sous 48h | NeoGTB Bordeaux",
-            'description' => "Contactez NeoGTB pour un avis GTB indépendant sur votre projet tertiaire. Consultant basé à Bordeaux, réponse garantie sous 48h ouvrées.",
+            'title' => 'Contact, Avis GTB indépendant sous 48h | NeoGTB Bordeaux',
+            'description' => 'Contactez NeoGTB pour un avis GTB indépendant sur votre projet tertiaire. Consultant basé à Bordeaux, réponse garantie sous 48h ouvrées.',
         ],
         'reglementation' => [
-            'title'       => "Réglementation GTB, Décret BACS, Tertiaire, RE2020",
-            'description' => "Décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, ISO 52120-1 : calendrier, seuils et obligations GTB pour les bâtiments tertiaires.",
+            'title' => 'Réglementation GTB, Décret BACS, Tertiaire, RE2020',
+            'description' => 'Décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, ISO 52120-1 : calendrier, seuils et obligations GTB pour les bâtiments tertiaires.',
         ],
         'positionnement' => [
-            'title'       => "Pourquoi NeoGTB, Conseil GTB 100 % indépendant, sans commission",
+            'title' => 'Pourquoi NeoGTB, Conseil GTB 100 % indépendant, sans commission',
             'description' => "NeoGTB n'est lié à aucun fabricant : zéro commission, zéro affiliation, zéro revente de données. Découvrez les preuves concrètes de notre indépendance.",
         ],
         'gtb' => [
-            'title'       => "Qu'est-ce que la GTB ? 4 niveaux ISO 52120-1 | NeoGTB",
-            'description' => "Guide complet GTB 2026 : définition, 4 niveaux ISO 52120-1 (ex-EN 15232), protocoles BACnet/KNX/Modbus, décret BACS et obligations réglementaires.",
+            'title' => "Qu'est-ce que la GTB ? 4 niveaux ISO 52120-1 | NeoGTB",
+            'description' => 'Guide complet GTB 2026 : définition, 4 niveaux ISO 52120-1 (ex-EN 15232), protocoles BACnet/KNX/Modbus, décret BACS et obligations réglementaires.',
         ],
         'gtc' => [
-            'title'       => "Qu'est-ce que la GTC ? Différences avec la GTB | NeoGTB",
-            'description' => "Guide GTC : définition, différences clés avec la GTB, architecture type, protocoles OPC-UA, BACnet, Modbus et supervision multi-sites expliqués simplement.",
+            'title' => "Qu'est-ce que la GTC ? Différences avec la GTB | NeoGTB",
+            'description' => 'Guide GTC : définition, différences clés avec la GTB, architecture type, protocoles OPC-UA, BACnet, Modbus et supervision multi-sites expliqués simplement.',
         ],
         'solutions' => [
-            'title'       => "Solutions GTB : protocoles BACnet, KNX, Modbus, LON, Comparatif",
-            'description' => "Comparatif indépendant des protocoles GTB (BACnet, KNX, Modbus, LON), capteurs et automates. Guide technique sans lien commercial ni affiliation.",
+            'title' => 'Solutions GTB : protocoles BACnet, KNX, Modbus, LON, Comparatif',
+            'description' => 'Comparatif indépendant des protocoles GTB (BACnet, KNX, Modbus, LON), capteurs et automates. Guide technique sans lien commercial ni affiliation.',
         ],
         'mentions-legales' => [
-            'title'       => "Mentions légales - NeoGTB.fr",
+            'title' => 'Mentions légales - NeoGTB.fr',
             'description' => "Mentions légales de NeoGTB.fr : éditeur, directeur de publication, hébergeur, propriété intellectuelle et conditions générales d'utilisation du site.",
         ],
         'politique-de-confidentialite' => [
-            'title'       => "Politique de confidentialité, RGPD | NeoGTB",
-            'description' => "Comment NeoGTB collecte, utilise et protège vos données personnelles conformément au RGPD. Finalités, durées de conservation et vos droits détaillés.",
+            'title' => 'Politique de confidentialité, RGPD | NeoGTB',
+            'description' => 'Comment NeoGTB collecte, utilise et protège vos données personnelles conformément au RGPD. Finalités, durées de conservation et vos droits détaillés.',
         ],
         'mes-droits-rgpd' => [
-            'title'       => "Vos droits RGPD, Accès, rectification, suppression | NeoGTB",
-            'description' => "Exercez vos droits RGPD sur NeoGTB : accès, rectification, suppression, portabilité, opposition et limitation. Réponse garantie sous 30 jours.",
+            'title' => 'Vos droits RGPD, Accès, rectification, suppression | NeoGTB',
+            'description' => 'Exercez vos droits RGPD sur NeoGTB : accès, rectification, suppression, portabilité, opposition et limitation. Réponse garantie sous 30 jours.',
         ],
         'newsletter-confirmee' => [
-            'title'       => "Inscription confirmée, Veille GTB mensuelle | NeoGTB",
-            'description' => "Votre inscription à la veille GTB mensuelle NeoGTB est confirmée. Vous recevrez chaque mois une analyse indépendante du secteur GTB et du décret BACS.",
+            'title' => 'Inscription confirmée, Veille GTB mensuelle | NeoGTB',
+            'description' => 'Votre inscription à la veille GTB mensuelle NeoGTB est confirmée. Vous recevrez chaque mois une analyse indépendante du secteur GTB et du décret BACS.',
         ],
         'audit' => [
-            'title'       => "Pré-diagnostic GTB gratuit, Évaluez en 5 min | Décret BACS",
-            'description' => "Pré-diagnostic GTB gratuit en 5 minutes : évaluez la conformité décret BACS de votre bâtiment, estimez vos économies et recevez un rapport ISO 52120-1.",
+            'title' => 'Pré-diagnostic GTB gratuit, Évaluez en 5 min | Décret BACS',
+            'description' => 'Pré-diagnostic GTB gratuit en 5 minutes : évaluez la conformité décret BACS de votre bâtiment, estimez vos économies et recevez un rapport ISO 52120-1.',
         ],
         'comparateur' => [
-            'title'       => "Comparateur GTB indépendant, Schneider, Siemens, Honeywell",
-            'description' => "Comparez 10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense. Comparatif 100 % indépendant, sans commission.",
+            'title' => 'Comparateur GTB indépendant, Schneider, Siemens, Honeywell',
+            'description' => 'Comparez 10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense. Comparatif 100 % indépendant, sans commission.',
         ],
         'generateur-cee' => [
-            'title'       => "Simulateur CEE GTB, Estimez vos primes BAT-TH-116 | NeoGTB",
+            'title' => 'Simulateur CEE GTB, Estimez vos primes BAT-TH-116 | NeoGTB',
             'description' => "Estimez vos Certificats d'Économies d'Énergie (CEE BAT-TH-116) pour un projet GTB en 3 minutes. Outil gratuit, indépendant, sans lien commercial.",
         ],
         'tables-modbus' => [
-            'title'       => "Tables Modbus, 19 équipements GTB | NeoGTB",
-            'description' => "Catalogue technique des registres Modbus pour 19 équipements GTB : compteurs, PAC, CTA, chaudières, sondes, vannes, éclairage. Données à vérifier fabricant.",
+            'title' => 'Tables Modbus, 19 équipements GTB | NeoGTB',
+            'description' => 'Catalogue technique des registres Modbus pour 19 équipements GTB : compteurs, PAC, CTA, chaudières, sondes, vannes, éclairage. Données à vérifier fabricant.',
         ],
         'cookies' => [
-            'title'       => "Politique cookies - NeoGTB n'utilise aucun cookie traceur",
+            'title' => "Politique cookies - NeoGTB n'utilise aucun cookie traceur",
             'description' => "NeoGTB n'utilise aucun cookie traceur ni publicitaire. Analytics Plausible sans cookie, exempt CNIL. Seuls des cookies techniques Laravel (session, CSRF).",
         ],
     ];
@@ -88,7 +89,7 @@ class StaticPageController extends Controller
     public function accueil()
     {
         $page = SitePage::where('slug', 'accueil')->firstOrFail();
-        $bricks = \App\Services\ContentBrickAdapter::buildBricks('accueil');
+        $bricks = ContentBrickAdapter::buildBricks('accueil');
 
         return view('front.page', compact('page', 'bricks'));
     }
@@ -107,10 +108,10 @@ class StaticPageController extends Controller
         $sp = SitePage::where('slug', $slug)->where('is_published', true)->first();
 
         return [
-            'seoTitle'       => filled($sp?->meta_title) ? $sp->meta_title : $default['title'],
+            'seoTitle' => filled($sp?->meta_title) ? $sp->meta_title : $default['title'],
             'seoDescription' => filled($sp?->meta_description) ? $sp->meta_description : $default['description'],
-            'seoOgImage'     => $ogImage ?: '/images/og-neogtb.png',
-            'seoUrl'         => url()->current(),
+            'seoOgImage' => $ogImage ?: '/images/og-neogtb.png',
+            'seoUrl' => url()->current(),
         ];
     }
 

@@ -15,8 +15,9 @@ class AboutPageSeeder extends Seeder
     public function run(): void
     {
         $page = SitePage::where('slug', 'about')->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->error('Page About introuvable. Lance d\'abord SitePagesSeeder.');
+
             return;
         }
 

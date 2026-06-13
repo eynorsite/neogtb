@@ -4,6 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Post;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ReplicateAction;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -16,6 +21,8 @@ use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class PostResource extends Resource
@@ -29,6 +36,7 @@ class PostResource extends Resource
     protected static ?string $navigationLabel = 'Articles';
 
     protected static ?string $modelLabel = 'Article';
+
     protected static ?string $pluralModelLabel = 'Articles';
 
     protected static ?int $navigationSort = 20;
@@ -36,28 +44,32 @@ class PostResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
     }
 
     public static function canCreate(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
     }
 
-    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canEdit(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
     }
 
-    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canDelete(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
-    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->with(['category', 'author', 'tags']);
     }
@@ -250,34 +262,34 @@ class PostResource extends Resource
                     ->relationship('category', 'name'),
             ])
             ->actions([
-                \Filament\Actions\EditAction::make()
+                EditAction::make()
                     ->label('Modifier'),
-                \Filament\Actions\Action::make('viewOnSite')
+                Action::make('viewOnSite')
                     ->label('Voir sur le site')
                     ->icon('heroicon-o-arrow-top-right-on-square')
                     ->color('gray')
                     ->url(fn ($record) => "https://neogtb.fr/blog/{$record->slug}", shouldOpenInNewTab: true)
                     ->visible(fn ($record) => $record->status === 'published'),
-                \Filament\Actions\ReplicateAction::make()
+                ReplicateAction::make()
                     ->label('Dupliquer')
                     ->excludeAttributes(['slug', 'views_count', 'published_at'])
                     ->beforeReplicaSaved(function ($replica) {
-                        $replica->slug = $replica->slug . '-copie-' . now()->timestamp;
+                        $replica->slug = $replica->slug.'-copie-'.now()->timestamp;
                         $replica->status = 'draft';
-                        $replica->title = $replica->title . ' (copie)';
+                        $replica->title = $replica->title.' (copie)';
                     }),
             ])
             ->bulkActions([
-                \Filament\Actions\BulkAction::make('publish')
+                BulkAction::make('publish')
                     ->label('Publier')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
                     ->action(fn ($records) => $records->each->update(['status' => 'published', 'published_at' => now()])),
-                \Filament\Actions\BulkAction::make('archive')
+                BulkAction::make('archive')
                     ->label('Archiver')
                     ->icon('heroicon-o-archive-box')
                     ->action(fn ($records) => $records->each->update(['status' => 'archived'])),
-                \Filament\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
             ]);
     }
 

@@ -8,11 +8,11 @@ class ConsentHelper
     {
         $cookie = request()->cookie('cookie_consent');
 
-        if (!$cookie) {
+        if (! $cookie) {
             return [
-                'necessary'   => true,
-                'analytics'   => false,
-                'marketing'   => false,
+                'necessary' => true,
+                'analytics' => false,
+                'marketing' => false,
                 'preferences' => false,
             ];
         }
@@ -20,9 +20,9 @@ class ConsentHelper
         $data = is_string($cookie) ? json_decode($cookie, true) : $cookie;
 
         return [
-            'necessary'   => true,
-            'analytics'   => (bool) ($data['analytics'] ?? false),
-            'marketing'   => (bool) ($data['marketing'] ?? false),
+            'necessary' => true,
+            'analytics' => (bool) ($data['analytics'] ?? false),
+            'marketing' => (bool) ($data['marketing'] ?? false),
             'preferences' => (bool) ($data['preferences'] ?? false),
         ];
     }

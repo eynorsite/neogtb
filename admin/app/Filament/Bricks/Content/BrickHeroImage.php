@@ -162,10 +162,10 @@ class BrickHeroImage extends BaseBrick
         $titre = $content['titre'] ?? 'Titre Hero Image';
         $description = $content['description'] ?? '';
         $descriptionCourt = mb_strlen($description) > 100
-            ? mb_substr($description, 0, 100) . '…'
+            ? mb_substr($description, 0, 100).'…'
             : $description;
 
         return "<div class=\"font-bold\">{$titre}</div>"
-            . "<div class=\"text-xs\">{$descriptionCourt}</div>";
+            ."<div class=\"text-xs\">{$descriptionCourt}</div>";
     }
 }

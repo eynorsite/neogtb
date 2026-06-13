@@ -4,6 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostCategoryResource\Pages;
 use App\Models\PostCategory;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -12,6 +15,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class PostCategoryResource extends Resource
 {
@@ -24,6 +29,7 @@ class PostCategoryResource extends Resource
     protected static ?string $navigationLabel = 'Catégories';
 
     protected static ?string $modelLabel = 'Catégorie';
+
     protected static ?string $pluralModelLabel = 'Catégories';
 
     protected static ?int $navigationSort = 25;
@@ -31,28 +37,32 @@ class PostCategoryResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
     }
 
     public static function canCreate(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
-    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canEdit(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
-    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canDelete(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
-    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->withCount('posts');
     }
@@ -125,8 +135,8 @@ class PostCategoryResource extends Resource
             ->defaultSort('order')
             ->reorderable('order')
             ->actions([
-                \Filament\Actions\EditAction::make(),
-                \Filament\Actions\DeleteAction::make()
+                EditAction::make(),
+                DeleteAction::make()
                     ->before(function ($record) {
                         if ($record->posts()->count() > 0) {
                             throw new \Exception("Impossible de supprimer : {$record->posts()->count()} article(s) utilisent cette catégorie.");
@@ -134,7 +144,7 @@ class PostCategoryResource extends Resource
                     }),
             ])
             ->bulkActions([
-                \Filament\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
             ]);
     }
 

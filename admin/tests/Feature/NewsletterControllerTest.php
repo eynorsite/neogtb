@@ -44,7 +44,7 @@ class NewsletterControllerTest extends TestCase
             'is_confirmed' => false,
         ]);
 
-        $response = $this->get('/newsletter/confirm/' . $token);
+        $response = $this->get('/newsletter/confirm/'.$token);
         $response->assertOk();
 
         $this->assertTrue($sub->fresh()->is_confirmed);

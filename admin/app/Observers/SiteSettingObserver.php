@@ -88,15 +88,15 @@ class SiteSettingObserver
         $parts = explode('.', $lastVersion);
         $major = (int) ($parts[0] ?? 0);
         $minor = (int) ($parts[1] ?? 0);
-        $newVersion = $major . '.' . ($minor + 1);
+        $newVersion = $major.'.'.($minor + 1);
 
         // Créer la nouvelle version
         PrivacyPolicyVersion::create([
-            'version'      => $newVersion,
-            'content'      => $content,
+            'version' => $newVersion,
+            'content' => $content,
             'published_at' => now(),
-            'is_current'   => true,
-            'created_by'   => $authorId,
+            'is_current' => true,
+            'created_by' => $authorId,
         ]);
     }
 

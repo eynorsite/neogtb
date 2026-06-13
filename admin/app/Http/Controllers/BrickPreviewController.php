@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\PageBrick;
 use App\Models\SitePage;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 /**
  * Renders bricks in isolation for the brick editor live preview iframe.
@@ -21,7 +20,7 @@ class BrickPreviewController extends Controller
     {
         // Authorization: only authenticated admins (any role)
         $admin = auth()->guard('admin')->user();
-        if (!$admin) {
+        if (! $admin) {
             abort(401, 'Unauthorized');
         }
 
@@ -42,12 +41,12 @@ class BrickPreviewController extends Controller
     public function renderBrick(int $brickId): JsonResponse
     {
         $admin = auth()->guard('admin')->user();
-        if (!$admin) {
+        if (! $admin) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         $brick = PageBrick::find($brickId);
-        if (!$brick) {
+        if (! $brick) {
             return response()->json(['error' => 'Brick not found'], 404);
         }
 

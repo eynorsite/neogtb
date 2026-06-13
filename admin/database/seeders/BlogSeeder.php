@@ -80,6 +80,6 @@ class BlogSeeder extends Seeder
             );
         }
 
-        $this->command->info(count($posts) . ' articles de blog injectés.');
+        $this->command->info(count($posts).' articles de blog injectés.');
     }
 }

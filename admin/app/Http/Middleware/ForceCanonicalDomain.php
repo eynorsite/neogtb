@@ -10,7 +10,7 @@ class ForceCanonicalDomain
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!app()->isProduction()) {
+        if (! app()->isProduction()) {
             return $next($request);
         }
 
@@ -18,7 +18,8 @@ class ForceCanonicalDomain
         $currentHost = $request->getHost();
 
         if ($currentHost !== $canonicalDomain) {
-            $url = $request->getScheme() . '://' . $canonicalDomain . $request->getRequestUri();
+            $url = $request->getScheme().'://'.$canonicalDomain.$request->getRequestUri();
+
             return redirect($url, 301);
         }
 

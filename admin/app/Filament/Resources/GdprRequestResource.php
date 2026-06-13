@@ -5,6 +5,9 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\GdprRequestResource\Pages;
 use App\Mail\GdprResponseMail;
 use App\Models\GdprRequest;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -13,6 +16,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 
 class GdprRequestResource extends Resource
@@ -26,6 +30,7 @@ class GdprRequestResource extends Resource
     protected static ?string $navigationLabel = 'Droits visiteurs (RGPD)';
 
     protected static ?string $modelLabel = 'Demande RGPD';
+
     protected static ?string $pluralModelLabel = 'Demandes RGPD';
 
     protected static ?int $navigationSort = 40;
@@ -33,6 +38,7 @@ class GdprRequestResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
@@ -41,15 +47,17 @@ class GdprRequestResource extends Resource
         return false;
     }
 
-    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canEdit(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
-    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canDelete(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && $admin->role === 'superadmin';
     }
 
@@ -209,8 +217,8 @@ class GdprRequestResource extends Resource
                     ]),
             ])
             ->actions([
-                \Filament\Actions\EditAction::make(),
-                \Filament\Actions\Action::make('markProcessing')
+                EditAction::make(),
+                Action::make('markProcessing')
                     ->label('Prendre en charge')
                     ->icon('heroicon-o-play')
                     ->color('warning')
@@ -221,7 +229,7 @@ class GdprRequestResource extends Resource
                         ]);
                     })
                     ->visible(fn ($record) => $record->status === 'pending'),
-                \Filament\Actions\Action::make('sendResponse')
+                Action::make('sendResponse')
                     ->label('Envoyer réponse')
                     ->icon('heroicon-o-paper-airplane')
                     ->color('success')
@@ -237,7 +245,7 @@ class GdprRequestResource extends Resource
                         ]);
                     })
                     ->visible(fn ($record) => filled($record->response_content) && $record->status !== 'completed'),
-                \Filament\Actions\Action::make('markCompleted')
+                Action::make('markCompleted')
                     ->label('Marquer traitée')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
@@ -251,7 +259,7 @@ class GdprRequestResource extends Resource
                     ->visible(fn ($record) => in_array($record->status, ['pending', 'processing'])),
             ])
             ->bulkActions([
-                \Filament\Actions\BulkAction::make('markProcessing')
+                BulkAction::make('markProcessing')
                     ->label('Prendre en charge')
                     ->icon('heroicon-o-play')
                     ->action(fn ($records) => $records->each(fn ($r) => $r->update([

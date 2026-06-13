@@ -15,8 +15,9 @@ class ReglementationPageSeeder extends Seeder
     public function run(): void
     {
         $page = SitePage::where('slug', 'reglementation')->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->error('Page Réglementation introuvable. Lance d\'abord SitePagesSeeder.');
+
             return;
         }
 

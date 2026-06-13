@@ -77,7 +77,7 @@ class SeoTest extends TestCase
             'published_at' => now(),
         ]);
 
-        $response = $this->get('/blog/' . $post->slug);
+        $response = $this->get('/blog/'.$post->slug);
         $response->assertOk();
 
         $html = $response->getContent();
@@ -131,7 +131,7 @@ class SeoTest extends TestCase
         $response->assertOk();
 
         $xml = $response->getContent();
-        $this->assertStringContainsString('/blog/' . $post->slug, $xml);
+        $this->assertStringContainsString('/blog/'.$post->slug, $xml);
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -251,6 +251,7 @@ class SeoTest extends TestCase
                 }
                 if (strcasecmp(trim($m[1]), $agent) === 0) {
                     $capturing = true;
+
                     continue;
                 }
             }

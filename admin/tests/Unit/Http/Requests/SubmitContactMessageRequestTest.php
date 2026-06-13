@@ -4,14 +4,16 @@ namespace Tests\Unit\Http\Requests;
 
 use App\Http\Requests\SubmitContactMessageRequest;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
+use Illuminate\Contracts\Validation\Validator;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class SubmitContactMessageRequestTest extends TestCase
 {
-    private function validate(array $data): \Illuminate\Contracts\Validation\Validator
+    private function validate(array $data): Validator
     {
-        $rules = (new SubmitContactMessageRequest())->rules();
+        $rules = (new SubmitContactMessageRequest)->rules();
+
         return app(ValidationFactory::class)->make($data, $rules);
     }
 

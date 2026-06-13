@@ -8,11 +8,30 @@ use Filament\Forms\Components\TextInput;
 
 class BrickSeparateur extends BaseBrick
 {
-    public function type(): string { return 'separateur'; }
-    public function name(): string { return 'Séparateur'; }
-    public function icon(): string { return '➖'; }
-    public function description(): string { return 'Espace visuel entre sections'; }
-    public function category(): string { return 'Structure'; }
+    public function type(): string
+    {
+        return 'separateur';
+    }
+
+    public function name(): string
+    {
+        return 'Séparateur';
+    }
+
+    public function icon(): string
+    {
+        return '➖';
+    }
+
+    public function description(): string
+    {
+        return 'Espace visuel entre sections';
+    }
+
+    public function category(): string
+    {
+        return 'Structure';
+    }
 
     public function defaultContent(): array
     {

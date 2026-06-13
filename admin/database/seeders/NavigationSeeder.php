@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\NavigationMenu;
 use App\Models\NavigationItem;
+use App\Models\NavigationMenu;
 use Illuminate\Database\Seeder;
 
 class NavigationSeeder extends Seeder

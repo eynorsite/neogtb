@@ -20,6 +20,7 @@ class PageContentService
     public function section(string $page, string $section): array
     {
         $data = PageContent::getPageData($page);
+
         return $data[$section] ?? [];
     }
 
@@ -71,6 +72,7 @@ class PageContentService
     public function sectionsOrder(string $page): array
     {
         $order = PageContent::getValue($page, '_meta', 'sections_order', '');
+
         return $order ? explode(',', $order) : [];
     }
 

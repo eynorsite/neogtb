@@ -496,11 +496,11 @@ class GeneralSettingsSeeder extends Seeder
                                 'answer' => "NeoGTB vend du conseil, pas du matériel. Les revenus proviennent exclusivement de prestations de conseil technique : audits approfondis sur site, rédaction de cahiers des charges neutres, et assistance à maîtrise d'ouvrage GTB. Les outils en ligne (diagnostic, comparateur, générateur CEE) sont gratuits et le resteront. Aucune commission n'est perçue sur les ventes de matériel ou les prescriptions.",
                             ],
                             [
-                                'question' => "Pourquoi les outils sont-ils gratuits ?",
+                                'question' => 'Pourquoi les outils sont-ils gratuits ?',
                                 'answer' => "Les outils gratuits servent à éduquer le marché et à démontrer l'approche NeoGTB. Pas de piège : pas d'inscription obligatoire, pas de relance commerciale, pas de revente de données. Si après avoir utilisé les outils vous souhaitez aller plus loin avec un audit sur site, vous pouvez me contacter — mais il n'y a aucune obligation.",
                             ],
                             [
-                                'question' => "Êtes-vous vraiment indépendant ?",
+                                'question' => 'Êtes-vous vraiment indépendant ?',
                                 'answer' => "Oui. EYNOR, la société derrière NeoGTB, n'a aucun actionnaire fabricant, aucun partenariat commercial rémunéré, aucun lien d'affiliation. Les critères de comparaison sont publics et vérifiables sur le site. Si je recommande BACnet plutôt que LON pour votre projet, c'est une décision technique, pas commerciale. Vous pouvez consulter ma <a href='/positionnement' class='text-accent-600 hover:text-accent-700'>charte d'indépendance</a>.",
                             ],
                         ],
@@ -513,15 +513,15 @@ class GeneralSettingsSeeder extends Seeder
                                 'answer' => "La Gestion Technique du Bâtiment (GTB) est un système centralisé qui pilote et supervise les équipements techniques d'un bâtiment : chauffage, ventilation, climatisation (CVC), éclairage, stores, contrôle d'accès, comptage énergie. L'objectif : optimiser la consommation énergétique, améliorer le confort et faciliter la maintenance. Pour un guide complet, consultez notre page <a href='/gtb' class='text-accent-600 hover:text-accent-700'>Qu'est-ce que la GTB ?</a>",
                             ],
                             [
-                                'question' => "Mon bâtiment est-il concerné par le décret BACS ?",
+                                'question' => 'Mon bâtiment est-il concerné par le décret BACS ?',
                                 'answer' => "Si votre bâtiment est tertiaire (bureaux, commerces, enseignement, santé...) et que sa puissance CVC dépasse 290 kW, vous devez avoir un système BACS de classe B minimum depuis le 1er janvier 2025. Pour les bâtiments entre 70 et 290 kW, l'échéance est fixée à 2030. Pour les bâtiments neufs avec permis postérieur au 21/07/2021, c'est obligatoire dès la construction. <a href='/audit' class='text-accent-600 hover:text-accent-700'>Faites le diagnostic gratuit</a> pour savoir où vous en êtes.",
                             ],
                             [
-                                'question' => "Que signifient les classes A, B, C, D de la norme ISO 52120-1 (ex-EN 15232) ?",
+                                'question' => 'Que signifient les classes A, B, C, D de la norme ISO 52120-1 (ex-EN 15232) ?',
                                 'answer' => "La norme ISO 52120-1 (ex-EN 15232) classe les systèmes de gestion technique en 4 niveaux. <strong>Classe D</strong> : aucune automatisation, pas performant. <strong>Classe C</strong> : automatisation standard, le minimum. <strong>Classe B</strong> : automatisation avancée avec supervision centralisée — c'est le niveau requis par le décret BACS. <strong>Classe A</strong> : haute performance, avec optimisation énergétique et gestion prédictive. Notre <a href='/audit' class='text-accent-600 hover:text-accent-700'>diagnostic gratuit</a> vous situe sur cette échelle.",
                             ],
                             [
-                                'question' => "Quel protocole choisir : BACnet, KNX ou Modbus ?",
+                                'question' => 'Quel protocole choisir : BACnet, KNX ou Modbus ?',
                                 'answer' => "Il n'y a pas de réponse universelle — ça dépend de votre contexte. <strong>BACnet</strong> est le standard international de la GTB, privilégié pour les grands bâtiments tertiaires et l'interopérabilité multi-marques. <strong>KNX</strong> excelle pour l'éclairage et les stores, avec 500+ fabricants certifiés. <strong>Modbus</strong> est simple et dominant pour le comptage énergie. Notre <a href='/comparateur' class='text-accent-600 hover:text-accent-700'>comparateur</a> vous aide à y voir clair sans biais commercial.",
                             ],
                         ],
@@ -530,15 +530,15 @@ class GeneralSettingsSeeder extends Seeder
                         'label' => 'Outils & Prestations',
                         'items' => [
                             [
-                                'question' => "Combien coûte un audit GTB avec NeoGTB ?",
+                                'question' => 'Combien coûte un audit GTB avec NeoGTB ?',
                                 'answer' => "Le diagnostic en ligne est gratuit, sans inscription. Pour un audit approfondi sur site avec rapport détaillé, les tarifs dépendent de la surface, du nombre de sites et de la complexité de l'installation. <a href='/contact' class='text-accent-600 hover:text-accent-700'>Contactez-moi</a> avec votre contexte pour obtenir un devis. Comptez un premier échange gratuit de 15 minutes pour cadrer votre besoin.",
                             ],
                             [
-                                'question' => "Le diagnostic en ligne est-il fiable ?",
+                                'question' => 'Le diagnostic en ligne est-il fiable ?',
                                 'answer' => "Le diagnostic en ligne est un outil d'orientation basé sur la norme ISO 52120-1. Il donne une estimation de votre niveau de maturité GTB (classe A à D) et des recommandations générales. Pour un diagnostic certifié avec mesures sur site, un audit approfondi est nécessaire. L'outil en ligne est un excellent point de départ pour savoir si vous avez besoin d'aller plus loin.",
                             ],
                             [
-                                'question' => "Dans quelle zone géographique intervenez-vous ?",
+                                'question' => 'Dans quelle zone géographique intervenez-vous ?',
                                 'answer' => "Les outils en ligne sont accessibles partout. Pour les prestations sur site (audits, AMO), j'interviens principalement en Nouvelle-Aquitaine et sur l'ensemble du territoire français selon la mission. Les échanges préliminaires et le conseil à distance se font sans contrainte géographique.",
                             ],
                         ],

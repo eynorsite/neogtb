@@ -29,7 +29,7 @@ class SuperAdminSeeder extends Seeder
             $this->command->warn('║  COMPTE SUPERADMIN CRÉÉ                     ║');
             $this->command->warn('╠══════════════════════════════════════════════╣');
             $this->command->warn('║  Email : admin@neogtb.fr                    ║');
-            $this->command->warn('║  Mot de passe : ' . str_pad($password, 28) . '║');
+            $this->command->warn('║  Mot de passe : '.str_pad($password, 28).'║');
             $this->command->warn('╠══════════════════════════════════════════════╣');
             $this->command->warn('║  ⚠ NOTEZ CE MOT DE PASSE MAINTENANT !      ║');
             $this->command->warn('║  Il ne sera plus affiché.                   ║');

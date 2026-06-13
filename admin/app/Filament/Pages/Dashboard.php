@@ -10,6 +10,7 @@ use App\Models\GdprRequest;
 use App\Models\Post;
 use App\Models\SitePage;
 use Filament\Pages\Dashboard as BaseDashboard;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class Dashboard extends BaseDashboard
@@ -73,27 +74,25 @@ class Dashboard extends BaseDashboard
 
     public function getNewLeads(): int
     {
-        return Cache::remember('dashboard:new_leads', 60, fn () =>
-            AuditLead::where('status', 'new')->count()
+        return Cache::remember('dashboard:new_leads', 60, fn () => AuditLead::where('status', 'new')->count()
             + CeeLead::where('status', 'new')->count()
         );
     }
 
     public function getTotalMessages(): int
     {
-        return Cache::remember('dashboard:total_messages', 60, fn () =>
-            ContactMessage::count()
+        return Cache::remember('dashboard:total_messages', 60, fn () => ContactMessage::count()
         );
     }
 
-    public function getRecentMessages(): \Illuminate\Support\Collection
+    public function getRecentMessages(): Collection
     {
         return ContactMessage::latest()
             ->take(5)
             ->get(['id', 'name', 'email', 'subject', 'message', 'status', 'created_at']);
     }
 
-    public function getRecentActivity(): \Illuminate\Support\Collection
+    public function getRecentActivity(): Collection
     {
         return AdminActivityLog::with('admin')
             ->latest('created_at')
@@ -101,7 +100,7 @@ class Dashboard extends BaseDashboard
             ->get();
     }
 
-    public function getRecentPages(): \Illuminate\Support\Collection
+    public function getRecentPages(): Collection
     {
         return SitePage::orderBy('updated_at', 'desc')
             ->take(5)

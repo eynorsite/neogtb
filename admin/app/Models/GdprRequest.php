@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class GdprRequest extends Model
 {
@@ -96,14 +95,18 @@ class GdprRequest extends Model
     public function getMaskedEmail(): string
     {
         $email = $this->email;
-        if (!$email) return '***';
+        if (! $email) {
+            return '***';
+        }
 
         $parts = explode('@', $email);
-        if (count($parts) !== 2) return '***';
+        if (count($parts) !== 2) {
+            return '***';
+        }
 
         $local = $parts[0];
-        $masked = substr($local, 0, 1) . str_repeat('*', max(strlen($local) - 2, 1)) . substr($local, -1);
+        $masked = substr($local, 0, 1).str_repeat('*', max(strlen($local) - 2, 1)).substr($local, -1);
 
-        return $masked . '@' . $parts[1];
+        return $masked.'@'.$parts[1];
     }
 }

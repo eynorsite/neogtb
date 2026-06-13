@@ -25,18 +25,18 @@ class ComparatifController extends Controller
                 continue;
             }
             $others[] = [
-                'slug'  => $otherSlug,
+                'slug' => $otherSlug,
                 'title' => $otherCfg['title'] ?? $otherSlug,
-                'lede'  => $otherCfg['lede'] ?? '',
+                'lede' => $otherCfg['lede'] ?? '',
             ];
         }
 
         return view('front.comparatif', [
-            'cfg'    => $cfg,
-            'slug'   => $slug,
+            'cfg' => $cfg,
+            'slug' => $slug,
             'others' => $others,
             // SEO injecté dans le layout (cf. front.layouts.app).
-            'seoTitle'       => $cfg['meta_title'],
+            'seoTitle' => $cfg['meta_title'],
             'seoDescription' => $cfg['meta_description'],
         ]);
     }

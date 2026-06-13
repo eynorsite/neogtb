@@ -7,11 +7,30 @@ use Filament\Forms\Components\TextInput;
 
 class BrickFormulaire extends BaseBrick
 {
-    public function type(): string { return 'formulaire'; }
-    public function name(): string { return 'Formulaire'; }
-    public function icon(): string { return '📝'; }
-    public function description(): string { return 'Formulaire de contact intégré'; }
-    public function category(): string { return 'Contenu'; }
+    public function type(): string
+    {
+        return 'formulaire';
+    }
+
+    public function name(): string
+    {
+        return 'Formulaire';
+    }
+
+    public function icon(): string
+    {
+        return '📝';
+    }
+
+    public function description(): string
+    {
+        return 'Formulaire de contact intégré';
+    }
+
+    public function category(): string
+    {
+        return 'Contenu';
+    }
 
     public function defaultContent(): array
     {
@@ -33,6 +52,6 @@ class BrickFormulaire extends BaseBrick
 
     public function preview(array $content): string
     {
-        return '<div class="font-semibold">' . ($content['titre'] ?? 'Formulaire') . '</div>';
+        return '<div class="font-semibold">'.($content['titre'] ?? 'Formulaire').'</div>';
     }
 }

@@ -3,7 +3,6 @@
 namespace Tests\Unit\Policies;
 
 use App\Models\Admin;
-use App\Models\Post;
 use App\Policies\PostPolicy;
 use Database\Factories\PostFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,7 +15,7 @@ class PostPolicyTest extends TestCase
 
     private function policy(): PostPolicy
     {
-        return new PostPolicy();
+        return new PostPolicy;
     }
 
     #[Test]

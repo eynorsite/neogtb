@@ -4,6 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AdminResource\Pages;
 use App\Models\Admin;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -154,8 +158,8 @@ class AdminResource extends Resource
                     ->label('Actif'),
             ])
             ->actions([
-                \Filament\Actions\EditAction::make(),
-                \Filament\Actions\Action::make('toggleActive')
+                EditAction::make(),
+                Action::make('toggleActive')
                     ->label(fn ($record) => $record->is_active ? 'Désactiver' : 'Activer')
                     ->icon(fn ($record) => $record->is_active ? 'heroicon-o-x-circle' : 'heroicon-o-check-circle')
                     ->color(fn ($record) => $record->is_active ? 'danger' : 'success')
@@ -163,18 +167,18 @@ class AdminResource extends Resource
                     ->action(fn ($record) => $record->update(['is_active' => ! $record->is_active])),
             ])
             ->bulkActions([
-                \Filament\Actions\BulkAction::make('activate')
+                BulkAction::make('activate')
                     ->label('Activer')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
                     ->action(fn ($records) => $records->each->update(['is_active' => true])),
-                \Filament\Actions\BulkAction::make('deactivate')
+                BulkAction::make('deactivate')
                     ->label('Désactiver')
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
                     ->requiresConfirmation()
                     ->action(fn ($records) => $records->each->update(['is_active' => false])),
-                \Filament\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
             ]);
     }
 

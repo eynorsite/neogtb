@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ChatbotConversation;
 use App\Models\ChatbotFaq;
 use App\Models\ChatbotSetting;
 use App\Services\ChatbotService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ChatbotController extends Controller
 {
-    public function __construct(private ChatbotService $service)
-    {
-    }
+    public function __construct(private ChatbotService $service) {}
 
     public function bootstrap(Request $request): JsonResponse
     {
@@ -32,16 +30,16 @@ class ChatbotController extends Controller
         }
 
         return response()->json([
-            'enabled'              => true,
-            'title'                => $settings->widget_title,
-            'subtitle'             => $settings->widget_subtitle,
-            'color'                => $settings->widget_color,
-            'position'             => $settings->widget_position,
-            'welcome_message'      => $settings->welcome_message,
-            'suggested_questions'  => $suggestions,
-            'require_consent'      => (bool) $settings->require_consent,
-            'consent_text'         => $settings->consent_text,
-            'fallback_url'         => $settings->fallback_url,
+            'enabled' => true,
+            'title' => $settings->widget_title,
+            'subtitle' => $settings->widget_subtitle,
+            'color' => $settings->widget_color,
+            'position' => $settings->widget_position,
+            'welcome_message' => $settings->welcome_message,
+            'suggested_questions' => $suggestions,
+            'require_consent' => (bool) $settings->require_consent,
+            'consent_text' => $settings->consent_text,
+            'fallback_url' => $settings->fallback_url,
         ]);
     }
 
@@ -51,7 +49,7 @@ class ChatbotController extends Controller
         $conv = $this->service->getOrCreateConversation($sessionId, $this->context($request));
 
         $conv->update([
-            'consent_given'    => true,
+            'consent_given' => true,
             'consent_given_at' => now(),
         ]);
 
@@ -80,8 +78,8 @@ class ChatbotController extends Controller
             return response()->json(['error' => 'consent_required'], 403);
         }
 
-        $ipKey = 'chatbot:ip:' . hash('sha256', $request->ip() . config('app.key'));
-        $sessionKey = 'chatbot:session:' . $sessionId;
+        $ipKey = 'chatbot:ip:'.hash('sha256', $request->ip().config('app.key'));
+        $sessionKey = 'chatbot:session:'.$sessionId;
 
         if (RateLimiter::tooManyAttempts($ipKey, $settings->rate_limit_per_ip_per_day)) {
             return response()->json(['error' => 'rate_limit_ip'], 429);
@@ -108,9 +106,9 @@ class ChatbotController extends Controller
                 // service prints SSE chunks directly
             }
         }, Response::HTTP_OK, [
-            'Content-Type'      => 'text/event-stream',
-            'Cache-Control'     => 'no-cache, no-transform',
-            'Connection'        => 'keep-alive',
+            'Content-Type' => 'text/event-stream',
+            'Cache-Control' => 'no-cache, no-transform',
+            'Connection' => 'keep-alive',
             'X-Accel-Buffering' => 'no',
         ]);
     }
@@ -119,8 +117,8 @@ class ChatbotController extends Controller
     {
         $request->validate([
             'email' => 'required|email|max:255',
-            'name'  => 'nullable|string|max:120',
-            'note'  => 'nullable|string|max:1000',
+            'name' => 'nullable|string|max:120',
+            'note' => 'nullable|string|max:1000',
         ]);
 
         $sessionId = $this->ensureSessionId($request);
@@ -139,14 +137,14 @@ class ChatbotController extends Controller
 
         if ($settings->lead_webhook_enabled && $settings->lead_webhook_email) {
             try {
-                \Illuminate\Support\Facades\Mail::raw(
-                    "Nouveau lead chatbot.\n\n" .
-                    "Email : {$conv->lead_email}\n" .
-                    "Nom : {$conv->lead_name}\n" .
-                    "Note : {$conv->lead_note}\n" .
-                    "Conversation : " . url('/admin/chatbot-conversations/' . $conv->id),
+                Mail::raw(
+                    "Nouveau lead chatbot.\n\n".
+                    "Email : {$conv->lead_email}\n".
+                    "Nom : {$conv->lead_name}\n".
+                    "Note : {$conv->lead_note}\n".
+                    'Conversation : '.url('/admin/chatbot-conversations/'.$conv->id),
                     fn ($m) => $m->to($settings->lead_webhook_email)
-                                 ->subject('[NeoGTB Chatbot] Nouveau lead')
+                        ->subject('[NeoGTB Chatbot] Nouveau lead')
                 );
             } catch (\Throwable $e) {
                 // silencieux
@@ -163,16 +161,17 @@ class ChatbotController extends Controller
             $sid = bin2hex(random_bytes(16));
             cookie()->queue(cookie('neogtb_chat_sid', $sid, 60 * 24 * 30, '/', null, $request->isSecure(), true, false, 'lax'));
         }
+
         return $sid;
     }
 
     private function context(Request $request): array
     {
         return [
-            'ip'       => $request->ip(),
-            'ua'       => substr((string) $request->userAgent(), 0, 255),
+            'ip' => $request->ip(),
+            'ua' => substr((string) $request->userAgent(), 0, 255),
             'referrer' => substr((string) $request->headers->get('referer', ''), 0, 255),
-            'landing'  => substr((string) $request->input('landing', $request->path()), 0, 255),
+            'landing' => substr((string) $request->input('landing', $request->path()), 0, 255),
         ];
     }
 }

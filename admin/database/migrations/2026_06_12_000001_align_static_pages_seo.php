@@ -26,9 +26,9 @@ return new class extends Migration
                 ->where('slug', $slug)
                 ->whereNull('deleted_at')
                 ->update([
-                    'meta_title'       => $seo['title'],
+                    'meta_title' => $seo['title'],
                     'meta_description' => $seo['description'],
-                    'updated_at'       => now(),
+                    'updated_at' => now(),
                 ]);
         }
     }

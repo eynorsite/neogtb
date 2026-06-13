@@ -9,16 +9,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('general_settings', function (Blueprint $table) {
-            if (!Schema::hasColumn('general_settings', 'handicap_referent_name')) {
+            if (! Schema::hasColumn('general_settings', 'handicap_referent_name')) {
                 $table->string('handicap_referent_name')->nullable()->after('rgpd_retention_newsletter_days');
             }
-            if (!Schema::hasColumn('general_settings', 'handicap_referent_email')) {
+            if (! Schema::hasColumn('general_settings', 'handicap_referent_email')) {
                 $table->string('handicap_referent_email')->nullable()->after('handicap_referent_name');
             }
-            if (!Schema::hasColumn('general_settings', 'handicap_referent_phone')) {
+            if (! Schema::hasColumn('general_settings', 'handicap_referent_phone')) {
                 $table->string('handicap_referent_phone')->nullable()->after('handicap_referent_email');
             }
-            if (!Schema::hasColumn('general_settings', 'accessibility_info')) {
+            if (! Schema::hasColumn('general_settings', 'accessibility_info')) {
                 $table->text('accessibility_info')->nullable()->after('handicap_referent_phone');
             }
         });

@@ -2,24 +2,24 @@
 
 namespace App\Filament\Bricks;
 
-use App\Filament\Bricks\Content\BrickHero;
-use App\Filament\Bricks\Content\BrickHeroImage;
-use App\Filament\Bricks\Content\BrickTexte;
+use App\Filament\Bricks\Content\BrickCartes;
+use App\Filament\Bricks\Content\BrickCartesArticles;
+use App\Filament\Bricks\Content\BrickCartesPositioning;
+use App\Filament\Bricks\Content\BrickCasUsage;
+use App\Filament\Bricks\Content\BrickChiffres;
+use App\Filament\Bricks\Content\BrickComparatif;
 use App\Filament\Bricks\Content\BrickCTA;
 use App\Filament\Bricks\Content\BrickCtaCounter;
 use App\Filament\Bricks\Content\BrickCtaIllustrated;
-use App\Filament\Bricks\Content\BrickCartes;
-use App\Filament\Bricks\Content\BrickCartesPositioning;
-use App\Filament\Bricks\Content\BrickCartesArticles;
-use App\Filament\Bricks\Content\BrickChiffres;
-use App\Filament\Bricks\Content\BrickComparatif;
-use App\Filament\Bricks\Content\BrickFormulaire;
 use App\Filament\Bricks\Content\BrickFAQ;
-use App\Filament\Bricks\Content\BrickTemoignages;
-use App\Filament\Bricks\Content\BrickMethodologie;
-use App\Filament\Bricks\Content\BrickTimeline;
 use App\Filament\Bricks\Content\BrickFondateur;
-use App\Filament\Bricks\Content\BrickCasUsage;
+use App\Filament\Bricks\Content\BrickFormulaire;
+use App\Filament\Bricks\Content\BrickHero;
+use App\Filament\Bricks\Content\BrickHeroImage;
+use App\Filament\Bricks\Content\BrickMethodologie;
+use App\Filament\Bricks\Content\BrickTemoignages;
+use App\Filament\Bricks\Content\BrickTexte;
+use App\Filament\Bricks\Content\BrickTimeline;
 use App\Filament\Bricks\Structure\BrickBandeau;
 use App\Filament\Bricks\Structure\BrickLogos;
 use App\Filament\Bricks\Structure\BrickSeparateur;
@@ -65,7 +65,7 @@ class BrickRegistry
             static::register();
         }
 
-        return array_map(fn ($class) => new $class(), static::$bricks);
+        return array_map(fn ($class) => new $class, static::$bricks);
     }
 
     public static function get(string $type): ?BaseBrick
@@ -76,7 +76,7 @@ class BrickRegistry
 
         $class = static::$bricks[$type] ?? null;
 
-        return $class ? new $class() : null;
+        return $class ? new $class : null;
     }
 
     public static function types(): array

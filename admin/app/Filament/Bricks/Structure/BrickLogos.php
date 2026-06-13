@@ -8,11 +8,30 @@ use Filament\Forms\Components\TextInput;
 
 class BrickLogos extends BaseBrick
 {
-    public function type(): string { return 'logos'; }
-    public function name(): string { return 'Logos / Partenaires'; }
-    public function icon(): string { return '🏷️'; }
-    public function description(): string { return 'Carousel de logos partenaires/technologies'; }
-    public function category(): string { return 'Structure'; }
+    public function type(): string
+    {
+        return 'logos';
+    }
+
+    public function name(): string
+    {
+        return 'Logos / Partenaires';
+    }
+
+    public function icon(): string
+    {
+        return '🏷️';
+    }
+
+    public function description(): string
+    {
+        return 'Carousel de logos partenaires/technologies';
+    }
+
+    public function category(): string
+    {
+        return 'Structure';
+    }
 
     public function defaultContent(): array
     {
@@ -38,6 +57,7 @@ class BrickLogos extends BaseBrick
     public function preview(array $content): string
     {
         $nb = count($content['logos'] ?? []);
-        return '<div class="font-semibold">' . ($content['titre'] ?? 'Logos') . '</div><div class="text-sm text-gray-500">' . $nb . ' logo(s)</div>';
+
+        return '<div class="font-semibold">'.($content['titre'] ?? 'Logos').'</div><div class="text-sm text-gray-500">'.$nb.' logo(s)</div>';
     }
 }

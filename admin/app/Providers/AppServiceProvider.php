@@ -2,20 +2,30 @@
 
 namespace App\Providers;
 
+use App\Http\View\Composers\SiteSettingsComposer;
+use App\Listeners\RecordAdminLogin;
 use App\Models\Admin;
+use App\Models\AuditLead;
+use App\Models\CeeLead;
 use App\Models\ContactMessage;
+use App\Models\CookieConsent;
+use App\Models\GdprRequest;
+use App\Models\GeneralSetting;
 use App\Models\NavigationItem;
 use App\Models\NavigationMenu;
+use App\Models\NewsletterSubscriber;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\SitePage;
-use App\Models\GeneralSetting;
-use App\Models\PageBrick;
+use App\Notifications\ResetPasswordNotification;
 use App\Observers\AdminAuditObserver;
 use App\Observers\SiteSettingObserver;
 use App\Services\HomepageSectionsService;
 use App\Services\SiteConfigService;
+use App\View\Composers\BreadcrumbComposer;
 use Carbon\Carbon;
+use Filament\Auth\Notifications\ResetPassword;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\View;
@@ -32,8 +42,8 @@ class AppServiceProvider extends ServiceProvider
         // Force password-reset notification to bypass the queue (QUEUE_CONNECTION=database
         // would otherwise leave the email stuck in the jobs table until a worker runs)
         $this->app->bind(
-            \Filament\Auth\Notifications\ResetPassword::class,
-            \App\Notifications\ResetPasswordNotification::class
+            ResetPassword::class,
+            ResetPasswordNotification::class
         );
 
         // Bump memory for admin pages with large forms (SiteSettings labels: 256+ fields)
@@ -62,11 +72,11 @@ class AppServiceProvider extends ServiceProvider
             ContactMessage::class,
             NavigationMenu::class,
             NavigationItem::class,
-            \App\Models\GdprRequest::class,
-            \App\Models\AuditLead::class,
-            \App\Models\CeeLead::class,
-            \App\Models\CookieConsent::class,
-            \App\Models\NewsletterSubscriber::class,
+            GdprRequest::class,
+            AuditLead::class,
+            CeeLead::class,
+            CookieConsent::class,
+            NewsletterSubscriber::class,
         ];
 
         foreach ($models as $model) {
@@ -80,15 +90,15 @@ class AppServiceProvider extends ServiceProvider
         View::composer([
             'front.*',
             'components.front.*',
-        ], \App\Http\View\Composers\SiteSettingsComposer::class);
+        ], SiteSettingsComposer::class);
 
         // Breadcrumb composer for all front views
-        View::composer('front.*', \App\View\Composers\BreadcrumbComposer::class);
+        View::composer('front.*', BreadcrumbComposer::class);
 
         // Track admin logins (fills admins.last_login_at / last_login_ip)
         Event::listen(
-            \Illuminate\Auth\Events\Login::class,
-            \App\Listeners\RecordAdminLogin::class,
+            Login::class,
+            RecordAdminLogin::class,
         );
     }
 }

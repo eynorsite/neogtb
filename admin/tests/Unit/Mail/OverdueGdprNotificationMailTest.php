@@ -10,9 +10,9 @@ use Tests\TestCase;
 class OverdueGdprNotificationMailTest extends TestCase
 {
     #[Test]
-    public function test_subject_contains_RGPD(): void
+    public function test_subject_contains_rgpd(): void
     {
-        $mail = new OverdueGdprNotificationMail(new Collection());
+        $mail = new OverdueGdprNotificationMail(new Collection);
         $this->assertStringContainsString('RGPD', $mail->envelope()->subject);
     }
 }

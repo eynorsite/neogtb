@@ -25,10 +25,10 @@ class BreadcrumbComposer
         $path = '';
 
         foreach ($segments as $segment) {
-            $path .= '/' . $segment;
+            $path .= '/'.$segment;
             $crumbs[] = [
                 'name' => $labels[$segment] ?? ucfirst(str_replace('-', ' ', $segment)),
-                'url'  => url($path),
+                'url' => url($path),
             ];
         }
 

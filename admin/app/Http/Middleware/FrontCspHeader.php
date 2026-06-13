@@ -21,9 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class FrontCspHeader
 {
-    public function __construct(private readonly SiteConfigService $site)
-    {
-    }
+    public function __construct(private readonly SiteConfigService $site) {}
 
     public function handle(Request $request, Closure $next): Response
     {
@@ -56,35 +54,35 @@ class FrontCspHeader
 
     private function policy(string $nonce): string
     {
-        $script  = ["'self'", "'nonce-{$nonce}'", 'https://plausible.io'];
+        $script = ["'self'", "'nonce-{$nonce}'", 'https://plausible.io'];
         $connect = ["'self'", 'https://plausible.io'];
-        $img     = ["'self'", 'data:'];
-        $frame   = [];
+        $img = ["'self'", 'data:'];
+        $frame = [];
 
         // Domaines des trackers tiers ajoutés UNIQUEMENT si configurés dans l'admin
         // (sinon CSP stricte Plausible-only). Source unique : SiteConfigService.
         $t = $this->site->cspTrackerSources();
-        $script  = array_merge($script, $t['script']);
+        $script = array_merge($script, $t['script']);
         $connect = array_merge($connect, $t['connect']);
-        $img     = array_merge($img, $t['img']);
-        $frame   = array_merge($frame, $t['frame']);
+        $img = array_merge($img, $t['img']);
+        $frame = array_merge($frame, $t['frame']);
 
         $directives = [
             "default-src 'self'",
-            'script-src ' . implode(' ', $script),
+            'script-src '.implode(' ', $script),
             "style-src 'self' 'unsafe-inline'",
             "font-src 'self' data:",
-            'img-src ' . implode(' ', $img),
-            'connect-src ' . implode(' ', $connect),
+            'img-src '.implode(' ', $img),
+            'connect-src '.implode(' ', $connect),
             "frame-ancestors 'self'",
             "base-uri 'self'",
             "form-action 'self'",
         ];
 
         if ($frame !== []) {
-            $directives[] = 'frame-src ' . implode(' ', $frame);
+            $directives[] = 'frame-src '.implode(' ', $frame);
         }
 
-        return implode('; ', $directives) . ';';
+        return implode('; ', $directives).';';
     }
 }

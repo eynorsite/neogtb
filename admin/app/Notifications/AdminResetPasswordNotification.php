@@ -23,7 +23,7 @@ class AdminResetPasswordNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Réinitialisation de votre mot de passe — NeoGTB Admin')
-            ->greeting('Bonjour ' . ($notifiable->name ?? '') . ',')
+            ->greeting('Bonjour '.($notifiable->name ?? '').',')
             ->line('Vous recevez cet email car nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.')
             ->action('Réinitialiser le mot de passe', $this->url)
             ->line('Ce lien expire dans 30 minutes.')

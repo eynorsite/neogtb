@@ -11,16 +11,16 @@ return new class extends Migration
         $exists = DB::table('site_settings')->where('key', 'blog_default_cover')->exists();
         if (! $exists) {
             DB::table('site_settings')->insert([
-                'group'       => 'blog',
-                'key'         => 'blog_default_cover',
-                'value'       => '/images/blog-default-cover.png',
-                'type'        => 'image',
-                'label'       => 'Image par défaut articles',
+                'group' => 'blog',
+                'key' => 'blog_default_cover',
+                'value' => '/images/blog-default-cover.png',
+                'type' => 'image',
+                'label' => 'Image par défaut articles',
                 'description' => 'Affichée sur les cards et hero des articles qui n\'ont pas d\'image cover spécifique.',
-                'is_public'   => true,
-                'order'       => 1,
-                'created_at'  => now(),
-                'updated_at'  => now(),
+                'is_public' => true,
+                'order' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
 

@@ -80,7 +80,7 @@ class BrickChiffres extends BaseBrick
                 ->maxItems(6)
                 ->defaultItems(3)
                 ->collapsible()
-                ->itemLabel(fn (array $state): ?string => ($state['valeur'] ?? '') . ' ' . ($state['label'] ?? 'Stat')),
+                ->itemLabel(fn (array $state): ?string => ($state['valeur'] ?? '').' '.($state['label'] ?? 'Stat')),
 
             TextInput::make('settings.couleur_fond')
                 ->label('Couleur de fond')
@@ -103,10 +103,10 @@ class BrickChiffres extends BaseBrick
         }
 
         $items = array_map(
-            fn ($s) => '<span class="font-bold">' . ($s['valeur'] ?? '') . ($s['suffixe'] ?? '') . '</span> ' . ($s['label'] ?? ''),
+            fn ($s) => '<span class="font-bold">'.($s['valeur'] ?? '').($s['suffixe'] ?? '').'</span> '.($s['label'] ?? ''),
             array_slice($stats, 0, 3)
         );
 
-        return '<div class="text-sm">' . implode(' · ', $items) . '</div>';
+        return '<div class="text-sm">'.implode(' · ', $items).'</div>';
     }
 }

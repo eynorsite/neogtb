@@ -13,8 +13,9 @@ class SitePageFactory extends Factory
     public function definition(): array
     {
         $name = fake()->unique()->words(2, true);
+
         return [
-            'slug' => Str::slug($name) . '-' . Str::random(6),
+            'slug' => Str::slug($name).'-'.Str::random(6),
             'name' => $name,
             'is_published' => true,
             'order' => 0,

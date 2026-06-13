@@ -2,17 +2,18 @@
 
 namespace App\Console\Commands;
 
-use App\Models\ContactMessage;
 use App\Models\AuditLead;
 use App\Models\CeeLead;
+use App\Models\ContactMessage;
 use App\Models\CookieConsent;
-use App\Models\NewsletterSubscriber;
 use App\Models\GeneralSetting;
+use App\Models\NewsletterSubscriber;
 use Illuminate\Console\Command;
 
 class PurgeExpiredDataCommand extends Command
 {
     protected $signature = 'rgpd:purge-expired {--dry-run : Afficher ce qui serait purgé sans supprimer}';
+
     protected $description = 'Supprime/anonymise les données personnelles expirées selon la politique de rétention';
 
     public function handle(): int
@@ -30,6 +31,7 @@ class PurgeExpiredDataCommand extends Command
         $this->purgeNewsletterInactive($dryRun);
 
         $this->info('Purge RGPD terminée.');
+
         return self::SUCCESS;
     }
 
@@ -37,6 +39,7 @@ class PurgeExpiredDataCommand extends Command
     {
         $setting = (int) GeneralSetting::value($key, 730);
         $minimum = config("neogtb.rgpd_min_retention.{$minKey}", 90);
+
         return max($setting, $minimum);
     }
 
@@ -48,7 +51,7 @@ class PurgeExpiredDataCommand extends Command
         $count = $query->count();
         $this->line("  ContactMessage : {$count} enregistrements de plus de {$days} jours.");
 
-        if (!$dryRun && $count > 0) {
+        if (! $dryRun && $count > 0) {
             // Soft delete les messages expirés (le modèle utilise SoftDeletes)
             $query->delete();
         }
@@ -62,7 +65,7 @@ class PurgeExpiredDataCommand extends Command
         $count = $query->count();
         $this->line("  AuditLead : {$count} enregistrements de plus de {$days} jours.");
 
-        if (!$dryRun && $count > 0) {
+        if (! $dryRun && $count > 0) {
             $query->delete();
         }
     }
@@ -75,7 +78,7 @@ class PurgeExpiredDataCommand extends Command
         $count = $query->count();
         $this->line("  CeeLead : {$count} enregistrements de plus de {$days} jours.");
 
-        if (!$dryRun && $count > 0) {
+        if (! $dryRun && $count > 0) {
             $query->delete();
         }
     }
@@ -88,7 +91,7 @@ class PurgeExpiredDataCommand extends Command
         $count = $query->count();
         $this->line("  CookieConsent : {$count} enregistrements de plus de {$days} jours.");
 
-        if (!$dryRun && $count > 0) {
+        if (! $dryRun && $count > 0) {
             $query->delete();
         }
     }
@@ -102,7 +105,7 @@ class PurgeExpiredDataCommand extends Command
         $count = $query->count();
         $this->line("  NewsletterSubscriber (désabonnés) : {$count} enregistrements de plus de {$days} jours.");
 
-        if (!$dryRun && $count > 0) {
+        if (! $dryRun && $count > 0) {
             $query->delete();
         }
     }

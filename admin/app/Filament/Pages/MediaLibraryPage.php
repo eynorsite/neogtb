@@ -3,6 +3,10 @@
 namespace App\Filament\Pages;
 
 use App\Models\Media;
+use Filament\Actions\Action;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Pages\Page;
 use Filament\Tables;
 use Filament\Tables\Concerns\InteractsWithTable;
@@ -64,19 +68,19 @@ class MediaLibraryPage extends Page implements HasTable
                     ->options(fn () => Media::distinct()->pluck('mime_type', 'mime_type')->toArray()),
             ])
             ->actions([
-                \Filament\Actions\Action::make('copyUrl')
+                Action::make('copyUrl')
                     ->label('Copier URL')
                     ->icon('heroicon-o-clipboard')
                     ->action(function ($record) {
                         // URL copying handled via JS in the frontend
                     }),
-                \Filament\Actions\DeleteAction::make()
+                DeleteAction::make()
                     ->before(function ($record) {
                         Storage::disk($record->disk)->delete($record->path);
                     }),
             ])
             ->bulkActions([
-                \Filament\Actions\DeleteBulkAction::make()
+                DeleteBulkAction::make()
                     ->before(function ($records) {
                         foreach ($records as $record) {
                             Storage::disk($record->disk)->delete($record->path);
@@ -84,11 +88,11 @@ class MediaLibraryPage extends Page implements HasTable
                     }),
             ])
             ->headerActions([
-                \Filament\Actions\Action::make('upload')
+                Action::make('upload')
                     ->label('Uploader un fichier')
                     ->icon('heroicon-o-arrow-up-tray')
                     ->form([
-                        \Filament\Forms\Components\FileUpload::make('files')
+                        FileUpload::make('files')
                             ->disk('public')
                             ->label('Fichiers')
                             ->multiple()

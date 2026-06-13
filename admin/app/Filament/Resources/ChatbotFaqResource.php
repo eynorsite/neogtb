@@ -4,6 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ChatbotFaqResource\Pages;
 use App\Models\ChatbotFaq;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -25,6 +29,7 @@ class ChatbotFaqResource extends Resource
     protected static ?string $navigationLabel = 'FAQ';
 
     protected static ?string $modelLabel = 'FAQ';
+
     protected static ?string $pluralModelLabel = 'FAQ';
 
     protected static ?int $navigationSort = 30;
@@ -32,6 +37,7 @@ class ChatbotFaqResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
@@ -85,12 +91,12 @@ class ChatbotFaqResource extends Resource
             ])
             ->defaultSort('sort_order')
             ->recordActions([
-                \Filament\Actions\EditAction::make(),
-                \Filament\Actions\DeleteAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
-                \Filament\Actions\BulkActionGroup::make([
-                    \Filament\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -98,9 +104,9 @@ class ChatbotFaqResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListChatbotFaqs::route('/'),
+            'index' => Pages\ListChatbotFaqs::route('/'),
             'create' => Pages\CreateChatbotFaq::route('/create'),
-            'edit'   => Pages\EditChatbotFaq::route('/{record}/edit'),
+            'edit' => Pages\EditChatbotFaq::route('/{record}/edit'),
         ];
     }
 }
