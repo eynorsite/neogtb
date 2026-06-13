@@ -36,7 +36,9 @@ class RgpdDashboardPage extends Page
     public function getAcceptanceRate(): int
     {
         $total = CookieConsent::thisMonth()->count();
-        if ($total === 0) return 0;
+        if ($total === 0) {
+            return 0;
+        }
 
         $accepted = CookieConsent::thisMonth()
             ->whereNotNull('accepted_at')
@@ -60,7 +62,7 @@ class RgpdDashboardPage extends Page
     {
         $policy = PrivacyPolicyVersion::getCurrentVersion();
 
-        return $policy ? 'v' . $policy->version : 'Aucune';
+        return $policy ? 'v'.$policy->version : 'Aucune';
     }
 
     public function getPolicyPublishedAt(): ?string

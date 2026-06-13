@@ -39,7 +39,7 @@ return new class extends Migration
     public function up(): void
     {
         foreach ($this->targets as $table => $columns) {
-            if (!Schema::hasTable($table)) {
+            if (! Schema::hasTable($table)) {
                 continue;
             }
 
@@ -67,7 +67,7 @@ return new class extends Migration
                         $update[$col] = Crypt::encryptString((string) $value);
                     }
 
-                    if (!empty($update)) {
+                    if (! empty($update)) {
                         DB::table($table)->where('id', $row->id)->update($update);
                     }
                 }
@@ -88,8 +88,9 @@ return new class extends Migration
     {
         try {
             Crypt::decryptString($value);
+
             return true;
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return false;
         }
     }

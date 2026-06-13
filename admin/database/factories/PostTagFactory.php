@@ -13,9 +13,10 @@ class PostTagFactory extends Factory
     public function definition(): array
     {
         $name = fake()->unique()->word();
+
         return [
             'name' => $name,
-            'slug' => Str::slug($name) . '-' . Str::random(5),
+            'slug' => Str::slug($name).'-'.Str::random(5),
         ];
     }
 }

@@ -21,7 +21,9 @@ class EscalateOverdueGdprRequestsJob implements ShouldQueue
             ->where('created_at', '<', now()->subDays(25))
             ->get();
 
-        if ($overdue->isEmpty()) return;
+        if ($overdue->isEmpty()) {
+            return;
+        }
 
         Mail::to('hello@eynor.fr')->queue(new OverdueGdprNotificationMail($overdue));
     }

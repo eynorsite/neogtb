@@ -33,6 +33,6 @@ class Media extends Model
             $i++;
         }
 
-        return round($bytes, 1) . ' ' . $units[$i];
+        return round($bytes, 1).' '.$units[$i];
     }
 }

@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::table('general_settings', function (Blueprint $table) {
             // Navigation items
-            if (!Schema::hasColumn('general_settings', 'nav_items')) {
+            if (! Schema::hasColumn('general_settings', 'nav_items')) {
                 $table->json('nav_items')->nullable()->after('nav_sticky');
             }
 
             // Hero
-            if (!Schema::hasColumn('general_settings', 'hero_default_image')) {
+            if (! Schema::hasColumn('general_settings', 'hero_default_image')) {
                 $table->string('hero_default_image')->nullable()->after('og_default_image');
                 $table->string('hero_style')->default('static')->after('hero_default_image');
                 $table->string('hero_title_line1')->nullable()->after('hero_style');
@@ -23,7 +23,7 @@ return new class extends Migration
             }
 
             // Catalogues
-            if (!Schema::hasColumn('general_settings', 'blog_categories_config')) {
+            if (! Schema::hasColumn('general_settings', 'blog_categories_config')) {
                 $table->json('blog_categories_config')->nullable()->after('comparateur_page_config');
                 $table->json('gtb_protocols_config')->nullable()->after('blog_categories_config');
                 $table->json('en15232_levels_config')->nullable()->after('gtb_protocols_config');
@@ -31,19 +31,19 @@ return new class extends Migration
             }
 
             // Logos clients, IPs maintenance
-            if (!Schema::hasColumn('general_settings', 'client_logos')) {
+            if (! Schema::hasColumn('general_settings', 'client_logos')) {
                 $table->json('client_logos')->nullable()->after('font_pairs_config');
                 $table->json('maintenance_allowed_ips')->nullable()->after('maintenance_image');
             }
 
             // Stats auto-calcul
-            if (!Schema::hasColumn('general_settings', 'stat_buildings_auto')) {
+            if (! Schema::hasColumn('general_settings', 'stat_buildings_auto')) {
                 $table->boolean('stat_buildings_auto')->default(true)->after('stat_buildings_audited');
                 $table->boolean('stat_clients_auto')->default(true)->after('stat_clients_count');
             }
 
             // Annonce dismissable
-            if (!Schema::hasColumn('general_settings', 'announcement_dismissable')) {
+            if (! Schema::hasColumn('general_settings', 'announcement_dismissable')) {
                 $table->boolean('announcement_dismissable')->default(true)->after('announcement_text_color');
             }
         });

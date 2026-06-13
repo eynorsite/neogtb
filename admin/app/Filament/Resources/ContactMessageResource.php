@@ -5,14 +5,19 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ContactMessageResource\Pages;
 use App\Mail\ContactReplyMail;
 use App\Models\ContactMessage;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 
 class ContactMessageResource extends Resource
@@ -26,6 +31,7 @@ class ContactMessageResource extends Resource
     protected static ?string $navigationLabel = 'Messages';
 
     protected static ?string $modelLabel = 'Message';
+
     protected static ?string $pluralModelLabel = 'Messages';
 
     protected static ?int $navigationSort = 30;
@@ -33,6 +39,7 @@ class ContactMessageResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
@@ -41,15 +48,17 @@ class ContactMessageResource extends Resource
         return false;
     }
 
-    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canEdit(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
-    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canDelete(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && $admin->role === 'superadmin';
     }
 
@@ -172,8 +181,8 @@ class ContactMessageResource extends Resource
                     ]),
             ])
             ->actions([
-                \Filament\Actions\EditAction::make(),
-                \Filament\Actions\Action::make('sendReply')
+                EditAction::make(),
+                Action::make('sendReply')
                     ->label('Envoyer réponse')
                     ->icon('heroicon-o-paper-airplane')
                     ->color('success')
@@ -185,12 +194,12 @@ class ContactMessageResource extends Resource
                         $record->update(['status' => 'replied', 'replied_at' => now()]);
                     })
                     ->visible(fn ($record) => filled($record->reply_content) && $record->status !== 'replied'),
-                \Filament\Actions\Action::make('markRead')
+                Action::make('markRead')
                     ->label('Marquer lu')
                     ->icon('heroicon-o-eye')
                     ->action(fn ($record) => $record->update(['status' => 'read']))
                     ->visible(fn ($record) => $record->status === 'new'),
-                \Filament\Actions\Action::make('markSpam')
+                Action::make('markSpam')
                     ->label('Spam')
                     ->icon('heroicon-o-x-mark')
                     ->color('danger')
@@ -198,15 +207,15 @@ class ContactMessageResource extends Resource
                     ->action(fn ($record) => $record->update(['status' => 'spam'])),
             ])
             ->bulkActions([
-                \Filament\Actions\BulkAction::make('markRead')
+                BulkAction::make('markRead')
                     ->label('Marquer lus')
                     ->icon('heroicon-o-eye')
                     ->action(fn ($records) => $records->each->update(['status' => 'read'])),
-                \Filament\Actions\BulkAction::make('archive')
+                BulkAction::make('archive')
                     ->label('Archiver')
                     ->icon('heroicon-o-archive-box')
                     ->action(fn ($records) => $records->each->update(['status' => 'archived'])),
-                \Filament\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
             ]);
     }
 

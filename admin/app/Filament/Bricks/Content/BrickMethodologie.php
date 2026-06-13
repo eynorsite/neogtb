@@ -122,6 +122,6 @@ class BrickMethodologie extends BaseBrick
         $count = is_array($content['etapes'] ?? null) ? count($content['etapes']) : 0;
 
         return "<div class=\"font-bold text-base\">{$titre}</div>"
-            . "<div class=\"text-sm text-gray-500\">{$count} étape(s)</div>";
+            ."<div class=\"text-sm text-gray-500\">{$count} étape(s)</div>";
     }
 }

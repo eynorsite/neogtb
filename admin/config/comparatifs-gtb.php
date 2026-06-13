@@ -26,11 +26,11 @@
 return [
 
     'gtb-vs-gtc' => [
-        'eyebrow'          => 'GTB · GTC · Supervision du bâtiment',
-        'title'            => 'GTB ou GTC : quelle différence ? | NeoGTB',
-        'meta_title'       => 'GTB ou GTC : quelle différence ? | NeoGTB',
+        'eyebrow' => 'GTB · GTC · Supervision du bâtiment',
+        'title' => 'GTB ou GTC : quelle différence ? | NeoGTB',
+        'meta_title' => 'GTB ou GTC : quelle différence ? | NeoGTB',
         'meta_description' => "GTB ou GTC : la GTB régule finement un bâtiment, la GTC supervise un parc. Tableau comparatif, périmètre, protocoles et cas d'usage.",
-        'lede'             => "La GTB pilote et régule finement tous les lots techniques d'UN bâtiment ; la GTC supervise et centralise l'information de PLUSIEURS bâtiments ou d'un parc, sans assurer la régulation fine. En résumé : la GTB agit, la GTC surveille.",
+        'lede' => "La GTB pilote et régule finement tous les lots techniques d'UN bâtiment ; la GTC supervise et centralise l'information de PLUSIEURS bâtiments ou d'un parc, sans assurer la régulation fine. En résumé : la GTB agit, la GTC surveille.",
 
         'a_label' => 'GTB',
         'b_label' => 'GTC',
@@ -66,29 +66,29 @@ return [
         'faq' => [
             [
                 'question' => 'GTB et GTC, est-ce la même chose ?',
-                'answer'   => "Non. La GTB pilote et régule les équipements d'un bâtiment ; la GTC supervise et centralise l'information de plusieurs sites ou d'un parc. Elles sont complémentaires.",
+                'answer' => "Non. La GTB pilote et régule les équipements d'un bâtiment ; la GTC supervise et centralise l'information de plusieurs sites ou d'un parc. Elles sont complémentaires.",
             ],
             [
                 'question' => 'La GTC remplace-t-elle la GTB ?',
-                'answer'   => "Non. La GTC supervise et centralise, mais ne porte pas la régulation fine : c'est le rôle de la GTB ou des automates de terrain.",
+                'answer' => "Non. La GTC supervise et centralise, mais ne porte pas la régulation fine : c'est le rôle de la GTB ou des automates de terrain.",
             ],
             [
                 'question' => 'Quel système pour le décret BACS ?',
-                'answer'   => "C'est la GTB qui répond au décret BACS : elle doit atteindre au minimum la classe B de la norme EN 15232 (NF EN ISO 52120-1).",
+                'answer' => "C'est la GTB qui répond au décret BACS : elle doit atteindre au minimum la classe B de la norme EN 15232 (NF EN ISO 52120-1).",
             ],
             [
                 'question' => 'GTB est-elle l\'équivalent du BMS ?',
-                'answer'   => 'Oui. BMS (Building Management System) est le terme anglophone équivalent à la GTB. La GTC correspond davantage à un SCADA / BCS.',
+                'answer' => 'Oui. BMS (Building Management System) est le terme anglophone équivalent à la GTB. La GTC correspond davantage à un SCADA / BCS.',
             ],
         ],
     ],
 
     'decret-bacs-vs-decret-tertiaire' => [
-        'eyebrow'          => 'Réglementation · Bâtiments tertiaires',
-        'title'            => 'Décret BACS ou décret tertiaire : quelle différence ? | NeoGTB',
-        'meta_title'       => 'Décret BACS ou décret tertiaire : quelle différence ? | NeoGTB',
+        'eyebrow' => 'Réglementation · Bâtiments tertiaires',
+        'title' => 'Décret BACS ou décret tertiaire : quelle différence ? | NeoGTB',
+        'meta_title' => 'Décret BACS ou décret tertiaire : quelle différence ? | NeoGTB',
         'meta_description' => "Décret BACS vs décret tertiaire : l'un impose d'équiper en GTB selon la puissance CVC, l'autre un objectif de réduction d'énergie. Seuils, échéances, sanctions.",
-        'lede'             => "Le décret BACS impose d'ÉQUIPER les bâtiments tertiaires d'une GTB (système d'automatisation) selon la puissance des systèmes CVC ; le décret tertiaire impose un RÉSULTAT de réduction de consommation d'énergie. L'un porte sur le moyen (la GTB), l'autre sur l'objectif (la sobriété énergétique). Un même bâtiment peut être soumis aux deux.",
+        'lede' => "Le décret BACS impose d'ÉQUIPER les bâtiments tertiaires d'une GTB (système d'automatisation) selon la puissance des systèmes CVC ; le décret tertiaire impose un RÉSULTAT de réduction de consommation d'énergie. L'un porte sur le moyen (la GTB), l'autre sur l'objectif (la sobriété énergétique). Un même bâtiment peut être soumis aux deux.",
 
         'a_label' => 'Décret BACS',
         'b_label' => 'Décret tertiaire',
@@ -124,23 +124,23 @@ return [
         'faq' => [
             [
                 'question' => 'Le décret BACS et le décret tertiaire, est-ce pareil ?',
-                'answer'   => "Non. Le décret BACS impose d'équiper le bâtiment d'une GTB selon la puissance CVC ; le décret tertiaire impose un objectif de réduction de la consommation d'énergie selon la surface. Ils sont distincts mais souvent cumulatifs.",
+                'answer' => "Non. Le décret BACS impose d'équiper le bâtiment d'une GTB selon la puissance CVC ; le décret tertiaire impose un objectif de réduction de la consommation d'énergie selon la surface. Ils sont distincts mais souvent cumulatifs.",
             ],
             [
                 'question' => 'À partir de quelle puissance la GTB est-elle obligatoire ?',
-                'answer'   => 'Au titre du décret BACS : depuis le 1er janvier 2025 pour les systèmes CVC de plus de 290 kW, et à partir du 1er janvier 2030 pour la tranche 70 à 290 kW.',
+                'answer' => 'Au titre du décret BACS : depuis le 1er janvier 2025 pour les systèmes CVC de plus de 290 kW, et à partir du 1er janvier 2030 pour la tranche 70 à 290 kW.',
             ],
             [
                 'question' => 'Quelle classe de GTB exige le décret BACS ?',
-                'answer'   => 'Le système doit atteindre au minimum la classe B de la norme EN 15232 (NF EN ISO 52120-1).',
+                'answer' => 'Le système doit atteindre au minimum la classe B de la norme EN 15232 (NF EN ISO 52120-1).',
             ],
             [
                 'question' => 'Comment déclarer pour le décret tertiaire ?',
-                'answer'   => 'Les consommations se déclarent chaque année sur la plateforme OPERAT, gérée par l\'ADEME.',
+                'answer' => 'Les consommations se déclarent chaque année sur la plateforme OPERAT, gérée par l\'ADEME.',
             ],
             [
                 'question' => 'Peut-on être exempté du décret BACS ?',
-                'answer'   => "Une dérogation est possible si un audit démontre que le temps de retour sur investissement de la GTB dépasse 6 ans.",
+                'answer' => 'Une dérogation est possible si un audit démontre que le temps de retour sur investissement de la GTB dépasse 6 ans.',
             ],
         ],
     ],

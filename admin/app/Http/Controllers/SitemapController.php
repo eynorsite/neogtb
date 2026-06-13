@@ -51,10 +51,10 @@ class SitemapController extends Controller
 
         foreach ($staticRoutes as [$path, $changefreq, $priority]) {
             $urls[] = [
-                'loc'        => $base . $path,
-                'lastmod'    => $now,
+                'loc' => $base.$path,
+                'lastmod' => $now,
                 'changefreq' => $changefreq,
-                'priority'   => $priority,
+                'priority' => $priority,
             ];
             $addedPaths[$path] = true;
         }
@@ -71,15 +71,15 @@ class SitemapController extends Controller
                 if ($page->slug === 'accueil') {
                     return;
                 }
-                $path = '/' . ltrim($page->slug, '/');
+                $path = '/'.ltrim($page->slug, '/');
                 if (isset($addedPaths[$path])) {
                     return;
                 }
                 $urls[] = [
-                    'loc'        => $base . $path,
-                    'lastmod'    => optional($page->updated_at)->toAtomString() ?: $now,
+                    'loc' => $base.$path,
+                    'lastmod' => optional($page->updated_at)->toAtomString() ?: $now,
                     'changefreq' => 'weekly',
-                    'priority'   => '0.7',
+                    'priority' => '0.7',
                 ];
                 $addedPaths[$path] = true;
             });
@@ -97,26 +97,26 @@ class SitemapController extends Controller
                 }
                 $lastmod = $post->updated_at ?: $post->published_at;
                 $urls[] = [
-                    'loc'        => $base . '/blog/' . $post->slug,
-                    'lastmod'    => $lastmod ? $lastmod->toAtomString() : $now,
+                    'loc' => $base.'/blog/'.$post->slug,
+                    'lastmod' => $lastmod ? $lastmod->toAtomString() : $now,
                     'changefreq' => 'monthly',
-                    'priority'   => '0.8',
+                    'priority' => '0.8',
                 ];
             });
 
-        $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
 
         foreach ($urls as $u) {
             $xml .= "  <url>\n";
-            $xml .= '    <loc>' . htmlspecialchars($u['loc'], ENT_XML1 | ENT_QUOTES, 'UTF-8') . "</loc>\n";
-            $xml .= '    <lastmod>' . $u['lastmod'] . "</lastmod>\n";
-            $xml .= '    <changefreq>' . $u['changefreq'] . "</changefreq>\n";
-            $xml .= '    <priority>' . $u['priority'] . "</priority>\n";
+            $xml .= '    <loc>'.htmlspecialchars($u['loc'], ENT_XML1 | ENT_QUOTES, 'UTF-8')."</loc>\n";
+            $xml .= '    <lastmod>'.$u['lastmod']."</lastmod>\n";
+            $xml .= '    <changefreq>'.$u['changefreq']."</changefreq>\n";
+            $xml .= '    <priority>'.$u['priority']."</priority>\n";
             $xml .= "  </url>\n";
         }
 
-        $xml .= '</urlset>' . "\n";
+        $xml .= '</urlset>'."\n";
 
         return response($xml, 200, [
             'Content-Type' => 'application/xml; charset=UTF-8',

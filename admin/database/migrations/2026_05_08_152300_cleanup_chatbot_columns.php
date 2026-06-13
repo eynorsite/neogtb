@@ -31,7 +31,7 @@ return new class extends Migration
             Schema::table('chatbot_faqs', function (Blueprint $table) {
                 try {
                     $table->dropIndex(['is_active', 'order']);
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     // Index may not exist on older databases — ignore.
                 }
             });
@@ -52,7 +52,7 @@ return new class extends Migration
             Schema::table('chatbot_faqs', function (Blueprint $table) {
                 try {
                     $table->dropIndex(['is_active', 'sort_order']);
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     // ignore
                 }
             });

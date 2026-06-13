@@ -95,6 +95,6 @@ class BrickCtaIllustrated extends BaseBrick
         $bouton = $content['bouton_texte'] ?? 'Bouton';
 
         return "<div class=\"font-semibold\">{$titre}</div>"
-            . "<div class=\"text-xs text-primary-600\">[{$bouton}]</div>";
+            ."<div class=\"text-xs text-primary-600\">[{$bouton}]</div>";
     }
 }

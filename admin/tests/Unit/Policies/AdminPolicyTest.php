@@ -17,7 +17,7 @@ class AdminPolicyTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->policy = new AdminPolicy();
+        $this->policy = new AdminPolicy;
     }
 
     #[Test]

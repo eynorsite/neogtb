@@ -17,6 +17,7 @@ class GeneralSetting extends Model
         if (static::$instance === null) {
             static::$instance = self::first() ?? self::create(['company_name' => 'NeoGTB']);
         }
+
         return static::$instance;
     }
 
@@ -36,7 +37,7 @@ class GeneralSetting extends Model
 
     protected static function booted(): void
     {
-        static::saved(fn() => static::clearCache());
+        static::saved(fn () => static::clearCache());
     }
 
     protected function casts(): array
@@ -109,26 +110,27 @@ class GeneralSetting extends Model
         $links = [];
         foreach (['linkedin', 'facebook', 'youtube', 'instagram', 'twitter_x', 'tiktok'] as $network) {
             $key = "social_{$network}";
-            if (!empty($this->{$key})) {
+            if (! empty($this->{$key})) {
                 $links[$network] = $this->{$key};
             }
         }
+
         return $links;
     }
 
     public function getCopyrightAttribute(): string
     {
-        return '© ' . date('Y') . ' ' . $this->company_name;
+        return '© '.date('Y').' '.$this->company_name;
     }
 
     public function getLegalIdentityAttribute(): string
     {
         return implode(' | ', array_filter([
             $this->company_legal_form,
-            $this->company_siret ? 'SIRET ' . $this->company_siret : null,
-            $this->company_tva_number ? 'TVA ' . $this->company_tva_number : null,
-            $this->company_rcs ? 'RCS ' . $this->company_rcs : null,
-            $this->company_capital ? 'Capital ' . $this->company_capital : null,
+            $this->company_siret ? 'SIRET '.$this->company_siret : null,
+            $this->company_tva_number ? 'TVA '.$this->company_tva_number : null,
+            $this->company_rcs ? 'RCS '.$this->company_rcs : null,
+            $this->company_capital ? 'Capital '.$this->company_capital : null,
         ]));
     }
 }

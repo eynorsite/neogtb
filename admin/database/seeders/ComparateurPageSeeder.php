@@ -20,8 +20,9 @@ class ComparateurPageSeeder extends Seeder
     public function run(): void
     {
         $page = SitePage::where('slug', 'comparateur')->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->error('Page Comparateur introuvable. Lance d\'abord SitePagesSeeder.');
+
             return;
         }
 
@@ -90,8 +91,8 @@ class ComparateurPageSeeder extends Seeder
             'content' => [
                 'titre' => 'Table comparative interactive',
                 'contenu' => '<!-- COMPARATEUR_TABLE_PLACEHOLDER -->'
-                    . '<p>Cet emplacement marque la position de la table comparative Alpine.js (10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense, etc.) qui reste rendue directement dans la blade <code>front/comparateur.blade.php</code>.</p>'
-                    . '<p>Modifier les filtres, colonnes et données de la table se fait dans la blade — pas depuis l\'admin.</p>',
+                    .'<p>Cet emplacement marque la position de la table comparative Alpine.js (10+ solutions GTB : Schneider, Siemens Desigo, Honeywell Niagara, Sauter, Wago, Wattsense, etc.) qui reste rendue directement dans la blade <code>front/comparateur.blade.php</code>.</p>'
+                    .'<p>Modifier les filtres, colonnes et données de la table se fait dans la blade — pas depuis l\'admin.</p>',
             ],
             'settings' => ['style' => 'placeholder', 'fond' => 'dark-50'],
         ]);

@@ -20,8 +20,9 @@ class HomePageSeeder extends Seeder
     public function run(): void
     {
         $page = SitePage::where('slug', 'accueil')->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->error('Page Accueil introuvable. Lance d\'abord SitePagesSeeder.');
+
             return;
         }
 

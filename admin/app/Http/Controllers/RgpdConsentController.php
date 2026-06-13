@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SubmitGdprRequest;
 use App\Models\CookieConsent;
+use App\Models\PrivacyPolicyVersion;
 use App\Services\Gdpr\GdprRequestService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class RgpdConsentController extends Controller
                 'version' => $this->getCurrentPolicyVersion(),
                 'user_agent_hash' => $userAgentHash,
                 'accepted_at' => $hasAccepted ? now() : null,
-                'refused_at' => !$hasAccepted ? now() : null,
+                'refused_at' => ! $hasAccepted ? now() : null,
                 'withdrawn_at' => null,
             ]
         );
@@ -52,7 +53,7 @@ class RgpdConsentController extends Controller
     {
         $visitorId = $request->cookie('neogtb_visitor_id');
 
-        if (!$visitorId) {
+        if (! $visitorId) {
             return response()->json(['consents' => null]);
         }
 
@@ -99,7 +100,7 @@ class RgpdConsentController extends Controller
 
     private function getCurrentPolicyVersion(): string
     {
-        return \App\Models\PrivacyPolicyVersion::where('is_current', true)
+        return PrivacyPolicyVersion::where('is_current', true)
             ->value('version') ?? '1.0';
     }
 }

@@ -8,6 +8,7 @@ use Filament\GlobalSearch\GlobalSearchResults;
 use Filament\GlobalSearch\Providers\Contracts\GlobalSearchProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class LabelsGlobalSearchProvider implements GlobalSearchProvider
 {
@@ -26,7 +27,7 @@ class LabelsGlobalSearchProvider implements GlobalSearchProvider
 
         foreach ($index as $entry) {
             $haystack = $this->normalize(
-                $entry['label'] . ' ' . $entry['section'] . ' ' . $entry['tab'] . ' ' . $entry['key']
+                $entry['label'].' '.$entry['section'].' '.$entry['tab'].' '.$entry['key']
             );
 
             if (str_contains($haystack, $needle)) {
@@ -76,7 +77,7 @@ class LabelsGlobalSearchProvider implements GlobalSearchProvider
     {
         $path = (new \ReflectionClass(SiteSettingsPage::class))->getFileName();
         $mtime = filemtime($path);
-        $cacheKey = 'neogtb.ui_labels_index.' . $mtime;
+        $cacheKey = 'neogtb.ui_labels_index.'.$mtime;
 
         return Cache::remember($cacheKey, now()->addHours(6), function () use ($path) {
             return $this->parseIndex(file_get_contents($path));
@@ -106,7 +107,7 @@ class LabelsGlobalSearchProvider implements GlobalSearchProvider
             if (preg_match("/Tab::make\\(\\s*'((?:[^'\\\\]|\\\\.)*)'\\s*\\)/", $line, $m)) {
                 $pendingTabLabel = $this->unescape($m[1]);
                 $currentTab = $pendingTabLabel;
-                $currentTabId = \Illuminate\Support\Str::slug(\Illuminate\Support\Str::transliterate($pendingTabLabel, strict: true));
+                $currentTabId = Str::slug(Str::transliterate($pendingTabLabel, strict: true));
                 $currentSection = '';
             }
 
@@ -116,6 +117,7 @@ class LabelsGlobalSearchProvider implements GlobalSearchProvider
 
             if (preg_match("/Section::make\\(\\s*'((?:[^'\\\\]|\\\\.)*)'\\s*\\)/", $line, $m)) {
                 $currentSection = $this->unescape($m[1]);
+
                 continue;
             }
 
@@ -150,7 +152,7 @@ class LabelsGlobalSearchProvider implements GlobalSearchProvider
     protected function normalize(string $value): string
     {
         $value = mb_strtolower($value);
-        $value = \Illuminate\Support\Str::ascii($value);
+        $value = Str::ascii($value);
 
         return preg_replace('/[^a-z0-9]+/', ' ', $value);
     }

@@ -4,16 +4,35 @@ namespace App\Filament\Bricks\Content;
 
 use App\Filament\Bricks\BaseBrick;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 
 class BrickTemoignages extends BaseBrick
 {
-    public function type(): string { return 'temoignages'; }
-    public function name(): string { return 'Témoignages'; }
-    public function icon(): string { return '💬'; }
-    public function description(): string { return 'Avis et témoignages clients'; }
-    public function category(): string { return 'Contenu'; }
+    public function type(): string
+    {
+        return 'temoignages';
+    }
+
+    public function name(): string
+    {
+        return 'Témoignages';
+    }
+
+    public function icon(): string
+    {
+        return '💬';
+    }
+
+    public function description(): string
+    {
+        return 'Avis et témoignages clients';
+    }
+
+    public function category(): string
+    {
+        return 'Contenu';
+    }
 
     public function defaultContent(): array
     {
@@ -40,7 +59,8 @@ class BrickTemoignages extends BaseBrick
     public function preview(array $content): string
     {
         $nb = count($content['avis'] ?? []);
-        return "<div class=\"font-semibold\">" . ($content['titre'] ?? 'Témoignages') . "</div>"
-            . "<div class=\"text-sm text-gray-500\">{$nb} avis</div>";
+
+        return '<div class="font-semibold">'.($content['titre'] ?? 'Témoignages').'</div>'
+            ."<div class=\"text-sm text-gray-500\">{$nb} avis</div>";
     }
 }

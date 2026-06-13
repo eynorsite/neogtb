@@ -4,14 +4,16 @@ namespace Tests\Unit\Http\Requests;
 
 use App\Http\Requests\SubmitGdprRequest;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
+use Illuminate\Contracts\Validation\Validator;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class SubmitGdprRequestTest extends TestCase
 {
-    private function validate(array $data): \Illuminate\Contracts\Validation\Validator
+    private function validate(array $data): Validator
     {
-        $rules = (new SubmitGdprRequest())->rules();
+        $rules = (new SubmitGdprRequest)->rules();
+
         return app(ValidationFactory::class)->make($data, $rules);
     }
 

@@ -22,7 +22,7 @@ class InactiveAdminMiddlewareTest extends TestCase
         Auth::guard('admin')->login($admin);
         $this->assertTrue(Auth::guard('admin')->check());
 
-        $middleware = new EnsureAdminIsActive();
+        $middleware = new EnsureAdminIsActive;
         $request = Request::create('/admin', 'GET');
         $request->setLaravelSession($this->app['session.store']);
 
@@ -37,7 +37,7 @@ class InactiveAdminMiddlewareTest extends TestCase
         $admin = Admin::factory()->create(['is_active' => true]);
         Auth::guard('admin')->login($admin);
 
-        $middleware = new EnsureAdminIsActive();
+        $middleware = new EnsureAdminIsActive;
         $request = Request::create('/admin', 'GET');
         $request->setLaravelSession($this->app['session.store']);
 

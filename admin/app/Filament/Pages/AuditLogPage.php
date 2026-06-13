@@ -3,6 +3,8 @@
 namespace App\Filament\Pages;
 
 use App\Models\AdminActivityLog;
+use Filament\Actions\ViewAction;
+use Filament\Forms\Components\DatePicker;
 use Filament\Pages\Page;
 use Filament\Tables;
 use Filament\Tables\Concerns\InteractsWithTable;
@@ -86,8 +88,8 @@ class AuditLogPage extends Page implements HasTable
 
                 Tables\Filters\Filter::make('created_at')
                     ->form([
-                        \Filament\Forms\Components\DatePicker::make('from')->label('Du'),
-                        \Filament\Forms\Components\DatePicker::make('until')->label('Au'),
+                        DatePicker::make('from')->label('Du'),
+                        DatePicker::make('until')->label('Au'),
                     ])
                     ->query(function (Builder $query, array $data): Builder {
                         return $query
@@ -96,7 +98,7 @@ class AuditLogPage extends Page implements HasTable
                     }),
             ])
             ->actions([
-                \Filament\Actions\ViewAction::make()
+                ViewAction::make()
                     ->modalContent(fn ($record) => view('filament.pages.audit-log-detail', ['record' => $record])),
             ])
             ->paginated([25, 50, 100]);

@@ -142,6 +142,6 @@ class BrickCartesPositioning extends BaseBrick
         $nb = count($content['cartes'] ?? []);
 
         return ($titre ? "<div class=\"font-semibold\">{$titre}</div>" : '')
-            . "<div class=\"text-sm text-gray-500\">{$nb} carte(s)</div>";
+            ."<div class=\"text-sm text-gray-500\">{$nb} carte(s)</div>";
     }
 }

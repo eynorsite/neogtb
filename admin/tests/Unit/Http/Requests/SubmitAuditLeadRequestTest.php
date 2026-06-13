@@ -4,14 +4,16 @@ namespace Tests\Unit\Http\Requests;
 
 use App\Http\Requests\SubmitAuditLeadRequest;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
+use Illuminate\Contracts\Validation\Validator;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class SubmitAuditLeadRequestTest extends TestCase
 {
-    private function validate(array $data): \Illuminate\Contracts\Validation\Validator
+    private function validate(array $data): Validator
     {
-        $rules = (new SubmitAuditLeadRequest())->rules();
+        $rules = (new SubmitAuditLeadRequest)->rules();
+
         return app(ValidationFactory::class)->make($data, $rules);
     }
 

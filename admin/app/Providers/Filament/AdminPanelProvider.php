@@ -3,17 +3,19 @@
 namespace App\Providers\Filament;
 
 use App\Filament\GlobalSearch\LabelsGlobalSearchProvider;
+use App\Filament\Pages\Dashboard;
 use App\Http\Middleware\EnsureAdminIsActive;
+use App\Models\GeneralSetting;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use App\Models\GeneralSetting;
-use Filament\Actions\Action;
+use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Filament\Widgets\AccountWidget;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
@@ -44,7 +46,7 @@ class AdminPanelProvider extends PanelProvider
             ->maxContentWidth('full')
             ->renderHook('panels::styles.after', fn () => view('filament.hooks.admin-styles'))
             ->renderHook(
-                \Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
+                PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
                 fn () => view('filament.hooks.global-search'),
             )
             ->globalSearch(LabelsGlobalSearchProvider::class)
@@ -84,7 +86,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
-                \App\Filament\Pages\Dashboard::class,
+                Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
@@ -107,13 +109,13 @@ class AdminPanelProvider extends PanelProvider
             // ->spa()
             ->sidebarCollapsibleOnDesktop()
             ->navigationGroups([
-                \Filament\Navigation\NavigationGroup::make('Mon site')
+                NavigationGroup::make('Mon site')
                     ->icon('heroicon-o-globe-alt'),
-                \Filament\Navigation\NavigationGroup::make('Blog')
+                NavigationGroup::make('Blog')
                     ->icon('heroicon-o-newspaper'),
-                \Filament\Navigation\NavigationGroup::make('Boîte de réception')
+                NavigationGroup::make('Boîte de réception')
                     ->icon('heroicon-o-inbox'),
-                \Filament\Navigation\NavigationGroup::make('Réglages')
+                NavigationGroup::make('Réglages')
                     ->icon('heroicon-o-cog-6-tooth')
                     ->collapsed(),
             ]);

@@ -11,8 +11,9 @@ class AccueilBricksSeeder extends Seeder
     public function run(): void
     {
         $page = SitePage::where('slug', 'accueil')->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->error('Page Accueil not found');
+
             return;
         }
 

@@ -10,29 +10,29 @@ return new class extends Migration
     {
         Schema::table('general_settings', function (Blueprint $table) {
             // Code APE (mentions légales)
-            if (!Schema::hasColumn('general_settings', 'company_ape')) {
+            if (! Schema::hasColumn('general_settings', 'company_ape')) {
                 $table->string('company_ape', 10)->nullable()->after('company_rcs');
             }
 
             // Dark mode préparation
-            if (!Schema::hasColumn('general_settings', 'color_scheme')) {
+            if (! Schema::hasColumn('general_settings', 'color_scheme')) {
                 $table->enum('color_scheme', ['light', 'dark'])->default('light')->after('shadow_style');
             }
 
             // Recherche dans la navigation
-            if (!Schema::hasColumn('general_settings', 'nav_show_search')) {
+            if (! Schema::hasColumn('general_settings', 'nav_show_search')) {
                 $table->boolean('nav_show_search')->default(true)->after('nav_sticky');
                 $table->string('nav_search_placeholder')->nullable()->after('nav_show_search');
             }
 
             // Vidéo hero
-            if (!Schema::hasColumn('general_settings', 'hero_video_url')) {
+            if (! Schema::hasColumn('general_settings', 'hero_video_url')) {
                 $table->string('hero_video_url')->nullable()->after('hero_title_line2');
                 $table->string('hero_video_type')->nullable()->after('hero_video_url');
             }
 
             // Crisp Chat
-            if (!Schema::hasColumn('general_settings', 'crisp_chat_id')) {
+            if (! Schema::hasColumn('general_settings', 'crisp_chat_id')) {
                 $table->string('crisp_chat_id')->nullable()->after('hotjar_id');
             }
         });

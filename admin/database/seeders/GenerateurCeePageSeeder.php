@@ -19,8 +19,9 @@ class GenerateurCeePageSeeder extends Seeder
     public function run(): void
     {
         $page = SitePage::where('slug', 'generateur-cee')->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->error('Page Générateur CEE introuvable. Lance d\'abord SitePagesSeeder.');
+
             return;
         }
 
@@ -66,8 +67,8 @@ class GenerateurCeePageSeeder extends Seeder
             'content' => [
                 'titre' => 'Simulateur CEE — wizard multi-étapes',
                 'contenu' => '<!-- GENERATEUR_CEE_WIZARD_PLACEHOLDER -->'
-                    . '<p>Cet emplacement marque la position du wizard Alpine.js (calcul des primes CEE selon les fiches BAT-TH-116 et BAT-TH-112) qui reste rendu directement dans la blade <code>front/generateur-cee.blade.php</code>.</p>'
-                    . '<p>Modifier les étapes, formules et barèmes se fait dans la blade — pas depuis l\'admin.</p>',
+                    .'<p>Cet emplacement marque la position du wizard Alpine.js (calcul des primes CEE selon les fiches BAT-TH-116 et BAT-TH-112) qui reste rendu directement dans la blade <code>front/generateur-cee.blade.php</code>.</p>'
+                    .'<p>Modifier les étapes, formules et barèmes se fait dans la blade — pas depuis l\'admin.</p>',
             ],
             'settings' => ['style' => 'placeholder', 'fond' => 'dark-50'],
         ]);

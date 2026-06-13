@@ -18,6 +18,9 @@ use App\Filament\Bricks\BrickRegistry;
 use App\Filament\Pages\PageContentsPage;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\SitePage;
+use Filament\Actions\Action;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Repeater;
@@ -30,6 +33,7 @@ use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class PageResource extends Resource
@@ -43,6 +47,7 @@ class PageResource extends Resource
     protected static ?string $navigationLabel = 'Pages';
 
     protected static ?string $modelLabel = 'Page';
+
     protected static ?string $pluralModelLabel = 'Pages';
 
     protected static ?int $navigationSort = 10;
@@ -50,24 +55,28 @@ class PageResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
     }
 
     public static function canCreate(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
     }
 
-    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canEdit(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin', 'editeur']);
     }
 
-    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canDelete(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
@@ -192,20 +201,20 @@ class PageResource extends Resource
                                             ->searchable()
                                             ->live()
                                             ->afterStateUpdated(function ($state, callable $set, callable $get) {
-                                                if (!$state) {
+                                                if (! $state) {
                                                     return;
                                                 }
                                                 $def = BrickRegistry::get($state);
-                                                if (!$def) {
+                                                if (! $def) {
                                                     return;
                                                 }
-                                                if (!$get('brick_name')) {
+                                                if (! $get('brick_name')) {
                                                     $set('brick_name', $def->name());
                                                 }
-                                                if (!$get('content')) {
+                                                if (! $get('content')) {
                                                     $set('content', json_encode($def->defaultContent(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
                                                 }
-                                                if (!$get('settings')) {
+                                                if (! $get('settings')) {
                                                     $set('settings', json_encode($def->defaultSettings(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
                                                 }
                                             }),
@@ -271,16 +280,16 @@ class PageResource extends Resource
             ->defaultSort('order')
             ->reorderable('order')
             ->actions([
-                \Filament\Actions\Action::make('edit_content')
+                Action::make('edit_content')
                     ->label('Modifier le contenu')
                     ->icon('heroicon-o-pencil-square')
                     ->color('success')
                     // Caché pour les pages figées : leur contenu n'est pas éditable depuis l'admin.
                     ->visible(fn (SitePage $record) => ! $record->isStaticallyRendered())
                     ->url(fn () => PageContentsPage::getUrl()),
-                \Filament\Actions\EditAction::make()
+                EditAction::make()
                     ->label('Réglages de la page'),
-                \Filament\Actions\Action::make('viewOnSite')
+                Action::make('viewOnSite')
                     ->label('Voir sur le site')
                     ->icon('heroicon-o-arrow-top-right-on-square')
                     ->color('gray')
@@ -288,7 +297,7 @@ class PageResource extends Resource
                     ->visible(fn ($record) => $record->is_published),
             ])
             ->bulkActions([
-                \Filament\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
             ]);
     }
 

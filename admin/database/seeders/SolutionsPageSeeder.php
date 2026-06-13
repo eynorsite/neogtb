@@ -19,8 +19,9 @@ class SolutionsPageSeeder extends Seeder
     public function run(): void
     {
         $page = SitePage::where('slug', 'solutions')->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->error('Page Solutions introuvable. Lance d\'abord SitePagesSeeder.');
+
             return;
         }
 

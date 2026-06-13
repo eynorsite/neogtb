@@ -48,6 +48,7 @@ class BlogCta
         $normalize = static function (string $v): string {
             $v = mb_strtolower($v);
             $translit = @iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $v);
+
             return $translit !== false ? $translit : $v;
         };
 

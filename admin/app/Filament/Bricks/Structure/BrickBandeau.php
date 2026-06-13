@@ -7,11 +7,30 @@ use Filament\Forms\Components\TextInput;
 
 class BrickBandeau extends BaseBrick
 {
-    public function type(): string { return 'bandeau'; }
-    public function name(): string { return 'Bandeau'; }
-    public function icon(): string { return '📢'; }
-    public function description(): string { return 'Bandeau pleine largeur (annonce, promo)'; }
-    public function category(): string { return 'Structure'; }
+    public function type(): string
+    {
+        return 'bandeau';
+    }
+
+    public function name(): string
+    {
+        return 'Bandeau';
+    }
+
+    public function icon(): string
+    {
+        return '📢';
+    }
+
+    public function description(): string
+    {
+        return 'Bandeau pleine largeur (annonce, promo)';
+    }
+
+    public function category(): string
+    {
+        return 'Structure';
+    }
 
     public function defaultContent(): array
     {
@@ -35,6 +54,6 @@ class BrickBandeau extends BaseBrick
 
     public function preview(array $content): string
     {
-        return '<div class="text-sm">' . ($content['texte'] ?? 'Bandeau') . '</div>';
+        return '<div class="text-sm">'.($content['texte'] ?? 'Bandeau').'</div>';
     }
 }

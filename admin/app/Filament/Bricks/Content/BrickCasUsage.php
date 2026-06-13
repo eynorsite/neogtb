@@ -174,6 +174,6 @@ class BrickCasUsage extends BaseBrick
         $nb = is_array($content['cas'] ?? null) ? count($content['cas']) : 0;
 
         return "<div class=\"font-bold text-base\">{$titre}</div>"
-            . "<div class=\"text-sm text-gray-500\">{$nb} cas</div>";
+            ."<div class=\"text-sm text-gray-500\">{$nb} cas</div>";
     }
 }

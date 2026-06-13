@@ -4,6 +4,8 @@ namespace App\Filament\Resources\ChatbotConversationResource\Pages;
 
 use App\Filament\Resources\ChatbotConversationResource;
 use App\Models\ChatbotConversation;
+use Filament\Actions\Action;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 
 class ListChatbotConversations extends ListRecords
@@ -13,7 +15,7 @@ class ListChatbotConversations extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            \Filament\Actions\Action::make('export')
+            Action::make('export')
                 ->label('Exporter CSV')
                 ->icon('heroicon-o-arrow-down-tray')
                 ->color('gray')
@@ -35,13 +37,16 @@ class ListChatbotConversations extends ListRecords
                             $c->created_at->format('d/m/Y H:i')
                         );
                     }
-                    $path = storage_path('app/exports/chatbot-conversations-' . now()->format('Y-m-d') . '.csv');
-                    if (! is_dir(dirname($path))) mkdir(dirname($path), 0755, true);
-                    file_put_contents($path, "\xEF\xBB\xBF" . $csv);
+                    $path = storage_path('app/exports/chatbot-conversations-'.now()->format('Y-m-d').'.csv');
+                    if (! is_dir(dirname($path))) {
+                        mkdir(dirname($path), 0755, true);
+                    }
+                    file_put_contents($path, "\xEF\xBB\xBF".$csv);
+
                     return response()->download($path)->deleteFileAfterSend();
                 }),
 
-            \Filament\Actions\Action::make('purge_old')
+            Action::make('purge_old')
                 ->label('Purger > 30j')
                 ->icon('heroicon-o-trash')
                 ->color('danger')
@@ -50,7 +55,7 @@ class ListChatbotConversations extends ListRecords
                 ->modalDescription('Supprime toutes les conversations dont la dernière activité date de plus de 30 jours.')
                 ->action(function () {
                     $deleted = ChatbotConversation::where('last_activity_at', '<', now()->subDays(30))->delete();
-                    \Filament\Notifications\Notification::make()
+                    Notification::make()
                         ->title("$deleted conversations purgées")
                         ->success()
                         ->send();

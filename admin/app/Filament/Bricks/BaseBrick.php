@@ -25,7 +25,7 @@ abstract class BaseBrick
 
     public function preview(array $content): string
     {
-        return '<div class="text-sm text-gray-500">' . $this->name() . '</div>';
+        return '<div class="text-sm text-gray-500">'.$this->name().'</div>';
     }
 
     public function validate(array $content): bool
@@ -35,6 +35,6 @@ abstract class BaseBrick
 
     public static function make(): static
     {
-        return new static();
+        return new static;
     }
 }

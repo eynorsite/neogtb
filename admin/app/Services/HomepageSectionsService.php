@@ -13,15 +13,15 @@ class HomepageSectionsService
     public function supportedSections(): array
     {
         return [
-            'hero'         => 'Hero',
-            'expertises'   => 'Expertises GTB',
-            'chiffres'     => 'Chiffres clés',
-            'comparatif'   => 'Comparatif GTB/GTC',
-            'solutions'    => 'Solutions & Technologies',
-            'temoignages'  => 'Témoignages',
-            'faq'          => 'FAQ',
-            'cta_audit'    => 'CTA Audit',
-            'blog_recent'  => 'Articles récents',
+            'hero' => 'Hero',
+            'expertises' => 'Expertises GTB',
+            'chiffres' => 'Chiffres clés',
+            'comparatif' => 'Comparatif GTB/GTC',
+            'solutions' => 'Solutions & Technologies',
+            'temoignages' => 'Témoignages',
+            'faq' => 'FAQ',
+            'cta_audit' => 'CTA Audit',
+            'blog_recent' => 'Articles récents',
         ];
     }
 
@@ -50,8 +50,8 @@ class HomepageSectionsService
             }
 
             $result[] = [
-                'key'    => $key,
-                'label'  => $supported[$key],
+                'key' => $key,
+                'label' => $supported[$key],
                 'config' => $this->get($key),
             ];
         }

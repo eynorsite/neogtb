@@ -8,11 +8,30 @@ use Filament\Forms\Components\TextInput;
 
 class BrickComparatif extends BaseBrick
 {
-    public function type(): string { return 'comparatif'; }
-    public function name(): string { return 'Comparatif'; }
-    public function icon(): string { return '⚖️'; }
-    public function description(): string { return 'Tableau comparatif côte à côte'; }
-    public function category(): string { return 'Contenu'; }
+    public function type(): string
+    {
+        return 'comparatif';
+    }
+
+    public function name(): string
+    {
+        return 'Comparatif';
+    }
+
+    public function icon(): string
+    {
+        return '⚖️';
+    }
+
+    public function description(): string
+    {
+        return 'Tableau comparatif côte à côte';
+    }
+
+    public function category(): string
+    {
+        return 'Contenu';
+    }
 
     public function defaultContent(): array
     {
@@ -44,6 +63,6 @@ class BrickComparatif extends BaseBrick
 
     public function preview(array $content): string
     {
-        return '<div class="font-semibold">' . ($content['titre'] ?? 'Comparatif') . '</div>';
+        return '<div class="font-semibold">'.($content['titre'] ?? 'Comparatif').'</div>';
     }
 }

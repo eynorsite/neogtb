@@ -50,7 +50,7 @@ class AuditPageSeeder extends Seeder
                 'badge' => 'Pré-diagnostic gratuit · 5 min',
                 'pre_titre' => 'NeoGTB',
                 'titre' => 'Évaluez la maturité GTB de votre bâtiment',
-                'description' => "Diagnostic en 8 questions basé sur la norme ISO 52120-1 (ex-EN 15232). Obtenez votre classe GTB estimée (A/B/C/D), un benchmark énergétique et des recommandations personnalisées.",
+                'description' => 'Diagnostic en 8 questions basé sur la norme ISO 52120-1 (ex-EN 15232). Obtenez votre classe GTB estimée (A/B/C/D), un benchmark énergétique et des recommandations personnalisées.',
                 'image' => '/images/hero-audit.webp',
                 'image_alt' => 'Tableau de bord d\'évaluation GTB — pré-diagnostic NeoGTB',
                 'cta_texte' => 'Démarrer le diagnostic',

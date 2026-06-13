@@ -15,8 +15,9 @@ class PositionnementPageSeeder extends Seeder
     public function run(): void
     {
         $page = SitePage::where('slug', 'positionnement')->first();
-        if (!$page) {
+        if (! $page) {
             $this->command->error('Page Positionnement introuvable. Lance d\'abord SitePagesSeeder.');
+
             return;
         }
 

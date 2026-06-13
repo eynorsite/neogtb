@@ -2,7 +2,6 @@
 
 namespace App\Filament\Pages;
 
-use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Artisan;

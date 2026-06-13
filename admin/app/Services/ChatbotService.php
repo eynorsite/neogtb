@@ -9,6 +9,7 @@ use App\Models\ChatbotMessage;
 use App\Models\ChatbotSetting;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ChatbotService
 {
@@ -17,9 +18,9 @@ class ChatbotService
      * input/output. Conversion EUR ≈ USD * 0.92.
      */
     private const PRICING = [
-        'claude-haiku-4-5'  => ['in' => 1.00,  'out' => 5.00],
+        'claude-haiku-4-5' => ['in' => 1.00,  'out' => 5.00],
         'claude-sonnet-4-6' => ['in' => 3.00,  'out' => 15.00],
-        'claude-opus-4-7'   => ['in' => 15.00, 'out' => 75.00],
+        'claude-opus-4-7' => ['in' => 15.00, 'out' => 75.00],
     ];
 
     private const USD_TO_EUR = 0.92;
@@ -63,7 +64,7 @@ class ChatbotService
             }
         }
 
-        return $base . $snippetsBlock . $faqsBlock;
+        return $base.$snippetsBlock.$faqsBlock;
     }
 
     private function defaultSystemPrompt(ChatbotSetting $settings): string
@@ -108,7 +109,7 @@ PROMPT;
         return ChatbotConversation::firstOrCreate(
             ['session_id' => $sessionId],
             [
-                'ip_hash' => isset($context['ip']) ? hash('sha256', $context['ip'] . config('app.key')) : null,
+                'ip_hash' => isset($context['ip']) ? hash('sha256', $context['ip'].config('app.key')) : null,
                 'user_agent_hash' => isset($context['ua']) ? hash('sha256', $context['ua']) : null,
                 'referrer_url' => $context['referrer'] ?? null,
                 'landing_page' => $context['landing'] ?? null,
@@ -120,25 +121,28 @@ PROMPT;
     /**
      * Envoie une requête à l'API Anthropic en mode streaming.
      *
-     * @return iterable<string>  Texte progressif (deltas).
+     * @return iterable<string> Texte progressif (deltas).
      */
     public function streamReply(ChatbotConversation $conversation, string $userMessage): iterable
     {
         $settings = $this->settings();
 
         if (! $settings->enabled) {
-            yield "Le chatbot est actuellement désactivé. Merci de nous contacter via le formulaire.";
+            yield 'Le chatbot est actuellement désactivé. Merci de nous contacter via le formulaire.';
+
             return;
         }
 
         if (! $settings->isWithinBudget()) {
             yield "Notre assistant a atteint son quota du mois. Merci d'utiliser le formulaire de contact.";
+
             return;
         }
 
         $apiKey = config('services.anthropic.api_key');
         if (empty($apiKey)) {
             yield "Configuration manquante. Contactez l'administrateur.";
+
             return;
         }
 
@@ -188,7 +192,7 @@ PROMPT;
                 CURLOPT_POST => true,
                 CURLOPT_HTTPHEADER => [
                     'Content-Type: application/json',
-                    'x-api-key: ' . $apiKey,
+                    'x-api-key: '.$apiKey,
                     'anthropic-version: 2023-06-01',
                     'anthropic-beta: prompt-caching-2024-07-31',
                 ],
@@ -204,13 +208,15 @@ PROMPT;
                         if (str_starts_with($line, 'data: ')) {
                             $json = substr($line, 6);
                             $event = json_decode($json, true);
-                            if (! is_array($event)) continue;
+                            if (! is_array($event)) {
+                                continue;
+                            }
 
                             $type = $event['type'] ?? '';
                             if ($type === 'content_block_delta' && isset($event['delta']['text'])) {
                                 $delta = $event['delta']['text'];
                                 $fullText .= $delta;
-                                echo "data: " . json_encode(['type' => 'delta', 'text' => $delta]) . "\n\n";
+                                echo 'data: '.json_encode(['type' => 'delta', 'text' => $delta])."\n\n";
                                 @ob_flush();
                                 @flush();
                             } elseif ($type === 'message_start' && isset($event['message']['usage'])) {
@@ -223,6 +229,7 @@ PROMPT;
                             }
                         }
                     }
+
                     return strlen($data);
                 },
             ]);
@@ -234,10 +241,10 @@ PROMPT;
 
             if (! $ok || $httpCode >= 400) {
                 Log::error('Chatbot Anthropic API error', ['code' => $httpCode, 'err' => $err]);
-                $fallbackText = "Je rencontre un souci technique. Merci de réessayer dans un instant ou de nous contacter directement.";
+                $fallbackText = 'Je rencontre un souci technique. Merci de réessayer dans un instant ou de nous contacter directement.';
                 if (empty($fullText)) {
                     $fullText = $fallbackText;
-                    echo "data: " . json_encode(['type' => 'delta', 'text' => $fallbackText]) . "\n\n";
+                    echo 'data: '.json_encode(['type' => 'delta', 'text' => $fallbackText])."\n\n";
                     @ob_flush();
                     @flush();
                 }
@@ -245,8 +252,8 @@ PROMPT;
         } catch (\Throwable $e) {
             Log::error('Chatbot streaming exception', ['e' => $e->getMessage()]);
             if (empty($fullText)) {
-                $fullText = "Je rencontre un souci technique. Merci de réessayer.";
-                echo "data: " . json_encode(['type' => 'delta', 'text' => $fullText]) . "\n\n";
+                $fullText = 'Je rencontre un souci technique. Merci de réessayer.';
+                echo 'data: '.json_encode(['type' => 'delta', 'text' => $fullText])."\n\n";
                 @ob_flush();
                 @flush();
             }
@@ -282,7 +289,7 @@ PROMPT;
 
         $this->detectLead($conversation, $userMessage, $settings);
 
-        echo "data: " . json_encode(['type' => 'done', 'cost_eur' => $cost, 'latency_ms' => $latency]) . "\n\n";
+        echo 'data: '.json_encode(['type' => 'done', 'cost_eur' => $cost, 'latency_ms' => $latency])."\n\n";
         @ob_flush();
         @flush();
 
@@ -294,15 +301,20 @@ PROMPT;
         $rates = self::PRICING[$model] ?? self::PRICING['claude-haiku-4-5'];
         $usd = ($tokensIn / 1_000_000) * $rates['in']
              + ($tokensOut / 1_000_000) * $rates['out'];
+
         return round($usd * self::USD_TO_EUR, 6);
     }
 
     private function detectLead(ChatbotConversation $conv, string $message, ChatbotSetting $settings): void
     {
-        if ($conv->is_lead) return;
+        if ($conv->is_lead) {
+            return;
+        }
 
         $keywords = $settings->lead_keywords ?? [];
-        if (empty($keywords)) return;
+        if (empty($keywords)) {
+            return;
+        }
 
         $lower = mb_strtolower($message);
         foreach ($keywords as $kw) {
@@ -324,14 +336,14 @@ PROMPT;
     private function sendLeadNotification(ChatbotConversation $conv, ChatbotSetting $settings, string $keyword): void
     {
         try {
-            \Illuminate\Support\Facades\Mail::raw(
-                "Nouveau lead détecté dans le chatbot.\n\n" .
-                "Conversation #{$conv->id}\n" .
-                "Mot-clé : {$keyword}\n" .
-                "URL admin : " . url('/admin/chatbot-conversations/' . $conv->id),
+            Mail::raw(
+                "Nouveau lead détecté dans le chatbot.\n\n".
+                "Conversation #{$conv->id}\n".
+                "Mot-clé : {$keyword}\n".
+                'URL admin : '.url('/admin/chatbot-conversations/'.$conv->id),
                 function ($mail) use ($settings) {
                     $mail->to($settings->lead_webhook_email)
-                         ->subject('[NeoGTB Chatbot] Nouveau lead détecté');
+                        ->subject('[NeoGTB Chatbot] Nouveau lead détecté');
                 }
             );
         } catch (\Throwable $e) {
@@ -370,7 +382,7 @@ PROMPT;
         $latency = round((microtime(true) - $started) * 1000, 1);
 
         if (! $response->successful()) {
-            return ['error' => 'API erreur ' . $response->status() . ' : ' . $response->body()];
+            return ['error' => 'API erreur '.$response->status().' : '.$response->body()];
         }
 
         $body = $response->json();

@@ -111,6 +111,6 @@ class SitePagesSeeder extends Seeder
             );
         }
 
-        $this->command->info(count($pages) . ' pages du site injectées.');
+        $this->command->info(count($pages).' pages du site injectées.');
     }
 }

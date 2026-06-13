@@ -4,6 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ChatbotConversationResource\Pages;
 use App\Models\ChatbotConversation;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -24,6 +29,7 @@ class ChatbotConversationResource extends Resource
     protected static ?string $navigationLabel = 'Conversations';
 
     protected static ?string $modelLabel = 'Conversation';
+
     protected static ?string $pluralModelLabel = 'Conversations';
 
     protected static ?int $navigationSort = 40;
@@ -31,6 +37,7 @@ class ChatbotConversationResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
@@ -44,6 +51,7 @@ class ChatbotConversationResource extends Resource
         $count = ChatbotConversation::where('is_lead', true)
             ->where('lead_captured_at', '>=', now()->subDays(7))
             ->count();
+
         return $count > 0 ? (string) $count : null;
     }
 
@@ -87,7 +95,7 @@ class ChatbotConversationResource extends Resource
                 Tables\Columns\TextColumn::make('total_cost_eur')
                     ->label('Coût')
                     ->money('EUR', divideBy: 1)
-                    ->formatStateUsing(fn ($state) => number_format((float) $state, 4) . ' €')
+                    ->formatStateUsing(fn ($state) => number_format((float) $state, 4).' €')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('lead_email')
                     ->label('Email lead')
@@ -109,13 +117,13 @@ class ChatbotConversationResource extends Resource
             ])
             ->defaultSort('last_activity_at', 'desc')
             ->recordActions([
-                \Filament\Actions\ViewAction::make()->label('Voir'),
-                \Filament\Actions\EditAction::make()->label('Lead'),
-                \Filament\Actions\DeleteAction::make(),
+                ViewAction::make()->label('Voir'),
+                EditAction::make()->label('Lead'),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
-                \Filament\Actions\BulkActionGroup::make([
-                    \Filament\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -124,8 +132,8 @@ class ChatbotConversationResource extends Resource
     {
         return [
             'index' => Pages\ListChatbotConversations::route('/'),
-            'view'  => Pages\ViewChatbotConversation::route('/{record}'),
-            'edit'  => Pages\EditChatbotConversation::route('/{record}/edit'),
+            'view' => Pages\ViewChatbotConversation::route('/{record}'),
+            'edit' => Pages\EditChatbotConversation::route('/{record}/edit'),
         ];
     }
 }

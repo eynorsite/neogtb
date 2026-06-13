@@ -94,6 +94,6 @@ class BrickTexte extends BaseBrick
         $extrait = mb_substr($contenu, 0, 80);
 
         return ($titre ? "<div class=\"font-semibold\">{$titre}</div>" : '')
-            . "<div class=\"text-sm text-gray-500\">{$extrait}...</div>";
+            ."<div class=\"text-sm text-gray-500\">{$extrait}...</div>";
     }
 }

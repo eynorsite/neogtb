@@ -13,7 +13,7 @@ class NewsletterConfirmationMailTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function test_subject_contains_NeoGTB(): void
+    public function test_subject_contains_neo_gtb(): void
     {
         $sub = NewsletterSubscriberFactory::new()->create();
         $mail = new NewsletterConfirmationMail($sub);

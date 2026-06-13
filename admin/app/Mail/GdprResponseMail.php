@@ -18,7 +18,7 @@ class GdprResponseMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: "Réponse à votre demande RGPD — NeoGTB",
+            subject: 'Réponse à votre demande RGPD — NeoGTB',
             replyTo: ['hello@eynor.fr'],
         );
     }

@@ -13,11 +13,11 @@ return new class extends Migration
 {
     public function up(): void
     {
-        if (!Schema::hasTable('page_bricks')) {
+        if (! Schema::hasTable('page_bricks')) {
             return;
         }
 
-        if (!Schema::hasColumn('page_bricks', 'version')) {
+        if (! Schema::hasColumn('page_bricks', 'version')) {
             Schema::table('page_bricks', function (Blueprint $table) {
                 $table->unsignedInteger('version')->default(1)->after('is_visible');
             });

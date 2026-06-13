@@ -4,15 +4,19 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AuditLeadResource\Pages;
 use App\Models\AuditLead;
-use Filament\Forms\Components\KeyValue;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class AuditLeadResource extends Resource
 {
@@ -25,6 +29,7 @@ class AuditLeadResource extends Resource
     protected static ?string $navigationLabel = 'Leads diagnostic GTB';
 
     protected static ?string $modelLabel = 'Lead diagnostic';
+
     protected static ?string $pluralModelLabel = 'Leads diagnostic';
 
     protected static ?int $navigationSort = 31;
@@ -32,6 +37,7 @@ class AuditLeadResource extends Resource
     public static function canAccess(): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
@@ -40,15 +46,17 @@ class AuditLeadResource extends Resource
         return false;
     }
 
-    public static function canEdit(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canEdit(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && in_array($admin->role, ['superadmin', 'admin']);
     }
 
-    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    public static function canDelete(Model $record): bool
     {
         $admin = auth()->guard('admin')->user();
+
         return $admin && $admin->role === 'superadmin';
     }
 
@@ -164,19 +172,19 @@ class AuditLeadResource extends Resource
                     ]),
             ])
             ->actions([
-                \Filament\Actions\EditAction::make(),
-                \Filament\Actions\Action::make('markContacted')
+                EditAction::make(),
+                Action::make('markContacted')
                     ->label('Marquer contacté')
                     ->icon('heroicon-o-phone')
                     ->action(fn ($record) => $record->update(['status' => 'contacted']))
                     ->visible(fn ($record) => $record->status === 'new'),
             ])
             ->bulkActions([
-                \Filament\Actions\BulkAction::make('archive')
+                BulkAction::make('archive')
                     ->label('Archiver')
                     ->icon('heroicon-o-archive-box')
                     ->action(fn ($records) => $records->each->update(['status' => 'archived'])),
-                \Filament\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
             ]);
     }
 
