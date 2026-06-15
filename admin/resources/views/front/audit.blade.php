@@ -690,11 +690,13 @@
                 <li>{{ $site->label('audit.premium.onsite_5', 'Conformité décret BACS vérifiée') }}</li>
                 <li>{{ $site->label('audit.premium.onsite_6', 'Dossier CEE pré-constitué') }}</li>
               </ul>
+              <p class="diag-premium-price">{{ $site->label('audit.premium.onsite_price', '700 € HT') }}</p>
               <a href="/contact" class="diag-btn-accent" style="width:100%;justify-content:center;text-decoration:none;">
                 {{ $site->label('audit.premium.onsite_cta', 'Demander un audit sur site') }}
               </a>
             </div>
           </div>
+          <p style="font-size:13px;color:var(--color-dark-500);text-align:center;margin-top:20px;">{{ $site->label('audit.premium.other_offers', 'Cahier des charges GTB et AMO : sur devis.') }}</p>
         </div>
 
         <!-- Disclaimer -->
