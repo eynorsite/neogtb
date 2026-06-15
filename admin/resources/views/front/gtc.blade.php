@@ -229,14 +229,24 @@
     </div>
 </section>
 
-<!-- Related pages -->
-<section class="py-12 lg:py-24 bg-white">
+<!-- Pour aller plus loin -->
+<section class="py-12 lg:py-24 bg-white border-t border-dark-100">
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
-        <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
+        <div class="max-w-xl mb-10">
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Ressources liées</p>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Pour aller plus loin</h2>
+            <p class="text-base text-dark-500 leading-relaxed">Approfondir la supervision centralisée, ses obligations et les outils associés.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
                 ['href' => '/gtb', 'title' => "Qu'est-ce que la GTB ?", 'desc' => 'Définition, niveaux ISO 52120-1 et cadre réglementaire complet.'],
-                ['href' => '/solutions', 'title' => 'Solutions & Technologies', 'desc' => 'Protocoles de communication et architecture technique.'],
-                ['href' => '/comparateur', 'title' => 'Comparateur de solutions GTB', 'desc' => 'Comparez Schneider, Siemens, Honeywell et 10 autres marques.'],
+                ['href' => '/solutions', 'title' => 'Solutions & technologies', 'desc' => 'Protocoles de communication et architecture technique.'],
+                ['href' => '/reglementation', 'title' => 'Réglementation GTB en France', 'desc' => 'Décret BACS, décret tertiaire, RE2020, calendrier et obligations.'],
+                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B exigée, échéances et dérogations.'],
+                ['href' => '/comparateur', 'title' => 'Comparateur de solutions GTB', 'desc' => 'Comparez objectivement les marques du marché, sans biais commercial.'],
+                ['href' => '/tables-modbus', 'title' => 'Tables Modbus', 'desc' => 'Adresses, registres et fonctions de 19 équipements types.'],
+                ['href' => '/amo-gtb-gtc', 'title' => 'AMO GTB / GTC', 'desc' => 'Assistance à maîtrise d\'ouvrage indépendante, du cahier des charges à la réception.'],
+                ['href' => '/audit', 'title' => 'Pré-diagnostic de votre installation', 'desc' => 'Évaluez la maturité de votre supervision en quelques minutes.'],
             ] as $link)
             <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-2xl p-5 lg:p-7 border border-dark-100 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>

@@ -91,6 +91,10 @@ Route::get('/about', [\App\Http\Controllers\StaticPageController::class, 'about'
 Route::get('/faq', [\App\Http\Controllers\StaticPageController::class, 'faq'])->name('front.faq');
 Route::get('/contact', [\App\Http\Controllers\StaticPageController::class, 'contact'])->name('front.contact');
 Route::get('/reglementation', [\App\Http\Controllers\StaticPageController::class, 'reglementation'])->name('front.reglementation');
+Route::get('/decret-bacs', [\App\Http\Controllers\StaticPageController::class, 'decretBacs'])->name('front.decret-bacs');
+Route::get('/amo-gtb-gtc', [\App\Http\Controllers\StaticPageController::class, 'amoGtbGtc'])->name('front.amo-gtb-gtc');
+Route::get('/offres', [\App\Http\Controllers\StaticPageController::class, 'offres'])->name('front.offres');
+Route::get('/offre-conformite-continue', [\App\Http\Controllers\StaticPageController::class, 'offreConformiteContinue'])->name('front.offre-conformite-continue');
 Route::get('/positionnement', [\App\Http\Controllers\StaticPageController::class, 'positionnement'])->name('front.positionnement');
 Route::get('/gtb', [\App\Http\Controllers\StaticPageController::class, 'gtb'])->name('front.gtb');
 Route::get('/gtc', [\App\Http\Controllers\StaticPageController::class, 'gtc'])->name('front.gtc');

@@ -31,6 +31,7 @@ class SitePage extends Model
         'about', 'faq', 'contact', 'audit', 'comparateur', 'generateur-cee',
         'tables-modbus', 'blog', 'newsletter-confirmee', 'cookies',
         'mentions-legales', 'politique-de-confidentialite', 'mes-droits-rgpd',
+        'offre-conformite-continue',
     ];
 
     protected $fillable = [

@@ -108,10 +108,11 @@
 .animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-    .animate-fade-in-up {
-        animation: none !important;
-    }
-    .animate-float {
+    .animate-fade-in-up,
+    .animate-float,
+    .animate-glow-pulse,
+    .glow-halo,
+    .orb {
         animation: none !important;
     }
     *, *::before, *::after {
@@ -136,26 +137,145 @@
     border-color: var(--color-primary-200);
 }
 
+/* ------------------------------------------------------------
+   Bouton primaire CANONIQUE (vert plein accent).
+   Référence recommandée : tous les composants/pages devraient utiliser
+   .btn-primary ou <x-front.shared.btn-primary> pour la cohérence.
+
+   Stratégie de cascade (volontaire) :
+   - Le SIZING par défaut (padding, font-size, gap, layout) vit en
+     @layer components => il reste surchargeable par les utilitaires
+     Tailwind v4 (ex. text-[13px] px-5 py-2.5 du bandeau cookies et du
+     header-nav), qui sont dans une couche plus prioritaire.
+   - Les COULEURS et ÉTATS (hover, :active, :focus-visible, :disabled)
+     restent HORS layer => priorité forte. C'est un INVARIANT assumé :
+     le vert plein et le focus accessible ne doivent JAMAIS être écrasés,
+     ni par un utilitaire de couleur (bg-... / text-...) — un bouton
+     primaire reste vert, pour une autre couleur utiliser
+     .btn-secondary / .btn-ghost —, ni par
+     une page qui redéfinit localement .btn-primary (cf. comparateur.blade.php:34,
+     override dark-900 — BACKLOG hors-périmètre : à migrer vers une classe dédiée).
+
+   Accessibilité : fond accent-600 (#267a43) => texte blanc = 5.32:1
+   (WCAG AA OK pour texte normal). On NE descend PAS à accent-500
+   (#2D8B4E = 4.27:1, sous le seuil AA). Hover : accent-700 (6.97:1).
+   Texte TOUJOURS blanc, jamais gris. Fonctionne en <a> comme en <button>.
+   ------------------------------------------------------------ */
+
+/* Sizing/layout par défaut — surchargeable par les utilitaires Tailwind */
+@layer components {
+    .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 24px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.2;
+        border-radius: 8px;
+    }
+}
+
+/* Couleurs + états — hors layer (priorité forte, a11y non régressable) */
 .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
     color: #fff;
-    background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));
-    border-radius: 8px;
+    /* Base AA (accent-600) avec un dégradé de profondeur vers accent-700 */
+    background-color: var(--color-accent-600);
+    background-image: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-700));
+    border: 1px solid transparent;
     text-decoration: none;
-    transition: all 0.15s ease;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-700));
-    box-shadow: 0 4px 12px rgba(45, 139, 78, 0.25);
+    background-color: var(--color-accent-700);
+    background-image: linear-gradient(135deg, var(--color-accent-700), var(--color-accent-800));
+    box-shadow: 0 4px 12px rgba(45, 139, 78, 0.30);
+}
+.btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+}
+/* Anneau focus BLANC + halo accent : visible sur fond vert (hover/active)
+   comme sur fond clair, contrairement à un outline accent sur accent.
+   On conserve l'élévation du hover pour ne pas régresser focus+hover. */
+.btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-accent-600), 0 4px 12px rgba(45, 139, 78, 0.30);
+}
+.btn-primary:disabled,
+.btn-primary[aria-disabled='true'] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    /* aria-disabled ne désactive pas le clic sur un <a> : on le neutralise. */
+    pointer-events: none;
+    box-shadow: none;
+    transform: none;
 }
 
 .btn-glow { transition: all 0.3s ease; }
 .btn-glow:hover {
     box-shadow: 0 8px 24px -4px rgba(45, 139, 78, 0.4);
+}
+
+/* ============================================================
+   Scroll-reveal — DOCUMENTATION (pas de code dupliqué ici)
+   ------------------------------------------------------------
+   Le scroll-reveal canonique vit déjà dans
+   resources/css/front/home-components.css (.reveal / .reveal.visible /
+   .reveal-d1 / .reveal-d2), importé par ce fichier (ligne 8), et est
+   déclenché par Alpine via x-intersect.once="$el.classList.add('visible')"
+   (plugin @alpinejs/intersect chargé dans resources/js/app.js).
+   => Pour révéler un bloc au scroll : <x-front.shared.reveal> ou
+      class="reveal" + x-data x-intersect.once="$el.classList.add('visible')".
+   On NE redéfinit PAS .reveal ici pour éviter un doublon de cascade.
+   ============================================================ */
+
+/* ============================================================
+   Décoratifs réutilisables — halos floutés & orbs flottants
+   ------------------------------------------------------------
+   Mutualise les motifs jusqu'ici recopiés inline (bricks/hero.blade.php :
+   "rounded-full blur-* animate-glow-pulse" ; audit/comparateur/generateur-cee :
+   .hero-orb / .cee-orb avec leurs propres @keyframes locaux).
+   Tous purement décoratifs => aria-hidden + pointer-events:none.
+   Dimensions fixes attendues côté markup (w/h) pour ne pas régresser le CLS.
+   ============================================================ */
+
+@layer components {
+    /* Halo flouté pulsé : tache de couleur diffuse derrière un hero/section.
+       Réutilise @keyframes glow-pulse (déclaré plus haut). Couleur via --halo-color. */
+    .glow-halo {
+        position: absolute;
+        border-radius: 9999px;
+        pointer-events: none;
+        filter: blur(80px);
+        background: var(--halo-color, rgba(45, 139, 78, 0.20)); /* accent-500 @ 20% */
+        animation: glow-pulse 6s ease-in-out infinite;
+    }
+    .glow-halo--accent  { --halo-color: rgba(45, 139, 78, 0.20); }  /* accent-500 */
+    .glow-halo--primary { --halo-color: rgba(27, 58, 92, 0.15); }   /* primary-500 */
+    .glow-halo--warm    { --halo-color: rgba(245, 158, 11, 0.12); } /* highlight-500 */
+
+    /* Orb flottant : cercle décoratif qui dérive doucement.
+       Réutilise @keyframes float (déclaré plus haut). */
+    .orb {
+        position: absolute;
+        border-radius: 9999px;
+        pointer-events: none;
+        opacity: 0.5;
+        animation: float 12s ease-in-out infinite;
+    }
+    .orb--filled  { background: var(--halo-color, rgba(45, 139, 78, 0.15)); }
+    .orb--outline { border: 1px solid rgba(45, 139, 78, 0.10); }
+    /* Variantes de cadence pour désynchroniser plusieurs orbs sans style inline */
+    .orb--slow    { animation-duration: 16s; }
+    .orb--reverse { animation-direction: reverse; }
+    .orb--delay   { animation-delay: 2s; }
 }
 
 .text-gradient {

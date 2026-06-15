@@ -102,6 +102,18 @@ class SitePagesSeeder extends Seeder
                 'meta_description' => 'NeoGTB est une plateforme éducative indépendante sur la GTB/GTC. Contenu gratuit, vérifié par des experts, en français.',
                 'order' => 8,
             ],
+            [
+                'slug' => 'offre-conformite-continue',
+                'name' => 'Offre conformité continue',
+                'hero_title' => 'Conformité décret BACS, suivie dans la durée',
+                'hero_subtitle' => 'Audit BACS + suivi énergétique + accompagnement OPERAT',
+                'hero_description' => 'Un seul interlocuteur indépendant pour vos obligations BACS et décret tertiaire : audit de conformité, mise en place du suivi énergétique et déclaration OPERAT chaque année.',
+                'hero_cta_text' => 'Parler à un expert',
+                'hero_cta_url' => '/contact',
+                'meta_title' => 'Audit BACS, suivi énergétique & OPERAT | NeoGTB',
+                'meta_description' => 'Audit de conformité décret BACS, suivi énergétique et accompagnement OPERAT annuel pour votre bâtiment tertiaire. Conseil GTB indépendant, sans commission.',
+                'order' => 9,
+            ],
         ];
 
         foreach ($pages as $page) {
