@@ -12,8 +12,9 @@
             </div>
         @endif
 
+        @if(!empty($content['avis']))
         <div class="grid grid-cols-1 gap-5 lg:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            @foreach($content['avis'] ?? [] as $i => $avis)
+            @foreach($content['avis'] as $i => $avis)
                 <div class="glass-card rounded-2xl p-6 lg:p-8 animate-fade-in-up"
                      style="animation-delay: {{ $i * 100 }}ms">
 
@@ -47,5 +48,13 @@
                 </div>
             @endforeach
         </div>
+        @elseif(!empty($content['note_transparence']))
+        {{-- État vide honnête (R1) : pas de faux témoignages, on affiche le message de transparence --}}
+        <div class="mx-auto max-w-2xl">
+            <div class="glass-card rounded-2xl p-6 lg:p-8 text-center">
+                <p class="text-base leading-relaxed text-dark-600">{{ $content['note_transparence'] }}</p>
+            </div>
+        </div>
+        @endif
     </div>
 </section>

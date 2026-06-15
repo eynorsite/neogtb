@@ -10,10 +10,31 @@ use Illuminate\Database\Seeder;
  * HomePageSeeder — seed la page d'accueil à partir du contenu actuel
  * de resources/views/front/accueil.blade.php (audit phase 2 NeoGTB).
  *
+ * VERSION DE RÉFÉRENCE de l'accueil (préférée à AccueilBricksSeeder, déprécié).
+ *
  * Crée 10 bricks correspondant aux sections existantes de la page d'accueil.
  * Les types "methodologie", "timeline", "cas-usage", "fondateur" sont des
  * extensions futures qui n'ont pas encore de blade renderer dans views/front/bricks/
  * mais leur contenu est seedé pour pouvoir être édité depuis l'admin Filament.
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * IMPORTANT — LA COPIE LIVE N'EST PAS ICI.
+ * Le front accueil ne lit plus la table page_bricks alimentée par ce seeder :
+ * StaticPageController::accueil() lit la table `page_contents` via
+ * App\Services\ContentBrickAdapter::buildBricks('accueil'). La copie réellement
+ * affichée en production VIT EN BASE PROD (page_contents) et s'édite dans Filament.
+ * Toute modification de contenu doit y être faite manuellement, PUIS vidée du
+ * cache (cache 1h) :  sudo -u www-data php artisan cache:clear
+ * Ce seeder ne sert qu'à (re)constituer un état initial local / de référence.
+ *
+ * RÈGLE DE CONTENU — ZÉRO CHIFFRE NON SOURCÉ.
+ * Aucun compteur d'activité inventé (diagnostics réalisés, € de CEE estimés,
+ * comparaisons lancées) ni pourcentage d'économies non issu de la norme.
+ * Seules valeurs chiffrées autorisées : celles sourcées dans
+ * resources/views/front/reglementation.blade.php (gains globaux D→C ~10 %,
+ * D→B ~25 %, D→A ~35 % ; dérogation si TRI > 6 ans ; classe B = exigence BACS ;
+ * amende 7 500 € au titre du décret tertiaire). Formulation factuelle, jamais
+ * publicitaire ("jusqu'à …"), jamais de compteur fabriqué.
  */
 class HomePageSeeder extends Seeder
 {
@@ -41,15 +62,18 @@ class HomePageSeeder extends Seeder
                 'badge' => 'Décret BACS 2030 · Êtes-vous en conformité ?',
                 'pre_titre' => 'NéoGTB',
                 'titre' => 'Votre bâtiment consomme trop. On vous montre où et pourquoi.',
-                'description' => 'Pré-diagnostic ISO 52120-1 gratuit, comparateur de solutions sans biais commercial. Les gestionnaires qui nous consultent identifient en moyenne 23 % d\'économies CVC sur des bureaux passant de classe D à B.',
+                'description' => 'Pré-diagnostic ISO 52120-1 gratuit, comparateur de solutions sans biais commercial. La norme estime le passage d\'un bâtiment de classe D à B à environ 25 % d\'économies d\'énergie globales.',
                 'image' => '/images/hero-neogtb.webp',
                 'image_alt' => 'Salle de contrôle NéoGTB — supervision technique du bâtiment',
                 'cta_texte' => 'Évaluer mon bâtiment',
                 'cta_lien' => '/audit',
                 'cta2_texte' => 'Comparer les solutions GTB',
                 'cta2_lien' => '/comparateur',
+                // Stats hero : uniquement des faits vérifiables. Le ~25 % D→B est sourcé
+                // (reglementation.blade.php, gains globaux norme ISO 52120-1).
+                // INTERDIT : compteurs d'activité fabriqués (diagnostics, € CEE, etc.).
                 'stats' => [
-                    ['valeur' => '23 %', 'label' => "d'économies CVC en moyenne (bureaux, D→B)"],
+                    ['valeur' => '~25 %', 'label' => "d'économies estimées (D→B, norme ISO 52120-1)"],
                     ['valeur' => '10+', 'label' => 'fabricants évalués sans lien commercial'],
                     ['valeur' => '0 €', 'label' => 'commission — jamais'],
                 ],
@@ -108,7 +132,9 @@ class HomePageSeeder extends Seeder
                         'titre' => 'Estimez vos aides CEE en 3 minutes',
                         'description' => 'Calcul basé sur les fiches BAT-TH-116 et BAT-TH-112. Estimation indépendante, sans intermédiaire.',
                         'preview' => 'estimation-cee',
-                        'preview_data' => ['valeur' => '12 400 €', 'contexte' => 'pour 5 000 m² tertiaire', 'maj' => 'Barèmes CEE mis à jour : avril 2026'],
+                        // Pas de montant pré-affiché : l'estimation dépend de chaque bâtiment
+                        // et est produite par le générateur. Aucun montant fabriqué en dur.
+                        'preview_data' => ['contexte' => 'Estimation propre à votre bâtiment', 'maj' => 'Barèmes CEE mis à jour : avril 2026'],
                         'lien' => '/generateur-cee',
                         'cta_texte' => 'Estimer mes CEE →',
                     ],
@@ -208,34 +234,39 @@ class HomePageSeeder extends Seeder
             'brick_name' => 'Cas d\'usage — 2 retours d\'expérience',
             'order' => $order++,
             'is_visible' => true,
+            // Cas d'usage = scénarios-types illustrant la méthode, PAS des références
+            // clientes (NeoGTB est récent — cf. brick "honnête" plus bas). Les seules
+            // valeurs chiffrées affichées sont les fourchettes de la norme ISO 52120-1
+            // (sourcées : reglementation.blade.php). AUCUN résultat client fabriqué
+            // (ex: "-23 % conso", "45 j", "ROI 3 ans") ne doit être réintroduit.
             'content' => [
-                'eyebrow' => 'Cas d\'usage',
-                'titre' => 'Des situations concrètes, des résultats mesurables',
+                'eyebrow' => 'Cas d\'usage type',
+                'titre' => 'Des situations concrètes, une méthode reproductible',
                 'cas' => [
                     [
                         'tag' => 'Décret BACS',
                         'tag_variant' => 'reglementation',
-                        'meta' => 'Tertiaire · 12 000 m²',
+                        'meta' => 'Tertiaire · bureaux multi-sites',
                         'titre' => 'Mise en conformité BACS d\'un ensemble de bureaux multi-sites',
-                        'contexte' => 'Un gestionnaire de 3 sites tertiaires devait se conformer au décret BACS. Aucune GTB en place, systèmes CVC hétérogènes.',
-                        'approche' => 'Audit ISO 52120-1 sur 3 sites, benchmark 4 solutions multi-protocoles, estimation CEE, cahier des charges neutre.',
+                        'contexte' => 'Un gestionnaire de plusieurs sites tertiaires doit se conformer au décret BACS. Aucune GTB en place, systèmes CVC hétérogènes.',
+                        'approche' => 'Audit ISO 52120-1 par site, benchmark de solutions multi-protocoles, estimation CEE, cahier des charges neutre.',
                         'gauge' => ['progress_from' => 'C', 'active' => 'B', 'label' => 'Progression ISO 52120-1'],
                         'metriques' => [
-                            ['valeur' => '-23 %', 'label' => 'conso CVC', 'couleur' => 'energy'],
-                            ['valeur' => '45 j', 'label' => 'cahier des charges', 'couleur' => 'dark'],
+                            ['valeur' => '~25 %', 'label' => 'gain estimé D→B (norme)', 'couleur' => 'energy'],
+                            ['valeur' => 'Classe B', 'label' => 'cible exigée par le décret BACS', 'couleur' => 'dark'],
                         ],
                     ],
                     [
                         'tag' => 'Rénovation CVC',
                         'tag_variant' => 'technique',
-                        'meta' => 'Enseignement · 8 500 m²',
+                        'meta' => 'Enseignement · campus',
                         'titre' => 'Optimisation énergétique d\'un campus universitaire vieillissant',
-                        'contexte' => 'Un campus équipé d\'une GTC obsolète (LON). Consommation supérieure de 40 % à la moyenne du secteur éducatif.',
-                        'approche' => 'Diagnostic complet, plan de migration progressive LON → BACnet IP sur 24 mois (par lot technique), comparaison de 3 superviseurs, simulation des gains.',
+                        'contexte' => 'Un campus équipé d\'une GTC obsolète (LON), peu instrumenté et difficile à piloter finement.',
+                        'approche' => 'Diagnostic complet, plan de migration progressive LON → BACnet IP par lot technique, comparaison de superviseurs, simulation des gains.',
                         'gauge' => ['progress_from' => 'D', 'active' => 'B', 'label' => 'Objectif ISO 52120-1'],
                         'metriques' => [
-                            ['valeur' => '-35 %', 'label' => 'objectif réduction', 'couleur' => 'energy'],
-                            ['valeur' => '3 ans', 'label' => 'ROI estimé', 'couleur' => 'dark'],
+                            ['valeur' => '~35 %', 'label' => 'gain estimé D→A (norme)', 'couleur' => 'energy'],
+                            ['valeur' => '> 6 ans', 'label' => 'seuil de dérogation (TRI)', 'couleur' => 'dark'],
                         ],
                     ],
                 ],
@@ -291,13 +322,17 @@ class HomePageSeeder extends Seeder
             'brick_name' => 'Compteur d\'usage + CTA honnête',
             'order' => $order++,
             'is_visible' => true,
+            // BRICK "HONNÊTE" — cohérence éditoriale : on ne peut pas afficher des
+            // compteurs d'activité fabriqués (diagnostics, comparaisons, € de CEE)
+            // tout en disant "pas de faux témoignages". Ces compteurs non sourcés ont
+            // été RETIRÉS (interdits par les règles de contenu). Ne réintroduire un
+            // compteur QUE s'il est branché sur une vraie mesure vérifiable.
+            // Seul fait conservé : 0 € de commission (modèle économique vérifiable).
             'content' => [
-                'eyebrow' => 'Depuis le lancement',
+                'eyebrow' => 'Transparence',
                 'compteurs' => [
-                    ['valeur' => '340+', 'label' => 'diagnostics réalisés', 'couleur' => 'dark'],
-                    ['valeur' => '1 200+', 'label' => 'comparaisons lancées', 'couleur' => 'dark'],
-                    ['valeur' => '2,4 M€', 'label' => 'CEE estimés via l\'outil', 'couleur' => 'energy'],
                     ['valeur' => '0 €', 'label' => 'commission fabricant', 'couleur' => 'accent'],
+                    ['valeur' => '100 %', 'label' => 'indépendant — aucun lien fabricant', 'couleur' => 'dark'],
                 ],
                 'titre' => 'NeoGTB est un projet récent. Pas de faux témoignages ici.',
                 'sous_titre' => 'Plutôt que d\'inventer des avis, je vous propose de tester les outils vous-même. Le pré-diagnostic prend 3 minutes. Si l\'approche vous parle, on en discute.',

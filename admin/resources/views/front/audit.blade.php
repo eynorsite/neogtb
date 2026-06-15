@@ -184,6 +184,12 @@
   .diag-disclaimer { display: flex; gap: 12px; padding: 16px 20px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; margin-top: 20px; }
   .diag-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
   @media (max-width: 640px) { .diag-actions { flex-direction: column; } }
+  /* Hiérarchie des actions de résultats : 1 primaire + 1 secondaire, le reste en liens discrets (réduction du paradoxe du choix). */
+  .diag-actions-secondary { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-top: 16px; }
+  @media (max-width: 640px) { .diag-actions-secondary { flex-direction: column; align-items: stretch; gap: 12px; } }
+  .diag-link { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500; color: var(--color-dark-500); text-decoration: none; transition: color 0.15s; }
+  .diag-link:hover { color: var(--color-accent-600); text-decoration: underline; }
+  .diag-link:focus-visible { outline: 2px solid var(--color-accent-500); outline-offset: 2px; border-radius: 4px; }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
   .diag-btn-primary:focus-visible, .diag-btn-accent:focus-visible, .diag-btn-ghost:focus-visible { outline: 2px solid var(--color-accent-500); outline-offset: 2px; }
   @media screen and (-webkit-min-device-pixel-ratio: 0) { .diag-input, .diag-input-sm, select { font-size: 16px !important; } }
@@ -707,23 +713,26 @@
           </div>
         </div>
 
-        <!-- Actions -->
+        <!-- Actions : 1 primaire (recevoir le rapport, déclenche l'email-gate RGPD) + 1 secondaire outline (parler à un expert), le reste en liens discrets pour limiter le paradoxe du choix. -->
         <div class="diag-actions">
-          <button @click="showEmailGate()" class="diag-btn-primary" style="flex:1;">
+          <button @click="showEmailGate()" class="diag-btn-primary" style="flex:1;justify-content:center;">
             <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             {{ $site->label('audit.actions.download_pdf', 'Télécharger le rapport PDF') }}
           </button>
-          <a href="/contact" class="diag-btn-accent" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">{{ $site->label('audit.actions.contact_expert', 'Être contacté par un expert') }}</a>
-          <a :href="'/comparateur?surface=' + form.surface + '&type=' + form.buildingType" class="diag-btn-ghost" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">
-            <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <a href="/contact" class="diag-btn-ghost" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">{{ $site->label('audit.actions.contact_expert', 'Être contacté par un expert') }}</a>
+        </div>
+        {{-- Actions de second plan : volontairement discrètes (liens) pour ne pas concurrencer la décision principale. --}}
+        <div class="diag-actions-secondary">
+          <a :href="'/comparateur?surface=' + form.surface + '&type=' + form.buildingType" class="diag-link">
+            <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
             {{ $site->label('audit.actions.compare', 'Comparer les solutions GTB') }}
           </a>
-          <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" class="diag-btn-ghost" style="flex:1;text-decoration:none;text-align:center;justify-content:center;">
-            <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <a :href="'/generateur-cee?surface=' + form.surface + '&type=' + form.buildingType + '&age=' + form.buildingAge + '&zone=' + form.climateZone" class="diag-link">
+            <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
             {{ $site->label('audit.actions.estimate_cee', 'Estimer mes aides CEE') }}
           </a>
-          <button @click="resetDiag()" class="diag-btn-ghost" style="flex:1;">
-            <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <button @click="resetDiag()" class="diag-link">
+            <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
             {{ $site->label('audit.actions.new_diag', 'Nouveau diagnostic') }}
           </button>
         </div>

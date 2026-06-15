@@ -12,6 +12,7 @@ $exploreItems = [
     'label' => 'Se conformer',
     'items' => [
       ['href' => '/reglementation', 'title' => 'Réglementation', 'desc' => 'Décret BACS, tertiaire, RE2020, calendrier 2026-2035', 'icon' => 'scale', 'match' => 'reglementation'],
+      ['href' => '/decret-bacs', 'title' => 'Décret BACS', 'desc' => 'Qui est concerné, échéances, mise en conformité', 'icon' => 'clipboard-document-check', 'match' => 'decret-bacs'],
       ['href' => '/positionnement', 'title' => 'Pourquoi NeoGTB ?', 'desc' => "Tiers de confiance indépendant, sans conflit d'intérêt", 'icon' => 'shield-check', 'match' => 'positionnement'],
       ['href' => '/faq', 'title' => 'FAQ', 'desc' => 'Questions fréquentes sur la conformité GTB', 'icon' => 'question-mark-circle', 'match' => 'faq'],
     ],
@@ -19,7 +20,7 @@ $exploreItems = [
   'agir' => [
     'label' => 'Agir',
     'items' => [
-      ['href' => '/audit', 'title' => 'Pré-diagnostic GTB', 'desc' => 'Auto-évaluation ISO 52120-1, 7 min, gratuit', 'icon' => 'clipboard-document-check', 'match' => 'audit'],
+      ['href' => '/amo-gtb-gtc', 'title' => 'AMO GTB/GTC', 'desc' => 'Assistance à maîtrise d’ouvrage, du cahier des charges à la réception', 'icon' => 'building-office', 'match' => 'amo-gtb-gtc'],
       ['href' => '/comparateur', 'title' => 'Comparateur objectif', 'desc' => '10+ fabricants comparés sans biais commercial', 'icon' => 'arrows-right-left', 'match' => 'comparateur'],
       ['href' => '/generateur-cee', 'title' => 'Générateur CEE', 'desc' => 'Estimation de votre prime CEE en 3 minutes', 'icon' => 'banknotes', 'match' => 'generateur-cee'],
       ['href' => '/tables-modbus', 'title' => 'Tables Modbus', 'desc' => '19 équipements GTB, référence technique', 'icon' => 'table-cells', 'match' => 'tables-modbus'],
@@ -43,6 +44,7 @@ $icons = [
   'x-mark' => '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>',
   'chevron-down' => '<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>',
   'arrow-right' => '<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>',
+  'building-office' => '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/>',
 ];
 @endphp
 
@@ -87,6 +89,11 @@ $icons = [
         <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="explorerOpen && 'rotate-180'" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">{!! $icons['chevron-down'] !!}</svg>
       </button>
 
+      <a href="/offres" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('offres') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('offres')) aria-current="page" @endif>{{ $site->label('nav.offres', 'Offres') }}</a>
+      <a href="/audit" class="text-[14px] font-semibold transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center gap-1.5 {{ request()->is('audit') ? 'text-accent-700 bg-accent-50' : 'text-accent-700 hover:text-accent-800 hover:bg-accent-50' }}" @if(request()->is('audit')) aria-current="page" @endif>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">{!! $icons['magnifying-glass'] !!}</svg>
+        {{ $site->label('nav.audit', 'Pré-diagnostic') }}
+      </a>
       <a href="/blog" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('blog*') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('blog*')) aria-current="page" @endif>{{ $site->label('nav.blog', 'Perspectives') }}</a>
       <a href="/about" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('about') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('about')) aria-current="page" @endif>{{ $site->label('nav.about', 'À propos') }}</a>
       <a href="/faq" class="text-[14px] font-medium transition-colors duration-200 px-4 py-2 rounded-lg min-h-[44px] flex items-center {{ request()->is('faq') ? 'text-accent-600 bg-accent-50' : 'text-dark-500 hover:text-dark-900 hover:bg-dark-50' }}" @if(request()->is('faq')) aria-current="page" @endif>{{ $site->label('nav.faq', 'FAQ') }}</a>
@@ -254,6 +261,11 @@ $icons = [
         @endforeach
 
         <div class="mt-2 flex flex-col">
+          <a href="/audit" @click="closeMobile()" @if(request()->is('audit')) aria-current="page" @endif class="py-3 px-3 text-[15px] min-h-[44px] flex items-center gap-2 rounded-xl {{ request()->is('audit') ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-accent-700 font-semibold hover:bg-accent-50' }}">
+            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">{!! $icons['magnifying-glass'] !!}</svg>
+            {{ $site->label('nav.audit', 'Pré-diagnostic') }}
+          </a>
+          <a href="/offres" @click="closeMobile()" @if(request()->is('offres')) aria-current="page" @endif class="py-3 px-3 text-[15px] min-h-[44px] flex items-center rounded-xl {{ request()->is('offres') ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-dark-900 font-medium hover:bg-dark-50' }}">{{ $site->label('nav.offres', 'Offres') }}</a>
           <a href="/blog" @click="closeMobile()" @if(request()->is('blog*')) aria-current="page" @endif class="py-3 px-3 text-[15px] min-h-[44px] flex items-center rounded-xl {{ request()->is('blog*') ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-dark-900 font-medium hover:bg-dark-50' }}">{{ $site->label('nav.blog', 'Perspectives') }}</a>
           <a href="/about" @click="closeMobile()" @if(request()->is('about')) aria-current="page" @endif class="py-3 px-3 text-[15px] min-h-[44px] flex items-center rounded-xl {{ request()->is('about') ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-dark-900 font-medium hover:bg-dark-50' }}">{{ $site->label('nav.about', 'À propos') }}</a>
           <a href="/faq" @click="closeMobile()" @if(request()->is('faq')) aria-current="page" @endif class="py-3 px-3 text-[15px] min-h-[44px] flex items-center rounded-xl {{ request()->is('faq') ? 'bg-accent-50 text-accent-700 font-semibold' : 'text-dark-900 font-medium hover:bg-dark-50' }}">{{ $site->label('nav.faq', 'FAQ') }}</a>

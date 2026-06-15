@@ -21,7 +21,7 @@ class StaticPageController extends Controller
         ],
         'faq' => [
             'title'       => "FAQ GTB, Questions fréquentes sur le décret BACS & NeoGTB",
-            'description' => "Réponses aux questions fréquentes sur la GTB, le décret BACS 2027/2030, le pré-diagnostic ISO 52120-1 et le modèle d'indépendance NeoGTB.",
+            'description' => "Réponses aux questions fréquentes sur la GTB, le décret BACS, le pré-diagnostic ISO 52120-1 et le modèle d'indépendance NeoGTB.",
         ],
         'contact' => [
             'title'       => "Contact, Avis GTB indépendant sous 48h | NeoGTB Bordeaux",
@@ -29,7 +29,25 @@ class StaticPageController extends Controller
         ],
         'reglementation' => [
             'title'       => "Réglementation GTB, Décret BACS, Tertiaire, RE2020",
-            'description' => "Décret BACS 2027/2030, décret tertiaire, RE2020, directive EPBD, ISO 52120-1 : calendrier, seuils et obligations GTB pour les bâtiments tertiaires.",
+            'description' => "Décret BACS, décret tertiaire, RE2020, directive EPBD, ISO 52120-1 : calendrier, seuils et obligations GTB pour les bâtiments tertiaires.",
+        ],
+        // Slug ET title volontairement SANS année (éviter la péremption).
+        'decret-bacs' => [
+            'title'       => "Décret BACS : qui est concerné, échéances, mise en conformité | NeoGTB",
+            'description' => "Décret BACS : GTB de classe B obligatoire (NF EN ISO 52120-1). Bâtiments concernés, échéances, dérogation TRI > 6 ans, CEE BAT-TH-116 et accompagnement indépendant.",
+        ],
+        'amo-gtb-gtc' => [
+            'title'       => "AMO GTB/GTC, Assistance maîtrise d'ouvrage indépendante | NeoGTB",
+            'description' => "Assistance à maîtrise d'ouvrage (AMO) GTB/GTC : cahier des charges, appel d'offres, suivi de chantier et réception. Conseil indépendant, sans lien fabricant.",
+        ],
+        // Slug ET title volontairement SANS année (éviter la péremption).
+        'offres' => [
+            'title'       => "Offres NeoGTB, Conseil GTB/GTC indépendant sur devis",
+            'description' => "Nos offres d'accompagnement GTB/GTC : du cadrage de projet au pilotage. Conseil indépendant, sans commission. Réponse sous 48h, devis sur mesure.",
+        ],
+        'offre-conformite-continue' => [
+            'title'       => "Audit BACS, suivi énergétique & OPERAT | NeoGTB",
+            'description' => "Audit de conformité décret BACS, suivi énergétique et accompagnement OPERAT annuel pour votre bâtiment tertiaire. Conseil GTB indépendant, sans commission.",
         ],
         'positionnement' => [
             'title'       => "Pourquoi NeoGTB, Conseil GTB 100 % indépendant, sans commission",
@@ -132,6 +150,26 @@ class StaticPageController extends Controller
     public function reglementation()
     {
         return view('front.reglementation', $this->seo('reglementation'));
+    }
+
+    public function decretBacs()
+    {
+        return view('front.decret-bacs', $this->seo('decret-bacs'));
+    }
+
+    public function amoGtbGtc()
+    {
+        return view('front.amo-gtb-gtc', $this->seo('amo-gtb-gtc'));
+    }
+
+    public function offres()
+    {
+        return view('front.offres', $this->seo('offres'));
+    }
+
+    public function offreConformiteContinue()
+    {
+        return view('front.offre-conformite-continue', $this->seo('offre-conformite-continue'));
     }
 
     public function positionnement()

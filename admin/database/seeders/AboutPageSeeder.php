@@ -72,7 +72,7 @@ class AboutPageSeeder extends Seeder
                 ],
                 'stats' => [
                     ['valeur' => '10+', 'label' => 'technologies analysées'],
-                    ['valeur' => '41', 'label' => 'protocoles référencés'],
+                    ['valeur' => '7+', 'label' => 'protocoles décryptés'],
                     ['valeur' => '0 €', 'label' => 'commission fabricant'],
                     ['valeur' => '100 %', 'label' => 'indépendant'],
                 ],

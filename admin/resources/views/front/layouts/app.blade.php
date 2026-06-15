@@ -15,7 +15,7 @@
   @hasSection('description')
     @php($seoDescription = $seoDescription ?: trim($__env->yieldContent('description')))
   @endif
-  @php($seoTitle = $seoTitle ?: ($page->meta_title ?? 'Conseil GTB indépendant & décret BACS 2027 | NeoGTB'))
+  @php($seoTitle = $seoTitle ?: ($page->meta_title ?? 'Conseil GTB indépendant & décret BACS | NeoGTB'))
   @php($seoDescription = $seoDescription ?: ($page->meta_description ?? 'Tiers de confiance GTB. Pré-diagnostic ISO 52120-1 gratuit, comparateur indépendant, accompagnement décret BACS pour bâtiments tertiaires.'))
   @php($seoOgImage = $seoOgImage ?? ($page->og_image ?? '/images/og-neogtb.png'))
   @php($seoOgImageAbs = \Illuminate\Support\Str::startsWith($seoOgImage, ['http://', 'https://']) ? $seoOgImage : url($seoOgImage))
@@ -239,6 +239,7 @@
             <li><a href="/solutions" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_solutions', 'Solutions') }}</a></li>
             <li><a href="/comparateur" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_comparateur', 'Comparateur') }}</a></li>
             <li><a href="/reglementation" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_reglementation', 'Réglementation') }}</a></li>
+            <li><a href="/offre-conformite-continue" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_offre_conformite', 'Offre conformité continue') }}</a></li>
             <li><a href="/blog" class="text-[14px] text-dark-500 hover:text-dark-900 transition-colors duration-200">{{ $site->label('footer.nav_blog', 'Perspectives') }}</a></li>
           </ul>
         </div>

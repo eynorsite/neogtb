@@ -28,13 +28,13 @@
             @endif
 
             @if(!empty($content['titre']))
-                <h1 class="text-[30px] lg:text-[44px]" style="font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px;">
+                <h1 class="text-[32px] lg:text-[48px]" style="font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px; text-shadow: 0 2px 20px rgba(0,0,0,0.40);">
                     {{ $content['titre'] }}
                 </h1>
             @endif
 
             @if(!empty($content['description']))
-                <p style="font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 440px; margin-bottom: 32px;">
+                <p style="font-size: 16px; color: rgba(255,255,255,0.92); line-height: 1.65; max-width: 470px; margin-bottom: 32px; text-shadow: 0 1px 10px rgba(0,0,0,0.35);">
                     {{ $content['description'] }}
                 </p>
             @endif
@@ -43,8 +43,8 @@
                 <div class="flex flex-wrap gap-6" style="margin-bottom: 32px;">
                     @foreach($content['stats'] as $stat)
                         <div style="min-width: 120px;">
-                            <p style="font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.02em; line-height: 1;">{{ $stat['valeur'] ?? '' }}</p>
-                            <p style="font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; line-height: 1.4;">{{ $stat['label'] ?? '' }}</p>
+                            <p style="font-size: 24px; font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1; text-shadow: 0 1px 10px rgba(0,0,0,0.35);">{{ $stat['valeur'] ?? '' }}</p>
+                            <p style="font-size: 13px; color: rgba(255,255,255,0.78); margin-top: 4px; line-height: 1.4;">{{ $stat['label'] ?? '' }}</p>
                         </div>
                     @endforeach
                 </div>

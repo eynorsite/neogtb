@@ -41,7 +41,7 @@ class ComparateurPageSeeder extends Seeder
                 'badge' => 'Outil indépendant',
                 'pre_titre' => 'NeoGTB',
                 'titre' => 'Comparateur objectif GTB',
-                'description' => 'Analysez et comparez les solutions des principaux acteurs du marché de la Gestion Technique du Bâtiment. Notes, protocoles, budgets et retours terrain pour un choix éclairé.',
+                'description' => 'Analysez et comparez les solutions des principaux acteurs du marché de la Gestion Technique du Bâtiment. Notes, protocoles et budgets pour un choix éclairé.',
                 'image' => '/images/hero-comparateur.png',
                 'image_alt' => 'Comparaison de bâtiments intelligents — GTB',
                 'cta_texte' => 'Lancer le pré-diagnostic',
@@ -67,7 +67,7 @@ class ComparateurPageSeeder extends Seeder
             'content' => [
                 'eyebrow' => 'Méthodologie',
                 'titre_section' => 'Six critères, pondération égale',
-                'sous_titre' => 'Notation issue exclusivement de la documentation publique des constructeurs et de retours d\'expérience terrain. Aucune commission, aucun lien commercial.',
+                'sous_titre' => 'Notation issue exclusivement de la documentation publique des constructeurs. Aucune commission, aucun lien commercial.',
                 'cartes' => [
                     ['icone' => 'plug', 'titre' => 'Ouverture protocoles', 'description' => 'BACnet, KNX, Modbus, LON, DALI, MQTT — niveau d\'interopérabilité multi-marques.'],
                     ['icone' => 'layers', 'titre' => 'Scalabilité', 'description' => 'Capacité à monter en charge : nombre de points, multi-sites, hypervision.'],

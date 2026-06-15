@@ -7,6 +7,23 @@ use App\Models\SitePage;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
+/**
+ * PageContentSeeder — moteur de migration des bricks (table page_bricks) vers la
+ * table `page_contents` (clé/valeur aplatie), source réellement lue par le front
+ * via App\Services\ContentBrickAdapter.
+ *
+ * Ce seeder ne contient AUCUN contenu en dur : il transforme ce qui existe déjà
+ * dans page_bricks (alimenté en local par HomePageSeeder, etc.).
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * IMPORTANT — NE PAS RELANCER EN PROD POUR « SYNCHRONISER » LE CONTENU.
+ * La copie LIVE de l'accueil (et des autres pages) vit en BASE PROD dans
+ * page_contents et s'édite dans Filament. Elle n'est PAS regénérée depuis les
+ * seeders. Toute mise à jour de copie se fait manuellement dans Filament, PUIS :
+ *   sudo -u www-data php artisan cache:clear   (cache 1h)
+ * Rejouer ce seeder en prod écraserait les éditions Filament par l'état des
+ * page_bricks (legacy) — à ne faire qu'en local, en connaissance de cause.
+ */
 class PageContentSeeder extends Seeder
 {
     /**

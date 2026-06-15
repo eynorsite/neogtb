@@ -347,7 +347,7 @@
                 ['title' => 'RE2020', 'desc' => 'Optimise le Cep et maîtrise le DH sur le cycle de vie.'],
                 ['title' => 'EPBD', 'desc' => 'Exigence européenne transposée en droit national.'],
                 ['title' => 'CEE', 'desc' => 'Financement via la fiche BAT-TH-116. Durée de vie 15 ans.'],
-                ['title' => 'EN ISO 52120-1', 'desc' => 'Performances quantifiées : jusqu\'à 30 % d\'économies.'],
+                ['title' => 'EN ISO 52120-1', 'desc' => 'Économies estimées par la norme : ~10 % (C), ~25 % (B), ~35 % (A) vs classe D.'],
                 ['title' => 'DPE / Audit', 'desc' => 'Améliore la classe DPE et fournit les données pour l\'audit.'],
                 ['title' => 'SRI', 'desc' => 'Au cœur de l\'indicateur d\'intelligence du bâtiment.'],
                 ['title' => 'Taxonomie verte', 'desc' => 'Contribue à l\'alignement des investissements immobiliers.'],
@@ -382,14 +382,24 @@
     </div>
 </section>
 
-<!-- Related pages -->
-<section class="py-12 lg:py-24 bg-white">
+<!-- Pour aller plus loin -->
+<section class="py-12 lg:py-24 bg-white border-t border-dark-100">
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
-        <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
+        <div class="max-w-xl mb-10">
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Ressources liées</p>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Pour aller plus loin</h2>
+            <p class="text-base text-dark-500 leading-relaxed">Comprendre la GTB, vérifier vos obligations et estimer vos aides.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
+                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B exigée, échéances et dérogations.'],
                 ['href' => '/gtb', 'title' => "Qu'est-ce que la GTB ?", 'desc' => 'Comprendre la GTB avant de s\'attaquer à la réglementation.'],
-                ['href' => '/audit', 'title' => 'Audit GTB gratuit', 'desc' => 'Évaluez votre niveau de conformité ISO 52120-1 en 5 minutes.'],
-                ['href' => '/generateur-cee', 'title' => 'Simulateur CEE', 'desc' => 'Estimez vos primes Certificats d\'Économies d\'Énergie.'],
+                ['href' => '/gtc', 'title' => "Qu'est-ce que la GTC ?", 'desc' => 'Supervision centralisée multi-sites et différences avec la GTB.'],
+                ['href' => '/audit', 'title' => 'Pré-diagnostic de conformité', 'desc' => 'Évaluez votre niveau ISO 52120-1 en quelques minutes, sans inscription.'],
+                ['href' => '/generateur-cee', 'title' => 'Estimateur de primes CEE', 'desc' => 'Estimez vos certificats d\'économies d\'énergie sans intermédiaire.'],
+                ['href' => '/comparateur', 'title' => 'Comparateur de solutions GTB', 'desc' => 'Comparez objectivement les marques du marché, sans biais commercial.'],
+                ['href' => '/solutions', 'title' => 'Solutions & technologies GTB', 'desc' => 'Protocoles, capteurs, automates et architecture interopérable.'],
+                ['href' => '/amo-gtb-gtc', 'title' => 'AMO GTB / GTC', 'desc' => 'Assistance à maîtrise d\'ouvrage indépendante, du cahier des charges à la réception.'],
             ] as $link)
             <a href="{{ $link['href'] }}" class="block bg-dark-50 rounded-2xl p-5 lg:p-7 border border-dark-100 card-hover-glow">
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1">{{ $link['title'] }}</h3>
