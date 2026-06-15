@@ -36,14 +36,14 @@
   <section class="py-8">
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
       <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100" x-data="{ open: false }">
-        <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <button @click="open = !open" class="flex items-center justify-between w-full text-left rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40" :aria-expanded="open" aria-controls="modbus-types-accordion">
           <div>
             <p class="text-base font-semibold text-dark-900">Comprendre les 4 types de registres Modbus</p>
             <p class="text-xs text-dark-500 mt-0.5">Coils, Discrete Inputs, Input Registers, Holding Registers</p>
           </div>
           <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
-        <div x-show="open" x-collapse>
+        <div id="modbus-types-accordion" x-show="open" x-collapse>
           <div class="mt-6 pt-6 border-t border-dark-200 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">
@@ -138,7 +138,7 @@
       {{-- Grid équipements --}}
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
         <template x-for="(eq, idx) in filteredEquipements()" :key="idx">
-          <button @click="openModal(eq)" class="text-left bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 hover:border-primary-300 lg:hover:shadow-md transition-all">
+          <button @click="openModal(eq)" class="text-left bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 hover:border-primary-300 lg:hover:shadow-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40" :aria-label="'Voir les détails de l\'équipement ' + eq.nom">
             <div class="flex items-start justify-between mb-3">
               <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-50 text-primary-700" x-text="eq.categorie"></span>
               <span class="text-[11px] text-dark-500" x-text="eq.protocole"></span>
@@ -180,7 +180,7 @@
                   <p class="mt-2 text-xl font-semibold text-dark-900" x-text="selectedEq.nom"></p>
                   <p class="text-sm text-dark-500" x-text="selectedEq.fournisseur"></p>
                 </div>
-                <button @click="closeModal()" class="text-dark-500 hover:text-dark-700 p-1">
+                <button @click="closeModal()" aria-label="Fermer les détails" class="text-dark-500 hover:text-dark-700 p-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
               </div>
