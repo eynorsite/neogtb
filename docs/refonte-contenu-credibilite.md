@@ -15,8 +15,8 @@
    → **PRÉFIXER « Scénario-type illustratif »** (ne plus les présenter comme des cas réels).
 3. ✅ **TRANCHÉ — « 23 % »** : c'est un coefficient de barème (`audit.blade.php:994`), pas une
    moyenne client → **reformuler en potentiel normatif** (§2, label réécrit).
-4. ⏳ **EN ATTENTE — Fourchettes de prix de l'offre** (§4) : à confirmer par Ulrich.
-5. ⏳ **EN ATTENTE — Délais annoncés** (3-4 sem. / 3-5 sem.) : à confirmer.
+4. ✅ **TRANCHÉ (2026-06-15) — Prix** : Audit sur site **700 € HT** (affiché en prod sur /audit), CCTP et AMO **sur devis** (mention en prod).
+5. ⏳ Délais (3-4 sem. / 3-5 sem.) : indicatifs, non affichés sur le site à ce jour.
 
 ---
 
@@ -76,22 +76,21 @@ actif » alors que Plausible tourne sur 100 % des pages. Un vendeur de conformit
 
 ## 4. OFFRE PAYANTE — 3 formules (résout l'opacité)
 
-> Prix = **ordres de grandeur marché à VALIDER par Ulrich**, ne rien publier comme certain.
-> Affichage recommandé : « à partir de X € HT » (formules 1-2), « sur devis » assumé (AMO).
+> ✅ **Prix tranchés (2026-06-15), déjà en prod sur /audit** : Audit sur site = **700 € HT** ; CCTP et AMO = **sur devis**.
 
 ### Formule 1 — Audit GTB sur site
 - **Pour qui** : gestionnaire/propriétaire qui doit objectiver l'état réel avant d'investir (conformité BACS).
 - **Inclus** : visite + relevé des lots techniques · classification ISO 52120-1 vérifiée sur site ·
   plan d'actions chiffré et priorisé · estimation CEE (BAT-TH-116 / 112) · point de conformité BACS.
-- **Livrable** : rapport 20+ pages + restitution commentée. **Délai** : 3-4 semaines `[À VALIDER]`.
-- **Prix** : `à partir de 1 500 € HT` `[À VALIDER — fourchette indicative mono-site]`.
+- **Livrable** : rapport 20+ pages + restitution commentée. **Délai** : 3-4 semaines (indicatif).
+- **Prix** : **700 € HT** — ✅ affiché en prod sur /audit.
 
 ### Formule 2 — Cahier des charges GTB neutre
 - **Pour qui** : maître d'ouvrage qui veut un CCTP qui n'avantage aucune marque ni protocole.
 - **Inclus** : expression de besoin fonctionnelle · specs ouvertes multi-protocoles (BACnet/KNX/Modbus/DALI) ·
   critères d'évaluation objectifs · exigences d'interopérabilité (anti-verrouillage).
-- **Livrable** : CCTP prêt à diffuser + grille de dépouillement. **Délai** : 3-5 semaines `[À VALIDER]`.
-- **Prix** : `à partir de 2 500 € HT` `[À VALIDER]`.
+- **Livrable** : CCTP prêt à diffuser + grille de dépouillement. **Délai** : 3-5 semaines (indicatif).
+- **Prix** : **Sur devis** — ✅ mention en prod sur /audit.
 
 ### Formule 3 — AMO GTB (accompagnement complet)
 - **Pour qui** : gestionnaire multi-sites ou projet d'envergure, accompagné de bout en bout.
