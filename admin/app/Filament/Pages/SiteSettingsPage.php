@@ -2207,7 +2207,7 @@ class SiteSettingsPage extends Page implements HasForms
                         ]),
                         Grid::make(2)->schema([
                             TextInput::make('stat_avg_savings_percent')
-                                ->label('Économies moyennes')
+                                ->label('Économies potentielles (ISO 52120-1, classe A vs D)')
                                 ->numeric()
                                 ->suffix('%'),
                             Toggle::make('stat_savings_auto')

@@ -113,11 +113,11 @@ class GeneralSettingsSeeder extends Seeder
             'blog_default_cover' => '/images/blog-default-cover.png',
 
             // STATISTIQUES
-            'stat_buildings_audited' => 150,
+            'stat_buildings_audited' => 0,
             'stat_buildings_auto' => false,
             'stat_avg_savings_percent' => 35,
-            'stat_years_experience' => 12,
-            'stat_clients_count' => 80,
+            'stat_years_experience' => null, // R1 : NeoGTB/EYNOR récent — pas d'ancienneté fabriquée
+            'stat_clients_count' => null,    // R1 : aucun client à comptabiliser publiquement
             'stat_clients_auto' => false,
 
             // UI LABELS

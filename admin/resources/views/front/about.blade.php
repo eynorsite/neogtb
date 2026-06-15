@@ -67,8 +67,8 @@
                         <p class="text-xs text-dark-500 mt-1">technologies analysées</p>
                     </div>
                     <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
-                        <p class="text-[28px] font-medium text-dark-900 tracking-tight">41</p>
-                        <p class="text-xs text-dark-500 mt-1">protocoles référencés</p>
+                        <p class="text-[28px] font-medium text-dark-900 tracking-tight">7+</p>
+                        <p class="text-xs text-dark-500 mt-1">protocoles décryptés</p>
                     </div>
                     <div class="bg-white rounded-2xl p-5 lg:p-7 text-center border border-dark-100 lg:shadow-sm">
                         <p class="text-[28px] font-medium text-accent-600 tracking-tight">0 &euro;</p>
