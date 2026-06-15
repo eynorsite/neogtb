@@ -6,6 +6,7 @@ use App\Models\ContentRevision;
 use App\Models\PageContent;
 use App\Models\SitePage;
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -254,9 +255,13 @@ class PageContentsPage extends Page implements HasForms
                 ->formatStateUsing(fn ($state) => filter_var($state, FILTER_VALIDATE_BOOLEAN))
                 ->dehydrateStateUsing(fn ($state) => $state ? '1' : '0'),
 
-            'image' => TextInput::make($formKey)
+            'image' => FileUpload::make($formKey)
                 ->label($label)
-                ->helperText('Chemin de l\'image')
+                ->image()
+                ->disk('public')
+                ->directory('content')
+                ->imagePreviewHeight('120')
+                ->helperText('Choisissez une image depuis votre ordinateur.')
                 ->columnSpanFull(),
 
             'color' => ColorPicker::make($formKey)
