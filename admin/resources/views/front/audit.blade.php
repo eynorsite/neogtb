@@ -684,7 +684,6 @@
               <p class="diag-premium-col-subtitle">{{ $site->label('audit.premium.onsite_subtitle', 'Par un expert indépendant NeoGTB') }}</p>
               <ul class="diag-premium-list">
                 <li>{{ $site->label('audit.premium.onsite_1', 'Mesures terrain instrumentées') }}</li>
-                <li>{{ $site->label('audit.premium.onsite_2', 'Classification ISO 52120-1 certifiée') }}</li>
                 <li>{{ $site->label('audit.premium.onsite_3', "Plan d'actions chiffré et priorisé") }}</li>
                 <li>{{ $site->label('audit.premium.onsite_4', 'Rapport 20+ pages avec ROI') }}</li>
                 <li>{{ $site->label('audit.premium.onsite_5', 'Conformité décret BACS vérifiée') }}</li>

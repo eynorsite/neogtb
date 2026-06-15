@@ -1779,7 +1779,6 @@ class SiteSettingsPage extends Page implements HasForms
                         TextInput::make('ui_labels.audit.premium.onsite_title')->label('Sur site — titre'),
                         TextInput::make('ui_labels.audit.premium.onsite_subtitle')->label('Sur site — sous-titre'),
                         TextInput::make('ui_labels.audit.premium.onsite_1')->label('Sur site — point 1'),
-                        TextInput::make('ui_labels.audit.premium.onsite_2')->label('Sur site — point 2'),
                         TextInput::make('ui_labels.audit.premium.onsite_3')->label('Sur site — point 3'),
                         TextInput::make('ui_labels.audit.premium.onsite_4')->label('Sur site — point 4'),
                         TextInput::make('ui_labels.audit.premium.onsite_5')->label('Sur site — point 5'),

@@ -221,7 +221,6 @@ class GeneralSettingsSeeder extends Seeder
                         'onsite_title' => 'Audit sur site',
                         'onsite_subtitle' => 'Par un expert indépendant NeoGTB',
                         'onsite_1' => 'Mesures terrain instrumentées',
-                        'onsite_2' => 'Classification ISO 52120-1 certifiée',
                         'onsite_3' => 'Plan d\'actions chiffré et priorisé',
                         'onsite_4' => 'Rapport 20+ pages avec ROI',
                         'onsite_5' => 'Conformité décret BACS vérifiée',
