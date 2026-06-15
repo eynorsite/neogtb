@@ -1,0 +1,18 @@
+# Datasource InfluxDB 2.7 (Flux) provisionné automatiquement au démarrage de Grafana.
+# Les $VAR sont interpolées depuis l'environnement du conteneur grafana (cf. docker-compose.yml).
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB-EMS
+    uid: influxdb-ems
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    isDefault: true
+    jsonData:
+      version: Flux
+      organization: $INFLUX_ORG
+      defaultBucket: $INFLUX_BUCKET
+    secureJsonData:
+      token: $INFLUX_TOKEN
+    editable: true
