@@ -950,7 +950,7 @@ class GeneralSettingsSeeder extends Seeder
                         [
                             'tag' => 'Tertiaire',
                             'tag_variant' => 'gtb',
-                            'meta' => 'Bureau — 5 000 m²',
+                            'meta' => 'Scénario-type illustratif · Bureau ~5 000 m²',
                             'titre' => 'Rénovation GTB d\'un immeuble de bureaux',
                             'contexte' => 'Un immeuble tertiaire des années 2000 soumis au décret tertiaire, avec une consommation excessive en chauffage et climatisation.',
                             'approche' => 'Déploiement BACnet avec régulation terminale par zone, programmation horaire et détection d\'occupation.',
@@ -960,14 +960,14 @@ class GeneralSettingsSeeder extends Seeder
                                 'progress_from' => 'D',
                             ],
                             'metriques' => [
-                                ['valeur' => '-35 %', 'label' => 'Consommation énergétique', 'couleur' => 'energy'],
-                                ['valeur' => '3 ans', 'label' => 'Retour sur investissement', 'couleur' => 'dark'],
+                                ['valeur' => '-35 %', 'label' => 'Réduction conso visée (objectif)', 'couleur' => 'energy'],
+                                ['valeur' => '3 ans', 'label' => 'ROI estimé', 'couleur' => 'dark'],
                             ],
                         ],
                         [
                             'tag' => 'Enseignement',
                             'tag_variant' => 'gtb',
-                            'meta' => 'Lycée — 12 000 m²',
+                            'meta' => 'Scénario-type illustratif · Lycée ~12 000 m²',
                             'titre' => 'Pilotage centralisé d\'un établissement scolaire',
                             'contexte' => 'Un lycée avec des usages intermittents (vacances, week-ends) et une facture énergétique en hausse constante.',
                             'approche' => 'Supervision GTC centralisée, gestion des intermittences, délestage automatique et suivi temps réel des consommations.',
@@ -977,8 +977,8 @@ class GeneralSettingsSeeder extends Seeder
                                 'progress_from' => 'C',
                             ],
                             'metriques' => [
-                                ['valeur' => '-42 %', 'label' => 'Économie sur la facture', 'couleur' => 'energy'],
-                                ['valeur' => '18 mois', 'label' => 'Temps de déploiement', 'couleur' => 'dark'],
+                                ['valeur' => '-42 %', 'label' => 'Économie facture visée (objectif)', 'couleur' => 'energy'],
+                                ['valeur' => '18 mois', 'label' => 'Déploiement estimé', 'couleur' => 'dark'],
                             ],
                         ],
                     ],
@@ -987,12 +987,13 @@ class GeneralSettingsSeeder extends Seeder
                 ],
 
                 // ─── CHIFFRES CLÉS ───
+                // R1 : uniquement des valeurs vérifiables (pas de compteurs clients inventés type 150+/80+).
                 'chiffres' => [
                     'stats' => [
-                        ['valeur' => '150+', 'label' => 'Bâtiments audités'],
-                        ['valeur' => '35 %', 'label' => 'Économies moyennes constatées'],
-                        ['valeur' => '12 ans', 'label' => 'D\'expertise GTB/GTC'],
-                        ['valeur' => '80+', 'label' => 'Clients accompagnés'],
+                        ['valeur' => '0 €', 'label' => 'Commission fabricant, jamais'],
+                        ['valeur' => '10+', 'label' => 'Marques évaluées sans lien commercial'],
+                        ['valeur' => '48 h', 'label' => 'Réponse à votre demande'],
+                        ['valeur' => '100 %', 'label' => 'Indépendant'],
                     ],
                 ],
 
@@ -1062,28 +1063,12 @@ class GeneralSettingsSeeder extends Seeder
                 ],
 
                 // ─── TÉMOIGNAGES ───
+                // R1 : AUCUN faux témoignage. NeoGTB est un projet récent — pas d'avis inventés ni de
+                // noms d'entreprises empruntés (Nexity, etc. = supprimés). Avis réels uniquement, quand ils existeront.
                 'temoignages' => [
                     'titre' => 'Ils ont optimisé leurs bâtiments',
-                    'avis' => [
-                        [
-                            'nom' => 'Marie Durand',
-                            'poste' => 'Directrice Technique — Groupe Immobilier Nexity',
-                            'texte' => 'Grâce à l\'audit NeoGTB, nous avons identifié 30 % d\'économies potentielles sur notre parc tertiaire. La mise en conformité décret tertiaire est désormais planifiée.',
-                            'note' => 5,
-                        ],
-                        [
-                            'nom' => 'Philippe Martin',
-                            'poste' => 'Responsable Énergie — Conseil Départemental',
-                            'texte' => 'Les guides NeoGTB sur les niveaux EN 15232 nous ont permis de rédiger un cahier des charges précis pour la GTB de nos 45 collèges.',
-                            'note' => 5,
-                        ],
-                        [
-                            'nom' => 'Sophie Leclerc',
-                            'poste' => 'Energy Manager — Centre Hospitalier',
-                            'texte' => 'Le comparateur GTB/GTC de NeoGTB a convaincu notre direction d\'investir dans une supervision centralisée. Résultat : -28 % sur la facture en 18 mois.',
-                            'note' => 5,
-                        ],
-                    ],
+                    'note_transparence' => 'Les premiers retours clients seront publiés ici dès qu\'ils seront réels et vérifiables. En attendant, on préfère le vide à l\'invention.',
+                    'avis' => [],
                 ],
 
                 // ─── FAQ ───
