@@ -155,6 +155,7 @@
                     x-on:keydown.enter.prevent="if(!$event.shiftKey) send()"
                     rows="1"
                     placeholder="Posez votre question…"
+                    aria-label="Votre message pour l'assistant"
                     :disabled="isStreaming"
                     class="flex-1 resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 disabled:opacity-60"
                 ></textarea>
