@@ -233,7 +233,7 @@
                 ['badge' => 'Classe A', 'bg' => 'bg-dark-800', 'title' => 'Haute performance', 'desc' => 'Régulation pièce par pièce, optimisation multi-lots.', 'sub' => 'Performance maximale', 'eco' => '~35 % vs D', 'highlight' => false],
                 ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives.', 'sub' => 'Exigence décret BACS', 'eco' => '~25 % vs D', 'highlight' => true],
                 ['badge' => 'Classe C', 'bg' => 'bg-dark-500', 'title' => 'Standard', 'desc' => 'Régulation de base et programmation horaire, sans supervision.', 'sub' => 'Minimum neuf', 'eco' => '~10 % vs D', 'highlight' => false],
-                ['badge' => 'Classe D', 'bg' => 'bg-dark-400', 'title' => 'Non performant', 'desc' => 'Aucune automatisation, pilotage manuel.', 'sub' => 'Référence basse', 'eco' => '—', 'highlight' => false],
+                ['badge' => 'Classe D', 'bg' => 'bg-dark-600', 'title' => 'Non performant', 'desc' => 'Aucune automatisation, pilotage manuel.', 'sub' => 'Référence basse', 'eco' => '—', 'highlight' => false],
             ] as $cl)
             <div class="{{ $cl['highlight'] ? 'bg-white rounded-2xl border border-accent-200 shadow-[0_0_0_3px] shadow-accent-50' : 'bg-white rounded-2xl border border-dark-100 lg:shadow-sm' }} p-5 lg:p-7 flex flex-col">
                 <span class="inline-block self-start text-[13px] font-medium text-white {{ $cl['bg'] }} px-2.5 py-1 rounded-md mb-3.5">{{ $cl['badge'] }}</span>
@@ -270,7 +270,7 @@
                 ['n' => '06', 'title' => 'Estimation des CEE', 'desc' => 'Chiffrage du potentiel de Certificats d\'Économies d\'Énergie (fiche BAT-TH-116) pour financer le projet.'],
             ] as $step)
             <li class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
-                <p class="text-[28px] font-medium text-accent-600/40 tracking-tight leading-none mb-3">{{ $step['n'] }}</p>
+                <p class="text-[28px] font-medium text-accent-600 tracking-tight leading-none mb-3">{{ $step['n'] }}</p>
                 <h3 class="text-[15px] font-medium text-dark-900 mb-1.5">{{ $step['title'] }}</h3>
                 <p class="text-[13px] text-dark-500 leading-relaxed">{{ $step['desc'] }}</p>
             </li>

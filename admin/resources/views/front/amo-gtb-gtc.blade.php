@@ -257,7 +257,7 @@
         <h2 class="text-[24px] lg:text-[32px] font-medium text-dark-900 tracking-tight leading-tight mb-4">
             Un projet GTB/GTC à sécuriser ?
         </h2>
-        <p class="text-base lg:text-[17px] text-dark-500 leading-relaxed mb-8 max-w-xl mx-auto">
+        <p class="text-base lg:text-[17px] text-dark-600 leading-relaxed mb-8 max-w-xl mx-auto">
             Échangez avec un expert indépendant sur votre projet. Sans démarche commerciale,
             réponse sous 48&nbsp;h ouvrées.
         </p>
