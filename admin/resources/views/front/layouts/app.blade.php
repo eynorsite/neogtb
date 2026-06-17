@@ -160,7 +160,7 @@
     {{-- Breadcrumbs --}}
     @hasSection('breadcrumbs')
       <nav aria-label="{{ $site->label('layout.breadcrumb_label', "Fil d'Ariane") }}" class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 md:px-10 py-3">
-        <ol style="display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; font-size: 12px; color: var(--color-dark-400);">
+        <ol style="display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; font-size: 12px; color: var(--color-dark-600);">
           @yield('breadcrumbs')
         </ol>
       </nav>
@@ -176,7 +176,7 @@
 
         {{-- Brand + Newsletter --}}
         <div class="md:col-span-5">
-          <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-16 w-auto" loading="lazy" decoding="async" />
+          <img src="/images/logo-neogtb.webp" alt="NeoGTB" width="1536" height="1024" class="h-16 w-auto" loading="lazy" decoding="async" />
           <p class="mt-5 text-[14px] text-dark-500 max-w-md" style="line-height: 1.7;">
             {{ $site->label('footer.brand_description', 'Le tiers de confiance indépendant de la Gestion Technique du Bâtiment en France. Aucun lien commercial avec les fabricants.') }}
           </p>
@@ -206,12 +206,12 @@
               <div class="flex gap-2" x-show="!nlSent">
                 <label class="sr-only" for="footer-nl-email">{{ $site->label('footer.newsletter_sr_label', 'Email pour la veille GTB') }}</label>
                 <input type="email" id="footer-nl-email" name="email" placeholder="{{ $site->label('footer.newsletter_placeholder', 'votre@email.com') }}" required aria-label="{{ $site->label('footer.newsletter_aria', 'Votre adresse email pour la veille GTB mensuelle') }}" class="flex-1 text-[14px] px-4 py-2.5 rounded-lg text-dark-900 placeholder-dark-400 outline-none focus:ring-2 focus:ring-accent-500/40 transition-shadow" style="border: 0.5px solid var(--color-dark-200); background: var(--color-dark-50);" />
-                <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));">
+                <button type="submit" :disabled="nlSending" class="text-[13px] font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-200 hover:shadow-lg hover:shadow-accent-500/20" style="background: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-700));">
                   <span x-show="!nlSending">{{ $site->label('footer.newsletter_button', "S'inscrire") }}</span>
                   <span x-show="nlSending">...</span>
                 </button>
               </div>
-              <div x-show="nlSent" x-cloak class="text-[13px] text-accent-500 font-medium">{{ $site->label('footer.newsletter_success', 'Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.') }}</div>
+              <div x-show="nlSent" x-cloak class="text-[13px] text-accent-600 font-medium">{{ $site->label('footer.newsletter_success', 'Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.') }}</div>
               <p x-show="nlError" x-text="nlError" x-cloak class="text-[12px] text-red-500 mt-1"></p>
               <label x-show="!nlSent" class="mt-2 flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" required class="mt-0.5 w-3.5 h-3.5 rounded text-accent-500 focus:ring-accent-500/40" />

@@ -66,7 +66,7 @@ $icons = [
   <nav class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10 flex items-center justify-between h-14 lg:h-[120px]">
     {{-- Logo --}}
     <a href="/" class="flex items-center">
-      <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-9 lg:h-[100px] w-auto" />
+      <img src="/images/logo-neogtb.webp" alt="NeoGTB" width="1536" height="1024" class="h-9 lg:h-[100px] w-auto" />
     </a>
 
     {{-- Desktop Nav --}}
@@ -214,7 +214,7 @@ $icons = [
     >
       <div class="sticky top-0 bg-white z-10 flex items-center justify-between px-5 py-4 border-b border-dark-100">
         <a href="/" class="flex items-center">
-          <img src="/images/logo-neogtb.webp" alt="NeoGTB" class="h-10 w-auto" />
+          <img src="/images/logo-neogtb.webp" alt="NeoGTB" width="1536" height="1024" class="h-10 w-auto" />
         </a>
         <button type="button" @click="closeMobile()" class="p-2 rounded-lg hover:bg-dark-50 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500" aria-label="{{ $site->label('nav.close_menu', 'Fermer le menu') }}">
           <svg class="w-6 h-6 text-dark-700" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">{!! $icons['x-mark'] !!}</svg>
