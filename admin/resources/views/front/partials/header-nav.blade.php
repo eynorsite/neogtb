@@ -140,7 +140,7 @@ $icons = [
       @foreach(['comprendre','conformer','agir'] as $colKey)
         @php($col = $exploreItems[$colKey])
         <div>
-          <h3 class="text-[10px] font-semibold uppercase tracking-[0.12em] text-dark-500 mb-2 px-2.5">{{ $col['label'] }}</h3>
+          <p class="text-[10px] font-semibold uppercase tracking-[0.12em] text-dark-500 mb-2 px-2.5">{{ $col['label'] }}</p>
           <ul class="flex flex-col gap-0.5">
             @foreach($col['items'] as $it)
               @php($active = request()->is($it['match']))

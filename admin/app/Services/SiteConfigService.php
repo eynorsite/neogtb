@@ -170,15 +170,14 @@ class SiteConfigService
                 $data['logo'] = asset('storage/' . $s->company_logo);
             }
 
-            // Address
+            // Address — n'émettre que les champs renseignés (pas de streetAddress: null dans le JSON-LD)
             if (filled($s->company_address) || filled($s->company_city)) {
-                $data['address'] = [
-                    '@type'           => 'PostalAddress',
-                    'streetAddress'   => $s->company_address,
-                    'addressLocality' => $s->company_city,
-                    'postalCode'      => $s->company_postal_code,
-                    'addressCountry'  => 'FR',
-                ];
+                $address = ['@type' => 'PostalAddress'];
+                if (filled($s->company_address))     { $address['streetAddress']   = $s->company_address; }
+                if (filled($s->company_city))        { $address['addressLocality'] = $s->company_city; }
+                if (filled($s->company_postal_code)) { $address['postalCode']      = $s->company_postal_code; }
+                $address['addressCountry'] = 'FR';
+                $data['address'] = $address;
             }
 
             // Founding year
