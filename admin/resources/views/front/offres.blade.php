@@ -14,6 +14,15 @@
 
 @section('content')
 
+{{-- JSON-LD OfferCatalog : prestations réelles (cohérence entité <-> contenu visible). ld+json exempté CSP, nonce par cohérence. --}}
+@push('schema')
+<script type="application/ld+json" @cspNonce>
+@verbatim
+{"@context":"https://schema.org","@type":"OfferCatalog","name":"Offres NeoGTB — conseil GTB/GTC indépendant","provider":{"@type":"Organization","name":"NeoGTB","url":"https://neogtb.fr"},"itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Audit GTB sur site","serviceType":"Audit de conformité GTB / décret BACS"},"priceSpecification":{"@type":"PriceSpecification","price":"700","priceCurrency":"EUR","valueAddedTaxIncluded":false},"areaServed":"FR"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Cahier des charges GTB neutre","serviceType":"Rédaction de CCTP GTB multi-protocoles"},"areaServed":"FR"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"AMO GTB/GTC","serviceType":"Assistance à maîtrise d'ouvrage GTB"},"areaServed":"FR"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Conformité continue","serviceType":"Suivi de conformité décret BACS et déclaration OPERAT"},"areaServed":"FR"}]}
+@endverbatim
+</script>
+@endpush
+
 {{-- ============================================================
      HERO — LIGHT MODE custom (titre sombre, fond clair, orbs décoratifs)
      ============================================================ --}}
