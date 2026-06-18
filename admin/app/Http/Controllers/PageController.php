@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SubmitAuditLeadRequest;
+use App\Http\Requests\SubmitCctpLeadRequest;
 use App\Http\Requests\SubmitCeeLeadRequest;
 use App\Http\Requests\SubmitContactMessageRequest;
 use App\Models\GeneralSetting;
@@ -11,6 +12,7 @@ use App\Models\PostCategory;
 use App\Models\SitePage;
 use App\Services\Contact\ContactSubmissionService;
 use App\Services\Lead\AuditLeadService;
+use App\Services\Lead\CctpLeadService;
 use App\Services\Lead\CeeLeadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -125,5 +127,22 @@ class PageController extends Controller
         );
 
         return response()->json(['status' => 'ok']);
+    }
+
+    /**
+     * Lead magnet : enregistre le lead puis sert le modèle de CCTP décret BACS (.docx).
+     * Le fichier vit hors webroot (resources/) pour que le téléchargement passe par ce gating.
+     */
+    public function downloadCctpModele(SubmitCctpLeadRequest $request, CctpLeadService $service)
+    {
+        $service->submit(
+            $request->validated(),
+            hash('sha256', $request->ip())
+        );
+
+        $path = resource_path('lead-magnets/modele-cctp-decret-bacs-neogtb.docx');
+        abort_unless(is_file($path), 404);
+
+        return response()->download($path, 'modele-cctp-decret-bacs-neogtb.docx');
     }
 }

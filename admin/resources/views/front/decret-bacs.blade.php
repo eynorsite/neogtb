@@ -393,7 +393,7 @@
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
-                ['href' => '/reglementation', 'title' => 'Toute la réglementation GTB', 'desc' => 'Décret BACS, décret tertiaire, RE2020, EPBD : le cadre complet et le calendrier.'],
+                ['href' => '/modele-cctp-decret-bacs', 'title' => 'Modèle de CCTP décret BACS', 'desc' => 'Une trame de cahier des charges GTB classe B, neutre fabricant, à adapter.'],
                 ['href' => '/audit', 'title' => 'Pré-diagnostic GTB gratuit', 'desc' => 'Évaluez votre conformité NF EN ISO 52120-1 en quelques minutes.'],
                 ['href' => '/generateur-cee', 'title' => 'Simulateur CEE', 'desc' => 'Estimez vos primes Certificats d\'Économies d\'Énergie (BAT-TH-116).'],
             ] as $link)
