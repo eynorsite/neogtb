@@ -8,6 +8,12 @@
 > Usage NeoGTB : trame réutilisable pour un livrable d'audit « conformité décret BACS »,
 > en cohérence avec la posture *tiers de confiance indépendant* (0 matériel vendu, 0 commission).
 
+> **Statuts employés dans ce rapport** — pour distinguer ce qui est opposable de ce qui ne l'est pas :
+> **[OBLIGATION]** = exigence réglementaire (décret/arrêté, sourcée) · **[RECOMMANDATION]** = bonne
+> pratique ou cible conseillée (ex. classe B, financement CEE) · **[INDICATEUR]** = repère non
+> réglementaire (ex. classe NF EN ISO 52120-1 : elle mesure le niveau fonctionnel de la GTB et
+> **ne vaut pas** conformité au décret, qui se juge sur les fonctions de l'article R. 175-3).
+
 ---
 
 ## 1. Contexte (exemple fictif)
@@ -68,9 +74,12 @@ Déterminer :
 **Bâtiments neufs** : permis de construire déposé ≥ 1 an après publication du décret → obligation
 d'installer un BACS, **sauf** étude démontrant un retour sur investissement > 10 ans.
 
-**Classe de GTB exigée** : système de **classe A ou B** selon la norme **NF EN ISO 52120-1:2022**
-(qui remplace l'ancienne EN 15232). La classe C correspond au socle de fonctions « de référence »,
-mais le décret impose **A ou B**.
+**Classe de GTB — précision importante** : le décret BACS impose des **fonctions** (art. R. 175-3 du
+CCH), **pas une classe** au sens de la **NF EN ISO 52120-1:2022** (qui remplace l'ancienne EN 15232).
+La conformité se juge sur la **présence et l'effectivité des fonctions**, jamais sur la seule classe
+ISO. En pratique, ces fonctions correspondent au niveau **classe B**, qui est aussi le niveau financé
+par la fiche CEE **BAT-TH-116** : c'est la cible recommandée. La **classe A** est une GTB haute
+performance (condition de certaines primes CEE).
 
 ---
 
@@ -117,10 +126,16 @@ gouvernemental — § 9), confrontées à l'existant :
 | Permettre l'**arrêt manuel** et la **gestion automatique** des systèmes techniques | Partiel (horloges) | ⚠️ |
 | Assurer l'**interopérabilité** entre systèmes techniques | Non | ❌ |
 | **Alerter** la personne en charge en cas de dérive / dysfonctionnement | Non | ❌ |
-| Atteindre une **classe A ou B** (NF EN ISO 52120-1:2022) | Classe C/D estimée | ❌ |
 
-**Avis de conformité : NON CONFORME.** Le bâtiment dispose d'une régulation locale mais pas d'un
-système d'automatisation et de contrôle au sens du décret.
+> **Sur la classe — précision** : « atteindre une classe A ou B » n'est **pas** une fonction de
+> l'article R. 175-3 ; ce n'est donc pas une ligne de cette grille. Le décret impose les **fonctions**
+> ci-dessus. La classe (ici estimée **C/D**) n'est qu'un **indicateur** du niveau fonctionnel ; la
+> **classe B** est la traduction pratique de ces fonctions et la condition de la prime CEE (fiche BAT-TH-116).
+
+**Avis de conformité : NON CONFORME.** La non-conformité tient à l'**absence des fonctions** exigées
+par R. 175-3 (analyse continue, conservation 5 ans, interopérabilité, alertes…), **pas** au niveau de
+classe : le bâtiment dispose d'une régulation locale mais pas d'un système d'automatisation et de
+contrôle au sens du décret.
 
 ---
 
@@ -134,8 +149,9 @@ système d'automatisation et de contrôle au sens du décret.
 | P2 | Régulation automatique des systèmes CVC (programmation, optimisation) | Montée en **classe B** |
 | P3 | Documentation, analyse fonctionnelle, formation de l'exploitant | Pré-requis inspection |
 
-**Cible** : atteindre la **classe B** NF EN ISO 52120-1:2022 (suffisant pour la conformité ;
-la classe A étant un sur-investissement à arbitrer selon le ROI).
+**Cible recommandée** : le niveau **classe B** NF EN ISO 52120-1:2022 — c'est le niveau qui permet de
+remplir les fonctions R. 175-3 et qui est financé par les CEE (la conformité reste jugée sur les
+fonctions, pas sur la classe) ; la classe A étant un sur-investissement à arbitrer selon le ROI.
 
 > Posture NeoGTB : ce plan est **neutre** (aucun fabricant imposé). Le cahier des charges et le
 > comparatif de solutions se font côté maître d'ouvrage — voir l'offre « Cadrage » et les outils
