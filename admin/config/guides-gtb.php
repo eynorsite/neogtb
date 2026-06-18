@@ -88,7 +88,7 @@ return [
         'title'            => 'Les classes EN 15232 (ISO 52120-1) : A, B, C, D',
         'meta_title'       => 'Les classes EN 15232 (ISO 52120-1) : A, B, C, D | NeoGTB',
         'meta_description' => "Les 4 classes d'efficacité de la GTB selon EN 15232 / NF EN ISO 52120-1 : A, B, C, D. Définitions et gains énergétiques estimés.",
-        'lede'             => "La norme EN 15232 (NF EN ISO 52120-1) classe l'efficacité de la GTB sur 4 niveaux, de D (aucune automatisation) à A (haute performance). Le décret BACS exige au minimum la classe B.",
+        'lede'             => "La norme EN 15232 (NF EN ISO 52120-1) classe l'efficacité de la GTB sur 4 niveaux, de D (aucune automatisation) à A (haute performance). Le décret BACS impose des fonctions (art. R. 175-3), pas une classe ; la classe B est le niveau couramment visé et la condition de la prime CEE.",
 
         'tables' => [
             [
@@ -96,7 +96,7 @@ return [
                 'headers' => ['Classe', 'Niveau', 'Description', 'Gains estimés (vs classe D)'],
                 'rows'    => [
                     ['A', 'Haute performance énergétique', 'GTB avec régulation individuelle, optimisation automatique, détection de défauts', '30 à 40 %'],
-                    ['B', 'Avancé (exigé par le décret BACS)', 'GTB avec régulation automatique par zone, programmation horaire', '20 à 30 %'],
+                    ['B', 'Avancé (niveau visé / condition CEE)', 'GTB avec régulation automatique par zone, programmation horaire', '20 à 30 %'],
                     ['C', 'Standard', 'Régulation basique, pas d\'automatisation avancée', '10 à 15 %'],
                     ['D', 'Non énergie-efficace', 'Pas de GTB, régulation manuelle uniquement', '0 % (référence)'],
                 ],
@@ -107,8 +107,8 @@ return [
 
         'faq' => [
             [
-                'question' => 'Quelle classe de GTB exige le décret BACS ?',
-                'answer'   => 'La classe B au minimum (norme EN 15232 / NF EN ISO 52120-1).',
+                'question' => 'Quelle classe de GTB viser pour le décret BACS ?',
+                'answer'   => 'Le décret impose des fonctions (art. R. 175-3), pas une classe : la classe C suffit à la conformité. La classe B (EN 15232 / NF EN ISO 52120-1) est le niveau couramment visé et la condition de la prime CEE.',
             ],
             [
                 'question' => 'Qu\'est-ce qu\'une GTB de classe A ?',
@@ -126,7 +126,7 @@ return [
         'title'            => 'À partir de quelle puissance la GTB est-elle obligatoire ?',
         'meta_title'       => 'À partir de quelle puissance la GTB est-elle obligatoire ? | NeoGTB',
         'meta_description' => 'Décret BACS : la GTB est obligatoire pour les bâtiments tertiaires selon la puissance CVC. Seuils 70 et 290 kW, échéances 2025 et 2030.',
-        'lede'             => "Au titre du décret BACS, la GTB est obligatoire dans les bâtiments tertiaires équipés de systèmes CVC dont la puissance dépasse 290 kW (depuis le 1er janvier 2025) ou comprise entre 70 et 290 kW (au 1er janvier 2030). Le système doit atteindre au minimum la classe B (EN 15232 / NF EN ISO 52120-1).",
+        'lede'             => "Au titre du décret BACS, la GTB est obligatoire dans les bâtiments tertiaires équipés de systèmes CVC dont la puissance dépasse 290 kW (depuis le 1er janvier 2025) ou comprise entre 70 et 290 kW (au 1er janvier 2030). Le décret impose des fonctions ; en pratique, la classe B (EN 15232 / NF EN ISO 52120-1) est le niveau couramment visé et la condition de la prime CEE.",
 
         'tables' => [
             [
@@ -158,7 +158,7 @@ return [
             ],
             [
                 'question' => 'Quelle classe de GTB faut-il atteindre ?',
-                'answer'   => 'La classe B au minimum, selon la norme EN 15232 / NF EN ISO 52120-1.',
+                'answer'   => 'Le décret impose des fonctions, pas une classe ; la classe B (EN 15232 / NF EN ISO 52120-1) est le niveau couramment visé et la condition de la prime CEE.',
             ],
             [
                 'question' => 'Peut-on être exempté de l\'obligation ?',

@@ -1,0 +1,12 @@
+# Dépendances Python du générateur de lead magnet CCTP
+# (scripts/gen_cctp_lead_magnet.py — convertit docs/cctp/*.md en .docx)
+#
+# Installation :  pip3 install --user -r scripts/requirements.txt
+# Régénération :  python3 scripts/gen_cctp_lead_magnet.py
+#
+# Le .docx généré (resources/lead-magnets/) est versionné : ces dépendances
+# ne sont nécessaires QUE pour régénérer le fichier, pas au runtime de l'app.
+
+markdown>=3.5
+python-docx>=1.1
+htmldocx>=0.0.6

@@ -179,7 +179,7 @@
         </div>
         <div class="grid md:grid-cols-3 gap-3 lg:gap-5">
             @foreach([
-                ['badge' => 'Obligatoire', 'bg' => 'bg-accent-600', 'title' => 'Décret BACS', 'desc' => 'Impose un système d\'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2030 (>70 kW).'],
+                ['badge' => 'Obligatoire', 'bg' => 'bg-accent-600', 'title' => 'Décret BACS', 'desc' => 'Impose un système d\'automatisation pour les bâtiments tertiaires (classe B en pratique). Échéance 2025 (>290 kW CVC), 2030 (>70 kW).'],
                 ['badge' => 'Objectifs', 'bg' => 'bg-dark-600', 'title' => 'Décret tertiaire', 'desc' => 'Réduction progressive de la consommation : -40 % (2030), -50 % (2040), -60 % (2050). Déclaration annuelle sur OPERAT.'],
                 ['badge' => 'Neuf', 'bg' => 'bg-dark-600', 'title' => 'RE2020', 'desc' => 'Applicable aux bâtiments neufs. Seuils de consommation (Cep) et confort d\'été (DH) rendant la GTB quasi indispensable.'],
             ] as $reg)
@@ -225,7 +225,7 @@
                 ['href' => '/gtc', 'title' => 'GTC : quelle différence avec la GTB ?', 'desc' => 'Supervision centralisée vs automatisation, comprendre les nuances.'],
                 ['href' => '/solutions', 'title' => 'Solutions & technologies GTB', 'desc' => 'Protocoles BACnet, KNX, Modbus, capteurs et automates.'],
                 ['href' => '/reglementation', 'title' => 'Réglementation GTB en France', 'desc' => 'Décret BACS, décret tertiaire, RE2020, calendrier et obligations.'],
-                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B exigée, échéances et dérogations.'],
+                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B visée, échéances et dérogations.'],
                 ['href' => '/amo-gtb-gtc', 'title' => 'AMO GTB / GTC', 'desc' => 'Assistance à maîtrise d\'ouvrage indépendante, du cahier des charges à la réception.'],
                 ['href' => '/audit', 'title' => 'Pré-diagnostic GTB', 'desc' => 'Situez votre classe ISO 52120-1 en quelques minutes, sans inscription.'],
                 ['href' => '/comparateur', 'title' => 'Comparateur de solutions GTB', 'desc' => 'Comparez objectivement les marques du marché, sans biais commercial.'],

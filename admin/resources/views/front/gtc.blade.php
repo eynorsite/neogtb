@@ -199,7 +199,7 @@
         </div>
         <div class="grid md:grid-cols-3 gap-3 lg:gap-5">
             @foreach([
-                ['badge' => 'Obligatoire', 'bg' => 'bg-accent-600', 'title' => 'Décret BACS', 'desc' => 'Impose un système d\'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2030 (>70 kW).'],
+                ['badge' => 'Obligatoire', 'bg' => 'bg-accent-600', 'title' => 'Décret BACS', 'desc' => 'Impose un système d\'automatisation pour les bâtiments tertiaires (classe B en pratique). Échéance 2025 (>290 kW CVC), 2030 (>70 kW).'],
                 ['badge' => 'Objectifs', 'bg' => 'bg-dark-600', 'title' => 'Décret tertiaire', 'desc' => 'Réduction progressive de la consommation : -40 % (2030), -50 % (2040), -60 % (2050). Déclaration annuelle OPERAT.'],
                 ['badge' => 'Neuf', 'bg' => 'bg-dark-600', 'title' => 'RE2020', 'desc' => 'Applicable aux bâtiments neufs. Seuils de consommation (Cep) et confort d\'été (DH) rendant la supervision centralisée quasi indispensable.'],
             ] as $reg)
@@ -242,7 +242,7 @@
                 ['href' => '/gtb', 'title' => "Qu'est-ce que la GTB ?", 'desc' => 'Définition, niveaux ISO 52120-1 et cadre réglementaire complet.'],
                 ['href' => '/solutions', 'title' => 'Solutions & technologies', 'desc' => 'Protocoles de communication et architecture technique.'],
                 ['href' => '/reglementation', 'title' => 'Réglementation GTB en France', 'desc' => 'Décret BACS, décret tertiaire, RE2020, calendrier et obligations.'],
-                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B exigée, échéances et dérogations.'],
+                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B visée, échéances et dérogations.'],
                 ['href' => '/comparateur', 'title' => 'Comparateur de solutions GTB', 'desc' => 'Comparez objectivement les marques du marché, sans biais commercial.'],
                 ['href' => '/tables-modbus', 'title' => 'Tables Modbus', 'desc' => 'Adresses, registres et fonctions de 19 équipements types.'],
                 ['href' => '/amo-gtb-gtc', 'title' => 'AMO GTB / GTC', 'desc' => 'Assistance à maîtrise d\'ouvrage indépendante, du cahier des charges à la réception.'],

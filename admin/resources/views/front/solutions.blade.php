@@ -121,10 +121,10 @@
         </div>
         <div class="grid md:grid-cols-2 gap-3 lg:gap-5">
             @foreach([
-                ['tag' => 'Obligatoire', 'title' => 'Décret BACS', 'desc' => 'Transposition de la directive européenne EPBD. Impose l\'installation d\'un système BACS dans les bâtiments tertiaires dont la puissance CVC dépasse 290 kW (2025) puis 70 kW (2030). Niveau minimum : classe B ISO 52120-1.'],
+                ['tag' => 'Obligatoire', 'title' => 'Décret BACS', 'desc' => 'Transposition de la directive européenne EPBD. Impose l\'installation d\'un système BACS dans les bâtiments tertiaires dont la puissance CVC dépasse 290 kW (2025) puis 70 kW (2030). Niveau visé en pratique : classe B ISO 52120-1.'],
                 ['tag' => 'Obligatoire', 'title' => 'Décret tertiaire (Éco Énergie Tertiaire)', 'desc' => 'Objectifs de réduction des consommations d\'énergie finale des bâtiments tertiaires de plus de 1 000 m2 : -40 % en 2030, -50 % en 2040, -60 % en 2050. Déclaration annuelle sur la plateforme OPERAT de l\'ADEME.'],
                 ['tag' => 'Construction neuve', 'title' => 'RE2020', 'desc' => 'Applicable aux constructions neuves depuis le 1er janvier 2022. Renforce les exigences sur le Bbio, le Cep et introduit l\'indicateur carbone. Une GTB performante contribue à respecter les seuils Cep.'],
-                ['tag' => 'Norme européenne', 'title' => 'EN 15232 (ISO 52120)', 'desc' => 'Norme de référence qui définit quatre classes d\'efficacité énergétique pour les systèmes d\'automatisation du bâtiment : classe D (non performant), C (standard), B (avancé) et A (haute performance). Le décret BACS impose la classe B minimum.'],
+                ['tag' => 'Norme européenne', 'title' => 'EN 15232 (ISO 52120)', 'desc' => 'Norme de référence qui définit quatre classes d\'efficacité énergétique pour les systèmes d\'automatisation du bâtiment : classe D (non performant), C (standard), B (avancé) et A (haute performance). Le décret BACS impose des fonctions (art. R. 175-3) que remplit en pratique la classe B, niveau aussi requis pour la prime CEE.'],
             ] as $reg)
             <div class="rounded-2xl bg-white p-5 lg:p-7 border border-dark-100 card-hover">
                 <div class="flex items-center gap-2 mb-3">
@@ -167,7 +167,7 @@
                 ['href' => '/gtb', 'title' => "Qu'est-ce que la GTB ?", 'desc' => 'Définition complète, niveaux ISO 52120-1 et obligations réglementaires.'],
                 ['href' => '/gtc', 'title' => "Qu'est-ce que la GTC ?", 'desc' => 'Supervision centralisée multi-sites et différences avec la GTB.'],
                 ['href' => '/reglementation', 'title' => 'Réglementation GTB', 'desc' => 'Décret BACS, décret tertiaire, RE2020, tout le cadre légal.'],
-                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B exigée, échéances et dérogations.'],
+                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B visée, échéances et dérogations.'],
                 ['href' => '/tables-modbus', 'title' => 'Tables Modbus', 'desc' => 'Adresses, registres et fonctions de 19 équipements types.'],
                 ['href' => '/comparateur', 'title' => 'Comparateur GTB indépendant', 'desc' => 'Comparez objectivement les marques du marché, sans biais commercial.'],
                 ['href' => '/amo-gtb-gtc', 'title' => 'AMO GTB / GTC', 'desc' => 'Assistance à maîtrise d\'ouvrage indépendante, du cahier des charges à la réception.'],

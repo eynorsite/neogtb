@@ -34,7 +34,7 @@ class StaticPageController extends Controller
         // Slug ET title volontairement SANS année (éviter la péremption).
         'decret-bacs' => [
             'title'       => "Décret BACS : qui est concerné, échéances, mise en conformité | NeoGTB",
-            'description' => "Décret BACS : GTB de classe B obligatoire (NF EN ISO 52120-1). Bâtiments concernés, échéances, dérogation TRI > 6 ans, CEE BAT-TH-116 et accompagnement indépendant.",
+            'description' => "Décret BACS : GTB de classe B (NF EN ISO 52120-1) en pratique. Bâtiments concernés, échéances, dérogation TRI > 6 ans, CEE BAT-TH-116 et accompagnement indépendant.",
         ],
         'amo-gtb-gtc' => [
             'title'       => "AMO GTB/GTC, Assistance maîtrise d'ouvrage indépendante | NeoGTB",
