@@ -17,9 +17,9 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-        {"@type":"Question","name":"Qu'est-ce qu'un CCTP décret BACS ?","acceptedAnswer":{"@type":"Answer","text":"Le CCTP (Cahier des Clauses Techniques Particulières) est la pièce d'un marché qui décrit les exigences techniques attendues. Un CCTP décret BACS précise les fonctions, l'architecture et les performances que doit atteindre la GTB pour être conforme au décret BACS, soit a minima la classe B de la norme NF EN ISO 52120-1."}},
-        {"@type":"Question","name":"Ce modèle de CCTP est-il directement conforme au décret BACS ?","acceptedAnswer":{"@type":"Answer","text":"Ce modèle est une trame neutre, sans lien fabricant, qui reprend les exigences du décret BACS et de la norme NF EN ISO 52120-1. Il doit être adapté à chaque bâtiment (périmètre, puissances, existant, lots concernés) avant d'être intégré à un dossier de consultation. Il ne se substitue pas à un avis technique ou juridique."}},
-        {"@type":"Question","name":"Puis-je réutiliser ce modèle gratuitement ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Vous pouvez consulter, imprimer et adapter ce modèle de CCTP pour vos propres consultations. Pour une version personnalisée à votre bâtiment ou un accompagnement à la rédaction, NeoGTB propose une assistance à maîtrise d'ouvrage (AMO) indépendante."}}
+        {"@type":"Question","name":"Qu'est-ce qu'un CCTP décret BACS ?","acceptedAnswer":{"@type":"Answer","text":"Le CCTP (Cahier des Clauses Techniques Particulières) est la pièce d'un marché qui décrit les exigences techniques attendues. Un CCTP lié au décret BACS précise les fonctions, l'architecture et les performances que doit atteindre la GTB pour répondre aux obligations du décret (fonctions de l'article R. 175-3 du Code de la construction), généralement via une GTB de classe B au sens de la norme NF EN ISO 52120-1."}},
+        {"@type":"Question","name":"Le décret BACS impose-t-il la classe B ?","acceptedAnswer":{"@type":"Answer","text":"Pas littéralement. Le décret BACS impose des fonctions d'automatisation et de contrôle (article R. 175-3 du CCH), pas une classe en tant que telle. La classe B de la NF EN ISO 52120-1 est le niveau qui permet en pratique de remplir ces fonctions ; c'est aussi le niveau financé par la fiche CEE BAT-TH-116. Ce modèle vise donc la classe B."}},
+        {"@type":"Question","name":"Ce modèle de CCTP est-il directement conforme au décret BACS ?","acceptedAnswer":{"@type":"Answer","text":"C'est une trame neutre, sans lien fabricant. Elle doit être adaptée à chaque bâtiment (périmètre, puissances, existant, lots) et ses références réglementaires reconfirmées sur Légifrance/AFNOR à la date de diffusion. Elle ne se substitue pas à un avis technique ou juridique."}}
     ]
 }
 @endverbatim
@@ -52,7 +52,8 @@
             <p class="text-lg lg:text-xl text-dark-500 leading-relaxed mb-8">
                 Une trame de cahier des charges technique pour votre consultation GTB : neutre fabricant,
                 multi-protocoles, calée sur la <strong class="text-dark-700 font-medium">classe B</strong> de
-                la norme NF EN ISO 52120-1, comme l'exige le décret BACS. À lire, copier et adapter à votre bâtiment.
+                la norme NF EN ISO 52120-1 — le niveau qui répond aux fonctions exigées par le décret BACS.
+                À lire, copier et adapter à votre bâtiment.
             </p>
             <div class="flex flex-wrap items-center gap-4">
                 <a href="#telecharger" class="btn-primary">
@@ -63,7 +64,7 @@
                     Imprimer / enregistrer en PDF
                 </button>
             </div>
-            <p class="text-[13px] text-dark-500 mt-4">Document Word (.docx) modifiable, à adapter à votre bâtiment. Lecture libre ci-dessous, version éditable gratuite par email.</p>
+            <p class="text-[13px] text-dark-500 mt-4">Document Word (.docx) modifiable : CCTP complet + grille de dépouillement. Lecture libre ci-dessous, version éditable gratuite par email.</p>
             @include('front.partials.reassurance-badges', ['class' => 'mt-8 justify-start'])
         </div>
     </div>
@@ -81,17 +82,17 @@
                 <p class="text-base text-dark-500 leading-relaxed mb-4">
                     Le CCTP (Cahier des Clauses Techniques Particulières) est la pièce d'un marché qui décrit
                     précisément ce que doit faire la GTB. Ce modèle reprend la structure et les exigences que l'on
-                    retrouve dans les vraies consultations conformes au décret BACS.
+                    retrouve dans les vraies consultations liées au décret BACS.
                 </p>
                 <p class="text-base text-dark-500 leading-relaxed mb-6">
                     Les passages signalés <mark class="bg-orange-50 text-orange-900 px-1.5 py-0.5 rounded font-medium border border-orange-200">[À compléter]</mark>
-                    doivent être renseignés selon votre bâtiment : périmètre, puissances, lots concernés, existant.
-                    Supprimez ce qui ne s'applique pas, conservez la logique d'ensemble.
+                    doivent être renseignés selon votre bâtiment. Les références réglementaires sont à reconfirmer
+                    sur Légifrance / AFNOR à la date de diffusion (la réglementation évolue).
                 </p>
                 <ul class="text-[15px] text-dark-500 leading-relaxed space-y-2.5">
-                    <li class="flex gap-3"><x-front.shared.icon name="conformite" class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" /><span><strong class="text-dark-900 font-medium">Neutre fabricant</strong> : exigences fonctionnelles, jamais une marque imposée.</span></li>
-                    <li class="flex gap-3"><x-front.shared.icon name="reseau" class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" /><span><strong class="text-dark-900 font-medium">Multi-protocoles ouverts</strong> : BACnet, Modbus, KNX, LON, M-Bus.</span></li>
-                    <li class="flex gap-3"><x-front.shared.icon name="energie" class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" /><span><strong class="text-dark-900 font-medium">Classe B visée</strong> : le niveau minimum imposé par le décret BACS.</span></li>
+                    <li class="flex gap-3"><x-front.shared.icon name="conformite" class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" /><span><strong class="text-dark-900 font-medium">Neutre fabricant</strong> : exigences fonctionnelles et clauses anti-verrouillage, jamais une marque imposée.</span></li>
+                    <li class="flex gap-3"><x-front.shared.icon name="reseau" class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" /><span><strong class="text-dark-900 font-medium">Multi-protocoles ouverts</strong> : BACnet, KNX, Modbus, DALI, M-Bus, LON.</span></li>
+                    <li class="flex gap-3"><x-front.shared.icon name="energie" class="w-5 h-5 text-accent-600 flex-shrink-0 mt-0.5" /><span><strong class="text-dark-900 font-medium">Classe B visée</strong> : le niveau qui répond aux fonctions du décret BACS, financé par les CEE.</span></li>
                 </ul>
             </div>
 
@@ -121,24 +122,25 @@
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="max-w-xl mb-10">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Sommaire</p>
-            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Les 12 articles du CCTP</h2>
-            <p class="text-base text-dark-500 leading-relaxed">La structure type d'un cahier des charges GTB conforme au décret BACS.</p>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Les 13 articles du CCTP</h2>
+            <p class="text-base text-dark-500 leading-relaxed">La structure type d'un cahier des charges GTB ouvert, lié au décret BACS.</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
             @foreach([
-                ['n' => '01', 'id' => 'art-1', 'titre' => 'Objet du marché'],
+                ['n' => '01', 'id' => 'art-1', 'titre' => 'Objet et périmètre'],
                 ['n' => '02', 'id' => 'art-2', 'titre' => 'Cadre réglementaire et normatif'],
-                ['n' => '03', 'id' => 'art-3', 'titre' => "Description de l'existant et périmètre"],
+                ['n' => '03', 'id' => 'art-3', 'titre' => "Description de l'existant"],
                 ['n' => '04', 'id' => 'art-4', 'titre' => 'Exigences fonctionnelles (classe B)'],
                 ['n' => '05', 'id' => 'art-5', 'titre' => 'Architecture du système GTB'],
-                ['n' => '06', 'id' => 'art-6', 'titre' => 'Protocoles et interopérabilité'],
-                ['n' => '07', 'id' => 'art-7', 'titre' => "Comptage et mesurage de l'énergie"],
-                ['n' => '08', 'id' => 'art-8', 'titre' => 'Cybersécurité (recommandations ANSSI)'],
-                ['n' => '09', 'id' => 'art-9', 'titre' => 'Protection des données (RGPD)'],
-                ['n' => '10', 'id' => 'art-10', 'titre' => 'Mise en service, commissioning, réception'],
-                ['n' => '11', 'id' => 'art-11', 'titre' => 'Maintenance, garanties et formation'],
-                ['n' => '12', 'id' => 'art-12', 'titre' => 'Documents à remettre et jugement des offres'],
+                ['n' => '06', 'id' => 'art-6', 'titre' => 'Protocoles et preuves de conformité'],
+                ['n' => '07', 'id' => 'art-7', 'titre' => 'Réversibilité et anti-verrouillage'],
+                ['n' => '08', 'id' => 'art-8', 'titre' => "Comptage et mesurage de l'énergie"],
+                ['n' => '09', 'id' => 'art-9', 'titre' => 'Cybersécurité (recommandations ANSSI)'],
+                ['n' => '10', 'id' => 'art-10', 'titre' => 'Protection des données (RGPD)'],
+                ['n' => '11', 'id' => 'art-11', 'titre' => 'Mise en service et réception'],
+                ['n' => '12', 'id' => 'art-12', 'titre' => 'Maintenance, garanties et formation'],
+                ['n' => '13', 'id' => 'art-13', 'titre' => 'Livrables et jugement des offres'],
             ] as $item)
             <a href="#{{ $item['id'] }}" class="flex items-center gap-3 bg-white rounded-xl px-4 py-3.5 border border-dark-100 hover:border-accent-200 hover:shadow-sm transition-all">
                 <span class="text-[13px] font-medium text-accent-600 tabular-nums">{{ $item['n'] }}</span>
@@ -158,17 +160,18 @@
         {{-- ART. 1 --}}
         <article id="art-1" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 1</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Objet du marché</h2>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Objet et périmètre</h2>
             <p class="text-[15px] text-dark-600 leading-relaxed mb-3">
-                Le présent Cahier des Clauses Techniques Particulières (CCTP) définit les exigences relatives à la
-                fourniture, l'installation, le paramétrage, la mise en service et la réception d'un système de
-                gestion technique du bâtiment (GTB), au sens du décret BACS, pour
-                <mark class="bg-orange-50 text-orange-900 px-1.5 py-0.5 rounded font-medium border border-orange-200">[à compléter : désignation et adresse du bâtiment, maître d'ouvrage]</mark>.
+                Le présent CCTP définit les exigences relatives à la fourniture, l'installation, le paramétrage,
+                la mise en service, la documentation et la garantie d'un système de gestion technique du bâtiment
+                (GTB/GTC) <strong class="text-dark-900 font-medium">ouvert et interopérable</strong> pour
+                <mark class="bg-orange-50 text-orange-900 px-1.5 py-0.5 rounded font-medium border border-orange-200">[à compléter : opération, bâtiment, maître d'ouvrage]</mark>.
             </p>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-3">Le marché couvre les lots : CVC, éclairage (bus DALI), comptage / sous-comptage de l'énergie, et supervision GTB. Le système respecte les principes de neutralité technologique et d'absence de verrouillage propriétaire (article 7).</p>
             <p class="text-[15px] text-dark-600 leading-relaxed">
-                Le système installé devra atteindre <strong class="text-dark-900 font-medium">a minima la classe B</strong>
-                de la norme NF EN ISO 52120-1 (ex EN 15232), sur le périmètre défini à l'article 3. Le titulaire
-                a une obligation de résultat sur l'atteinte de cette classe, qu'il devra démontrer à la réception.
+                Le système vise <strong class="text-dark-900 font-medium">a minima la classe B</strong> de la
+                norme NF EN ISO 52120-1, justifiée fonction par fonction (voir article 4). Le titulaire a une
+                obligation de résultat sur l'atteinte de cette classe, qu'il démontre à la réception.
             </p>
         </article>
 
@@ -176,72 +179,67 @@
         <article id="art-2" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 2</p>
             <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Cadre réglementaire et normatif</h2>
-            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Les prestations sont réalisées dans le respect, notamment, des textes et normes suivants :</p>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Le système est conforme aux textes et normes en vigueur à la date de remise des offres (éditions à vérifier) :</p>
             <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc mb-4">
-                <li>Décret n° 2020-887 du 20 juillet 2020 (« décret BACS »), transposant l'article 14 de la directive européenne EPBD 2018/844 ;</li>
-                <li>Décret n° 2023-259 du 7 avril 2023 (abaissement du seuil de puissance CVC à 70 kW) ;</li>
+                <li>Décret n° 2020-887 du 20 juillet 2020 (« décret BACS »), modifié par le décret n° 2023-259 du 7 avril 2023 (seuil abaissé à 70 kW) ;</li>
                 <li>Décret n° 2025-1343 du 26 décembre 2025 (report de la tranche 70–290 kW au 1ᵉʳ janvier 2030) ;</li>
-                <li>Articles R. 175-1 à R. 175-6 du Code de la construction et de l'habitation ;</li>
-                <li>Articles R. 241-26, R. 241-27 et R. 241-30 du Code de l'énergie (seuils et conditions de régulation) ;</li>
-                <li>Norme NF EN ISO 52120-1 (mars 2022), qui remplace la norme EN 15232 ;</li>
-                <li>Norme EN ISO 16484 pour le protocole BACnet ; normes EN 50090 et EN 13321 pour le protocole KNX.</li>
+                <li>Articles R. 175-1 et suivants du Code de la construction et de l'habitation, notamment l'article R. 175-3 (fonctions exigées) ; arrêté du 7 avril 2023 (inspection périodique) ;</li>
+                <li>Norme NF EN ISO 52120-1:2022 (remplace l'EN 15232-1) — classes d'efficacité A / B / C / D ;</li>
+                <li>Protocoles : NF EN ISO 16484-5 (BACnet), ISO/IEC 14543-3 et EN 50090 (KNX), IEC 62386 (DALI), EN 13757 (M-Bus), ISO/IEC 14908 (LON) ;</li>
+                <li>Pour un marché public : Code de la commande publique (spécifications en performances, mention « ou équivalent », art. R. 2111-7 à R. 2111-11).</li>
             </ul>
             <div class="bg-accent-50 border border-accent-200 rounded-xl p-4">
-                <p class="text-[14px] text-dark-700 leading-relaxed"><strong class="text-accent-800">Classe visée : B.</strong> La classe C ne correspond qu'au minimum exigé pour certaines constructions neuves au titre d'autres réglementations ; elle est insuffisante pour le décret BACS.</p>
+                <p class="text-[14px] text-dark-700 leading-relaxed"><strong class="text-accent-800">Sur la classe B — précision importante.</strong> Le décret BACS impose des <strong>fonctions</strong> (art. R. 175-3 du CCH), pas une classe en tant que telle. La classe B de la NF EN ISO 52120-1 est le niveau qui permet en pratique de remplir ces fonctions, et c'est le niveau financé par la fiche CEE BAT-TH-116. La classe globale correspond à la <strong>classe la plus faible</strong> atteinte parmi les fonctions installées : viser « classe B » impose donc que toutes les fonctions applicables atteignent au moins B.</p>
             </div>
         </article>
 
         {{-- ART. 3 --}}
         <article id="art-3" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 3</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Description de l'existant et périmètre</h2>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Description de l'existant</h2>
             <p class="text-[15px] text-dark-600 leading-relaxed mb-3">
                 <mark class="bg-orange-50 text-orange-900 px-1.5 py-0.5 rounded font-medium border border-orange-200">[à compléter]</mark>
-                Décrire le bâtiment et son patrimoine technique : surface, usage, nombre de niveaux, plages d'occupation.
+                Décrire le bâtiment et son patrimoine technique : surface, usage, niveaux, plages d'occupation.
             </p>
             <p class="text-[15px] text-dark-600 leading-relaxed mb-3">Préciser la puissance nominale utile cumulée des systèmes CVC (chauffage + climatisation), qui détermine l'assujettissement au décret BACS, ainsi que les lots concernés :</p>
             <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc mb-3">
                 <li>Production et distribution de chaleur (chaudières, PAC, sous-stations) ;</li>
                 <li>Production et distribution de froid (groupes froid, PAC réversibles) ;</li>
-                <li>Ventilation et traitement d'air (CTA, VMC, récupération) ;</li>
+                <li>Ventilation et traitement d'air (CTA, VMC, récupération, free-cooling) ;</li>
                 <li>Eau chaude sanitaire (ECS) ;</li>
-                <li>Éclairage des zones concernées ;</li>
+                <li>Éclairage des zones concernées (bus DALI) ;</li>
                 <li>Comptage et sous-comptage de l'énergie.</li>
             </ul>
-            <p class="text-[15px] text-dark-600 leading-relaxed">Décrire la régulation existante, les automates et protocoles déjà en place, et préciser si la prestation est une création, une extension ou une reprise d'installation.</p>
+            <p class="text-[15px] text-dark-600 leading-relaxed">Décrire la régulation existante, les automates et protocoles en place, et préciser s'il s'agit d'une création, d'une extension ou d'une reprise d'installation.</p>
         </article>
 
         {{-- ART. 4 --}}
         <article id="art-4" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 4</p>
             <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Exigences fonctionnelles (classe B)</h2>
-            <p class="text-[15px] text-dark-600 leading-relaxed mb-5">La GTB devra assurer les trois finalités du décret BACS, déclinées en fonctions de classe B au sens de la norme NF EN ISO 52120-1 :</p>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-5">La GTB devra assurer les fonctions de l'article R. 175-3 du CCH, déclinées en fonctions de classe B au sens de la norme NF EN ISO 52120-1 :</p>
 
             <div class="space-y-4 mb-6">
                 <div class="bg-white rounded-xl p-5 border border-dark-100">
                     <h3 class="text-[15px] font-medium text-dark-900 mb-2">A. Suivre, enregistrer, analyser et ajuster en continu</h3>
-                    <p class="text-[14px] text-dark-500 leading-relaxed">Mesure et historisation continue des consommations par usage et par zone ; affichage des données d'exploitation ; ajustement automatique des consignes selon l'occupation réelle et les conditions extérieures.</p>
+                    <p class="text-[14px] text-dark-500 leading-relaxed">Mesure et historisation continue des consommations par usage et par zone, à un pas de temps au moins horaire ; conservation des données mensuelles pendant 5 ans ; ajustement automatique des consignes selon l'occupation et les conditions extérieures.</p>
                 </div>
                 <div class="bg-white rounded-xl p-5 border border-dark-100">
                     <h3 class="text-[15px] font-medium text-dark-900 mb-2">B. Détecter les dérives et informer de l'efficacité énergétique</h3>
-                    <p class="text-[14px] text-dark-500 leading-relaxed">Détection automatique des défauts et des écarts de performance des équipements ; génération d'alarmes hiérarchisées ; tableaux de bord et indicateurs permettant d'évaluer l'efficacité énergétique du bâtiment.</p>
+                    <p class="text-[14px] text-dark-500 leading-relaxed">Comparaison à des valeurs de référence (benchmarking), détection automatique des défauts et pertes d'efficacité (FDD), alarmes hiérarchisées et horodatées, information de l'exploitant sur les améliorations possibles.</p>
                 </div>
                 <div class="bg-white rounded-xl p-5 border border-dark-100">
-                    <h3 class="text-[15px] font-medium text-dark-900 mb-2">C. Garantir une GTB interopérable</h3>
-                    <p class="text-[14px] text-dark-500 leading-relaxed">Communication avec les systèmes techniques du bâtiment via des protocoles ouverts et standardisés (article 6), sans dépendance à une solution propriétaire fermée.</p>
+                    <h3 class="text-[15px] font-medium text-dark-900 mb-2">C. GTB interopérable, arrêt manuel et accès aux données</h3>
+                    <p class="text-[14px] text-dark-500 leading-relaxed">Interopérabilité via protocoles ouverts (article 6), possibilité d'arrêt manuel et de gestion autonome des systèmes, et mise à disposition des données au propriétaire — qui en est propriétaire (article 7).</p>
                 </div>
             </div>
 
             <p class="text-[15px] text-dark-600 leading-relaxed mb-3">Fonctions d'automatisation attendues (classe B), par lot :</p>
             <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc">
-                <li>Régulation des émetteurs et générateurs CVC avec communication sur bus de terrain ;</li>
-                <li>Programmation horaire centralisée et optimisation des relances selon l'occupation ;</li>
-                <li>Régulation de la température ambiante par zone, avec consigne réduite en inoccupation ;</li>
-                <li>Optimisation de la température de départ d'eau (loi d'eau) en fonction de l'extérieur ;</li>
-                <li>Pilotage du débit d'air et de la vitesse des pompes et ventilateurs (variation de vitesse) ;</li>
-                <li>Gestion centralisée de l'éclairage des zones concernées (présence et apport de lumière du jour) ;</li>
-                <li>Comptage par usage et restitution d'indicateurs de consommation ;</li>
-                <li>Fonctions de diagnostic et de détection automatique des défauts (FDD).</li>
+                <li><strong class="text-dark-900 font-medium">CVC</strong> : régulation des productions chaud/froid, loi d'eau, pompes à débit variable, optimisation départ/arrêt, pilotage des CTA (débits, registres, récupération, free-cooling, CO₂), régulation terminale par zone avec réduit en inoccupation ;</li>
+                <li><strong class="text-dark-900 font-medium">Éclairage (DALI)</strong> : adressage individuel des luminaires, gradation, détection de présence et de luminosité (gradation selon l'apport de lumière du jour), scènes, remontée des défauts ;</li>
+                <li><strong class="text-dark-900 font-medium">Comptage</strong> : comptage général et sous-comptage par usage et par zone, historisation et agrégation pour le suivi réglementaire ;</li>
+                <li><strong class="text-dark-900 font-medium">Supervision</strong> : synoptiques, courbes de tendance, tableaux de bord énergétiques, gestion des droits, export aux formats ouverts.</li>
             </ul>
         </article>
 
@@ -249,107 +247,124 @@
         <article id="art-5" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 5</p>
             <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Architecture du système GTB</h2>
-            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Le système sera organisé en trois niveaux, suivant l'architecture classique d'une GTB :</p>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Le système est organisé en trois niveaux, de sorte qu'un changement de superviseur n'impose pas le remplacement des équipements de terrain, et inversement :</p>
             <ol class="text-[15px] text-dark-600 leading-relaxed space-y-3 pl-5 list-decimal mb-4">
-                <li><strong class="text-dark-900 font-medium">Niveau terrain</strong> : capteurs (température, CO₂, présence, comptage) et actionneurs (vannes, registres, variateurs), raccordés sur bus de terrain.</li>
-                <li><strong class="text-dark-900 font-medium">Niveau automation</strong> : automates programmables et contrôleurs assurant la régulation locale, le traitement des alarmes et l'historisation. Le fonctionnement de la régulation devra rester autonome en cas de perte de la supervision.</li>
-                <li><strong class="text-dark-900 font-medium">Niveau gestion</strong> : poste de supervision (hyperviseur) centralisant la visualisation, les courbes de tendance, les alarmes, les rapports et le paramétrage, accessible localement et à distance de façon sécurisée.</li>
+                <li><strong class="text-dark-900 font-medium">Niveau terrain</strong> : capteurs, actionneurs, luminaires, compteurs, contrôleurs terminaux (KNX, DALI, M-Bus, Modbus RTU).</li>
+                <li><strong class="text-dark-900 font-medium">Niveau automation</strong> : automates / régulateurs (DDC) des procédés primaires (BACnet, LON existant). La régulation reste autonome en cas de perte de la supervision.</li>
+                <li><strong class="text-dark-900 font-medium">Niveau gestion</strong> : superviseur, serveur, IHM, historisation, alarmes, tableaux de bord (BACnet/IP ou BACnet/SC, OPC UA, Modbus TCP).</li>
             </ol>
-            <p class="text-[15px] text-dark-600 leading-relaxed">Les matériels seront standards, documentés et disponibles sur le marché. Aucune fonction essentielle ne devra dépendre d'un composant dont la maintenance serait réservée à un acteur unique.</p>
+            <p class="text-[15px] text-dark-600 leading-relaxed">Le backbone d'intégration est un protocole ouvert de niveau supervision (BACnet/IP par défaut) ; les bus de terrain spécialisés remontent via des passerelles documentées (article 6).</p>
         </article>
 
         {{-- ART. 6 --}}
         <article id="art-6" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 6</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Protocoles et interopérabilité</h2>
-            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Pour répondre à l'exigence d'interopérabilité du décret BACS, le système devra reposer sur des protocoles de communication ouverts et standardisés. Sont notamment acceptés :</p>
-            <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc mb-4">
-                <li><strong class="text-dark-900 font-medium">BACnet</strong> (IP et MS/TP) — équipements et contrôleurs certifiés BTL ;</li>
-                <li><strong class="text-dark-900 font-medium">Modbus</strong> (RTU et TCP) ;</li>
-                <li><strong class="text-dark-900 font-medium">KNX</strong> ;</li>
-                <li><strong class="text-dark-900 font-medium">LonWorks</strong> ;</li>
-                <li><strong class="text-dark-900 font-medium">M-Bus</strong> (filaire ou radio) pour le comptage.</li>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Protocoles et preuves de conformité</h2>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Le système repose exclusivement sur des protocoles ouverts et normalisés ; tout protocole propriétaire fermé est proscrit pour la couche d'interopérabilité. Le candidat précise, pour chaque équipement, le ou les protocoles supportés et fournit les <strong class="text-dark-900 font-medium">preuves de conformité</strong> suivantes :</p>
+            <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2.5 pl-5 list-disc mb-4">
+                <li><strong class="text-dark-900 font-medium">BACnet</strong> (ISO 16484-5, IP et MS/TP) : équipements <em>BTL Listed</em>, profils par rôle (annexe L), liste de BIBBs par domaine, et fourniture du <em>PICS</em> de chaque équipement ;</li>
+                <li><strong class="text-dark-900 font-medium">KNX</strong> (ISO/IEC 14543-3, EN 50090) : produits « certifiés KNX », Datapoint Types normalisés, projet ETS remis au maître d'ouvrage ;</li>
+                <li><strong class="text-dark-900 font-medium">Modbus</strong> : Modbus ne définit aucun modèle d'objet normalisé — la <strong>table de cartographie complète des registres</strong> (adresse, type, échelle, unité, accès) est un livrable obligatoire ;</li>
+                <li><strong class="text-dark-900 font-medium">DALI</strong> (IEC 62386) : composants certifiés DALI-2 / D4i, présents dans la base de la DALI Alliance ;</li>
+                <li><strong class="text-dark-900 font-medium">M-Bus</strong> (EN 13757) : certification OMS privilégiée, télégrammes / registres documentés (DIF/VIF ou OBIS) ;</li>
+                <li><strong class="text-dark-900 font-medium">LON</strong> (ISO/IEC 14908) : compatibilité avec l'existant via passerelle, non prioritaire en prescription neuve.</li>
             </ul>
-            <p class="text-[15px] text-dark-600 leading-relaxed">Les solutions entièrement propriétaires et fermées sont proscrites. Les passerelles éventuelles vers des équipements tiers seront documentées. Le maître d'ouvrage restera pleinement propriétaire de son installation, des codes sources de paramétrage et des accès, sans dépendance à un mainteneur unique.</p>
+            <p class="text-[15px] text-dark-600 leading-relaxed">Toute passerelle est documentée (mapping complet des points traduits, format réutilisable par un tiers).</p>
         </article>
 
         {{-- ART. 7 --}}
         <article id="art-7" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 7</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Comptage et mesurage de l'énergie</h2>
-            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Le système assurera le comptage et le sous-comptage des consommations afin de permettre le suivi par usage exigé par le décret BACS :</p>
-            <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc">
-                <li>Comptage par énergie (électricité, gaz, réseau de chaleur/froid, eau) ;</li>
-                <li>Sous-comptage par usage significatif (chauffage, froid, ventilation, ECS, éclairage) ;</li>
-                <li>Remontée des index et historisation des courbes de charge ;</li>
-                <li>Compatibilité avec un report des données vers la plateforme OPERAT au titre du décret tertiaire, le cas échéant.</li>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Réversibilité et anti-verrouillage</h2>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Clauses contractuelles destinées à éviter toute dépendance au titulaire (<em>vendor lock-in</em>). Elles sont opposables dès lors qu'elles figurent au marché :</p>
+            <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2.5 pl-5 list-disc">
+                <li><strong class="text-dark-900 font-medium">Propriété des données et configurations</strong> : le maître d'ouvrage est propriétaire de l'intégralité des données, paramétrages et programmations réalisés au titre du marché ;</li>
+                <li><strong class="text-dark-900 font-medium">Dossier de réversibilité</strong> remis à la réception : codes sources éditables et recompilables, fichiers de configuration, table exhaustive des points, plan d'adressage, schémas et synoptiques ;</li>
+                <li><strong class="text-dark-900 font-medium">Licences</strong> pérennes, transférables au maître d'ouvrage, sans coût récurrent caché ni limite de points abusive ;</li>
+                <li><strong class="text-dark-900 font-medium">Mots de passe et comptes administrateur</strong> de plus haut niveau remis, permettant la modification complète du système ;</li>
+                <li><strong class="text-dark-900 font-medium">Maintenabilité par un tiers</strong> : aucune restriction technique, contractuelle ou de propriété intellectuelle à la reprise par un tiers qualifié ;</li>
+                <li><strong class="text-dark-900 font-medium">Accès ouvert aux données</strong> : API documentée et export aux formats ouverts (CSV, JSON), sans dépendance à un service propriétaire.</li>
             </ul>
         </article>
 
         {{-- ART. 8 --}}
         <article id="art-8" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 8</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Cybersécurité (recommandations ANSSI)</h2>
-            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">L'installation s'appuiera sur les bonnes pratiques de sécurité des systèmes d'information, en s'inspirant des recommandations de l'ANSSI applicables aux systèmes industriels et à la GTB :</p>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Comptage et mesurage de l'énergie</h2>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">Le système assure le comptage et le sous-comptage des consommations pour permettre le suivi par usage :</p>
             <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc">
-                <li>Segmentation du réseau GTB et cloisonnement vis-à-vis du réseau bureautique ;</li>
-                <li>Gestion des comptes et des droits par profils (consultation, modification, acquittement des alarmes, administration) ;</li>
-                <li>Authentification forte et chiffrement des accès distants ;</li>
-                <li>Politique de mises à jour de sécurité et de sauvegarde des configurations ;</li>
-                <li>Journalisation des accès et des actions sur le système.</li>
+                <li>Comptage par énergie (électricité, gaz, réseau de chaleur/froid, eau) ;</li>
+                <li>Sous-comptage par usage significatif (chauffage, froid, ventilation, ECS, éclairage) et par zone / locataire si applicable ;</li>
+                <li>Remontée des index, puissances et grandeurs, horodatage et historisation des courbes de charge ;</li>
+                <li>Le cas échéant (décret tertiaire), structuration permettant l'export vers la plateforme OPERAT.</li>
             </ul>
         </article>
 
         {{-- ART. 9 --}}
         <article id="art-9" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 9</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Protection des données (RGPD)</h2>
-            <p class="text-[15px] text-dark-600 leading-relaxed">
-                Si le système traite des données à caractère personnel (par exemple via la détection de présence ou
-                des comptages individualisés), le titulaire devra respecter le RGPD : minimisation des données,
-                finalité limitée à la gestion technique et énergétique, durée de conservation maîtrisée et
-                information des personnes concernées. Aucune donnée ne sera exploitée à des fins étrangères à
-                l'exploitation du bâtiment.
-            </p>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Cybersécurité (recommandations ANSSI)</h2>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-4">L'installation s'appuie sur les bonnes pratiques de sécurité applicables aux systèmes industriels et à la GTB :</p>
+            <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc">
+                <li>Segmentation du réseau GTB (OT) et cloisonnement vis-à-vis du réseau bureautique (IT) ;</li>
+                <li>Comptes nominatifs, gestion des droits par profils (consultation, modification, acquittement, administration) ;</li>
+                <li>Authentification forte et chiffrement des accès distants — privilégier BACnet/SC sur le backbone IP ;</li>
+                <li>Politique de mises à jour de sécurité, sauvegarde des configurations, journalisation des accès et actions.</li>
+            </ul>
         </article>
 
         {{-- ART. 10 --}}
         <article id="art-10" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 10</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Mise en service, commissioning et réception</h2>
-            <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc">
-                <li>Programme de mise en service détaillant les tests par lot et par point ;</li>
-                <li>Commissioning fonctionnel : vérification du fonctionnement réel des séquences de régulation et d'optimisation ;</li>
-                <li><strong class="text-dark-900 font-medium">Démonstration de l'atteinte de la classe B</strong> au sens de la norme NF EN ISO 52120-1, fonction par fonction ;</li>
-                <li>Vérification des alarmes, des historiques et des indicateurs énergétiques ;</li>
-                <li>Levée des réserves avant prononcé de la réception.</li>
-            </ul>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Protection des données (RGPD)</h2>
+            <p class="text-[15px] text-dark-600 leading-relaxed">
+                Si le système traite des données à caractère personnel (par exemple via la détection de présence ou
+                des comptages individualisés), le titulaire respecte le RGPD : minimisation, finalité limitée à la
+                gestion technique et énergétique, durée de conservation maîtrisée et information des personnes
+                concernées. Aucune donnée n'est exploitée à des fins étrangères à l'exploitation du bâtiment.
+            </p>
         </article>
 
         {{-- ART. 11 --}}
         <article id="art-11" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 11</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Maintenance, garanties et formation</h2>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Mise en service et réception</h2>
             <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc">
-                <li>Garantie de parfait achèvement et garantie des matériels ;</li>
-                <li>Contrat de maintenance préventive et curative (à préciser : durée, délais d'intervention) ;</li>
-                <li>Formation des exploitants à la supervision et au paramétrage de premier niveau ;</li>
-                <li>Remise des accès, mots de passe et codes de paramétrage au maître d'ouvrage, garantissant son autonomie et la possibilité de changer de mainteneur.</li>
+                <li>Programme de mise en service détaillant les essais fonctionnels par lot et par zone ;</li>
+                <li>Commissioning fonctionnel : vérification réelle des séquences de régulation et d'optimisation ;</li>
+                <li><strong class="text-dark-900 font-medium">Justification de la classe NF EN ISO 52120-1</strong> atteinte, fonction par fonction ;</li>
+                <li><strong class="text-dark-900 font-medium">Vérification de l'ouverture comme condition de réception</strong> : remise des sources, licences, mots de passe admin, tables de points et mappings, disponibilité de l'API ;</li>
+                <li>Levée des réserves avant prononcé de la réception.</li>
             </ul>
         </article>
 
         {{-- ART. 12 --}}
-        <article id="art-12" class="scroll-mt-28">
+        <article id="art-12" class="scroll-mt-28 mb-12 lg:mb-16">
             <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 12</p>
-            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Documents à remettre et jugement des offres</h2>
-            <p class="text-[15px] text-dark-600 leading-relaxed mb-3">Le titulaire remettra notamment : la liste des points (entrées/sorties), les analyses fonctionnelles, les schémas d'architecture et de réseau, les synoptiques de supervision et le dossier des ouvrages exécutés (DOE).</p>
-            <p class="text-[15px] text-dark-600 leading-relaxed mb-3"><mark class="bg-orange-50 text-orange-900 px-1.5 py-0.5 rounded font-medium border border-orange-200">[à compléter]</mark> Critères de jugement suggérés :</p>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Maintenance, garanties et formation</h2>
             <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc">
-                <li>Valeur technique (architecture, ouverture des protocoles, démonstration de l'atteinte de la classe B) ;</li>
-                <li>Prix des prestations ;</li>
-                <li>Qualité du mémoire technique et des références équivalentes ;</li>
-                <li>Délais et conditions de maintenance.</li>
+                <li>Garantie de parfait achèvement et garantie des matériels ;</li>
+                <li>Contrat de maintenance préventive et curative (à préciser : durée, GTI/GTR) — la télémaintenance ne prive jamais le maître d'ouvrage de la maîtrise de son système ;</li>
+                <li>Formation des exploitants à la supervision et à la reconfiguration de premier niveau, supports remis ;</li>
+                <li>Conditions de maintenance ouvertes à un tiers (article 7).</li>
             </ul>
+        </article>
+
+        {{-- ART. 13 --}}
+        <article id="art-13" class="scroll-mt-28">
+            <p class="text-[13px] font-medium text-accent-600 tracking-widest mb-2">ARTICLE 13</p>
+            <h2 class="text-[22px] lg:text-[26px] font-semibold text-dark-900 tracking-tight mb-4">Livrables et jugement des offres</h2>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-3">Livrables attendus : note d'architecture, tableau de conformité renseigné, listes de points et plans d'adressage, certificats (PICS BACnet, KNX, DALI-2, OMS), tables Modbus / M-Bus documentées, justification de la classe 52120-1, dossier des ouvrages exécutés (DOE) et dossier de réversibilité.</p>
+            <p class="text-[15px] text-dark-600 leading-relaxed mb-3"><mark class="bg-orange-50 text-orange-900 px-1.5 py-0.5 rounded font-medium border border-orange-200">[à compléter]</mark> Critères de jugement suggérés (chacun adossé à une preuve vérifiable) :</p>
+            <ul class="text-[15px] text-dark-600 leading-relaxed space-y-2 pl-5 list-disc">
+                <li>Conformité fonctionnelle (tableau point par point) ;</li>
+                <li>Ouverture / interopérabilité (certifications vérifiées, réversibilité) ;</li>
+                <li>Classe d'efficacité NF EN ISO 52120-1 justifiée fonction par fonction ;</li>
+                <li>Maintenabilité / anti-verrouillage ;</li>
+                <li>Coût global de possession (TCO) sur la durée de référence ;</li>
+                <li>Délais, garanties, SAV et formation.</li>
+            </ul>
+            <p class="text-[13px] text-dark-500 leading-relaxed mt-4">Le modèle Word téléchargeable inclut une <strong class="text-dark-700 font-medium">grille de dépouillement</strong> détaillée (barèmes et méthode de notation) ainsi que les annexes (tableau de conformité, liste de points, cadre TCO).</p>
         </article>
 
     </div>
@@ -363,7 +378,7 @@
         <div class="bg-white rounded-2xl border border-dark-100 lg:shadow-sm p-6 lg:p-10">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-3">Téléchargement gratuit</p>
             <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Recevez le modèle au format Word</h2>
-            <p class="text-base text-dark-500 leading-relaxed mb-6">Indiquez votre email pour télécharger la version <strong class="text-dark-700 font-medium">.docx modifiable</strong> (les 12 articles, prêts à adapter à votre bâtiment).</p>
+            <p class="text-base text-dark-500 leading-relaxed mb-6">Indiquez votre email pour télécharger la version <strong class="text-dark-700 font-medium">.docx modifiable</strong> : le CCTP complet (13 articles) et sa grille de dépouillement, prêts à adapter à votre bâtiment.</p>
 
             @if ($errors->any())
             <div class="mb-5 p-4 rounded-lg bg-orange-50 border border-orange-200" role="alert">
@@ -397,7 +412,46 @@
                 </button>
             </form>
 
-            <p class="text-[12px] text-dark-400 mt-5">Document Word (.docx), ~40 Ko. Vous pouvez aussi lire le modèle complet ci-dessus ou l'imprimer en PDF.</p>
+            <p class="text-[12px] text-dark-400 mt-5">Document Word (.docx), ~55 Ko. Vous pouvez aussi lire le modèle complet ci-dessus ou l'imprimer en PDF.</p>
+        </div>
+    </div>
+</section>
+
+{{-- =========================================================================
+     FAQ — miroir visible du JSON-LD FAQPage (exigence Google : contenu visible)
+     ========================================================================= --}}
+<section class="py-12 lg:py-24 bg-white border-t border-dark-100">
+    <div class="max-w-3xl mx-auto px-5 lg:px-0">
+        <div class="mb-10">
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Questions fréquentes</p>
+            <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight">CCTP décret BACS : vos questions</h2>
+        </div>
+
+        <div class="space-y-4">
+            @foreach([
+                [
+                    'q' => "Qu'est-ce qu'un CCTP décret BACS ?",
+                    'a' => "Le CCTP (Cahier des Clauses Techniques Particulières) est la pièce d'un marché qui décrit les exigences techniques attendues. Un CCTP lié au décret BACS précise les fonctions, l'architecture et les performances que doit atteindre la GTB pour répondre aux obligations du décret (fonctions de l'article R. 175-3 du Code de la construction), généralement via une GTB de classe B au sens de la norme NF EN ISO 52120-1.",
+                ],
+                [
+                    'q' => "Le décret BACS impose-t-il la classe B ?",
+                    'a' => "Pas littéralement. Le décret BACS impose des fonctions d'automatisation et de contrôle (article R. 175-3 du CCH), pas une classe en tant que telle. La classe B de la NF EN ISO 52120-1 est le niveau qui permet en pratique de remplir ces fonctions ; c'est aussi le niveau financé par la fiche CEE BAT-TH-116. Ce modèle vise donc la classe B.",
+                ],
+                [
+                    'q' => "Ce modèle de CCTP est-il directement conforme au décret BACS ?",
+                    'a' => "C'est une trame neutre, sans lien fabricant. Elle doit être adaptée à chaque bâtiment (périmètre, puissances, existant, lots) et ses références réglementaires reconfirmées sur Légifrance / AFNOR à la date de diffusion. Elle ne se substitue pas à un avis technique ou juridique.",
+                ],
+            ] as $faq)
+            <details class="group bg-white rounded-2xl border border-dark-100 lg:shadow-sm overflow-hidden">
+                <summary class="flex items-center justify-between gap-4 p-5 lg:p-7 cursor-pointer list-none">
+                    <h3 class="text-[15px] lg:text-base font-medium text-dark-900">{{ $faq['q'] }}</h3>
+                    <svg class="w-5 h-5 text-dark-400 flex-shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                </summary>
+                <div class="px-5 lg:px-7 pb-5 lg:pb-7 -mt-1">
+                    <p class="text-[15px] text-dark-500 leading-relaxed">{{ $faq['a'] }}</p>
+                </div>
+            </details>
+            @endforeach
         </div>
     </div>
 </section>
@@ -405,15 +459,15 @@
 {{-- =========================================================================
      SOURCES (transparence — vrais CCTP de référence)
      ========================================================================= --}}
-<section class="py-12 lg:py-20 bg-dark-50 border-t border-b border-dark-200">
+<section class="py-12 lg:py-20 bg-white border-t border-dark-100">
     <div class="max-w-3xl mx-auto px-5 lg:px-0">
         <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Sources</p>
         <h2 class="text-[20px] lg:text-[24px] font-medium text-dark-900 tracking-tight mb-4">D'où vient cette trame</h2>
         <p class="text-[15px] text-dark-500 leading-relaxed mb-4">
-            Ce modèle s'appuie sur la lecture de vrais CCTP de consultations publiques traitant du décret BACS,
-            ainsi que sur le décret et la norme NF EN ISO 52120-1. Il consolide leur structure commune sous une
-            forme neutre et réutilisable. Les références réglementaires sont reprises à l'identique de notre
-            page <a href="/decret-bacs" class="text-accent-600 font-medium hover:text-accent-700">Décret BACS</a>.
+            Ce modèle consolide la lecture de vrais CCTP de consultations publiques liées au décret BACS, le texte
+            du décret et la norme NF EN ISO 52120-1, sous une forme neutre et réutilisable. Les références
+            réglementaires sont reprises de notre page <a href="/decret-bacs" class="text-accent-600 font-medium hover:text-accent-700">Décret BACS</a>
+            et restent à reconfirmer sur les sources primaires (Légifrance, AFNOR) à la date de diffusion.
         </p>
         <p class="text-[13px] text-dark-500 leading-relaxed">
             Exemples de CCTP réels traitant du décret BACS : marché de la Fédération Française de Judo (2025),
