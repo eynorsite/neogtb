@@ -28,7 +28,7 @@ Le report à 2030 offre du temps, mais pas autant qu'on le croit. Un projet GTB 
 
 **Objectif :** Sélectionner le bon intégrateur et le bon financement.
 
-- **Mois 4 :** Rédaction du cahier des charges fonctionnel, avec les exigences de classe B minimum, la compatibilité OPERAT et les besoins de supervision.
+- **Mois 4 :** Rédaction du cahier des charges fonctionnel, visant la classe B (condition de la prime CEE), la compatibilité OPERAT et les besoins de supervision.
 - **Mois 5 :** Consultation de 3 à 5 intégrateurs GTB. Analyse des offres sur les critères techniques, financiers et de service.
 - **Mois 6 :** Constitution du dossier CEE (BAT-TH-116) **avant** signature du devis. Sélection de l'intégrateur retenu.
 

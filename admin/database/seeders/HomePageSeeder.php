@@ -32,7 +32,7 @@ use Illuminate\Database\Seeder;
  * comparaisons lancées) ni pourcentage d'économies non issu de la norme.
  * Seules valeurs chiffrées autorisées : celles sourcées dans
  * resources/views/front/reglementation.blade.php (gains globaux D→C ~10 %,
- * D→B ~25 %, D→A ~35 % ; dérogation si TRI > 6 ans ; classe B = exigence BACS ;
+ * D→B ~25 %, D→A ~35 % ; dérogation si TRI > 10 ans (R175-2) ; classe B = niveau visé / condition CEE ;
  * amende 7 500 € au titre du décret tertiaire). Formulation factuelle, jamais
  * publicitaire ("jusqu'à …"), jamais de compteur fabriqué.
  */
@@ -90,7 +90,7 @@ class HomePageSeeder extends Seeder
             'is_visible' => true,
             'content' => [
                 'stats' => [
-                    ['valeur' => 'Classe B min.', 'label' => 'exigence décret BACS (ISO 52120-1)'],
+                    ['valeur' => 'Classe B', 'label' => 'niveau visé / condition CEE (ISO 52120-1)'],
                     ['valeur' => '8+', 'label' => 'protocoles couverts (BACnet, KNX, Modbus, DALI…)'],
                     ['valeur' => '0 €', 'label' => 'commission fabricant'],
                     ['valeur' => '100 %', 'label' => 'indépendant — aucun lien fabricant'],
@@ -214,8 +214,8 @@ class HomePageSeeder extends Seeder
                 'eyebrow_color' => 'energy',
                 'titre' => 'Décret BACS & Décret Tertiaire — le calendrier qui vous concerne',
                 'points' => [
-                    ['annee' => '2025', 'label' => 'BACS classe B min.', 'detail' => 'Puissance CVC > 290 kW', 'etat' => 'present'],
-                    ['annee' => '2030', 'label' => 'BACS classe B min.', 'detail' => 'Puissance CVC 70-290 kW', 'etat' => 'futur'],
+                    ['annee' => '2025', 'label' => 'BACS (classe B visée)', 'detail' => 'Puissance CVC > 290 kW', 'etat' => 'present'],
+                    ['annee' => '2030', 'label' => 'BACS (classe B visée)', 'detail' => 'Puissance CVC 70-290 kW', 'etat' => 'futur'],
                     ['annee' => '2040', 'label' => 'Décret tertiaire', 'detail' => '-50 % conso', 'etat' => 'futur'],
                     ['annee' => '2050', 'label' => 'Décret tertiaire', 'detail' => '-60 % conso', 'etat' => 'futur'],
                 ],
@@ -253,7 +253,7 @@ class HomePageSeeder extends Seeder
                         'gauge' => ['progress_from' => 'C', 'active' => 'B', 'label' => 'Progression ISO 52120-1'],
                         'metriques' => [
                             ['valeur' => '~25 %', 'label' => 'gain estimé D→B (norme)', 'couleur' => 'energy'],
-                            ['valeur' => 'Classe B', 'label' => 'cible exigée par le décret BACS', 'couleur' => 'dark'],
+                            ['valeur' => 'Classe B', 'label' => 'cible visée (condition CEE)', 'couleur' => 'dark'],
                         ],
                     ],
                     [
@@ -266,7 +266,7 @@ class HomePageSeeder extends Seeder
                         'gauge' => ['progress_from' => 'D', 'active' => 'B', 'label' => 'Objectif ISO 52120-1'],
                         'metriques' => [
                             ['valeur' => '~35 %', 'label' => 'gain estimé D→A (norme)', 'couleur' => 'energy'],
-                            ['valeur' => '> 6 ans', 'label' => 'seuil de dérogation (TRI)', 'couleur' => 'dark'],
+                            ['valeur' => '> 10 ans', 'label' => 'seuil de dérogation (TRI)', 'couleur' => 'dark'],
                         ],
                     ],
                 ],

@@ -86,7 +86,7 @@ class ReglementationPageSeeder extends Seeder
                         'badge' => 'Obligation principale',
                         'titre' => 'Décret BACS',
                         'sous_titre' => 'Décret n° 2020-887 modifié par 2025-1343',
-                        'description' => 'Transpose l\'article 14 de la directive EPBD. Impose une GTB de classe B minimum (ISO 52120-1) capable de suivre, analyser et piloter les consommations CVC. Inspection régulière obligatoire.',
+                        'description' => 'Transpose l\'article 14 de la directive EPBD. Impose des fonctions d\'automatisation (art. R. 175-3) ; la classe B (ISO 52120-1) est le niveau visé pour suivre, analyser et piloter les consommations CVC. Inspection régulière obligatoire.',
                     ],
                     [
                         'badge' => 'Objectifs de réduction',
@@ -110,7 +110,7 @@ class ReglementationPageSeeder extends Seeder
                         'badge' => 'Référentiel technique',
                         'titre' => 'EN ISO 52120-1 (ex-EN 15232)',
                         'sous_titre' => 'Norme de classement A à D',
-                        'description' => 'Classe D non performant, C standard, B avancé (exigence BACS), A haute performance. Gains D→B : ~25 % global, jusqu\'à 30 % CVC en bureaux.',
+                        'description' => 'Classe D non performant, C standard, B avancé (niveau visé / condition CEE), A haute performance. Gains D→B : ~25 % global, jusqu\'à 30 % CVC en bureaux.',
                     ],
                     [
                         'badge' => 'Aides financières',

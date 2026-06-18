@@ -162,7 +162,7 @@ return [
             ],
             [
                 'question' => 'Peut-on être exempté de l\'obligation ?',
-                'answer'   => 'Une dérogation est possible si un audit démontre que le temps de retour sur investissement de la GTB dépasse 6 ans.',
+                'answer'   => 'Une dérogation est possible si une étude établit que le temps de retour sur investissement de la GTB dépasse 10 ans (art. R. 175-2 du CCH).',
             ],
             [
                 'question' => 'Quelle est la référence réglementaire ?',

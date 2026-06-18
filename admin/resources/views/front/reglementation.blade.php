@@ -146,7 +146,7 @@
                 </div>
                 <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                     <p class="text-[11px] font-medium uppercase tracking-widest text-dark-500 mb-2">Exemption</p>
-                    <p class="text-[15px] text-dark-600 leading-relaxed">Possibilité de dérogation si un audit énergétique démontre un temps de retour sur investissement supérieur à 6 ans.</p>
+                    <p class="text-[15px] text-dark-600 leading-relaxed">Possibilité de dérogation si une étude établit que l'installation n'est pas réalisable avec un temps de retour sur investissement inférieur à 10 ans (art. R. 175-2 du CCH).</p>
                 </div>
             </div>
         </div>
@@ -227,7 +227,7 @@
             @foreach([
                 ['badge' => 'Classe D', 'bg' => 'bg-dark-400', 'title' => 'Non performant', 'desc' => 'Aucun système d\'automatisation. Pilotage manuel.', 'sub' => 'Référence basse', 'highlight' => false],
                 ['badge' => 'Classe C', 'bg' => 'bg-dark-500', 'title' => 'Standard', 'desc' => 'Régulation de base, programmation horaire, sans supervision.', 'sub' => 'Minimum neuf', 'highlight' => false],
-                ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives.', 'sub' => 'Exigence décret BACS', 'highlight' => true],
+                ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives.', 'sub' => 'Niveau visé (BACS)', 'highlight' => true],
                 ['badge' => 'Classe A', 'bg' => 'bg-dark-800', 'title' => 'Haute performance', 'desc' => 'Régulation pièce par pièce, optimisation multi-lots, IA.', 'sub' => 'Performance maximale', 'highlight' => false],
             ] as $cl)
             <div class="{{ $cl['highlight'] ? 'bg-white rounded-2xl border border-accent-200 shadow-[0_0_0_3px] shadow-accent-50' : 'bg-white rounded-2xl border border-dark-100 lg:shadow-sm' }} p-5 lg:p-7">

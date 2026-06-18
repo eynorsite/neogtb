@@ -20,7 +20,7 @@
         {"@type":"Question","name":"Mon bâtiment est-il concerné par le décret BACS ?","acceptedAnswer":{"@type":"Answer","text":"Le décret BACS s'applique aux bâtiments tertiaires non résidentiels selon la puissance nominale cumulée de leurs systèmes CVC (chauffage et climatisation). Existant supérieur à 290 kW : obligation en vigueur depuis le 1er janvier 2025. Existant de 70 à 290 kW : obligation au 1er janvier 2030 (report acté par le décret n° 2025-1343 du 26 décembre 2025). Neuf supérieur à 70 kW (permis déposé après le 8 avril 2024) : obligation dès la construction."}},
         {"@type":"Question","name":"Quelle classe de GTB faut-il atteindre ?","acceptedAnswer":{"@type":"Answer","text":"Le décret BACS impose des fonctions d'automatisation et de contrôle (article R. 175-3 du CCH), pas une classe de la norme. La classe B de la norme NF EN ISO 52120-1 (ex EN 15232) est le niveau recommandé pour remplir ces fonctions, et c'est surtout la condition pour bénéficier de la prime CEE BAT-TH-116, qui finance une GTB de classe A ou B. La classe A représente le niveau le plus élevé."}},
         {"@type":"Question","name":"Combien coûte la mise en conformité et quels CEE sont mobilisables ?","acceptedAnswer":{"@type":"Answer","text":"Le coût dépend de la surface, de l'architecture technique et de la classe visée. La fiche standardisée CEE BAT-TH-116 finance l'installation d'une GTB de classe A ou B sur un bâtiment tertiaire existant. Elle se combine avec la fiche BAT-TH-112 (variation électronique de vitesse sur moteur). Le montant exact se chiffre au cas par cas après audit."}},
-        {"@type":"Question","name":"Que risque-t-on en cas de non-conformité ?","acceptedAnswer":{"@type":"Answer","text":"Une dérogation au décret BACS est possible si un audit énergétique démontre un temps de retour sur investissement supérieur à 6 ans. À noter : l'amende administrative pouvant atteindre 7 500 euros par bâtiment pour une personne morale, ainsi que la publication du nom du contrevenant, relèvent du décret tertiaire (Éco Énergie Tertiaire), pas du décret BACS lui-même."}}
+        {"@type":"Question","name":"Que risque-t-on en cas de non-conformité ?","acceptedAnswer":{"@type":"Answer","text":"Une dérogation au décret BACS est possible si un audit énergétique démontre un temps de retour sur investissement supérieur à 10 ans. À noter : l'amende administrative pouvant atteindre 7 500 euros par bâtiment pour une personne morale, ainsi que la publication du nom du contrevenant, relèvent du décret tertiaire (Éco Énergie Tertiaire), pas du décret BACS lui-même."}}
     ]
 }
 @endverbatim
@@ -123,7 +123,7 @@
                 </div>
                 <div class="bg-accent-50 border border-accent-200 rounded-2xl p-5 lg:p-7">
                     <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Dérogation possible</p>
-                    <p class="text-[15px] text-dark-600 leading-relaxed">Une dérogation est admise si un audit énergétique démontre un temps de retour sur investissement <strong>supérieur à 6 ans</strong>.</p>
+                    <p class="text-[15px] text-dark-600 leading-relaxed">Une dérogation est admise si un audit énergétique démontre un temps de retour sur investissement <strong>supérieur à 10 ans</strong>.</p>
                 </div>
             </div>
         </div>
@@ -345,7 +345,7 @@
                 ],
                 [
                     'q' => 'Que risque-t-on en cas de non-conformité ?',
-                    'a' => 'Une dérogation au décret BACS est possible si un audit énergétique démontre un temps de retour sur investissement supérieur à 6 ans. À noter : l\'amende pouvant atteindre 7 500 € par bâtiment pour une personne morale, ainsi que la publication du nom du contrevenant, relèvent du décret tertiaire (Éco Énergie Tertiaire), pas du décret BACS lui-même.',
+                    'a' => 'Une dérogation au décret BACS est possible si un audit énergétique démontre un temps de retour sur investissement supérieur à 10 ans. À noter : l\'amende pouvant atteindre 7 500 € par bâtiment pour une personne morale, ainsi que la publication du nom du contrevenant, relèvent du décret tertiaire (Éco Énergie Tertiaire), pas du décret BACS lui-même.',
                 ],
             ] as $faq)
             <details class="group bg-white rounded-2xl border border-dark-100 lg:shadow-sm overflow-hidden">

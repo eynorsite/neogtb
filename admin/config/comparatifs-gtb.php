@@ -99,7 +99,7 @@ return [
             ['label' => "Seuil d'assujettissement", 'a' => 'Puissance CVC > 290 kW, puis 70 à 290 kW',                                       'b' => 'Bâtiments tertiaires de plus de 1 000 m²'],
             ['label' => 'Échéances',               'a' => '> 290 kW : 1er janvier 2025 · 70 à 290 kW : 1er janvier 2030',                   'b' => '-40 % en 2030, -50 % en 2040, -60 % en 2050'],
             ['label' => 'Exigence',                'a' => 'Fonctions R. 175-3 — classe B en pratique (EN 15232 / NF EN ISO 52120-1)',          'b' => 'Déclaration annuelle sur la plateforme OPERAT (ADEME)'],
-            ['label' => 'Sanction / dérogation',   'a' => "Dérogation possible si l'audit montre un retour sur investissement > 6 ans",     'b' => 'Amende jusqu\'à 7 500 € par bâtiment (personnes morales)'],
+            ['label' => 'Sanction / dérogation',   'a' => "Dérogation possible si l'étude montre un retour sur investissement > 10 ans",    'b' => 'Amende jusqu\'à 7 500 € par bâtiment (personnes morales)'],
         ],
 
         'choose' => [
@@ -140,7 +140,7 @@ return [
             ],
             [
                 'question' => 'Peut-on être exempté du décret BACS ?',
-                'answer'   => "Une dérogation est possible si un audit démontre que le temps de retour sur investissement de la GTB dépasse 6 ans.",
+                'answer'   => "Une dérogation est possible si une étude établit que le temps de retour sur investissement de la GTB dépasse 10 ans (art. R. 175-2 du CCH).",
             ],
         ],
     ],
