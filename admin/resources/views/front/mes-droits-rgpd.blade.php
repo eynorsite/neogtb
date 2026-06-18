@@ -29,7 +29,7 @@
                     ] as $option)
                     <label class="flex items-start gap-3 p-3 rounded-lg cursor-pointer transition-all border border-dark-100 hover:bg-dark-50"
                         :class="form.type === '{{ $option['value'] }}' ? 'border-accent-500 bg-accent-50' : ''">
-                        <input type="radio" name="type" value="{{ $option['value'] }}" x-model="form.type" class="mt-1">
+                        <input type="radio" name="type" value="{{ $option['value'] }}" x-model="form.type" class="mt-1 focus-visible:ring-2 focus-visible:ring-accent-500">
                         <div>
                             <span class="font-medium text-dark-800 text-sm">{{ $option['title'] }}</span>
                             <span class="block text-xs text-dark-500 mt-0.5">{{ $option['desc'] }}</span>
@@ -42,21 +42,21 @@
             <!-- Champs du formulaire -->
             <div class="space-y-4 mb-8">
                 <div>
-                    <label class="block text-sm font-medium text-dark-700 mb-1">Votre email</label>
-                    <input type="email" x-model="form.email" placeholder="votre@email.com" required
+                    <label for="rgpd-email" class="block text-sm font-medium text-dark-700 mb-1">Votre email</label>
+                    <input id="rgpd-email" type="email" x-model="form.email" placeholder="votre@email.com" required
                         class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 border border-dark-200 focus:ring-2 focus:ring-accent-500 focus:outline-none focus:border-accent-500">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-dark-700 mb-1">Votre nom</label>
-                    <input type="text" x-model="form.name" placeholder="Prénom Nom" required
+                    <label for="rgpd-name" class="block text-sm font-medium text-dark-700 mb-1">Votre nom</label>
+                    <input id="rgpd-name" type="text" x-model="form.name" placeholder="Prénom Nom" required
                         class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 border border-dark-200 focus:ring-2 focus:ring-accent-500 focus:outline-none focus:border-accent-500">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-dark-700 mb-1">Précisions <span class="text-dark-500 font-normal">(optionnel)</span></label>
-                    <textarea x-model="form.message" rows="4" placeholder="Décrivez votre demande si nécessaire..."
+                    <label for="rgpd-message" class="block text-sm font-medium text-dark-700 mb-1">Précisions <span class="text-dark-500 font-normal">(optionnel)</span></label>
+                    <textarea id="rgpd-message" x-model="form.message" rows="4" placeholder="Décrivez votre demande si nécessaire..."
                         class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 border border-dark-200 focus:ring-2 focus:ring-accent-500 focus:outline-none focus:border-accent-500 resize-y"></textarea>
                 </div>
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
             </div>
 
             <!-- Info sécurité -->
