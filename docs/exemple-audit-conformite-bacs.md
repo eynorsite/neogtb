@@ -10,9 +10,11 @@
 
 > **Statuts employés dans ce rapport** — pour distinguer ce qui est opposable de ce qui ne l'est pas :
 > **[OBLIGATION]** = exigence réglementaire (décret/arrêté, sourcée) · **[RECOMMANDATION]** = bonne
-> pratique ou cible conseillée (ex. classe B, financement CEE) · **[INDICATEUR]** = repère non
+> pratique ou cible conseillée (ex. classe B, financement CEE) · **[INFORMATIF]** = repère non
 > réglementaire (ex. classe NF EN ISO 52120-1 : elle mesure le niveau fonctionnel de la GTB et
 > **ne vaut pas** conformité au décret, qui se juge sur les fonctions de l'article R. 175-3).
+>
+> **Pièces liées** : socle des sources [C0](cctp/C0_sources-et-statuts.md) · méthodologie d'audit [B1](cctp/B1_methodologie-audit-classification.md).
 
 ---
 
@@ -72,7 +74,9 @@ Déterminer :
 > tranche 70–290 kW (bâtiments existants) du 1ᵉʳ janvier **2027** au 1ᵉʳ janvier **2030**.
 
 **Bâtiments neufs** : permis de construire déposé ≥ 1 an après publication du décret → obligation
-d'installer un BACS, **sauf** étude démontrant un retour sur investissement > 10 ans.
+d'installer un BACS, **sauf** étude démontrant un retour sur investissement > 10 ans. Pour les
+bâtiments **neufs** dont la puissance CVC est **> 70 kW**, l'obligation s'applique depuis le
+**8 avril 2024**.
 
 **Classe de GTB — précision importante** : le décret BACS impose des **fonctions** (art. R. 175-3 du
 CCH), **pas une classe** au sens de la **NF EN ISO 52120-1:2022** (qui remplace l'ancienne EN 15232).
@@ -115,17 +119,29 @@ Le bâtiment est donc **en situation de non-conformité de calendrier** : mise e
 
 ## 6. Étape 3 — Grille de conformité (fonctions exigées par R. 175-3)
 
-Synthèse des principales fonctions exigées (telles que décrites par le portail réglementaire
-gouvernemental — § 9), confrontées à l'existant :
+> **Texte de référence (art. R. 175-3 CCH, source [Légifrance](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043819541), version en vigueur depuis le 9 avril 2023)** :
+>
+> Les systèmes d'automatisation et de contrôle des bâtiments mentionnés à l'article R. 175-2 :
+>
+> 1° « Suivent, enregistrent et analysent en continu, par zone fonctionnelle et à un pas de temps horaire, les données de production et de consommation énergétique des systèmes techniques du bâtiment et ajustent les systèmes techniques en conséquence. Ces données sont conservées à l'échelle mensuelle pendant cinq ans » ;
+> 2° « Situent l'efficacité énergétique du bâtiment par rapport à des valeurs de référence, correspondant aux données d'études énergétiques ou caractéristiques de chacun des systèmes techniques ; ils détectent les pertes d'efficacité des systèmes techniques et informent l'exploitant du bâtiment des possibilités d'amélioration de l'efficacité énergétique » ;
+> 3° « Sont interopérables avec les différents systèmes techniques du bâtiment » ;
+> 4° « Permettent un arrêt manuel et la gestion autonome d'un ou plusieurs systèmes techniques de bâtiment ».
+>
+> Les systèmes techniques considérés sont ceux reliés au système d'automatisation et de contrôle dans les conditions prévues au II de l'article R. 175-2.
+>
+> Les données produites et archivées sont accessibles au propriétaire du système d'automatisation et de contrôle, qui en a la propriété. Ce dernier les met à disposition du gestionnaire du bâtiment, à sa demande, et transmet à chacun des exploitants des différents systèmes techniques reliés les données qui les concernent.
+
+Synthèse des principales fonctions exigées (confrontées à l'existant), alignées sur le
+texte légal ci-dessus :
 
 | Fonction exigée (art. R. 175-3) | Existant | Conforme ? |
 |---|---|---|
-| Suivre, enregistrer et **analyser en continu** les données de production/consommation, par usage et par zone (pas horaire) | Relevés manuels | ❌ |
-| **Conserver** ces données (au pas mensuel) pendant **5 ans** | Non | ❌ |
-| **Situer l'efficacité énergétique** et **déceler les pertes** d'efficacité des systèmes techniques | Non | ❌ |
-| Permettre l'**arrêt manuel** et la **gestion automatique** des systèmes techniques | Partiel (horloges) | ⚠️ |
-| Assurer l'**interopérabilité** entre systèmes techniques | Non | ❌ |
-| **Alerter** la personne en charge en cas de dérive / dysfonctionnement | Non | ❌ |
+| **1°** — Suivre, enregistrer et **analyser en continu**, par zone fonctionnelle et à un pas de temps horaire, les données de production/consommation et **ajuster** les systèmes techniques | Relevés manuels | ❌ |
+| **1°** (suite) — **Conserver** ces données à l'échelle mensuelle pendant **cinq ans** | Non | ❌ |
+| **2°** — **Situer l'efficacité énergétique** par rapport à des valeurs de référence, **détecter les pertes d'efficacité** et **informer l'exploitant** des possibilités d'amélioration | Non | ❌ |
+| **3°** — Être **interopérable** avec les différents systèmes techniques du bâtiment | Non | ❌ |
+| **4°** — Permettre un **arrêt manuel** et la **gestion autonome** d'un ou plusieurs systèmes techniques | Partiel (horloges) | ⚠️ |
 
 > **Sur la classe — précision** : « atteindre une classe A ou B » n'est **pas** une fonction de
 > l'article R. 175-3 ; ce n'est donc pas une ligne de cette grille. Le décret impose les **fonctions**
@@ -171,6 +187,8 @@ Obligation **récurrente**, distincte de l'installation :
 | Conservation du rapport | **10 ans** par le propriétaire |
 | Obligation annexe | Le propriétaire veille à ce que **l'exploitant soit formé** au fonctionnement du système |
 
+> ⚠️ [À VÉRIFIER sur l'arrêté du 7 avril 2023 et l'art. R. 175-5-1 — source primaire] : les durées ci-dessus (périodicité au plus tous les **5 ans**, ramenée à **2 ans** après installation/remplacement, rapport conservé **10 ans**) ne sont à ce stade sourcées que sur une source secondaire.
+>
 > L'indépendance vis-à-vis du fabricant fait de l'inspection périodique un terrain naturel pour NeoGTB.
 
 ---

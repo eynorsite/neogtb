@@ -20,10 +20,10 @@
 | **C2** | **Ouverture / interopérabilité** | Sous-critères comptables (voir §4) : protocoles ouverts natifs, **certifications vérifiées** (BTL, KNX, DALI-2, OMS), réversibilité & propriété des données. | Art. 2, 6, 7 |
 | **C3** | Classe d'efficacité NF EN ISO 52120-1 | Classe A/B/C **justifiée fonction par fonction** via la grille de la norme. ¹ | Art. 5.3 |
 | **C4** | Maintenabilité / anti lock-in | Points par « verrou levé » : outils d'ingénierie accessibles, documentation complète, mots de passe admin, pas de format propriétaire fermé, pièces/firmware hors fournisseur unique. | Art. 7 |
-| **C5** | Références & qualifications | Références **comparables** datées + contact MOA ; qualifications **vérifiables**. ² | Art. 8 (mémoire) |
+| **C5** | Références & qualifications | Références **comparables** datées + contact MOA ; qualifications **vérifiables**. ² | A5 rubrique 1 + Art. 11 (CCTP) |
 | **C6** | Délais | Planning daté engageant → délai global (semaines). Notation proportionnelle inverse **bornée**. | Art. 9, planning |
 | **C7** | Garanties / SAV / formation | Durée garantie (mois), GTI/GTR (h), jours de formation, télémaintenance. Barème par seuils. | Art. 10, 8.3 |
-| **C8** | **Coût global de possession (TCO)** | Somme sur durée de référence : CAPEX + maintenance + licences + énergie + réversibilité, sur **cadre de décomposition imposé** (Annexe C). | Annexe C |
+| **C8** | **Coût global de possession (TCO)** | Somme sur durée de référence : CAPEX + maintenance + licences + énergie + réversibilité, sur **cadre de décomposition imposé** (A4 — BPU/DPGF + cadre TCO). | A4 (BPU/DPGF + cadre TCO) |
 
 ¹ **Si bâtiment assujetti au décret BACS** : la **classe ≥ B devient une exigence minimale éliminatoire** (pas un simple critère pondéré) ; C3 ne note alors que le **dépassement** (atteinte classe A).
 ² **En marché public** : les références/qualifications relèvent en principe de la **candidature** (capacités), non de l'**offre** (jugement). Les tenir séparées pour rester régulier.
@@ -92,10 +92,10 @@ Même logique proportionnelle inverse, avec **bornes** pour écarter les délais
 | C2 | Ouverture / interopérabilité | §2,6,7 | 20 | Barème C2.1/2.2/2.3 (Table 2) | | | Fiches + listings BTL/KNX/DALI-2 |
 | C3 | Classe 52120-1 | §5.3 | 10 | A=20 / B=12 / (C,D éliminés si assujetti) | | | Grille fonctions 52120-1 |
 | C4 | Maintenabilité / anti lock-in | §7 | 10 | Σ points par verrou levé (6 items) | | | Engagements contractuels |
-| C5 | Références & qualifications | §8 | 6 | Barème par réf. recevable + qualifs | | | Attestations |
+| C5 | Références & qualifications | A5 rubrique 1 + Art. 11 (CCTP) | 6 | Barème par réf. recevable + qualifs | | | Attestations |
 | C6 | Délais | §9 | 4 | (délai mini recevable / délai offre) × 20 | | | Planning daté |
 | C7 | Garanties / SAV / formation | §10, 8.3 | 8 | Barème par seuils (garantie, GTI, formation) | | | Mémoire + CCAP |
-| C8 | **TCO** | Annexe C | 30 | **(TCO le plus bas / TCO offre) × 20** | | | BPU/DPGF cadre imposé |
+| C8 | **TCO** | A4 (BPU/DPGF + cadre TCO) | 30 | **(TCO le plus bas / TCO offre) × 20** | | | BPU/DPGF cadre imposé |
 | | **TOTAL** | | **100** | | | **/20** | |
 
 ### Table 2 — Détail sous-critères C2

@@ -28,7 +28,7 @@
 | R-2 | **Décret n° 2023-259 du 7 avril 2023** (abaisse le seuil à 70 kW, inspection) | [OBLIGATION] | élevée | [Légifrance](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047422489) |
 | R-3 | **Arrêté du 7 avril 2023** (inspection périodique BACS) | [OBLIGATION] | élevée | [Légifrance](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047422562) |
 | R-4 | **Décret n° 2025-1343 du 26 décembre 2025** (report tranche 70–290 kW à 2030) | [OBLIGATION] | élevée | [Légifrance](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053175245) |
-| R-5 | **Articles R. 175-1 et s. du CCH** (notamment **R. 175-3** fonctions ; **R. 175-5-1** inspection) | [OBLIGATION] | élevée | [Légifrance R.175-3](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043819541) |
+| R-5 | **Articles R. 175-1 et s. du CCH** (notamment **R. 175-3** fonctions, version en vigueur depuis le 9 avril 2023 — texte verbatim recopié dans A1 §5.4 et B2 ; **R. 175-5-1** inspection) | [OBLIGATION] | élevée | [Légifrance R.175-3](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043819541) |
 | R-6 | **Décret n° 2019-771 du 23 juillet 2019** (éco-énergie tertiaire) | [OBLIGATION] | élevée | [Légifrance](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000038812251) |
 | R-7 | **CCP — art. R. 2111-7, R. 2111-8, R. 2111-11** (spécifications fonctionnelles, « ou équivalent ») | [OBLIGATION] (marché public) | élevée | Légifrance |
 | R-8 | **CCP — art. R. 2152-11, R. 2152-12** (pondération / hiérarchisation publiée) | [OBLIGATION] (marché public) | élevée | Légifrance |

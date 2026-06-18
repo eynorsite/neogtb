@@ -25,6 +25,7 @@
 - **Les types (AI/AO/BI/BO/AV…), protocoles, adresses, unités et plages dépendent des équipements réels** retenus et de leur documentation constructeur. Tant que les équipements ne sont pas figés, ces colonnes restent indicatives.
 - **[CLAUSE CONTRACTUELLE]** La **liste de points définitive, exhaustive et adressée** est un **livrable du titulaire** : elle est établie, complétée et tenue à jour par lui, remise à la réception **et à chaque évolution ultérieure**, dans le **dossier de réversibilité** (cf. CCTP **art. 6 — interopérabilité / table de points** et **art. 7 — réversibilité**, et **CCAP — clauses de réversibilité**). Le présent cadre fixe l'**ambition minimale** ; il **n'exonère pas** le titulaire de livrer la table complète.
 - **[RECOMMANDATION]** Conserver le **repère** dans la même logique que les schémas / synoptiques et l'étiquetage terrain, pour une traçabilité MOA ↔ exploitation.
+- **[INFORMATIF]** Les lots ci-dessous (CVC, ÉCLAIRAGE, COMPTAGE, SUPERVISION) forment le **tronc commun** réutilisable sur la plupart des bâtiments tertiaires. La section **« Variantes par typologie »** (en fin de pièce) cible **uniquement les points en plus / en moins** selon l'usage du bâtiment (bureaux, ERP, logistique, industriel) ; **elle ne recopie pas le tronc commun**.
 
 ### Colonnes du tableau
 | Colonne | Contenu attendu |
@@ -164,6 +165,114 @@
 | `SUP-COM-PASS02` | État de communication passerelle / automate 02 *(exemple à adapter)* | SUPERV | BI | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | R |
 | `SUP-COM-BUS-DALI` | État de communication bus DALI *(exemple à adapter)* | SUPERV | BI | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | R |
 | `SUP-COM-BUS-MBUS` | État de communication bus M-Bus comptage *(exemple à adapter)* | SUPERV | BI | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | R |
+
+---
+
+## Variantes par typologie
+
+> **[INFORMATIF]** Cette section liste, **typologie par typologie**, les points de données **spécifiques en plus ou en moins** par rapport au **tronc commun** ci-dessus (lots CVC, ÉCLAIRAGE, COMPTAGE, SUPERVISION). **Le tronc commun n'est pas recopié** : on ne montre ici que les différences. Comme partout dans cette pièce, les lignes sont des **EXEMPLES À ADAPTER** : les **types (AI/AO/BI/BO/AV…) et protocoles** sont indiqués **à titre d'exemple à adapter** à l'équipement réel ; les **adresses** restent `[À COMPLÉTER]` à l'intégration et certaines **plages** restent `[À COMPLÉTER]` car elles dépendent du matériel posé. Aucune donnée chiffrée réglementaire n'est fixée ici (les seuils restent à confirmer sur source primaire — cf. art. 13 du CCTP). La **légende des statuts** en tête de pièce s'applique.
+
+---
+
+### V1 — BUREAUX
+
+*Bâtiment de bureaux : forte granularité de régulation terminale (par zone / plateau), pilotage par occupation des open-spaces, sous-comptage par plateau ou par locataire, surveillance CO₂ dans les espaces à occupation variable (salles de réunion).*
+
+**En PLUS du tronc commun :**
+
+| Repère | Désignation | Lot | Type | Protocole | Adresse | Unité | Plage | Accès |
+|---|---|---|---|---|---|---|---|---|
+| `CVC-ZON-PLAT01-T-AMB` | T° ambiante plateau 01 *(exemple à adapter)* | CVC | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | °C | 0–40 | R |
+| `CVC-ZON-PLAT01-CONS-T` | Consigne T° par plateau / zone de régulation *(exemple à adapter)* | CVC | AV *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | °C | `[À COMPLÉTER]` | RW |
+| `CVC-ZON-PLAT01-VANNE` | Position vanne / registre terminal plateau 01 *(exemple à adapter)* | CVC | AO *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | % | 0–100 | RW |
+| `ECL-OPEN01-PRESENCE` | Détection présence open-space 01 (pilotage éclairage) *(exemple à adapter)* | ÉCL | BI *(exemple à adapter)* | DALI-2 *(exemple à adapter)* | `[À COMPLÉTER]` | — | 0/1 | R |
+| `ECL-OPEN01-NIV` | Niveau de gradation open-space 01 (daylight harvesting) *(exemple à adapter)* | ÉCL | AO *(exemple à adapter)* | DALI-2 *(exemple à adapter)* | `[À COMPLÉTER]` | % | 0–100 | RW |
+| `CVC-SDR01-CO2` | Qualité d'air — CO₂ salle de réunion 01 *(exemple à adapter)* | CVC | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | ppm | `[À COMPLÉTER]` | R |
+| `CVC-SDR01-PRESENCE` | Présence salle de réunion 01 (boost ventilation à l'occupation) *(exemple à adapter)* | CVC | BI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | R |
+| `COMPT-ELEC-PLAT01-IDX` | Sous-comptage électrique par plateau 01 *(exemple à adapter)* | COMPT | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | kWh | `[À COMPLÉTER]` | R |
+| `COMPT-ELEC-LOC-A-IDX` | Sous-comptage électrique par locataire A *(exemple à adapter)* | COMPT | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | kWh | `[À COMPLÉTER]` | R |
+
+> 🔀 **OPTION refacturation locataires** — si l'immeuble est multi-locataires : dupliquer le sous-comptage (élec, chaud, froid, eau) **par lot privatif** pour permettre la répartition des charges. *À activer selon configuration locative.*
+
+**En MOINS / sans objet :** rien de structurel en moins par rapport au tronc commun ; les bureaux constituent le cas de référence du tronc.
+
+---
+
+### V2 — ERP / ÉTABLISSEMENT RECEVANT DU PUBLIC
+
+*Commerce, enseignement, santé léger : comptage par zone / locataire, interfaces de **report** vers des systèmes de sécurité tiers (désenfumage, CTA par zone publique), **plages d'occupation variables** selon les horaires d'ouverture au public, éclairage par zone d'accueil.*
+
+**En PLUS du tronc commun :**
+
+| Repère | Désignation | Lot | Type | Protocole | Adresse | Unité | Plage | Accès |
+|---|---|---|---|---|---|---|---|---|
+| `CVC-CTA-PUB01-CMD-VENT` | Commande CTA zone publique 01 (asservie aux horaires d'ouverture) *(exemple à adapter)* | CVC | AO *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | % | 0–100 | RW |
+| `CVC-OCC-PROG` | Programme horaire d'occupation public (plage variable) *(exemple à adapter)* | CVC | MSV *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | `[À COMPLÉTER]` | RW |
+| `SECU-DESENF-REPORT` | Report d'état désenfumage (interface lot SSI — **lecture seule**) *(exemple à adapter)* | SUPERV | BI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | R |
+| `SECU-SSI-SYNTH` | Synthèse report système de sécurité incendie (interface lot SSI — **lecture seule**) *(exemple à adapter)* | SUPERV | BI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | R |
+| `ECL-ACCUEIL01-CMD` | Commande éclairage zone d'accueil / hall public 01 *(exemple à adapter)* | ÉCL | BO *(exemple à adapter)* | DALI-2 *(exemple à adapter)* | `[À COMPLÉTER]` | — | 0/1 | RW |
+| `ECL-ACCUEIL01-NIV` | Niveau gradation zone d'accueil 01 (ambiance / vitrine) *(exemple à adapter)* | ÉCL | AO *(exemple à adapter)* | DALI-2 *(exemple à adapter)* | `[À COMPLÉTER]` | % | 0–100 | RW |
+| `COMPT-ELEC-ZONE-PUB-IDX` | Sous-comptage électrique zone publique 01 *(exemple à adapter)* | COMPT | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | kWh | `[À COMPLÉTER]` | R |
+| `COMPT-ELEC-LOC-COM-IDX` | Sous-comptage électrique par locataire / cellule commerciale *(exemple à adapter)* | COMPT | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | kWh | `[À COMPLÉTER]` | R |
+
+> **[INFORMATIF / À VÉRIFIER]** Les interfaces avec la **sécurité incendie (SSI / désenfumage)** sont réglementées : le report en GTB est en principe **en lecture seule** et **ne doit pas commander** les fonctions de sécurité. Le périmètre exact (autonomie du SSI, points reportés) est à **cadrer avec le lot SSI et le bureau de contrôle** — aucune commande de sécurité n'est figée ici.
+>
+> 🔀 **OPTION santé / enseignement** — selon l'usage : ajouter surveillance hygrométrie de locaux sensibles, report d'état des portes coupe-feu, comptage process spécifique (cuisine, plateau technique). *À activer selon établissement.*
+
+**En MOINS / sans objet :** la régulation terminale fine *par poste de travail* (logique bureaux) est généralement **sans objet** ; on régule par **zone publique** plutôt que par occupant individuel.
+
+---
+
+### V3 — LOGISTIQUE / ENTREPÔT
+
+*Entrepôt / plateforme logistique : **éclairage par détection avec temporisation longue et zonage par allées** (levier d'économies majeur), **destratification / chauffage radiant** plutôt que CTA tertiaire, **peu ou pas de froid de confort**, **free-cooling / surventilation nocturne**, et **comptage process (manutention, charge, froid industriel) séparé du tertiaire** — utile au regard du décret tertiaire / OPERAT.*
+
+**En PLUS du tronc commun :**
+
+| Repère | Désignation | Lot | Type | Protocole | Adresse | Unité | Plage | Accès |
+|---|---|---|---|---|---|---|---|---|
+| `ECL-ALLEE01-PRESENCE` | Détection présence allée 01 (déclenchement éclairage) *(exemple à adapter)* | ÉCL | BI *(exemple à adapter)* | DALI-2 *(exemple à adapter)* | `[À COMPLÉTER]` | — | 0/1 | R |
+| `ECL-ALLEE01-CMD` | Commande éclairage allée 01 (zonage par allée) *(exemple à adapter)* | ÉCL | BO *(exemple à adapter)* | DALI-2 *(exemple à adapter)* | `[À COMPLÉTER]` | — | 0/1 | RW |
+| `ECL-ALLEE01-TEMPO` | Temporisation d'extinction allée 01 (réglable, tempo longue) *(exemple à adapter)* | ÉCL | AV *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | s | `[À COMPLÉTER]` | RW |
+| `CVC-RAD01-T-AMB` | T° ambiante zone stockage 01 (chauffage radiant) *(exemple à adapter)* | CVC | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | °C | 0–40 | R |
+| `CVC-RAD01-CMD` | Commande chauffage radiant / aérotherme zone 01 *(exemple à adapter)* | CVC | BO *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | RW |
+| `CVC-DESTRAT01-CMD` | Commande ventilateur de destratification zone 01 *(exemple à adapter)* | CVC | BO *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | RW |
+| `CVC-DESTRAT01-DT` | Écart T° haut/bas (pilotage destratification) *(exemple à adapter)* | CVC | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | °C | `[À COMPLÉTER]` | R |
+| `CVC-SURVENT-NUIT-CMD` | Commande surventilation / free-cooling nocturne *(exemple à adapter)* | CVC | BO *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | — | 0/1 | RW |
+| `CVC-SURVENT-T-EXT` | T° extérieure (autorisation surventilation nocturne) *(exemple à adapter)* | CVC | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | °C | `[À COMPLÉTER]` | R |
+| `COMPT-ELEC-PROCESS-IDX` | Sous-comptage électrique **process / manutention** (séparé du tertiaire) *(exemple à adapter)* | COMPT | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | kWh | `[À COMPLÉTER]` | R |
+| `COMPT-ELEC-CHARGE-IDX` | Sous-comptage électrique zone de charge engins / chariots *(exemple à adapter)* | COMPT | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | kWh | `[À COMPLÉTER]` | R |
+
+> **[INFORMATIF / À VÉRIFIER]** La **séparation comptage tertiaire vs process** facilite l'éventuelle exclusion des consommations process du périmètre assujetti au **décret tertiaire / OPERAT** (à confirmer sur source primaire selon le statut du bâtiment — cf. art. 13 du CCTP). Aucun seuil ni périmètre réglementaire n'est figé ici.
+>
+> 🔀 **OPTION zone froide / entrepôt frigorifique** — si présence de froid (chambres froides, quais réfrigérés) : ajouter T° par chambre froide, état groupe froid, alarme T° haute, dégivrage, comptage froid dédié. *À activer selon activité.*
+
+**En MOINS / sans objet :** la **CTA double flux tertiaire** (lot CVC.3) et la **régulation terminale fine par poste** sont généralement **sans objet** sur les volumes de stockage ; le froid de confort est souvent absent. Adapter / supprimer les lignes correspondantes du tronc commun.
+
+---
+
+### 🔀 OPTION V4 — INDUSTRIEL / PROCESS
+
+> 🔀 **OPTION à activer uniquement si le bâtiment comporte un process industriel.** *Sépare strictement le **CVC tertiaire** (bureaux, vestiaires, locaux sociaux) des **utilités process**, fait dominer les **automates Modbus**, et impose des contraintes de **continuité de service**.*
+
+**En PLUS du tronc commun :**
+
+| Repère | Désignation | Lot | Type | Protocole | Adresse | Unité | Plage | Accès |
+|---|---|---|---|---|---|---|---|---|
+| `UTIL-AIRCOMP-P` | Pression réseau air comprimé (utilité process) *(exemple à adapter)* | CVC | AI *(exemple à adapter)* | Modbus TCP *(exemple à adapter)* | `[À COMPLÉTER]` | bar | `[À COMPLÉTER]` | R |
+| `UTIL-AIRCOMP-ETAT` | État compresseur d'air (utilité process) *(exemple à adapter)* | CVC | BI *(exemple à adapter)* | Modbus TCP *(exemple à adapter)* | `[À COMPLÉTER]` | — | 0/1 | R |
+| `UTIL-EAUGLACEE-T` | T° production eau glacée process *(exemple à adapter)* | CVC | AI *(exemple à adapter)* | Modbus TCP *(exemple à adapter)* | `[À COMPLÉTER]` | °C | `[À COMPLÉTER]` | R |
+| `UTIL-EAUGLACEE-DEFAUT` | Défaut groupe eau glacée process *(exemple à adapter)* | CVC | BI *(exemple à adapter)* | Modbus TCP *(exemple à adapter)* | `[À COMPLÉTER]` | — | 0/1 | R |
+| `PROC-AUTO01-COM` | État de communication automate process 01 (Modbus) *(exemple à adapter)* | SUPERV | BI *(exemple à adapter)* | Modbus TCP *(exemple à adapter)* | `[À COMPLÉTER]` | — | 0/1 | R |
+| `PROC-AUTO01-SYNTH` | Synthèse défaut process automate 01 (**report lecture seule**) *(exemple à adapter)* | SUPERV | BI *(exemple à adapter)* | Modbus TCP *(exemple à adapter)* | `[À COMPLÉTER]` | — | 0/1 | R |
+| `COMPT-ELEC-PROCESS-IDX` | Sous-comptage électrique **utilités process** (séparé du tertiaire) *(exemple à adapter)* | COMPT | AI *(exemple à adapter)* | Modbus TCP *(exemple à adapter)* | `[À COMPLÉTER]` | kWh | `[À COMPLÉTER]` | R |
+| `CVC-TERT01-T-AMB` | T° ambiante CVC **tertiaire** (locaux sociaux, séparé du process) *(exemple à adapter)* | CVC | AI *(exemple à adapter)* | `[À COMPLÉTER]` | `[À COMPLÉTER]` | °C | 0–40 | R |
+
+> **[INFORMATIF / À VÉRIFIER]** **Contrainte de continuité de service** : le périmètre process est souvent piloté par des automates **autonomes** ; la GTB s'y interface en principe **en lecture seule (report / supervision)** et **ne prend pas la main** sur les sécurités ou les séquences process. Le périmètre exact (points reportés, points commandables) est à **cadrer avec le responsable process / le constructeur des machines**. Aucune commande process n'est figée ici.
+>
+> **[RECOMMANDATION]** Maintenir une **frontière nette** entre périmètre tertiaire (assujetti aux exigences réglementaires bâtiment) et périmètre process, jusque dans la nomenclature des repères (`CVC-TERT-…` vs `UTIL-…` / `PROC-…`), pour la lisibilité d'exploitation et le suivi des consommations.
+
+**En MOINS / sans objet :** côté CVC, la logique « confort tertiaire » s'applique **seulement** aux locaux sociaux/bureaux ; les utilités process suivent une logique propre (Modbus, automates dédiés) et ne doivent pas être traitées comme des zones de confort.
 
 ---
 

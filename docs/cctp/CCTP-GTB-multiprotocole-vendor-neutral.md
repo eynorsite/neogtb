@@ -186,14 +186,20 @@ La GTB doit atteindre **a minima la classe** `[À COMPLÉTER : B (par défaut) o
 
 > 🔀 OPTION — BÂTIMENT ASSUJETTI AU DÉCRET BACS (à conserver si le bâtiment dépasse les seuils — voir §13) :
 >
-> Le système constitue un système d'automatisation et de contrôle au sens du **décret BACS** et assure les fonctions de l'**article R. 175-3 du CCH**, notamment :
-> - **suivre, enregistrer et analyser en continu**, par zone fonctionnelle et **à un pas de temps horaire**, les données de production et de consommation énergétique, et **ajuster** les systèmes techniques en conséquence ;
-> - **conserver** ces données (à l'échelle mensuelle) pendant **cinq (5) ans** ;
-> - **situer l'efficacité énergétique** du bâtiment par rapport à des **valeurs de référence** ;
-> - **détecter les pertes d'efficacité** et **informer l'exploitant** des possibilités d'amélioration ;
-> - être **interopérable** avec les différents systèmes techniques ;
-> - **permettre l'arrêt manuel et la gestion autonome** des systèmes ;
-> - **rendre les données accessibles** au propriétaire (qui en a la propriété) et au gestionnaire.
+> Le système constitue un système d'automatisation et de contrôle au sens du **décret BACS** et assure les fonctions de l'**article R. 175-3 du CCH**.
+>
+> Texte de l'art. R. 175-3 du CCH (source : [Légifrance](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043819541), version en vigueur depuis le 9 avril 2023) :
+>
+> > Les systèmes d'automatisation et de contrôle des bâtiments mentionnés à l'article R. 175-2 :
+> >
+> > 1° « Suivent, enregistrent et analysent en continu, par zone fonctionnelle et à un pas de temps horaire, les données de production et de consommation énergétique des systèmes techniques du bâtiment et ajustent les systèmes techniques en conséquence. Ces données sont conservées à l'échelle mensuelle pendant cinq ans » ;
+> > 2° « Situent l'efficacité énergétique du bâtiment par rapport à des valeurs de référence, correspondant aux données d'études énergétiques ou caractéristiques de chacun des systèmes techniques ; ils détectent les pertes d'efficacité des systèmes techniques et informent l'exploitant du bâtiment des possibilités d'amélioration de l'efficacité énergétique » ;
+> > 3° « Sont interopérables avec les différents systèmes techniques du bâtiment » ;
+> > 4° « Permettent un arrêt manuel et la gestion autonome d'un ou plusieurs systèmes techniques de bâtiment ».
+> >
+> > Les systèmes techniques considérés sont ceux reliés au système d'automatisation et de contrôle dans les conditions prévues au II de l'article R. 175-2.
+> >
+> > Les données produites et archivées sont accessibles au propriétaire du système d'automatisation et de contrôle, qui en a la propriété. Ce dernier les met à disposition du gestionnaire du bâtiment, à sa demande, et transmet à chacun des exploitants des différents systèmes techniques reliés les données qui les concernent.
 >
 > Le système est **inspectable** : il permet la vérification documentaire et fonctionnelle prévue par l'arrêté du 7 avril 2023.
 >

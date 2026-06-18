@@ -79,7 +79,7 @@
 | Suivre / enregistrer / **analyser en continu** les données par usage et par zone | `[À COMPLÉTER]` | ☐ oui ☐ non ☐ partiel |
 | **Conserver** les données (5 ans, cf. B2) | `[À COMPLÉTER]` | ☐ oui ☐ non ☐ partiel |
 | **Situer l'efficacité** et **déceler les pertes** d'efficacité | `[À COMPLÉTER]` | ☐ oui ☐ non ☐ partiel |
-| **Arrêt manuel** + **gestion automatique** des systèmes | `[À COMPLÉTER]` | ☐ oui ☐ non ☐ partiel |
+| **Arrêt manuel** + **gestion autonome** des systèmes | `[À COMPLÉTER]` | ☐ oui ☐ non ☐ partiel |
 | **Interopérabilité** entre systèmes techniques | `[À COMPLÉTER]` | ☐ oui ☐ non ☐ partiel |
 | **Alerter** en cas de dérive / dysfonctionnement | `[À COMPLÉTER]` | ☐ oui ☐ non ☐ partiel |
 

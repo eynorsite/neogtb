@@ -333,6 +333,7 @@ Le rédacteur **confronte chaque article du présent CCAP à l'article correspon
 > | Art. 4 — Dossier de réversibilité | CCTP art. **7.2** et art. **8.2** |
 > | Art. 5 — Licences / outils d'ingénierie | CCTP art. **7.3** et **7.4** |
 > | Art. 6 — Maintenabilité par un tiers / API | CCTP art. 2.4, art. 6 et **7.5 / 7.6** |
+> | **Art. 7 — Pénalités** | CCTP art. 9 (recette) & art. 10 (garantie/SAV) |
 > | Art. 8 — Garanties, GTI/GTR | CCTP art. **10** |
 > | Art. 9 — Réception / vérification d'ouverture | CCTP art. **9** |
 >

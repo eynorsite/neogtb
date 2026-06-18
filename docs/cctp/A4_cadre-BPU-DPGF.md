@@ -37,47 +37,126 @@
 
 ### 1.1 — Lot CVC
 
+> **[INFORMATIF]** La décomposition ci-dessous est **détaillée à titre indicatif** pour homogénéiser les offres ; le candidat **complète les quantités et montants** selon le périmètre réel du projet (nombre de chaufferies/sous-stations, de boucles, etc.). Les libellés et la structure restent **imposés** ; aucune ligne n'est supprimée. Les lignes sans objet sont marquées `« néant »` plutôt que retirées.
+
 | Poste | Détail / base de prix | Quantité | P.U. | Montant |
 |---|---|---|---|---|
-| Matériel (capteurs, actionneurs, régulateurs, automates, passerelles) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
-| Intégration / paramétrage (programmation, mappings, IHM) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
-| Mise en service (essais, réglages, COPREC) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Matériel — Automatismes** | | | | |
+| Automate(s) de chaufferie / sous-station (régulateur DDC) | `[À COMPLÉTER : par chaufferie/sous-station]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Modules d'entrées/sorties déportés (E/S TOR + analogiques) | `[À COMPLÉTER : par module]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Matériel — Capteurs / sondes** | | | | |
+| Sondes de température (départ / retour / ECS / extérieure) | `[À COMPLÉTER : par sonde]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Sondes de température ambiante / d'ambiance | `[À COMPLÉTER : par sonde]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Sondes de température de gaine (soufflage / reprise) | `[À COMPLÉTER : par sonde]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Sondes de pression (réseau hydraulique / aéraulique, ΔP filtre) | `[À COMPLÉTER : par sonde]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Sondes de qualité d'air (CO₂ / COV) | `[À COMPLÉTER : par sonde]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Matériel — Actionneurs** | | | | |
+| Vannes motorisées 2 voies + servomoteur | `[À COMPLÉTER : par vanne]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Vannes motorisées 3 voies + servomoteur | `[À COMPLÉTER : par vanne]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Servomoteurs de registre (air neuf / reprise / recyclage) | `[À COMPLÉTER : par registre]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Variateurs de fréquence / commandes de pompes | `[À COMPLÉTER : par pompe]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Variateurs de fréquence / commandes de ventilateurs | `[À COMPLÉTER : par ventilateur]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Matériel — Armoire & câblage** | | | | |
+| Armoire de régulation (coffret, alimentation, protections) | `[À COMPLÉTER : par armoire]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Câblage de régulation (puissance faible, bus, raccordements E/S) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Passerelle(s) protocolaire(s) CVC (par interface) | `[À COMPLÉTER : par passerelle]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Intégration / paramétrage** | | | | |
+| Programmation / paramétrage des séquences de régulation | `[À COMPLÉTER : par séquence/boucle]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Cartographie des points et mappings vers la supervision | `[À COMPLÉTER : par point]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Configuration IHM locale / pupitre automate | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Mise en service** | | | | |
+| Mise en service par boucle (réglages, calibration sondes) | `[À COMPLÉTER : par boucle]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Essais fonctionnels et essais de performance (COPREC) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Documentation** | | | | |
 | Documentation (DOE, table de points, dossier de réversibilité) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Formation** | | | | |
 | Formation des exploitants | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
 | **Sous-total lot CVC** | | | | **`[À COMPLÉTER]`** |
 
 ### 1.2 — Lot Éclairage (DALI)
 
+> **[INFORMATIF]** Décomposition détaillée indicative ; quantités et montants à compléter selon le nombre de lignes DALI, de luminaires adressés et de capteurs. Libellés et structure **imposés**, aucune ligne supprimée (lignes sans objet = `« néant »`).
+
 | Poste | Détail / base de prix | Quantité | P.U. | Montant |
 |---|---|---|---|---|
-| Matériel (passerelles DALI-2, capteurs présence/lumière, drivers) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
-| Intégration / paramétrage (adressage DALI, groupes, scènes) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
-| Mise en service (commissioning DALI, essais) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Matériel** | | | | |
+| Alimentation / passerelle DALI (bus DALI-2) | `[À COMPLÉTER : par passerelle]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Modules de ligne / contrôleurs DALI | `[À COMPLÉTER : par module]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Capteurs de présence / détection de mouvement | `[À COMPLÉTER : par capteur]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Capteurs de luminosité (gradation / daylight harvesting) | `[À COMPLÉTER : par capteur]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Intégration / paramétrage** | | | | |
+| Adressage des ballasts / luminaires DALI | `[À COMPLÉTER : par adresse]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Paramétrage des groupes et des scènes | `[À COMPLÉTER : par groupe/scène]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Cartographie des points et mappings vers la supervision | `[À COMPLÉTER : par point]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Mise en service** | | | | |
+| Mise en service (commissioning DALI, essais de scènes) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Documentation** | | | | |
 | Documentation (plan d'adressage, table de points) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Formation** | | | | |
 | Formation des exploitants | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
 | **Sous-total lot Éclairage** | | | | **`[À COMPLÉTER]`** |
 
 ### 1.3 — Lot Comptage
 
+> **[INFORMATIF]** Décomposition détaillée indicative ; quantités et montants à compléter selon le nombre de compteurs et d'usages à isoler (chauffage, ECS, froid, CVC, éclairage, prises, process…). Libellés et structure **imposés**, aucune ligne supprimée (lignes sans objet = `« néant »`).
+
 | Poste | Détail / base de prix | Quantité | P.U. | Montant |
 |---|---|---|---|---|
-| Matériel (compteurs, sous-compteurs, concentrateurs M-Bus, TI) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
-| Intégration / paramétrage (relevé, agrégation par usage) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
-| Mise en service (vérification index, cohérence usages) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Matériel — Compteurs** | | | | |
+| Compteurs / sous-compteurs électriques (+ TI associés) | `[À COMPLÉTER : par compteur]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Compteurs d'énergie thermique (calorimètres chaud / froid) | `[À COMPLÉTER : par compteur]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Compteurs de fluides (eau, gaz, air comprimé) | `[À COMPLÉTER : par compteur]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Matériel — Collecte** | | | | |
+| Concentrateur / passerelle M-Bus (par interface) | `[À COMPLÉTER : par concentrateur]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Passerelle Modbus (par interface) | `[À COMPLÉTER : par passerelle]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Intégration / paramétrage** | | | | |
+| Intégration des index et grandeurs (relevé périodique) | `[À COMPLÉTER : par point]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Paramétrage de l'agrégation par usage (ventilation des consommations) | `[À COMPLÉTER : par usage]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Mise en service** | | | | |
+| Mise en service (vérification index, cohérence des usages) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Documentation** | | | | |
 | Documentation (synoptique comptage, table de points) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Formation** | | | | |
 | Formation des exploitants | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
 | **Sous-total lot Comptage** | | | | **`[À COMPLÉTER]`** |
 
 ### 1.4 — Lot Supervision GTB
 
+> **[INFORMATIF]** Décomposition détaillée indicative ; quantités et montants à compléter selon le nombre de points intégrés, de synoptiques et de protocoles à interfacer. Libellés et structure **imposés**, aucune ligne supprimée (lignes sans objet = `« néant »`). Les licences récurrentes éventuelles sont reportées au **cadre TCO §4**.
+
 | Poste | Détail / base de prix | Quantité | P.U. | Montant |
 |---|---|---|---|---|
-| Matériel (serveur/superviseur, postes, réseau, sauvegarde) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
-| Intégration / paramétrage (vues, synoptiques, alarmes, droits) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Matériel / logiciel** | | | | |
+| Serveur de supervision / poste(s) opérateur | `[À COMPLÉTER : par serveur/poste]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Licence superviseur (logiciel GTB, périmètre de points) | `[À COMPLÉTER : préciser le périmètre]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Réseau / sauvegarde / continuité (onduleur, NAS, antivirus) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Passerelles protocolaires (BACnet / Modbus / KNX / M-Bus…, par interface) | `[À COMPLÉTER : par passerelle]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Intégration / paramétrage** | | | | |
+| Intégration des points (acquisition, nommage, hiérarchie) | `[À COMPLÉTER : par point]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Développement des synoptiques / vues graphiques | `[À COMPLÉTER : par synoptique]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Configuration des alarmes (seuils, priorités, diffusion) | `[À COMPLÉTER : par alarme/groupe]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Configuration de l'historisation / journalisation (trends) | `[À COMPLÉTER : par point historisé]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Configuration des tableaux de bord / rapports énergétiques | `[À COMPLÉTER : par tableau de bord]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Gestion des droits / profils utilisateurs | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Mise en service** | | | | |
 | Mise en service (recette fonctionnelle, tests d'alarmes) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Documentation** | | | | |
 | Documentation (DOE supervision, dossier de réversibilité, mots de passe) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Formation** | | | | |
 | Formation des exploitants / administrateurs | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
 | **Sous-total lot Supervision** | | | | **`[À COMPLÉTER]`** |
+
+### 1.5 — Postes transverses (tous lots)
+
+> **[INFORMATIF]** Prestations communes non rattachées à un lot technique unique. **[CLAUSE CONTRACTUELLE]** Le **dossier de réversibilité** (codes sources, licences, mots de passe) et la **recette** sont des postes **obligatoires** du dispositif vendor-neutral : ils ne peuvent être chiffrés à zéro sans justification écrite. Libellés et structure **imposés**, aucune ligne supprimée.
+
+| Poste | Détail / base de prix | Quantité | P.U. | Montant |
+|---|---|---|---|---|
+| Étude d'exécution (plans, schémas, table de points consolidée) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Dossier de réversibilité (codes sources, licences, mots de passe, formats d'export) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Recette générale (VABF / VSR, levée des réserves) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| Garantie / mise en service globale (MES, période de garantie) | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+| **Sous-total postes transverses** | | | | **`[À COMPLÉTER]`** |
 
 > 🔀 **OPTION lots complémentaires** — ajouter un tableau identique par lot supplémentaire (CFO/TGBT, contrôle d'accès, désenfumage, photovoltaïque…). *À activer selon périmètre.*
 
@@ -99,6 +178,11 @@
 | BPU-06 | Heure d'ingénierie / paramétrage | h | `[À COMPLÉTER]` |
 | BPU-07 | Journée de mise en service | j | `[À COMPLÉTER]` |
 | BPU-08 | Journée de formation exploitant | j | `[À COMPLÉTER]` |
+| BPU-09 | Intégration d'un point de données dans la supervision (acquisition + nommage) | point | `[À COMPLÉTER]` |
+| BPU-10 | Fourniture + pose + raccordement d'une sonde (toutes natures) | u | `[À COMPLÉTER]` |
+| BPU-11 | Intégration d'un compteur / sous-compteur (relevé index + rattachement usage) | u | `[À COMPLÉTER]` |
+| BPU-12 | Développement d'un synoptique / vue graphique de supervision | u | `[À COMPLÉTER]` |
+| BPU-13 | Journée d'ingénierie (étude / développement / intégration) | j | `[À COMPLÉTER]` |
 
 ### 2.2 — Coût d'extension par point de données (anti-licence abusive)
 
@@ -122,6 +206,7 @@
 | Éclairage (DALI) | `[À COMPLÉTER]` |
 | Comptage | `[À COMPLÉTER]` |
 | Supervision GTB | `[À COMPLÉTER]` |
+| Postes transverses (étude, réversibilité, recette, garantie) | `[À COMPLÉTER]` |
 | 🔀 Lots optionnels | `[À COMPLÉTER]` |
 | **TOTAL CAPEX (offre forfaitaire)** | **`[À COMPLÉTER]`** |
 

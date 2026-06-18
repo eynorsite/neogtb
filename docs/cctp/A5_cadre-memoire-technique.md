@@ -182,7 +182,7 @@ Ce document fixe **la trame imposée du mémoire technique** que chaque candidat
 ---
 
 ### Rubrique 7 — Cybersécurité
-**Lien grille A6 :** **[À COMPLÉTER : critère C—] s'il existe une ligne cybersécurité dédiée dans A6 ; sinon contribue à C1 (architecture).**
+**Lien grille A6 :** la grille A6 n'a pas de critère cybersécurité dédié ; la cybersécurité **contribue au critère C1** (conformité / architecture).
 
 **[OBLIGATION] Attendu**
 - **Segmentation OT/IT** : séparation des réseaux d'automatisation (OT) et bureautique (IT), VLAN, pare-feu, règles de flux.
@@ -262,8 +262,8 @@ Ce document fixe **la trame imposée du mémoire technique** que chaque candidat
 | 4 | Preuves d'ouverture (BTL/PICS, KNX, DALI-2, OMS) | **C2** | — |
 | 5 | Démarche classe NF EN ISO 52120-1 | **C3** | A3 |
 | 6 | Plan de réversibilité | **C4** | **CCAP A2** |
-| 7 | Cybersécurité (OT/IT, BACnet/SC) | C1 / **[À COMPLÉTER]** | — |
-| 8 | Plan de charge / planning / jalons | **C6** | A2 |
+| 7 | Cybersécurité (OT/IT, BACnet/SC) | **C1** (pas de critère cyber dédié) | — |
+| 8 | Plan de charge / planning / jalons | **C6** | lien grille A6 → critère C6 (délais) |
 | 9 | Maintenance / SAV / formation | **C7** | — |
 | 10 | Décomposition de prix / TCO | **C8** | **A4** |
 

@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dossier audit &amp; classification GTB — décret BACS / NF EN ISO 52120-1 — NeoGTB</title>
+<style>
+@page { size: A4; margin: 2cm; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: Calibri, Arial, 'Segoe UI', sans-serif;
+  font-size: 11pt;
+  line-height: 1.45;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 1.5cm 2cm;
+  background: #fff;
+}
+.page { max-width: 19cm; margin: 0 auto; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cambria', 'Georgia', 'Times New Roman', serif;
+  color: #14304a;
+  line-height: 1.2;
+  page-break-after: avoid;
+}
+h1 { font-size: 18pt; border-bottom: 2px solid #14304a; padding-bottom: 4px; margin-top: 0.6em; }
+h2 { font-size: 14pt; border-bottom: 1px solid #b8c4d0; padding-bottom: 3px; margin-top: 1.4em; }
+h3 { font-size: 12pt; margin-top: 1.1em; color: #1d4d73; }
+h4 { font-size: 11pt; margin-top: 0.9em; color: #1d4d73; }
+h5, h6 { font-size: 10.5pt; margin-top: 0.8em; color: #1d4d73; }
+p { margin: 0.5em 0; text-align: justify; }
+ul, ol { margin: 0.4em 0 0.6em 0; padding-left: 1.6em; }
+li { margin: 0.18em 0; }
+hr { border: 0; border-top: 1px solid #ccc; margin: 1.2em 0; }
+code {
+  font-family: Consolas, 'Courier New', monospace;
+  background: #eef1f4;
+  border: 1px solid #d8dde2;
+  border-radius: 3px;
+  padding: 0 3px;
+  font-size: 0.92em;
+}
+pre { background: #eef1f4; border: 1px solid #d8dde2; border-radius: 3px; padding: 0.6em 0.8em; overflow-x: auto; page-break-inside: avoid; }
+pre code { background: none; border: 0; padding: 0; font-size: 0.88em; white-space: pre; }
+a { color: #14304a; text-decoration: none; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.8em 0;
+  font-size: 10pt;
+  page-break-inside: auto;
+  border: 1px solid #999;
+}
+th, td {
+  border: 1px solid #999;
+  padding: 4px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #e8ecf0; font-weight: bold; color: #14304a; }
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+tbody tr:nth-child(even) { background: #f7f9fb; }
+blockquote {
+  background: #f4f6f8;
+  border-left: 4px solid #2a6ca8;
+  margin: 0.9em 0;
+  padding: 0.5em 0.9em;
+  page-break-inside: avoid;
+}
+blockquote blockquote { border-left-color: #7a99b5; background: #eef2f6; margin: 0.6em 0; }
+blockquote p:first-child { margin-top: 0; }
+blockquote p:last-child { margin-bottom: 0; }
+blockquote table { background: #fff; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* Cover page */
+.cover {
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 24cm;
+  padding: 2cm 1cm;
+}
+.cover .brand {
+  font-family: 'Cambria', 'Georgia', serif;
+  font-size: 26pt;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #14304a;
+  margin-bottom: 2.5cm;
+}
+.cover .doc-title {
+  font-family: 'Cambria', 'Georgia', serif;
+  font-size: 22pt;
+  font-weight: bold;
+  color: #14304a;
+  line-height: 1.3;
+  max-width: 16cm;
+  margin: 0 auto;
+  border: 0;
+  padding: 0;
+}
+.cover .doc-subtitle {
+  font-size: 14pt;
+  color: #2a6ca8;
+  margin-top: 1cm;
+  font-style: italic;
+}
+.cover .rule {
+  width: 8cm;
+  border-top: 2px solid #2a6ca8;
+  margin: 1.5cm auto;
+}
+.cover .date-block {
+  margin-top: 3cm;
+  font-size: 12pt;
+  color: #333;
+}
+
+/* Sommaire cliquable */
+.toc {
+  page-break-after: always;
+  max-width: 19cm;
+  margin: 0 auto;
+  padding: 1cm 0;
+}
+.toc h2 { margin-top: 0; }
+.toc ol { padding-left: 1.4em; }
+.toc li { margin: 0.35em 0; font-size: 11.5pt; }
+.toc a { color: #1d4d73; }
+.toc a:hover { text-decoration: underline; }
+.toc .toc-piece { font-weight: 600; color: #14304a; }
+
+/* Séparateur de pièce */
+.doc-section { page-break-before: always; }
+.piece-sep {
+  page-break-before: always;
+  text-align: center;
+  padding: 6cm 1cm 0 1cm;
+}
+.piece-sep .piece-ref {
+  font-family: 'Cambria', 'Georgia', serif;
+  font-size: 16pt;
+  color: #2a6ca8;
+  letter-spacing: 1px;
+  margin-bottom: 0.6cm;
+}
+.piece-sep .piece-name {
+  font-family: 'Cambria', 'Georgia', serif;
+  font-size: 22pt;
+  font-weight: bold;
+  color: #14304a;
+  line-height: 1.3;
+  max-width: 16cm;
+  margin: 0 auto;
+}
+.piece-sep .rule { width: 7cm; border-top: 2px solid #2a6ca8; margin: 1.2cm auto; }
+
+@media print {
+  body { padding: 0; font-size: 10.5pt; }
+  .page { max-width: none; }
+  a { color: #14304a; }
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+  blockquote { background: #f4f6f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  blockquote blockquote { background: #eef2f6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  th { background: #e8ecf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  tbody tr:nth-child(even) { background: #f7f9fb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  h1, h2, h3, h4 { color: #14304a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="brand">NeoGTB</div>
+<div class="doc-title">Dossier audit &amp; classification GTB<br>décret BACS / NF EN ISO 52120-1</div>
+<div class="rule"></div>
+<div class="doc-subtitle">Pièces B1 à B4 + Annexe C0 — NeoGTB</div>
+<div class="date-block">Date : ______________________</div>
+</div>
+<div class="toc">
+<h2>Sommaire du dossier</h2>
+<ol>
+<li><a href="#piece-b1"><span class="toc-piece">B1 — Méthodologie d'audit &amp; de classification</span></a></li>
+<li><a href="#piece-b2"><span class="toc-piece">B2 — Exemple d'audit de conformité — décret BACS</span></a></li>
+<li><a href="#piece-b3"><span class="toc-piece">B3 — Grille de fonctions NF EN ISO 52120-1</span></a></li>
+<li><a href="#piece-b4"><span class="toc-piece">B4 — Clause de responsabilité &amp; de périmètre</span></a></li>
+<li><a href="#piece-c0"><span class="toc-piece">Annexe C0 — Sources et statuts</span></a></li>
+</ol>
+</div>
+<div class="piece-sep" id="piece-b1">
+<div class="piece-ref">B1</div>
+<div class="piece-name">Méthodologie d'audit &amp; de classification</div>
+<div class="rule"></div>
+</div>
+<div class="page">
+<h1>B1 — MÉTHODOLOGIE D'AUDIT DE CLASSIFICATION &amp; DE CONFORMITÉ</h1>
+<h2>Audit &amp; AMO « classification GTB » — pièce méthodologique (tiers de confiance, 0 matériel vendu)</h2>
+<blockquote>
+<p><strong>Nature du document</strong> : méthodologie d'audit réutilisable, pièce <strong>B1</strong> du dossier d'offre « Audit &amp; AMO classification GTB » de NeoGTB.<br>
+Elle décrit <strong>comment</strong> NeoGTB conduit un audit de classification (NF EN ISO 52120-1:2022) <strong>et</strong> de conformité (décret BACS), en <strong>posture d'indépendance</strong> : aucun matériel vendu, aucune commission fabricant.<br>
+Le <strong>livrable</strong> produit par cette méthodologie suit la trame de la pièce <strong>B2</strong> → [<code>docs/exemple-audit-conformite-bacs.md</code>](../exemple-audit-conformite-bacs.md). La grille de classement fonctionnel détaillée est la pièce <strong>B3</strong> → [<code>B3_grille-fonctions-52120.md</code>](./B3_grille-fonctions-52120.md). La clause de responsabilité / périmètre est la pièce <strong>B4</strong> → [<code>B4_clause-responsabilite-perimetre.md</code>](./B4_clause-responsabilite-perimetre.md).</p>
+</blockquote>
+<hr>
+<h2>LÉGENDE DES STATUTS</h2>
+<table>
+<thead>
+<tr>
+<th>Marqueur</th>
+<th>Sens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>[OBLIGATION]</strong></td>
+<td>Exigence <strong>réglementaire</strong> opposable (décret / arrêté / code), à reconfirmer sur source primaire (Légifrance) à la date d'usage.</td>
+</tr>
+<tr>
+<td><strong>[RECOMMANDATION]</strong></td>
+<td>Bonne pratique conseillée par NeoGTB, <strong>non obligatoire</strong> ; relève du choix du maître d'ouvrage.</td>
+</tr>
+<tr>
+<td><strong>[CONVENTION eu.bac]</strong></td>
+<td>Élément relevant du référentiel <strong>eu.bac System</strong> (certification <strong>tierce, payante, distincte</strong> de l'auto-évaluation normative). <strong>Non utilisable</strong> comme s'il s'agissait d'une obligation ; cité pour information / délimitation de périmètre.</td>
+</tr>
+<tr>
+<td><strong>[INFORMATIF]</strong></td>
+<td>Explication, aide à la lecture, sans portée contraignante.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Avertissement transversal à conserver dans tout livrable issu de cette méthode :</strong></p>
+<ol start="1">
+<li><strong>Classe ≠ conformité réglementaire.</strong> La conformité au décret BACS se juge sur les <strong>fonctions</strong> de l'art. R. 175-3 CCH, <strong>jamais</strong> sur la seule classe NF EN ISO 52120-1. <strong>[OBLIGATION]</strong></li>
+<li><strong>Classe ≠ vendor-neutral.</strong> Un système <strong>fermé / propriétaire</strong> peut très bien être <strong>classe A</strong>. La classe mesure le niveau <strong>fonctionnel</strong>, pas l'ouverture ni l'interopérabilité. <strong>[INFORMATIF]</strong></li>
+<li><strong>Un % de gain n'est jamais un engagement de résultat.</strong> Les facteurs d'efficacité de la norme sont en <strong>Annexes A/C <em>informatives</strong></em> ; seule l'<strong>Annexe B (exigences minimales de fonctions) est <em>normative</strong></em>. <strong>[INFORMATIF]</strong></li>
+<li><strong>Une auto-évaluation selon la norme n'est PAS une certification eu.bac System.</strong> Ne jamais présenter un audit NeoGTB comme une « certification eu.bac ». <strong>[CONVENTION eu.bac]</strong></li>
+</ol>
+</blockquote>
+<hr>
+<h2>VUE D'ENSEMBLE DE LA MÉTHODE (6 étapes)</h2>
+<pre><code>ÉTAPE 1  Test d'assujettissement ......... suis-je dans le périmètre réglementaire ?
+ÉTAPE 2  Conformité aux FONCTIONS ........ les fonctions R. 175-3 sont-elles présentes ? (≠ classe)
+ÉTAPE 3  Classification NF EN ISO 52120-1  quel niveau fonctionnel (A/B/C/D) ? quelle méthode ?
+ÉTAPE 4  Cotation à 3 états d'effectivité  chaque fonction : absente / installée / prouvée
+ÉTAPE 5  Niveau d'intrusion ............. coût/dérangement pour faire monter chaque fonction d'un cran
+ÉTAPE 6  Chiffrage des gains EN FOURCHETTE  jamais une valeur sèche, toujours hypothèses tracées</code></pre>
+<blockquote>
+<p><strong>[INFORMATIF]</strong> Les étapes 1 et 2 répondent à une question <strong>réglementaire</strong> (binaire : conforme / non conforme aux fonctions). Les étapes 3 à 6 répondent à une question <strong>de performance fonctionnelle</strong> (graduée : classe, effectivité, gain). <strong>Ne jamais fusionner les deux logiques</strong> : c'est la source d'erreur la plus fréquente dans les audits GTB du marché.</p>
+</blockquote>
+<hr>
+<h2>ÉTAPE 1 — TEST D'ASSUJETTISSEMENT</h2>
+<p><strong>Objet</strong> : déterminer si le bâtiment entre dans un périmètre réglementaire, et à quelle échéance.</p>
+<h3>1.1 Décret BACS <strong>[OBLIGATION]</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Donnée à collecter</th>
+<th>Réf.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bâtiment à usage <strong>tertiaire</strong> ?</td>
+<td>Usage réel / déclaré</td>
+<td>Art. R. 175-1 CCH</td>
+</tr>
+<tr>
+<td>Équipé de <strong>chauffage et/ou climatisation</strong> (± ventilation) ?</td>
+<td>Inventaire des systèmes techniques</td>
+<td>Art. R. 175-1 CCH</td>
+</tr>
+<tr>
+<td><strong>Puissance nominale utile cumulée</strong> des systèmes concernés</td>
+<td>Plaques signalétiques, CCTP installation, fiches techniques</td>
+<td>Art. R. 175-1 CCH</td>
+</tr>
+<tr>
+<td>Seuil franchi ?</td>
+<td><strong>&gt; 290 kW</strong> → échéance <strong>1ᵉʳ janv. 2025</strong> · <strong>70–290 kW</strong> → échéance <strong>1ᵉʳ janv. 2030</strong> (report décret 2025-1343)</td>
+<td>cf. pièce B2 §3</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[OBLIGATION]</strong> Les seuils (70 / 290 kW), les échéances et les cas d'exemption sont <strong>détaillés et sourcés dans la pièce B2</strong> ([<code>docs/exemple-audit-conformite-bacs.md</code>](../exemple-audit-conformite-bacs.md), §3, §4 et §10). <strong>Ne pas les paraphraser ici</strong> : s'y référer et <strong>reconfirmer sur Légifrance</strong> à la date de l'audit.<br>
+<code>[À COMPLÉTER : puissance nominale utile cumulée constatée = ___ kW]</code> · <code>[À COMPLÉTER : échéance applicable = ___]</code></p>
+</blockquote>
+<h3>1.2 Décret tertiaire (dispositif Éco Énergie Tertiaire) — <strong>si applicable</strong> 🔀 OPTION</h3>
+<p>🔀 <strong>OPTION — activer uniquement si le bâtiment relève aussi du décret tertiaire</strong> <strong>[OBLIGATION si applicable]</strong> Vérifier l'assujettissement au <strong>dispositif Éco Énergie Tertiaire</strong> (surfaces ≥ 1 000 m² à usage tertiaire), qui est <strong>distinct</strong> du décret BACS (obligation de <strong>réduction de consommation</strong>, déclaration <strong>OPERAT</strong>), mais <strong>complémentaire</strong> : la GTB est un levier majeur d'atteinte des objectifs. <code>[À COMPLÉTER : surface tertiaire cumulée = ___ m² → assujetti EET : oui / non]</code></p>
+<blockquote>
+<p><strong>[INFORMATIF]</strong> Ne pas confondre les deux décrets : BACS = obligation de <strong>moyens/fonctions</strong> sur la GTB ; tertiaire = obligation de <strong>résultat</strong> sur la consommation. Un bâtiment peut relever de l'un, de l'autre, des deux ou d'aucun.</p>
+</blockquote>
+<h3>1.3 Livrable d'étape</h3>
+<p>→ <strong>Note d'assujettissement</strong> : assujetti BACS (oui/non) + échéance · assujetti EET (oui/non). Reprise dans la section « Étape 1 » du livrable B2.</p>
+<hr>
+<h2>ÉTAPE 2 — ÉVALUATION DE CONFORMITÉ AUX <strong>FONCTIONS</strong> R. 175-3 (≠ classe)</h2>
+<p><strong>Objet</strong> : vérifier la <strong>présence et l'effectivité</strong> des fonctions imposées par l'art. R. 175-3 CCH — <strong>pas</strong> d'atteindre une classe ISO.</p>
+<blockquote>
+<p><strong>[OBLIGATION]</strong> <strong>La conformité au décret se juge fonction par fonction.</strong> « Atteindre une classe A ou B » <strong>n'est pas</strong> une fonction de R. 175-3 et ne peut donc <strong>jamais</strong> figurer comme critère de conformité. La grille des fonctions R. 175-3 confrontées à l'existant est <strong>déjà cadrée dans la pièce B2 (§6)</strong> : la reprendre, l'actualiser sur la rédaction littérale de Légifrance, <strong>ne pas l'inventer</strong>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Famille de fonction (art. R. 175-3 — synthèse B2 §6)</th>
+<th>À évaluer</th>
+<th>Conforme ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suivre / enregistrer / <strong>analyser en continu</strong> les données par usage et par zone</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>☐ oui ☐ non ☐ partiel</td>
+</tr>
+<tr>
+<td><strong>Conserver</strong> les données (5 ans, cf. B2)</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>☐ oui ☐ non ☐ partiel</td>
+</tr>
+<tr>
+<td><strong>Situer l'efficacité</strong> et <strong>déceler les pertes</strong> d'efficacité</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>☐ oui ☐ non ☐ partiel</td>
+</tr>
+<tr>
+<td><strong>Arrêt manuel</strong> + <strong>gestion autonome</strong> des systèmes</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>☐ oui ☐ non ☐ partiel</td>
+</tr>
+<tr>
+<td><strong>Interopérabilité</strong> entre systèmes techniques</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>☐ oui ☐ non ☐ partiel</td>
+</tr>
+<tr>
+<td><strong>Alerter</strong> en cas de dérive / dysfonctionnement</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>☐ oui ☐ non ☐ partiel</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[OBLIGATION]</strong> La rédaction <strong>littérale exacte</strong> des fonctions R. 175-3 doit être <strong>recopiée depuis Légifrance</strong>, pas paraphrasée (cf. avertissement B2 §9).</p>
+</blockquote>
+<h3>2.1 Articulation avec l'inspection périodique <strong>[OBLIGATION]</strong></h3>
+<p>Si le bâtiment est déjà équipé, la conformité ne s'évalue pas seulement « sur plan » : l'<strong>art. R. 175-5-1</strong> impose la vérification du <strong>fonctionnement réel</strong> et du <strong>paramétrage vs usage</strong>. → C'est exactement ce que mesure la <strong>cotation à 3 états</strong> (Étape 4). Voir pièce B2 §8.</p>
+<h3>2.2 Livrable d'étape</h3>
+<p>→ <strong>Avis de conformité aux fonctions</strong> : conforme / non conforme, <strong>motivé par fonction</strong> (jamais « non conforme car classe C »).</p>
+<hr>
+<h2>ÉTAPE 3 — CLASSIFICATION NF EN ISO 52120-1:2022</h2>
+<p><strong>Objet</strong> : situer le niveau <strong>fonctionnel</strong> de la GTB sur l'échelle <strong>A / B / C / D</strong> de la norme.</p>
+<blockquote>
+<p><strong>[INFORMATIF]</strong> <strong>NF EN ISO 52120-1:2022 remplace EN 15232-1:2017.</strong> Elle propose <strong>deux méthodes</strong>, à la <strong>numérotation officielle</strong> :</p>
+<ul>
+<li><strong>Clause 6 — « Method 1 – Detailed method »</strong> (méthode détaillée).</li>
+<li><strong>Clause 7 — « Method 2 – Factor based method »</strong> (méthode des facteurs).</li>
+</ul>
+<p>Les <strong>facteurs d'efficacité</strong> figurent en <strong>Annexes A / C — <em>INFORMATIVES</strong></em> (donc <strong>non opposables</strong>, un % n'est jamais un engagement). Seule l'<strong>Annexe B — <em>NORMATIVE</strong></em> fixe les <strong>exigences minimales de fonctions</strong> par classe. <strong>4 classes : A (la plus performante) / B / C / D.</strong></p>
+</blockquote>
+<h3>3.1 Règle d'arbitrage entre Method 1 et Method 2 — <strong>[RECOMMANDATION] (à écrire dans chaque rapport)</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Situation rencontrée</th>
+<th>Méthode à retenir</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estimation <strong>amont</strong>, dégrossissage, chiffrage indicatif, parc homogène</td>
+<td><strong>Method 2 — Factor based (Clause 7)</strong></td>
+<td>Rapide ; suffisante pour un ordre de grandeur <strong>en fourchette</strong>.</td>
+</tr>
+<tr>
+<td>Bâtiment <strong>déjà performant</strong> (facteurs peu discriminants en haut d'échelle)</td>
+<td><strong>Method 1 — Detailed (Clause 6)</strong> / simulation</td>
+<td>Les facteurs perdent en finesse quand la marge de gain est faible.</td>
+</tr>
+<tr>
+<td>Bâtiment <strong>multi-typologie</strong> (usages mélangés, plusieurs profils d'occupation)</td>
+<td><strong>Method 1 — Detailed (Clause 6)</strong></td>
+<td>La méthode des facteurs suppose <strong>un</strong> type de bâtiment déclaré.</td>
+</tr>
+<tr>
+<td><strong>Fort taux de vitrage</strong> / forte sensibilité aux apports solaires &amp; stores</td>
+<td><strong>Method 1 — Detailed (Clause 6)</strong> / simulation</td>
+<td>Effets dynamiques mal capturés par un facteur forfaitaire.</td>
+</tr>
+<tr>
+<td><strong>Un engagement chiffré</strong> est demandé (CEE, business case opposable…)</td>
+<td><strong>Method 1 — Detailed (Clause 6)</strong> / simulation</td>
+<td>Un facteur informatif <strong>ne peut pas</strong> fonder un engagement. <strong>[OBLIGATION de prudence]</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[RECOMMANDATION]</strong> <strong>Par défaut</strong> : facteurs (Method 2) en phase amont, <strong>bascule</strong> en méthode détaillée (Method 1) / simulation <strong>dès</strong> qu'une des conditions de la 2ᵉ colonne est réunie. <strong>Tracer le choix et son motif dans le rapport.</strong><br>
+<code>[À COMPLÉTER : méthode retenue = Method 1 / Method 2 — motif : ___]</code></p>
+</blockquote>
+<h3>3.2 Déclaration du type de bâtiment <strong>[OBLIGATION méthodologique]</strong></h3>
+<p>Method 2 suppose <strong>un seul type de bâtiment déclaré</strong> = celui correspondant à l'<strong>usage énergétique majoritaire</strong>. <code>[À COMPLÉTER : type de bâtiment déclaré = ___ (usage énergétique majoritaire)]</code></p>
+<blockquote>
+<p><strong>[INFORMATIF]</strong> Si plusieurs usages cohabitent à parts comparables → c'est un signal de <strong>bascule vers Method 1</strong> (cf. ligne « multi-typologie » du tableau 3.1).</p>
+</blockquote>
+<h3>3.3 Pondération par zones <strong>[RECOMMANDATION]</strong></h3>
+<p>Pondération d'une zone = <strong>surface × temps de fonctionnement × poids de l'équipement</strong>.</p>
+<blockquote>
+<p>⚠️ <strong>[INFORMATIF] Limite à signaler explicitement dans le rapport</strong> : cette pondération est <strong>fonctionnelle</strong>, elle <strong>n'est pas une pondération par l'énergie réellement consommée</strong>. Une zone peu énergivore mais très étendue peut peser plus que sa réalité énergétique. <strong>Le rapport doit mentionner cette limite</strong> pour éviter toute sur-interprétation du résultat.<br>
+<code>[À COMPLÉTER : tableau des zones — surface / temps de fonctionnement / poids équipement → pondération]</code></p>
+</blockquote>
+<h3>3.4 Règle du <strong>maillon faible</strong> <strong>[OBLIGATION normative — Annexe B]</strong></h3>
+<p>La <strong>classe globale = la classe la plus faible</strong> parmi les fonctions effectivement installées.</p>
+<blockquote>
+<p><strong>[INFORMATIF]</strong> Conséquence directe : une seule fonction restée en classe D <strong>tire toute l'installation en classe D</strong>, quelles que soient les autres. La priorisation (Étape 5) doit donc viser <strong>en premier</strong> le maillon faible.</p>
+</blockquote>
+<h3>3.5 Exclusions <strong>[OBLIGATION méthodologique : tracer + justifier]</strong></h3>
+<p>Une fonction peut être exclue du périmètre pertinent dans deux cas :</p>
+<ul>
+<li><strong>équipement absent</strong> du bâtiment (ex. pas de stores motorisés, pas d'ECS) ;</li>
+<li><strong>part &lt; 5 %</strong> du périmètre (poids négligeable).</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Règle stricte</strong> :</p>
+<ol start="1">
+<li><strong>Toute exclusion est tracée et justifiée</strong> (motif + preuve) dans le rapport. <strong>[OBLIGATION méthodologique]</strong></li>
+<li>Une exclusion <strong>réduit le périmètre pertinent</strong> ; elle <strong>ne « rachète » jamais un maillon faible</strong>. On ne peut pas exclure une fonction faible <em>pour</em> remonter la classe globale. <strong>[OBLIGATION méthodologique]</strong></li>
+</ol>
+<p><code>[À COMPLÉTER : liste des exclusions — fonction / motif (absent / &lt;5 %) / preuve]</code></p>
+</blockquote>
+<h3>3.6 Les 7 sections de fonctions</h3>
+<p>La classification s'évalue section par section : <strong>(1) chauffage · (2) eau chaude sanitaire (ECS) · (3) refroidissement · (4) ventilation / climatisation · (5) éclairage · (6) stores · (7) GTB / gestion technique du bâtiment (TBM)</strong>. → détail dans la pièce <strong>B3</strong> ([<code>B3_grille-fonctions-52120.md</code>](./B3_grille-fonctions-52120.md)).</p>
+<h3>3.7 Livrable d'étape</h3>
+<p>→ <strong>Classe par fonction + classe globale</strong> (maillon faible), méthode utilisée tracée, exclusions justifiées, <strong>rappel que classe ≠ conformité et que cette évaluation n'est PAS une certification eu.bac</strong>.</p>
+<blockquote>
+<p><strong>[CONVENTION eu.bac]</strong> Le <strong>barème de points propre à eu.bac System n'est pas confirmé</strong> : <strong>ne pas le citer comme certain</strong>, ne pas l'utiliser pour scorer. L'audit NeoGTB reste une <strong>auto-évaluation argumentée selon la norme</strong>.</p>
+</blockquote>
+<hr>
+<h2>ÉTAPE 4 — COTATION À <strong>3 ÉTATS D'EFFECTIVITÉ</strong> (par fonction)</h2>
+<p><strong>Objet</strong> : ne créditer une fonction que si elle est <strong>réellement effective</strong>, en cohérence avec l'inspection R. 175-5-1.</p>
+<p>Pour <strong>chaque</strong> fonction des 7 sections :</p>
+<table>
+<thead>
+<tr>
+<th>État</th>
+<th>Définition</th>
+<th>Crédité ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Absente</strong></td>
+<td>La fonction n'existe pas dans l'installation.</td>
+<td>❌ non crédité</td>
+</tr>
+<tr>
+<td><strong>Installée — non prouvée</strong></td>
+<td>La fonction semble présente (matériel/logiciel) mais <strong>rien ne prouve qu'elle fonctionne et est paramétrée</strong>.</td>
+<td>❌ non crédité (réserve)</td>
+</tr>
+<tr>
+<td><strong>Installée — prouvée par la donnée</strong></td>
+<td>La fonction est démontrée par une <strong>preuve</strong> : courbe de tendance (<em>trend</em>), <strong>test de forçage</strong>, <strong>remontée d'alarme</strong> observée, capture du paramétrage.</td>
+<td>✅ crédité</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[OBLIGATION méthodologique]</strong> <strong>Seul l'état « prouvée » est crédité</strong> dans la classe. Une fonction « installée mais non prouvée » est <strong>traitée comme une réserve</strong>, pas comme un acquis. C'est la traduction directe de l'<strong>art. R. 175-5-1</strong> (vérification du <strong>fonctionnement réel</strong> et du <strong>paramétrage vs usage</strong>).<br>
+<strong>[INFORMATIF]</strong> Exemples de preuves recevables : export de <em>trend</em> sur période représentative ; PV de <strong>test de forçage</strong> d'un actionneur ; <strong>alarme</strong> déclenchée et remontée jusqu'à l'exploitant ; copie d'écran horodatée du paramétrage de consigne/plage horaire.</p>
+</blockquote>
+<p>→ Colonne « État d'effectivité » + colonne « Preuve » de la grille <strong>B3</strong>.</p>
+<hr>
+<h2>ÉTAPE 5 — NIVEAU D'INTRUSION (par fonction manquante)</h2>
+<p><strong>Objet</strong> : qualifier, pour chaque fonction à faire monter d'un cran, <strong>l'ampleur des travaux</strong> (coût + dérangement en site occupé). C'est ce qui rend la priorisation <strong>réaliste</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Niveau d'intrusion</th>
+<th>Description</th>
+<th>Ordre de grandeur d'impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 — Paramétrage logiciel seul</strong></td>
+<td>Réglage / activation dans le superviseur existant, sans intervention physique.</td>
+<td>Faible coût, <strong>aucun</strong> dérangement.</td>
+</tr>
+<tr>
+<td><strong>2 — Ajout terrain léger</strong></td>
+<td>Pose de capteurs/actionneurs ponctuels sur infrastructure existante.</td>
+<td>Coût modéré, dérangement limité.</td>
+</tr>
+<tr>
+<td><strong>3 — Passage de câbles en site occupé</strong></td>
+<td>Tirage de câbles, percements, cheminements dans des locaux occupés.</td>
+<td>Coût élevé, <strong>dérangement notable</strong> (planning, nuisances).</td>
+</tr>
+<tr>
+<td><strong>4 — Remplacement d'équipement</strong></td>
+<td>Dépose/repose d'équipement (automate, régulateur, CTA…).</td>
+<td>Coût fort, arrêt d'exploitation possible.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[RECOMMANDATION]</strong> Croiser <strong>niveau d'intrusion</strong> (Étape 5) × <strong>maillon faible</strong> (3.4) pour prioriser : viser d'abord les fonctions <strong>à fort effet sur la classe</strong> et <strong>à faible intrusion</strong> (quick wins de niveau 1–2), puis arbitrer les niveaux 3–4 selon le ROI.<br>
+<code>[À COMPLÉTER : par fonction manquante → niveau d'intrusion 1/2/3/4]</code></p>
+</blockquote>
+<p>→ Colonne « Niveau d'intrusion pour monter d'un cran » de la grille <strong>B3</strong>.</p>
+<hr>
+<h2>ÉTAPE 6 — CHIFFRAGE DES GAINS <strong>EN FOURCHETTE</strong></h2>
+<p><strong>Objet</strong> : estimer le bénéfice attendu <strong>sans jamais donner de valeur sèche</strong>.</p>
+<blockquote>
+<p><strong>[OBLIGATION de prudence]</strong> Tout gain est exprimé <strong>en fourchette</strong> (ex. « entre X et Y % », « de A à B € / an »), <strong>assorti de ses hypothèses</strong>. Un chiffre unique laisse croire à un engagement de résultat — <strong>interdit</strong> : les facteurs de la norme sont <strong>informatifs</strong> (Annexes A/C). cf. clause B4 « garantie d'économies ».</p>
+</blockquote>
+<p>Pour chaque action chiffrée, documenter au minimum :</p>
+<table>
+<thead>
+<tr>
+<th>Élément à tracer</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fourchette de gain</strong></td>
+<td><code>[À COMPLÉTER : entre ___ et ___ ]</code> (énergie, € ou point de classe)</td>
+</tr>
+<tr>
+<td><strong>Hypothèses</strong></td>
+<td>méthode (Method 1/2), type de bâtiment déclaré, périmètre, prix de l'énergie retenu, profil d'occupation… <code>[À COMPLÉTER]</code></td>
+</tr>
+<tr>
+<td><strong>Source du facteur</strong></td>
+<td>renvoi explicite à l'<strong>Annexe informative</strong> mobilisée + rappel « informatif, non opposable ».</td>
+</tr>
+<tr>
+<td><strong>Sensibilité</strong></td>
+<td>ce qui ferait sortir le résultat de la fourchette (occupation, météo, prix énergie).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[INFORMATIF]</strong> Quand un <strong>engagement chiffré</strong> est demandé → la fourchette issue des facteurs <strong>ne suffit pas</strong> : basculer en <strong>Method 1 / simulation</strong> (cf. 3.1) <strong>et</strong> rappeler la clause de non-garantie (pièce <strong>B4</strong>).</p>
+</blockquote>
+<p>→ Section « Plan de mise en conformité » / chiffrage du livrable <strong>B2</strong> (§7), exprimée en fourchettes.</p>
+<hr>
+<h2>SYNTHÈSE — CE QUE LA MÉTHODE GARANTIT (ET CE QU'ELLE NE GARANTIT PAS)</h2>
+<table>
+<thead>
+<tr>
+<th>✅ La méthode produit</th>
+<th>❌ La méthode <strong>ne</strong> produit <strong>pas</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Un <strong>avis de conformité aux fonctions</strong> R. 175-3, motivé fonction par fonction.</td>
+<td>Une <strong>attestation de conformité réglementaire</strong> (cf. clause B4).</td>
+</tr>
+<tr>
+<td>Une <strong>classe</strong> A/B/C/D <strong>par fonction + globale</strong> (maillon faible), méthode tracée.</td>
+<td>Une <strong>certification eu.bac System</strong> (tierce, payante, distincte).</td>
+</tr>
+<tr>
+<td>Une <strong>cotation d'effectivité</strong> à 3 états, preuves à l'appui.</td>
+<td>Une <strong>garantie d'économies</strong> (rating relatif, pas absolu — cf. B4).</td>
+</tr>
+<tr>
+<td>Une <strong>priorisation</strong> intrusion × maillon faible et un <strong>chiffrage en fourchette</strong>.</td>
+<td>Un <strong>chiffre de gain sec</strong> opposable.</td>
+</tr>
+<tr>
+<td>Une posture <strong>indépendante</strong> (0 matériel, 0 commission).</td>
+<td>Une préconisation de <strong>marque/fabricant</strong>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Rappels à imprimer en pied de chaque livrable :</strong> classe <strong>≠</strong> conformité réglementaire · classe <strong>≠</strong> vendor-neutral (un système fermé peut être classe A) · un % de gain <strong>n'est jamais</strong> un engagement de résultat · cette auto-évaluation <strong>n'est pas</strong> une certification eu.bac.</p>
+</blockquote>
+<hr>
+<p><em>Pièce B1 du dossier « Audit &amp; AMO classification GTB » — NeoGTB. Les exigences normatives de classe par fonction sont laissées en</em> <strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong> <em>dans la pièce B3.</em></p>
+</div>
+<div class="piece-sep" id="piece-b2">
+<div class="piece-ref">B2</div>
+<div class="piece-name">Exemple d'audit de conformité — décret BACS</div>
+<div class="rule"></div>
+</div>
+<div class="page">
+<h1>Exemple d'audit de conformité — Décret BACS</h1>
+<blockquote>
+<p><strong>Nature du document</strong> : modèle de rapport d'audit, illustré sur un bâtiment <strong>fictif mais réaliste</strong>.<br>
+Toutes les données du bâtiment (surfaces, puissances, équipements) sont <strong>fictives</strong> et servent<br>
+uniquement à dérouler la méthode. <strong>Les faits réglementaires, eux, sont vérifiés et sourcés</strong><br>
+(voir § 9). Date de rédaction : 2026-06-15.</p>
+<p>Usage NeoGTB : trame réutilisable pour un livrable d'audit « conformité décret BACS »,<br>
+en cohérence avec la posture <em>tiers de confiance indépendant</em> (0 matériel vendu, 0 commission).</p>
+<p><strong>Statuts employés dans ce rapport</strong> — pour distinguer ce qui est opposable de ce qui ne l'est pas :<br>
+<strong>[OBLIGATION]</strong> = exigence réglementaire (décret/arrêté, sourcée) · <strong>[RECOMMANDATION]</strong> = bonne<br>
+pratique ou cible conseillée (ex. classe B, financement CEE) · <strong>[INFORMATIF]</strong> = repère non<br>
+réglementaire (ex. classe NF EN ISO 52120-1 : elle mesure le niveau fonctionnel de la GTB et<br>
+<strong>ne vaut pas</strong> conformité au décret, qui se juge sur les fonctions de l'article R. 175-3).</p>
+<p><strong>Pièces liées</strong> : socle des sources [C0](cctp/C0_sources-et-statuts.md) · méthodologie d'audit [B1](cctp/B1_methodologie-audit-classification.md).</p>
+</blockquote>
+<hr>
+<h2>1. Contexte (exemple fictif)</h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur (exemple)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bâtiment</td>
+<td>Immeuble de bureaux « Le Hêtre », R+4</td>
+</tr>
+<tr>
+<td>Surface</td>
+<td>4 200 m² SU, tertiaire (usage bureaux)</td>
+</tr>
+<tr>
+<td>Localisation</td>
+<td>Zone d'activité, France métropolitaine</td>
+</tr>
+<tr>
+<td>Maître d'ouvrage</td>
+<td>SCI propriétaire, gestion confiée à un property manager</td>
+</tr>
+<tr>
+<td>Date de demande</td>
+<td>Juin 2026</td>
+</tr>
+<tr>
+<td>Demande</td>
+<td>Vérifier l'assujettissement au décret BACS et l'écart de conformité</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Systèmes techniques en place (CVC) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Système</th>
+<th>Puissance nominale utile (exemple)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chaufferie gaz (2 chaudières)</td>
+<td>350 kW</td>
+</tr>
+<tr>
+<td>Production de froid (groupe froid)</td>
+<td>180 kW</td>
+</tr>
+<tr>
+<td>Ventilation (CTA double flux)</td>
+<td>— (intégrée au calcul d'assujettissement)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>2. Objet de l'audit</h2>
+<p>Déterminer :</p>
+<ol start="1">
+<li><strong>Si</strong> le bâtiment est assujetti au décret BACS (test de seuil).</li>
+<li><strong>À quelle échéance</strong> il doit être conforme.</li>
+<li><strong>L'écart</strong> entre le système d'automatisation existant et les exigences (fonctions + classe).</li>
+<li><strong>Le plan d'actions</strong> pour atteindre la conformité, avec priorisation.</li>
+<li><strong>Le volet inspection périodique</strong> (obligation récurrente, pas seulement à l'installation).</li>
+</ol>
+<hr>
+<h2>3. Rappel réglementaire (faits vérifiés — sources § 9)</h2>
+<ul>
+<li><strong>Décret BACS</strong> = <em>Building Automation and Control Systems</em>.</li>
+<li>Texte fondateur : <strong>décret n° 2020-887 du 20 juillet 2020</strong> (publié au JO le 21 juillet 2020).</li>
+<li>Renforcé par le <strong>décret n° 2023-259 du 7 avril 2023</strong> (abaissement du seuil à 70 kW).</li>
+<li>Échéances modifiées par le <strong>décret n° 2025-1343 du 26 décembre 2025</strong> (report de la tranche 70–290 kW à 2030).</li>
+<li>Codifié aux <strong>articles R. 175-1 à R. 175-6 du Code de la construction et de l'habitation (CCH)</strong>.</li>
+</ul>
+<p><strong>Champ d'application</strong> : bâtiments <strong>tertiaires</strong> équipés de systèmes de <strong>chauffage et/ou de climatisation</strong> (combinés ou non avec la ventilation), dont la <strong>puissance nominale utile</strong> dépasse un seuil.</p>
+<p><strong>Seuils et échéances de mise en conformité (bâtiments existants) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Puissance des systèmes (chauffage / clim. ± ventilation)</th>
+<th>Échéance de conformité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&gt; 290 kW</strong></td>
+<td><strong>1ᵉʳ janvier 2025</strong></td>
+</tr>
+<tr>
+<td><strong>&gt; 70 kW</strong> (tranche 70–290 kW)</td>
+<td><strong>1ᵉʳ janvier 2030</strong> (reporté ; était 2027)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Le seuil a été <strong>abaissé de 290 kW à 70 kW</strong> par le décret 2023-259 : c'est ce qui fait entrer<br>
+des dizaines de milliers de bâtiments supplémentaires dans le périmètre.<br>
+⚠️ <strong>Report officiel</strong> : le <strong>décret n° 2025-1343 du 26 décembre 2025</strong> repousse l'échéance de la<br>
+tranche 70–290 kW (bâtiments existants) du 1ᵉʳ janvier <strong>2027</strong> au 1ᵉʳ janvier <strong>2030</strong>.</p>
+</blockquote>
+<p><strong>Bâtiments neufs</strong> : permis de construire déposé ≥ 1 an après publication du décret → obligation d'installer un BACS, <strong>sauf</strong> étude démontrant un retour sur investissement &gt; 10 ans. Pour les bâtiments <strong>neufs</strong> dont la puissance CVC est <strong>&gt; 70 kW</strong>, l'obligation s'applique depuis le <strong>8 avril 2024</strong>.</p>
+<p><strong>Classe de GTB — précision importante</strong> : le décret BACS impose des <strong>fonctions</strong> (art. R. 175-3 du CCH), <strong>pas une classe</strong> au sens de la <strong>NF EN ISO 52120-1:2022</strong> (qui remplace l'ancienne EN 15232). La conformité se juge sur la <strong>présence et l'effectivité des fonctions</strong>, jamais sur la seule classe ISO. En pratique, ces fonctions correspondent au niveau <strong>classe B</strong>, qui est aussi le niveau financé par la fiche CEE <strong>BAT-TH-116</strong> : c'est la cible recommandée. La <strong>classe A</strong> est une GTB haute performance (condition de certaines primes CEE).</p>
+<hr>
+<h2>4. Étape 1 — Test d'assujettissement (exemple)</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Réponse (exemple)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bâtiment à usage tertiaire ?</td>
+<td>✅ Oui (bureaux)</td>
+</tr>
+<tr>
+<td>Équipé de chauffage et/ou climatisation ?</td>
+<td>✅ Oui (chaud + froid)</td>
+</tr>
+<tr>
+<td>Puissance cumulée des systèmes concernés</td>
+<td><strong>350 + 180 = 530 kW</strong></td>
+</tr>
+<tr>
+<td>Seuil franchi</td>
+<td><strong>&gt; 290 kW</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>→ Conclusion : bâtiment assujetti, échéance applicable = 1ᵉʳ janvier 2025 (déjà dépassée).</strong> Le bâtiment est donc <strong>en situation de non-conformité de calendrier</strong> : mise en conformité à engager sans délai.</p>
+<blockquote>
+<p>Note de méthode : si le cumul avait été, par exemple, de 120 kW, l'assujettissement tiendrait toujours<br>
+(&gt; 70 kW) mais l'échéance serait le <strong>1ᵉʳ janvier 2030</strong> (report du décret 2025-1343).</p>
+</blockquote>
+<hr>
+<h2>5. Étape 2 — État des lieux du système existant (exemple)</h2>
+<table>
+<thead>
+<tr>
+<th>Point examiné</th>
+<th>Constat (exemple)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GTB / régulation en place</td>
+<td>Régulateurs de chaufferie autonomes + horloges ; pas de superviseur centralisé</td>
+</tr>
+<tr>
+<td>Comptage énergétique</td>
+<td>Compteur gaz général uniquement ; aucun sous-comptage par usage</td>
+</tr>
+<tr>
+<td>Suivi des consommations</td>
+<td>Relevés manuels mensuels, pas d'historisation continue</td>
+</tr>
+<tr>
+<td>Interopérabilité</td>
+<td>Aucune (systèmes îlotés, protocoles propriétaires non interconnectés)</td>
+</tr>
+<tr>
+<td>Alertes / détection de dérive</td>
+<td>Inexistantes</td>
+</tr>
+<tr>
+<td>Classe NF EN ISO 52120-1 estimée</td>
+<td><strong>Classe C / D</strong> (fonctions de base, pas d'analyse continue)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>6. Étape 3 — Grille de conformité (fonctions exigées par R. 175-3)</h2>
+<blockquote>
+<p><strong>Texte de référence (art. R. 175-3 CCH, source <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043819541">Légifrance</a>, version en vigueur depuis le 9 avril 2023)</strong> :</p>
+<p>Les systèmes d'automatisation et de contrôle des bâtiments mentionnés à l'article R. 175-2 :</p>
+<p>1° « Suivent, enregistrent et analysent en continu, par zone fonctionnelle et à un pas de temps horaire, les données de production et de consommation énergétique des systèmes techniques du bâtiment et ajustent les systèmes techniques en conséquence. Ces données sont conservées à l'échelle mensuelle pendant cinq ans » ;<br>
+2° « Situent l'efficacité énergétique du bâtiment par rapport à des valeurs de référence, correspondant aux données d'études énergétiques ou caractéristiques de chacun des systèmes techniques ; ils détectent les pertes d'efficacité des systèmes techniques et informent l'exploitant du bâtiment des possibilités d'amélioration de l'efficacité énergétique » ;<br>
+3° « Sont interopérables avec les différents systèmes techniques du bâtiment » ;<br>
+4° « Permettent un arrêt manuel et la gestion autonome d'un ou plusieurs systèmes techniques de bâtiment ».</p>
+<p>Les systèmes techniques considérés sont ceux reliés au système d'automatisation et de contrôle dans les conditions prévues au II de l'article R. 175-2.</p>
+<p>Les données produites et archivées sont accessibles au propriétaire du système d'automatisation et de contrôle, qui en a la propriété. Ce dernier les met à disposition du gestionnaire du bâtiment, à sa demande, et transmet à chacun des exploitants des différents systèmes techniques reliés les données qui les concernent.</p>
+</blockquote>
+<p>Synthèse des principales fonctions exigées (confrontées à l'existant), alignées sur le texte légal ci-dessus :</p>
+<table>
+<thead>
+<tr>
+<th>Fonction exigée (art. R. 175-3)</th>
+<th>Existant</th>
+<th>Conforme ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1°</strong> — Suivre, enregistrer et <strong>analyser en continu</strong>, par zone fonctionnelle et à un pas de temps horaire, les données de production/consommation et <strong>ajuster</strong> les systèmes techniques</td>
+<td>Relevés manuels</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>1°</strong> (suite) — <strong>Conserver</strong> ces données à l'échelle mensuelle pendant <strong>cinq ans</strong></td>
+<td>Non</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>2°</strong> — <strong>Situer l'efficacité énergétique</strong> par rapport à des valeurs de référence, <strong>détecter les pertes d'efficacité</strong> et <strong>informer l'exploitant</strong> des possibilités d'amélioration</td>
+<td>Non</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>3°</strong> — Être <strong>interopérable</strong> avec les différents systèmes techniques du bâtiment</td>
+<td>Non</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>4°</strong> — Permettre un <strong>arrêt manuel</strong> et la <strong>gestion autonome</strong> d'un ou plusieurs systèmes techniques</td>
+<td>Partiel (horloges)</td>
+<td>⚠️</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Sur la classe — précision</strong> : « atteindre une classe A ou B » n'est <strong>pas</strong> une fonction de<br>
+l'article R. 175-3 ; ce n'est donc pas une ligne de cette grille. Le décret impose les <strong>fonctions</strong><br>
+ci-dessus. La classe (ici estimée <strong>C/D</strong>) n'est qu'un <strong>indicateur</strong> du niveau fonctionnel ; la<br>
+<strong>classe B</strong> est la traduction pratique de ces fonctions et la condition de la prime CEE (fiche BAT-TH-116).</p>
+</blockquote>
+<p><strong>Avis de conformité : NON CONFORME.</strong> La non-conformité tient à l'<strong>absence des fonctions</strong> exigées par R. 175-3 (analyse continue, conservation 5 ans, interopérabilité, alertes…), <strong>pas</strong> au niveau de classe : le bâtiment dispose d'une régulation locale mais pas d'un système d'automatisation et de contrôle au sens du décret.</p>
+<hr>
+<h2>7. Étape 4 — Plan de mise en conformité (exemple)</h2>
+<table>
+<thead>
+<tr>
+<th>Priorité</th>
+<th>Action</th>
+<th>Objectif visé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>Déployer un <strong>superviseur GTB</strong> central interopérable (protocole ouvert : BACnet/Modbus/KNX)</td>
+<td>Interopérabilité + pilotage</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>Mettre en place le <strong>sous-comptage</strong> par usage (chaud, froid, ventilation, élec.)</td>
+<td>Suivi continu R. 175-3</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Historisation + tableau de bord avec <strong>détection automatique de dérives</strong> et alertes</td>
+<td>Analyse + alertes</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Régulation automatique des systèmes CVC (programmation, optimisation)</td>
+<td>Montée en <strong>classe B</strong></td>
+</tr>
+<tr>
+<td>P3</td>
+<td>Documentation, analyse fonctionnelle, formation de l'exploitant</td>
+<td>Pré-requis inspection</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cible recommandée</strong> : le niveau <strong>classe B</strong> NF EN ISO 52120-1:2022 — c'est le niveau qui permet de remplir les fonctions R. 175-3 et qui est financé par les CEE (la conformité reste jugée sur les fonctions, pas sur la classe) ; la classe A étant un sur-investissement à arbitrer selon le ROI.</p>
+<blockquote>
+<p>Posture NeoGTB : ce plan est <strong>neutre</strong> (aucun fabricant imposé). Le cahier des charges et le<br>
+comparatif de solutions se font côté maître d'ouvrage — voir l'offre « Cadrage » et les outils<br>
+<code>/comparateur</code> et <code>/audit</code>.</p>
+</blockquote>
+<hr>
+<h2>8. Étape 5 — Volet inspection périodique (art. R. 175-5-1)</h2>
+<p>Obligation <strong>récurrente</strong>, distincte de l'installation :</p>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Exigence vérifiée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Périodicité</td>
+<td><strong>Tous les 5 ans</strong> (ramenée à <strong>2 ans</strong> après une installation ou un remplacement)</td>
+</tr>
+<tr>
+<td>Inspecteur</td>
+<td><strong>Tiers indépendant et compétent</strong> (pas le fabricant du système)</td>
+</tr>
+<tr>
+<td>Contenu</td>
+<td>Analyse fonctionnelle (1ʳᵉ inspection), vérification du bon fonctionnement, évaluation du respect de R. 175-3, évaluation du paramétrage vs usage réel, recommandations</td>
+</tr>
+<tr>
+<td>Conservation du rapport</td>
+<td><strong>10 ans</strong> par le propriétaire</td>
+</tr>
+<tr>
+<td>Obligation annexe</td>
+<td>Le propriétaire veille à ce que <strong>l'exploitant soit formé</strong> au fonctionnement du système</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ [À VÉRIFIER sur l'arrêté du 7 avril 2023 et l'art. R. 175-5-1 — source primaire] : les durées ci-dessus (périodicité au plus tous les <strong>5 ans</strong>, ramenée à <strong>2 ans</strong> après installation/remplacement, rapport conservé <strong>10 ans</strong>) ne sont à ce stade sourcées que sur une source secondaire.</p>
+<p>L'indépendance vis-à-vis du fabricant fait de l'inspection périodique un terrain naturel pour NeoGTB.</p>
+</blockquote>
+<hr>
+<h2>9. Sources (vérifiées le 2026-06-15)</h2>
+<ul>
+<li><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047422489">Légifrance — Décret n° 2023-259 du 7 avril 2023</a> — texte modificatif, seuil 70 kW, échéances, articles R. 175-1 à R. 175-6.</li>
+<li><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053175245">Légifrance — Décret n° 2025-1343 du 26 décembre 2025</a> — report de l'échéance 70–290 kW (existants) de 2027 à 2030.</li>
+<li><a href="https://rt-re-batiment.developpement-durable.gouv.fr/presentation-et-guide-du-decret-bacs-a712.html">Portail réglementaire bâtiment (developpement-durable.gouv.fr) — Présentation et guide du décret BACS</a> — guide officiel.</li>
+<li><a href="https://www.qse-veille.fr/veille-reglementaire-environnement/decret-bacs">Veille réglementaire QSE — Décret BACS</a> — détail inspection périodique (R. 175-5-1), conservation 10 ans, exemptions.</li>
+<li><a href="https://cegibat.grdf.fr/reglementation/energetique/decret-bacs-obligations-batiments-tertiaires">Cegibat (GRDF) — Décret BACS, obligations des bâtiments tertiaires</a> — classe A ou B, NF EN ISO 52120-1:2022.</li>
+<li><a href="https://serce.fr/wp-content/uploads/doc_premium/Decret-2023-259-du-7-avril-2023-relatif-aux-systemes-dautomatisation-et-de-controle-des-batiments-tertiaires-BACS.pdf">SERCE — Décret 2023-259 (PDF)</a> — reproduction du décret.</li>
+</ul>
+<blockquote>
+<p><strong>À confirmer / approfondir avant usage client</strong> : la rédaction <em>littérale</em> de l'article R. 175-3<br>
+(liste exacte des fonctions) gagnera à être recopiée depuis Légifrance plutôt que paraphrasée.<br>
+Les exemptions (démolition/désaffectation à court terme, non-rentabilité ROI &gt; 10 ans,<br>
+incompatibilité technique) doivent être vérifiées au cas par cas avec le texte codifié.</p>
+</blockquote>
+<hr>
+<h2>10. Cas d'exemption (à vérifier au cas par cas)</h2>
+<p>Le décret prévoit des situations de non-application / exemption, notamment :</p>
+<ul>
+<li>bâtiment voué à la <strong>démolition</strong> ou à la <strong>désaffectation à court terme</strong> ;</li>
+<li><strong>non-rentabilité</strong> de l'installation (analyse coûts-bénéfices démontrant un ROI &gt; 10 ans) ;</li>
+<li><strong>incompatibilité technique ou fonctionnelle</strong> avérée avec les systèmes existants.</li>
+</ul>
+<p>Chaque exemption doit être <strong>justifiée et documentée</strong> par le propriétaire.</p>
+</div>
+<div class="piece-sep" id="piece-b3">
+<div class="piece-ref">B3</div>
+<div class="piece-name">Grille de fonctions NF EN ISO 52120-1</div>
+<div class="rule"></div>
+</div>
+<div class="page">
+<h1>B3 — GRILLE DE CLASSEMENT FONCTIONNEL NF EN ISO 52120-1:2022</h1>
+<h2>Squelette de grille par les 7 sections de fonctions — pièce d'audit (à remplir avec le texte normatif en Phase 2)</h2>
+<blockquote>
+<p><strong>Nature du document</strong> : <strong>squelette</strong> de grille de classement fonctionnel, pièce <strong>B3</strong> du dossier « Audit &amp; AMO classification GTB » de NeoGTB.<br>
+Cette grille <strong>opérationnalise</strong> la méthode décrite en pièce <strong>B1</strong> ([<code>B1_methodologie-audit-classification.md</code>](./B1_methodologie-audit-classification.md)) et alimente le livrable <strong>B2</strong> ([<code>docs/exemple-audit-conformite-bacs.md</code>](../exemple-audit-conformite-bacs.md)).<br>
+⚠️ <strong>Les définitions normatives de classe par fonction NE SONT PAS remplies ici</strong> : elles exigent le <strong>texte AFNOR</strong>. Chaque section porte le placeholder <strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong>. Les lignes ci-dessous sont des <strong>exemples génériques</strong> illustrant le format, <strong>pas</strong> des définitions réelles.</p>
+<p>📌 <strong>NOTE IMPORTANTE — nature de la grille</strong> : cette grille est une <strong>auto-évaluation selon la norme NF EN ISO 52120-1:2022</strong>. Ce <strong>n'est PAS une certification eu.bac System</strong> (référentiel <strong>tiers, payant, distinct</strong>). Aucun « score eu.bac » n'est calculé ici.</p>
+</blockquote>
+<hr>
+<h2>LÉGENDE DES STATUTS</h2>
+<table>
+<thead>
+<tr>
+<th>Marqueur</th>
+<th>Sens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>[OBLIGATION]</strong></td>
+<td>Exigence <strong>réglementaire</strong> opposable (décret R. 175-3 / R. 175-5-1), à reconfirmer sur Légifrance.</td>
+</tr>
+<tr>
+<td><strong>[RECOMMANDATION]</strong></td>
+<td>Bonne pratique NeoGTB, <strong>non obligatoire</strong> ; choix du maître d'ouvrage.</td>
+</tr>
+<tr>
+<td><strong>[CONVENTION eu.bac]</strong></td>
+<td>Relève du référentiel <strong>eu.bac System</strong> (certification tierce, payante, distincte). <strong>Non</strong> utilisé pour scorer cette grille.</td>
+</tr>
+<tr>
+<td><strong>[INFORMATIF]</strong></td>
+<td>Aide à la lecture, sans portée contraignante.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>RÈGLES DE LECTURE DE LA GRILLE <strong>[INFORMATIF]</strong></h2>
+<ul>
+<li><strong>4 classes</strong> : <strong>A</strong> (la plus performante) · <strong>B</strong> · <strong>C</strong> · <strong>D</strong>. Source : NF EN ISO 52120-1:2022, <strong>Annexe B <em>normative</strong></em>.</li>
+<li><strong>Classe globale = maillon faible</strong> : la classe de l'installation est la <strong>plus faible</strong> des fonctions effectivement installées. <strong>[OBLIGATION normative]</strong></li>
+<li><strong>Cotation à 3 états d'effectivité</strong> (cf. B1 §Étape 4) — <strong>seul l'état « prouvée » est crédité</strong> :
+<ul>
+<li><strong>absente</strong> → la fonction n'existe pas ;</li>
+<li><strong>installée</strong> → présente mais <strong>non prouvée</strong> (réserve) ;</li>
+<li><strong>prouvée</strong> → démontrée par la <strong>donnée</strong> (trend, test de forçage, alarme, capture de paramétrage).</li>
+</ul></li>
+<li><strong>Classe ≠ conformité</strong> (la conformité = fonctions R. 175-3) · <strong>Classe ≠ vendor-neutral</strong> (un système <strong>fermé</strong> peut être <strong>classe A</strong>).</li>
+<li><strong>Les facteurs de gain de la norme sont <em>informatifs</strong></em> (Annexes A/C) → <strong>aucun % n'est un engagement de résultat</strong>.</li>
+</ul>
+<h3>Colonnes de chaque tableau de section</h3>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Contenu attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fonction</strong></td>
+<td>Libellé de la fonction (à reprendre du texte normatif Annexe B en Phase 2).</td>
+</tr>
+<tr>
+<td><strong>Classe constatée (D/C/B/A)</strong></td>
+<td>Niveau observé pour cette fonction. <code>[À COMPLÉTER]</code></td>
+</tr>
+<tr>
+<td><strong>État d'effectivité</strong></td>
+<td><strong>absente</strong> / <strong>installée</strong> (non prouvée) / <strong>prouvée</strong> (par la donnée).</td>
+</tr>
+<tr>
+<td><strong>Preuve</strong></td>
+<td>Élément probant : trend, PV de test de forçage, alarme remontée, capture de paramétrage. <code>[À COMPLÉTER]</code></td>
+</tr>
+<tr>
+<td><strong>Niveau d'intrusion pour monter d'un cran</strong></td>
+<td><strong>1</strong> paramétrage logiciel · <strong>2</strong> ajout terrain léger · <strong>3</strong> câblage en site occupé · <strong>4</strong> remplacement d'équipement.</td>
+</tr>
+<tr>
+<td><strong>Commentaire</strong></td>
+<td>Réserves, hypothèses, renvoi B1/B2.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[OBLIGATION méthodologique]</strong> Les <strong>exclusions</strong> (équipement absent ou part &lt; 5 %) sont <strong>tracées et justifiées</strong> (cf. B1 §3.5). Une exclusion <strong>réduit le périmètre</strong> mais <strong>ne rachète pas un maillon faible</strong>. Renseigner le tableau d'exclusions en fin de pièce.</p>
+</blockquote>
+<hr>
+<h2>SECTION 1 — CHAUFFAGE</h2>
+<blockquote>
+<p><strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong><br>
+<em>Reporter ici les fonctions de chauffage et leurs définitions de classe A/B/C/D telles que formulées dans l'Annexe B normative. Les lignes ci-dessous sont des EXEMPLES de format, non des définitions normatives.</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Classe constatée (D/C/B/A)</th>
+<th>État d'effectivité (absente / installée / prouvée)</th>
+<th>Preuve</th>
+<th>Niveau d'intrusion pour monter d'un cran</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(exemple) Régulation d'émission par pièce/zone</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Régulation de température de départ (loi d'eau)</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Programmation horaire / intermittence</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>SECTION 2 — EAU CHAUDE SANITAIRE (ECS)</h2>
+<blockquote>
+<p><strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong><br>
+<em>Reporter ici les fonctions ECS et leurs définitions de classe. Exemples de format ci-dessous.</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Classe constatée (D/C/B/A)</th>
+<th>État d'effectivité (absente / installée / prouvée)</th>
+<th>Preuve</th>
+<th>Niveau d'intrusion pour monter d'un cran</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(exemple) Régulation de température de stockage ECS</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Programmation horaire de bouclage / charge</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🔀 <strong>OPTION</strong> — supprimer cette section si le bâtiment <strong>n'a pas</strong> de production ECS (exclusion « équipement absent » à <strong>tracer</strong>, cf. tableau des exclusions).</p>
+</blockquote>
+<hr>
+<h2>SECTION 3 — REFROIDISSEMENT</h2>
+<blockquote>
+<p><strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Classe constatée (D/C/B/A)</th>
+<th>État d'effectivité (absente / installée / prouvée)</th>
+<th>Preuve</th>
+<th>Niveau d'intrusion pour monter d'un cran</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(exemple) Régulation d'émission de froid par zone</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Régulation de température d'eau glacée</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Verrouillage chaud/froid (anti-simultanéité)</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>SECTION 4 — VENTILATION / CLIMATISATION</h2>
+<blockquote>
+<p><strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Classe constatée (D/C/B/A)</th>
+<th>État d'effectivité (absente / installée / prouvée)</th>
+<th>Preuve</th>
+<th>Niveau d'intrusion pour monter d'un cran</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(exemple) Régulation du débit d'air (CAV/VAV)</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Régulation de température de soufflage</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Free-cooling / récupération de chaleur</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Régulation sur qualité d'air (CO₂/COV)</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>SECTION 5 — ÉCLAIRAGE</h2>
+<blockquote>
+<p><strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Classe constatée (D/C/B/A)</th>
+<th>État d'effectivité (absente / installée / prouvée)</th>
+<th>Preuve</th>
+<th>Niveau d'intrusion pour monter d'un cran</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(exemple) Détection de présence / absence</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Régulation sur lumière du jour (daylighting)</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>SECTION 6 — STORES (protection solaire)</h2>
+<blockquote>
+<p><strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Classe constatée (D/C/B/A)</th>
+<th>État d'effectivité (absente / installée / prouvée)</th>
+<th>Preuve</th>
+<th>Niveau d'intrusion pour monter d'un cran</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(exemple) Pilotage automatique des stores (anti-éblouissement)</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Combinaison stores × éclairage × CVC</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>exemple à adapter</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🔀 <strong>OPTION</strong> — supprimer si le bâtiment <strong>n'a pas</strong> de stores motorisés (exclusion « équipement absent » à <strong>tracer</strong>).</p>
+</blockquote>
+<hr>
+<h2>SECTION 7 — GTB / GESTION TECHNIQUE DU BÂTIMENT (TBM)</h2>
+<blockquote>
+<p><strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong><br>
+<em>Section « Technical Building Management » : fonctions transverses de supervision, détection de défauts, reporting. À confronter aux fonctions R. 175-3 (cf. B2 §6) — mais rappel : la conformité se juge sur les fonctions, pas sur la classe.</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Classe constatée (D/C/B/A)</th>
+<th>État d'effectivité (absente / installée / prouvée)</th>
+<th>Preuve</th>
+<th>Niveau d'intrusion pour monter d'un cran</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(exemple) Détection automatique de défauts/dérives + alarme</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>lien fonction R. 175-3 « alerter »</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Reporting / historisation des consommations</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>lien R. 175-3 « analyser/conserver »</em></td>
+</tr>
+<tr>
+<td><em>(exemple) Interopérabilité des systèmes techniques</em> <code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER : 1/2/3/4]</code></td>
+<td><em>lien R. 175-3 « interopérabilité »</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[INFORMATIF]</strong> Croiser cette section avec la <strong>grille de conformité B2 §6</strong> : une fonction GTB <strong>présente mais non prouvée</strong> est une <strong>réserve</strong> pour la classe <strong>ET</strong> un point d'attention pour la conformité (effectivité, art. R. 175-5-1).</p>
+</blockquote>
+<hr>
+<h2>SYNTHÈSE — CLASSE GLOBALE (MAILLON FAIBLE)</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Classe constatée de la section</th>
+<th>Crédite (état prouvé) ?</th>
+<th>Renvoi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Chauffage</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>§1</td>
+</tr>
+<tr>
+<td>2. ECS</td>
+<td><code>[À COMPLÉTER]</code> ou <em>exclue</em></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>§2</td>
+</tr>
+<tr>
+<td>3. Refroidissement</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>§3</td>
+</tr>
+<tr>
+<td>4. Ventilation / clim.</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>§4</td>
+</tr>
+<tr>
+<td>5. Éclairage</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>§5</td>
+</tr>
+<tr>
+<td>6. Stores</td>
+<td><code>[À COMPLÉTER]</code> ou <em>exclue</em></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>§6</td>
+</tr>
+<tr>
+<td>7. GTB / TBM</td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>§7</td>
+</tr>
+<tr>
+<td><strong>CLASSE GLOBALE = la plus faible des fonctions installées</strong></td>
+<td><strong><code>[À COMPLÉTER]</code></strong></td>
+<td>—</td>
+<td>cf. B1 §3.4</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>TABLEAU DES EXCLUSIONS (à tracer et justifier) <strong>[OBLIGATION méthodologique]</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Fonction / section exclue</th>
+<th>Motif (équipement absent / part &lt; 5 %)</th>
+<th>Preuve du motif</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td><code>[À COMPLÉTER]</code></td>
+<td>réduit le périmètre — <strong>ne rachète pas</strong> un maillon faible</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[OBLIGATION méthodologique]</strong> Rappel B1 §3.5 : une exclusion <strong>réduit le périmètre pertinent</strong> ; elle <strong>ne remonte jamais</strong> la classe globale en masquant une fonction faible.</p>
+</blockquote>
+<hr>
+<h2>MÉTHODE &amp; ENGAGEMENTS — RAPPELS DE PIED DE GRILLE</h2>
+<table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Méthode de classification retenue (Method 1 détaillée / Method 2 facteurs) — cf. B1 §3.1</td>
+<td><code>[À COMPLÉTER : Method 1 / Method 2 — motif]</code></td>
+</tr>
+<tr>
+<td>Type de bâtiment déclaré (usage énergétique majoritaire)</td>
+<td><code>[À COMPLÉTER]</code></td>
+</tr>
+<tr>
+<td>Les <strong>facteurs</strong> de gain (Annexes A/C) sont <strong>informatifs</strong> → <strong>aucun engagement de résultat</strong></td>
+<td><strong>[INFORMATIF]</strong></td>
+</tr>
+<tr>
+<td>Cette grille est une <strong>auto-évaluation selon la norme</strong>, <strong>PAS une certification eu.bac System</strong></td>
+<td><strong>[CONVENTION eu.bac]</strong></td>
+</tr>
+<tr>
+<td><strong>Classe ≠ conformité</strong> (R. 175-3) · <strong>Classe ≠ vendor-neutral</strong> (un système fermé peut être classe A)</td>
+<td><strong>[OBLIGATION] / [INFORMATIF]</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Pièce B3 du dossier « Audit &amp; AMO classification GTB » — NeoGTB. Toutes les définitions normatives de classe par fonction restent en</em> <strong>[À COMPLÉTER avec NF EN ISO 52120-1:2022 — Annexe B normative, Phase 2]</strong> <em>: ne rien y inscrire sans le texte AFNOR.</em></p>
+</div>
+<div class="piece-sep" id="piece-b4">
+<div class="piece-ref">B4</div>
+<div class="piece-name">Clause de responsabilité &amp; de périmètre</div>
+<div class="rule"></div>
+</div>
+<div class="page">
+<h1>B4 — CLAUSE DE RESPONSABILITÉ &amp; DE PÉRIMÈTRE DE L'AUDIT</h1>
+<h2>Projet de clause à insérer dans le rapport d'audit « classification &amp; conformité GTB »</h2>
+<blockquote>
+<p>🛑 <strong>PROJET DE CLAUSE — À VALIDER JURIDIQUEMENT.</strong><br>
+Ce texte est un <strong>brouillon rédigé par NeoGTB</strong>, <strong>non revu par un avocat</strong>. Il <strong>ne doit pas</strong> être diffusé en l'état dans un rapport client. <strong>Faire viser par un conseil juridique</strong> (responsabilité civile professionnelle, droit de la consommation/B2B, droit de la preuve) avant tout usage.<br>
+Pièce <strong>B4</strong> du dossier « Audit &amp; AMO classification GTB » de NeoGTB. Elle complète la méthode (<strong>B1</strong> → [<code>B1_methodologie-audit-classification.md</code>](./B1_methodologie-audit-classification.md)), la grille (<strong>B3</strong> → [<code>B3_grille-fonctions-52120.md</code>](./B3_grille-fonctions-52120.md)) et le livrable type (<strong>B2</strong> → [<code>docs/exemple-audit-conformite-bacs.md</code>](../exemple-audit-conformite-bacs.md)).</p>
+</blockquote>
+<hr>
+<h2>LÉGENDE DES STATUTS</h2>
+<table>
+<thead>
+<tr>
+<th>Marqueur</th>
+<th>Sens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>[OBLIGATION]</strong></td>
+<td>Renvoie à une exigence <strong>réglementaire</strong> opposable (décret R. 175-x), à reconfirmer sur Légifrance.</td>
+</tr>
+<tr>
+<td><strong>[RECOMMANDATION]</strong></td>
+<td>Formulation conseillée par NeoGTB, à arbitrer avec l'avocat.</td>
+</tr>
+<tr>
+<td><strong>[CONVENTION eu.bac]</strong></td>
+<td>Renvoie au référentiel <strong>eu.bac System</strong> (certification tierce, payante, distincte).</td>
+</tr>
+<tr>
+<td><strong>[INFORMATIF]</strong></td>
+<td>Aide à la lecture / commentaire de rédaction, <strong>hors clause</strong>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[INFORMATIF]</strong> Les paragraphes encadrés « <strong>CLAUSE</strong> » ci-dessous sont destinés à être <strong>insérés dans le rapport</strong>. Les blocs « <em>Commentaire de rédaction</em> » sont des <strong>notes internes</strong> à NeoGTB / à l'avocat, <strong>à retirer</strong> de la version client.</p>
+</blockquote>
+<hr>
+<h2>1. OBJET ET PORTÉE DU RAPPORT</h2>
+<blockquote>
+<p><strong>CLAUSE — Objet et portée.</strong> <strong>[RECOMMANDATION]</strong><br>
+Le présent rapport est un <strong>audit technique de classification fonctionnelle</strong> (selon <strong>NF EN ISO 52120-1:2022</strong>) et d'<strong>évaluation d'écart de conformité</strong> (au regard des <strong>fonctions de l'article R. 175-3 du Code de la construction et de l'habitation</strong>, dit « décret BACS »). Il a une vocation <strong>d'aide à la décision</strong>. Il <strong>ne constitue ni un acte d'ingénierie de maîtrise d'œuvre, ni une mission de contrôle technique réglementé</strong>.</p>
+</blockquote>
+<p><em>Commentaire de rédaction</em> <strong>[INFORMATIF]</strong> : aligner l'objet sur la lettre de mission / devis signé. <code>[À COMPLÉTER : référence de la lettre de mission / devis n° ___ du ___]</code></p>
+<hr>
+<h2>2. ÉLÉMENTS COMMUNIQUÉS &amp; DATE D'ARRÊTÉ DES CONSTATS</h2>
+<blockquote>
+<p><strong>CLAUSE — Base documentaire et date.</strong> <strong>[RECOMMANDATION]</strong><br>
+Les constats reposent sur les <strong>éléments communiqués par le maître d'ouvrage / l'exploitant</strong> (plans, CCTP d'installation, fiches techniques, accès au superviseur, exports de données) et sur les <strong>observations réalisées sur site</strong> à la <strong>date du <code>[À COMPLÉTER : date(s) de visite]</code></strong>. Le rapport décrit une <strong>situation à cette date</strong> ; il <strong>ne préjuge pas</strong> des évolutions ultérieures de l'installation, de son paramétrage ou de son usage. L'<strong>exactitude et l'exhaustivité</strong> des éléments transmis relèvent de leur émetteur ; NeoGTB <strong>n'en garantit pas</strong> la véracité.</p>
+</blockquote>
+<p><em>Commentaire de rédaction</em> <strong>[INFORMATIF]</strong> : lister en annexe les pièces reçues + réserves d'accès (zones non visitées, données indisponibles).</p>
+<hr>
+<h2>3. CE QUE LE RAPPORT N'EST PAS (limites de portée) — point clé</h2>
+<blockquote>
+<p><strong>CLAUSE — Ce que le rapport ne vaut pas.</strong> <strong>[OBLIGATION / RECOMMANDATION]</strong></p>
+<ol start="1">
+<li><strong>Il ne vaut pas attestation de conformité réglementaire.</strong> Le rapport <strong>constate un écart</strong> aux fonctions de l'article R. 175-3 CCH ; il <strong>n'atteste pas</strong> la conformité du bâtiment et <strong>ne se substitue pas</strong> à l'<strong>inspection périodique</strong> réalisée dans le cadre de l'<strong>article R. 175-5-1</strong> ni à un quelconque contrôle officiel. <strong>[OBLIGATION]</strong></li>
+<li><strong>La classe NF EN ISO 52120-1 n'est pas un critère de conformité.</strong> La conformité au décret se juge <strong>sur les fonctions</strong>, <strong>jamais</strong> sur la classe (A/B/C/D). Une classe élevée <strong>n'emporte pas</strong> conformité ; une non-conformité <strong>ne se déduit pas</strong> d'une classe basse. <strong>[OBLIGATION]</strong></li>
+<li><strong>Il ne garantit aucune économie.</strong> Les niveaux de gain éventuellement cités sont issus de <strong>facteurs <em>informatifs</strong></em> (Annexes A et C de la norme, <strong>non normatives</strong>) et sont exprimés <strong>en fourchette</strong> ; ils constituent un <strong>classement relatif</strong>, <strong>non une valeur absolue garantie</strong>. Les économies réelles dépendent de l'occupation, de la météo, du prix de l'énergie et de l'exploitation. <strong>[RECOMMANDATION]</strong></li>
+<li><strong>Ce n'est pas une certification eu.bac System.</strong> L'évaluation est une <strong>auto-évaluation argumentée selon la norme</strong> ; elle <strong>ne constitue pas</strong> la certification tierce <strong>eu.bac System</strong>, qui est <strong>payante et distincte</strong> et délivrée par un organisme habilité. <strong>[CONVENTION eu.bac]</strong></li>
+</ol>
+</blockquote>
+<p><em>Commentaire de rédaction</em> <strong>[INFORMATIF]</strong> : le point 1 (attestation) et le point 4 (eu.bac) sont les deux risques de <strong>requalification</strong> les plus sensibles → priorité de relecture avocat.</p>
+<hr>
+<h2>4. PÉRIMÈTRE EXAMINÉ</h2>
+<blockquote>
+<p><strong>CLAUSE — Périmètre.</strong> <strong>[RECOMMANDATION]</strong><br>
+Le périmètre examiné est : <code>[À COMPLÉTER : bâtiment(s), zones, lots techniques (chauffage, ECS, refroidissement, ventilation/clim, éclairage, stores, GTB/TBM)]</code>.<br>
+Sont <strong>exclues</strong> du périmètre les fonctions / zones listées au <strong>tableau des exclusions</strong> (équipement absent ou part &lt; 5 %), <strong>chacune tracée et justifiée</strong>. Une exclusion <strong>réduit le périmètre pertinent</strong> : elle <strong>ne compense pas</strong> et <strong>ne « rachète » pas</strong> une fonction restée au niveau le plus faible (« maillon faible »).</p>
+</blockquote>
+<p><em>Commentaire de rédaction</em> <strong>[INFORMATIF]</strong> : renvoyer au <strong>tableau des exclusions de la pièce B3</strong> et le joindre en annexe.</p>
+<hr>
+<h2>5. LIMITES DE LA MÉTHODE DES FACTEURS (Method 2)</h2>
+<blockquote>
+<p><strong>CLAUSE — Limites méthodologiques.</strong> <strong>[RECOMMANDATION]</strong><br>
+Lorsque la classification s'appuie sur la <strong>méthode des facteurs</strong> (« <strong>Method 2 – Factor based method</strong> », <strong>Clause 7</strong> de la norme), les résultats sont <strong>estimatifs</strong> : ils supposent <strong>un seul type de bâtiment déclaré</strong> (usage énergétique majoritaire) et une <strong>pondération fonctionnelle des zones</strong> (surface × temps de fonctionnement × poids de l'équipement) <strong>qui n'équivaut pas</strong> à une pondération par l'énergie réellement consommée. Pour tout <strong>engagement chiffré</strong>, ou en présence d'un bâtiment <strong>déjà performant, multi-typologie ou à fort taux de vitrage</strong>, la <strong>méthode détaillée</strong> (« <strong>Method 1 – Detailed method</strong> », <strong>Clause 6</strong>) ou une <strong>simulation</strong> est requise.</p>
+</blockquote>
+<p><em>Commentaire de rédaction</em> <strong>[INFORMATIF]</strong> : indiquer dans le rapport <strong>quelle méthode</strong> a été employée et <strong>pourquoi</strong> (cf. règle d'arbitrage B1 §3.1).</p>
+<hr>
+<h2>6. RÉSERVES</h2>
+<blockquote>
+<p><strong>CLAUSE — Réserves.</strong> <strong>[RECOMMANDATION]</strong><br>
+Les fonctions constatées comme <strong>« installées mais non prouvées »</strong> (sans preuve par la donnée : trend, test de forçage, alarme, paramétrage) sont <strong>portées en réserve</strong> et <strong>non créditées</strong> dans la classe. Le rapport peut comporter d'autres réserves expresses : <code>[À COMPLÉTER : zones non accessibles, données indisponibles, équipements non testés, points à confirmer par l'exploitant…]</code>. Toute levée de réserve nécessite la <strong>production des preuves correspondantes</strong>.</p>
+</blockquote>
+<hr>
+<h2>7. INDÉPENDANCE &amp; ABSENCE DE CONFLIT D'INTÉRÊT</h2>
+<blockquote>
+<p><strong>CLAUSE — Indépendance.</strong> <strong>[RECOMMANDATION]</strong><br>
+NeoGTB intervient en <strong>tiers de confiance indépendant</strong> : <strong>aucun matériel n'est vendu</strong>, <strong>aucune commission, marge ni rétro-commission</strong> n'est perçue d'un fabricant, intégrateur ou distributeur. Les préconisations sont <strong>neutres vis-à-vis des marques et des protocoles</strong> ; le choix des solutions et des prestataires demeure celui du maître d'ouvrage.</p>
+</blockquote>
+<p><em>Commentaire de rédaction</em> <strong>[INFORMATIF]</strong> : cette clause est un <strong>actif commercial</strong> autant qu'une protection ; la conserver visible. Cohérente avec l'indépendance attendue pour l'inspection périodique R. 175-5-1 (tiers indépendant du fabricant).</p>
+<hr>
+<h2>8. UTILISATION, DIFFUSION &amp; LIMITATION DE RESPONSABILITÉ</h2>
+<blockquote>
+<p><strong>CLAUSE — Usage et responsabilité.</strong> <strong>[RECOMMANDATION — à border par l'avocat]</strong><br>
+Le rapport est établi pour le <strong>seul destinataire</strong> mentionné et pour la <strong>finalité d'aide à la décision</strong> définie dans la lettre de mission. Toute <strong>diffusion à un tiers</strong>, tout <strong>usage hors finalité</strong> (notamment comme attestation réglementaire ou support de garantie d'économies) se fait <strong>sous la seule responsabilité</strong> de son auteur et <strong>n'engage pas</strong> NeoGTB. La responsabilité de NeoGTB s'apprécie <strong>au regard d'une obligation de moyens</strong> et dans les <strong>limites prévues au contrat</strong> : <code>[À COMPLÉTER avec l'avocat : plafond de responsabilité, exclusions, articulation avec l'assurance RC professionnelle, durée de validité du rapport]</code>.</p>
+</blockquote>
+<p><em>Commentaire de rédaction</em> <strong>[INFORMATIF]</strong> : <strong>obligation de moyens</strong> (pas de résultat) à faire confirmer ; vérifier la compatibilité avec les CGV et l'attestation d'assurance RC pro.</p>
+<hr>
+<h2>9. SOURCES RÉGLEMENTAIRES &amp; NORMATIVES MOBILISÉES</h2>
+<blockquote>
+<p><strong>CLAUSE — Références.</strong> <strong>[RECOMMANDATION]</strong></p>
+<ul>
+<li><strong>Décret BACS</strong> : articles <strong>R. 175-1 à R. 175-6 CCH</strong> (fonctions : <strong>R. 175-3</strong> ; inspection périodique : <strong>R. 175-5-1</strong>). Reconfirmer la rédaction <strong>littérale</strong> sur <strong>Légifrance</strong> à la date du rapport.</li>
+<li><strong>Norme</strong> : <strong>NF EN ISO 52120-1:2022</strong> (remplace EN 15232-1:2017). <strong>Annexe B <em>normative</strong></em> (exigences minimales de fonctions) ; <strong>Annexes A et C <em>informatives</strong></em> (facteurs).</li>
+<li><strong>eu.bac System</strong> : référentiel de <strong>certification tierce</strong>, <strong>distinct</strong> de la présente auto-évaluation.</li>
+<li>Détail des textes, seuils, échéances et exemptions : cf. <strong>pièce B2 §9</strong> ([<code>docs/exemple-audit-conformite-bacs.md</code>](../exemple-audit-conformite-bacs.md)).</li>
+</ul>
+</blockquote>
+<p><em>Commentaire de rédaction</em> <strong>[INFORMATIF]</strong> : <code>[À COMPLÉTER : date de reconfirmation des sources primaires = ___]</code>.</p>
+<hr>
+<h2>CHECK-LIST AVANT DIFFUSION (interne — à retirer de la version client)</h2>
+<table>
+<thead>
+<tr>
+<th>À vérifier</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clause <strong>relue et visée par un avocat</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Mention « projet de clause » <strong>retirée</strong> de la version client</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Tous les <code>[À COMPLÉTER : …]</code> renseignés (dates, périmètre, méthode, plafond RC…)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Sources primaires (Légifrance / AFNOR) <strong>reconfirmées</strong> à la date du rapport</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Blocs « <em>Commentaire de rédaction</em> » <strong>supprimés</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Cohérence avec <strong>B1</strong> (méthode), <strong>B2</strong> (livrable), <strong>B3</strong> (grille) vérifiée</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Aucune formulation pouvant valoir <strong>attestation de conformité</strong> ou <strong>certification eu.bac</strong></td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Pièce B4 du dossier « Audit &amp; AMO classification GTB » — NeoGTB. <strong>Projet de clause — à valider juridiquement avant tout usage client.</strong></em></p>
+</div>
+<div class="piece-sep" id="piece-c0">
+<div class="piece-ref">Annexe C0</div>
+<div class="piece-name">Sources et statuts</div>
+<div class="rule"></div>
+</div>
+<div class="page">
+<h1>C0 — Sources et statuts (socle commun de la suite GTB)</h1>
+<blockquote>
+<p><strong>Rôle</strong> : pièce de référence unique de toute la suite « Consultation &amp; Audit GTB » de NeoGTB. Elle matérialise la règle <strong>zéro invention</strong> : chaque fait réglementaire ou normatif utilisé dans les autres pièces (A1–A7, B1–B4) y est référencé, daté, sourcé et qualifié par un <strong>statut</strong>. En cas de doute, c'est ce fichier qui fait foi ; toute pièce qui le contredit doit être corrigée.</p>
+<p><strong>Dernière vérification des sources</strong> : 2026-06-18.</p>
+</blockquote>
+<hr>
+<h2>1. Légende des statuts (canonique — à reprendre dans chaque pièce)</h2>
+<table>
+<thead>
+<tr>
+<th>Statut</th>
+<th>Signification</th>
+<th>Force</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>[OBLIGATION]</strong></td>
+<td>Exigence posée par un texte réglementaire opposable (décret, arrêté, code), sourcée.</td>
+<td>S'impose de plein droit.</td>
+</tr>
+<tr>
+<td><strong>[RECOMMANDATION]</strong></td>
+<td>Bonne pratique, cible conseillée ou condition de financement (ex. classe B, CEE).</td>
+<td>N'engage que si reprise au marché.</td>
+</tr>
+<tr>
+<td><strong>[CLAUSE CONTRACTUELLE]</strong></td>
+<td>Disposition qui n'a force <strong>que parce qu'elle est écrite au marché</strong> (ex. propriété des données, réversibilité).</td>
+<td>Opposable si au contrat.</td>
+</tr>
+<tr>
+<td><strong>[CONVENTION]</strong></td>
+<td>Règle d'un référentiel privé non réglementaire (ex. méthode eu.bac System, label R2S).</td>
+<td>Indicative, à attribuer correctement.</td>
+</tr>
+<tr>
+<td><strong>[INFORMATIF]</strong></td>
+<td>Repère sans valeur d'obligation ni de résultat (ex. classe NF EN ISO 52120-1, facteurs d'efficacité Annexe A).</td>
+<td>Ne vaut ni conformité ni économie garantie.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Règle d'or</strong> : ne jamais présenter un <strong>[INFORMATIF]</strong> ou une <strong>[CONVENTION]</strong> comme une <strong>[OBLIGATION]</strong>. Le cas le plus piégeux : « le décret BACS impose la classe B » — <strong>faux</strong> (voir §3.1).</p>
+</blockquote>
+<hr>
+<h2>2. Sources réglementaires françaises</h2>
+<table>
+<thead>
+<tr>
+<th>Réf.</th>
+<th>Texte</th>
+<th>Statut</th>
+<th>Confiance</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-1</td>
+<td><strong>Décret n° 2020-887 du 20 juillet 2020</strong> (décret « BACS »)</td>
+<td>[OBLIGATION]</td>
+<td>élevée</td>
+<td><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042128488/">Légifrance</a></td>
+</tr>
+<tr>
+<td>R-2</td>
+<td><strong>Décret n° 2023-259 du 7 avril 2023</strong> (abaisse le seuil à 70 kW, inspection)</td>
+<td>[OBLIGATION]</td>
+<td>élevée</td>
+<td><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047422489">Légifrance</a></td>
+</tr>
+<tr>
+<td>R-3</td>
+<td><strong>Arrêté du 7 avril 2023</strong> (inspection périodique BACS)</td>
+<td>[OBLIGATION]</td>
+<td>élevée</td>
+<td><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047422562">Légifrance</a></td>
+</tr>
+<tr>
+<td>R-4</td>
+<td><strong>Décret n° 2025-1343 du 26 décembre 2025</strong> (report tranche 70–290 kW à 2030)</td>
+<td>[OBLIGATION]</td>
+<td>élevée</td>
+<td><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053175245">Légifrance</a></td>
+</tr>
+<tr>
+<td>R-5</td>
+<td><strong>Articles R. 175-1 et s. du CCH</strong> (notamment <strong>R. 175-3</strong> fonctions, version en vigueur depuis le 9 avril 2023 — texte verbatim recopié dans A1 §5.4 et B2 ; <strong>R. 175-5-1</strong> inspection)</td>
+<td>[OBLIGATION]</td>
+<td>élevée</td>
+<td><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043819541">Légifrance R.175-3</a></td>
+</tr>
+<tr>
+<td>R-6</td>
+<td><strong>Décret n° 2019-771 du 23 juillet 2019</strong> (éco-énergie tertiaire)</td>
+<td>[OBLIGATION]</td>
+<td>élevée</td>
+<td><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000038812251">Légifrance</a></td>
+</tr>
+<tr>
+<td>R-7</td>
+<td><strong>CCP — art. R. 2111-7, R. 2111-8, R. 2111-11</strong> (spécifications fonctionnelles, « ou équivalent »)</td>
+<td>[OBLIGATION] (marché public)</td>
+<td>élevée</td>
+<td>Légifrance</td>
+</tr>
+<tr>
+<td>R-8</td>
+<td><strong>CCP — art. R. 2152-11, R. 2152-12</strong> (pondération / hiérarchisation publiée)</td>
+<td>[OBLIGATION] (marché public)</td>
+<td>élevée</td>
+<td>Légifrance</td>
+</tr>
+<tr>
+<td>R-9</td>
+<td><strong>CCAG-TIC art. 38</strong> (réversibilité ; arrêté du 30 mars 2021) — <em>inspiration des clauses de réversibilité</em></td>
+<td>[CLAUSE CONTRACTUELLE]</td>
+<td>élevée</td>
+<td>Légifrance</td>
+</tr>
+</tbody>
+</table>
+<h3>Seuils et échéances décret BACS (R-1 à R-5)</h3>
+<table>
+<thead>
+<tr>
+<th>Bâtiment</th>
+<th>Seuil puissance CVC</th>
+<th>Échéance</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Existant</td>
+<td><strong>&gt; 290 kW</strong></td>
+<td><strong>1ᵉʳ janvier 2025</strong></td>
+<td>[OBLIGATION]</td>
+</tr>
+<tr>
+<td>Existant</td>
+<td><strong>70 – 290 kW</strong></td>
+<td><strong>1ᵉʳ janvier 2030</strong> (report R-4, anciennement 2027)</td>
+<td>[OBLIGATION]</td>
+</tr>
+<tr>
+<td>Neuf</td>
+<td><strong>&gt; 70 kW</strong></td>
+<td><strong>8 avril 2024</strong></td>
+<td>[OBLIGATION]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>[À VÉRIFIER]</strong> la rédaction en vigueur sur Légifrance à la date de chaque marché (la réglementation évolue).</p>
+</blockquote>
+<hr>
+<h2>3. Sources normatives</h2>
+<h3>3.1 NF EN ISO 52120-1:2022 — point sensible</h3>
+<ul>
+<li><strong>[OBLIGATION]</strong> : le décret BACS impose des <strong>FONCTIONS</strong> (art. R. 175-3 du CCH). <em>Confiance élevée.</em></li>
+<li><strong>[RECOMMANDATION] / [INFORMATIF]</strong> : la <strong>« classe A ou B »</strong> n'est <strong>pas</strong> écrite dans le décret. C'est la <strong>lecture pratique</strong> + la <strong>condition de la prime CEE</strong> (fiche <strong>BAT-TH-116</strong>). La conformité se juge sur les <strong>fonctions</strong>, pas sur la classe. <em>Confiance élevée.</em></li>
+<li><strong>[INFORMATIF]</strong> : la norme <strong>NF EN ISO 52120-1:2022 remplace l'EN 15232-1:2017</strong>. Classes <strong>A/B/C/D</strong> ; classe globale = <strong>classe la plus faible</strong> des fonctions installées (« maillon faible »). <em>Confiance moyenne-élevée — acquérir le texte AFNOR pour usage opposable.</em></li>
+<li><strong>Méthodes (numérotation officielle)</strong> : <strong>Clause 6 « Method 1 – Detailed method »</strong>, <strong>Clause 7 « Method 2 – Factor based method »</strong>. Les <strong>facteurs d'efficacité (Annexes A et C) sont INFORMATIFS</strong> → un % de gain <strong>n'est jamais un engagement de résultat</strong> ; seule l'<strong>Annexe B (exigences minimales de fonctions) est NORMATIVE</strong>. <em>Confiance élevée (vérifié 2026-06-18).</em></li>
+<li><strong>[CONVENTION]</strong> : <strong>eu.bac System</strong> est une <strong>certification tierce payante distincte</strong> de l'auto-évaluation normative. Un audit NeoGTB est une <strong>auto-évaluation argumentée selon la norme</strong> — <strong>jamais</strong> « certifié eu.bac ». Le barème de points propre eu.bac = <strong>NON CONFIRMÉ</strong>, ne pas le citer comme certain.</li>
+</ul>
+<h3>3.2 Protocoles ouverts (à exiger par certification, sans marque)</h3>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Norme</th>
+<th>Preuve d'interopérabilité</th>
+<th>Confiance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BACnet</strong></td>
+<td>ISO 16484-5</td>
+<td>BTL Listing + PICS</td>
+<td>élevée</td>
+</tr>
+<tr>
+<td><strong>KNX</strong></td>
+<td>ISO/IEC 14543-3 + EN 50090</td>
+<td>« certifié KNX »</td>
+<td>élevée</td>
+</tr>
+<tr>
+<td><strong>Modbus</strong></td>
+<td>spéc. modbus.org</td>
+<td><strong>pas de modèle objet → mapping documenté obligatoire</strong></td>
+<td>élevée</td>
+</tr>
+<tr>
+<td><strong>DALI</strong></td>
+<td>IEC 62386</td>
+<td>DALI-2 / D4i</td>
+<td>élevée</td>
+</tr>
+<tr>
+<td><strong>M-Bus</strong></td>
+<td>EN 13757</td>
+<td>OMS</td>
+<td>élevée</td>
+</tr>
+<tr>
+<td><strong>LON</strong></td>
+<td>ISO/IEC 14908</td>
+<td>LonMark (compatibilité existant)</td>
+<td>élevée</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>4. Points NON CONFIRMÉS / à acquérir avant usage opposable (Phase 2)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Point</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rédaction littérale de l'<strong>art. R. 175-3</strong></td>
+<td>Recopier depuis Légifrance (R-5) entre guillemets.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>NF EN ISO 52120-1:2022</strong> (texte intégral, Annexe B normative, facteurs Annexe A)</td>
+<td><strong>Acquérir le texte AFNOR</strong> (≈ 200 € HT) — bloquant pour B3 et tout chiffrage opposable.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Sanctions BACS</strong></td>
+<td><strong>NON CONFIRMÉ</strong> — aucune sanction chiffrée propre au BACS. Ne rien inventer.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>CCAG applicable</strong> (Travaux vs TIC)</td>
+<td>Trancher par projet ; récapituler les dérogations au CCAP (A2).</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>eu.bac System</strong> (barème de points propre)</td>
+<td>NON CONFIRMÉ — ne pas citer ; ne pas présenter un audit comme « certifié eu.bac ».</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>« ~16 % des sites équipés » (GIMELEC)</strong>, <strong>gains « 30 %/10 % »</strong>, notation <strong>f_BAC,hc</strong></td>
+<td><strong>RETIRÉS</strong> — non sourcés / informatifs. Tout gain énergétique en <strong>fourchette</strong> + hypothèses.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>5. Règle zéro invention (rappel)</h2>
+<p>Aucune affirmation sans source vérifiable. Pas de numéro de texte, de date, de chiffre ou de seuil fabriqué. En cas de doute : <strong>[À VÉRIFIER]</strong> + source primaire, ou « NON CONFIRMÉ ». Hiérarchie : texte officiel lu &gt; doc officielle &gt; source secondaire concordante (à reconfirmer).</p>
+<hr>
+<p><em>C0 — socle de sources et statuts. Référencé par toutes les pièces de la suite. Mettre à jour la date de vérification à chaque revue.</em></p>
+</div>
+</body>
+</html>

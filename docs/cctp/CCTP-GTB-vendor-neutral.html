@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CCTP — Gestion Technique du Bâtiment (GTB/GTC) — vendor-neutral</title>
+<title>CCTP GTB multi-protocole vendor-neutral — NeoGTB</title>
 <style>
 @page { size: A4; margin: 2cm; }
 html { -webkit-text-size-adjust: 100%; }
@@ -27,6 +27,7 @@ h1 { font-size: 18pt; border-bottom: 2px solid #14304a; padding-bottom: 4px; mar
 h2 { font-size: 14pt; border-bottom: 1px solid #b8c4d0; padding-bottom: 3px; margin-top: 1.4em; }
 h3 { font-size: 12pt; margin-top: 1.1em; color: #1d4d73; }
 h4 { font-size: 11pt; margin-top: 0.9em; color: #1d4d73; }
+h5, h6 { font-size: 10.5pt; margin-top: 0.8em; color: #1d4d73; }
 p { margin: 0.5em 0; text-align: justify; }
 ul, ol { margin: 0.4em 0 0.6em 0; padding-left: 1.6em; }
 li { margin: 0.18em 0; }
@@ -39,6 +40,8 @@ code {
   padding: 0 3px;
   font-size: 0.92em;
 }
+pre { background: #eef1f4; border: 1px solid #d8dde2; border-radius: 3px; padding: 0.6em 0.8em; overflow-x: auto; page-break-inside: avoid; }
+pre code { background: none; border: 0; padding: 0; font-size: 0.88em; white-space: pre; }
 a { color: #14304a; text-decoration: none; }
 table {
   border-collapse: collapse;
@@ -46,6 +49,7 @@ table {
   margin: 0.8em 0;
   font-size: 10pt;
   page-break-inside: auto;
+  border: 1px solid #999;
 }
 th, td {
   border: 1px solid #999;
@@ -64,10 +68,12 @@ blockquote {
   padding: 0.5em 0.9em;
   page-break-inside: avoid;
 }
+blockquote blockquote { border-left-color: #7a99b5; background: #eef2f6; margin: 0.6em 0; }
 blockquote p:first-child { margin-top: 0; }
 blockquote p:last-child { margin-bottom: 0; }
 blockquote table { background: #fff; }
 strong { font-weight: 700; }
+em { font-style: italic; }
 
 /* Cover page */
 .cover {
@@ -115,13 +121,54 @@ strong { font-weight: 700; }
   font-size: 12pt;
   color: #333;
 }
+
+/* Sommaire cliquable */
+.toc {
+  page-break-after: always;
+  max-width: 19cm;
+  margin: 0 auto;
+  padding: 1cm 0;
+}
+.toc h2 { margin-top: 0; }
+.toc ol { padding-left: 1.4em; }
+.toc li { margin: 0.35em 0; font-size: 11.5pt; }
+.toc a { color: #1d4d73; }
+.toc a:hover { text-decoration: underline; }
+.toc .toc-piece { font-weight: 600; color: #14304a; }
+
+/* Séparateur de pièce */
 .doc-section { page-break-before: always; }
+.piece-sep {
+  page-break-before: always;
+  text-align: center;
+  padding: 6cm 1cm 0 1cm;
+}
+.piece-sep .piece-ref {
+  font-family: 'Cambria', 'Georgia', serif;
+  font-size: 16pt;
+  color: #2a6ca8;
+  letter-spacing: 1px;
+  margin-bottom: 0.6cm;
+}
+.piece-sep .piece-name {
+  font-family: 'Cambria', 'Georgia', serif;
+  font-size: 22pt;
+  font-weight: bold;
+  color: #14304a;
+  line-height: 1.3;
+  max-width: 16cm;
+  margin: 0 auto;
+}
+.piece-sep .rule { width: 7cm; border-top: 2px solid #2a6ca8; margin: 1.2cm auto; }
 
 @media print {
   body { padding: 0; font-size: 10.5pt; }
   .page { max-width: none; }
   a { color: #14304a; }
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
   blockquote { background: #f4f6f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  blockquote blockquote { background: #eef2f6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   th { background: #e8ecf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   tbody tr:nth-child(even) { background: #f7f9fb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   h1, h2, h3, h4 { color: #14304a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -131,12 +178,13 @@ strong { font-weight: 700; }
 <body>
 <div class="cover">
 <div class="brand">NeoGTB</div>
-<div class="doc-title">CCTP — Gestion Technique du Bâtiment (GTB/GTC)<br>Système ouvert, multi-protocole et non-discriminant</div>
+<div class="doc-title">CCTP GTB multi-protocole vendor-neutral</div>
 <div class="rule"></div>
-<div class="doc-subtitle">Modèle type vendor-neutral</div>
+<div class="doc-subtitle">Modèle imprimable — CCTP (A1) + Grille de dépouillement (A6)</div>
 <div class="date-block">Date : ______________________</div>
 </div>
-<div class="page doc-section" id="document-1">
+
+<div class="page">
 <h1>CCTP — GESTION TECHNIQUE DU BÂTIMENT (GTB/GTC)</h1>
 <h2>Système ouvert, multi-protocole et non-discriminant</h2>
 <blockquote>
@@ -401,23 +449,20 @@ strong { font-weight: 700; }
 <h3>5.4 Conformité réglementaire</h3>
 <blockquote>
 <p>🔀 OPTION — BÂTIMENT ASSUJETTI AU DÉCRET BACS (à conserver si le bâtiment dépasse les seuils — voir §13) :</p>
-<p>Le système constitue un système d'automatisation et de contrôle au sens du <strong>décret BACS</strong> et assure les fonctions de l'<strong>article R. 175-3 du CCH</strong>, notamment :</p>
-<ul>
-<li><strong>suivre, enregistrer et analyser en continu</strong>, par zone fonctionnelle et <strong>à un pas de temps horaire</strong>, les données de production et de consommation énergétique, et <strong>ajuster</strong> les systèmes techniques en conséquence ;</li>
-<li><strong>conserver</strong> ces données (à l'échelle mensuelle) pendant <strong>cinq (5) ans</strong> ;</li>
-<li><strong>situer l'efficacité énergétique</strong> du bâtiment par rapport à des <strong>valeurs de référence</strong> ;</li>
-<li><strong>détecter les pertes d'efficacité</strong> et <strong>informer l'exploitant</strong> des possibilités d'amélioration ;</li>
-<li>être <strong>interopérable</strong> avec les différents systèmes techniques ;</li>
-<li><strong>permettre l'arrêt manuel et la gestion autonome</strong> des systèmes ;</li>
-<li><strong>rendre les données accessibles</strong> au propriétaire (qui en a la propriété) et au gestionnaire.</li>
-</ul>
+<p>Le système constitue un système d'automatisation et de contrôle au sens du <strong>décret BACS</strong> et assure les fonctions de l'<strong>article R. 175-3 du CCH</strong>.</p>
+<p>Texte de l'art. R. 175-3 du CCH (source : <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043819541">Légifrance</a>, version en vigueur depuis le 9 avril 2023) :</p>
+<blockquote>
+<p>Les systèmes d'automatisation et de contrôle des bâtiments mentionnés à l'article R. 175-2 :</p>
+<p>1° « Suivent, enregistrent et analysent en continu, par zone fonctionnelle et à un pas de temps horaire, les données de production et de consommation énergétique des systèmes techniques du bâtiment et ajustent les systèmes techniques en conséquence. Ces données sont conservées à l'échelle mensuelle pendant cinq ans » ;<br>
+2° « Situent l'efficacité énergétique du bâtiment par rapport à des valeurs de référence, correspondant aux données d'études énergétiques ou caractéristiques de chacun des systèmes techniques ; ils détectent les pertes d'efficacité des systèmes techniques et informent l'exploitant du bâtiment des possibilités d'amélioration de l'efficacité énergétique » ;<br>
+3° « Sont interopérables avec les différents systèmes techniques du bâtiment » ;<br>
+4° « Permettent un arrêt manuel et la gestion autonome d'un ou plusieurs systèmes techniques de bâtiment ».</p>
+<p>Les systèmes techniques considérés sont ceux reliés au système d'automatisation et de contrôle dans les conditions prévues au II de l'article R. 175-2.</p>
+<p>Les données produites et archivées sont accessibles au propriétaire du système d'automatisation et de contrôle, qui en a la propriété. Ce dernier les met à disposition du gestionnaire du bâtiment, à sa demande, et transmet à chacun des exploitants des différents systèmes techniques reliés les données qui les concernent.</p>
+</blockquote>
 <p>Le système est <strong>inspectable</strong> : il permet la vérification documentaire et fonctionnelle prévue par l'arrêté du 7 avril 2023.</p>
 <p>⚠️ <strong>[À VÉRIFIER]</strong> — Échéances d'équipement selon la puissance nominale utile des systèmes de CVC : <strong>&gt; 290 kW → 1ᵉʳ janvier 2025</strong> ; <strong>70–290 kW → 1ᵉʳ janvier 2030</strong> (report introduit par le décret n° 2025-1343, anciennement 2027). <strong>Confirmer sur Légifrance</strong> la rédaction en vigueur à la date du marché.</p>
-</blockquote>
-<blockquote>
 <p>🔀 OPTION — BÂTIMENT ASSUJETTI AU DÉCRET TERTIAIRE : le système contribue à l'atteinte des objectifs de réduction des consommations (<strong>-40 % en 2030, -50 % en 2040, -60 % en 2050</strong> par rapport à une année de référence pleine ≥ 2010, ou niveau de consommation absolu par usage) et permet le <strong>sous-comptage</strong> et la <strong>déclaration annuelle OPERAT</strong>.</p>
-</blockquote>
-<blockquote>
 <p><strong>Avertissement</strong> : le présent CCTP ne fixe <strong>aucune sanction</strong> au titre du décret BACS — l'existence d'un régime de sanction propre au BACS n'est pas confirmée. Ne pas insérer de montant de pénalité réglementaire sans vérification.</p>
 </blockquote>
 <hr>
@@ -752,7 +797,7 @@ strong { font-weight: 700; }
 <hr>
 <p><em>Modèle CCTP GTB multi-protocole vendor-neutral — NeoGTB. Sources réglementaires et normatives vérifiées sur Légifrance, ISO/IEC, AFNOR et organismes de certification (BACnet International/BTL, KNX Association, DALI Alliance, OMS-Group). Les dates et numéros de textes doivent être reconfirmés à la date de diffusion (article 13).</em></p>
 </div>
-<div class="page doc-section" id="document-2">
+<div class="page doc-section">
 <h1>GRILLE DE DÉPOUILLEMENT — Consultation GTB multi-protocole vendor-neutral</h1>
 <h2>Critères d'évaluation objectifs et méthode de notation</h2>
 <blockquote>
@@ -802,7 +847,7 @@ strong { font-weight: 700; }
 <td><strong>C5</strong></td>
 <td>Références &amp; qualifications</td>
 <td>Références <strong>comparables</strong> datées + contact MOA ; qualifications <strong>vérifiables</strong>. ²</td>
-<td>Art. 8 (mémoire)</td>
+<td>A5 rubrique 1 + Art. 11 (CCTP)</td>
 </tr>
 <tr>
 <td><strong>C6</strong></td>
@@ -819,8 +864,8 @@ strong { font-weight: 700; }
 <tr>
 <td><strong>C8</strong></td>
 <td><strong>Coût global de possession (TCO)</strong></td>
-<td>Somme sur durée de référence : CAPEX + maintenance + licences + énergie + réversibilité, sur <strong>cadre de décomposition imposé</strong> (Annexe C).</td>
-<td>Annexe C</td>
+<td>Somme sur durée de référence : CAPEX + maintenance + licences + énergie + réversibilité, sur <strong>cadre de décomposition imposé</strong> (A4 — BPU/DPGF + cadre TCO).</td>
+<td>A4 (BPU/DPGF + cadre TCO)</td>
 </tr>
 </tbody>
 </table>
@@ -996,7 +1041,7 @@ strong { font-weight: 700; }
 <tr>
 <td>C5</td>
 <td>Références &amp; qualifications</td>
-<td>§8</td>
+<td>A5 rubrique 1 + Art. 11 (CCTP)</td>
 <td>6</td>
 <td>Barème par réf. recevable + qualifs</td>
 <td></td>
@@ -1026,7 +1071,7 @@ strong { font-weight: 700; }
 <tr>
 <td>C8</td>
 <td><strong>TCO</strong></td>
-<td>Annexe C</td>
+<td>A4 (BPU/DPGF + cadre TCO)</td>
 <td>30</td>
 <td><strong>(TCO le plus bas / TCO offre) × 20</strong></td>
 <td></td>
