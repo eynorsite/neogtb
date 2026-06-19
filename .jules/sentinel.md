@@ -1,0 +1,4 @@
+## 2025-02-28 - Unescaped User Content in Blade Brick Templates
+**Vulnerability:** User-controlled content (`$content['titre']` and `$content['pre_titre']`) in dynamic view components (Bricks) was rendered unescaped using the `{!! !!}` directive, exposing a Cross-Site Scripting (XSS) vulnerability.
+**Learning:** In dynamically constructed page builders, even structural or seemingly safe fields like "title" can be entry points for XSS if they allow raw HTML to support basic formatting (e.g., span styling). Using `{!! !!}` to enable this formatting creates a risk without active sanitization.
+**Prevention:** Use `\Stevebauman\Purify\Facades\Purify::clean()` systematically across all dynamic page builder components ("bricks") where HTML formatting needs to be preserved but malicious scripts must be stripped. Always verify `stevebauman/purify` is in `composer.json`.
