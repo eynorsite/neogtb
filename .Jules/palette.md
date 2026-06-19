@@ -1,0 +1,3 @@
+## 2026-06-19 - Focus visible styles dynamically adapting to widget color
+**Learning:** For components with user-customizable theme colors (like the chatbot widget), applying standard tailwind focus rings (e.g. `focus-visible:ring-accent-500`) might clash visually with the custom background.
+**Action:** Use CSS variables `--tw-ring-color` and `--tw-ring-offset-color` dynamically bound to the component's configured color (e.g., `:style="'--tw-ring-offset-color: ' + color"` for offset against the widget color, or `:style="'--tw-ring-color: ' + color"` for the ring itself) to ensure accessibility rings match the intended branding while maintaining high visibility.
