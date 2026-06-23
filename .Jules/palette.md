@@ -1,0 +1,3 @@
+## 2024-05-18 - Alpine.js Accordion Accessibility
+**Learning:** When using Alpine.js for accordions (like `x-data="{ open: null }"` or `x-data="{ open: false }"`), developers frequently forget to bind `aria-expanded` dynamically and lack `aria-controls` referencing the target panel ID. This makes them inaccessible to screen readers. Additionally, generic browser outlines should be overridden with Tailwind standard focus rings (`focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 rounded-lg`).
+**Action:** Always check Alpine.js toggle buttons for `:aria-expanded="open ? 'true' : 'false'"`, ensure the target panel has an `id` matching `aria-controls`, and standardize keyboard focus states using Tailwind.
