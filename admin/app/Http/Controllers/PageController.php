@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SubmitAuditLeadRequest;
 use App\Http\Requests\SubmitCeeLeadRequest;
 use App\Http\Requests\SubmitContactMessageRequest;
-use App\Models\GeneralSetting;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\SitePage;
 use App\Services\Contact\ContactSubmissionService;
+use App\Services\ContentBrickAdapter;
 use App\Services\Lead\AuditLeadService;
 use App\Services\Lead\CeeLeadService;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class PageController extends Controller
             ->where('is_published', true)
             ->firstOrFail();
 
-        $bricks = \App\Services\ContentBrickAdapter::buildBricks($slug);
+        $bricks = ContentBrickAdapter::buildBricks($slug);
 
         return view('front.page', compact('page', 'bricks'));
     }
@@ -31,7 +31,9 @@ class PageController extends Controller
     public function blog()
     {
         $posts = Post::where('status', 'published')
-            ->with('category')
+            // Optimisation (Bolt) : Eager load category et tags pour éviter le problème N+1
+            // causé par l'accès à ces relations dans la boucle du template front.blog.blade.php
+            ->with(['category', 'tags'])
             ->orderByDesc('published_at')
             ->paginate(20);
 
@@ -47,25 +49,30 @@ class PageController extends Controller
     {
         $post = Post::where('slug', $slug)
             ->where('status', 'published')
-            ->with(['category', 'tags'])
+            // Optimisation (Bolt) : Eager load de author, en plus de category et tags,
+            // pour éviter une requête supplémentaire dans front.article.blade.php
+            ->with(['category', 'tags', 'author'])
             ->firstOrFail();
 
         $post->increment('views_count');
         $related = Post::where('status', 'published')
             ->where('id', '!=', $post->id)
             ->where('category_id', $post->category_id)
+            // Optimisation (Bolt) : Eager load de category pour prévenir le problème N+1
+            // lors de l'accès à $rel->category->name pour chaque article lié
+            ->with('category')
             ->latest('published_at')
             ->limit(3)
             ->get();
 
-        $seoTitle = $post->meta_title ?: ($post->title . ' - NeoGTB');
+        $seoTitle = $post->meta_title ?: ($post->title.' - NeoGTB');
         $seoDescription = $post->meta_description ?: $post->excerpt;
 
         $ogImageRaw = $post->og_image ?: $post->featured_image;
         if ($ogImageRaw) {
             $seoOgImage = str_starts_with($ogImageRaw, '/') || str_starts_with($ogImageRaw, 'http')
                 ? $ogImageRaw
-                : asset('storage/' . $ogImageRaw);
+                : asset('storage/'.$ogImageRaw);
         } else {
             $seoOgImage = '/images/og-neogtb.png';
         }
@@ -88,8 +95,8 @@ class PageController extends Controller
             return back()->with('contact_success', true);
         }
 
-        $rules = (new SubmitContactMessageRequest())->rules();
-        $messages = (new SubmitContactMessageRequest())->messages();
+        $rules = (new SubmitContactMessageRequest)->rules();
+        $messages = (new SubmitContactMessageRequest)->messages();
 
         $validated = Validator::make($request->all(), $rules, $messages)->validate();
 
