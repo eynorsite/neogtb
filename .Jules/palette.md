@@ -1,0 +1,3 @@
+## 2024-05-18 - Alpine.js Accordion Accessibility Patterns
+**Learning:** When using Alpine.js for accordions, `aria-expanded` and `aria-controls` bindings are essential for screen readers but often missed. Dynamic states like `open ? 'true' : 'false'` need to correctly refer to unique element IDs (`id="faq-answer-{{ $loop->parent->index }}-{{ $index }}"`). Additionally, `focus-visible:ring-2 focus-visible:ring-inset` provides consistent keyboard navigation visibility across platforms compared to default browser outlines.
+**Action:** Consistently apply `aria-expanded="open ? 'true' : 'false'"`, `aria-controls="unique-id"`, `type="button"`, and `focus-visible` Tailwind classes to all interactive Alpine.js UI components.
