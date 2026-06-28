@@ -342,7 +342,7 @@
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach([
-                ['title' => 'Décret BACS', 'desc' => 'La GTB <strong class="text-accent-600">est</strong> l\'obligation. Classe A ou B requise.'],
+                ['title' => 'Décret BACS', 'desc' => 'La GTB <strong class="text-accent-600">est</strong> l\'obligation. Classe B visée en pratique (condition CEE).'],
                 ['title' => 'Décret tertiaire', 'desc' => 'Levier principal pour atteindre les -40/-50/-60 %.'],
                 ['title' => 'RE2020', 'desc' => 'Optimise le Cep et maîtrise le DH sur le cycle de vie.'],
                 ['title' => 'EPBD', 'desc' => 'Exigence européenne transposée en droit national.'],

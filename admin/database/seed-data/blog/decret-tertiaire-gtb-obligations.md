@@ -53,7 +53,7 @@ La GTB permet de **mesurer** précisément, **réduire** via l'optimisation, **p
 
 ### Pour le décret BACS
 
-Une GTB de classe B minimum répond à toutes les exigences : suivi ✅, analyse ✅, détection des dérives ✅, interopérabilité ✅.
+Une GTB de classe B répond en pratique à toutes les fonctions exigées (art. R. 175-3) : suivi ✅, analyse ✅, détection des dérives ✅, interopérabilité ✅.
 
 Plan d'action recommandé
 ------------------------
