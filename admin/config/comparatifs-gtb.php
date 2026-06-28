@@ -74,7 +74,7 @@ return [
             ],
             [
                 'question' => 'Quel système pour le décret BACS ?',
-                'answer'   => "C'est la GTB qui répond au décret BACS : elle doit atteindre au minimum la classe B de la norme EN 15232 (NF EN ISO 52120-1).",
+                'answer'   => "C'est la GTB qui répond au décret BACS. Le décret impose des fonctions (art. R. 175-3), pas une classe ; la classe B (EN 15232 / NF EN ISO 52120-1) est le niveau couramment visé et la condition de la prime CEE.",
             ],
             [
                 'question' => 'GTB est-elle l\'équivalent du BMS ?',
@@ -98,8 +98,8 @@ return [
             ['label' => 'Objet',                   'a' => "Obligation d'équiper en GTB (système d'automatisation et de contrôle)",         'b' => "Obligation de réduire la consommation d'énergie finale"],
             ['label' => "Seuil d'assujettissement", 'a' => 'Puissance CVC > 290 kW, puis 70 à 290 kW',                                       'b' => 'Bâtiments tertiaires de plus de 1 000 m²'],
             ['label' => 'Échéances',               'a' => '> 290 kW : 1er janvier 2025 · 70 à 290 kW : 1er janvier 2030',                   'b' => '-40 % en 2030, -50 % en 2040, -60 % en 2050'],
-            ['label' => 'Exigence',                'a' => 'GTB classe B minimum (EN 15232 / NF EN ISO 52120-1)',                            'b' => 'Déclaration annuelle sur la plateforme OPERAT (ADEME)'],
-            ['label' => 'Sanction / dérogation',   'a' => "Dérogation possible si l'audit montre un retour sur investissement > 6 ans",     'b' => 'Amende jusqu\'à 7 500 € par bâtiment (personnes morales)'],
+            ['label' => 'Exigence',                'a' => 'Fonctions R. 175-3 — classe B en pratique (EN 15232 / NF EN ISO 52120-1)',          'b' => 'Déclaration annuelle sur la plateforme OPERAT (ADEME)'],
+            ['label' => 'Sanction / dérogation',   'a' => "Dérogation possible si l'étude montre un retour sur investissement > 10 ans",    'b' => 'Amende jusqu\'à 7 500 € par bâtiment (personnes morales)'],
         ],
 
         'choose' => [
@@ -107,7 +107,7 @@ return [
                 'title' => 'Vous êtes concerné par le décret BACS si…',
                 'items' => [
                     'Votre bâtiment tertiaire a des systèmes CVC > 70 kW',
-                    'Vous devez installer ou mettre à niveau une GTB en classe B minimum',
+                    'Vous devez installer ou mettre à niveau une GTB (classe B couramment visée)',
                     'Échéance 2025 (>290 kW) ou 2030 (70-290 kW)',
                 ],
             ],
@@ -131,8 +131,8 @@ return [
                 'answer'   => 'Au titre du décret BACS : depuis le 1er janvier 2025 pour les systèmes CVC de plus de 290 kW, et à partir du 1er janvier 2030 pour la tranche 70 à 290 kW.',
             ],
             [
-                'question' => 'Quelle classe de GTB exige le décret BACS ?',
-                'answer'   => 'Le système doit atteindre au minimum la classe B de la norme EN 15232 (NF EN ISO 52120-1).',
+                'question' => 'Quelle classe de GTB viser pour le décret BACS ?',
+                'answer'   => 'Le décret impose des fonctions (art. R. 175-3), pas une classe : la classe C suffit à la conformité. La classe B (EN 15232 / NF EN ISO 52120-1) est le niveau couramment visé et la condition de la prime CEE.',
             ],
             [
                 'question' => 'Comment déclarer pour le décret tertiaire ?',
@@ -140,7 +140,7 @@ return [
             ],
             [
                 'question' => 'Peut-on être exempté du décret BACS ?',
-                'answer'   => "Une dérogation est possible si un audit démontre que le temps de retour sur investissement de la GTB dépasse 6 ans.",
+                'answer'   => "Une dérogation est possible si une étude établit que le temps de retour sur investissement de la GTB dépasse 10 ans (art. R. 175-2 du CCH).",
             ],
         ],
     ],

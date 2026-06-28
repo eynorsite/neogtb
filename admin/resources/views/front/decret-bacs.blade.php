@@ -18,9 +18,9 @@
     "@type": "FAQPage",
     "mainEntity": [
         {"@type":"Question","name":"Mon bâtiment est-il concerné par le décret BACS ?","acceptedAnswer":{"@type":"Answer","text":"Le décret BACS s'applique aux bâtiments tertiaires non résidentiels selon la puissance nominale cumulée de leurs systèmes CVC (chauffage et climatisation). Existant supérieur à 290 kW : obligation en vigueur depuis le 1er janvier 2025. Existant de 70 à 290 kW : obligation au 1er janvier 2030 (report acté par le décret n° 2025-1343 du 26 décembre 2025). Neuf supérieur à 70 kW (permis déposé après le 8 avril 2024) : obligation dès la construction."}},
-        {"@type":"Question","name":"Quelle classe de GTB faut-il atteindre ?","acceptedAnswer":{"@type":"Answer","text":"Le décret BACS impose une GTB de classe B minimum au sens de la norme NF EN ISO 52120-1 (ex EN 15232). La classe C correspond seulement au minimum exigé pour le neuf au titre d'autres réglementations, et la classe A représente le niveau de performance le plus élevé."}},
+        {"@type":"Question","name":"Quelle classe de GTB faut-il atteindre ?","acceptedAnswer":{"@type":"Answer","text":"Le décret BACS impose des fonctions d'automatisation et de contrôle (article R. 175-3 du CCH), pas une classe de la norme. La classe B de la norme NF EN ISO 52120-1 (ex EN 15232) est le niveau recommandé pour remplir ces fonctions, et c'est surtout la condition pour bénéficier de la prime CEE BAT-TH-116, qui finance une GTB de classe A ou B. La classe A représente le niveau le plus élevé."}},
         {"@type":"Question","name":"Combien coûte la mise en conformité et quels CEE sont mobilisables ?","acceptedAnswer":{"@type":"Answer","text":"Le coût dépend de la surface, de l'architecture technique et de la classe visée. La fiche standardisée CEE BAT-TH-116 finance l'installation d'une GTB de classe A ou B sur un bâtiment tertiaire existant. Elle se combine avec la fiche BAT-TH-112 (variation électronique de vitesse sur moteur). Le montant exact se chiffre au cas par cas après audit."}},
-        {"@type":"Question","name":"Que risque-t-on en cas de non-conformité ?","acceptedAnswer":{"@type":"Answer","text":"Une dérogation au décret BACS est possible si un audit énergétique démontre un temps de retour sur investissement supérieur à 6 ans. À noter : l'amende administrative pouvant atteindre 7 500 euros par bâtiment pour une personne morale, ainsi que la publication du nom du contrevenant, relèvent du décret tertiaire (Éco Énergie Tertiaire), pas du décret BACS lui-même."}}
+        {"@type":"Question","name":"Que risque-t-on en cas de non-conformité ?","acceptedAnswer":{"@type":"Answer","text":"Une dérogation au décret BACS est possible si un audit énergétique démontre un temps de retour sur investissement supérieur à 10 ans. À noter : l'amende administrative pouvant atteindre 7 500 euros par bâtiment pour une personne morale, ainsi que la publication du nom du contrevenant, relèvent du décret tertiaire (Éco Énergie Tertiaire), pas du décret BACS lui-même."}}
     ]
 }
 @endverbatim
@@ -97,8 +97,9 @@
                 <p class="text-base text-dark-500 leading-relaxed mb-6">
                     Il impose, dans les bâtiments tertiaires non résidentiels, l'installation d'un système d'automatisation
                     et de contrôle (BACS, pour <em>Building Automation &amp; Control Systems</em>) — autrement dit une GTB —
-                    atteignant <strong class="text-dark-900 font-medium">a minima la classe B</strong> de la norme
-                    NF EN ISO 52120-1 (ex EN 15232).
+                    assurant les <strong class="text-dark-900 font-medium">fonctions de l'article R. 175-3</strong> du Code de la construction.
+                    En pratique, le niveau retenu pour les remplir est la <strong class="text-dark-900 font-medium">classe B</strong>
+                    de la norme NF EN ISO 52120-1 (ex EN 15232).
                 </p>
 
                 <h3 class="text-lg font-medium text-dark-900 mb-3">Les objectifs</h3>
@@ -112,9 +113,9 @@
 
             <div class="lg:col-span-2 space-y-4">
                 <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
-                    <p class="text-[11px] font-medium uppercase tracking-widest text-dark-500 mb-2">Niveau requis</p>
+                    <p class="text-[11px] font-medium uppercase tracking-widest text-dark-500 mb-2">Niveau visé</p>
                     <p class="text-[28px] font-medium text-accent-600 tracking-tight">Classe B</p>
-                    <p class="text-[13px] text-dark-500 mt-1">minimum / norme NF EN ISO 52120-1</p>
+                    <p class="text-[13px] text-dark-500 mt-1">norme NF EN ISO 52120-1</p>
                 </div>
                 <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                     <p class="text-[11px] font-medium uppercase tracking-widest text-dark-500 mb-2">Seuil de puissance</p>
@@ -122,7 +123,7 @@
                 </div>
                 <div class="bg-accent-50 border border-accent-200 rounded-2xl p-5 lg:p-7">
                     <p class="text-xs font-semibold uppercase tracking-widest text-accent-700 mb-2">Dérogation possible</p>
-                    <p class="text-[15px] text-dark-600 leading-relaxed">Une dérogation est admise si un audit énergétique démontre un temps de retour sur investissement <strong>supérieur à 6 ans</strong>.</p>
+                    <p class="text-[15px] text-dark-600 leading-relaxed">Une dérogation est admise si un audit énergétique démontre un temps de retour sur investissement <strong>supérieur à 10 ans</strong>.</p>
                 </div>
             </div>
         </div>
@@ -225,13 +226,13 @@
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Référentiel technique</p>
             <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Les classes GTB (NF EN ISO 52120-1)</h2>
-            <p class="text-base text-dark-500 leading-relaxed">La norme classe les systèmes de A (la plus performante) à D (aucune automatisation). Le décret BACS impose la classe B minimum.</p>
+            <p class="text-base text-dark-500 leading-relaxed">La norme classe les systèmes de A (la plus performante) à D (aucune automatisation). En pratique, la classe B est le niveau retenu pour répondre aux fonctions du décret BACS (art. R. 175-3).</p>
         </div>
 
         <div class="grid md:grid-cols-4 gap-3 lg:gap-5 mb-12">
             @foreach([
                 ['badge' => 'Classe A', 'bg' => 'bg-dark-800', 'title' => 'Haute performance', 'desc' => 'Régulation pièce par pièce, optimisation multi-lots.', 'sub' => 'Performance maximale', 'eco' => '~35 % vs D', 'highlight' => false],
-                ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives.', 'sub' => 'Exigence décret BACS', 'eco' => '~25 % vs D', 'highlight' => true],
+                ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives.', 'sub' => 'Niveau visé (BACS)', 'eco' => '~25 % vs D', 'highlight' => true],
                 ['badge' => 'Classe C', 'bg' => 'bg-dark-500', 'title' => 'Standard', 'desc' => 'Régulation de base et programmation horaire, sans supervision.', 'sub' => 'Minimum neuf', 'eco' => '~10 % vs D', 'highlight' => false],
                 ['badge' => 'Classe D', 'bg' => 'bg-dark-600', 'title' => 'Non performant', 'desc' => 'Aucune automatisation, pilotage manuel.', 'sub' => 'Référence basse', 'eco' => '—', 'highlight' => false],
             ] as $cl)
@@ -336,7 +337,7 @@
                 ],
                 [
                     'q' => 'Quelle classe de GTB faut-il atteindre ?',
-                    'a' => 'La classe B minimum au sens de la norme NF EN ISO 52120-1 (ex EN 15232). La classe C correspond seulement au minimum exigé pour le neuf au titre d\'autres réglementations ; la classe A représente le niveau de performance le plus élevé.',
+                    'a' => 'Le décret impose des fonctions (article R. 175-3 du CCH), pas une classe de la norme. La classe B au sens de la norme NF EN ISO 52120-1 (ex EN 15232) est le niveau recommandé pour les remplir, et c\'est surtout la condition de la prime CEE BAT-TH-116 (qui finance une GTB de classe A ou B). La classe A est le niveau le plus élevé.',
                 ],
                 [
                     'q' => 'Combien ça coûte et quels CEE sont mobilisables ?',
@@ -344,7 +345,7 @@
                 ],
                 [
                     'q' => 'Que risque-t-on en cas de non-conformité ?',
-                    'a' => 'Une dérogation au décret BACS est possible si un audit énergétique démontre un temps de retour sur investissement supérieur à 6 ans. À noter : l\'amende pouvant atteindre 7 500 € par bâtiment pour une personne morale, ainsi que la publication du nom du contrevenant, relèvent du décret tertiaire (Éco Énergie Tertiaire), pas du décret BACS lui-même.',
+                    'a' => 'Une dérogation au décret BACS est possible si un audit énergétique démontre un temps de retour sur investissement supérieur à 10 ans. À noter : l\'amende pouvant atteindre 7 500 € par bâtiment pour une personne morale, ainsi que la publication du nom du contrevenant, relèvent du décret tertiaire (Éco Énergie Tertiaire), pas du décret BACS lui-même.',
                 ],
             ] as $faq)
             <details class="group bg-white rounded-2xl border border-dark-100 lg:shadow-sm overflow-hidden">
@@ -393,7 +394,7 @@
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
         <div class="grid md:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
-                ['href' => '/reglementation', 'title' => 'Toute la réglementation GTB', 'desc' => 'Décret BACS, décret tertiaire, RE2020, EPBD : le cadre complet et le calendrier.'],
+                ['href' => '/modele-cctp-decret-bacs', 'title' => 'Modèle de CCTP décret BACS', 'desc' => 'Une trame de cahier des charges GTB classe B, neutre fabricant, à adapter.'],
                 ['href' => '/audit', 'title' => 'Pré-diagnostic GTB gratuit', 'desc' => 'Évaluez votre conformité NF EN ISO 52120-1 en quelques minutes.'],
                 ['href' => '/generateur-cee', 'title' => 'Simulateur CEE', 'desc' => 'Estimez vos primes Certificats d\'Économies d\'Énergie (BAT-TH-116).'],
             ] as $link)

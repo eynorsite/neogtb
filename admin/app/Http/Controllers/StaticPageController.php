@@ -34,11 +34,15 @@ class StaticPageController extends Controller
         // Slug ET title volontairement SANS année (éviter la péremption).
         'decret-bacs' => [
             'title'       => "Décret BACS : qui est concerné, échéances, mise en conformité | NeoGTB",
-            'description' => "Décret BACS : GTB de classe B obligatoire (NF EN ISO 52120-1). Bâtiments concernés, échéances, dérogation TRI > 6 ans, CEE BAT-TH-116 et accompagnement indépendant.",
+            'description' => "Décret BACS : GTB de classe B (NF EN ISO 52120-1) en pratique. Bâtiments concernés, échéances, dérogation TRI > 10 ans, CEE BAT-TH-116 et accompagnement indépendant.",
         ],
         'amo-gtb-gtc' => [
             'title'       => "AMO GTB/GTC, Assistance maîtrise d'ouvrage indépendante | NeoGTB",
             'description' => "Assistance à maîtrise d'ouvrage (AMO) GTB/GTC : cahier des charges, appel d'offres, suivi de chantier et réception. Conseil indépendant, sans lien fabricant.",
+        ],
+        'modele-cctp-decret-bacs' => [
+            'title'       => "Modèle de CCTP décret BACS (classe B) à télécharger | NeoGTB",
+            'description' => "Modèle type de CCTP GTB conforme au décret BACS : objet, cadre réglementaire, exigences fonctionnelles classe B (NF EN ISO 52120-1), protocoles, cybersécurité. Neutre fabricant.",
         ],
         // Slug ET title volontairement SANS année (éviter la péremption).
         'offres' => [
@@ -160,6 +164,11 @@ class StaticPageController extends Controller
     public function amoGtbGtc()
     {
         return view('front.amo-gtb-gtc', $this->seo('amo-gtb-gtc'));
+    }
+
+    public function modeleCctpDecretBacs()
+    {
+        return view('front.modele-cctp-decret-bacs', $this->seo('modele-cctp-decret-bacs'));
     }
 
     public function offres()

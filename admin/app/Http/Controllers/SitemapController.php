@@ -26,6 +26,7 @@ class SitemapController extends Controller
             ['/contact',                       'monthly', '0.7'],
             ['/reglementation',                'monthly', '0.8'],
             ['/decret-bacs',                   'monthly', '0.9'],
+            ['/modele-cctp-decret-bacs',       'monthly', '0.8'],
             ['/amo-gtb-gtc',                   'monthly', '0.9'],
             ['/offres',                        'monthly', '0.8'],
             ['/offre-conformite-continue',     'monthly', '0.8'],

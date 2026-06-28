@@ -45,7 +45,7 @@ class ChatbotSeeder extends Seeder
                 'title' => 'Classes de performance GTB — norme NF EN ISO 52120-1 (ex-EN 15232)',
                 'category' => 'Norme',
                 'priority' => 80,
-                'content' => "La norme NF EN ISO 52120-1 (qui remplace l'EN 15232) classe la performance des systèmes de GTB en quatre niveaux :\n- Classe D : aucune automatisation (non conforme).\n- Classe C : automatisation standard (référence de base).\n- Classe B : automatisation avancée avec GTB centralisée, suivi énergétique et détection de dérives. C'est le niveau MINIMUM exigé par le décret BACS.\n- Classe A : haute performance, avec optimisation énergétique et gestion prédictive.\n\nLe décret BACS impose donc la classe B a minima. Les classes A et B ouvrent droit à la prime CEE BAT-TH-116.",
+                'content' => "La norme NF EN ISO 52120-1 (qui remplace l'EN 15232) classe la performance des systèmes de GTB en quatre niveaux :\n- Classe D : aucune automatisation (non conforme).\n- Classe C : automatisation standard (conforme au décret BACS).\n- Classe B : automatisation avancée avec GTB centralisée, suivi énergétique et détection de dérives. C'est le niveau couramment visé et la condition de la prime CEE.\n- Classe A : haute performance, avec optimisation énergétique et gestion prédictive.\n\nLe décret BACS impose des fonctions (art. R. 175-3 du CCH), pas une classe : la classe C reste conforme au décret. Les classes A et B ouvrent droit à la prime CEE BAT-TH-116.",
             ],
             [
                 'title' => 'GTB et GTC — définitions et protocoles',
@@ -84,7 +84,7 @@ class ChatbotSeeder extends Seeder
             ],
             [
                 'question' => 'Quelle échéance pour un bâtiment dont la puissance CVC est entre 70 et 290 kW ?',
-                'answer' => "Pour les bâtiments tertiaires existants dont la puissance des systèmes CVC est comprise entre 70 et 290 kW, l'obligation d'installer une GTB de classe B minimum s'applique au 1er janvier 2030. Cette échéance, initialement prévue en 2027, a été reportée par le décret n° 2025-1343 du 26 décembre 2025. Au-delà de 290 kW, l'obligation est en vigueur depuis le 1er janvier 2025.",
+                'answer' => "Pour les bâtiments tertiaires existants dont la puissance des systèmes CVC est comprise entre 70 et 290 kW, l'obligation d'installer une GTB s'applique au 1er janvier 2030. Cette échéance, initialement prévue en 2027, a été reportée par le décret n° 2025-1343 du 26 décembre 2025. Au-delà de 290 kW, l'obligation est en vigueur depuis le 1er janvier 2025.",
                 'category' => 'Réglementation',
                 'show_as_suggestion' => false,
                 'sort_order' => 2,

@@ -142,7 +142,7 @@ class GtbPageSeeder extends Seeder
                 'titre_section' => 'Cadre réglementaire',
                 'sous_titre' => 'Plusieurs textes encadrent la mise en place de systèmes GTB dans les bâtiments tertiaires en France.',
                 'cartes' => [
-                    ['badge' => 'Obligatoire', 'titre' => 'Décret BACS', 'description' => 'Impose un système d\'automatisation (classe B min.) pour les bâtiments tertiaires. Échéance 2025 (>290 kW CVC), 2030 (>70 kW).'],
+                    ['badge' => 'Obligatoire', 'titre' => 'Décret BACS', 'description' => 'Impose un système d\'automatisation pour les bâtiments tertiaires (classe B en pratique). Échéance 2025 (>290 kW CVC), 2030 (>70 kW).'],
                     ['badge' => 'Objectifs', 'titre' => 'Décret tertiaire', 'description' => 'Réduction progressive : -40 % (2030), -50 % (2040), -60 % (2050). Déclaration OPERAT.'],
                     ['badge' => 'Neuf', 'titre' => 'RE2020', 'description' => 'Bâtiments neufs. Seuils Cep et confort d\'été (DH) rendant la GTB quasi indispensable.'],
                 ],

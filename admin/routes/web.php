@@ -85,6 +85,7 @@ Route::get('/blog/{slug}', [\App\Http\Controllers\PageController::class, 'articl
 Route::post('/contact/send', [\App\Http\Controllers\PageController::class, 'sendContact'])->middleware('throttle:5,1')->name('front.contact.send');
 Route::post('/audit/lead', [\App\Http\Controllers\PageController::class, 'storeAuditLead'])->middleware('throttle:5,1')->name('front.audit.lead');
 Route::post('/cee/lead', [\App\Http\Controllers\PageController::class, 'storeCeeLead'])->middleware('throttle:5,1')->name('front.cee.lead');
+Route::post('/modele-cctp-decret-bacs/telecharger', [\App\Http\Controllers\PageController::class, 'downloadCctpModele'])->middleware('throttle:5,1')->name('front.cctp.download');
 
 // Static pages (Blade views — must be BEFORE the catch-all)
 Route::get('/about', [\App\Http\Controllers\StaticPageController::class, 'about'])->name('front.about');
@@ -92,6 +93,7 @@ Route::get('/faq', [\App\Http\Controllers\StaticPageController::class, 'faq'])->
 Route::get('/contact', [\App\Http\Controllers\StaticPageController::class, 'contact'])->name('front.contact');
 Route::get('/reglementation', [\App\Http\Controllers\StaticPageController::class, 'reglementation'])->name('front.reglementation');
 Route::get('/decret-bacs', [\App\Http\Controllers\StaticPageController::class, 'decretBacs'])->name('front.decret-bacs');
+Route::get('/modele-cctp-decret-bacs', [\App\Http\Controllers\StaticPageController::class, 'modeleCctpDecretBacs'])->name('front.modele-cctp-decret-bacs');
 Route::get('/amo-gtb-gtc', [\App\Http\Controllers\StaticPageController::class, 'amoGtbGtc'])->name('front.amo-gtb-gtc');
 Route::get('/offres', [\App\Http\Controllers\StaticPageController::class, 'offres'])->name('front.offres');
 Route::get('/offre-conformite-continue', [\App\Http\Controllers\StaticPageController::class, 'offreConformiteContinue'])->name('front.offre-conformite-continue');

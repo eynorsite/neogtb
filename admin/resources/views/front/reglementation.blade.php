@@ -116,7 +116,7 @@
                 <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-4">Décret BACS</h2>
                 <p class="text-sm text-dark-500 mb-5">Décret n° 2020-887 du 20 juillet 2020 / Modifié par le décret n° 2025-1343 du 26 décembre 2025</p>
                 <p class="text-base text-dark-500 leading-relaxed mb-4">Le décret BACS transpose l'article 14 de la <strong class="text-dark-900 font-medium">directive européenne EPBD 2018/844</strong> sur la performance énergétique des bâtiments. Il impose l'installation de systèmes d'automatisation et de contrôle dans les bâtiments tertiaires non résidentiels.</p>
-                <p class="text-base text-dark-500 leading-relaxed mb-4">Le système installé doit atteindre <strong class="text-dark-900 font-medium">a minima la classe B</strong> de la norme EN 15232 (NF EN ISO 52120-1). Il doit être capable de :</p>
+                <p class="text-base text-dark-500 leading-relaxed mb-4">Le décret impose des fonctions, pas une classe précise (la classe C suffit à la conformité) ; en pratique, on vise <strong class="text-dark-900 font-medium">la classe B</strong> de la norme EN 15232 (NF EN ISO 52120-1), condition de la prime CEE. Le système doit être capable de :</p>
                 <ul class="text-[15px] text-dark-500 leading-relaxed pl-5 list-disc mb-5 space-y-2">
                     <li>Suivre, enregistrer et analyser la consommation énergétique par usage</li>
                     <li>Ajuster les régulations en fonction de l'occupation et des besoins</li>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100 lg:shadow-sm">
                     <p class="text-[11px] font-medium uppercase tracking-widest text-dark-500 mb-2">Exemption</p>
-                    <p class="text-[15px] text-dark-600 leading-relaxed">Possibilité de dérogation si un audit énergétique démontre un temps de retour sur investissement supérieur à 6 ans.</p>
+                    <p class="text-[15px] text-dark-600 leading-relaxed">Possibilité de dérogation si une étude établit que l'installation n'est pas réalisable avec un temps de retour sur investissement inférieur à 10 ans (art. R. 175-2 du CCH).</p>
                 </div>
             </div>
         </div>
@@ -221,13 +221,13 @@
         <div class="max-w-xl mb-12">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent-600 mb-4">Référentiel technique</p>
             <h2 class="text-[22px] lg:text-[28px] font-medium text-dark-900 tracking-tight leading-tight mb-3">Norme EN ISO 52120-1 (ex-EN 15232)</h2>
-            <p class="text-base text-dark-500 leading-relaxed">La norme de référence pour évaluer le niveau de performance des systèmes GTB. Le décret BACS impose la classe B minimum.</p>
+            <p class="text-base text-dark-500 leading-relaxed">La norme de référence pour évaluer le niveau de performance des systèmes GTB. Le décret BACS impose des fonctions (art. R. 175-3), pas une classe ; la classe B est le niveau couramment visé et la condition de la prime CEE.</p>
         </div>
         <div class="grid md:grid-cols-4 gap-3 lg:gap-5 mb-12">
             @foreach([
                 ['badge' => 'Classe D', 'bg' => 'bg-dark-400', 'title' => 'Non performant', 'desc' => 'Aucun système d\'automatisation. Pilotage manuel.', 'sub' => 'Référence basse', 'highlight' => false],
                 ['badge' => 'Classe C', 'bg' => 'bg-dark-500', 'title' => 'Standard', 'desc' => 'Régulation de base, programmation horaire, sans supervision.', 'sub' => 'Minimum neuf', 'highlight' => false],
-                ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives.', 'sub' => 'Exigence décret BACS', 'highlight' => true],
+                ['badge' => 'Classe B', 'bg' => 'bg-accent-600', 'title' => 'Avancé', 'desc' => 'GTB centralisée, suivi énergétique, détection de dérives.', 'sub' => 'Niveau visé (BACS)', 'highlight' => true],
                 ['badge' => 'Classe A', 'bg' => 'bg-dark-800', 'title' => 'Haute performance', 'desc' => 'Régulation pièce par pièce, optimisation multi-lots, IA.', 'sub' => 'Performance maximale', 'highlight' => false],
             ] as $cl)
             <div class="{{ $cl['highlight'] ? 'bg-white rounded-2xl border border-accent-200 shadow-[0_0_0_3px] shadow-accent-50' : 'bg-white rounded-2xl border border-dark-100 lg:shadow-sm' }} p-5 lg:p-7">
@@ -392,7 +392,7 @@
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             @foreach([
-                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B exigée, échéances et dérogations.'],
+                ['href' => '/decret-bacs', 'title' => 'Le décret BACS en détail', 'desc' => 'Seuils de puissance, classe B visée, échéances et dérogations.'],
                 ['href' => '/gtb', 'title' => "Qu'est-ce que la GTB ?", 'desc' => 'Comprendre la GTB avant de s\'attaquer à la réglementation.'],
                 ['href' => '/gtc', 'title' => "Qu'est-ce que la GTC ?", 'desc' => 'Supervision centralisée multi-sites et différences avec la GTB.'],
                 ['href' => '/audit', 'title' => 'Pré-diagnostic de conformité', 'desc' => 'Évaluez votre niveau ISO 52120-1 en quelques minutes, sans inscription.'],

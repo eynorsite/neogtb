@@ -74,7 +74,7 @@ class ComparateurPageSeeder extends Seeder
                     ['icone' => 'shield', 'titre' => 'Maturité & support', 'description' => 'Ancienneté de la gamme, réseau d\'intégrateurs certifiés, qualité du support.'],
                     ['icone' => 'euro', 'titre' => 'Coût total (TCO)', 'description' => 'Licences, automates, ingénierie, maintenance sur 10 ans.'],
                     ['icone' => 'lock-open', 'titre' => 'Indépendance', 'description' => 'Niveau de verrouillage propriétaire vs solution réellement ouverte.'],
-                    ['icone' => 'gauge', 'titre' => 'Conformité ISO 52120-1', 'description' => 'Capacité à atteindre la classe B exigée par le décret BACS.'],
+                    ['icone' => 'gauge', 'titre' => 'Conformité ISO 52120-1', 'description' => 'Capacité à atteindre la classe B (niveau visé / condition CEE).'],
                 ],
             ],
             'settings' => ['colonnes' => 3],
