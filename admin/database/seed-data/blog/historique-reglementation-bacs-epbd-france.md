@@ -69,7 +69,7 @@ Trois tendances se dégagent clairement :
 Sans prétendre prédire l'avenir réglementaire, plusieurs tendances sont déjà identifiables :
 
 - Extension probable des obligations BACS aux bâtiments de **moins de 70 kW** dans un horizon 5-10 ans
-- Renforcement des exigences de **classe A** (au lieu de B minimum) pour certaines catégories de bâtiments
+- Renforcement probable du niveau visé (vers la **classe A**) pour certaines catégories de bâtiments
 - Intégration croissante des critères **carbone** dans les obligations de performance
 - Développement des obligations de **monitoring continu** et de reporting automatisé
 
