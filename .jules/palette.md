@@ -1,0 +1,3 @@
+## 2025-07-03 - [Accessibility] Alpine.js Accordions Missing ARIA Attributes
+**Learning:** Found that custom Alpine.js accordions across the application (e.g. FAQ pages) often missed required accessibility attributes. While visual expand/collapse worked, screen readers lacked context about the state of the component.
+**Action:** Always bind `:aria-expanded="open ? 'true' : 'false'"` on accordion trigger buttons (not boolean `true`/`false`), and ensure an `aria-controls="[id]"` references the corresponding panel's `id`. Also, add standard focus rings `focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500` to enhance keyboard navigation.
