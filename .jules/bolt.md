@@ -1,0 +1,3 @@
+## 2026-07-03 - Cache Filament Widget Aggregation Queries
+**Learning:** Filament widgets displaying dashboard metrics (like `StatsOverviewWidget`) execute database queries synchronously on every dashboard load. In a busy admin panel or as database tables grow, multiple `->count()` or `->sum()` queries block the main PHP thread, causing slow page loads.
+**Action:** When building or optimizing Filament dashboard widgets, wrap expensive aggregation queries in `Cache::remember` with a short TTL (e.g., 60 seconds). This significantly reduces database load while keeping dashboard metrics reasonably fresh.
