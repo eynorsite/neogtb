@@ -148,7 +148,7 @@
             prose-th:text-left prose-th:font-semibold prose-th:text-dark-800
             prose-td:border-b prose-td:border-dark-100
         ">
-            {!! \Stevebauman\Purify\Facades\Purify::clean($post->content ?? '') !!}
+            {!! purify_html($post->content ?? '') !!}
         </div>
 
         {{-- Tags --}}
