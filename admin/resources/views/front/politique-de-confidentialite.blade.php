@@ -10,7 +10,7 @@
         <h1 class="font-heading font-medium text-dark-900 mb-2 text-[26px] tracking-tight">{{ $site->label('legal.politique_confidentialite.title', 'Politique de confidentialité') }}</h1>
 
         @if($content = $site->legalText('politique_confidentialite'))
-            <div class="prose prose-sm prose-dark max-w-none mt-8">{!! $content !!}</div>
+            <div class="prose prose-sm prose-dark max-w-none mt-8">@php $safe_content = ($content !== strip_tags($content)) ? \Stevebauman\Purify\Facades\Purify::clean($content) : e($content); @endphp{!! $safe_content !!}</div>
         @else
             <p class="text-sm text-dark-500 mt-8">Contenu en cours de rédaction.</p>
         @endif

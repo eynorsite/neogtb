@@ -239,7 +239,7 @@
                 <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-500 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div x-show="open" x-collapse>
-                <p class="text-sm text-dark-500 leading-relaxed pb-5">{!! $faq['a'] !!}</p>
+                <p class="text-sm text-dark-500 leading-relaxed pb-5">@php $safe_a = ($faq['a'] !== strip_tags($faq['a'])) ? \Stevebauman\Purify\Facades\Purify::clean($faq['a']) : e($faq['a']); @endphp{!! $safe_a !!}</p>
             </div>
         </div>
         @endforeach
