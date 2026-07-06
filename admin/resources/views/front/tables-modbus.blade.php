@@ -36,14 +36,14 @@
   <section class="py-8">
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
       <div class="bg-white rounded-2xl p-5 lg:p-7 border border-dark-100" x-data="{ open: false }">
-        <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <button type="button" @click="open = !open" :aria-expanded="open ? 'true' : 'false'" aria-controls="modbus-types-panel" class="flex items-center justify-between w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 rounded-lg">
           <div>
             <p class="text-base font-semibold text-dark-900">Comprendre les 4 types de registres Modbus</p>
             <p class="text-xs text-dark-500 mt-0.5">Coils, Discrete Inputs, Input Registers, Holding Registers</p>
           </div>
           <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
-        <div x-show="open" x-collapse>
+        <div id="modbus-types-panel" x-show="open" x-collapse>
           <div class="mt-6 pt-6 border-t border-dark-200 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="rounded-lg p-4 border border-dark-200 bg-dark-50">
               <div class="flex items-center gap-2 mb-2">

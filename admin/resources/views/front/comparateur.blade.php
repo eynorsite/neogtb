@@ -78,14 +78,14 @@
   <section class="py-8">
     <div class="max-w-7xl mx-auto px-5 lg:px-10">
       <div class="bg-white rounded-xl p-6" style="border: 0.5px solid rgba(0,0,0,0.08);" x-data="{ open: false }">
-        <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <button type="button" @click="open = !open" :aria-expanded="open ? 'true' : 'false'" aria-controls="methodology-panel" class="flex items-center justify-between w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 rounded-lg">
           <div>
             <p style="font-size: 16px; font-weight: 500; color: #111;">Méthodologie de notation</p>
             <p style="font-size: 13px; color: #6b7280; margin-top: 2px;">6 critères, pondération égale, sources documentaires constructeurs</p>
           </div>
           <svg :class="open && 'rotate-180'" class="w-5 h-5 text-dark-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
-        <div x-show="open" x-collapse>
+        <div id="methodology-panel" x-show="open" x-collapse>
           <div class="mt-6 pt-6" style="border-top: 0.5px solid rgba(0,0,0,0.08);">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
               <div><p style="font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px;">Facilité d'installation</p><p style="font-size: 12px; color: #6b7280; line-height: 1.6;">Temps de déploiement, nécessité de câblage, complexité de mise en service.</p></div>
