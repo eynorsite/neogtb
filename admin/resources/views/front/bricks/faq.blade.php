@@ -1,3 +1,7 @@
+{{-- Schema FAQPage (GEO/SEO) — émis en ligne dans le <body> par le composant, à partir de la
+     MÊME donnée que l'affichage ci-dessous ($content['questions']) → source unique, zéro divergence. --}}
+<x-front.shared.faq-schema :items="$content['questions'] ?? []" />
+
 <section class="py-12 lg:py-24 bg-dark-50/50">
     <div class="mx-auto max-w-3xl px-5 lg:px-10">
         @if(!empty($content['eyebrow']) || !empty($content['titre']))
