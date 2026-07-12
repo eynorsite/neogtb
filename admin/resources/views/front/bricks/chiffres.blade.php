@@ -67,9 +67,10 @@
         </div>
     </section>
 @else
-    {{-- Variante grille (défaut) : fond clair, chiffres accent --}}
+    {{-- Variante grille (défaut) : fond clair. Chiffres en navy institutionnel (primary-500) :
+         cohérent avec le rail du hero + conforme DESIGN.md (accent-500 = 4,27:1 interdit pour du texte ;
+         data = navy identité, jamais le vert réservé aux actions). Aucun fond quadrillé décoratif. --}}
     <section class="relative py-12 lg:py-24 overflow-hidden bg-dark-50/50">
-        <div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
         <div class="relative z-10 max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10">
             @if(!empty($content['eyebrow']) || !empty($content['titre']))
                 <div class="text-center mb-12 animate-fade-in-up">
@@ -100,11 +101,11 @@
                          @endif
                     >
                         @if($isNumeric)
-                            <div class="font-display text-3xl md:text-5xl lg:text-6xl font-bold" style="color: var(--color-accent-500);" x-text="count + suffix"></div>
+                            <div class="font-display text-3xl md:text-5xl lg:text-6xl font-bold" style="color: var(--color-primary-500);" x-text="count + suffix"></div>
                         @else
-                            <div class="font-display text-3xl md:text-5xl lg:text-6xl font-bold" style="color: var(--color-accent-500);">{{ $raw }}</div>
+                            <div class="font-display text-3xl md:text-5xl lg:text-6xl font-bold" style="color: var(--color-primary-500);">{{ $raw }}</div>
                         @endif
-                        <p class="mt-2 text-sm text-dark-500">{{ $stat['label'] ?? '' }}</p>
+                        <p class="mt-2 text-sm text-dark-600">{{ $stat['label'] ?? '' }}</p>
                     </div>
                 @endforeach
             </div>

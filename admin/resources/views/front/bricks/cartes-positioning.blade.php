@@ -11,11 +11,11 @@
             @foreach($content['cartes'] ?? [] as $i => $carte)
                 <x-front.shared.card :href="$carte['lien'] ?? '#'" :delay="$i % 3" class="flex flex-col h-full">
 
-                    {{-- Icone grande avec fond accent --}}
+                    {{-- Icone grande, aplat accent-50 (aplats plutôt que dégradés — DESIGN.md) --}}
                     @if(!empty($carte['icone']))
                         @php $iconKey = $carte['icone']; @endphp
                         <div style="width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
-                            background: linear-gradient(135deg, var(--color-accent-50), var(--color-accent-100));">
+                            background: var(--color-accent-50);">
                             @switch($iconKey)
                                 @case('gauge')
                                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-600)" stroke-width="1.5">
@@ -44,22 +44,22 @@
                         </div>
                     @endif
 
-                    {{-- Titre --}}
-                    <h3 style="font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 600; color: var(--color-dark-900); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.35;">
+                    {{-- Titre : var(--font-display) 700, plus décidé (bolder) --}}
+                    <h3 style="font-family: var(--font-display), system-ui, sans-serif; font-size: 19px; font-weight: 700; color: var(--color-dark-900); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.32;">
                         {{ $carte['titre'] ?? '' }}
                     </h3>
 
-                    {{-- Description --}}
-                    <p style="font-size: 14px; color: var(--color-dark-500); line-height: 1.65; margin-bottom: 0;">{{ $carte['description'] ?? '' }}</p>
+                    {{-- Description : dark-600 (AA fort, était dark-500 borderline) --}}
+                    <p style="font-size: 14px; color: var(--color-dark-600); line-height: 1.65; margin-bottom: 0;">{{ $carte['description'] ?? '' }}</p>
 
-                    {{-- Preview stylisee --}}
+                    {{-- Preview stylisee (aplat accent-50, sans dégradé) --}}
                     <div style="margin-top: auto; padding-top: 20px;">
                         @if(($carte['preview'] ?? null) === 'gauge-en15232')
-                            <div style="padding: 16px; border-radius: 12px; background: linear-gradient(135deg, var(--color-accent-50), rgba(45, 139, 78, 0.04)); border: 1px solid var(--color-accent-100);">
+                            <div style="padding: 16px; border-radius: 12px; background: var(--color-accent-50); border: 1px solid var(--color-accent-100);">
                                 <x-front.shared.gauge-en15232 active="B" />
                             </div>
                         @elseif(($carte['preview'] ?? null) === 'comparateur-bars')
-                            <div style="padding: 16px; border-radius: 12px; background: linear-gradient(135deg, var(--color-accent-50), rgba(45, 139, 78, 0.04)); border: 1px solid var(--color-accent-100);">
+                            <div style="padding: 16px; border-radius: 12px; background: var(--color-accent-50); border: 1px solid var(--color-accent-100);">
                                 <div class="comparateur-preview">
                                     @php
                                         $brands = [
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                         @elseif(($carte['preview'] ?? null) === 'estimation-cee' && !empty($carte['preview_data']))
-                            <div style="padding: 16px; border-radius: 12px; background: linear-gradient(135deg, var(--color-accent-50), rgba(45, 139, 78, 0.04)); border: 1px solid var(--color-accent-100);">
+                            <div style="padding: 16px; border-radius: 12px; background: var(--color-accent-50); border: 1px solid var(--color-accent-100);">
                                 <p style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-accent-600); margin-bottom: 6px;">Estimation type</p>
                                 <p style="font-size: 26px; font-weight: 700; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1;">{{ $carte['preview_data']['valeur'] ?? '' }}</p>
                                 <p style="font-size: 12px; color: var(--color-dark-500); margin-top: 6px; line-height: 1.4;">{{ $carte['preview_data']['contexte'] ?? '' }}</p>

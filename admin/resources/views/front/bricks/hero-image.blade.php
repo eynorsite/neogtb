@@ -1,68 +1,94 @@
-{{-- hero-image : variante full-bleed image avec overlay et stats (style accueil.blade.php) --}}
+{{-- hero-image : HERO LIGHT MODE "bolder" — aligné DESIGN.md § signature (fond clair, titre sombre, AUCUN voile sombre).
+     Composition split asymétrique : contenu à gauche, photo hero CONTENUE à droite (image préservée, jamais en plein
+     cadre sombre). L'audace vient de la hiérarchie (H1 dominant + rail de preuves data), pas de l'ombre.
+     Header compatible : nav en texte sombre sur fond clair. Décor limité aux halos doux (bénis par DESIGN.md). --}}
 @php
     $img = $content['image'] ?? null;
     $imgUrl = $img ? (str_starts_with($img, '/') || str_starts_with($img, 'http') ? $img : asset('storage/' . $img)) : null;
+    $statCount = max(1, count($content['stats'] ?? []));
 @endphp
 
-<section class="hero-img" data-hero style="position: relative; min-height: 460px; max-height: 72vh; display: flex; align-items: center; overflow: hidden; padding: 72px 0 40px;">
-    @if($imgUrl)
-        <img src="{{ $imgUrl }}"
-             alt="{{ $content['image_alt'] ?? '' }}"
-             width="1200" height="630" loading="eager" fetchpriority="high"
-             style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" />
-    @endif
-    <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.1) 100%);"></div>
+<section data-hero class="relative overflow-hidden bg-gradient-to-b from-white via-primary-50/40 to-white pt-[92px] pb-16 lg:pt-[128px] lg:pb-24" style="min-height: 520px;">
 
-    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10 relative z-10" style="width: 100%;">
-        <div style="max-width: 560px; margin-left: auto;">
-            @if(!empty($content['badge']))
-                <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.15); margin-bottom: 24px;">
-                    {{ $content['badge'] }}
-                </p>
-            @endif
+    {{-- Halos flous très doux (décor béni par DESIGN.md : « halos pulsés très doux »). aria-hidden ; reduced-motion coupé en app.css. --}}
+    <div aria-hidden="true" class="glow-halo glow-halo--accent -top-24 right-1/3 w-[380px] h-[380px]"></div>
+    <div aria-hidden="true" class="glow-halo glow-halo--primary bottom-0 -left-32 w-[420px] h-[420px]"></div>
 
-            @if(!empty($content['pre_titre']))
-                <p style="font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: -0.02em; margin-bottom: 12px;">
-                    {!! $content['pre_titre'] !!}
-                </p>
-            @endif
+    <div class="max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-5 lg:px-10 relative z-10">
+        <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
 
-            @if(!empty($content['titre']))
-                <h1 class="text-[32px] lg:text-[48px]" style="font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px; text-shadow: 0 2px 20px rgba(0,0,0,0.40);">
-                    {{ $content['titre'] }}
-                </h1>
-            @endif
+            {{-- ---------- Colonne contenu (en premier dans le DOM => en haut sur mobile : le H1 frappe avant l'image) ---------- --}}
+            <div>
+                @if(!empty($content['badge']))
+                    <p class="mb-6 inline-flex items-center gap-2 rounded-full border border-accent-600/25 bg-accent-50 px-4 py-1.5 text-sm font-medium text-accent-700">
+                        {{ $content['badge'] }}
+                    </p>
+                @endif
 
-            @if(!empty($content['description']))
-                <p style="font-size: 16px; color: rgba(255,255,255,0.92); line-height: 1.65; max-width: 470px; margin-bottom: 32px; text-shadow: 0 1px 10px rgba(0,0,0,0.35);">
-                    {{ $content['description'] }}
-                </p>
-            @endif
+                @if(!empty($content['pre_titre']))
+                    {{-- Marque emphasée en vert (convention DESIGN.md : nom de marque = accent-600 plein). --}}
+                    <p style="font-family: var(--font-display), system-ui, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-600); margin-bottom: 16px;">
+                        {!! $content['pre_titre'] !!}
+                    </p>
+                @endif
 
-            @if(!empty($content['stats']))
-                <div class="flex flex-wrap gap-6" style="margin-bottom: 32px;">
-                    @foreach($content['stats'] as $stat)
-                        <div style="min-width: 120px;">
-                            <p style="font-size: 24px; font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1; text-shadow: 0 1px 10px rgba(0,0,0,0.35);">{{ $stat['valeur'] ?? '' }}</p>
-                            <p style="font-size: 13px; color: rgba(255,255,255,0.78); margin-top: 4px; line-height: 1.4;">{{ $stat['label'] ?? '' }}</p>
-                        </div>
-                    @endforeach
+                @if(!empty($content['titre']))
+                    {{-- H1 focal point : DM Sans 700, ~60px desktop, line-height 1.1 (référence DESIGN.md). Marque auto-emphasée en vert. --}}
+                    <h1 style="font-family: var(--font-display), system-ui, sans-serif; font-size: clamp(2.125rem, 4.8vw, 3.75rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: #111827; text-wrap: balance; margin-bottom: 20px;">
+                        {{-- Lookarounds Unicode (pas de \b, fragile avec « é ») + libellés longs d'abord : match propre de NéoGTB/NeoGTB/GTC/GTB. --}}
+                        {!! preg_replace('/(?<![\p{L}\p{N}])(NéoGTB|NeoGTB|GTC|GTB)(?![\p{L}\p{N}])/u', '<span style="color: var(--color-accent-600);">$1</span>', e($content['titre'])) !!}
+                    </h1>
+                @endif
+
+                @if(!empty($content['description']))
+                    {{-- Chapô : text-lg (20px, échelle officielle DESIGN.md), dark-600 (AA fort). --}}
+                    <p class="max-w-xl text-lg" style="color: var(--color-dark-600); line-height: 1.6; margin-bottom: 32px;">
+                        {{ $content['description'] }}
+                    </p>
+                @endif
+
+                @if(!empty($content['stats']))
+                    {{-- Rail de preuves sur fond clair : filet haut neutre (bord complet, jamais de side-stripe coloré),
+                         chiffres navy institutionnels, séparateurs 1px. Grid à N colonnes => une rangée, jamais de wrap orphelin. --}}
+                    <div style="display: grid; grid-template-columns: repeat({{ $statCount }}, minmax(0, 1fr)); border-top: 1px solid var(--color-dark-200); padding-top: 20px; margin-bottom: 32px; max-width: 560px;">
+                        @foreach($content['stats'] as $i => $stat)
+                            @php $divider = $i > 0 ? 'border-left: 1px solid var(--color-dark-200); padding-left: clamp(14px, 2.4vw, 24px);' : ''; @endphp
+                            <div style="{{ $divider }} padding-right: 12px; min-width: 0;">
+                                <p style="font-family: var(--font-display), system-ui, sans-serif; font-size: clamp(22px, 3.2vw, 30px); font-weight: 700; color: var(--color-primary-500); letter-spacing: -0.02em; line-height: 1;">{{ $stat['valeur'] ?? '' }}</p>
+                                <p style="font-size: 12.5px; color: var(--color-dark-600); margin-top: 8px; line-height: 1.4;">{{ $stat['label'] ?? '' }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
+                <div class="flex flex-wrap items-center gap-4">
+                    @if(!empty($content['cta_texte']))
+                        <x-front.shared.btn-primary :href="$content['cta_lien'] ?? '#'" class="px-8 py-4 text-base">
+                            {{ $content['cta_texte'] }}
+                        </x-front.shared.btn-primary>
+                    @endif
+                    @if(!empty($content['cta2_texte']))
+                        <a href="{{ $content['cta2_lien'] ?? '#' }}"
+                           class="inline-flex items-center gap-2 rounded-lg border border-primary-200 bg-white px-8 py-4 text-base font-semibold text-primary-700 transition-colors duration-200 hover:bg-primary-50">
+                            {{ $content['cta2_texte'] }}
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    @endif
+                </div>
+            </div>
+
+            {{-- ---------- Colonne image : photo hero CONTENUE (préservée), cadre clair arrondi, AUCUN voile sombre ---------- --}}
+            @if($imgUrl)
+                <div class="relative">
+                    <div class="relative overflow-hidden rounded-2xl ring-1 ring-dark-200"
+                         style="aspect-ratio: 16 / 9; box-shadow: 0 24px 60px -24px rgba(16,35,59,0.28);">
+                        <img src="{{ $imgUrl }}" alt="{{ $content['image_alt'] ?? '' }}"
+                             width="800" height="450" loading="eager" fetchpriority="high"
+                             class="h-full w-full object-cover">
+                    </div>
                 </div>
             @endif
 
-            <div class="flex flex-wrap items-center gap-4">
-                @if(!empty($content['cta_texte']))
-                    <x-front.shared.btn-primary :href="$content['cta_lien'] ?? '#'">
-                        {{ $content['cta_texte'] }}
-                    </x-front.shared.btn-primary>
-                @endif
-                @if(!empty($content['cta2_texte']))
-                    <a href="{{ $content['cta2_lien'] ?? '#' }}"
-                       style="font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.15s; border-bottom: 1px solid rgba(255,255,255,0.3);">
-                        {{ $content['cta2_texte'] }} →
-                    </a>
-                @endif
-            </div>
         </div>
     </div>
 </section>
