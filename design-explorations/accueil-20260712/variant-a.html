@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeoGTB — Le tiers de confiance indépendant de la GTB</title>
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    /* ============================================================
+       Variante A — Institutionnel / Autorité (élevée)
+       Navy dominant · hero bande navy assumée · carte de données
+       à droite · KPI géants · sources en gris typographique.
+       Couleurs : uniquement var(--...) / color-mix / currentColor.
+       ============================================================ */
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--sp-6); }
+    .measure { max-width: 60ch; }
+
+    /* ---------- NAV ---------- */
+    .site-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 68px; gap: var(--sp-6);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display);
+      font-weight: 800; font-size: 19px; color: var(--primary-500); letter-spacing: -0.02em; }
+    .brand .mark {
+      width: 30px; height: 30px; border-radius: var(--radius-sm);
+      background: var(--primary-500); color: var(--surface);
+      display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+    }
+    .brand .mark svg { width: 17px; height: 17px; }
+    .brand .neo { color: var(--accent-600); } /* GTB en vert — cohérent B/C */
+
+    .nav-links { display: flex; align-items: center; gap: var(--sp-6); list-style: none; }
+    .nav-links a { position: relative; font-size: 15px; font-weight: 500; color: var(--dark-700);
+      padding: 4px 0; transition: color .18s var(--ease); }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+      background: var(--primary-400); border-radius: 2px;
+      transform: scaleX(0); transform-origin: left; transition: transform .2s var(--ease);
+    }
+    .nav-links a:hover { color: var(--primary-500); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { display: flex; align-items: center; gap: var(--sp-3); }
+    .nav-menu { display: flex; align-items: center; gap: var(--sp-6); } /* desktop : liens + CTA sur 1 rangée */
+
+    /* Hamburger CSS pur (checkbox, sans JS) */
+    .nav-toggle, .nav-toggle-label { display: none; }
+    .nav-toggle-label { width: 44px; height: 44px; border: 1px solid var(--border); border-radius: var(--radius-btn);
+      cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; }
+    .nav-toggle-label span { display: block; width: 20px; height: 2px; background: var(--primary-500); border-radius: 2px; }
+
+    /* ---------- HERO (bande navy) ---------- */
+    .hero {
+      position: relative; overflow: hidden;
+      background: var(--primary-500);
+      color: var(--surface);
+    }
+    /* Décor : deux halos très doux, dimensions fixes (CLS = 0) */
+    .hero::before, .hero::after {
+      content: ""; position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+    }
+    .hero::before { width: 640px; height: 640px; top: -280px; right: -200px;
+      background: radial-gradient(circle, color-mix(in srgb, var(--primary-300) 30%, transparent) 0%, transparent 68%); }
+    .hero::after { width: 520px; height: 520px; bottom: -300px; left: -180px;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent-400) 16%, transparent) 0%, transparent 70%); }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--sp-16);
+      align-items: center;
+      padding: var(--sp-24) 0;
+    }
+
+    .badge-indep.on-navy {
+      color: var(--accent-100);
+      background: color-mix(in srgb, var(--accent-500) 20%, transparent);
+      border-color: color-mix(in srgb, var(--accent-200) 42%, transparent);
+    }
+    .badge-indep.on-navy .dot { background: var(--accent-300); }
+
+    .hero h1 {
+      color: var(--surface); font-weight: 800; letter-spacing: -0.032em;
+      font-size: clamp(40px, 5.4vw, 60px); line-height: 1.04;
+      margin: var(--sp-6) 0 var(--sp-4); text-wrap: balance;
+    }
+    .hero .lede {
+      color: var(--primary-100); font-size: 18px; line-height: 1.62; max-width: 52ch;
+      margin-bottom: var(--sp-8);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+    .hero-actions .btn-secondary {
+      background: transparent; color: var(--surface);
+      border-color: color-mix(in srgb, var(--surface) 35%, transparent);
+    }
+    .hero-actions .btn-secondary:hover {
+      background: color-mix(in srgb, var(--surface) 8%, transparent);
+      border-color: color-mix(in srgb, var(--surface) 62%, transparent);
+    }
+    .hero-note { margin-top: var(--sp-6); font-size: 14px; color: var(--primary-100); }
+
+    /* ---------- Carte de données institutionnelle ---------- */
+    .data-card {
+      background: var(--surface); color: var(--text-body);
+      border: 1px solid color-mix(in srgb, var(--primary-500) 12%, var(--border));
+      border-radius: var(--radius-glass);
+      box-shadow: 0 18px 50px rgba(8, 17, 31, 0.32);
+      overflow: hidden;
+    }
+    .data-card-head {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+      padding: var(--sp-4) var(--sp-6); border-bottom: 1px solid var(--border); background: var(--dark-50);
+    }
+    .data-card-head .title { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--text-title); }
+    .data-card-head .ref { font-size: 13px; font-weight: 600; color: var(--dark-500); }
+    .data-card-body { padding: var(--sp-6); }
+    .data-card-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+      color: var(--dark-500); margin-bottom: var(--sp-6); }
+
+    /* Mini-timeline échéances BACS (3 paliers) */
+    .timeline { list-style: none; position: relative; padding-left: 34px; }
+    .timeline::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: var(--dark-200); }
+    .timeline li { position: relative; padding-bottom: var(--sp-6); }
+    .timeline li:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -34px; top: 1px; width: 24px; height: 24px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--surface); border: 2px solid var(--dark-300);
+    }
+    .tl-dot svg { width: 13px; height: 13px; }
+    .tl-dot::after { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+    .done .tl-dot { background: var(--accent-600); border-color: var(--accent-600); color: var(--surface); }
+    .done .tl-dot::after { display: none; }
+    .due .tl-dot { border-color: var(--primary-400); }
+    .due .tl-dot::after { background: var(--primary-400); }
+    .na .tl-dot { border-color: var(--dark-300); }
+    .na .tl-dot::after { background: var(--dark-300); }
+
+    .tl-kw { display: block; font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--text-title); }
+    .tl-status { display: inline-flex; align-items: center; gap: 6px; margin-top: 7px;
+      padding: 3px 11px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 700; letter-spacing: 0.005em; }
+    .tl-status svg { width: 13px; height: 13px; }
+    .tl-status.now { color: var(--accent-700); background: var(--accent-50); }
+    .tl-status.later { color: var(--primary-500); background: var(--primary-50); }
+    .tl-status.none { color: var(--dark-600); background: var(--dark-100); }
+    .tl-desc { display: block; font-size: 14px; color: var(--dark-500); margin-top: 8px; line-height: 1.5; }
+
+    .data-card-foot {
+      border-top: 1px solid var(--border); padding: var(--sp-4) var(--sp-6);
+      font-size: 13px; color: var(--dark-500); display: flex; align-items: center; gap: 8px;
+    }
+    .data-card-foot svg { width: 14px; height: 14px; flex: 0 0 auto; color: var(--dark-400); }
+
+    /* ---------- Bande de crédibilité (sources) ---------- */
+    .credibility { border-bottom: 1px solid var(--border); background: var(--dark-50); }
+    .credibility-inner { padding: var(--sp-8) 0; }
+    .credibility .kicker { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.11em;
+      color: var(--dark-500); text-align: center; margin-bottom: var(--sp-6); }
+    .sources { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 0; list-style: none; }
+    .sources li { display: inline-flex; align-items: center; font-family: var(--font-display); font-weight: 700; font-size: 16px;
+      color: var(--dark-500); letter-spacing: -0.005em; }
+    .sources li:not(:last-child)::after {
+      content: ""; width: 1px; height: 15px; background: var(--dark-300); margin: 0 var(--sp-6);
+    }
+
+    /* ---------- Sections génériques ---------- */
+    section { scroll-margin-top: 80px; }
+    .section { padding: var(--sp-24) 0; }
+    .section-head { max-width: 46rem; margin-bottom: var(--sp-16); }
+    .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .section-head h2 { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; color: var(--text-title); margin: var(--sp-3) 0; letter-spacing: -0.025em; }
+    .section-head p { font-size: 17px; color: var(--text-body); max-width: 60ch; }
+    .section-head.center p { margin-left: auto; margin-right: auto; }
+
+    /* ---------- Données de référence (KPI géants) ---------- */
+    .ref-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-6); }
+    .ref-card {
+      border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--surface);
+      padding: var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-3);
+      transition: transform .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .ref-card:hover { transform: translateY(-2px); border-color: var(--primary-300); box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06); }
+    .ref-card .ref-topline { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+      color: var(--dark-500); }
+    .ref-card .stat {
+      font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em; color: var(--primary-500);
+      font-size: clamp(42px, 5vw, 54px); line-height: 1; margin-top: 2px;
+    }
+    .ref-card .stat .unit { font-size: 21px; font-weight: 700; color: var(--dark-400); margin-left: 3px; letter-spacing: 0; }
+    .ref-card .stat-sub { font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--text-title); }
+    .ref-card .desc { font-size: 14px; color: var(--dark-500); line-height: 1.55; }
+    .ref-card .src { margin-top: auto; padding-top: var(--sp-2); font-size: 13px; color: var(--dark-500);
+      display: flex; align-items: center; gap: 7px; }
+    .ref-card .src::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--dark-300); flex: 0 0 auto; }
+
+    /* KPI clé — seul accent ambre de la page */
+    .ref-card.key .stat { color: var(--highlight-700); }
+    .ref-card.key .flag {
+      align-self: flex-start; font-size: 13px; font-weight: 700; color: var(--highlight-700);
+      background: var(--highlight-50); padding: 3px 10px; border-radius: var(--radius-pill);
+    }
+
+    /* Jauge classes EN 15232 */
+    .en-scale { display: flex; gap: 6px; margin-top: 4px; }
+    .en-scale span { flex: 1; height: 8px; border-radius: 3px; }
+    .en-scale .a { background: var(--en-a); }
+    .en-scale .b { background: var(--en-b); }
+    .en-scale .c { background: var(--en-c); }
+    .en-scale .d { background: var(--en-d); }
+    .en-legend { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: var(--dark-500); margin-top: 4px; }
+
+    /* ---------- Notre rôle : AMO indépendante ---------- */
+    .role { background: var(--dark-50); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); counter-reset: step; }
+    .role-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
+      padding: var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-3);
+      transition: transform .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    .role-card:hover { transform: translateY(-2px); border-color: var(--primary-300); box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06); }
+    .role-card .num {
+      counter-increment: step; width: 42px; height: 42px; border-radius: var(--radius-sm);
+      background: var(--primary-50); color: var(--primary-500);
+      font-family: var(--font-display); font-weight: 800; font-size: 16px; letter-spacing: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .role-card .num::before { content: counter(step, decimal-leading-zero); }
+    .role-card h3 { font-size: 19px; font-weight: 700; color: var(--text-title); }
+    .role-card p { font-size: 15px; color: var(--text-body); line-height: 1.6; }
+
+    /* ---------- CTA final (bande navy) ---------- */
+    .final-cta { background: var(--primary-500); color: var(--surface); position: relative; overflow: hidden; }
+    .final-cta::after {
+      content: ""; position: absolute; width: 560px; height: 560px; top: -300px; right: -180px;
+      border-radius: 50%; pointer-events: none; z-index: 0;
+      background: radial-gradient(circle, color-mix(in srgb, var(--primary-300) 28%, transparent) 0%, transparent 70%);
+    }
+    .final-cta-inner { position: relative; z-index: 1; text-align: center; padding: var(--sp-24) 0; max-width: 44rem; margin: 0 auto; }
+    .final-cta h2 { color: var(--surface); font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; margin-bottom: var(--sp-4); letter-spacing: -0.025em; }
+    .final-cta p { color: var(--primary-100); font-size: 17px; margin-bottom: var(--sp-8); }
+
+    /* ---------- FOOTER ---------- */
+    .site-footer { background: var(--surface); border-top: 1px solid var(--border); }
+    .footer-inner { padding: var(--sp-12) 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-6); }
+    .footer-indep { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--dark-500); max-width: 46em; line-height: 1.55; }
+    .footer-indep .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-600); flex: 0 0 auto; margin-top: 7px; }
+    .footer-copy { font-size: 14px; color: var(--dark-500); }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: var(--sp-12); padding: var(--sp-16) 0; }
+      .ref-grid { grid-template-columns: repeat(2, 1fr); }
+      .role-grid { grid-template-columns: 1fr; }
+      .section { padding: var(--sp-16) 0; }
+      .section-head { margin-bottom: var(--sp-12); }
+    }
+    @media (max-width: 640px) {
+      /* Nav hamburger */
+      .nav-toggle-label { display: inline-flex; }
+      .nav-menu {
+        position: absolute; top: 68px; left: 0; right: 0;
+        background: var(--surface); border-bottom: 1px solid var(--border);
+        flex-direction: column; align-items: stretch; gap: 0;
+        padding: var(--sp-3) var(--sp-6) var(--sp-6);
+        display: none;
+      }
+      .nav-toggle:checked ~ .nav-menu { display: flex; }
+      .nav-links { flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links a { display: block; padding: 14px 0; border-bottom: 1px solid var(--border); }
+      .nav-links a::after { display: none; }
+      .nav-cta { flex-direction: column; align-items: stretch; margin-top: var(--sp-4); }
+      .nav-cta .btn { justify-content: center; min-height: 46px; }
+
+      .ref-grid { grid-template-columns: 1fr; }
+      .sources { flex-direction: column; gap: var(--sp-3); }
+      .sources li:not(:last-child)::after { display: none; }
+      .hero-actions .btn { width: 100%; justify-content: center; min-height: 46px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="site-nav" aria-label="Navigation principale">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#" aria-label="NeoGTB, accueil">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <path d="M3 9h18M9 4v16"></path>
+          </svg>
+        </span>
+        Neo<span class="neo">GTB</span>
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Ouvrir ou fermer le menu de navigation">
+        <span></span><span></span><span></span>
+      </label>
+
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#reference">Décret BACS</a></li>
+          <li><a href="#reference">Outils</a></li>
+          <li><a href="#role">AMO</a></li>
+          <li><a href="#reference">Réglementation</a></li>
+          <li><a href="#role">À propos</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn-secondary" href="#role">La méthode NeoGTB</a>
+          <a class="btn btn-primary" href="#final">Vérifier ma conformité</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <span class="badge-indep on-navy">
+            <span class="dot" aria-hidden="true"></span>
+            Indépendant — aucun lien commercial
+          </span>
+
+          <h1 id="hero-title">Le tiers de confiance indépendant de la GTB</h1>
+
+          <p class="lede">
+            Nous ne vendons aucun matériel et ne représentons aucune marque.
+            Notre seule mission : vous rendre conforme au décret BACS, au bon niveau,
+            au bon coût, avec des données vérifiables.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#final">Vérifier ma conformité</a>
+            <a class="btn btn-secondary" href="#role">La méthode NeoGTB</a>
+          </div>
+
+          <p class="hero-note">
+            Assistance à maîtrise d'ouvrage (AMO) GTB/GTC · Bâtiments tertiaires
+            <span class="tabnum">1 000–5 000</span>&nbsp;m²
+          </p>
+        </div>
+
+        <!-- Carte de données institutionnelle -->
+        <aside class="data-card" aria-label="Échéances du décret BACS par puissance CVC">
+          <div class="data-card-head">
+            <span class="title">Décret BACS</span>
+            <span class="ref tabnum">n° 2025-1343</span>
+          </div>
+          <div class="data-card-body">
+            <p class="data-card-label">Échéances par puissance CVC</p>
+            <ol class="timeline">
+              <li class="done">
+                <span class="tl-dot" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span class="tl-kw"><span class="tabnum">&gt; 290</span> kW</span>
+                <span class="tl-status now">Obligatoire depuis <span class="tabnum">2025</span></span>
+                <span class="tl-desc">Systèmes d'automatisation et de contrôle déjà exigés.</span>
+              </li>
+              <li class="due">
+                <span class="tl-dot" aria-hidden="true"></span>
+                <span class="tl-kw"><span class="tabnum">70–290</span> kW</span>
+                <span class="tl-status later">Échéance 1<sup>er</sup> janvier <span class="tabnum">2030</span></span>
+                <span class="tl-desc">Mise en conformité à anticiper dès aujourd'hui.</span>
+              </li>
+              <li class="na">
+                <span class="tl-dot" aria-hidden="true"></span>
+                <span class="tl-kw"><span class="tabnum">&lt; 70</span> kW</span>
+                <span class="tl-status none">Non soumis</span>
+                <span class="tl-desc">Hors périmètre de l'obligation BACS.</span>
+              </li>
+            </ol>
+          </div>
+          <div class="data-card-foot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+            Source : Légifrance — bâtiments tertiaires
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== BANDE DE CRÉDIBILITÉ ==================== -->
+    <section class="credibility" aria-label="Sources de référence">
+      <div class="wrap credibility-inner">
+        <p class="kicker">Nos analyses s'appuient sur les sources officielles</p>
+        <ul class="sources">
+          <li>Légifrance</li>
+          <li>ADEME</li>
+          <li>GIMELEC</li>
+          <li>COSTIC</li>
+          <li>Norme EN&nbsp;<span class="tabnum">15232</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================== DONNÉES DE RÉFÉRENCE ==================== -->
+    <section class="section" id="reference" aria-labelledby="reference-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Données de référence</span>
+          <h2 id="reference-title">Les chiffres qui encadrent votre bâtiment</h2>
+          <p>Le cadre réglementaire, présenté sans interprétation commerciale. Ce sont ces mêmes données qui structurent chacune de nos recommandations.</p>
+        </div>
+
+        <div class="ref-grid">
+          <article class="ref-card key">
+            <span class="ref-topline">Seuil décisif</span>
+            <span class="stat"><span class="tabnum">290</span><span class="unit">kW</span></span>
+            <span class="stat-sub">Obligation immédiate au-dessus du seuil</span>
+            <span class="flag">Obligation en cours</span>
+            <span class="src">Décret BACS <span class="tabnum">2025-1343</span> · Légifrance</span>
+          </article>
+
+          <article class="ref-card">
+            <span class="ref-topline">Prochaine échéance</span>
+            <span class="stat tabnum">2030</span>
+            <span class="stat-sub">Pour les puissances de <span class="tabnum">70–290</span> kW</span>
+            <p class="desc">Au 1<sup>er</sup> janvier <span class="tabnum">2030</span> : mise en conformité à préparer sans attendre.</p>
+            <span class="src">Décret BACS · Légifrance</span>
+          </article>
+
+          <article class="ref-card">
+            <span class="ref-topline">Décret tertiaire</span>
+            <span class="stat"><span class="tabnum">−40</span><span class="unit">%</span></span>
+            <span class="stat-sub">de consommation d'ici <span class="tabnum">2030</span></span>
+            <p class="desc">Éco Énergie Tertiaire : <span class="tabnum">−50</span> % en <span class="tabnum">2040</span>, <span class="tabnum">−60</span> % en <span class="tabnum">2050</span> (année de référence).</p>
+            <span class="src">Éco Énergie Tertiaire · ADEME</span>
+          </article>
+
+          <article class="ref-card">
+            <span class="ref-topline">Efficacité GTB</span>
+            <span class="stat">A → D</span>
+            <span class="stat-sub">Classes de la norme EN&nbsp;<span class="tabnum">15232</span></span>
+            <div class="en-scale" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span></div>
+            <div class="en-legend" aria-hidden="true"><span>A — meilleur</span><span>D</span></div>
+            <span class="src">EN <span class="tabnum">15232</span> / ISO <span class="tabnum">52120-1</span></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NOTRE RÔLE : AMO INDÉPENDANTE ==================== -->
+    <section class="role section" id="role" aria-labelledby="role-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Notre rôle</span>
+          <h2 id="role-title">Une AMO indépendante, de bout en bout</h2>
+          <p>Assistance à maîtrise d'ouvrage : nous défendons vos intérêts face aux intégrateurs, jamais l'inverse.</p>
+        </div>
+
+        <div class="role-grid">
+          <article class="role-card">
+            <span class="num" aria-hidden="true"></span>
+            <h3>Cahier des charges</h3>
+            <p>Nous traduisons vos obligations réglementaires en spécifications techniques précises, neutres et opposables.</p>
+          </article>
+
+          <article class="role-card">
+            <span class="num" aria-hidden="true"></span>
+            <h3>Appel d'offres</h3>
+            <p>Nous cadrons la consultation et comparons les intégrateurs sur des critères objectifs, sans parti pris de marque.</p>
+          </article>
+
+          <article class="role-card">
+            <span class="num" aria-hidden="true"></span>
+            <h3>Contrôle de l'intégrateur</h3>
+            <p>Nous vérifions que l'installation livrée correspond au cahier des charges et à la classe EN&nbsp;<span class="tabnum">15232</span> visée.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA FINAL ==================== -->
+    <section class="final-cta" id="final" aria-labelledby="final-title">
+      <div class="wrap final-cta-inner">
+        <h2 id="final-title">Savoir où vous en êtes prend quelques minutes</h2>
+        <p>Vérifiez la conformité de votre bâtiment au décret BACS à partir de sa puissance CVC et de sa surface. Sans engagement, sans démarchage.</p>
+        <a class="btn btn-primary" href="#">Vérifier ma conformité</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="footer-indep">
+        <span class="dot" aria-hidden="true"></span>
+        NeoGTB est un tiers de confiance indépendant : aucun matériel vendu, aucune marque représentée, aucun lien commercial avec les intégrateurs.
+      </p>
+      <p class="footer-copy">© <span class="tabnum">2026</span> NeoGTB — Ulrich Calmo</p>
+    </div>
+  </footer>
+
+</body>
+</html>

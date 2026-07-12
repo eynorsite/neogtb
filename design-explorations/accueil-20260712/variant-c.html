@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeoGTB — Votre bâtiment est-il concerné par le décret BACS ?</title>
+<meta name="description" content="Testez en 10 secondes si votre bâtiment tertiaire est soumis au décret BACS (n° 2025-1343). Outils gratuits et indépendants : simulateur de conformité, prime CEE, jauge EN 15232.">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* ============================================================
+     Variant C — « Outil / Preuve interactive »
+     CSS spécifique. Toutes les couleurs viennent des tokens.
+     ============================================================ */
+
+  .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--sp-6); }
+
+  /* ---------- NAV ---------- */
+  .nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: saturate(1.1) blur(8px); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-6); min-height: 68px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display);
+    font-weight: 800; font-size: 19px; color: var(--text-title); letter-spacing: -0.02em; }
+  .brand .logo { width: 32px; height: 32px; border-radius: var(--radius-sm);
+    background: var(--primary-500); display: grid; place-items: center; flex: none; }
+  .brand .logo svg { width: 18px; height: 18px; }
+  .brand .neo { color: var(--accent-600); }
+
+  .nav-links { display: flex; align-items: center; gap: var(--sp-6); list-style: none; }
+  .nav-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 500;
+    color: var(--dark-600); transition: color .18s var(--ease); }
+  .nav-links a:hover { color: var(--primary-500); }
+  .nav-cta { display: flex; align-items: center; gap: 12px; }
+
+  /* hamburger (CSS-only, checkbox hack) */
+  .nav-toggle, .nav-toggle-label { display: none; }
+  .nav-menu { display: none; } /* clone mobile masqué en desktop (réaffiché <900px) */
+  .nav-toggle-label { flex: none; width: 44px; height: 44px; border: 1px solid var(--border);
+    border-radius: var(--radius-btn); background: var(--surface); cursor: pointer; }
+  .nav-toggle-label span, .nav-toggle-label span::before, .nav-toggle-label span::after {
+    content: ""; position: absolute; width: 18px; height: 2px; background: var(--primary-500); border-radius: 2px; }
+  .nav-toggle-label span { position: relative; display: block; margin: 21px auto 0; }
+  .nav-toggle-label span::before { top: -6px; }
+  .nav-toggle-label span::after { top: 6px; }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; overflow: clip; background: linear-gradient(180deg, var(--surface), var(--primary-50)); }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--sp-16); align-items: center; padding-top: var(--sp-24); padding-bottom: var(--sp-24); }
+  /* halos décor très doux, dimensions fixes (CLS=0) */
+  .orb { position: absolute; border-radius: 50%; filter: blur(64px); pointer-events: none; z-index: 0; }
+  .orb-a { width: 440px; height: 440px; top: -150px; right: -130px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent-500) 20%, transparent), transparent 70%); }
+  .orb-b { width: 400px; height: 400px; bottom: -190px; left: -150px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--primary-400) 15%, transparent), transparent 70%); }
+
+  .hero-eyebrow { margin-bottom: var(--sp-4); }
+  .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 4.6vw, 56px);
+    letter-spacing: -0.025em; margin-bottom: var(--sp-6); max-width: 15ch; }
+  .hero h1 .accent { color: var(--accent-600); }
+  .hero .lede { font-size: 18px; color: var(--text-body); max-width: 46ch; margin-bottom: var(--sp-6); }
+  .hero .badge-indep { margin-bottom: var(--sp-8); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-bottom: var(--sp-8); }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: var(--sp-6); }
+  .hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--dark-600); }
+  .hero-meta-item svg { width: 16px; height: 16px; color: var(--accent-600); flex: none; }
+
+  /* ---------- SIMULATEUR (pièce maîtresse) ---------- */
+  .sim { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 18px 40px -22px rgba(15,23,42,.22); overflow: hidden; }
+  .sim-head { padding: var(--sp-6) var(--sp-6) var(--sp-4); border-bottom: 1px solid var(--border);
+    background: var(--dark-50); }
+  .sim-head .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em; color: var(--accent-700); margin-bottom: 6px; }
+  .sim-head .kicker svg { width: 15px; height: 15px; }
+  .sim-head h2 { font-size: 20px; font-weight: 700; }
+  .sim-head p { font-size: 14px; color: var(--dark-500); margin-top: 4px; }
+
+  .sim-body { padding: var(--sp-6); }
+  .sim-field label { display: block; font-size: 14px; font-weight: 600; color: var(--text-title); margin-bottom: 8px; }
+  .sim-input-row { display: flex; gap: 10px; }
+  .sim-input-wrap { position: relative; flex: 1; }
+  .sim-input-wrap .unit { position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    font-size: 14px; font-weight: 600; color: var(--dark-400); pointer-events: none; }
+  .sim input[type="number"] { width: 100%; height: 50px; padding: 0 46px 0 14px; font-size: 16px;
+    font-family: var(--font-sans); font-variant-numeric: tabular-nums; color: var(--text-title); background: var(--surface);
+    border: 1px solid var(--dark-300); border-radius: var(--radius-btn);
+    transition: border-color .18s var(--ease), box-shadow .18s var(--ease); }
+  .sim input[type="number"]:focus { outline: none; border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-500) 20%, transparent); }
+  .sim input[type="number"]::-webkit-outer-spin-button,
+  .sim input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .sim input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+  .sim .btn-verify { height: 50px; }
+
+  /* exemples cliquables (pré-remplissage) */
+  .sim-examples { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: var(--sp-4); }
+  .sim-examples .lbl { font-size: 14px; font-weight: 500; color: var(--dark-500); }
+  .ex-chip { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--font-sans);
+    font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--primary-500);
+    background: var(--surface); border: 1px solid var(--dark-300); border-radius: var(--radius-pill);
+    padding: 6px 14px; cursor: pointer;
+    transition: border-color .18s var(--ease), background .18s var(--ease), color .18s var(--ease); }
+  .ex-chip:hover { border-color: var(--accent-600); color: var(--accent-700); background: var(--accent-50); }
+
+  /* légende factuelle des seuils */
+  .sim-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--sp-4); }
+  .thresh { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500;
+    font-variant-numeric: tabular-nums; color: var(--dark-600); background: var(--dark-50);
+    border: 1px solid var(--border); padding: 5px 10px; border-radius: var(--radius-pill); }
+  .thresh b { color: var(--text-title); font-weight: 700; }
+  .thresh .tick { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+
+  /* carte résultat */
+  .sim-result { margin-top: var(--sp-6); border: 1px solid var(--border); border-radius: var(--radius-card);
+    padding: var(--sp-4); background: var(--dark-50);
+    transition: border-color .18s var(--ease), background .18s var(--ease); }
+  .sim-result[data-state] { animation: rise .25s var(--ease); }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .res-head { display: flex; align-items: flex-start; gap: 12px; }
+  .res-icon { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .res-icon svg { width: 18px; height: 18px; }
+  .res-headings { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .res-title { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-title); line-height: 1.25; }
+  .res-deadline { display: inline-flex; align-items: center; align-self: flex-start; gap: 6px; font-size: 14px;
+    font-weight: 600; font-variant-numeric: tabular-nums; padding: 3px 10px; border-radius: var(--radius-pill); }
+  .res-deadline .pin { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+  .res-power { margin-left: auto; flex: none; font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums;
+    color: var(--text-title); background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-pill); padding: 4px 11px; }
+  .res-text { font-size: 14px; color: var(--dark-600); margin-top: 12px; line-height: 1.55; }
+
+  /* états sémantiques — teintes dérivées des tokens */
+  .sim-result[data-state="danger"]  { border-color: color-mix(in srgb, var(--en-d) 45%, var(--border));
+    background: color-mix(in srgb, var(--en-d) 7%, var(--surface)); }
+  .sim-result[data-state="danger"]  .res-icon { background: color-mix(in srgb, var(--en-d) 15%, var(--surface)); color: var(--en-d); }
+  .sim-result[data-state="danger"]  .res-deadline { color: color-mix(in srgb, var(--en-d) 60%, #000); /* rouge foncé = AA sur fond clair */
+    background: color-mix(in srgb, var(--en-d) 10%, var(--surface)); border: 1px solid color-mix(in srgb, var(--en-d) 32%, var(--border)); }
+  .sim-result[data-state="warning"] { border-color: color-mix(in srgb, var(--highlight-500) 55%, var(--border));
+    background: var(--highlight-50); }
+  .sim-result[data-state="warning"] .res-icon { background: color-mix(in srgb, var(--highlight-500) 20%, var(--surface)); color: var(--highlight-700); }
+  .sim-result[data-state="warning"] .res-deadline { color: var(--highlight-700);
+    background: var(--highlight-50); border: 1px solid color-mix(in srgb, var(--highlight-500) 42%, var(--border)); }
+  .sim-result[data-state="ok"]      { border-color: var(--accent-200); background: var(--accent-50); }
+  .sim-result[data-state="ok"]      .res-icon { background: color-mix(in srgb, var(--accent-500) 18%, var(--surface)); color: var(--accent-700); }
+  .sim-result[data-state="ok"]      .res-deadline { color: var(--accent-700);
+    background: var(--accent-50); border: 1px solid var(--accent-200); }
+  .sim-result[data-state="idle"]    .res-icon { background: var(--dark-100); color: var(--dark-400); }
+  .sim-result[data-state="error"]   { border-color: color-mix(in srgb, var(--highlight-500) 50%, var(--border)); }
+  .sim-result[data-state="error"]   .res-icon { background: var(--highlight-50); color: var(--highlight-700); }
+
+  .sim-source { font-size: 14px; color: var(--dark-500); margin-top: var(--sp-4); padding-top: var(--sp-4);
+    border-top: 1px solid var(--border); }
+  .sim-source b { color: var(--dark-600); font-weight: 600; }
+
+  /* ---------- BANDE CRÉDIBILITÉ ---------- */
+  .proof { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--dark-50); }
+  .proof .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: var(--sp-6); padding-top: var(--sp-8); padding-bottom: var(--sp-8); }
+  .proof-stat { display: flex; flex-direction: column; gap: 2px; }
+  .proof-stat .n { font-family: var(--font-display); font-weight: 800; font-size: 26px;
+    font-variant-numeric: tabular-nums; color: var(--primary-500); letter-spacing: -0.01em; }
+  .proof-stat .n em { font-style: normal; color: var(--accent-600); }
+  .proof-stat .l { font-size: 14px; color: var(--dark-600); }
+  .proof-sep { width: 1px; align-self: stretch; background: var(--border); }
+  .proof-src { font-size: 14px; color: var(--dark-500); }
+  .proof-src b { color: var(--dark-700); font-weight: 600; }
+
+  /* ---------- SECTIONS génériques ---------- */
+  .section { padding-top: var(--sp-24); padding-bottom: var(--sp-24); }
+  .section-head { max-width: 62ch; margin-bottom: var(--sp-12); }
+  .section-head .eyebrow { display: block; margin-bottom: var(--sp-3); }
+  .section-head h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 800; margin-bottom: var(--sp-4); }
+  .section-head p { font-size: 17px; color: var(--text-body); }
+
+  /* ---------- GRILLE OUTILS (section signature) ---------- */
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--sp-6); }
+  .tool-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-card); padding: var(--sp-6);
+    transition: border-color .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease); }
+  .tool-card:hover { border-color: var(--accent-300); transform: translateY(-2px);
+    box-shadow: 0 12px 28px -18px rgba(15,23,42,.28); }
+  .tool-ic { width: 46px; height: 46px; border-radius: var(--radius-btn); background: var(--accent-50);
+    border: 1px solid var(--accent-200); display: grid; place-items: center; margin-bottom: var(--sp-4); }
+  .tool-ic svg { width: 24px; height: 24px; color: var(--accent-700); }
+  .tool-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .tool-card p { font-size: 14px; color: var(--text-body); flex: 1; margin-bottom: var(--sp-4); }
+  .tool-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 15px;
+    font-weight: 600; color: var(--accent-700); }
+  .tool-link svg { width: 15px; height: 15px; transition: transform .18s var(--ease); }
+  .tool-card:hover .tool-link svg { transform: translateX(3px); }
+  .tool-tag { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    font-variant-numeric: tabular-nums; color: var(--primary-500); background: var(--primary-50);
+    border: 1px solid var(--primary-100); padding: 3px 9px; border-radius: var(--radius-pill); margin-bottom: var(--sp-4); }
+
+  /* ---------- JAUGE EN 15232 (bonus) ---------- */
+  .en { background: var(--primary-950); color: #fff; }
+  .en .section-head h2 { color: #fff; }
+  .en .section-head p { color: var(--primary-200); }
+  .en .section-head .eyebrow { color: var(--accent-300); }
+  .en-panel { display: grid; grid-template-columns: 1fr auto; gap: var(--sp-12); align-items: center;
+    background: var(--primary-900); border: 1px solid var(--primary-700); border-radius: var(--radius-glass); padding: var(--sp-12); }
+  .en-bar { display: flex; height: 64px; border-radius: var(--radius-btn); overflow: hidden; border: 1px solid var(--primary-700); }
+  .en-seg { flex: 1; display: grid; place-items: center; color: #fff; font-family: var(--font-display);
+    font-weight: 800; font-size: 22px; position: relative; }
+  .en-seg.a { background: var(--en-a); } .en-seg.b { background: var(--en-b); }
+  .en-seg.c { background: var(--en-c); } .en-seg.d { background: var(--en-d); }
+  .en-scale { display: flex; justify-content: space-between; margin-top: 10px; font-size: 14px; color: var(--primary-200); }
+  .en-legend { display: grid; gap: 10px; min-width: 220px; }
+  .en-legend li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--primary-100); list-style: none; }
+  .en-legend .sw { width: 14px; height: 14px; border-radius: 4px; flex: none; }
+
+  /* ---------- CTA FINAL ---------- */
+  .final { background: var(--surface); }
+  .final-card { position: relative; overflow: clip; text-align: center; background: var(--primary-500);
+    border-radius: var(--radius-glass); padding: var(--sp-24) var(--sp-6); }
+  .final-card .orb { z-index: 0; }
+  .final-card .orb-c { width: 360px; height: 360px; top: -160px; left: 50%; transform: translateX(-50%);
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent-400) 30%, transparent), transparent 70%); }
+  .final-card > * { position: relative; z-index: 1; }
+  .final-card h2 { color: #fff; font-size: clamp(26px, 3vw, 34px); font-weight: 800; margin-bottom: var(--sp-4); }
+  .final-card p { color: var(--primary-100); font-size: 17px; max-width: 52ch; margin: 0 auto var(--sp-8); }
+  .final-card .badge-indep { background: color-mix(in srgb, var(--accent-50) 16%, transparent);
+    border-color: color-mix(in srgb, var(--accent-200) 40%, transparent); color: var(--accent-100); margin-bottom: var(--sp-6); }
+  .btn-light { background: #fff; color: var(--primary-600); }
+  .btn-light:hover { background: var(--primary-50); }
+
+  /* ---------- FOOTER ---------- */
+  .foot { border-top: 1px solid var(--border); background: var(--dark-50); }
+  .foot .wrap { padding-top: var(--sp-12); padding-bottom: var(--sp-12); }
+  .foot-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sp-6); align-items: center; }
+  .foot .badge-indep { font-size: 13px; }
+  .foot nav { display: flex; flex-wrap: wrap; gap: var(--sp-6); }
+  .foot nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; color: var(--dark-600); }
+  .foot nav a:hover { color: var(--primary-500); }
+  .foot-bottom { margin-top: var(--sp-4); padding-top: var(--sp-6); border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sp-3); font-size: 14px; color: var(--dark-500); }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta .btn { display: none; }
+    .nav-toggle-label { display: block; position: relative; }
+    /* menu déroulant mobile */
+    .nav-menu { position: absolute; left: 0; right: 0; top: 100%; background: var(--surface);
+      border-bottom: 1px solid var(--border); box-shadow: 0 12px 24px -16px rgba(15,23,42,.25);
+      display: grid; gap: 4px; padding: var(--sp-4) var(--sp-6); transform: scaleY(0); transform-origin: top;
+      opacity: 0; pointer-events: none; transition: transform .2s var(--ease), opacity .2s var(--ease); }
+    .nav-menu .nav-links { display: grid; gap: 2px; }
+    .nav-menu .nav-links a { display: block; min-height: 0; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nav-menu .btn { display: inline-flex; width: 100%; justify-content: center; margin-top: var(--sp-3); }
+    .nav-toggle:checked ~ .nav-menu { transform: scaleY(1); opacity: 1; pointer-events: auto; }
+
+    .hero .wrap { grid-template-columns: 1fr; gap: var(--sp-12); padding-top: var(--sp-16); padding-bottom: var(--sp-16); }
+    .en-panel { grid-template-columns: 1fr; gap: var(--sp-8); }
+    .proof-sep { display: none; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding-inline: var(--sp-4); }
+    .sim-input-row { flex-direction: column; }
+    .sim .btn-verify { width: 100%; justify-content: center; }
+    .proof .wrap { gap: var(--sp-8); }
+    .foot-top { flex-direction: column; align-items: flex-start; }
+    .en-seg { font-size: 18px; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+  }
+
+  /* micro-interactions coupées si l'utilisateur le demande */
+  @media (prefers-reduced-motion: reduce) {
+    .tool-card:hover { transform: none; box-shadow: none; }
+    .tool-card:hover .tool-link svg { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#" aria-label="NeoGTB — accueil">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/>
+        </svg>
+      </span>
+      <span>Neo<span class="neo">GTB</span></span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Ouvrir le menu"><span></span></label>
+
+    <ul class="nav-links">
+      <li><a href="#simulateur">Décret BACS</a></li>
+      <li><a href="#outils">Outils</a></li>
+      <li><a href="#amo">AMO</a></li>
+      <li><a href="#en15232">Réglementation</a></li>
+      <li><a href="#amo">À propos</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#outils">Utiliser les outils</a>
+    </div>
+
+    <!-- clone menu pour mobile -->
+    <div class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="#simulateur">Décret BACS</a></li>
+        <li><a href="#outils">Outils</a></li>
+        <li><a href="#amo">AMO</a></li>
+        <li><a href="#en15232">Réglementation</a></li>
+        <li><a href="#amo">À propos</a></li>
+      </ul>
+      <a class="btn btn-primary" href="#outils">Utiliser les outils</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <span class="orb orb-a" aria-hidden="true"></span>
+    <span class="orb orb-b" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">Décret BACS · n° 2025-1343</p>
+        <h1>Votre bâtiment est-il concerné par le <span class="accent">décret BACS</span> ?</h1>
+        <p class="lede">Vérifiez votre situation en 10 secondes à partir de la puissance CVC de votre bâtiment tertiaire. Puis avancez avec des outils gratuits et une lecture neutre de la réglementation.</p>
+        <span class="badge-indep"><span class="dot" aria-hidden="true"></span>Indépendant — aucun matériel vendu, aucune marque représentée</span>
+        <div class="hero-actions">
+          <a class="btn btn-secondary" href="#outils">
+            Explorer les 5 outils gratuits
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span class="hero-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Basé sur les seuils officiels
+          </span>
+          <span class="hero-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
+            Aucune donnée transmise
+          </span>
+        </div>
+      </div>
+
+      <!-- ---------- SIMULATEUR (pièce maîtresse) ---------- -->
+      <div class="sim" id="simulateur">
+        <div class="sim-head">
+          <span class="kicker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0H5a2 2 0 0 1-2-2v-4m6 6h10a2 2 0 0 0 2-2v-4M3 9h18M3 15h18"/></svg>
+            Simulateur de conformité
+          </span>
+          <h2>Testez votre situation</h2>
+          <p>Renseignez la puissance de vos systèmes de chauffage, ventilation et climatisation (CVC).</p>
+        </div>
+        <div class="sim-body">
+          <form class="sim-field" id="sim-form" novalidate>
+            <label for="sim-power">Puissance CVC de votre bâtiment (kW)</label>
+            <div class="sim-input-row">
+              <div class="sim-input-wrap">
+                <input type="number" id="sim-power" name="sim-power" min="0" step="1"
+                       inputmode="numeric" placeholder="ex. 150" aria-describedby="sim-result">
+                <span class="unit" aria-hidden="true">kW</span>
+              </div>
+              <button type="submit" class="btn btn-primary btn-verify">
+                Vérifier
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+
+            <!-- exemples cliquables : pré-remplissent et lancent la vérification -->
+            <div class="sim-examples">
+              <span class="lbl">Essayez&nbsp;:</span>
+              <button type="button" class="ex-chip" data-kw="45">45 kW</button>
+              <button type="button" class="ex-chip" data-kw="150">150 kW</button>
+              <button type="button" class="ex-chip" data-kw="320">320 kW</button>
+            </div>
+
+            <!-- légende factuelle des seuils -->
+            <div class="sim-legend" aria-hidden="true">
+              <span class="thresh"><span class="tick" style="background:var(--en-d)"></span><b>&gt; 290 kW</b>&nbsp;depuis 2025</span>
+              <span class="thresh"><span class="tick" style="background:var(--highlight-500)"></span><b>70–290 kW</b>&nbsp;au 1ᵉʳ&nbsp;janvier&nbsp;2030</span>
+              <span class="thresh"><span class="tick" style="background:var(--accent-600)"></span><b>&lt; 70 kW</b>&nbsp;non&nbsp;concerné</span>
+            </div>
+
+            <!-- carte résultat -->
+            <div class="sim-result" id="sim-result" data-state="idle" role="status" aria-live="polite">
+              <div class="res-head">
+                <span class="res-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16v-4m0-4h.01"/><circle cx="12" cy="12" r="9"/></svg>
+                </span>
+                <div class="res-headings">
+                  <span class="res-title">Saisissez une puissance</span>
+                  <span class="res-deadline" hidden></span>
+                </div>
+                <span class="res-power" hidden></span>
+              </div>
+              <p class="res-text">Le résultat s'affiche ici, avec le seuil réglementaire correspondant.</p>
+            </div>
+
+            <p class="sim-source">Sources : <b>Légifrance</b>, décret <b>n° 2025-1343</b>. Simulation indicative — ne remplace pas une étude AMO.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BANDE CRÉDIBILITÉ ===================== -->
+  <section class="proof" aria-label="Repères réglementaires">
+    <div class="wrap">
+      <div class="proof-stat">
+        <span class="n">&gt;&nbsp;290&nbsp;<em>kW</em></span>
+        <span class="l">Obligation en vigueur depuis 2025</span>
+      </div>
+      <span class="proof-sep" aria-hidden="true"></span>
+      <div class="proof-stat">
+        <span class="n">70–290&nbsp;<em>kW</em></span>
+        <span class="l">Échéance au 1ᵉʳ janvier 2030</span>
+      </div>
+      <span class="proof-sep" aria-hidden="true"></span>
+      <div class="proof-stat">
+        <span class="n">A · B · C · <em>D</em></span>
+        <span class="l">Classes d'efficacité GTB (EN 15232)</span>
+      </div>
+      <p class="proof-src"><b>Sources :</b> Légifrance · ADEME · GIMELEC · norme EN&nbsp;15232</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION SIGNATURE : OUTILS ===================== -->
+  <section class="section" id="outils">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Boîte à outils gratuite</span>
+        <h2>Des outils concrets, pas des promesses</h2>
+        <p>Cinq outils interactifs pour objectiver votre projet GTB, du diagnostic de conformité au financement. Gratuits, sans compte, et sans lien commercial avec un fabricant.</p>
+      </div>
+
+      <div class="tools-grid">
+        <!-- Comparateur -->
+        <article class="tool-card">
+          <span class="tool-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="var(--surface)"/><circle cx="16" cy="12" r="2" fill="var(--surface)"/><circle cx="10" cy="18" r="2" fill="var(--surface)"/></svg>
+          </span>
+          <h3>Comparateur de solutions</h3>
+          <p>Confrontez plusieurs solutions et intégrateurs GTB sur des critères objectifs, hors influence commerciale.</p>
+          <a class="tool-link" href="#outils">Ouvrir l'outil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+
+        <!-- Générateur CEE -->
+        <article class="tool-card">
+          <span class="tool-tag">BAT-TH-116</span>
+          <span class="tool-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5a3.5 3 0 0 0-3.5-2c-2 0-3 1-3 2.3 0 3 6.5 1.5 6.5 4.4 0 1.4-1.2 2.3-3 2.3a3.6 3 0 0 1-3.5-2M12 6v1.5M12 16.5V18"/></svg>
+          </span>
+          <h3>Générateur de prime CEE</h3>
+          <p>Estimez la prime BAT-TH-116 finançant l'installation de votre système de GTB.</p>
+          <a class="tool-link" href="#outils">Ouvrir l'outil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+
+        <!-- Jauge EN 15232 -->
+        <article class="tool-card">
+          <span class="tool-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a8 8 0 0 1 8-8"/><path d="M12 14 8 4"/><path d="M4 14a8 8 0 0 1 2.3-5.6"/><path d="M4 18h16"/></svg>
+          </span>
+          <h3>Jauge EN 15232</h3>
+          <p>Situez le niveau d'efficacité visé (classe A à D) selon la norme EN 15232 / ISO 52120-1.</p>
+          <a class="tool-link" href="#en15232">Ouvrir l'outil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+
+        <!-- Tables Modbus -->
+        <article class="tool-card">
+          <span class="tool-tag">19 équipements</span>
+          <span class="tool-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M9 4v16M15 4v16"/></svg>
+          </span>
+          <h3>Tables Modbus</h3>
+          <p>Catalogue de référence : 19 équipements répartis en 7 catégories pour cadrer vos points d'échange.</p>
+          <a class="tool-link" href="#outils">Ouvrir l'outil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+
+        <!-- Audit de conformité -->
+        <article class="tool-card">
+          <span class="tool-ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg>
+          </span>
+          <h3>Audit de conformité</h3>
+          <p>Passez en revue votre installation au regard du décret BACS et identifiez les écarts à traiter.</p>
+          <a class="tool-link" href="#simulateur">Ouvrir l'outil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== JAUGE EN 15232 (bonus) ===================== -->
+  <section class="section en" id="en15232">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Norme EN 15232 / ISO 52120-1</span>
+        <h2>Les 4 classes d'efficacité de la GTB</h2>
+        <p>La norme classe la performance d'un système de gestion technique du bâtiment de A (le plus performant) à D. La classe visée conditionne le gain énergétique attendu.</p>
+      </div>
+      <div class="en-panel">
+        <div>
+          <div class="en-bar" role="img" aria-label="Échelle des classes EN 15232, de A la plus performante à D la moins performante">
+            <span class="en-seg a">A</span>
+            <span class="en-seg b">B</span>
+            <span class="en-seg c">C</span>
+            <span class="en-seg d">D</span>
+          </div>
+          <div class="en-scale" aria-hidden="true">
+            <span>Plus performant</span>
+            <span>Moins performant</span>
+          </div>
+        </div>
+        <ul class="en-legend">
+          <li><span class="sw" style="background:var(--en-a)"></span>Classe A — haute performance énergétique</li>
+          <li><span class="sw" style="background:var(--en-b)"></span>Classe B — système avancé</li>
+          <li><span class="sw" style="background:var(--en-c)"></span>Classe C — standard de référence</li>
+          <li><span class="sw" style="background:var(--en-d)"></span>Classe D — non performant énergétiquement</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section class="section final" id="amo">
+    <div class="wrap">
+      <div class="final-card">
+        <span class="orb orb-c" aria-hidden="true"></span>
+        <span class="badge-indep"><span class="dot" aria-hidden="true"></span>Tiers de confiance — indépendant</span>
+        <h2>Besoin d'un accompagnement AMO ?</h2>
+        <p>Assistance à maîtrise d'ouvrage GTB/GTC : cahier des charges, appel d'offres et contrôle d'intégrateur. Nous défendons votre intérêt, pas celui d'un fournisseur.</p>
+        <a class="btn btn-light" href="#amo">Discuter de mon projet AMO</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <span class="badge-indep"><span class="dot" aria-hidden="true"></span>Indépendant — aucun matériel vendu, aucune marque représentée</span>
+      <nav aria-label="Pied de page">
+        <a href="#simulateur">Décret BACS</a>
+        <a href="#outils">Outils</a>
+        <a href="#amo">AMO</a>
+        <a href="#en15232">Réglementation</a>
+        <a href="#amo">À propos</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 NeoGTB — Ulrich Calmo. Tiers de confiance indépendant de la GTB.</span>
+      <span>Sources : Légifrance · ADEME · GIMELEC · COSTIC · norme EN&nbsp;15232</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== SIMULATEUR — JS vanilla ===================== -->
+<script>
+(function () {
+  "use strict";
+  var form   = document.getElementById("sim-form");
+  var input  = document.getElementById("sim-power");
+  var result = document.getElementById("sim-result");
+  if (!form || !input || !result) return;
+
+  var icon     = result.querySelector(".res-icon");
+  var title    = result.querySelector(".res-title");
+  var deadline = result.querySelector(".res-deadline");
+  var power    = result.querySelector(".res-power");
+  var text     = result.querySelector(".res-text");
+
+  // Icônes SVG par état
+  var ICONS = {
+    danger:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0-3.42 0z"/></svg>',
+    warning: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    ok:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>',
+    error:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4m0 4h.01"/></svg>'
+  };
+
+  var PIN = '<span class="pin" aria-hidden="true"></span>';
+
+  // Formatage FR sobre du nombre
+  function fmt(n) {
+    try { return n.toLocaleString("fr-FR"); } catch (e) { return String(n); }
+  }
+
+  function render(state, iconHTML, titleTxt, deadlineHTML, powerTxt, textTxt) {
+    result.setAttribute("data-state", state);
+    icon.innerHTML = iconHTML;
+    title.textContent = titleTxt;
+    if (deadlineHTML) { deadline.innerHTML = deadlineHTML; deadline.hidden = false; }
+    else { deadline.hidden = true; deadline.innerHTML = ""; }
+    if (powerTxt) { power.textContent = powerTxt; power.hidden = false; }
+    else { power.hidden = true; power.textContent = ""; }
+    text.textContent = textTxt;
+  }
+
+  // Coeur du calcul — seuils officiels du décret BACS n° 2025-1343
+  function evaluate(rawValue) {
+    var raw = String(rawValue).trim().replace(",", ".");
+    var val = parseFloat(raw);
+
+    // Saisie vide / invalide — message doux, jamais d'erreur brute
+    if (raw === "" || isNaN(val) || val < 0) {
+      render(
+        "error",
+        ICONS.error,
+        "Valeur à préciser",
+        null,
+        null,
+        "Saisissez la puissance CVC de votre bâtiment en kilowatts (nombre positif) pour lancer la vérification."
+      );
+      input.focus();
+      return;
+    }
+
+    var p = fmt(val) + " kW";
+
+    if (val > 290) {
+      render(
+        "danger",
+        ICONS.danger,
+        "Concerné — obligatoire depuis 2025",
+        PIN + "Obligatoire depuis 2025",
+        p,
+        "Au-delà de 290 kW de puissance CVC, l'installation d'un système d'automatisation et de contrôle (BACS) est une obligation en vigueur depuis 2025."
+      );
+    } else if (val >= 70) {
+      render(
+        "warning",
+        ICONS.warning,
+        "Concerné — échéance 1ᵉʳ janvier 2030",
+        PIN + "Échéance · 1ᵉʳ janvier 2030",
+        p,
+        "Entre 70 et 290 kW de puissance CVC, l'obligation s'applique au 1ᵉʳ janvier 2030. Il reste du temps pour cadrer le projet sereinement."
+      );
+    } else {
+      render(
+        "ok",
+        ICONS.ok,
+        "Non concerné aujourd'hui",
+        PIN + "Aucune échéance à ce jour",
+        p,
+        "En dessous de 70 kW, votre bâtiment n'est pas soumis à l'obligation BACS à ce jour. Une GTB peut toutefois rester pertinente pour vos économies d'énergie."
+      );
+    }
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    evaluate(input.value);
+  });
+
+  // Exemples cliquables : pré-remplissent le champ puis lancent le calcul
+  var chips = document.querySelectorAll(".ex-chip");
+  Array.prototype.forEach.call(chips, function (chip) {
+    chip.addEventListener("click", function () {
+      input.value = chip.getAttribute("data-kw");
+      evaluate(input.value);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
