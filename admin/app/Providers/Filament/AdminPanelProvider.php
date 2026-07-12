@@ -62,18 +62,20 @@ class AdminPanelProvider extends PanelProvider
                     ),
             ])
             ->colors([
+                // Primaire = vert de marque NeoGTB (échelle accent, cf. DESIGN.md §4.2).
+                // Migration violet -> vert le 2026-07-12 pour unifier admin et front public.
                 'primary' => [
-                    50 => '#F5F3FF',
-                    100 => '#EDE9FE',
-                    200 => '#DDD6FE',
-                    300 => '#C4B5FD',
-                    400 => '#A78BFA',
-                    500 => '#8B5CF6',
-                    600 => '#6C3AED',
-                    700 => '#5B21B6',
-                    800 => '#4C1D95',
-                    900 => '#3B0F7A',
-                    950 => '#2E1065',
+                    50 => '#eaf5ee',
+                    100 => '#d0e8d6',
+                    200 => '#a3d4b2',
+                    300 => '#6fbc88',
+                    400 => '#4caf64',
+                    500 => '#2D8B4E',
+                    600 => '#267a43',
+                    700 => '#1f6637',
+                    800 => '#19532d',
+                    900 => '#134023',
+                    950 => '#0c2916',
                 ],
                 'success' => Color::Emerald,
                 'danger' => Color::Rose,

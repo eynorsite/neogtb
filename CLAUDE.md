@@ -107,3 +107,20 @@ Les 4 projets dans ~/projets/ sont totalement séparés :
 - `neogtb/` → **CE PROJET** (React Lovable + Laravel admin)
 - `tools-habelec/` → Outils habilitation (Laravel + Livewire)
 - `nfc18510-app/` → App NFC 18-510 (React + Vite)
+
+---
+
+## Design System
+
+**Toujours lire [DESIGN.md](DESIGN.md) avant toute décision visuelle ou UI.**
+Fonts, couleurs, spacing, radius, direction esthétique et invariants d'accessibilité
+y sont définis pour le **front public ET l'admin Filament**. Ne pas dévier sans
+validation explicite de l'utilisateur. En mode QA, signaler tout code non conforme
+au DESIGN.md.
+
+Fil directeur : **NeoGTB = tiers de confiance indépendant** → le design doit prouver
+la neutralité (sobriété institutionnelle, jamais « vendeur »).
+
+> ⚠️ La section « Stack » plus haut dans ce fichier est **obsolète** (React/Lovable).
+> La réalité en production est un monolithe **Laravel 13 + Filament 5.4 + Tailwind v4 +
+> Alpine + Blade + SQLite**, code dans `admin/`. DESIGN.md fait foi pour tout ce qui est visuel.

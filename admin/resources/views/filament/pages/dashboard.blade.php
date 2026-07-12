@@ -30,8 +30,8 @@
             <div class="kpi-label">Pages du site</div>
             <div class="kpi-sparkline">
                 <svg viewBox="0 0 200 40" preserveAspectRatio="none">
-                    <defs><linearGradient id="sp1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#6C3AED;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#6C3AED;stop-opacity:0"/></linearGradient></defs>
-                    <path d="M0,35 L25,30 L50,32 L75,25 L100,20 L125,15 L150,12 L175,8 L200,5" fill="none" stroke="#6C3AED" stroke-width="2.5" stroke-linecap="round"/>
+                    <defs><linearGradient id="sp1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#1B3A5C;stop-opacity:0.3"/><stop offset="100%" style="stop-color:#1B3A5C;stop-opacity:0"/></linearGradient></defs>
+                    <path d="M0,35 L25,30 L50,32 L75,25 L100,20 L125,15 L150,12 L175,8 L200,5" fill="none" stroke="#1B3A5C" stroke-width="2.5" stroke-linecap="round"/>
                     <path d="M0,35 L25,30 L50,32 L75,25 L100,20 L125,15 L150,12 L175,8 L200,5 L200,40 L0,40Z" fill="url(#sp1)"/>
                 </svg>
             </div>
@@ -153,7 +153,7 @@
                 <p class="quick-action-desc">Sections hero, chiffres, CTA, témoignages</p>
             </div>
         </a>
-        <a href="{{ $settingsUrl('textes-du-site') }}" class="quick-action" data-color="violet">
+        <a href="{{ $settingsUrl('textes-du-site') }}" class="quick-action" data-color="brand">
             <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-pencil-square class="w-5 h-5" /></div>
             <div>
                 <p class="quick-action-title">Éditer un texte</p>
@@ -167,7 +167,7 @@
                 <p class="quick-action-desc">Identité visuelle, favicon, image de partage</p>
             </div>
         </a>
-        <a href="{{ $settingsUrl('seo') }}" class="quick-action" data-color="indigo">
+        <a href="{{ $settingsUrl('seo') }}" class="quick-action" data-color="navy">
             <div class="quick-action-icon" aria-hidden="true"><x-heroicon-o-magnifying-glass class="w-5 h-5" /></div>
             <div>
                 <p class="quick-action-title">SEO et référencement</p>
@@ -194,7 +194,7 @@
                 @forelse($messages as $msg)
                     @php
                         $initials = collect(explode(' ', $msg->name))->map(fn($w) => mb_strtoupper(mb_substr($w, 0, 1)))->take(2)->join('');
-                        $colors = ['linear-gradient(135deg, #6C3AED, #8B5CF6)', 'linear-gradient(135deg, #06B6D4, #22D3EE)', 'linear-gradient(135deg, #F59E0B, #FBBF24)', 'linear-gradient(135deg, #10B981, #34D399)', 'linear-gradient(135deg, #EF4444, #F87171)'];
+                        $colors = ['linear-gradient(135deg, #1B3A5C, #4a78a8)', 'linear-gradient(135deg, #06B6D4, #22D3EE)', 'linear-gradient(135deg, #F59E0B, #FBBF24)', 'linear-gradient(135deg, #10B981, #34D399)', 'linear-gradient(135deg, #EF4444, #F87171)'];
                         $color = $colors[$loop->index % count($colors)];
                     @endphp
                     <div class="message-item">
@@ -289,8 +289,8 @@
             </div>
             <div class="dash-card-body">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                    <div class="stat-block" style="background: #F5F3FF;">
-                        <div class="stat-block-value" style="color: #6C3AED;">{{ $pages }}</div>
+                    <div class="stat-block" style="background: #e8eef5;">
+                        <div class="stat-block-value" style="color: #1B3A5C;">{{ $pages }}</div>
                         <div class="stat-block-label">Pages actives</div>
                     </div>
                     <div class="stat-block" style="background: #F0FDF4;">
