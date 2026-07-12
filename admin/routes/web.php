@@ -101,6 +101,7 @@ Route::get('/positionnement', [\App\Http\Controllers\StaticPageController::class
 Route::get('/gtb', [\App\Http\Controllers\StaticPageController::class, 'gtb'])->name('front.gtb');
 Route::get('/gtc', [\App\Http\Controllers\StaticPageController::class, 'gtc'])->name('front.gtc');
 Route::get('/solutions', [\App\Http\Controllers\StaticPageController::class, 'solutions'])->name('front.solutions');
+Route::get('/demo-visuels', [\App\Http\Controllers\StaticPageController::class, 'demoVisuels'])->name('front.demo-visuels');
 Route::get('/mentions-legales', [\App\Http\Controllers\StaticPageController::class, 'mentionsLegales'])->name('front.mentions-legales');
 Route::get('/politique-de-confidentialite', [\App\Http\Controllers\StaticPageController::class, 'politiqueConfidentialite'])->name('front.politique-confidentialite');
 Route::get('/mes-droits-rgpd', [\App\Http\Controllers\StaticPageController::class, 'mesDroitsRgpd'])->name('front.mes-droits-rgpd');

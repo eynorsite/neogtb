@@ -5,19 +5,19 @@
        ============================================ */
 
     :root {
-        --neo-primary: #6C3AED;
-        --neo-primary-light: #8B5CF6;
-        --neo-primary-dark: #5B21B6;
-        --neo-primary-glow: rgba(108,58,237,0.15);
-        --neo-bg: #F5F3FF;
+        --neo-primary: #267a43;
+        --neo-primary-light: #2D8B4E;
+        --neo-primary-dark: #1f6637;
+        --neo-primary-glow: rgba(45,139,78,0.15);
+        --neo-bg: #f8fafc;
         --neo-card: #FFFFFF;
-        --neo-text: #1e1b4b;
+        --neo-text: #0c1b2f;
         --neo-text-secondary: #6b7280;
         --neo-text-muted: #9ca3af;
         --neo-border: #e5e7eb;
         --neo-border-light: #f3f4f6;
-        --neo-sidebar-bg: #1e1b4b;
-        --neo-sidebar-text: #c4b5fd;
+        --neo-sidebar-bg: #0c1b2f;
+        --neo-sidebar-text: #c5d5e6;
         --neo-radius: 12px;
         --neo-radius-lg: 16px;
         --neo-radius-xl: 20px;
@@ -43,10 +43,10 @@
     ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
 
     /* ============================================
-       SIDEBAR — Dark indigo, gradient active
+       SIDEBAR — Dark navy, gradient active
        ============================================ */
     .fi-sidebar {
-        background: linear-gradient(180deg, var(--neo-sidebar-bg) 0%, #15133a 100%) !important;
+        background: linear-gradient(180deg, var(--neo-sidebar-bg) 0%, #08111f 100%) !important;
         border-right: none !important;
     }
 
@@ -85,18 +85,18 @@
 
     .fi-sidebar .fi-sidebar-item a:hover,
     .fi-sidebar .fi-sidebar-item button:hover {
-        background-color: rgba(139,92,246,0.12) !important;
+        background-color: rgba(45,139,78,0.12) !important;
         color: #ffffff !important;
     }
 
     .fi-sidebar .fi-sidebar-item.fi-active a,
     .fi-sidebar .fi-sidebar-item.fi-active button,
     .fi-sidebar .fi-sidebar-item a[aria-current="page"] {
-        background: linear-gradient(135deg, var(--neo-primary), var(--neo-primary-light)) !important;
+        background: linear-gradient(135deg, var(--neo-primary), var(--neo-primary-dark)) !important;
         color: #ffffff !important;
         font-weight: 600 !important;
         border-left: none !important;
-        box-shadow: 0 4px 15px rgba(108,58,237,0.4) !important;
+        box-shadow: 0 4px 15px rgba(45,139,78,0.4) !important;
     }
 
     .fi-sidebar .fi-sidebar-item svg {
@@ -154,11 +154,11 @@
     }
 
     .fi-section:hover {
-        box-shadow: var(--neo-shadow), 0 0 0 1px rgba(108,58,237,0.04) !important;
+        box-shadow: var(--neo-shadow), 0 0 0 1px rgba(45,139,78,0.04) !important;
     }
 
     .fi-section-header {
-        background: linear-gradient(180deg, #faf8ff 0%, var(--neo-card) 100%) !important;
+        background: linear-gradient(180deg, #f8fafc 0%, var(--neo-card) 100%) !important;
         border-bottom: 1px solid var(--neo-border-light) !important;
     }
 
@@ -166,7 +166,7 @@
        TABLES — Premium styling
        ============================================ */
     .fi-ta-header-cell {
-        background: linear-gradient(180deg, #faf8ff 0%, #f5f3ff 100%) !important;
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
         font-size: 0.6875rem !important;
         text-transform: uppercase !important;
         letter-spacing: 0.7px !important;
@@ -181,7 +181,7 @@
     }
 
     .fi-ta-row:hover {
-        background-color: #faf8ff !important;
+        background-color: #f8fafc !important;
     }
 
     .fi-ta-cell {
@@ -214,14 +214,14 @@
         border-radius: 10px !important;
         font-weight: 600 !important;
         font-size: 0.8125rem !important;
-        background: linear-gradient(135deg, var(--neo-primary), var(--neo-primary-light)) !important;
-        box-shadow: 0 2px 8px rgba(108,58,237,0.25) !important;
+        background: linear-gradient(135deg, var(--neo-primary), var(--neo-primary-dark)) !important;
+        box-shadow: 0 2px 8px rgba(45,139,78,0.25) !important;
         transition: var(--neo-transition) !important;
     }
 
     .fi-btn-primary:hover,
     .fi-btn[data-color="primary"]:hover {
-        box-shadow: 0 4px 16px rgba(108,58,237,0.35) !important;
+        box-shadow: 0 4px 16px rgba(45,139,78,0.35) !important;
         transform: translateY(-1px);
     }
 
@@ -291,7 +291,7 @@
        LOGIN PAGE — Branded, premium
        ============================================ */
     .fi-simple-layout {
-        background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%) !important;
+        background: linear-gradient(135deg, #0c1b2f 0%, #10233b 50%, #142b47 100%) !important;
         position: relative;
     }
 
@@ -300,14 +300,14 @@
         position: absolute;
         inset: 0;
         background:
-            radial-gradient(ellipse 80% 50% at 20% 80%, rgba(139,92,246,0.15) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 60% at 80% 20%, rgba(109,40,217,0.1) 0%, transparent 50%);
+            radial-gradient(ellipse 80% 50% at 20% 80%, rgba(45,139,78,0.15) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 60% at 80% 20%, rgba(31,102,55,0.1) 0%, transparent 50%);
         pointer-events: none;
     }
 
     .fi-simple-main-ctn {
         border-radius: var(--neo-radius-xl) !important;
-        box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 80px rgba(108,58,237,0.15) !important;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 80px rgba(45,139,78,0.15) !important;
         border: 1px solid rgba(255,255,255,0.08) !important;
         backdrop-filter: blur(20px);
         background: rgba(255,255,255,0.97) !important;
@@ -321,7 +321,7 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, var(--neo-primary), var(--neo-primary-light), #a78bfa);
+        background: linear-gradient(90deg, var(--neo-primary), var(--neo-primary-light), #4caf64);
     }
 
     .fi-simple-main-ctn .fi-input {
@@ -434,7 +434,7 @@
     }
 
     .dash-greeting .gradient-name {
-        background: linear-gradient(135deg, var(--neo-primary), #a78bfa);
+        background: linear-gradient(135deg, var(--neo-primary), #4caf64);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -478,7 +478,7 @@
     .kpi-card:hover {
         transform: translateY(-3px);
         box-shadow: var(--neo-shadow-lg);
-        border-color: rgba(108,58,237,0.12);
+        border-color: rgba(45,139,78,0.12);
     }
 
     .kpi-card::before {
@@ -488,7 +488,7 @@
         height: 4px;
     }
 
-    .kpi-card.kpi-visitors::before { background: linear-gradient(90deg, #6C3AED, #8B5CF6); }
+    .kpi-card.kpi-visitors::before { background: linear-gradient(90deg, #1B3A5C, #4a78a8); }
     .kpi-card.kpi-messages::before { background: linear-gradient(90deg, #06B6D4, #22D3EE); }
     .kpi-card.kpi-posts::before { background: linear-gradient(90deg, #10B981, #34D399); }
     .kpi-card.kpi-gdpr::before { background: linear-gradient(90deg, #EF4444, #F87171); }
@@ -508,7 +508,7 @@
 
     .kpi-icon svg { width: 24px !important; height: 24px !important; }
 
-    .kpi-visitors .kpi-icon { background: #EDE9FE; color: #6C3AED; }
+    .kpi-visitors .kpi-icon { background: #e8eef5; color: #1B3A5C; }
     .kpi-messages .kpi-icon { background: #CFFAFE; color: #06B6D4; }
     .kpi-posts .kpi-icon { background: #D1FAE5; color: #10B981; }
     .kpi-gdpr .kpi-icon { background: #FEE2E2; color: #EF4444; }
@@ -651,12 +651,12 @@
 
     .quick-action-icon > svg { width: 20px; height: 20px; color: white; }
 
-    .quick-action[data-color="violet"] .quick-action-icon { background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
+    .quick-action[data-color="brand"] .quick-action-icon { background: linear-gradient(135deg, #2D8B4E, #4caf64); }
     .quick-action[data-color="blue"]   .quick-action-icon { background: linear-gradient(135deg, #3B82F6, #60A5FA); }
     .quick-action[data-color="cyan"]   .quick-action-icon { background: linear-gradient(135deg, #06B6D4, #22D3EE); }
     .quick-action[data-color="green"]  .quick-action-icon { background: linear-gradient(135deg, #10B981, #34D399); }
     .quick-action[data-color="amber"]  .quick-action-icon { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
-    .quick-action[data-color="indigo"] .quick-action-icon { background: linear-gradient(135deg, #6366F1, #818CF8); }
+    .quick-action[data-color="navy"] .quick-action-icon { background: linear-gradient(135deg, #1B3A5C, #4a78a8); }
     .quick-action[data-color="pink"]   .quick-action-icon { background: linear-gradient(135deg, #EC4899, #F472B6); }
     .quick-action[data-color="slate"]  .quick-action-icon { background: linear-gradient(135deg, #475569, #64748B); }
     .quick-action[data-color="teal"]   .quick-action-icon { background: linear-gradient(135deg, #14B8A6, #2DD4BF); }
@@ -703,7 +703,7 @@
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid var(--neo-border-light);
-        background: linear-gradient(180deg, #faf8ff 0%, var(--neo-card) 100%);
+        background: linear-gradient(180deg, #f8fafc 0%, var(--neo-card) 100%);
     }
 
     .dash-card-title {
@@ -741,7 +741,7 @@
     .message-item:last-child { border-bottom: none; }
 
     .message-item:hover {
-        background: #faf8ff;
+        background: #f8fafc;
         margin: 0 -1.5rem;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
@@ -814,7 +814,7 @@
     .activity-icon.create { background: #D1FAE5; color: #059669; }
     .activity-icon.edit { background: #DBEAFE; color: #2563EB; }
     .activity-icon.delete { background: #FEE2E2; color: #DC2626; }
-    .activity-icon.login { background: #EDE9FE; color: #6C3AED; }
+    .activity-icon.login { background: #e8eef5; color: #267a43; }
 
     .activity-text { flex: 1; }
     .activity-desc { font-size: 0.8125rem; color: var(--neo-text); line-height: 1.4; }
@@ -841,7 +841,7 @@
     }
 
     .pages-table tr { transition: var(--neo-transition); }
-    .pages-table tr:hover td { background: #faf8ff; }
+    .pages-table tr:hover td { background: #f8fafc; }
 
     .page-name { font-weight: 600; color: var(--neo-text); }
 
@@ -919,9 +919,9 @@
     }
 
     @keyframes neo-target-pulse {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(108,58,237,0); }
-        10% { box-shadow: 0 0 0 4px rgba(108,58,237,0.45), 0 0 30px rgba(108,58,237,0.3); }
-        70% { box-shadow: 0 0 0 4px rgba(108,58,237,0.2); }
+        0%, 100% { box-shadow: 0 0 0 0 rgba(45,139,78,0); }
+        10% { box-shadow: 0 0 0 4px rgba(45,139,78,0.45), 0 0 30px rgba(45,139,78,0.3); }
+        70% { box-shadow: 0 0 0 4px rgba(45,139,78,0.2); }
     }
 </style>
 

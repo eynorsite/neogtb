@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(tmutil listlocalsnapshots *)",
+      "Bash(tmutil destinationinfo *)",
+      "Bash(mount_apfs -o nobrowse -s com.apple.TimeMachine.2026-06-12-150655.local /System/Volumes/Data /tmp/tmsnap)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(sudo -n true)"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {
@@ -7,7 +16,6 @@
           {
             "type": "command",
             "command": "filepath=\"$CLAUDE_FILE_PATH\"; if echo \"$filepath\" | grep -qE '\\.blade\\.php$'; then php -l \"$filepath\" 2>&1 | tail -3; fi",
-            "description": "Vérification syntaxe PHP après édition de fichier Blade",
             "timeout": 10000
           }
         ]
@@ -19,9 +27,8 @@
         "hooks": [
           {
             "type": "command",
+            "command": "cd \"${CLAUDE_PROJECT_DIR:-/Users/calmoulrich/ProjetsWeb/neogtb}\" && echo '=== Scan pré-commit NeoGTB ===' && (grep -rn 'console.log' --include='*.blade.php' --include='*.js' admin/resources/ 2>/dev/null && echo 'WARN: console.log trouvé') || echo 'OK: Pas de console.log' && (grep -rn 'TODO' --include='*.blade.php' --include='*.php' admin/app/ admin/resources/ 2>/dev/null && echo 'WARN: TODO trouvé') || echo 'OK: Pas de TODO'",
             "if": "Bash(git commit*)",
-            "command": "cd /Users/calmoulrich/projets/neogtb && echo '=== Scan pré-commit NeoGTB ===' && (grep -rn 'console.log' --include='*.blade.php' --include='*.js' admin/resources/ 2>/dev/null && echo 'WARN: console.log trouvé') || echo 'OK: Pas de console.log' && (grep -rn 'TODO' --include='*.blade.php' --include='*.php' admin/app/ admin/resources/ 2>/dev/null && echo 'WARN: TODO trouvé') || echo 'OK: Pas de TODO'",
-            "description": "Scan console.log, TODO avant commit",
             "timeout": 10000
           }
         ]
@@ -32,8 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /Users/calmoulrich/projets/neogtb && BLADES=$(git diff --name-only HEAD~1 -- '*.blade.php' 2>/dev/null | head -5); if [ -z \"$BLADES\" ]; then echo 'OK — aucun .blade.php modifié dans le dernier commit'; else echo \"Blade modifiés: $BLADES\"; for f in $BLADES; do [ -f \"$f\" ] && php -l \"$f\" 2>&1 | grep -v 'No syntax errors'; done; echo 'Revue terminée'; fi",
-            "description": "Vérifie la syntaxe des fichiers Blade modifiés dans le dernier commit",
+            "command": "cd \"${CLAUDE_PROJECT_DIR:-/Users/calmoulrich/ProjetsWeb/neogtb}\" && BLADES=$(git diff --name-only HEAD~1 -- '*.blade.php' 2>/dev/null | head -5); if [ -z \"$BLADES\" ]; then echo 'OK — aucun .blade.php modifié dans le dernier commit'; else echo \"Blade modifiés: $BLADES\"; for f in $BLADES; do [ -f \"$f\" ] && php -l \"$f\" 2>&1 | grep -v 'No syntax errors'; done; echo 'Revue terminée'; fi",
             "timeout": 10000
           }
         ]
@@ -44,9 +50,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /Users/calmoulrich/projets/neogtb && echo '=== NeoGTB — Briefing ===' && echo 'Branche:' $(git branch --show-current 2>/dev/null || echo 'N/A') && echo 'Derniers commits:' && git log --oneline -3 2>/dev/null || echo 'Pas de git' && echo 'Fichiers modifiés:' && git status --short 2>/dev/null | head -10 || echo 'Aucun'",
-            "description": "Briefing projet au démarrage de session",
-            "timeout": 5
+            "command": "\"${CLAUDE_PROJECT_DIR:-/Users/calmoulrich/ProjetsWeb/neogtb}/.claude/hooks/session-briefing.sh\"",
+            "timeout": 10
           }
         ]
       }

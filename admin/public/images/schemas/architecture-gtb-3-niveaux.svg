@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 600" width="820" height="600" role="img" aria-label="Architecture fonctionnelle d'une GTB en 3 niveaux : Gestion, Automation, Terrain" font-family="'DM Sans','Inter',system-ui,sans-serif">
+  <title>Architecture fonctionnelle d'une GTB (3 niveaux)</title>
+  <desc>Pyramide à trois strates de l'automatisation du bâtiment, du haut vers le bas : Niveau Gestion (supervision, tableaux de bord, reporting, alarmes), Niveau Automation (automates, régulateurs, contrôleurs DDC) et Niveau Terrain (capteurs, actionneurs, compteurs). Une flèche verticale à gauche va de la décision et du pilotage en haut vers la mesure et l'action en bas.</desc>
+
+  <!-- Flèche verticale gauche : Décision (haut) vers Action (bas) -->
+  <g>
+    <line x1="70" y1="120" x2="70" y2="450" stroke="#267a43" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="70,108 64,124 76,124" fill="#267a43"/>
+    <polygon points="70,462 64,446 76,446" fill="#267a43"/>
+    <text x="70" y="96" text-anchor="middle" font-size="15" font-weight="700" fill="#267a43">Décision / Pilotage</text>
+    <text x="70" y="486" text-anchor="middle" font-size="15" font-weight="700" fill="#267a43">Mesure / Action</text>
+  </g>
+
+  <!-- Niveau 1 : Gestion (haut, marine, plus étroit) -->
+  <g>
+    <rect x="200" y="100" width="480" height="120" rx="16" fill="#1B3A5C"/>
+    <rect x="200" y="100" width="480" height="6" rx="3" fill="#F59E0B"/>
+    <text x="440" y="146" text-anchor="middle" font-size="24" font-weight="700" fill="#ffffff">Niveau Gestion</text>
+    <text x="440" y="184" text-anchor="middle" font-size="15" fill="#e8eef5">Supervision GTB/GTC · Tableaux de bord ·</text>
+    <text x="440" y="206" text-anchor="middle" font-size="15" fill="#e8eef5">Reporting énergétique · Alarmes</text>
+  </g>
+
+  <!-- Niveau 2 : Automation (milieu, marine clair) -->
+  <g>
+    <rect x="160" y="240" width="560" height="120" rx="16" fill="#e8eef5" stroke="#4a78a8" stroke-width="2"/>
+    <text x="440" y="286" text-anchor="middle" font-size="24" font-weight="700" fill="#142b47">Niveau Automation</text>
+    <text x="440" y="324" text-anchor="middle" font-size="15" fill="#142b47">Automates programmables · Régulateurs ·</text>
+    <text x="440" y="346" text-anchor="middle" font-size="15" fill="#142b47">Contrôleurs DDC</text>
+  </g>
+
+  <!-- Niveau 3 : Terrain (bas, vert très clair, plus large) -->
+  <g>
+    <rect x="120" y="380" width="640" height="120" rx="16" fill="#eaf5ee" stroke="#2D8B4E" stroke-width="2"/>
+    <text x="440" y="426" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">Niveau Terrain</text>
+    <text x="440" y="464" text-anchor="middle" font-size="15" fill="#0f172a">Capteurs (température, CO₂, présence) ·</text>
+    <text x="440" y="486" text-anchor="middle" font-size="15" fill="#0f172a">Actionneurs (vannes, registres) · Compteurs</text>
+  </g>
+
+  <!-- Légende -->
+  <text x="410" y="560" text-anchor="middle" font-size="14" fill="#64748b">Architecture fonctionnelle d'une GTB (3 niveaux)</text>
+</svg>

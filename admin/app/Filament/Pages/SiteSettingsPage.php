@@ -1344,7 +1344,7 @@ class SiteSettingsPage extends Page implements HasForms
                                     $rows[] = '<tr style="border-bottom:1px solid #F1F5F9;">'
                                         . '<td style="padding:8px;font-size:12px;">' . $statusIcon . ' ' . e($a->name) . '</td>'
                                         . '<td style="padding:8px;font-size:12px;font-family:monospace;">' . e($a->email) . '</td>'
-                                        . '<td style="padding:8px;font-size:12px;"><span style="padding:2px 8px;background:#EDE9FE;color:#6C3AED;border-radius:6px;font-weight:600;">' . e($a->role) . '</span></td>'
+                                        . '<td style="padding:8px;font-size:12px;"><span style="padding:2px 8px;background:#e8eef5;color:#1B3A5C;border-radius:6px;font-weight:600;">' . e($a->role) . '</span></td>'
                                         . '<td style="padding:8px;font-size:12px;">' . $when . '</td>'
                                         . '<td style="padding:8px;font-size:12px;font-family:monospace;color:#6B7280;">' . e($a->last_login_ip ?? '—') . '</td>'
                                         . '</tr>';

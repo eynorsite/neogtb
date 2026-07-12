@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeoGTB — Comprendre et appliquer le décret BACS</title>
+  <meta name="description" content="NeoGTB, tiers de confiance indépendant de la GTB. On vous explique clairement le décret BACS et on vous accompagne du diagnostic au contrôle de l'intégrateur. Aucun matériel vendu.">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    /* =========================================================
+       VARIANT B — « Pédagogique / Clair »
+       Light-first, très aéré, décor en orbs doux (CLS=0).
+       Pièce maîtresse : la timeline de méthode en 4 étapes.
+       ========================================================= */
+
+    :root {
+      --page-bg: var(--surface);
+      --shell-px: clamp(20px, 5vw, 48px);
+      --sec-y: clamp(64px, 8vw, 96px);
+      --card-shadow: 0 1px 2px rgba(16,35,59,.04), 0 14px 34px -22px rgba(16,35,59,.20);
+    }
+
+    body { background: var(--page-bg); overflow-x: hidden; }
+
+    .shell { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--shell-px); }
+    [id] { scroll-margin-top: 84px; }
+
+    /* Micro-labels : conservés en 12px (tier label du design system) ;
+       tout texte de lecture reste >= 14px. */
+    .badge-indep { font-size: 14px; }
+
+    /* ---------- Décor : orbs ronds + halos flous très doux (CLS=0) ---------- */
+    .decor { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(72px); }
+    .orb--green { width: 460px; height: 460px; opacity: .45;
+      background: radial-gradient(circle at 50% 50%, var(--accent-200), rgba(255,255,255,0) 70%); }
+    .orb--navy  { width: 520px; height: 520px; opacity: .38;
+      background: radial-gradient(circle at 50% 50%, var(--primary-100), rgba(255,255,255,0) 70%); }
+    .orb--h1 { top: -150px; right: -130px; }
+    .orb--h2 { top: 240px; left: -210px; opacity: .30; }
+
+    /* ---------- Fade-in doux, non bloquant (<0.6s, contenu visible sans JS) ---------- */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .reveal { animation: fadeUp .55s var(--ease) both; }
+    .reveal.d1 { animation-delay: .06s; }
+    .reveal.d2 { animation-delay: .12s; }
+    .reveal.d3 { animation-delay: .18s; }
+    .reveal.d4 { animation-delay: .24s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; opacity: 1; transform: none; }
+    }
+
+    /* =========================================================
+       NAV
+       ========================================================= */
+    .nav-wrap { position: sticky; top: 0; z-index: 40;
+      background: rgba(255,255,255,.82);
+      -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 66px; }
+
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display);
+      font-weight: 800; font-size: 19px; letter-spacing: -0.02em; color: var(--text-title); }
+    .brand .mark { width: 30px; height: 30px; border-radius: 8px; flex: 0 0 auto;
+      background: var(--primary-500); display: grid; place-items: center; }
+    .brand .mark svg { width: 17px; height: 17px; }
+    .brand em { font-style: normal; color: var(--accent-600); }
+
+    .nav-links { display: flex; align-items: center; gap: 26px; list-style: none; }
+    .nav-links a { font-size: 14.5px; font-weight: 500; color: var(--dark-600); transition: color .18s var(--ease); }
+    .nav-links a:hover { color: var(--primary-500); }
+
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+
+    /* Hamburger (CSS pur, aucune JS) */
+    .nav-toggle { display: none; }
+    .burger { display: none; }
+    .burger span { display: block; width: 22px; height: 2px; border-radius: 2px;
+      background: var(--primary-500); transition: transform .25s var(--ease), opacity .2s var(--ease); }
+    .burger span + span { margin-top: 5px; }
+    .mobile-only { display: none; }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+    .hero { position: relative; background:
+      linear-gradient(180deg, var(--surface) 0%, var(--primary-50) 100%); }
+    .hero .shell { position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 64px);
+      align-items: center; padding-top: clamp(56px, 8vw, 96px); padding-bottom: clamp(56px, 8vw, 96px); }
+
+    .hero h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 800; color: var(--text-title);
+      line-height: 1.08; margin-top: 22px; }
+    .hero h1 .soft { color: var(--accent-600); }
+    .hero-sub { font-size: clamp(16px, 1.4vw, 18px); color: var(--text-body);
+      max-width: 46ch; margin-top: 22px; line-height: 1.6; }
+    .hero-sub strong { color: var(--primary-500); font-weight: 600; }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .btn-lg { padding: 14px 26px; font-size: 15.5px; }
+    .btn-primary { box-shadow: 0 1px 2px rgba(38,122,67,.18); }
+    .btn-primary:hover { box-shadow: 0 6px 16px -6px rgba(38,122,67,.38); transform: translateY(-1px); }
+    .btn-link-arrow { transition: transform .18s var(--ease); }
+    .btn-secondary:hover .btn-link-arrow { transform: translateX(3px); }
+
+    .hero-trust { display: flex; align-items: flex-start; gap: 10px; margin-top: 26px;
+      font-size: 14px; color: var(--dark-500); max-width: 44ch; line-height: 1.5; }
+    .hero-trust svg { width: 17px; height: 17px; flex: 0 0 auto; margin-top: 1px; color: var(--accent-600); }
+
+    /* ---------- Visuel hero : aperçu du parcours (mini-timeline) ---------- */
+    .schema { position: relative; background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-glass); padding: 26px 24px 14px; box-shadow: var(--card-shadow); }
+    .schema-head { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+    .schema-head h2 { font-size: 15px; font-weight: 700; color: var(--text-title); }
+    .schema-head .tag { font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--accent-700); background: var(--accent-50); border: 1px solid var(--accent-200);
+      padding: 4px 11px; border-radius: var(--radius-pill); }
+
+    .steps { list-style: none; position: relative; margin-top: 6px; }
+    .steps::before { content: ""; position: absolute; left: 21px; top: 34px; bottom: 34px;
+      width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--accent-300), var(--primary-200)); }
+    .step { display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: start;
+      padding: 15px 4px; position: relative; }
+    .step-num { position: relative; z-index: 1; width: 42px; height: 42px; border-radius: 50%;
+      display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 16px;
+      color: var(--accent-700); background: var(--accent-50); border: 3px solid var(--surface);
+      box-shadow: 0 0 0 1.5px var(--accent-200); }
+    .step:last-child .step-num { color: var(--primary-600); background: var(--primary-50);
+      box-shadow: 0 0 0 1.5px var(--primary-200); }
+    .step-body h3 { font-size: 15px; font-weight: 700; color: var(--text-title); line-height: 1.25; }
+    .step-body p { font-size: 14px; color: var(--dark-500); margin-top: 4px; line-height: 1.5; }
+
+    /* =========================================================
+       SECTIONS génériques
+       ========================================================= */
+    .section { padding-block: var(--sec-y); position: relative; }
+    .section-head { max-width: 60ch; }
+    .section-head.center { margin-inline: auto; text-align: center; }
+    .section-head h2 { font-size: clamp(26px, 3.4vw, 38px); font-weight: 800; color: var(--text-title);
+      margin-top: 12px; line-height: 1.14; }
+    .section-head p { font-size: 16.5px; color: var(--text-body); margin-top: 14px; line-height: 1.6; max-width: 58ch; }
+
+    /* =========================================================
+       BANDE « SUIS-JE CONCERNÉ ? » (le décret en clair)
+       ========================================================= */
+    .decret { background: var(--primary-50); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .decret-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 36px; }
+    .decret-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
+      padding: 28px 26px; position: relative; overflow: hidden;
+      transition: transform .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease); }
+    .decret-card:hover { transform: translateY(-2px); border-color: var(--accent-300); box-shadow: var(--card-shadow); }
+    .decret-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+    .decret-card.now::before  { background: var(--primary-500); }
+    .decret-card.soon::before { background: var(--accent-600); }
+    .decret-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+    .decret-card.now  .decret-eyebrow { color: var(--primary-500); }
+    .decret-card.soon .decret-eyebrow { color: var(--accent-700); }
+    .decret-kw { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3vw, 34px);
+      color: var(--text-title); letter-spacing: -0.02em; margin-top: 8px; }
+    .decret-kw span { font-size: .5em; font-weight: 700; color: var(--dark-500); }
+    .decret-label { font-size: 15px; color: var(--dark-600); margin-top: 8px; line-height: 1.55; max-width: 34ch; }
+    .decret-when { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+      font-size: 14px; font-weight: 700; padding: 8px 15px; border-radius: var(--radius-pill); }
+    .decret-card.now  .decret-when { color: var(--primary-600); background: var(--primary-50); border: 1px solid var(--primary-200); }
+    .decret-card.soon .decret-when { color: var(--accent-700); background: var(--accent-50); border: 1px solid var(--accent-200); }
+    .decret-when .dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+    .decret-card.now  .decret-when .dot { background: var(--primary-500); }
+    .decret-card.soon .decret-when .dot { background: var(--accent-600); }
+    .decret-foot { margin-top: 28px; font-size: 14px; color: var(--dark-500); line-height: 1.6;
+      display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; max-width: 74ch; }
+    .decret-foot b { color: var(--dark-700); font-weight: 600; }
+    .decret-foot .src { color: var(--dark-500); }
+
+    /* =========================================================
+       LA MÉTHODE NeoGTB — TIMELINE (pièce maîtresse)
+       ========================================================= */
+    .method-timeline { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; margin-top: 52px; }
+    .mstep { position: relative; }
+    .mstep-node { position: relative; z-index: 1; width: 54px; height: 54px; border-radius: 50%;
+      display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 22px;
+      color: var(--accent-600); background: var(--accent-50); border: 1px solid var(--accent-200);
+      transition: transform .18s var(--ease), border-color .18s var(--ease),
+                  background-color .18s var(--ease), box-shadow .18s var(--ease); }
+    /* connecteur horizontal fin entre 2 nœuds */
+    .mstep::after { content: ""; position: absolute; top: 27px; left: 62px; right: 12px; height: 1px;
+      background: linear-gradient(90deg, var(--accent-200), var(--dark-200)); }
+    .mstep:last-child::after { display: none; }
+    .mstep-inner { margin-top: 22px; padding-right: 28px; }
+    .mstep-inner h3 { font-size: 17px; font-weight: 700; color: var(--text-title); line-height: 1.25; }
+    .mstep-inner p { font-size: 14.5px; color: var(--dark-600); margin-top: 8px; line-height: 1.55; }
+    .mstep:hover .mstep-node { transform: translateY(-2px); background: var(--accent-100);
+      border-color: var(--accent-300); box-shadow: 0 8px 18px -8px rgba(38,122,67,.36); }
+
+    .method-note { margin-top: 40px; display: inline-flex; align-items: center; gap: 10px;
+      font-size: 14.5px; color: var(--dark-600); background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 9px 18px; }
+    .method-note svg { width: 17px; height: 17px; flex: 0 0 auto; color: var(--accent-600); }
+
+    .badge-mt { margin-top: 18px; }
+
+    /* =========================================================
+       POURQUOI INDÉPENDANT
+       ========================================================= */
+    .why { background: var(--accent-50); border-top: 1px solid var(--accent-100); border-bottom: 1px solid var(--accent-100); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+    .why-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card);
+      padding: 28px 26px; transition: transform .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease); }
+    .why-card:hover { transform: translateY(-2px); border-color: var(--accent-300); box-shadow: var(--card-shadow); }
+    .why-ico { width: 44px; height: 44px; border-radius: 11px; display: grid; place-items: center;
+      background: var(--accent-50); border: 1px solid var(--accent-200); color: var(--accent-700); }
+    .why-ico svg { width: 22px; height: 22px; }
+    .why-card h3 { font-size: 17px; font-weight: 700; color: var(--text-title); margin-top: 18px; line-height: 1.25; }
+    .why-card p { font-size: 14.5px; color: var(--dark-600); margin-top: 8px; line-height: 1.55; }
+
+    /* =========================================================
+       CTA FINAL (bande navy volontaire) + FOOTER
+       ========================================================= */
+    .final { position: relative; overflow: hidden; background: var(--primary-500); }
+    .final .orb { filter: blur(84px); }
+    .final .orb--a { width: 420px; height: 420px; top: -160px; left: -120px; opacity: .30;
+      background: radial-gradient(circle, var(--accent-500), rgba(0,0,0,0) 70%); }
+    .final .orb--b { width: 480px; height: 480px; bottom: -220px; right: -140px; opacity: .32;
+      background: radial-gradient(circle, var(--primary-300), rgba(0,0,0,0) 70%); }
+    .final .shell { position: relative; z-index: 1; text-align: center; padding-block: clamp(56px, 8vw, 92px); }
+    .final .eyebrow { color: var(--accent-300); }
+    .final h2 { color: #fff; font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; margin-top: 14px; line-height: 1.14; }
+    .final p { color: var(--primary-100); font-size: 17px; max-width: 52ch; margin: 16px auto 0; line-height: 1.6; }
+    .final .hero-actions { justify-content: center; }
+    .final .btn-secondary { background: transparent; color: #fff; border-color: rgba(255,255,255,.35); box-shadow: none; }
+    .final .btn-secondary:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.6); transform: translateY(-1px); }
+
+    footer.site { background: var(--primary-950); color: var(--primary-100); }
+    footer.site .shell { padding-block: 44px; display: flex; flex-wrap: wrap; gap: 24px;
+      align-items: flex-start; justify-content: space-between; }
+    footer.site .brand { color: #fff; }
+    footer.site .brand em { color: var(--accent-400); }
+    footer.site .f-indep { font-size: 14px; color: var(--primary-200); max-width: 42ch; margin-top: 12px; line-height: 1.55; }
+    .f-legal { font-size: 14px; color: var(--primary-300); text-align: right; }
+    .f-legal .f-links { display: flex; flex-wrap: wrap; gap: 16px; justify-content: flex-end; margin-bottom: 12px; }
+    .f-legal a { color: var(--primary-100); font-weight: 500; transition: color .18s var(--ease); }
+    .f-legal a:hover { color: #fff; }
+
+    /* =========================================================
+       RESPONSIVE — timeline verticale (tablette portrait & moins)
+       ========================================================= */
+    @media (max-width: 820px) {
+      .method-timeline { grid-template-columns: 1fr; margin-top: 40px; }
+      .mstep { display: grid; grid-template-columns: 54px 1fr; column-gap: 20px; padding-bottom: 30px; }
+      .mstep:last-child { padding-bottom: 0; }
+      .mstep-inner { margin-top: 0; padding-right: 0; padding-top: 4px; }
+      .mstep::after { top: 62px; left: 27px; right: auto; bottom: 6px; width: 1px; height: auto;
+        background: linear-gradient(180deg, var(--accent-200), var(--dark-200)); }
+    }
+
+    /* =========================================================
+       RESPONSIVE — tablette (hero + grilles)
+       ========================================================= */
+    @media (max-width: 900px) {
+      .hero .shell { grid-template-columns: 1fr; gap: 40px; }
+      .schema { max-width: 480px; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =========================================================
+       RESPONSIVE — mobile 375px (nav hamburger CSS pur)
+       ========================================================= */
+    @media (max-width: 720px) {
+      .nav-links.desktop { display: none; }
+      .nav-cta .btn.desktop { display: none; }
+      .burger { display: inline-grid; place-items: center; width: 44px; height: 44px;
+        border: 1px solid var(--border); border-radius: var(--radius-btn); background: var(--surface); cursor: pointer; }
+
+      /* panneau mobile piloté par la checkbox */
+      .mobile-panel { display: block; position: fixed; inset: 66px 0 auto 0; z-index: 39;
+        background: var(--surface); border-bottom: 1px solid var(--border);
+        max-height: 0; overflow: hidden; transition: max-height .3s var(--ease); }
+      .nav-toggle:checked ~ .mobile-panel { max-height: 440px; }
+      .nav-toggle:checked ~ .nav .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-toggle:checked ~ .nav .burger span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked ~ .nav .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .mobile-panel ul { list-style: none; padding: 10px var(--shell-px) 18px; }
+      .mobile-panel li a { display: block; padding: 13px 0; font-size: 16px; font-weight: 500;
+        color: var(--dark-700); border-bottom: 1px solid var(--dark-100); min-height: 44px; }
+      .mobile-panel .btn { width: 100%; justify-content: center; margin-top: 16px; }
+      .mobile-only { display: block; }
+
+      .decret-grid { grid-template-columns: 1fr; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      footer.site .shell { flex-direction: column; align-items: flex-start; }
+      .f-legal, .f-legal .f-links { text-align: left; justify-content: flex-start; }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 30px; }
+      .decret-kw { font-size: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav-wrap">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden aria-hidden="true">
+    <div class="shell">
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#" class="brand" aria-label="NeoGTB, accueil">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/>
+            </svg>
+          </span>
+          Neo<em>GTB</em>
+        </a>
+
+        <ul class="nav-links desktop">
+          <li><a href="#decret">Décret BACS</a></li>
+          <li><a href="#">Outils</a></li>
+          <li><a href="#methode">AMO</a></li>
+          <li><a href="#">Réglementation</a></li>
+          <li><a href="#">À propos</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <a href="#" class="btn btn-primary desktop">Comprendre mon obligation</a>
+          <label for="nav-toggle" class="burger" role="button" tabindex="0" aria-label="Ouvrir ou fermer le menu">
+            <span></span><span></span><span></span>
+          </label>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Panneau mobile (affiché uniquement < 720px) -->
+    <div class="mobile-panel mobile-only">
+      <ul>
+        <li><a href="#decret">Décret BACS</a></li>
+        <li><a href="#">Outils</a></li>
+        <li><a href="#methode">AMO</a></li>
+        <li><a href="#">Réglementation</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#" class="btn btn-primary">Comprendre mon obligation</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="decor" aria-hidden="true">
+        <div class="orb orb--green orb--h1"></div>
+        <div class="orb orb--navy orb--h2"></div>
+      </div>
+
+      <div class="shell">
+        <div class="hero-copy">
+          <span class="badge-indep reveal" role="text">
+            <span class="dot" aria-hidden="true"></span>
+            Indépendant — aucun matériel vendu
+          </span>
+
+          <h1 id="hero-title" class="reveal d1">
+            Comprendre et appliquer le <span class="soft">décret BACS.</span><br>
+            Sans vous faire vendre du matériel.
+          </h1>
+
+          <p class="hero-sub reveal d2">
+            NeoGTB est le <strong>tiers de confiance indépendant</strong> de la GTB.
+            On vous explique clairement votre obligation, puis on vous accompagne à chaque étape —
+            du diagnostic jusqu'au contrôle de l'intégrateur. Nous ne représentons aucune marque.
+          </p>
+
+          <div class="hero-actions reveal d3">
+            <a href="#" class="btn btn-primary btn-lg">Comprendre mon obligation</a>
+            <a href="#methode" class="btn btn-secondary btn-lg">
+              Voir la méthode <span class="btn-link-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <p class="hero-trust reveal d4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>
+            </svg>
+            On travaille pour le maître d'ouvrage. Pour vous, et personne d'autre.
+          </p>
+        </div>
+
+        <!-- Aperçu du parcours (visuel hero) -->
+        <aside class="schema reveal d2" aria-label="Aperçu du parcours de mise en conformité en quatre étapes">
+          <div class="schema-head">
+            <h2>Votre parcours, étape par étape</h2>
+            <span class="tag">Méthode</span>
+          </div>
+          <ol class="steps">
+            <li class="step">
+              <span class="step-num" aria-hidden="true">1</span>
+              <div class="step-body">
+                <h3>Diagnostic</h3>
+                <p>On établit si votre bâtiment est concerné, et à quelle échéance.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">2</span>
+              <div class="step-body">
+                <h3>Cahier des charges</h3>
+                <p>Vos besoins traduits en spécifications techniques neutres.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">3</span>
+              <div class="step-body">
+                <h3>Appel d'offres</h3>
+                <p>Les intégrateurs comparés sur des critères objectifs.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step-num" aria-hidden="true">4</span>
+              <div class="step-body">
+                <h3>Contrôle de l'intégrateur</h3>
+                <p>La vérification que l'installation est conforme et performante.</p>
+              </div>
+            </li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== SUIS-JE CONCERNÉ ? ==================== -->
+    <section class="section decret" id="decret" aria-labelledby="decret-title">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow">Le décret en clair</span>
+          <h2 id="decret-title">Suis-je concerné&nbsp;?</h2>
+          <p>
+            Le décret BACS s'applique selon la puissance de vos systèmes de chauffage,
+            ventilation et climatisation (CVC). Deux cas, deux échéances.
+          </p>
+        </div>
+
+        <div class="decret-grid">
+          <article class="decret-card now reveal">
+            <span class="decret-eyebrow">Déjà en vigueur</span>
+            <div class="decret-kw tabnum">&gt; 290 kW <span>de puissance CVC</span></div>
+            <p class="decret-label">Grands bâtiments tertiaires, déjà fortement équipés.</p>
+            <span class="decret-when">
+              <span class="dot" aria-hidden="true"></span>
+              Obligatoire depuis <span class="tabnum">2025</span>
+            </span>
+          </article>
+
+          <article class="decret-card soon reveal d1">
+            <span class="decret-eyebrow">À anticiper</span>
+            <div class="decret-kw tabnum">70 – 290 kW <span>de puissance CVC</span></div>
+            <p class="decret-label">La majorité des PME et TPE propriétaires de 1 000 à 5 000 m².</p>
+            <span class="decret-when">
+              <span class="dot" aria-hidden="true"></span>
+              Échéance 1<sup>er</sup> janvier <span class="tabnum">2030</span>
+            </span>
+          </article>
+        </div>
+
+        <p class="decret-foot">
+          <b>Décret BACS n° <span class="tabnum">2025-1343</span>.</b>
+          La puissance CVC = chauffage, ventilation et climatisation cumulés.
+          <span class="src">Sources&nbsp;: Légifrance · ADEME · norme EN 15232.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== LA MÉTHODE (TIMELINE) ==================== -->
+    <section class="section" id="methode" aria-labelledby="methode-title">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow">La méthode NeoGTB</span>
+          <h2 id="methode-title">Une méthode claire, du diagnostic au contrôle.</h2>
+          <p>
+            Quatre étapes simples, sans jargon et sans parti pris commercial.
+            Notre rôle&nbsp;: que vous décidiez en connaissance de cause.
+          </p>
+        </div>
+
+        <ol class="method-timeline">
+          <li class="mstep reveal">
+            <span class="mstep-node tabnum" aria-hidden="true">01</span>
+            <div class="mstep-inner">
+              <h3>Diagnostic de conformité</h3>
+              <p>Le décret BACS s'applique-t-il à votre bâtiment, et à quelle date&nbsp;?</p>
+            </div>
+          </li>
+          <li class="mstep reveal d1">
+            <span class="mstep-node tabnum" aria-hidden="true">02</span>
+            <div class="mstep-inner">
+              <h3>Cahier des charges</h3>
+              <p>Vos besoins traduits en spécifications techniques, sans marque imposée.</p>
+            </div>
+          </li>
+          <li class="mstep reveal d2">
+            <span class="mstep-node tabnum" aria-hidden="true">03</span>
+            <div class="mstep-inner">
+              <h3>Appel d'offres</h3>
+              <p>Une mise en concurrence saine des intégrateurs, sur des critères objectifs.</p>
+            </div>
+          </li>
+          <li class="mstep reveal d3">
+            <span class="mstep-node tabnum" aria-hidden="true">04</span>
+            <div class="mstep-inner">
+              <h3>Contrôle de l'intégrateur</h3>
+              <p>La vérification que ce qui est livré correspond à ce qui a été prévu.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="method-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>
+          </svg>
+          À chaque étape, vous restez décideur. Nous n'installons rien&nbsp;: nous vous outillons.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== POURQUOI INDÉPENDANT ==================== -->
+    <section class="section why" aria-labelledby="why-title">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow">Pourquoi un tiers indépendant&nbsp;?</span>
+          <h2 id="why-title">Le seul conseil qui n'a rien à vous vendre.</h2>
+          <p>Un intégrateur vend du matériel. Nous, non. Voilà ce que ça change concrètement.</p>
+          <span class="badge-indep badge-mt" role="text">
+            <span class="dot" aria-hidden="true"></span>
+            Aucun lien commercial
+          </span>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card reveal">
+            <div class="why-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M4 12h16"/>
+              </svg>
+            </div>
+            <h3>Aucun matériel à vous vendre</h3>
+            <p>Aucun intérêt à vous faire acheter plus que ce dont votre bâtiment a besoin.</p>
+          </article>
+
+          <article class="why-card reveal d1">
+            <div class="why-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v18"/><path d="M5 8l7-4 7 4"/><path d="M5 8l-2 6a3 3 0 0 0 6 0z"/><path d="M19 8l2 6a3 3 0 0 1-6 0z"/>
+              </svg>
+            </div>
+            <h3>Aucune marque à défendre</h3>
+            <p>On compare les solutions sur les faits, pas sur des partenariats commerciaux.</p>
+          </article>
+
+          <article class="why-card reveal d2">
+            <div class="why-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+            </div>
+            <h3>Votre intérêt, un point c'est tout</h3>
+            <p>On travaille pour le maître d'ouvrage. Votre budget et votre conformité d'abord.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA FINAL ==================== -->
+    <section class="final" aria-labelledby="final-title">
+      <div class="decor" aria-hidden="true">
+        <div class="orb orb--a"></div>
+        <div class="orb orb--b"></div>
+      </div>
+      <div class="shell">
+        <span class="eyebrow">Prochaine étape</span>
+        <h2 id="final-title">Faisons le point sur votre bâtiment.</h2>
+        <p>
+          Un échange simple pour savoir où vous en êtes face au décret BACS —
+          sans engagement, sans démarchage, sans devis de matériel.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary btn-lg">Faisons le point sur votre bâtiment</a>
+          <a href="#methode" class="btn btn-secondary btn-lg">Revoir la méthode</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site">
+    <div class="shell">
+      <div class="f-brand">
+        <span class="brand">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/>
+            </svg>
+          </span>
+          Neo<em>GTB</em>
+        </span>
+        <p class="f-indep">
+          Tiers de confiance indépendant de la GTB.
+          Aucun matériel vendu, aucune marque représentée.
+        </p>
+      </div>
+
+      <div class="f-legal">
+        <div class="f-links">
+          <a href="#decret">Décret BACS</a>
+          <a href="#">Outils</a>
+          <a href="#methode">AMO</a>
+          <a href="#">Réglementation</a>
+          <a href="#">Mentions légales</a>
+        </div>
+        <span class="tabnum">©&nbsp;2026</span> NeoGTB — Ulrich Calmo. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

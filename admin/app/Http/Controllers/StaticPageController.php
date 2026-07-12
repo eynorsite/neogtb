@@ -201,6 +201,20 @@ class StaticPageController extends Controller
         return view('front.solutions', $this->seo('solutions'));
     }
 
+    /**
+     * Vitrine interne des visuels (schémas GTB, icônes, KPI, jauges).
+     * Non indexée (le blade pose @section('noindex')). Sert d'aperçu et de guide de placement.
+     */
+    public function demoVisuels()
+    {
+        return view('front.demo-visuels', [
+            'seoTitle'       => 'Visuels NeoGTB — bibliothèque interne',
+            'seoDescription' => 'Bibliothèque interne des visuels NeoGTB : schémas GTB, icônes, bandeaux de chiffres et jauges.',
+            'seoOgImage'     => '/images/og-neogtb.png',
+            'seoUrl'         => url()->current(),
+        ]);
+    }
+
     public function mentionsLegales()
     {
         return view('front.mentions-legales', $this->seo('mentions-legales'));

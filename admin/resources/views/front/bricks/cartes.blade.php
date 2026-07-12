@@ -35,7 +35,14 @@
 
                     <div class="{{ empty($carteImg) ? '' : 'p-6' }}">
                         @if(empty($carteImg) && !empty($carte['icone']))
-                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-500/10 text-accent-600 text-2xl transition-all duration-300 group-hover:bg-accent-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-accent-500/30">{{ $carte['icone'] }}</div>
+                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-500/10 text-accent-600 text-2xl transition-all duration-300 group-hover:bg-accent-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-accent-500/30">
+                                @if(\Illuminate\Support\Str::startsWith($carte['icone'], 'icon:'))
+                                    {{-- Icône SVG du jeu GTB (cf. components/front/shared/icon) — hérite de la couleur via currentColor --}}
+                                    <x-front.shared.icon :name="\Illuminate\Support\Str::after($carte['icone'], 'icon:')" class="w-6 h-6" />
+                                @else
+                                    {{ $carte['icone'] }}
+                                @endif
+                            </div>
                         @endif
 
                         <h3 class="font-display font-semibold text-dark-900">{{ $carte['titre'] ?? '' }}</h3>

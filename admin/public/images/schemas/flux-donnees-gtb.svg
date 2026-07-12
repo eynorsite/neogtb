@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 360" width="1240" height="360" role="img" aria-label="Chaîne de données d'une GTB de gauche à droite : équipements et capteurs, bus de terrain, superviseur GTB, pilotage et reporting" font-family="'DM Sans','Inter',system-ui,sans-serif">
+  <title>Flux de données d'une installation GTB</title>
+  <desc>Chaîne de données d'une GTB représentée de gauche à droite avec quatre blocs reliés par des flèches vertes : Équipements et capteurs (température, CO₂, présence, énergie), Bus de terrain (Modbus, KNX, BACnet, LON), Superviseur GTB (régulation, optimisation, historisation) et Pilotage et reporting (tableaux de bord, décret BACS, CEE). Les flèches portent les étapes collecte, communication et valorisation.</desc>
+
+  <!-- Bloc 1 : Équipements & capteurs -->
+  <g>
+    <rect x="20" y="100" width="240" height="160" rx="14" fill="#eaf5ee" stroke="#2D8B4E" stroke-width="2"/>
+    <!-- Icône capteur : cercle + ondes -->
+    <g stroke="#2D8B4E" stroke-width="2" fill="none" stroke-linecap="round">
+      <circle cx="140" cy="150" r="9" fill="#2D8B4E" stroke="none"/>
+      <path d="M158 132 a26 26 0 0 1 0 36"/>
+      <path d="M170 122 a40 40 0 0 1 0 56"/>
+    </g>
+    <text x="140" y="208" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">Équipements &amp; capteurs</text>
+    <text x="140" y="234" text-anchor="middle" font-size="13" fill="#475569">Température, CO₂, présence, énergie</text>
+  </g>
+
+  <!-- Flèche 1 -> 2 : collecte -->
+  <g>
+    <text x="297" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#267a43">collecte</text>
+    <line x1="266" y1="180" x2="324" y2="180" stroke="#267a43" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="334,180 320,174 320,186" fill="#267a43"/>
+  </g>
+
+  <!-- Bloc 2 : Bus de terrain -->
+  <g>
+    <rect x="340" y="100" width="240" height="160" rx="14" fill="#e8eef5" stroke="#1B3A5C" stroke-width="2"/>
+    <text x="460" y="172" text-anchor="middle" font-size="17" font-weight="700" fill="#142b47">Bus de terrain</text>
+    <text x="460" y="206" text-anchor="middle" font-size="13" fill="#475569">Modbus · KNX · BACnet · LON</text>
+  </g>
+
+  <!-- Flèche 2 -> 3 : communication -->
+  <g>
+    <text x="617" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#267a43">communication</text>
+    <line x1="586" y1="180" x2="644" y2="180" stroke="#267a43" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="654,180 640,174 640,186" fill="#267a43"/>
+  </g>
+
+  <!-- Bloc 3 : Superviseur GTB -->
+  <g>
+    <rect x="660" y="100" width="240" height="160" rx="14" fill="#1B3A5C"/>
+    <text x="780" y="172" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">Superviseur GTB</text>
+    <text x="780" y="206" text-anchor="middle" font-size="13" fill="#e8eef5">Régulation · Optimisation · Historisation</text>
+  </g>
+
+  <!-- Flèche 3 -> 4 : valorisation -->
+  <g>
+    <text x="937" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#267a43">valorisation</text>
+    <line x1="906" y1="180" x2="964" y2="180" stroke="#267a43" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="974,180 960,174 960,186" fill="#267a43"/>
+  </g>
+
+  <!-- Bloc 4 : Pilotage & reporting -->
+  <g>
+    <rect x="980" y="100" width="240" height="160" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+    <text x="1100" y="172" text-anchor="middle" font-size="17" font-weight="700" fill="#142b47">Pilotage &amp; reporting</text>
+    <text x="1100" y="206" text-anchor="middle" font-size="13" fill="#475569">Tableaux de bord · Décret BACS · CEE</text>
+  </g>
+
+  <!-- Légende -->
+  <text x="620" y="330" text-anchor="middle" font-size="14" fill="#64748b">Flux de données d'une installation GTB</text>
+</svg>

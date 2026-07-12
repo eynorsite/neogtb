@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 600" width="820" height="600" role="img" aria-label="Pyramide des 4 classes d'efficacité énergétique EN 15232 / ISO 52120-1, de D en bas à A au sommet" font-family="'DM Sans','Inter',system-ui,sans-serif">
+  <title>Classes d'efficacité EN 15232 / ISO 52120-1</title>
+  <desc>Pyramide à quatre marches des classes d'efficacité énergétique des bâtiments selon la norme EN 15232 / ISO 52120-1. De bas en haut : Classe D non performante à proscrire, Classe C GTB standard de référence, Classe B GTB avancée, Classe A GTB haute performance énergétique au sommet. Une flèche verticale à droite pointe vers le haut pour indiquer le gain d'efficacité énergétique.</desc>
+
+  <defs>
+    <linearGradient id="goldA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBBF24"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Classe A : sommet, doré, plus étroit -->
+  <g>
+    <rect x="290" y="90" width="240" height="90" rx="14" fill="url(#goldA)"/>
+    <text x="410" y="130" text-anchor="middle" font-size="22" font-weight="700" fill="#142b47">Classe A</text>
+    <text x="410" y="156" text-anchor="middle" font-size="14" fill="#142b47">GTB haute performance énergétique</text>
+  </g>
+
+  <!-- Classe B : vert -->
+  <g>
+    <rect x="240" y="190" width="340" height="90" rx="14" fill="#2D8B4E"/>
+    <text x="410" y="230" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Classe B</text>
+    <text x="410" y="256" text-anchor="middle" font-size="14" fill="#eaf5ee">GTB avancée</text>
+  </g>
+
+  <!-- Classe C : marine -->
+  <g>
+    <rect x="190" y="290" width="440" height="90" rx="14" fill="#1B3A5C"/>
+    <text x="410" y="330" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Classe C</text>
+    <text x="410" y="356" text-anchor="middle" font-size="14" fill="#e8eef5">GTB standard (référence)</text>
+  </g>
+
+  <!-- Classe D : gris, base la plus large -->
+  <g>
+    <rect x="140" y="390" width="540" height="90" rx="14" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+    <text x="410" y="430" text-anchor="middle" font-size="22" font-weight="700" fill="#475569">Classe D</text>
+    <text x="410" y="456" text-anchor="middle" font-size="14" fill="#475569">Non performante (à proscrire)</text>
+  </g>
+
+  <!-- Flèche verticale droite : gain d'efficacité, pointe vers le haut -->
+  <g>
+    <line x1="730" y1="460" x2="730" y2="120" stroke="#267a43" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="730,104 723,122 737,122" fill="#267a43"/>
+    <text x="730" y="290" text-anchor="middle" font-size="15" font-weight="700" fill="#267a43" transform="rotate(90 730 290)">Gain d'efficacité énergétique</text>
+  </g>
+
+  <!-- Légende -->
+  <text x="410" y="540" text-anchor="middle" font-size="14" fill="#64748b">Classes d'efficacité EN 15232 / ISO 52120-1</text>
+</svg>
