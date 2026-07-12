@@ -278,11 +278,9 @@
     .orb--delay   { animation-delay: 2s; }
 }
 
+/* Emphase du nom de marque dans les titres : couleur pleine (pas de dégradé sur texte). */
 .text-gradient {
-    background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-accent-600);
 }
 
 .section-divider { position: relative; }

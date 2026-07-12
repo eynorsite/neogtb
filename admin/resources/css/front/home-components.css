@@ -51,7 +51,7 @@
 .comparateur-preview { width: 100%; }
 .comparateur-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
 .comparateur-bar { flex: 1; height: 8px; border-radius: 4px; background: #f1f5f9; overflow: hidden; }
-.comparateur-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #2D8B4E, #4caf64); transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+.comparateur-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #2D8B4E, #4caf64); }
 
 /* Timeline réglementation */
 .timeline-regl { display: flex; flex-direction: row; gap: 0; justify-content: space-between; align-items: flex-start; position: relative; }
@@ -83,5 +83,5 @@
 
 /* Utility */
 .metric-cell { padding: 14px; border-radius: 8px; background: #f8fafc; }
-.approach-block { border-left: 2px solid #2D8B4E; padding-left: 16px; margin-bottom: 24px; }
+.approach-block { background: rgba(45, 139, 78, 0.05); border-radius: 8px; padding: 16px; margin-bottom: 24px; }
 .dot-accent { width: 5px; height: 5px; border-radius: 50%; background: #2D8B4E; flex-shrink: 0; }
