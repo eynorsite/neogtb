@@ -33,7 +33,7 @@ class PageController extends Controller
     public function blog()
     {
         $posts = Post::where('status', 'published')
-            ->with('category')
+            ->with(['category', 'tags']) // Eager load tags to prevent N+1 queries in the view
             ->orderByDesc('published_at')
             ->paginate(20);
 
@@ -49,13 +49,14 @@ class PageController extends Controller
     {
         $post = Post::where('slug', $slug)
             ->where('status', 'published')
-            ->with(['category', 'tags'])
+            ->with(['category', 'tags', 'author']) // Eager load author to prevent N+1 queries in the view
             ->firstOrFail();
 
         $post->increment('views_count');
         $related = Post::where('status', 'published')
             ->where('id', '!=', $post->id)
             ->where('category_id', $post->category_id)
+            ->with('category') // Eager load category to prevent N+1 queries in the view
             ->latest('published_at')
             ->limit(3)
             ->get();
