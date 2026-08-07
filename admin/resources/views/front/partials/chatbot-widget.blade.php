@@ -53,7 +53,7 @@
                     <div class="text-xs opacity-80 leading-tight" x-text="subtitle"></div>
                 </div>
             </div>
-            <button type="button" x-on:click="open = false" aria-label="Fermer" class="rounded-full p-1 hover:bg-white/20">
+            <button type="button" x-on:click="open = false" aria-label="Fermer" class="rounded-full p-1 hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2" :style="'--tw-ring-offset-color: ' + color">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -161,8 +161,8 @@
                 <button
                     type="submit"
                     :disabled="!inputText.trim() || isStreaming"
-                    class="p-2 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
-                    :style="'background-color: ' + color"
+                    class="p-2 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    :style="'background-color: ' + color + '; --tw-ring-color: ' + color"
                     aria-label="Envoyer"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
