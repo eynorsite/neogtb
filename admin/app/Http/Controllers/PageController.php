@@ -6,11 +6,11 @@ use App\Http\Requests\SubmitAuditLeadRequest;
 use App\Http\Requests\SubmitCctpLeadRequest;
 use App\Http\Requests\SubmitCeeLeadRequest;
 use App\Http\Requests\SubmitContactMessageRequest;
-use App\Models\GeneralSetting;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\SitePage;
 use App\Services\Contact\ContactSubmissionService;
+use App\Services\ContentBrickAdapter;
 use App\Services\Lead\AuditLeadService;
 use App\Services\Lead\CctpLeadService;
 use App\Services\Lead\CeeLeadService;
@@ -25,15 +25,19 @@ class PageController extends Controller
             ->where('is_published', true)
             ->firstOrFail();
 
-        $bricks = \App\Services\ContentBrickAdapter::buildBricks($slug);
+        $bricks = ContentBrickAdapter::buildBricks($slug);
 
         return view('front.page', compact('page', 'bricks'));
     }
 
     public function blog()
     {
+        // ⚡ Bolt Optimization: Eager load 'tags' to prevent N+1 queries.
+        // What: Added 'tags' to the with() clause.
+        // Why: The blog.blade.php view accesses $post->tags, causing a query for each post if not eager loaded.
+        // Impact: Reduces queries per page from (1 + N) to 2.
         $posts = Post::where('status', 'published')
-            ->with('category')
+            ->with(['category', 'tags'])
             ->orderByDesc('published_at')
             ->paginate(20);
 
@@ -60,14 +64,14 @@ class PageController extends Controller
             ->limit(3)
             ->get();
 
-        $seoTitle = $post->meta_title ?: ($post->title . ' - NeoGTB');
+        $seoTitle = $post->meta_title ?: ($post->title.' - NeoGTB');
         $seoDescription = $post->meta_description ?: $post->excerpt;
 
         $ogImageRaw = $post->og_image ?: $post->featured_image;
         if ($ogImageRaw) {
             $seoOgImage = str_starts_with($ogImageRaw, '/') || str_starts_with($ogImageRaw, 'http')
                 ? $ogImageRaw
-                : asset('storage/' . $ogImageRaw);
+                : asset('storage/'.$ogImageRaw);
         } else {
             $seoOgImage = '/images/og-neogtb.png';
         }
@@ -90,8 +94,8 @@ class PageController extends Controller
             return back()->with('contact_success', true);
         }
 
-        $rules = (new SubmitContactMessageRequest())->rules();
-        $messages = (new SubmitContactMessageRequest())->messages();
+        $rules = (new SubmitContactMessageRequest)->rules();
+        $messages = (new SubmitContactMessageRequest)->messages();
 
         $validated = Validator::make($request->all(), $rules, $messages)->validate();
 
