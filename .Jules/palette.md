@@ -1,0 +1,3 @@
+## 2024-05-14 - Custom Form Components & Accessibility
+**Learning:** Custom UI components built with nested spans/divs inside a `<label>` (like the custom radio buttons in this app) often lack default browser focus indicators, making keyboard navigation difficult for screen reader users. Furthermore, relying on placeholder text or proximity for standard inputs without explicit `<label for="...">` mapping creates severe accessibility barriers.
+**Action:** Always ensure that interactive form elements have explicit `focus-visible` styles mapped using Tailwind utilities, and enforce strict ID-to-for attribute mapping on all standard form inputs.
