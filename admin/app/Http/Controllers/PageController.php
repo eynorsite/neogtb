@@ -32,8 +32,9 @@ class PageController extends Controller
 
     public function blog()
     {
+        // Eager load category and tags to prevent N+1 queries during view rendering
         $posts = Post::where('status', 'published')
-            ->with('category')
+            ->with(['category', 'tags'])
             ->orderByDesc('published_at')
             ->paginate(20);
 
@@ -53,9 +54,11 @@ class PageController extends Controller
             ->firstOrFail();
 
         $post->increment('views_count');
+        // Eager load category to prevent N+1 queries when displaying related post categories
         $related = Post::where('status', 'published')
             ->where('id', '!=', $post->id)
             ->where('category_id', $post->category_id)
+            ->with('category')
             ->latest('published_at')
             ->limit(3)
             ->get();
