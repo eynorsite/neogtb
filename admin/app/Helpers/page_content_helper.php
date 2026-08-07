@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\PageContent;
+use Stevebauman\Purify\Facades\Purify;
 
-if (!function_exists('page_content')) {
+if (! function_exists('page_content')) {
     /**
      * Récupère une valeur de contenu de page.
      * Usage : page_content('accueil', 'hero', 'titre', 'Fallback')
@@ -20,12 +21,12 @@ if (!function_exists('page_content')) {
     }
 }
 
-if (!function_exists('clean_html')) {
+if (! function_exists('clean_html')) {
     /**
      * Nettoie le HTML pour prévenir XSS.
      */
     function clean_html(string $html): string
     {
-        return strip_tags($html, '<br><strong><em><a><ul><ol><li><p><h2><h3><h4><span><div>');
+        return Purify::clean($html);
     }
 }
