@@ -79,6 +79,16 @@ class FrontCspHeader
             "frame-ancestors 'self'",
             "base-uri 'self'",
             "form-action 'self'",
+            // object-src ne peut PAS hériter de default-src pour durcir : 'none' est
+            // strictement plus fort que le fallback 'self'. Bloque <object>/<embed>
+            // (vecteur XSS historique). Les autres directives « manquantes »
+            // (media-src, worker-src, manifest-src) héritent déjà de default-src 'self'
+            // et seraient donc du bruit : on ne les ajoute pas.
+            "object-src 'none'",
+            // Force les sous-ressources http:// en https:// côté navigateur. Filet de
+            // sécurité pour le code personnalisé injectable depuis l'admin
+            // (custom_head_code / custom_body_code) qui échappe à toute revue.
+            'upgrade-insecure-requests',
         ];
 
         if ($frame !== []) {

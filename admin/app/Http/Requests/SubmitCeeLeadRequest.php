@@ -11,9 +11,13 @@ class SubmitCeeLeadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email:rfc', 'max:100'],
-            'name' => ['nullable', 'string', 'max:100'],
-            'company' => ['nullable', 'string', 'max:100'],
+            // Honeypot : le champ leurre était affiché dans la vue mais n'était ni
+            // transmis ni contrôlé — protection purement décorative. Aligné sur
+            // SubmitAuditLeadRequest.
+            '_gotcha' => ['nullable', 'prohibited'],
+            'email' => ['required', 'email:rfc', 'max:100', 'not_regex:/[\r\n]/'],
+            'name' => ['nullable', 'string', 'max:100', 'not_regex:/[\r\n]/'],
+            'company' => ['nullable', 'string', 'max:100', 'not_regex:/[\r\n]/'],
             'sector' => ['nullable', 'string', 'max:50'],
             'th116_mwh' => ['nullable', 'numeric', 'min:0', 'max:100000'],
             'th116_value' => ['nullable', 'numeric', 'min:0', 'max:999999'],

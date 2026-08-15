@@ -392,6 +392,9 @@
 
             <form method="POST" action="{{ route('front.cctp.download') }}" class="space-y-4">
                 @csrf
+                {{-- Honeypot anti-bot : champ leurre invisible, rejeté côté serveur
+                     par SubmitCctpLeadRequest (règle `prohibited`). --}}
+                <input type="text" name="_gotcha" style="display:none!important;position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true" />
                 <div>
                     <label for="cctp-email" class="block text-[13px] font-medium text-dark-700 mb-1.5">Email professionnel <span class="text-accent-600">*</span></label>
                     <input type="email" id="cctp-email" name="email" required value="{{ old('email') }}" autocomplete="email" placeholder="prenom@organisation.fr"

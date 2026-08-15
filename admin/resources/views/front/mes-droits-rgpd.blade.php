@@ -56,7 +56,7 @@
                     <textarea x-model="form.message" rows="4" placeholder="Décrivez votre demande si nécessaire..."
                         class="w-full px-4 py-3 rounded-lg text-sm text-dark-700 border border-dark-200 focus:ring-2 focus:ring-accent-500 focus:outline-none focus:border-accent-500 resize-y"></textarea>
                 </div>
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="text" x-model="honeypot" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
             </div>
 
             <!-- Info sécurité -->
@@ -119,13 +119,14 @@
     document.addEventListener('alpine:init', () => {
         Alpine.data('rgpdForm', () => ({
             form: { type: '', email: '', name: '', message: '' },
+            honeypot: '',
             submitted: false,
             async submitForm() {
                 if (!this.form.type || !this.form.email || !this.form.name) return;
                 try {
                     const res = await fetch('/rgpd/request', {
                         method: 'POST',
-                        body: JSON.stringify(this.form),
+                        body: JSON.stringify({ ...this.form, _gotcha: this.honeypot || '' }),
                         headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',

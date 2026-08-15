@@ -11,8 +11,11 @@ class SubmitCctpLeadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email:rfc', 'max:100'],
-            'company' => ['nullable', 'string', 'max:100'],
+            // Honeypot : le lead magnet CCTP était le seul formulaire sans champ
+            // leurre. Aligné sur SubmitAuditLeadRequest.
+            '_gotcha' => ['nullable', 'prohibited'],
+            'email' => ['required', 'email:rfc', 'max:100', 'not_regex:/[\r\n]/'],
+            'company' => ['nullable', 'string', 'max:100', 'not_regex:/[\r\n]/'],
             'consentement_rgpd' => ['required', 'accepted'],
         ];
     }

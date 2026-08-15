@@ -539,7 +539,7 @@
           <div @click.outside="showEmailModal = false" class="cee-modal">
             <h3 style="font-size:18px;font-weight:500;color:var(--color-dark-900);margin-bottom:16px;">Recevoir mon estimation</h3>
             <input type="email" x-model="emailAddress" placeholder="votre@email.com" class="cee-input" style="margin-bottom:12px;">
-            <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
+            <input type="text" x-model="honeypot" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
 
             <div style="font-size:10.5px;color:var(--color-dark-400);line-height:1.6;margin-bottom:12px;padding:10px 12px;border-left:2px solid var(--color-dark-200);background:var(--color-dark-50);border-radius:0 6px 6px 0;">
               <p style="margin:0 0 4px;font-weight:600;color:var(--color-dark-600);">Information RGPD (art. 13)</p>
@@ -609,6 +609,7 @@
       emailAddress: '',
       emailSent: false,
       consentRgpd: false,
+      honeypot: '',
 
       buildingTypes: [
         { id: 'office',     label: 'Bureaux',                   icon: '🏢' },
@@ -891,6 +892,7 @@
         if (!this.consentRgpd) return;
         try {
           const payload = {
+            _gotcha:           this.honeypot || '',
             email:             this.emailAddress,
             th116_mwh:         this.results.th116.total,
             th116_value:       this.results.th116.value,

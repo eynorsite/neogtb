@@ -37,8 +37,17 @@ class AppServiceProvider extends ServiceProvider
         );
 
         // Bump memory for admin pages with large forms (SiteSettings labels: 256+ fields)
+        //
+        // L'appel DOIT rester silencieux : quand PHP impose un plafond maître
+        // (max_memory_limit), ini_set échoue avec un E_WARNING que le handler Laravel
+        // promeut en ErrorException. Levée ici, dans register(), elle interrompait le
+        // boot du container AVANT l'enregistrement du service `translator` — le rendu
+        // de la page d'erreur échouait alors à son tour, et tout /admin* renvoyait 500
+        // (back-office inaccessible en production, constaté le 15 août 2026).
+        // Le @ est donc structurel, pas cosmétique : cette montée en mémoire est un
+        // confort, jamais une condition de démarrage.
         if (request()->is('admin*')) {
-            ini_set('memory_limit', '512M');
+            @ini_set('memory_limit', '512M');
         }
     }
 

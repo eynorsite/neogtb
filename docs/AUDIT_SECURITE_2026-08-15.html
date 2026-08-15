@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="color-scheme" content="dark">
+<title>Audit de sécurité neogtb.fr — rapport vérifié (15 août 2026)</title>
+<style>
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-alt: #334155;
+  --border: #475569;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --green: #4ade80;
+  --green-bg: rgba(74,222,128,0.1);
+  --yellow: #facc15;
+  --yellow-bg: rgba(250,204,21,0.1);
+  --orange: #fb923c;
+  --orange-bg: rgba(251,146,60,0.1);
+  --red: #f87171;
+  --red-bg: rgba(248,113,113,0.1);
+  --violet: #c084fc;
+  --violet-bg: rgba(192,132,252,0.1);
+  --blue-bg: rgba(56,189,248,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 2rem 1rem;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+h1 { font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: .25rem; }
+h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 2px solid var(--surface-alt); }
+h3 { font-size: 1.15rem; font-weight: 600; color: var(--text); margin: 1.5rem 0 .75rem; }
+h4 { font-size: 1rem; font-weight: 600; color: var(--text-muted); margin: 1rem 0 .5rem; }
+
+p, li { color: var(--text); margin-bottom: .5rem; }
+a { color: var(--accent); }
+
+.subtitle { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1rem; }
+.date { color: var(--text-muted); font-size: .9rem; margin-bottom: .5rem; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+.badge-crit { background: var(--violet-bg); color: var(--violet); border: 1px solid var(--violet); }
+.badge-high { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+.badge-med  { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange); }
+.badge-low  { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow); }
+.badge-info { background: var(--blue-bg); color: var(--accent); border: 1px solid var(--accent); }
+.badge-ok   { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+.badge-ko   { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: .75rem;
+}
+.card-crit { border-color: var(--violet); }
+.card-high { border-color: var(--red); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: .92rem;
+}
+th, td {
+  padding: .6rem .8rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: var(--surface-alt);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+td { background: var(--surface); }
+tr:hover td { background: var(--surface-alt); }
+td.ko { color: var(--red); font-weight: 600; }
+td.ok { color: var(--green); font-weight: 600; }
+
+pre {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: .85rem;
+  line-height: 1.6;
+  margin: .75rem 0 1rem;
+  color: #e6edf3;
+}
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  background: var(--surface-alt);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: .88em;
+  color: var(--accent);
+}
+pre code { background: transparent; padding: 0; }
+
+.comment { color: #8b949e; }  /* commentaires shell / config */
+.string  { color: #a5d6ff; }  /* valeurs littérales */
+.out     { color: #7ee787; }  /* sortie réelle des commandes */
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.score-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+.score-val { font-size: 2rem; font-weight: 800; line-height: 1.2; }
+.score-label { font-size: .85rem; color: var(--text-muted); margin-top: .25rem; }
+.score-note { font-size: .72rem; color: var(--text-muted); margin-top: .35rem; }
+
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+.toc ul { list-style: none; padding-left: 0; }
+.toc li { padding: .3rem 0; }
+.toc li::before { content: "→ "; color: var(--accent); font-weight: 600; }
+.toc a { color: var(--text); font-weight: 500; text-decoration: none; }
+.toc a:hover { color: var(--accent); }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: .4rem 0; padding-left: 1.6rem; position: relative; }
+.checklist li::before { content: "✅"; position: absolute; left: 0; }
+.checklist li.warn::before { content: "⚠️"; }
+.checklist li.fail::before { content: "❌"; }
+.checklist li.info::before { content: "ℹ️"; }
+
+.summary-box {
+  background: var(--blue-bg);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+.warn-box {
+  background: var(--violet-bg);
+  border: 1px solid var(--violet);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 800;
+  font-size: .85rem;
+  margin-right: .5rem;
+  flex-shrink: 0;
+}
+
+.proof {
+  font-size: .82rem;
+  color: var(--text-muted);
+  border-left: 3px solid var(--border);
+  padding-left: .75rem;
+  margin: .5rem 0 .75rem;
+}
+
+/* Utilitaires — évitent les styles inline */
+.card > h3:first-child,
+.card > h2:first-child { margin-top: 0; }
+.c-green  { color: var(--green); }
+.c-red    { color: var(--red); }
+.c-yellow { color: var(--yellow); }
+.c-muted  { color: var(--text-muted); }
+.footnote {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 2rem;
+  font-size: .85rem;
+}
+
+@media (max-width: 768px) {
+  body { padding: 1rem .5rem; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; }
+  table { font-size: .8rem; }
+  th, td { padding: .4rem .5rem; }
+  pre { font-size: .78rem; padding: .75rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<p class="date">📅 15 août 2026 — audit contradictoire, vérifié pièce par pièce</p>
+<h1>🛡️ Audit de sécurité neogtb.fr — rapport corrigé</h1>
+<p class="subtitle">
+  Laravel 13 + Filament + nginx — production <code>neogtb.fr</code> / <code>admin.neogtb.fr</code>.<br>
+  Ce document <strong>remplace</strong> le « Rapport de Remédiation Sécurité » du 15 août 2026 (v1), dont
+  <strong>7 constats sur 10 étaient inexacts</strong> et qui manquait les 3 problèmes les plus graves.
+</p>
+
+<div class="warn-box">
+  <strong>⚠️ Pourquoi une v2.</strong> La v1 a été produite sans confronter ses constats au code du dépôt ni
+  aux enregistrements DNS réels. Elle recommandait des correctifs déjà en place (rate limiting, SPF, DMARC, CAA),
+  proposait du code pour un fichier qui n'existe pas dans Laravel 13, décernait des notes sur des domaines qu'elle
+  déclarait elle-même « non vérifiables », et n'a vu ni le DMARC neutralisé, ni le back-office en erreur 500,
+  ni le site public entièrement dupliqué sur le sous-domaine d'administration.
+  <strong>Chaque affirmation ci-dessous est accompagnée de sa preuve</strong> : commande exécutée et sortie brute,
+  ou référence fichier:ligne.
+</div>
+
+<!-- ───────── SCORE ───────── -->
+<div class="score-grid">
+  <div class="score-card">
+    <div class="score-val c-green">A</div>
+    <div class="score-label">En-têtes HTTP (pages)</div>
+    <div class="score-note">mesuré · curl</div>
+  </div>
+  <div class="score-card">
+    <div class="score-val c-red">D</div>
+    <div class="score-label">En-têtes HTTP (assets)</div>
+    <div class="score-note">mesuré · aucun header sécu</div>
+  </div>
+  <div class="score-card">
+    <div class="score-val c-green">A</div>
+    <div class="score-label">CSP &amp; cookies</div>
+    <div class="score-note">mesuré · nonce, pas d'unsafe-eval</div>
+  </div>
+  <div class="score-card">
+    <div class="score-val c-red">E</div>
+    <div class="score-label">DMARC</div>
+    <div class="score-note">mesuré · politique neutralisée</div>
+  </div>
+  <div class="score-card">
+    <div class="score-val c-yellow">C</div>
+    <div class="score-label">Isolation back-office</div>
+    <div class="score-note">mesuré · front dupliqué + 500</div>
+  </div>
+  <div class="score-card">
+    <div class="score-val c-muted">n/m</div>
+    <div class="score-label">TLS &amp; RGPD</div>
+    <div class="score-note">non mesuré — voir §7</div>
+  </div>
+</div>
+
+<div class="summary-box">
+  <strong>🎯 Synthèse.</strong> Le <strong>socle applicatif est réellement solide</strong> : CSP par nonce sans
+  <code>'unsafe-eval'</code>, cookie de session <code>Secure/HttpOnly/SameSite</code>, CSRF, HSTS <em>preload</em>,
+  throttling déjà posé sur tous les endpoints d'écriture, robots.txt travaillé, <code>security.txt</code> publié,
+  aucune fuite de version ni de debug. En revanche, <strong>trois défauts de niveau exploitation</strong> passent
+  sous le radar d'un scan d'en-têtes : le DMARC est annulé par un doublon, le back-office renvoie une 500,
+  et il sert une copie indexable de tout le site public. Ce sont eux qu'il faut traiter, pas les en-têtes cosmétiques.
+</div>
+
+<div class="toc">
+  <h3>📑 Sommaire</h3>
+  <ul>
+    <li><a href="#corrections">1. Ce que la v1 affirmait à tort</a></li>
+    <li><a href="#p0">2. P0 — DMARC neutralisé par un doublon</a></li>
+    <li><a href="#p1a">3. P1 — Back-office en erreur 500</a></li>
+    <li><a href="#p1b">4. P1 — Le site public servi sur admin.neogtb.fr</a></li>
+    <li><a href="#p2">5. P2 — En-têtes absents sur les assets &amp; dérive de la conf nginx</a></li>
+    <li><a href="#p3">6. P3 — Durcissements mineurs</a></li>
+    <li><a href="#nonmesure">7. Ce qui n'a pas été mesuré</a></li>
+    <li><a href="#applique">8. Correctifs déjà appliqués au dépôt</a></li>
+    <li><a href="#reste">9. Ce qu'il reste à faire (DNS + prod)</a></li>
+    <li><a href="#validation">10. Validation post-déploiement</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="corrections">1. Ce que la v1 affirmait à tort</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Affirmation v1</th>
+      <th scope="col">Réalité</th>
+      <th scope="col">Preuve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>« Vuln #8 — Absence de rate-limiting visible sur les formulaires » · <span class="badge badge-med">Moyen</span> · P1 · ~30 min</td>
+      <td class="ko">Faux. Le throttling est en place sur <strong>tous</strong> les endpoints d'écriture.</td>
+      <td><code>routes/web.php</code> : <code>throttle:5,1</code> l.85-88 (contact, audit, CEE, CCTP), l.124-126 (newsletter), <code>throttle:10,1</code> l.6 (RGPD), l.133-142 (chatbot)</td>
+    </tr>
+    <tr>
+      <td>Code de correctif à placer dans <code>app/Providers/RouteServiceProvider.php</code></td>
+      <td class="ko">Faux. Ce fichier n'existe pas : Laravel 13 configure le middleware dans <code>bootstrap/app.php</code>.</td>
+      <td><code>composer.json</code> : <code>"laravel/framework": "^13.0"</code> · <code>ls app/Providers/</code> → <code>AppServiceProvider.php</code>, <code>Filament/</code></td>
+    </tr>
+    <tr>
+      <td>« Vuln #5 — Enregistrements DNS non vérifiables (SPF, DMARC, DKIM) » · P1</td>
+      <td class="ko">Faux. SPF et DMARC existent et sont lisibles publiquement. Un <code>dig</code> suffisait.</td>
+      <td><code>dig +short neogtb.fr TXT</code> → <code>"v=spf1 include:mx.ovh.com ~all"</code></td>
+    </tr>
+    <tr>
+      <td>« Vuln #6 — Pas d'enregistrement CAA DNS »</td>
+      <td class="ko">Faux. Deux CAA sont publiés. Seul <code>issuewild</code> manque.</td>
+      <td><code>dig +short neogtb.fr CAA</code> → <code>0 issue "letsencrypt.org"</code>, <code>0 iodef "mailto:hello@neogtb.fr"</code></td>
+    </tr>
+    <tr>
+      <td>« Admin redirigé vers sous-domaine dédié avec accès restreint (403) »</td>
+      <td class="ko">Faux, et c'est l'inverse : le sous-domaine répond <strong>200</strong> et sert tout le site public.</td>
+      <td><code>curl -o /dev/null -w "%{http_code}" https://admin.neogtb.fr/gtb</code> → <code>200</code></td>
+    </tr>
+    <tr>
+      <td>« Vuln #7 — Pas de <code>Expect-CT</code> (obsolescent mais encore utile) »</td>
+      <td class="ko">À ne pas implémenter. L'en-tête est retiré des navigateurs Chromium depuis la v107 et n'a aucun effet. Il figurait au tableau sans être traité dans aucune phase du rapport.</td>
+      <td>Spécification retirée du living standard ; aucun navigateur courant ne l'honore.</td>
+    </tr>
+    <tr>
+      <td>« Vuln #3 — Ajouter <code>Cross-Origin-Embedder-Policy: unsafe-none</code> »</td>
+      <td class="ko">Sans effet. <code>unsafe-none</code> <em>est</em> la valeur par défaut : poser l'en-tête ne change strictement rien au comportement du navigateur. Gain uniquement cosmétique sur securityheaders.com.</td>
+      <td>Défaut COEP = <code>unsafe-none</code> ; seule <code>require-corp</code> modifie l'isolation.</td>
+    </tr>
+    <tr>
+      <td>CSP : ajouter <code>media-src</code>, <code>worker-src</code>, <code>manifest-src</code> en <code>'self'</code></td>
+      <td class="ko">Redondant. Ces trois directives héritent déjà de <code>default-src 'self'</code>. Seul <code>object-src 'none'</code> durcit réellement (<code>'none'</code> &gt; <code>'self'</code>).</td>
+      <td>Mécanisme de repli CSP niveau 3 sur <code>default-src</code>.</td>
+    </tr>
+    <tr>
+      <td>« Vérifier <code>config/session.php</code> : <code>'secure' =&gt; true</code> »</td>
+      <td class="ko">Le fichier ne contient pas cette valeur en dur mais <code>env('SESSION_SECURE_COOKIE')</code>, dont le défaut est <code>null</code>. La vraie vérification est côté <code>.env</code> de production — elle est bonne (cookie émis avec <code>secure</code>).</td>
+      <td><code>config/session.php:172</code> · <code>curl -I https://neogtb.fr/</code> → <code>set-cookie: laravel-session=…; secure; httponly; samesite=lax</code></td>
+    </tr>
+    <tr>
+      <td>Notes « B− DNS/Email » et « A RGPD » au tableau de bord</td>
+      <td class="ko">Notes attribuées sans mesure — la v1 écrit elle-même « n'ont pas pu être vérifiés » puis note le domaine. Une note non mesurée vaut moins que pas de note.</td>
+      <td>§ « Phase 3 » de la v1, contradiction interne avec son propre tableau de scores.</td>
+    </tr>
+    <tr>
+      <td>« Vuln #2 — Ajouter SRI sur le script Plausible » · P2 · ~1 h</td>
+      <td>Partiellement juste, mais la v1 se contredit : elle recommande le SRI puis explique qu'il cassera le script à chaque mise à jour de Plausible. <strong>Seule la proxification est une réponse tenable</strong> ; le SRI seul est un piège opérationnel.</td>
+      <td><code>resources/views/front/layouts/app.blade.php:102</code></td>
+    </tr>
+    <tr>
+      <td>« Vuln #9 — Pas de headers de sécurité sur les assets statiques » · <span class="badge badge-low">Faible</span> · P4 « marginal »</td>
+      <td class="ok">Exact — et sous-évalué. Confirmé par mesure. C'est le seul constat technique de la v1 qui tienne, mais il est classé P4 alors que <code>nosniff</code> absent sur du CSS/JS est un vrai vecteur.</td>
+      <td>voir <a href="#p2">§5</a></td>
+    </tr>
+    <tr>
+      <td>« Vuln #4 — <code>upgrade-insecure-requests</code> » et « #10 — <code>style-src 'unsafe-inline'</code> »</td>
+      <td class="ok">Exacts, correctement priorisés. <code>upgrade-insecure-requests</code> est appliqué (<a href="#applique">§8</a>) ; la migration de <code>style-src</code> vers nonce reste un chantier long à faible gain, laissé en backlog.</td>
+      <td><code>app/Http/Middleware/FrontCspHeader.php:75</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Ce que la v1 a correctement constaté ✅</h3>
+<p class="proof">Vérifié par <code>curl -I https://neogtb.fr/</code> le 15 août 2026 — ces points sont confirmés et ne demandent aucune action.</p>
+<ul class="checklist">
+  <li>HSTS <code>max-age=63072000; includeSubDomains; preload</code></li>
+  <li>CSP par nonce, sans <code>'unsafe-eval'</code> ni <code>'unsafe-inline'</code> dans <code>script-src</code></li>
+  <li><code>X-Frame-Options: SAMEORIGIN</code>, <code>X-Content-Type-Options: nosniff</code>, <code>Referrer-Policy: strict-origin-when-cross-origin</code></li>
+  <li><code>Permissions-Policy</code> exhaustive, <code>COOP: same-origin</code>, <code>CORP: same-site</code></li>
+  <li><code>X-XSS-Protection: 0</code> — le bon réglage (l'auditeur legacy a introduit ses propres failles)</li>
+  <li>Cookie <code>laravel-session</code> : <code>secure</code>, <code>httponly</code>, <code>samesite=lax</code></li>
+  <li><code>XSRF-TOKEN</code> sans <code>HttpOnly</code> : conforme à la conception de Laravel, aucune action</li>
+  <li>Aucun <code>X-Powered-By</code>, aucune version serveur, <code>APP_DEBUG=false</code> (la page 500 ne fuit aucune trace)</li>
+  <li><code>security.txt</code> publié avec <code>Expires: 2027-05-04</code> et contact <code>hello@neogtb.fr</code></li>
+  <li>robots.txt structuré, avec répétition explicite des règles par groupe de bot IA</li>
+  <li>Plausible sans cookie, mention et lien vers sa politique dans le pied de page</li>
+</ul>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="p0">2. <span class="badge badge-crit">P0</span> DMARC neutralisé par un doublon</h2>
+
+<div class="card card-crit">
+  <div class="card-header">
+    <span><strong>Le domaine n'a, de fait, aucune politique DMARC.</strong></span>
+    <span class="badge badge-crit">Critique</span>
+  </div>
+
+  <p>Deux enregistrements TXT DMARC coexistent sur <code>_dmarc.neogtb.fr</code> :</p>
+<pre><code>$ dig +short _dmarc.neogtb.fr TXT
+<span class="out">"v=DMARC1; p=quarantine; pct=100; sp=quarantine; aspf=s"</span>
+<span class="out">"v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com"</span></code></pre>
+
+  <p>
+    La RFC 7489 §6.6.3 est sans ambiguïté : si la requête renvoie <strong>plus d'un</strong> enregistrement
+    commençant par <code>v=DMARC1</code>, le récepteur doit considérer que <strong>le domaine n'a pas de politique
+    DMARC du tout</strong>. Il n'y a ni fusion, ni « le premier gagne ».
+  </p>
+
+  <p><strong>Conséquence concrète :</strong> la politique <code>p=quarantine</code> que vous croyez appliquée
+  <em>n'est appliquée nulle part</em>. Un tiers peut usurper <code>@neogtb.fr</code> en expédition sans que la
+  moindre règle DMARC ne s'y oppose. Le premier enregistrement n'a par ailleurs pas de <code>rua=</code> : même
+  s'il était seul, aucun rapport agrégé ne remonterait.</p>
+
+  <p><strong>Enjeu de conformité.</strong> Le site expédie des courriels d'exercice des droits RGPD
+  (<code>app/Mail/GdprResponseMail.php</code>, <code>OverdueGdprNotificationMail.php</code>) ainsi que les
+  confirmations de newsletter en double opt-in. L'article 12.3 du RGPD impose une réponse sous un mois : une
+  non-délivrance liée à l'authentification du domaine est un manquement opposable, pas un simple incident technique.</p>
+
+  <h4>Correctif</h4>
+  <p>Le second enregistrement est un résidu de l'intégration Brevo — <code>SECURITY_NOTES.md</code> demande d'ailleurs
+  la révocation de la clé Brevo, et plus aucune ligne de code du dépôt ne référence Brevo. Chez le registrar :</p>
+<pre><code><span class="comment"># 1. SUPPRIMER l'enregistrement TXT résiduel sur _dmarc</span>
+<span class="comment">#    "v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com"</span>
+
+<span class="comment"># 2. REMPLACER l'enregistrement restant par une version avec collecte de rapports</span>
+_dmarc.neogtb.fr.  IN  TXT  <span class="string">"v=DMARC1; p=quarantine; sp=quarantine; adkim=s; aspf=s; pct=100; rua=mailto:hello@neogtb.fr"</span>
+
+<span class="comment"># 3. Vérifier qu'il n'en reste qu'UN SEUL (doit afficher une seule ligne)</span>
+dig +short _dmarc.neogtb.fr TXT</code></pre>
+
+  <p class="proof">
+    <strong>Ne pas passer à <code>p=reject</code> tout de suite</strong>, contrairement à ce que proposait la v1.
+    Tant qu'aucun <code>rua</code> n'a collecté de rapports, personne ne sait quels expéditeurs légitimes existent
+    (OVH, un éventuel outil marketing, les envois applicatifs). Passer directement en <code>reject</code> ferait
+    silencieusement disparaître des courriels RGPD. Séquence : <code>quarantine</code> + <code>rua</code> →
+    lecture des rapports pendant 2 à 4 semaines → <code>reject</code>.
+  </p>
+
+  <h4>À traiter dans la foulée</h4>
+  <ul class="checklist">
+    <li class="info">Le TXT <code>brevo-code:e74d01d1317159e12d6125d9e8bbf721</code> est une vérification de propriété Brevo devenue sans objet — à supprimer avec le reste.</li>
+    <li class="info">Le TXT <code>"1|www.neogtb.fr"</code> n'a pas de format connu documenté : identifier son émetteur avant de le retirer.</li>
+    <li class="warn">Aucun DKIM n'a été trouvé sur les sélecteurs usuels (<code>mail</code>, <code>ovhmo1</code>, <code>brevo</code>). Le sélecteur réel dépend de l'offre OVH : à récupérer depuis l'espace client, sans quoi le <code>adkim=s</code> ci-dessus n'a rien à valider.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="p1a">3. <span class="badge badge-high">P1</span> Le back-office renvoie une erreur 500</h2>
+
+<div class="card card-high">
+  <div class="card-header">
+    <span><strong>La page de connexion Filament est hors service en production.</strong></span>
+    <span class="badge badge-high">Élevé</span>
+  </div>
+
+<pre><code>$ curl -s -o /dev/null -w "%{http_code}" https://admin.neogtb.fr/admin/login
+<span class="out">500</span></code></pre>
+
+  <p>La réponse est la page d'erreur générique de Symfony, pas la page d'erreur applicative Laravel : l'exception
+  survient donc <strong>très tôt dans le cycle de requête</strong>, avant que le rendu applicatif ne prenne la main.
+  Bonne nouvelle au passage : aucune trace d'exécution n'est exposée, ce qui confirme <code>APP_DEBUG=false</code>.</p>
+
+  <p><strong>Piste principale.</strong> Le profil de panne correspond à l'historique connu du projet : session, cache
+  et file d'attente partagent la même base SQLite en <code>journal_mode=delete</code>, ce qui produit des
+  <em>database is locked</em> récurrents. Une session illisible fait échouer la requête avant le rendu — exactement
+  ce que l'on observe. À confirmer sur le VPS :</p>
+
+<pre><code><span class="comment"># Sur le VPS — dernière exception enregistrée</span>
+ssh ubuntu@51.210.11.125
+sudo tail -n 80 /var/www/neogtb-laravel-new/admin/storage/logs/laravel.log
+sudo tail -n 40 /var/log/nginx/admin.neogtb.fr.error.log
+
+<span class="comment"># Si le diagnostic confirme les verrous SQLite :</span>
+<span class="comment">#   .env → SESSION_DRIVER=file, CACHE_STORE=file, puis WAL sur la base applicative</span>
+sudo -u www-data php artisan config:clear</code></pre>
+
+  <p class="proof">
+    Cette panne était invisible pour la v1 parce qu'un scan d'en-têtes lit un code HTTP sans le qualifier :
+    elle a même transformé l'anomalie en point positif, en présentant la réponse du sous-domaine comme un
+    « accès restreint (403) » alors que la racine répond 200 et la page de connexion 500.
+  </p>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="p1b">4. <span class="badge badge-high">P1</span> Le site public entier est servi sur admin.neogtb.fr</h2>
+
+<div class="card card-high">
+  <div class="card-header">
+    <span><strong>Duplicat complet et indexable du site sur le sous-domaine d'administration.</strong></span>
+    <span class="badge badge-high">Élevé</span>
+  </div>
+
+<pre><code>$ for u in / /gtb /blog; do curl -s -o /dev/null -w "$u → %{http_code}\n" https://admin.neogtb.fr$u; done
+<span class="out">/ → 200
+/gtb → 200
+/blog → 200</span>
+
+$ curl -s https://admin.neogtb.fr/gtb | grep -o '&lt;link rel="canonical"[^&gt;]*&gt;'
+<span class="out">&lt;link rel="canonical" href="https://admin.neogtb.fr/gtb" /&gt;</span>
+
+$ curl -s https://admin.neogtb.fr/ | grep -o 'name="robots"[^/]*'
+<span class="out">name="robots" content="index, follow, max-image-preview:large, …"</span></code></pre>
+
+  <p>Les deux <em>vhosts</em> partagent la même racine applicative, mais seul le bloc public porte la redirection
+  canonique <code>if ($host != "neogtb.fr")</code>. Résultat : chaque page du site existe en double sur
+  <code>admin.neogtb.fr</code>, avec un <strong>canonical auto-référent vers le sous-domaine</strong> — c'est-à-dire
+  que les pages dupliquées se déclarent elles-mêmes comme version de référence. Le <code>robots.txt</code> servi là
+  est celui du site public : il autorise <code>Allow: /</code>.</p>
+
+  <p><strong>Deux dommages distincts :</strong></p>
+  <ul class="checklist">
+    <li class="fail"><strong>SEO</strong> — contenu dupliqué à l'échelle du site entier, sur un sous-domaine qui s'auto-désigne comme canonique. Sur un site dont la stratégie repose sur le référencement et la citation par les moteurs génératifs, c'est le poste le plus coûteux de cet audit.</li>
+    <li class="fail"><strong>Sécurité</strong> — l'existence et l'adresse du back-office deviennent découvrables par simple exploration de l'index, et toute la surface applicative publique est exposée une seconde fois, sur un hôte dont ce n'est pas la fonction.</li>
+  </ul>
+
+  <p><strong>Et ce n'est pas le seul duplicata.</strong> <code>https://www.neogtb.fr</code> répond lui aussi 200,
+  avec un canonical auto-référent <code>https://www.neogtb.fr/gtb</code> — alors que la configuration versionnée
+  porte bien une redirection canonique <code>if ($host != "neogtb.fr")</code> sur le bloc public. Elle n'est donc
+  <strong>pas appliquée en production</strong> : nouvelle preuve de la dérive décrite en <a href="#p2">§5.2</a>,
+  cette fois dans le sens où la production est <em>moins</em> stricte que le dépôt.
+  Le site existe donc en <strong>trois exemplaires indexables</strong> : apex, www et admin.</p>
+
+<pre><code>$ curl -s -o /dev/null -w "%{http_code}" https://www.neogtb.fr/
+<span class="out">200</span>
+$ curl -s https://www.neogtb.fr/gtb | grep -o '&lt;link rel="canonical"[^&gt;]*&gt;'
+<span class="out">&lt;link rel="canonical" href="https://www.neogtb.fr/gtb" /&gt;</span></code></pre>
+
+  <p>Un middleware <code>ForceCanonicalDomain</code> existe pourtant dans le dépôt
+  (<code>app/Http/Middleware/ForceCanonicalDomain.php</code>) — mais il n'est <strong>branché nulle part</strong> :
+  aucune référence dans <code>bootstrap/app.php</code>, ni dans les routes. Et il ne pourrait pas l'être en l'état :
+  appliqué globalement, il redirigerait <code>admin.neogtb.fr</code> vers <code>neogtb.fr</code> et rendrait le
+  back-office inaccessible. Le correctif appartient donc à nginx, où la distinction entre les deux <em>vhosts</em>
+  existe déjà.</p>
+
+  <p>👉 Correctif écrit et versionné : voir <a href="#applique">§8</a>.</p>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="p2">5. <span class="badge badge-med">P2</span> En-têtes absents sur les assets &amp; dérive de la configuration</h2>
+
+<h3>5.1 — Aucun en-tête de sécurité sur <code>/build/</code></h3>
+
+<div class="card">
+<pre><code>$ curl -sI https://neogtb.fr/build/assets/app-DoCLPraW.css
+<span class="out">HTTP/2 200
+content-type: text/css
+cache-control: max-age=31536000
+cache-control: public, immutable</span>
+<span class="comment"># ni x-content-type-options, ni referrer-policy, ni cross-origin-resource-policy</span></code></pre>
+
+  <p>La cause est une règle nginx que la v1 mentionnait en note de bas de page sans faire le lien avec sa propre
+  mesure : <strong>dès qu'un <code>add_header</code> apparaît dans un bloc <code>location</code>, tous les
+  <code>add_header</code> du bloc <code>server</code> parent sont ignorés pour ce bloc</strong>. Le
+  <code>add_header Cache-Control</code> des assets neutralise donc l'intégralité des en-têtes de sécurité du site
+  sur les fichiers CSS et JavaScript.</p>
+
+  <p>L'absence de <code>nosniff</code> sur des ressources statiques n'est pas cosmétique : c'est précisément le
+  scénario où un navigateur peut réinterpréter le type d'une réponse. À noter aussi, deux en-têtes
+  <code>Cache-Control</code> concurrents sont émis (<code>expires 1y;</code> en produit un, l'<code>add_header</code>
+  un second) — comportement indéfini côté intermédiaires.</p>
+
+  <p>👉 Corrigé dans le dépôt : voir <a href="#applique">§8</a>.</p>
+</div>
+
+<h3>5.2 — La configuration nginx versionnée ne reflète plus la production</h3>
+
+<div class="card">
+  <div class="card-header">
+    <span><code>admin/deploy/nginx-neogtb-laravel.conf</code></span>
+    <span class="badge badge-med">Moyen</span>
+  </div>
+
+  <p>Le fichier versionné date du 7 avril 2026 et n'a jamais été resynchronisé, alors que la production a été
+  durcie depuis. Écarts constatés :</p>
+
+  <table>
+    <thead>
+      <tr><th scope="col">En-tête</th><th scope="col">Dépôt (avant correctif)</th><th scope="col">Production mesurée</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Strict-Transport-Security</td><td class="ko">max-age=31536000</td><td class="ok">max-age=63072000 + preload</td></tr>
+      <tr><td>X-Frame-Options (public)</td><td class="ko">DENY</td><td class="ok">SAMEORIGIN</td></tr>
+      <tr><td>X-XSS-Protection</td><td class="ko">1; mode=block</td><td class="ok">0</td></tr>
+      <tr><td>Permissions-Policy</td><td class="ko">3 fonctionnalités</td><td class="ok">10 fonctionnalités</td></tr>
+      <tr><td>COOP / CORP</td><td class="ko">absents</td><td class="ok">same-origin / same-site</td></tr>
+      <tr><td>CSP du back-office</td><td class="ko">absente du fichier</td><td class="ok">émise par nginx</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Le risque n'est pas théorique :</strong> la procédure de déploiement du projet resynchronise la
+  configuration nginx <em>manuellement</em>. Le jour où quelqu'un applique le fichier du dépôt — ce qui est
+  exactement ce qu'on attend d'un fichier versionné — la production perd le <em>preload</em> HSTS, COOP, CORP,
+  la moitié de la Permissions-Policy, et la CSP du back-office. Une configuration versionnée fausse est plus
+  dangereuse qu'une configuration absente.</p>
+
+  <p>👉 Fichier resynchronisé sur la production mesurée : voir <a href="#applique">§8</a>.</p>
+</div>
+
+<h3>5.3 — Trois constats issus du second audit, revérifiés ici</h3>
+
+<div class="card">
+  <p class="proof">
+    Un second rapport a été produit en parallèle (<code>docs/audit-securite-neogtb-2026-08-15.md</code>). Ses relevés
+    ont été recontrôlés un par un : versions exactes des dépendances, DNS, DKIM sur 12 sélecteurs, CVE. Ils sont
+    exacts. Trois de ses constats manquaient au présent rapport et sont repris ici, avec leur vérification propre.
+  </p>
+
+  <h4>CORS ouvert sur les routes <code>/api/</code> <span class="badge badge-low">Faible</span></h4>
+<pre><code>$ curl -sI -H "Origin: https://evil.example" https://neogtb.fr/api/user | grep -iE "^(HTTP|access-control)"
+<span class="out">HTTP/2 404
+access-control-allow-origin: *</span></code></pre>
+  <p>Confirmé, y compris avec une origine hostile — et la v1 affirmait exactement l'inverse (« Pas de CORS ouvert,
+  aucun header Access-Control renvoyé »). Aucune donnée n'est exposée par ces routes aujourd'hui, mais la valeur
+  par défaut de <code>config/cors.php</code> mérite d'être resserrée avant qu'une route <code>/api/</code> utile
+  n'apparaisse.</p>
+
+  <h4><code>/adminer.php</code> révèle le sous-domaine d'administration <span class="badge badge-low">Faible</span></h4>
+<pre><code>$ curl -s -o /dev/null -w "%{http_code} %{redirect_url}" https://neogtb.fr/adminer.php
+<span class="out">301 https://admin.neogtb.fr/adminer.php</span></code></pre>
+  <p>Aucun outil de base de données n'est exposé (la cible répond 404), mais un scan automatisé de chemins usuels
+  obtient gratuitement l'adresse du back-office. Cette redirection ne figure pas dans la configuration versionnée :
+  troisième manifestation de la dérive du <a href="#p2">§5.2</a>.</p>
+
+  <h4>CVE-2026-42945 (« NGINX Rift ») — exposition improbable, motif à corriger <span class="badge badge-med">Moyen</span></h4>
+  <p>Faille réelle, divulguée le <strong>18 mai 2026</strong>, corrigée en nginx 1.30.1 / 1.31.0 ; toutes les versions
+  de 1.0.0 à 1.30.0 sont concernées. Le second rapport conclut à juste titre que l'exposition est improbable, mais
+  son motif est incomplet : il écarte le risque au motif qu'« aucune directive <code>rewrite</code> » n'est utilisée,
+  alors que <strong><code>if</code> et <code>set</code> déclenchent la même faille</strong> — et la configuration en
+  contient. La condition exacte est la conjonction d'une <strong>capture PCRE non nommée</strong> (<code>$1</code>,
+  <code>$2</code>…) et d'un <strong><code>?</code> dans la chaîne de remplacement</strong>. Aucun des <code>if</code>
+  de cette configuration ne réunit les deux (aucune capture n'y est utilisée), donc la conclusion tient — sur un
+  motif vérifiable.</p>
+  <p class="proof">
+    Le contrôle à faire n'est donc pas « cherchons les <code>rewrite</code> » mais :
+    <code>grep -nE '(rewrite|if|set)\b.*\$[0-9]' </code> sur la configuration déployée, puis vérifier la présence
+    d'un <code>?</code> dans le remplacement. Version de nginx en production toujours non relevée : à confirmer
+    par <code>nginx -v</code> sur le VPS.
+  </p>
+</div>
+
+<h3>5.4 — Le honeypot était décoratif sur la moitié des formulaires</h3>
+
+<div class="card">
+  <div class="card-header">
+    <span><strong>Champ leurre affiché à l'écran, jamais transmis ni contrôlé.</strong></span>
+    <span class="badge badge-med">Moyen</span>
+  </div>
+
+  <p>Les deux rapports créditaient le honeypot <code>_gotcha</code> comme une protection anti-bot acquise. La
+  vérification champ par champ montre qu'elle ne l'était qu'à moitié :</p>
+
+  <table>
+    <thead>
+      <tr><th scope="col">Formulaire</th><th scope="col">Champ affiché</th><th scope="col">Transmis au serveur</th><th scope="col">Contrôlé</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Contact</td><td class="ok">oui</td><td class="ok">oui</td><td class="ok">PageController:89</td></tr>
+      <tr><td>Audit</td><td class="ok">oui</td><td class="ok">oui</td><td class="ok"><code>prohibited</code></td></tr>
+      <tr><td>Générateur CEE</td><td class="ok">oui</td><td class="ko">non</td><td class="ko">aucun</td></tr>
+      <tr><td>Mes droits RGPD</td><td class="ok">oui</td><td class="ko">non</td><td class="ko">aucun</td></tr>
+      <tr><td>Téléchargement CCTP</td><td class="ko">absent</td><td class="ko">—</td><td class="ko">aucun</td></tr>
+    </tbody>
+  </table>
+
+  <p>Sur le générateur CEE et le formulaire d'exercice des droits RGPD, le <code>&lt;input name="_gotcha"&gt;</code>
+  était bien présent dans le HTML, mais les deux vues postent un JSON construit à la main qui ne l'inclut pas :
+  le serveur ne voyait jamais le champ. Un bot remplissant tous les champs passait donc sans obstacle.</p>
+
+  <p>👉 Corrigé (chaîne complète : liaison Alpine, transmission, règle serveur, tests) — voir <a href="#applique">§8</a>.
+  Reste ouvert : le téléchargement CCTP, le plus exposé à la collecte automatisée, n'a aucun honeypot du tout.</p>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="p3">6. <span class="badge badge-low">P3</span> Durcissements mineurs</h2>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr><th scope="col">Point</th><th scope="col">Statut</th><th scope="col">Décision</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>object-src 'none'</code> dans la CSP publique</td>
+        <td><span class="badge badge-ok">Appliqué</span></td>
+        <td>Seul ajout CSP qui durcit réellement. La CSP du back-office le portait déjà — le front était en retard sur l'admin.</td>
+      </tr>
+      <tr>
+        <td><code>upgrade-insecure-requests</code></td>
+        <td><span class="badge badge-ok">Appliqué</span></td>
+        <td>Filet de sécurité pour le code personnalisé injectable depuis l'admin (<code>custom_head_code</code>), qui échappe à toute revue de code.</td>
+      </tr>
+      <tr>
+        <td>CAA : <code>issuewild ";"</code></td>
+        <td><span class="badge badge-info">À faire (DNS)</span></td>
+        <td>Les CAA existants n'interdisent pas les certificats <em>wildcard</em>. Aucun n'est utilisé ici : les interdire est gratuit.</td>
+      </tr>
+      <tr>
+        <td>SRI sur Plausible</td>
+        <td><span class="badge badge-info">Backlog</span></td>
+        <td>À faire par <strong>proxification</strong> (<code>/js/analytics.js</code> + <code>/api/event</code> en <em>reverse proxy</em>), jamais par SRI seul : le script change sans préavis et le SRI casserait la mesure d'audience en silence. Bénéfice annexe : plus d'appel tiers, donc <code>connect-src</code> et <code>script-src</code> réductibles à <code>'self'</code>.</td>
+      </tr>
+      <tr>
+        <td><code>style-src 'unsafe-inline'</code></td>
+        <td><span class="badge badge-info">Backlog</span></td>
+        <td>Chantier long (Alpine et Tailwind injectent des styles à l'exécution) pour un gain réel mais faible : sans <code>'unsafe-inline'</code> côté script, l'injection de style seule n'exécute pas de code. À reprendre après la proxification de Plausible.</td>
+      </tr>
+      <tr>
+        <td><code>Cross-Origin-Embedder-Policy</code></td>
+        <td><span class="badge badge-ko">Écarté</span></td>
+        <td><code>unsafe-none</code> est la valeur par défaut : l'en-tête n'apporterait rien. <code>require-corp</code> casserait le chargement de Plausible. À reconsidérer seulement après proxification.</td>
+      </tr>
+      <tr>
+        <td><code>Expect-CT</code></td>
+        <td><span class="badge badge-ko">Écarté</span></td>
+        <td>Retiré des navigateurs. L'ajouter serait du bruit d'en-tête.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="nonmesure">7. Ce qui n'a pas été mesuré</h2>
+
+<div class="card">
+  <p>Par honnêteté d'audit, voici ce sur quoi <strong>aucune note n'est décernée</strong>, faute de mesure —
+  là où la v1 attribuait des A et des B sans instrument.</p>
+
+  <ul class="checklist">
+    <li class="info"><strong>TLS / SSL</strong> — la v1 annonce « A+ », « TLS 1.2+ », « X25519 ». Aucune de ces valeurs n'a été reproduite ici : la suite négociée par un client donné ne dit rien des suites <em>acceptées</em>. Verdict à obtenir de SSL Labs, pas d'un <code>curl</code>.</li>
+    <li class="info"><strong>Conformité RGPD</strong> — la v1 note « A ». Les pages existent bien (<code>/mentions-legales</code>, <code>/politique-de-confidentialite</code>, <code>/mes-droits-rgpd</code>, <code>/cookies</code>, registre dans <code>docs/REGISTRE_TRAITEMENTS_RGPD.md</code>), mais <strong>leur contenu n'a pas été relu</strong>. L'existence d'une page n'est pas sa conformité.</li>
+    <li class="info"><strong>Robustesse de l'authentification admin</strong> — aucune limitation de tentatives n'a été trouvée sur la connexion Filament, mais le point n'a pas pu être testé : la page renvoie 500. À reprendre une fois le <a href="#p1a">§3</a> réglé.</li>
+    <li class="info"><strong>Indexation effective de <code>admin.neogtb.fr</code></strong> — la duplication est prouvée, son indexation réelle demande la Search Console.</li>
+    <li class="info"><strong>Dépendances</strong> — aucun <code>composer audit</code> ni <code>npm audit</code> n'a été exécuté. À intégrer à la CI.</li>
+    <li class="info"><strong>Test d'intrusion applicatif</strong> — hors périmètre. Cet audit porte sur la configuration, pas sur la logique métier (droits d'accès Filament, IDOR, injections).</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="applique">8. Correctifs déjà appliqués au dépôt</h2>
+
+<div class="card">
+  <p>Appliqués, testés, non déployés — la configuration nginx se synchronise manuellement sur le VPS.</p>
+
+  <h4><code>admin/app/Http/Middleware/FrontCspHeader.php</code></h4>
+<pre><code>  <span class="out">+</span> <span class="string">"object-src 'none'"</span>,            <span class="comment">// 'none' &gt; fallback default-src 'self'</span>
+  <span class="out">+</span> <span class="string">'upgrade-insecure-requests'</span>,   <span class="comment">// filet pour le code injecté depuis l'admin</span></code></pre>
+  <p><code>media-src</code>, <code>worker-src</code> et <code>manifest-src</code> ont été <strong>volontairement écartés</strong> :
+  ils héritent de <code>default-src 'self'</code> et n'auraient fait qu'allonger l'en-tête.</p>
+
+  <h4><code>admin/deploy/nginx-neogtb-laravel.conf</code></h4>
+  <ul class="checklist">
+    <li>Bloc public et bloc admin resynchronisés sur la production mesurée (HSTS <em>preload</em>, COOP, CORP, Permissions-Policy complète, <code>X-XSS-Protection: 0</code>)</li>
+    <li>CSP du back-office écrite dans le fichier, avec le commentaire expliquant pourquoi <code>FrontCspHeader</code> doit rester silencieux sur <code>admin.*</code></li>
+    <li>En-têtes de sécurité ré-émis dans le bloc des assets — le piège d'écrasement nginx est documenté sur place</li>
+    <li>Double <code>Cache-Control</code> supprimé (<code>expires 1y;</code> retiré au profit d'un seul <code>add_header</code>)</li>
+    <li><code>X-Robots-Tag: noindex, nofollow, noarchive</code> sur tout <code>admin.neogtb.fr</code></li>
+    <li><code>robots.txt</code> propre au sous-domaine admin (<code>Disallow: /</code>), au lieu de celui du site public</li>
+    <li>Isolation du sous-domaine : liste blanche <code>/admin</code>, <code>/livewire</code>, <code>/filament</code>, <code>/up</code>, assets, ACME → tout le reste part en 301 vers <code>neogtb.fr</code> (chemin du panel vérifié : <code>AdminPanelProvider.php:31</code> → <code>-&gt;path('admin')</code>)</li>
+    <li>Fermeture du contournement <code>admin.neogtb.fr/index.php</code>, qui aurait servi la home publique malgré l'isolation</li>
+  </ul>
+
+  <h4>Honeypot rendu opérant sur le générateur CEE et le formulaire RGPD</h4>
+  <ul class="checklist">
+    <li><code>generateur-cee.blade.php</code> — <code>x-model="honeypot"</code> sur le champ leurre, propriété déclarée dans le composant Alpine, <code>_gotcha</code> ajouté au corps posté</li>
+    <li><code>mes-droits-rgpd.blade.php</code> — même chaîne, corps posté passé de <code>this.form</code> à <code>{ ...this.form, _gotcha }</code></li>
+    <li><code>SubmitCeeLeadRequest</code> et <code>SubmitGdprRequest</code> — règle <code>['nullable', 'prohibited']</code>, alignée sur <code>SubmitAuditLeadRequest</code></li>
+    <li><code>SubmitGdprRequest</code> — <code>not_regex:/[\r\n]/</code> ajouté sur <code>email</code> : ce formulaire déclenche un envoi de courriel (<code>GdprResponseMail</code>), le champ était le seul non protégé contre l'injection d'en-tête</li>
+    <li><code>SubmitCeeLeadRequest</code> — <code>not_regex</code> aligné sur les autres requêtes (préventif : aucun courriel n'est envoyé depuis les services de leads aujourd'hui)</li>
+  </ul>
+
+  <h4><code>admin/tests/Feature/HoneypotTest.php</code> <span class="badge badge-ok">nouveau</span></h4>
+  <p>4 tests : rejet quand le leurre est rempli (CEE et RGPD), non-blocage d'un visiteur légitime quand il est vide,
+  refus d'une injection CRLF sur l'adresse de la demande RGPD.</p>
+
+  <h4><code>admin/tests/Feature/CspHeaderTest.php</code> <span class="badge badge-ok">nouveau</span></h4>
+  <p>5 tests de non-régression : nonce présent, ni <code>'unsafe-inline'</code> ni <code>'unsafe-eval'</code> dans
+  <code>script-src</code>, <code>object-src 'none'</code>, <code>upgrade-insecure-requests</code>, directives de base,
+  aucune origine tierce hors Plausible par défaut, et silence du middleware sur <code>admin.*</code>.</p>
+<pre><code>$ php artisan test
+<span class="out">Tests:  2 failed, 4 skipped, 71 passed (171 assertions)</span>
+<span class="comment"># 62 passed avant intervention · +5 tests CSP · +4 tests honeypot</span></code></pre>
+  <p class="proof">
+    Les deux échecs sont inchangés avant et après ces modifications (vérifié en rejouant la suite sur la version
+    d'origine du middleware). Ils (<code>ExampleTest</code>, <code>SubmitContactMessageRequestTest</code>)
+    préexistent et tiennent à une table
+    <code>general_settings</code> absente de la base de test ; ils sont hors périmètre de cet audit.
+  </p>
+</div>
+
+<div class="warn-box">
+  <strong>⚠️ À valider avant de déployer la configuration nginx.</strong> La liste blanche du sous-domaine admin a été
+  établie d'après le contenu de <code>admin/public/</code> (<code>build</code>, <code>css</code>, <code>js</code>,
+  <code>fonts</code>, <code>images</code>, <code>storage</code>) et les préfixes de routes Filament/Livewire.
+  Un chemin oublié partirait en 301 vers le site public. Après <code>nginx -t</code> et rechargement :
+  se connecter au back-office, ouvrir un formulaire de ressource, téléverser un média, vérifier la console du
+  navigateur — puis seulement considérer le déploiement comme acquis.
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="reste">9. Ce qu'il reste à faire</h2>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr><th scope="col">Priorité</th><th scope="col">Action</th><th scope="col">Où</th><th scope="col">Effort</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-crit">P0</span></td>
+        <td>Supprimer le DMARC Brevo en double, ajouter <code>rua=</code> au DMARC restant</td>
+        <td>DNS registrar</td>
+        <td>10 min</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-high">P1</span></td>
+        <td>Diagnostiquer et corriger la 500 de <code>/admin/login</code></td>
+        <td>VPS — logs + <code>.env</code></td>
+        <td>30 min – 2 h</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-high">P1</span></td>
+        <td>Déployer la conf nginx corrigée (isolation du sous-domaine + en-têtes)</td>
+        <td>VPS</td>
+        <td>20 min + recette</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-med">P2</span></td>
+        <td>Déployer la CSP durcie (<code>object-src</code>, <code>upgrade-insecure-requests</code>)</td>
+        <td>Déploiement applicatif</td>
+        <td>inclus</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-med">P2</span></td>
+        <td>Récupérer le sélecteur DKIM OVH et le publier</td>
+        <td>DNS registrar</td>
+        <td>20 min</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-med">P2</span></td>
+        <td>Rediriger <code>www.neogtb.fr</code> vers l'apex (301) — la redirection existe au dépôt mais pas en production</td>
+        <td>VPS — nginx</td>
+        <td>10 min</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-med">P2</span></td>
+        <td>Relever <code>nginx -v</code> et mettre à jour si &lt; 1.30.1 (CVE-2026-42945)</td>
+        <td>VPS</td>
+        <td>20 min</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-low">P3</span></td>
+        <td>Ajouter <code>0 issuewild ";"</code>, purger les TXT Brevo résiduels</td>
+        <td>DNS registrar</td>
+        <td>5 min</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-low">P3</span></td>
+        <td>Restreindre CORS sur <code>/api/</code> à des origines explicites ; remplacer la redirection <code>/adminer.php</code> par un 404</td>
+        <td><code>config/cors.php</code> + nginx</td>
+        <td>20 min</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-low">P3</span></td>
+        <td>Ajouter un honeypot au téléchargement CCTP (seul formulaire sans leurre)</td>
+        <td>Vue + FormRequest</td>
+        <td>15 min</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-low">P3</span></td>
+        <td>Proxifier Plausible en <em>first-party</em>, puis réduire la CSP à <code>'self'</code></td>
+        <td>nginx + layout Blade</td>
+        <td>1 h</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-info">P4</span></td>
+        <td>Après 2 à 4 semaines de rapports <code>rua</code> : passer DMARC en <code>p=reject</code></td>
+        <td>DNS registrar</td>
+        <td>5 min</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-info">P4</span></td>
+        <td>Ajouter <code>composer audit</code> et <code>npm audit</code> à la CI</td>
+        <td>CI</td>
+        <td>30 min</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<h2 id="validation">10. Validation post-déploiement</h2>
+
+<div class="card">
+  <h3><span class="step-number">1</span> DNS</h3>
+<pre><code><span class="comment"># Doit renvoyer UNE SEULE ligne, avec un rua=</span>
+dig +short _dmarc.neogtb.fr TXT
+
+<span class="comment"># Un seul v=spf1 attendu parmi les TXT du domaine</span>
+dig +short neogtb.fr TXT | grep -c "v=spf1"
+
+<span class="comment"># issue + issuewild + iodef</span>
+dig +short neogtb.fr CAA</code></pre>
+</div>
+
+<div class="card">
+  <h3><span class="step-number">2</span> Isolation du sous-domaine admin</h3>
+<pre><code><span class="comment"># Attendu : 301 vers https://neogtb.fr/... pour les pages publiques</span>
+for u in / /gtb /blog /contact; do
+  printf "%s -&gt; " "$u"
+  curl -s -o /dev/null -w "%{http_code} %{redirect_url}\n" "https://admin.neogtb.fr$u"
+done
+
+<span class="comment"># Attendu : 200 (et non plus 500) — le back-office doit rester servi</span>
+curl -s -o /dev/null -w "%{http_code}\n" https://admin.neogtb.fr/admin/login
+
+<span class="comment"># Attendu : Disallow: /</span>
+curl -s https://admin.neogtb.fr/robots.txt</code></pre>
+</div>
+
+<div class="card">
+  <h3><span class="step-number">3</span> En-têtes</h3>
+<pre><code><span class="comment"># Pages — la CSP doit contenir object-src 'none' et upgrade-insecure-requests</span>
+curl -sI https://neogtb.fr/ | grep -i content-security-policy
+
+<span class="comment"># Assets — nosniff / referrer-policy / CORP doivent maintenant apparaître,</span>
+<span class="comment"># et un SEUL cache-control</span>
+ASSET=$(curl -s https://neogtb.fr/ | grep -oE '/build/assets/[^"]+\.css' | head -1)
+curl -sI "https://neogtb.fr$ASSET"</code></pre>
+</div>
+
+<div class="card">
+  <h3><span class="step-number">4</span> Non-régression fonctionnelle</h3>
+  <ul class="checklist">
+    <li>Connexion au back-office, ouverture d'une ressource, téléversement d'un média</li>
+    <li>Envoi du formulaire de contact, puis 6 envois consécutifs → un <code>429</code> attendu au 6<sup>e</sup></li>
+    <li>Inscription newsletter et réception du courriel de confirmation (valide aussi la chaîne d'envoi après correctif DMARC)</li>
+    <li>Console du navigateur sur 3 ou 4 pages publiques : aucune violation CSP</li>
+    <li>Plausible enregistre toujours les visites</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3><span class="step-number">5</span> Outils externes</h3>
+  <ul class="checklist">
+    <li class="info"><a href="https://securityheaders.com/?q=neogtb.fr" target="_blank" rel="noopener noreferrer">securityheaders.com</a> — vérifier aussi une URL <code>/build/assets/…</code>, pas seulement la racine</li>
+    <li class="info"><a href="https://www.ssllabs.com/ssltest/analyze.html?d=neogtb.fr" target="_blank" rel="noopener noreferrer">SSL Labs</a> — le seul verdict TLS qui vaille (non mesuré ici)</li>
+    <li class="info"><a href="https://csp-evaluator.withgoogle.com/" target="_blank" rel="noopener noreferrer">CSP Evaluator</a></li>
+    <li class="info"><a href="https://mxtoolbox.com/dmarc.aspx" target="_blank" rel="noopener noreferrer">MXToolbox DMARC</a> — doit signaler un enregistrement unique</li>
+  </ul>
+</div>
+
+<!-- ───────── CONCLUSION ───────── -->
+<h2>Conclusion</h2>
+
+<div class="card">
+  <p><strong>Le travail de fond est bon.</strong> CSP par nonce, throttling systématique sur les écritures, HSTS
+  <em>preload</em>, cookies corrects, robots.txt pensé jusqu'aux crawlers génératifs, <code>security.txt</code>
+  publié : c'est nettement au-dessus de ce qu'on rencontre sur un site de cette taille, et rien de tout cela n'est
+  accidentel.</p>
+
+  <p><strong>Les défauts réels sont ailleurs que là où un scanner regarde.</strong> Les trois problèmes sérieux —
+  DMARC annulé par un doublon, back-office en 500, site public dupliqué sur le sous-domaine admin — ont un point
+  commun : aucun ne se voit dans une liste d'en-têtes HTTP. Ils demandaient de lire le code, d'interroger le DNS
+  et d'ouvrir réellement les URL. La v1 ne l'a pas fait, et a produit à la place une liste d'ajouts d'en-têtes dont
+  deux étaient inopérants et quatre déjà en place.</p>
+
+  <p><strong>La leçon opérationnelle</strong> tient en une ligne : un audit qui ne cite pas sa preuve n'est pas un
+  audit. Chaque ligne de ce document est rattachée à une commande reproductible ou à une référence fichier:ligne —
+  y compris les rubriques où la réponse est « non mesuré ».</p>
+</div>
+
+<p class="footnote">
+  Audit du 15 août 2026 — <code>neogtb.fr</code> · <code>admin.neogtb.fr</code><br>
+  Constats vérifiés le jour même par <code>curl</code>, <code>dig</code>, lecture du dépôt et exécution de la suite de tests.<br>
+  Contact sécurité : <a href="mailto:hello@neogtb.fr">hello@neogtb.fr</a>
+</p>
+
+</div>
+</body>
+</html>
