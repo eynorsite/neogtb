@@ -245,6 +245,47 @@ pre code { background: transparent; padding: 0; }
   <strong>7 constats sur 10 étaient inexacts</strong> et qui manquait les 3 problèmes les plus graves.
 </p>
 
+<div class="card" style="border-color:var(--green)">
+  <h3 class="c-green">✅ État au 15 août 2026, 19 h 30 — correctifs déployés en production</h3>
+  <p>Tout ce qui suit a été appliqué, déployé et vérifié par mesure. Commit <code>b59209b4</code> sur <code>main</code>.</p>
+  <table>
+    <thead><tr><th scope="col">Correctif</th><th scope="col">Avant</th><th scope="col">Après (mesuré)</th></tr></thead>
+    <tbody>
+      <tr><td>Back-office <code>/admin/login</code></td><td class="ko">500</td><td class="ok">200</td></tr>
+      <tr><td>Site public sur <code>admin.neogtb.fr</code></td><td class="ko">200 sur /, /gtb, /blog</td><td class="ok">301 vers l'apex</td></tr>
+      <tr><td><code>www.neogtb.fr</code></td><td class="ko">200, canonical auto-référent</td><td class="ok">301 vers l'apex</td></tr>
+      <tr><td>En-têtes sécurité sur <code>/build/</code></td><td class="ko">aucun</td><td class="ok">nosniff + Referrer-Policy + CORP</td></tr>
+      <tr><td><code>/adminer.php</code></td><td class="ko">301 révélant le back-office</td><td class="ok">404</td></tr>
+      <tr><td><code>X-Robots-Tag</code> sur admin</td><td class="ko">absent, robots.txt en Allow: /</td><td class="ok">noindex + Disallow: /</td></tr>
+      <tr><td>CSP publique</td><td class="ko">sans object-src</td><td class="ok">object-src 'none' + upgrade-insecure-requests</td></tr>
+      <tr><td>CORS <code>api/*</code></td><td class="ko">allow-origin: *</td><td class="ok">domaine canonique uniquement</td></tr>
+      <tr><td>Contournement <code>admin/index.php</code></td><td class="ko">servait la home publique</td><td class="ok">301</td></tr>
+      <tr><td>Honeypots CEE / RGPD / CCTP</td><td class="ko">décoratifs ou absents</td><td class="ok">chaîne complète + tests</td></tr>
+      <tr><td>Conf nginx dépôt ↔ production</td><td class="ko">4 mois de dérive, déploiement dangereux</td><td class="ok">miroir exact</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Cause racine de la 500 :</strong> <code>AppServiceProvider::register()</code> appelait
+  <code>ini_set('memory_limit', '512M')</code> alors que PHP plafonne à 256 Mo. Le <code>E_WARNING</code>,
+  promu en <code>ErrorException</code>, interrompait le boot du container avant l'enregistrement du service
+  <code>translator</code> — d'où l'échec en cascade jusqu'au rendu de la page d'erreur. Appel rendu silencieux.</p>
+  <p><strong>Reste à faire, par ordre de risque :</strong></p>
+  <ol>
+    <li><strong>DNS — DMARC en double</strong> (§2). Toujours actif : le domaine n'a aucune politique opposable.
+    <strong>Correction du présent rapport :</strong> le <code>.env</code> de production porte
+    <code>MAIL_HOST=smtp-relay.brevo.com</code> — Brevo <em>est</em> l'expéditeur réel. Il faut donc
+    <strong>d'abord</strong> ajouter <code>include:spf.brevo.com</code> au SPF, <strong>puis</strong> supprimer
+    le DMARC en double. L'ordre inverse mettrait les courriels du site en quarantaine.</li>
+    <li><strong>nginx 1.28.3</strong> — vulnérable à CVE-2026-42945 (corrigé en 1.30.1). Aucune directive
+    <code>rewrite</code>/<code>if</code>/<code>set</code> de cette configuration ne réunit les deux conditions
+    de déclenchement, mais la mise à jour reste due.</li>
+    <li><strong>DKIM</strong> — aucun sélecteur publié.</li>
+    <li><strong>Recette fonctionnelle du back-office</strong> — connexion, édition d'une ressource et
+    téléversement d'un média restent à valider manuellement (aucun identifiant côté audit).</li>
+    <li>Mineur : double en-tête <code>Cache-Control</code> sur les assets (<code>expires</code> +
+    <code>add_header</code>), conservé tel quel pour ne pas rouvrir un écart entre dépôt et production.</li>
+  </ol>
+</div>
+
 <div class="warn-box">
   <strong>⚠️ Pourquoi une v2.</strong> La v1 a été produite sans confronter ses constats au code du dépôt ni
   aux enregistrements DNS réels. Elle recommandait des correctifs déjà en place (rate limiting, SPF, DMARC, CAA),
