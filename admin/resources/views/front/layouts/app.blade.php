@@ -204,8 +204,8 @@
                   <span x-show="nlSending">...</span>
                 </button>
               </div>
-              <div x-show="nlSent" x-cloak class="text-[13px] text-accent-600 font-medium">{{ $site->label('footer.newsletter_success', 'Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.') }}</div>
-              <p x-show="nlError" x-text="nlError" x-cloak class="text-[12px] text-red-500 mt-1"></p>
+              <div x-show="nlSent" x-cloak role="status" aria-live="polite" class="text-[13px] text-accent-600 font-medium">{{ $site->label('footer.newsletter_success', 'Un email de confirmation vous a été envoyé. Cliquez sur le lien pour valider votre inscription.') }}</div>
+              <p x-show="nlError" x-text="nlError" x-cloak role="alert" class="text-[12px] text-red-500 mt-1"></p>
               <label x-show="!nlSent" class="mt-2 flex items-start gap-2 cursor-pointer">
                 <input type="checkbox" required class="mt-0.5 w-3.5 h-3.5 rounded text-accent-500 focus:ring-accent-500/40" />
                 <span class="text-[11px] text-dark-500" style="line-height: 1.5;">{!! $site->label('footer.newsletter_consent', 'J\'accepte de recevoir la veille GTB mensuelle. <a href="/politique-de-confidentialite" class="underline hover:text-dark-700">Confidentialité</a>') !!}</span>

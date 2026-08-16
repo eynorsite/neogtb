@@ -138,7 +138,7 @@
 
                 {{-- Erreur --}}
                 <template x-if="errorMessage">
-                    <div class="bg-red-50 border border-red-200 rounded-lg px-3 py-2 text-xs text-red-700" x-text="errorMessage"></div>
+                    <div class="bg-red-50 border border-red-200 rounded-lg px-3 py-2 text-xs text-red-700" x-text="errorMessage" role="alert"></div>
                 </template>
             </div>
         </template>
@@ -243,7 +243,7 @@
                             </button>
                         </form>
                         <template x-if="leadError">
-                            <p class="text-[11px] text-red-600" x-text="leadError"></p>
+                            <p class="text-[11px] text-red-600" x-text="leadError" role="alert"></p>
                         </template>
                     </div>
                 </template>
@@ -252,7 +252,7 @@
 
         {{-- Confirmation lead --}}
         <template x-if="leadSubmitted">
-            <div class="border-t border-gray-200 bg-gray-50 px-3 py-2.5">
+            <div class="border-t border-gray-200 bg-gray-50 px-3 py-2.5" role="status" aria-live="polite">
                 <p class="text-xs text-gray-700 text-center">Merci, nous vous recontactons sous 48 h.</p>
             </div>
         </template>
