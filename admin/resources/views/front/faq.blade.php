@@ -65,11 +65,11 @@
 
             @foreach($items as $index => $item)
             <div x-data="{ open: false }" class="border-t border-dark-200 @if($loop->last) border-b @endif">
-                <button @click="open = !open" class="w-full flex items-center justify-between py-5 min-h-[56px] text-left bg-transparent border-none cursor-pointer">
+                <button type="button" @click="open = !open" :aria-expanded="open ? 'true' : 'false'" aria-controls="faq-answer-{{ $loop->parent->index }}-{{ $index }}" class="w-full flex items-center justify-between py-5 min-h-[56px] text-left bg-transparent border-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500 rounded-lg">
                     <span class="text-[15px] font-medium text-dark-900 pr-4">{{ $item['question'] ?? '' }}</span>
-                    <svg :class="open && 'rotate-180'" class="w-4 h-4 text-dark-500 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" :class="open && 'rotate-180'" class="w-4 h-4 text-dark-500 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
-                <div x-show="open" x-collapse>
+                <div id="faq-answer-{{ $loop->parent->index }}-{{ $index }}" x-show="open" x-collapse>
                     <p class="text-sm text-dark-500 leading-relaxed pb-5">{!! $item['answer'] ?? '' !!}</p>
                 </div>
             </div>
