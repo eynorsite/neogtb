@@ -1,0 +1,3 @@
+## 2024-06-28 - Dynamic ARIA Attributes in Alpine.js Accordions
+**Learning:** For Alpine.js accordions, `aria-expanded` and `aria-controls` are crucial for screen reader users to understand the state and relationship of the elements. Using `:aria-expanded="open === {{ $i }} ? 'true' : 'false'"` and `aria-controls="faq-panel-{{ $i }}"` provides proper context. Consistent focus indicators (`focus-visible:ring-2`, etc.) are also essential for keyboard navigation visibility.
+**Action:** Always ensure interactive Alpine.js components, particularly disclosure widgets and accordions, have dynamic ARIA attributes linked to their state, and that interactive elements have clear focus states.
