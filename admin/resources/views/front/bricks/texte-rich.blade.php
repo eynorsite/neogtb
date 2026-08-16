@@ -8,7 +8,7 @@
             <h2 class="text-3xl font-bold mb-6">{{ $titre }}</h2>
         @endif
         <div class="prose prose-lg max-w-none">
-            {!! $html !!}
+            {!! \Stevebauman\Purify\Facades\Purify::clean($html) !!}
         </div>
     </div>
 </section>
