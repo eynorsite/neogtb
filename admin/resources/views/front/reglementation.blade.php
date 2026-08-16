@@ -382,6 +382,59 @@
     </div>
 </section>
 
+<!-- Sources officielles -->
+{{-- <div> et non <section> : le composant émet déjà son propre landmark <section aria-labelledby>. --}}
+<div class="bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+        <x-front.shared.sources-officielles
+            title="Textes de référence"
+            lede="Les obligations décrites sur cette page proviennent des textes suivants. Chaque lien renvoie à la version publiée par l'administration."
+            :items="[
+                [
+                    'label' => 'Décret n° 2019-771 du 23 juillet 2019 (décret tertiaire)',
+                    'url' => 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000038812251',
+                    'note' => 'Légifrance',
+                ],
+                [
+                    'label' => 'Décret n° 2020-887 du 20 juillet 2020 (décret BACS)',
+                    'url' => 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042128488',
+                    'note' => 'Légifrance',
+                ],
+                [
+                    'label' => 'Décret n° 2023-259 du 7 avril 2023 (seuil abaissé à 70 kW)',
+                    'url' => 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047422489',
+                    'note' => 'Légifrance',
+                ],
+                [
+                    'label' => 'Décret n° 2025-1343 du 26 décembre 2025 (report des échéances)',
+                    'url' => 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053175245',
+                    'note' => 'Légifrance',
+                ],
+                [
+                    'label' => 'Articles R. 175-1 à R. 175-6 du code de la construction et de l\'habitation',
+                    'url' => 'https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074096/LEGISCTA000043819535/',
+                    'note' => 'Légifrance, version en vigueur',
+                ],
+                [
+                    'label' => 'Éco Énergie Tertiaire : présentation du dispositif',
+                    'url' => 'https://www.ecologie.gouv.fr/politiques-publiques/eco-energie-tertiaire-eet',
+                    'note' => 'Ministère de la Transition écologique',
+                ],
+                [
+                    'label' => 'Plateforme de déclaration OPERAT',
+                    'url' => 'https://operat.ademe.fr/',
+                    'note' => 'ADEME',
+                ],
+                [
+                    'label' => 'Présentation et guide du décret BACS',
+                    'url' => 'https://rt-re-batiment.developpement-durable.gouv.fr/presentation-et-guide-du-decret-bacs-a712.html',
+                    'note' => 'Ministère de la Transition écologique',
+                ],
+            ]"
+        />
+    </div>
+</div>
+
 <!-- Pour aller plus loin -->
 <section class="py-12 lg:py-24 bg-white border-t border-dark-100">
     <div class="max-w-7xl mx-auto px-5 lg:px-10">

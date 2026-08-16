@@ -134,6 +134,124 @@ class SeoTest extends TestCase
         $this->assertStringContainsString('/blog/' . $post->slug, $xml);
     }
 
+    /**
+     * Le sitemap émettait Carbon::now() comme <lastmod> des 28 routes statiques :
+     * chaque crawl voyait « modifiée à l'instant », ce que Google traite comme un
+     * signal non fiable. Une date inconnue doit désormais produire l'ABSENCE de
+     * balise, jamais une balise vide (invalide au regard du schéma sitemaps.org).
+     */
+    #[Test]
+    public function sitemap_never_emits_empty_or_generated_lastmod(): void
+    {
+        $editedAt = now()->subMonths(3)->startOfMinute();
+        $this->makeHomePage()->forceFill(['updated_at' => $editedAt])->saveQuietly();
+
+        $xml = $this->get('/sitemap.xml')->assertOk()->getContent();
+
+        // Une balise vide serait invalide au regard du schéma sitemaps.org.
+        $this->assertStringNotContainsString('<lastmod></lastmod>', $xml);
+
+        preg_match_all('#<lastmod>(.*?)</lastmod>#', $xml, $matches);
+        $this->assertNotEmpty($matches[1], 'Aucun lastmod émis alors que des dates réelles existent.');
+
+        foreach ($matches[1] as $lastmod) {
+            // Aucune date ne doit être l'instant du rendu : c'était le défaut corrigé
+            // (Carbon::now() servi comme lastmod des 28 routes statiques).
+            $this->assertGreaterThan(
+                5,
+                abs(now()->diffInSeconds(\Illuminate\Support\Carbon::parse($lastmod))),
+                "Le lastmod {$lastmod} correspond à l'heure de génération du sitemap."
+            );
+        }
+
+        // La racine porte bien la date d'édition réelle de la page « accueil ».
+        $this->assertStringContainsString($editedAt->toAtomString(), $xml);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Fil d'Ariane structuré
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /** Extrait le premier nœud JSON-LD du type demandé dans une page. */
+    private function jsonLdNode(string $html, string $type): ?array
+    {
+        preg_match_all('#<script type="application/ld\+json"[^>]*>(.*?)</script>#s', $html, $blocks);
+
+        foreach ($blocks[1] as $block) {
+            $decoded = json_decode(trim($block), true);
+            if (! is_array($decoded)) {
+                continue;
+            }
+            $nodes = $decoded['@graph'] ?? [$decoded];
+            foreach ($nodes as $node) {
+                if (($node['@type'] ?? null) === $type) {
+                    return $node;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    #[Test]
+    public function article_breadcrumb_has_three_levels_without_brand_suffix(): void
+    {
+        $post = PostFactory::new()->create([
+            'title' => 'Décret BACS en pratique',
+            'status' => 'published',
+            'published_at' => now()->subDay(),
+        ]);
+
+        $html = $this->get('/blog/' . $post->slug)->assertOk()->getContent();
+        $breadcrumb = $this->jsonLdNode($html, 'BreadcrumbList');
+
+        $this->assertNotNull($breadcrumb, 'Aucun BreadcrumbList sur la page article.');
+
+        $names = array_column($breadcrumb['itemListElement'], 'name');
+        $this->assertSame(['Accueil', 'Perspectives', 'Décret BACS en pratique'], $names);
+
+        $positions = array_column($breadcrumb['itemListElement'], 'position');
+        $this->assertSame([1, 2, 3], $positions);
+    }
+
+    #[Test]
+    public function home_emits_no_breadcrumb_list(): void
+    {
+        $this->makeHomePage();
+
+        $html = $this->get('/')->assertOk()->getContent();
+
+        $this->assertNull(
+            $this->jsonLdNode($html, 'BreadcrumbList'),
+            "L'accueil ne doit pas porter de fil d'Ariane (il en était la racine)."
+        );
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Entité de marque
+    // ─────────────────────────────────────────────────────────────────────────
+
+    #[Test]
+    public function organization_and_website_share_a_linked_graph(): void
+    {
+        $this->makeHomePage();
+        Cache::forget('site_json_ld');
+
+        $html = $this->get('/')->assertOk()->getContent();
+
+        $organization = $this->jsonLdNode($html, 'Organization');
+        $website = $this->jsonLdNode($html, 'WebSite');
+
+        $this->assertNotNull($organization, 'Nœud Organization absent.');
+        $this->assertNotNull($website, 'Nœud WebSite absent.');
+
+        // Le site écrit « NeoGTB » et « NéoGTB » selon les endroits : les deux graphies
+        // doivent désigner une seule entité, sans quoi elles se concurrencent.
+        $this->assertArrayHasKey('alternateName', $organization);
+        $this->assertSame($organization['@id'], $website['publisher']['@id']);
+        $this->assertSame('fr-FR', $website['inLanguage']);
+    }
+
     // ─────────────────────────────────────────────────────────────────────────
     // robots.txt — fichier statique (servi par le serveur web, hors Laravel).
     // On asserte directement sur public_path('robots.txt'), seule source fiable

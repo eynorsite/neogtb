@@ -14,7 +14,6 @@ class SitemapController extends Controller
      */
     public function index(): Response
     {
-        $now = Carbon::now()->toAtomString();
         $base = rtrim(config('app.url'), '/');
 
         // Static routes: [path, changefreq, priority]
@@ -54,10 +53,32 @@ class SitemapController extends Controller
         // qui peut contenir les mêmes slugs côté BDD (accueil, gtb, gtc, contact, etc.).
         $addedPaths = [];
 
+        // Dates de dernière modification réelles, indexées par slug de SitePage.
+        // Google déclare ignorer les <lastmod> qu'il juge non fiables : émettre
+        // Carbon::now() sur toutes les pages statiques revenait à annoncer « modifiée
+        // à l'instant » à chaque crawl, ce qui décrédibilise le sitemap entier.
+        // Règle retenue : vraie date si on en connaît une, sinon PAS de <lastmod>.
+        $pageDates = SitePage::query()
+            ->where('is_published', true)
+            ->whereNotNull('updated_at')
+            ->pluck('updated_at', 'slug')
+            ->map(fn ($d) => Carbon::parse($d)->toAtomString());
+
+        // /blog est une liste : sa vraie date de fraîcheur est celle du dernier article publié.
+        $lastPostAt = Post::query()
+            ->where('status', 'published')
+            ->max('published_at');
+
         foreach ($staticRoutes as [$path, $changefreq, $priority]) {
+            $slug = $path === '/' ? 'accueil' : ltrim($path, '/');
+            $lastmod = $pageDates[$slug] ?? null;
+            if ($path === '/blog' && $lastPostAt) {
+                $lastmod = Carbon::parse($lastPostAt)->toAtomString();
+            }
+
             $urls[] = [
                 'loc'        => $base . $path,
-                'lastmod'    => $now,
+                'lastmod'    => $lastmod,
                 'changefreq' => $changefreq,
                 'priority'   => $priority,
             ];
@@ -68,7 +89,7 @@ class SitemapController extends Controller
         SitePage::query()
             ->where('is_published', true)
             ->get(['slug', 'updated_at'])
-            ->each(function (SitePage $page) use (&$urls, &$addedPaths, $base, $now) {
+            ->each(function (SitePage $page) use (&$urls, &$addedPaths, $base) {
                 if (blank($page->slug)) {
                     return;
                 }
@@ -82,7 +103,7 @@ class SitemapController extends Controller
                 }
                 $urls[] = [
                     'loc'        => $base . $path,
-                    'lastmod'    => optional($page->updated_at)->toAtomString() ?: $now,
+                    'lastmod'    => optional($page->updated_at)->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority'   => '0.7',
                 ];
@@ -96,14 +117,14 @@ class SitemapController extends Controller
                 $q->whereNull('published_at')->orWhere('published_at', '<=', Carbon::now());
             })
             ->get(['slug', 'updated_at', 'published_at'])
-            ->each(function (Post $post) use (&$urls, $base, $now) {
+            ->each(function (Post $post) use (&$urls, $base) {
                 if (blank($post->slug)) {
                     return;
                 }
                 $lastmod = $post->updated_at ?: $post->published_at;
                 $urls[] = [
                     'loc'        => $base . '/blog/' . $post->slug,
-                    'lastmod'    => $lastmod ? $lastmod->toAtomString() : $now,
+                    'lastmod'    => $lastmod?->toAtomString(),
                     'changefreq' => 'monthly',
                     'priority'   => '0.8',
                 ];
@@ -115,7 +136,11 @@ class SitemapController extends Controller
         foreach ($urls as $u) {
             $xml .= "  <url>\n";
             $xml .= '    <loc>' . htmlspecialchars($u['loc'], ENT_XML1 | ENT_QUOTES, 'UTF-8') . "</loc>\n";
-            $xml .= '    <lastmod>' . $u['lastmod'] . "</lastmod>\n";
+            // <lastmod> omis (et non vide) quand aucune date fiable n'est connue :
+            // le schéma sitemaps.org impose un W3C datetime, une balise vide invalide l'entrée.
+            if (filled($u['lastmod'])) {
+                $xml .= '    <lastmod>' . $u['lastmod'] . "</lastmod>\n";
+            }
             $xml .= '    <changefreq>' . $u['changefreq'] . "</changefreq>\n";
             $xml .= '    <priority>' . $u['priority'] . "</priority>\n";
             $xml .= "  </url>\n";

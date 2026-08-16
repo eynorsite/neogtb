@@ -33,16 +33,16 @@ class StaticPageController extends Controller
         ],
         // Slug ET title volontairement SANS année (éviter la péremption).
         'decret-bacs' => [
-            'title'       => "Décret BACS : qui est concerné, échéances, mise en conformité | NeoGTB",
-            'description' => "Décret BACS : GTB de classe B (NF EN ISO 52120-1) en pratique. Bâtiments concernés, échéances, dérogation TRI > 10 ans, CEE BAT-TH-116 et accompagnement indépendant.",
+            'title'       => "Décret BACS : qui est concerné et à quelle échéance",
+            'description' => "Décret BACS : bâtiments concernés, échéances, dérogation TRI > 10 ans, GTB de classe B (NF EN ISO 52120-1) et prime CEE BAT-TH-116 en pratique.",
         ],
         'amo-gtb-gtc' => [
-            'title'       => "AMO GTB/GTC, Assistance maîtrise d'ouvrage indépendante | NeoGTB",
+            'title'       => "AMO GTB/GTC : maîtrise d'ouvrage indépendante",
             'description' => "Assistance à maîtrise d'ouvrage (AMO) GTB/GTC : cahier des charges, appel d'offres, suivi de chantier et réception. Conseil indépendant, sans lien fabricant.",
         ],
         'modele-cctp-decret-bacs' => [
             'title'       => "Modèle de CCTP décret BACS (classe B) à télécharger | NeoGTB",
-            'description' => "Modèle type de CCTP GTB conforme au décret BACS : objet, cadre réglementaire, exigences fonctionnelles classe B (NF EN ISO 52120-1), protocoles, cybersécurité. Neutre fabricant.",
+            'description' => "Modèle type de CCTP GTB conforme au décret BACS : cadre réglementaire, exigences classe B (NF EN ISO 52120-1), protocoles, cybersécurité. Neutre fabricant.",
         ],
         // Slug ET title volontairement SANS année (éviter la péremption).
         'offres' => [
@@ -54,7 +54,7 @@ class StaticPageController extends Controller
             'description' => "Audit de conformité décret BACS, suivi énergétique et accompagnement OPERAT annuel pour votre bâtiment tertiaire. Conseil GTB indépendant, sans commission.",
         ],
         'positionnement' => [
-            'title'       => "Pourquoi NeoGTB, Conseil GTB 100 % indépendant, sans commission",
+            'title'       => "Conseil GTB 100 % indépendant, sans commission",
             'description' => "NeoGTB n'est lié à aucun fabricant : zéro commission, zéro affiliation, zéro revente de données. Découvrez les preuves concrètes de notre indépendance.",
         ],
         'gtb' => [
@@ -66,7 +66,7 @@ class StaticPageController extends Controller
             'description' => "Guide GTC : définition, différences clés avec la GTB, architecture type, protocoles OPC-UA, BACnet, Modbus et supervision multi-sites expliqués simplement.",
         ],
         'solutions' => [
-            'title'       => "Solutions GTB : protocoles BACnet, KNX, Modbus, LON, Comparatif",
+            'title'       => "Solutions GTB : BACnet, KNX, Modbus, LON comparés",
             'description' => "Comparatif indépendant des protocoles GTB (BACnet, KNX, Modbus, LON), capteurs et automates. Guide technique sans lien commercial ni affiliation.",
         ],
         'mentions-legales' => [

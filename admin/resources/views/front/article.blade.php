@@ -16,10 +16,17 @@
             'name' => $post->author?->name ?? 'Ulrich Calmo',
             'url' => url('/about'),
         ],
+        // @id identique au nœud Organization émis par SiteConfigService : l'éditeur de
+        // l'article et l'entreprise du site sont ainsi la même entité, et non deux
+        // organisations homonymes vues séparément par les moteurs. L'ancre se construit
+        // sur config('app.url') — et non url('/') — pour rester strictement identique
+        // même si la requête arrive par un autre host (proxy, prévisualisation, http).
+        // name/logo sont conservés : Google exige ces champs sur le publisher d'un Article.
         'publisher' => [
+            '@id' => rtrim(config('app.url'), '/') . '/#organization',
             '@type' => 'Organization',
-            'name' => 'NeoGTB',
-            'url' => url('/'),
+            'name' => $settings->company_name ?? 'NeoGTB',
+            'url' => rtrim(config('app.url'), '/'),
             'logo' => [
                 '@type' => 'ImageObject',
                 'url' => url('/images/logo-neogtb.webp'),
@@ -35,7 +42,10 @@
     if ($post->tags?->isNotEmpty()) {
         $articleSchema['keywords'] = $post->tags->pluck('name')->implode(', ');
     }
-    $__wordCount = str_word_count(strip_tags($post->content ?? ''));
+    // str_word_count() ne connaît que [A-Za-z'-] : chaque mot accentué est scindé en
+    // deux (« réglementation » → « r » + « glementation »), ce qui gonflait le wordCount
+    // déclaré d'environ 28 % sur du texte français. \p{L} compte les vrais mots UTF-8.
+    $__wordCount = preg_match_all('/[\p{L}\p{N}]+/u', strip_tags($post->content ?? ''));
     if ($__wordCount > 0) {
         $articleSchema['wordCount'] = $__wordCount;
     }

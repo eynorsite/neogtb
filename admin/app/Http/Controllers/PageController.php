@@ -76,9 +76,16 @@ class PageController extends Controller
 
         $seoOgType = 'article';
 
+        // Fil d'Ariane à 3 niveaux : Accueil > Perspectives > article.
+        // Sans ce maillon, le BreadcrumbList annonçait l'article comme un enfant direct
+        // de la racine, ce qui aplatit la hiérarchie du site aux yeux des moteurs.
+        $seoBreadcrumbName = $post->title;
+        $seoBreadcrumbParent = ['name' => 'Perspectives', 'url' => route('front.blog')];
+
         return view('front.article', compact(
             'post', 'related',
-            'seoTitle', 'seoDescription', 'seoOgImage', 'seoUrl', 'seoOgType'
+            'seoTitle', 'seoDescription', 'seoOgImage', 'seoUrl', 'seoOgType',
+            'seoBreadcrumbName', 'seoBreadcrumbParent'
         ));
     }
 

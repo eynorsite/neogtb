@@ -146,12 +146,27 @@ class SiteConfigService
         $jsonLd = Cache::remember('site_json_ld', self::CACHE_TTL, function () use ($type) {
             $s = $this->settings();
 
+            $baseUrl = rtrim(config('app.url', 'https://neogtb.fr'), '/');
+            $companyName = $s->company_name ?? 'NeoGTB';
+
             $data = [
                 '@context' => 'https://schema.org',
                 '@type'    => $type,
-                'name'     => $s->company_name ?? 'NeoGTB',
-                'url'      => config('app.url', 'https://neogtb.fr'),
+                // @id stable : ancre l'entité pour que les autres schemas du site
+                // (WebSite, publisher des Article) désignent le MÊME nœud plutôt que
+                // des organisations homonymes non reliées.
+                '@id'      => $baseUrl . '/#organization',
+                'name'     => $companyName,
+                'url'      => $baseUrl,
             ];
+
+            // Le site écrit tantôt « NéoGTB » (réglage admin) tantôt « NeoGTB » (footer,
+            // publisher, og:site_name, nom de domaine). alternateName déclare ces graphies
+            // comme une seule et même entité au lieu de les laisser se concurrencer.
+            $aliases = array_values(array_diff(['NeoGTB', 'NéoGTB', 'Neo GTB'], [$companyName]));
+            if (! empty($aliases)) {
+                $data['alternateName'] = $aliases;
+            }
 
             if (filled($s->company_description)) {
                 $data['description'] = $s->company_description;
@@ -207,7 +222,24 @@ class SiteConfigService
                 'Efficacité énergétique des bâtiments tertiaires',
             ];
 
-            return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</script>';
+            // Nœud WebSite : le site n'en déclarait aucun, si bien qu'aucun schema ne
+            // reliait le domaine à l'organisation. inLanguage + publisher lié par @id
+            // donnent aux moteurs (et aux moteurs de réponse) une entité unique et située.
+            $webSite = [
+                '@type'      => 'WebSite',
+                '@id'        => $baseUrl . '/#website',
+                'url'        => $baseUrl,
+                'name'       => $companyName,
+                'inLanguage' => 'fr-FR',
+                'publisher'  => ['@id' => $baseUrl . '/#organization'],
+            ];
+
+            $graph = [
+                '@context' => 'https://schema.org',
+                '@graph'   => [\Illuminate\Support\Arr::except($data, ['@context']), $webSite],
+            ];
+
+            return '<script type="application/ld+json">' . json_encode($graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</script>';
         });
 
         return new HtmlString($jsonLd);

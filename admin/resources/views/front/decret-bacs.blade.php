@@ -388,6 +388,50 @@
 </section>
 
 {{-- =========================================================================
+     SOURCES OFFICIELLES
+     <div> et non <section> : le composant émet déjà son propre landmark.
+     ========================================================================= --}}
+<div class="bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+        <x-front.shared.sources-officielles
+            lede="Cette page s'appuie exclusivement sur les textes et publications officiels ci-dessous, consultables en intégralité."
+            :items="[
+                [
+                    'label' => 'Décret n° 2025-1343 du 26 décembre 2025 (report des échéances)',
+                    'url' => 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053175245',
+                    'note' => 'Légifrance',
+                ],
+                [
+                    'label' => 'Articles R. 175-1 à R. 175-6 du code de la construction et de l\'habitation',
+                    'url' => 'https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074096/LEGISCTA000043819535/',
+                    'note' => 'Légifrance, version en vigueur',
+                ],
+                [
+                    'label' => 'Décret n° 2020-887 du 20 juillet 2020 (texte fondateur BACS)',
+                    'url' => 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042128488',
+                    'note' => 'Légifrance',
+                ],
+                [
+                    'label' => 'Décret n° 2023-259 du 7 avril 2023 (seuil abaissé à 70 kW)',
+                    'url' => 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047422489',
+                    'note' => 'Légifrance',
+                ],
+                [
+                    'label' => 'Présentation et guide du décret BACS',
+                    'url' => 'https://rt-re-batiment.developpement-durable.gouv.fr/presentation-et-guide-du-decret-bacs-a712.html',
+                    'note' => 'Ministère de la Transition écologique',
+                ],
+                [
+                    'label' => 'Mise à jour du calendrier BACS, thermostats et calorifugeage',
+                    'url' => 'https://rt-re-batiment.developpement-durable.gouv.fr/bacs-thermostats-calorifugeage-mise-a-jour-du-a1216.html',
+                    'note' => 'Ministère de la Transition écologique',
+                ],
+            ]"
+        />
+    </div>
+</div>
+
+{{-- =========================================================================
      PAGES LIÉES
      ========================================================================= --}}
 <section class="py-12 lg:py-24 bg-white">

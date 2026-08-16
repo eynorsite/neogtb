@@ -20,7 +20,8 @@
   @php($seoOgImage = $seoOgImage ?? ($page->og_image ?? '/images/og-neogtb.png'))
   @php($seoOgImageAbs = \Illuminate\Support\Str::startsWith($seoOgImage, ['http://', 'https://']) ? $seoOgImage : url($seoOgImage))
   @php($seoUrl = $seoUrl ?? url()->current())
-  @php($seoBreadcrumbName = $page->title ?? $seoTitle)
+  {{-- Nom du dernier maillon : priorité au controller (titre court), puis page dynamique, puis title SEO. --}}
+  @php($seoBreadcrumbName = ($seoBreadcrumbName ?? null) ?: ($page->title ?? $seoTitle))
   @php($seoOgType = $seoOgType ?? 'website')
 
   {{-- Polices : auto-hébergées par défaut (Inter + DM Sans via Vite/@fontsource, voir app.css).
@@ -71,27 +72,19 @@
   {{-- Schema.org Organization (dynamique depuis l'admin) --}}
   {!! $site->jsonLd() !!}
 
-  {{-- Schema.org BreadcrumbList --}}
-  <script type="application/ld+json" @cspNonce>
-  {
-    "@@context": "https://schema.org",
-    "@@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@@type": "ListItem",
-        "position": 1,
-        "name": "Accueil",
-        "item": "{{ url('/') }}"
-      },
-      {
-        "@@type": "ListItem",
-        "position": 2,
-        "name": @json($seoBreadcrumbName),
-        "item": "{{ $seoUrl }}"
-      }
-    ]
-  }
-  </script>
+  {{-- Schema.org BreadcrumbList.
+       Une vue passe $seoBreadcrumbParent = ['name' => …, 'url' => …] pour décrire le
+       chemin réel (Accueil > Perspectives > Article) au lieu d'un fil systématiquement plat.
+       ATTENTION : ne jamais écrire de bloc PHP multi-ligne dans ce fichier, ni même en
+       citer les directives dans un commentaire. Blade extrait les blocs bruts AVANT de
+       retirer les commentaires : la directive ouvrante des lignes 8-24 se rattacherait
+       alors à la directive fermante rencontrée ici, et tout le <head> serait émis en
+       PHP littéral. La construction du fil vit donc dans un composant dédié. --}}
+  <x-front.shared.breadcrumb-schema
+    :current="$seoBreadcrumbName"
+    :url="$seoUrl"
+    :parent="$seoBreadcrumbParent ?? null"
+  />
 
   @yield('json_ld')
 
