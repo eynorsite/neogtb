@@ -53,7 +53,7 @@
                     <div class="text-xs opacity-80 leading-tight" x-text="subtitle"></div>
                 </div>
             </div>
-            <button type="button" x-on:click="open = false" aria-label="Fermer" class="rounded-full p-1 hover:bg-white/20">
+            <button type="button" x-on:click="open = false" aria-label="Fermer" class="rounded-full p-1 hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -69,8 +69,8 @@
                         <button
                             type="button"
                             x-on:click="acceptConsent()"
-                            class="w-full px-4 py-2 rounded-lg text-white font-medium text-sm hover:opacity-90"
-                            :style="'background-color: ' + color"
+                            class="w-full px-4 py-2 rounded-lg text-white font-medium text-sm hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                            :style="'background-color: ' + color + '; --tw-ring-color: ' + color"
                         >
                             J'accepte et je continue
                         </button>
@@ -98,7 +98,7 @@
                             <button
                                 type="button"
                                 x-on:click="askSuggestion(s)"
-                                class="text-xs px-3 py-1.5 rounded-full border border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50"
+                                class="text-xs px-3 py-1.5 rounded-full border border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
                                 x-text="s"
                             ></button>
                         </template>
@@ -161,8 +161,8 @@
                 <button
                     type="submit"
                     :disabled="!inputText.trim() || isStreaming"
-                    class="p-2 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
-                    :style="'background-color: ' + color"
+                    class="p-2 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    :style="'background-color: ' + color + '; --tw-ring-color: ' + color"
                     aria-label="Envoyer"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -181,8 +181,8 @@
                         <button
                             type="button"
                             x-on:click="showLeadForm()"
-                            class="flex items-center gap-1.5 text-xs font-medium hover:underline focus:outline-none"
-                            :style="'color: ' + color"
+                            class="flex items-center gap-1.5 text-xs font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 rounded-md px-1"
+                            :style="'color: ' + color + '; --tw-ring-color: ' + color"
                             aria-label="Demander à être rappelé par email"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -194,7 +194,7 @@
                             type="button"
                             x-on:click="leadDismissed = true"
                             aria-label="Masquer la proposition de rappel"
-                            class="rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-600 focus:outline-none"
+                            class="rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -212,7 +212,7 @@
                                 type="button"
                                 x-on:click="leadFormVisible = false; leadDismissed = true"
                                 aria-label="Fermer le formulaire de rappel"
-                                class="flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-600 focus:outline-none"
+                                class="flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -234,8 +234,8 @@
                             <button
                                 type="submit"
                                 :disabled="leadSubmitting || !leadEmail.trim()"
-                                class="rounded-lg px-3 py-1.5 text-xs font-medium text-white transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-                                :style="'background-color: ' + color"
+                                class="rounded-lg px-3 py-1.5 text-xs font-medium text-white transition hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                                :style="'background-color: ' + color + '; --tw-ring-color: ' + color"
                                 aria-label="Envoyer mon email pour être rappelé"
                             >
                                 <span x-show="!leadSubmitting">Laisser mon email</span>
