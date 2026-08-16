@@ -168,6 +168,36 @@ class SeoTest extends TestCase
         $this->assertStringContainsString($editedAt->toAtomString(), $xml);
     }
 
+    /**
+     * Consulter un article incrémente son compteur de vues. Tant que cet incrément
+     * passait par Eloquent, il touchait aussi updated_at : le <lastmod> de chaque
+     * article bougeait à chaque VISITE, et le sitemap annonçait « modifié » sans
+     * qu'aucun contenu n'ait changé. La visite ne doit rien changer d'autre que
+     * le compteur.
+     */
+    #[Test]
+    public function viewing_an_article_does_not_change_its_last_modified_date(): void
+    {
+        $post = PostFactory::new()->create([
+            'status' => 'published',
+            'published_at' => now()->subMonth(),
+        ]);
+
+        $post->forceFill(['updated_at' => now()->subMonth()])->saveQuietly();
+        $before = $post->fresh()->updated_at;
+        $viewsBefore = (int) $post->fresh()->views_count;
+
+        $this->get('/blog/' . $post->slug)->assertOk();
+
+        $after = $post->fresh();
+        $this->assertSame($viewsBefore + 1, (int) $after->views_count, 'Le compteur de vues doit être incrémenté.');
+        $this->assertSame(
+            $before->toAtomString(),
+            $after->updated_at->toAtomString(),
+            "Une simple visite a modifié updated_at, donc le <lastmod> du sitemap."
+        );
+    }
+
     // ─────────────────────────────────────────────────────────────────────────
     // Fil d'Ariane structuré
     // ─────────────────────────────────────────────────────────────────────────

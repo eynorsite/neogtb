@@ -15,6 +15,7 @@ use App\Services\Lead\AuditLeadService;
 use App\Services\Lead\CctpLeadService;
 use App\Services\Lead\CeeLeadService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
@@ -52,7 +53,18 @@ class PageController extends Controller
             ->with(['category', 'tags'])
             ->firstOrFail();
 
-        $post->increment('views_count');
+        // Compteur de vues incrémenté via le Query Builder, et non par
+        // $post->increment() : la version Eloquent touche updated_at, si bien que
+        // CHAQUE consultation d'un article changeait son <lastmod> dans le sitemap.
+        // Le signal annonçait « contenu modifié » là où il ne s'était rien passé
+        // d'autre qu'une visite — exactement la perte de crédibilité que la
+        // fiabilisation du sitemap vise à éviter.
+        DB::table('posts')->where('id', $post->id)->increment('views_count');
+        // L'instance en mémoire ne reçoit pas l'incrément du Query Builder : on la
+        // synchronise pour que le compteur affiché sous l'article inclue la visite
+        // en cours, comme avec l'ancien increment() Eloquent.
+        $post->views_count = (int) $post->views_count + 1;
+
         $related = Post::where('status', 'published')
             ->where('id', '!=', $post->id)
             ->where('category_id', $post->category_id)
