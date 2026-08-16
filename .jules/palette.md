@@ -1,0 +1,3 @@
+## 2024-06-29 - Accessible Alpine.js Accordions
+**Learning:** When creating accordions or collapsible panels with Alpine.js (`x-data="{ open: false }"`), it's crucial to bind `:aria-expanded="open ? 'true' : 'false'"` dynamically to the trigger button and use `aria-controls="panel-id"` pointing to the ID of the collapsible content container. This ensures screen readers announce the state correctly. Also, remember to add `aria-hidden="true"` to decorative icons (like carets/chevrons) to avoid cluttering screen reader output.
+**Action:** Standardize all new Alpine.js accordions to include these ARIA attributes and focus styles (`focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2`).
