@@ -1,0 +1,3 @@
+## 2026-06-24 - Alpine.js Accordion Accessibility in Blade Views
+**Learning:** When using Alpine.js for interactive accordions in Blade templates, it's easy to overlook dynamic ARIA attribute bindings like `:aria-expanded="open ? 'true' : 'false'"` and `aria-controls`. Furthermore, relying solely on browser default focus states for these custom interactive `<button>` elements results in poor keyboard navigation visibility.
+**Action:** Always dynamically bind `:aria-expanded` based on Alpine state, associate controls with `aria-controls="[panel-id]"`, hide decorative SVGs with `aria-hidden="true"`, and standardise keyboard navigation visibility using Tailwind's `focus:outline-none focus-visible:ring-2 focus-visible:ring-[color]` classes.
