@@ -1,3 +1,26 @@
+# ---- Sécurité : protection des fichiers sensibles -------------------------
+# (garde de secours si nginx n’est pas deployé ou en cas de fallback Apache)
+<FilesMatch "(\.env|\.git|\.htpasswd|\.htaccess|\.DS_Store|composer\.lock|package-lock\.json|\.sql|\.sqlite|\.log|\.bak|\.old)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# ---- Headers sécurité (fallback Apache) --------------------------------
+# Note : en production ces headers sont émis par nginx. Ce bloc protège
+# les environnements de dev/staging qui tournent sous Apache.
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-XSS-Protection "0"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+</IfModule>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
