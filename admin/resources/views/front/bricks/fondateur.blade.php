@@ -42,7 +42,7 @@
 
                 @if(!empty($content['titre']))
                     <h2 style="font-size: clamp(28px, 3vw, 36px); font-weight: 500; color: var(--color-dark-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 20px;">
-                        {!! $content['titre'] !!}
+                        {!! \Stevebauman\Purify\Facades\Purify::clean($content['titre']) !!}
                     </h2>
                 @endif
 

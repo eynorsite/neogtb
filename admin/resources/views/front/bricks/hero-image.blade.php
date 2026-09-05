@@ -23,7 +23,7 @@
 
             @if(!empty($content['pre_titre']))
                 <p style="font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: -0.02em; margin-bottom: 12px;">
-                    {!! $content['pre_titre'] !!}
+                    {!! \Stevebauman\Purify\Facades\Purify::clean($content['pre_titre']) !!}
                 </p>
             @endif
 
