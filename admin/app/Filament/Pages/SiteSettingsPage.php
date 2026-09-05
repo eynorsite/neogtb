@@ -1173,16 +1173,20 @@ class SiteSettingsPage extends Page implements HasForms
                         ->visible(fn ($get) => $get('maintenance_enabled')),
                 ]),
                 Section::make('Code personnalisé')
-                    ->description('Injecté dans le HTML du site public.')
+                    ->description('Injecté dans le HTML du site public. Réservé aux superadmins — ce code s’exécute sans filtrage sur chaque page du site.')
+                    // Sécurité : custom_head_code et custom_body_code sont injectés via {!! !!} sans
+                    // purification (nécessaire pour les scripts de tracking). Seul le superadmin
+                    // peut modifier ces champs afin de limiter le risque d’injection de code arbitraire.
+                    ->visible(fn () => $this->getRole() === 'superadmin')
                     ->schema([
                         Textarea::make('custom_head_code')
-                            ->label('Code <head> personnalisé')
+                            ->label('Code <head> personnalisé (superadmin uniquement)')
                             ->rows(5)
-                            ->helperText('CSS, scripts analytics, meta tags...'),
+                            ->helperText('CSS, scripts analytics, meta tags. Injecté sans filtrage — accès superadmin uniquement.'),
                         Textarea::make('custom_body_code')
-                            ->label('Code <body> personnalisé')
+                            ->label('Code <body> personnalisé (superadmin uniquement)')
                             ->rows(5)
-                            ->helperText('Scripts avant la fermeture de </body>'),
+                            ->helperText('Scripts avant la fermeture de </body>. Injecté sans filtrage — accès superadmin uniquement.'),
                     ]),
                 Section::make('Maintenance & diagnostics')
                     ->description('Outils de cache, tests, backup, redémarrage de la queue.')
