@@ -47,7 +47,10 @@ return [
     |
     */
 
-    'encrypt' => env('SESSION_ENCRYPT', false),
+    // Défaut à true : le .env.example définit SESSION_ENCRYPT=true, mais le
+    // framework utilisait false comme fallback. En production le .env précise
+    // la valeur — ce fallback protège les environnements mal config.
+    'encrypt' => env('SESSION_ENCRYPT', true),
 
     /*
     |--------------------------------------------------------------------------
