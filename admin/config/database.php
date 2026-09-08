@@ -38,9 +38,12 @@ return [
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
-            'busy_timeout' => null,
-            'journal_mode' => null,
-            'synchronous' => null,
+            // WAL : découple lecteurs/writer → évite les "database is locked" sous accès
+            // concurrent (php-fpm + worker). Persistant sur le fichier ; réappliqué à chaque
+            // connexion par sécurité. busy_timeout 60s pour absorber les contentions restantes.
+            'busy_timeout' => env('DB_BUSY_TIMEOUT', 60000),
+            'journal_mode' => env('DB_JOURNAL_MODE', 'WAL'),
+            'synchronous' => env('DB_SYNCHRONOUS', 'NORMAL'),
             'transaction_mode' => 'DEFERRED',
         ],
 
