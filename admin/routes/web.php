@@ -79,6 +79,8 @@ Route::get('/llms.txt', function () {
 })->name('front.llms');
 
 // Frontend public routes
+// Canonicalise l'ancien point d'entrée PHP pour éviter une seconde URL d'accueil.
+Route::redirect('/index.php', '/', 301)->name('front.index-canonical');
 Route::get('/', [\App\Http\Controllers\StaticPageController::class, 'accueil'])->name('front.home');
 Route::get('/blog', [\App\Http\Controllers\PageController::class, 'blog'])->name('front.blog');
 Route::get('/blog/{slug}', [\App\Http\Controllers\PageController::class, 'article'])->name('front.article');

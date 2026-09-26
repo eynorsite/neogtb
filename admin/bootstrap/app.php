@@ -9,7 +9,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
-        health: '/up',
+        // Ne pas exposer la page de santé Laravel par défaut en production.
+        // Le contrôle de disponibilité est assuré par nginx/Supervisor.
+        health: null,
     )
     ->withSchedule(function (Schedule $schedule): void {
         // Purge RGPD mensuelle (1er de chaque mois à 3h)
