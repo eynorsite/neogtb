@@ -26,8 +26,21 @@ jobs:
           extensions: mbstring, sqlite3, pdo_sqlite
           coverage: none
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: admin/package-lock.json
+
       - name: Install PHP dependencies
         run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Audit PHP dependencies
+        run: composer audit --no-interaction
+
+      - name: Audit NPM dependencies
+        run: npm audit --audit-level=high
 
       - name: Boot Laravel and inspect routes
         run: |
@@ -53,6 +66,17 @@ jobs:
               exit 1
             fi
           done
+
+      - name: Check production configuration defaults
+        run: |
+          if grep -Eq '^APP_DEBUG=(true|1|yes)' .env.example; then
+            echo 'Security regression: APP_DEBUG must be disabled by default.' >&2
+            exit 1
+          fi
+          if ! grep -Eq '^SESSION_ENCRYPT=true' .env.example; then
+            echo 'Security regression: SESSION_ENCRYPT must stay enabled by default.' >&2
+            exit 1
+          fi
 
       - name: PHP syntax and whitespace checks
         run: |
