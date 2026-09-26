@@ -26,6 +26,10 @@ if (!function_exists('clean_html')) {
      */
     function clean_html(string $html): string
     {
-        return strip_tags($html, '<br><strong><em><a><ul><ol><li><p><h2><h3><h4><span><div>');
+        // strip_tags() laisse passer des attributs dangereux, notamment
+        // href="javascript:..." et des gestionnaires on* sur les balises
+        // conservées. Tous les contenus éditables affichés avec {!! !!}
+        // doivent passer par Purifier côté serveur.
+        return \Stevebauman\Purify\Facades\Purify::clean($html);
     }
 }

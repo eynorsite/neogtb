@@ -47,6 +47,13 @@ class ChatbotController extends Controller
 
     public function consent(Request $request): JsonResponse
     {
+        // Évite la création illimitée de conversations par automatisation.
+        $key = 'chatbot:consent:' . hash('sha256', (string) $request->ip() . config('app.key'));
+        if (RateLimiter::tooManyAttempts($key, 30)) {
+            return response()->json(['error' => 'rate_limit_ip'], 429);
+        }
+        RateLimiter::hit($key, 3600);
+
         $sessionId = $this->ensureSessionId($request);
         $conv = $this->service->getOrCreateConversation($sessionId, $this->context($request));
 

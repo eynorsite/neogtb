@@ -105,6 +105,7 @@ class PostResource extends Resource
                                     ->label('Image principale')
                                     ->helperText('L\'image affichée en haut de l\'article et dans la liste du blog.')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->directory('posts')
                                     ->maxSize(5120),
 
@@ -113,6 +114,8 @@ class PostResource extends Resource
                                     ->label('Image de partage (réseaux sociaux)')
                                     ->helperText('Si vide, l\'image principale sera utilisée. Format idéal : 1200x630px.')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->maxSize(5120)
                                     ->directory('og'),
                             ]),
 

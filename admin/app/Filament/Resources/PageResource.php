@@ -138,6 +138,8 @@ class PageResource extends Resource
                                     ->label('Image de partage')
                                     ->helperText('L\'image affichée quand on partage la page sur les réseaux sociaux. Format idéal : 1200x630px.')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->maxSize(5120)
                                     ->directory('og'),
                             ]),
 
@@ -163,6 +165,8 @@ class PageResource extends Resource
                                     ->disk('public')
                                     ->label('Image du hero')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->maxSize(5120)
                                     ->directory('hero'),
                             ]),
 

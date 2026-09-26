@@ -419,7 +419,12 @@ HTML;
 
     public function label(string $path, string $default = ''): string
     {
-        return (string) (Arr::get($this->settings()->ui_labels ?? [], $path, $default) ?? $default);
+        $value = (string) (Arr::get($this->settings()->ui_labels ?? [], $path, $default) ?? $default);
+
+        // Les vues historiques rendent certains labels en HTML brut pour
+        // permettre les liens et la mise en forme. Purifier ici garantit que
+        // chaque nouveau label reste inoffensif, quelle que soit la vue.
+        return \Stevebauman\Purify\Facades\Purify::clean($value);
     }
 
     // ──────────────────────────────────────────────

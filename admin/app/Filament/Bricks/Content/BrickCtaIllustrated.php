@@ -80,6 +80,8 @@ class BrickCtaIllustrated extends BaseBrick
                 ->disk('public')
                 ->label('Image de fond')
                 ->image()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                ->maxSize(5120)
                 ->directory('bricks/cta'),
 
             TextInput::make('settings.fond')

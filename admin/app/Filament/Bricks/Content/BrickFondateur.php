@@ -84,6 +84,8 @@ class BrickFondateur extends BaseBrick
                 ->disk('public')
                 ->label('Photo')
                 ->image()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                ->maxSize(5120)
                 ->directory('bricks/fondateur'),
 
             TextInput::make('content.photo_alt')

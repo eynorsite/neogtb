@@ -68,6 +68,8 @@ class BrickTexte extends BaseBrick
                 ->disk('public')
                 ->label('Image')
                 ->image()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                ->maxSize(5120)
                 ->directory('bricks/texte'),
 
             Select::make('settings.position_image')

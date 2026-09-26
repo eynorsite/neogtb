@@ -89,6 +89,8 @@ class BrickHero extends BaseBrick
                 ->disk('public')
                 ->label('Image de fond')
                 ->image()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                ->maxSize(5120)
                 ->directory('bricks/hero')
                 ->imageResizeMode('cover'),
 
