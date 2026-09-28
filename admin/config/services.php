@@ -39,4 +39,21 @@ return [
         'api_key' => env('ANTHROPIC_API_KEY'),
     ],
 
+    /*
+    | Machine à articles (Notion → blog neogtb.fr), cf. NotionSyncArticles.
+    | Même base Notion que eynor.fr (« Calendrier de contenu ») : ce site ne
+    | prend que les pages dont la « Plateforme » vaut « Blog NeoGTB ». Sans
+    | jeton, la commande ne fait rien. Le jeton peut être celui de l'intégration
+    | déjà utilisée par eynor.fr (elle a accès à la base).
+    */
+    'notion' => [
+        'token' => env('NOTION_TOKEN'),
+        'blog_data_source_id' => env('NOTION_BLOG_DATA_SOURCE_ID', '980815be-4850-826f-b698-87a29c09681a'),
+        'platform' => env('NOTION_BLOG_PLATFORM', 'Blog NeoGTB'),
+        // Auteur (email d'un compte admin) des articles. Si vide → premier admin.
+        'sync_author_email' => env('NOTION_SYNC_AUTHOR_EMAIL'),
+        // Catégorie si la page Notion n'en précise aucune (créée si absente).
+        'default_category' => env('NOTION_DEFAULT_CATEGORY', 'Guide'),
+    ],
+
 ];
